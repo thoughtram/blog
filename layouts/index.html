@@ -1,0 +1,67 @@
+<!-- This file is the homepage of the website. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!--
+      This section just sets up some metadata for the website.
+
+      It probably does not need to be changed.
+    -->
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="description" content="We are thoughtram. We enjoy learning new stuff every day and we love teaching it to others even more.">
+    <base href="{{ .Site.BaseUrl }}">
+    <title>{{ .Site.Title }}</title>
+    <link rel="canonical" href="{{ .Permalink }}">
+    <link href="{{ .RSSlink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
+
+    {{ template "chrome/head_includes.html" . }}
+</head>
+  <body class="theme-base-thoughtram" lang="en">
+
+  {{ template "chrome/sidebar.html" . }}
+
+  <!-- See /layouts/indexes/category.html for explanation of this section -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/" title="thoughtram.io | blog">
+              <img alt="thoughtram blog" src="thoughtram_logo-line.png"> blog
+            </a>
+          </h3>
+        </div>
+      </div>
+
+      <!--
+        This section contains the content of our home page.
+
+        I have broken it into three main sections:
+          (1) about the blog
+          (2) about me
+          (3) Recent posts
+
+        The first two sections are pretty self explanatory.
+
+        In the recent posts section we ask Hugo to use the template found in
+        /layouts/posts/summary.html to show a summary of the 10 most recent
+        posts we have made.
+      -->
+      <div class="container content">
+        <!-- Recent Posts section -->
+        <section id="main">
+          <ul id="list">
+            {{ range first 10 .Data.Pages }}
+            {{ .Render "summary"}}
+            {{ end }}
+          </ul>
+        </section>
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+{{ template "chrome/footer.html" }}

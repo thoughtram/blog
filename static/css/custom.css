@@ -1,0 +1,200 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-image: url('../thoughtram-polygons.svg');
+  background-size: 2000px auto;
+  background-repeat: no-repeat;
+  background-position: -55em -35em;
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  color: #4D8799;
+  text-transform: uppercase;
+}
+
+.theme-base-thoughtram .sidebar,
+.theme-base-thoughtram .sidebar-toggle:active,
+.theme-base-thoughtram #sidebar-checkbox:checked ~ .sidebar-toggle {
+  background-color: #4D8799;
+}
+.theme-base-thoughtram .container a,
+.theme-base-thoughtram .sidebar-toggle,
+.theme-base-thoughtram .related-posts li a:hover {
+  color: #4D8799;
+}
+
+.theme-base-thoughtram #sidebar-checkbox ~ .sidebar-toggle {
+  background: #FF6B72;
+  color: #fff;
+  border-radius: 0;
+}
+.theme-base-thoughtram #sidebar-checkbox:checked ~ .sidebar-toggle {
+  background: #FF6B72;
+}
+
+.theme-base-thoughtram .sidebar {
+  background: #1A1A1A;
+}
+
+.theme-base-thoughtram .masthead {
+  /* background: #4D8799; */
+  background: #1a1a1a;
+  border: 0;
+}
+
+.theme-base-thoughtram .masthead-title a {
+  /* color: #000; */
+  color: #fff;
+  font-weight: 800;
+  /* text-indent: -7000px; */
+  /* background-image: url('../thoughtram-logo-line.png'); */
+  /* background-position: center; */
+  /* background-repeat: no-repeat; */
+  /* background-size: 100% auto; */
+  display: inline-block;
+  margin-left: 1em;
+}
+
+.theme-base-thoughtram .masthead-title a:hover {
+  text-decoration: none;
+}
+
+
+.theme-base-thoughtram .masthead-title img {
+  display: inline-block;
+  border-radius: 0;
+  height: 0.8em;
+  width: auto;
+  margin: 0;
+}
+
+.theme-base-thoughtram .post-content {
+  color: #1a1a1a;
+  background: #fff;
+  /* background: #4D8799; */
+  padding: 1em;
+  line-height: 1.5em;
+  /* color: #fff; */
+  margin-top: 1.5em;
+  font-weight: 300;
+  position: relative;
+}
+
+.theme-base-thoughtram .post-content:before {
+  position: absolute;
+  content: '';
+  height: 0.1em;
+  width: 0.1em;
+  top: -1.6em;
+  left: 1.5em;
+  border: 0.8em solid;
+  /* border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #4D8799 rgba(0, 0, 0, 0); */
+  border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #fff rgba(0, 0, 0, 0);
+}
+
+.theme-base-thoughtram .post-content a {
+  color: #1a1a1a;
+  /* color: #fff; */
+  font-weight: 400;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.theme-base-thoughtram .post-content a {
+  text-decoration: none;
+}
+
+.theme-base-thoughtram .post h2 {
+  margin: 0;
+}
+
+.theme-base-thoughtram .post-title {
+  color: #fff;
+  background: #4D8799;
+  padding: 0.6em;
+  display: inline-block;
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.theme-base-thoughtram .post h2 a {
+  color: #fff;
+  background: #4D8799;
+  /* color: #1a1a1a; */
+  /* background: #fff; */
+  padding: 0.6em;
+  display: inline-block;
+}
+
+.theme-base-thoughtram .post h2 a:hover {
+  text-decoration: none;
+}
+
+.theme-base-thoughtram .meta {
+  background: #FF6B72;
+  text-align: center;
+  color: #FFF;
+  padding: 0.2em 0.4em;
+  text-transform: uppercase;
+  font-size: 1.2em;
+  display: inline-block;
+  margin-top: 0.5em;
+}
+
+.theme-base-thoughtram .post footer {
+  margin-top: 1em;
+}
+
+.theme-base-thoughtram .post footer a {
+  background: #1a1a1a;
+  display: inline-block;
+  padding: 0.2em 0.8em;
+  color: #fff;
+}
+
+.theme-base-thoughtram .post footer a:hover {
+  text-decoration: none;
+}
+
+.post {
+  margin-bottom: 3em;
+}
+
+.theme-base-thoughtram .left,
+.theme-base-thoughtram .right {
+  float: none;
+  margin: 0;
+}
+.theme-base-thoughtram .left a,
+.theme-base-thoughtram .right a {
+  margin-top: 1em;
+  background: #1a1a1a;
+  padding: 0.2em 0.8em;
+  color: #fff;
+  display: inline-block;
+  width: 49%;
+  vertical-align: top;
+}
+
+.theme-base-thoughtram .left a:hover,
+.theme-base-thoughtram .right a:hover {
+  text-decoration: none;
+}
+.sidebar {
+  font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase;
+}
+.sidebar img {
+  margin: 0;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-top: 1em;
+}
+
+.sidebar-item {
+  text-align: center;
+}
+.sidebar-item.tag-line {
+  padding-top: 0;
+}

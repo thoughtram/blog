@@ -1,0 +1,53 @@
+<!--
+  This file is responsible for rendering a single blog post.
+-->
+
+{{ template "chrome/header.html" . }}
+
+<body class="theme-base-thoughtram">
+  {{ template "chrome/sidebar.html" . }}
+
+  <!-- See /layouts/indexes/category.html for explanation of this section -->
+  <div class="wrap">
+    <div class="masthead">
+      <div class="container">
+          <h3 class="masthead-title">
+            <a href="/" title="thoughtram.io | blog">
+            thoughtram blog
+            </a>
+          </h3>
+      </div>
+    </div>
+
+    <!--
+      This is where the actual post is displayed.
+
+      We first access the title metadata field from the markdown source and
+      display it as a heading.
+
+      We then access the date the post was written (also in the markdown
+      metadata) and display a formated version of it
+
+      Finally we include the actual content of the post.
+    -->
+    <div class="container content">
+      <h1 class="post-title">{{ .Title }}</h1>
+        <section id="main">
+          <div id="date" class="meta"> {{ .Date.Format "Mon Jan 2, 2006" }} </div>
+          <div class="post-content">
+          {{ .Content }}
+          </div>
+        </section>
+    </div>
+  </div>
+
+  <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+  {{ template "chrome/prev_next.html" . }}
+  <br />
+
+
+  <!-- Include footer (ends <body class="theme-base-08"> and <html>) -->
+  {{ template "chrome/footer.html" }}
+
+
