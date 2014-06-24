@@ -110,16 +110,6 @@ strong {
   color: #303030;
 }
 
-/* Lists */
-ul, ol, dl {
-  margin-top: 0;
-  padding-left: 0;
-  margin-bottom: 1rem;
-  list-style-type: none;
-}
-
-
-
 dt {
   font-weight: bold;
 }
