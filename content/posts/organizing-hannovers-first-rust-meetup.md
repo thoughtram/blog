@@ -30,8 +30,8 @@ Imagine a world where system programming becomes approachable for the rest of us
 **Schedule:**
 
 * Christoph will give a lightning talk about [Rust](http://www.rust-lang.org) introducing it's core concepts
-* We will look at the web framework [floor](floor-org.github.io/floor/) that Christoph started implementing in Rust
-* The plan is to turn every participant into a [floor](floor-org.github.io/floor/) contributor by the end of the session :)
+* We will look at the web framework [floor](http://floor-org.github.io/floor/) that Christoph started implementing in Rust
+* The plan is to turn every participant into a [floor](http://floor-org.github.io/floor/) contributor by the end of the session :)
 
 Don't worry if you don't have any prior knowledge in system programming languages like C or C++. We are all beginners. That said, if you **do** have knowledge in system programming languages, we definitely want you to attend, too! **Don't be late**, we might have Rust stickers for you :)
 
