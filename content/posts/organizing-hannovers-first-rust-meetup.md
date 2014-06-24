@@ -21,7 +21,7 @@ Imagine a world where system programming becomes approachable for the rest of us
 
 **Today we are happy to announce the very first Rust meetup in Hannover/Germany.**
 
-**When:** 10.07.2014, 18:30
+**When:** July 10th 2014, 18:30
 
 **Where:** CouchCommerce GmbH, Bödekerstraße 56, 30161 Hannover 
 
