@@ -5,18 +5,32 @@ categories:
     - "thoughtram"
 ---
 
-It's on! You can now buy the first bunch of tickets for our **Git Ninja Class** workshop!
+It's on! You can now buy the first bunch of tickets for our **Git Ninja Class** workshop happening on the **6th + 7th of September in Hannover, Germany**!
 
-**Here are the facts**:
+**What is this workshop about?**
 
-- Git is a free and open source distributed version control system. It's invention was a blessing to the whole software world. However, it takes a bit of training to become really productive. Now is the best time to level up to become a real git Ninja!
+Git is a free and open source distributed version control system. It’s invention was a blessing to the whole software world. However, it takes a bit of training to become really productive. Now is the best time to level up to become a real git Ninja!
 
-- Attending this workshop, **you get a six month micro plan for github.com**
+**What you will learn**
+
+We split the workshop in two days. The first day should get you started to get on an intermediate level. The second day will teach you all the ins and outs of git to become **really** productive. You'll get the most out of it when you attend both days. Take a look at the [detailed workshop description](http://thoughtram.io/#trainings) to get a feel for the covered topics.
+
+**Why take this training?**
+
+- This course will make you more productive
+
+- It will save you lots of time and money. Every day.
+
+- You'll get **a six month micro plan for github.com**
 
 - You get the chance to meet our special guest **Mike Adolphs** from GitHub
 
-It's also important to note that the first eight tickets will be sold with an **early bird** price, make sure to grab one while they are hot!
+![Mike from github](http://thoughtram.io/images/9328f926.mike.png)
 
-Just head over to [thoughtram.io](http://thoughtram.io/)
+**Be quick!**
+
+The first eight day tickets will be sold as a special **early bird offer** for **350.00 €** per day or **650.00 €** for both days combined. Make sure to grab your ticket **now**.
+
+Just head over to [thoughtram.io](http://thoughtram.io/#trainings)
 
 -- Pascal & Christoph
