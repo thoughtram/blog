@@ -13,7 +13,11 @@ Git is a free and open source distributed version control system. It’s inventi
 
 **What you will learn**
 
-We split the workshop in two days. The first day should get you started to get on an intermediate level. The second day will teach you all the ins and outs of git to become **really** productive. You'll get the most out of it when you attend both days. Take a look at the [detailed workshop description](http://thoughtram.io/#trainings) to get a feel for the covered topics.
+We split the workshop in two days. The first day should get you started to get on an intermediate level. 
+
+The second day will teach you all the ins and outs of git to become **really** productive. For the second day to attend it is important to be on an intermediate level already. That doesn't mean that you have to attend the first day as a precondition for the second day. If you feel that you have the skills already it will be fine to only attend the second day but you'll get the most out of it if you attend both days. 
+
+Take a look at the [detailed workshop description](http://thoughtram.io/#trainings) to get a feel for the covered topics.
 
 **Why take this training?**
 
