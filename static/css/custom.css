@@ -198,3 +198,85 @@ h1, h2, h3, h4, h5, h6 {
 .sidebar-item.tag-line {
   padding-top: 0;
 }
+
+.footer {
+    background-color: #123742;
+    color: #fff;
+    padding: 3em 0 1em 0;
+}
+
+.footer__logo-line {
+    text-transform: uppercase;
+    font-size: 1.4em;
+    font-weight: 200;
+    margin: 2em 0 0 0;
+    text-align: center;
+    line-height: 1;
+}
+
+.footer__logo-line img {
+  height: 0.8em;
+  width: auto;
+  vertical-align: baseline;
+  display: inline-block;
+  border-radius: 0;
+  margin: 0;
+}
+
+.footer__socialize {
+    padding: 0;
+    list-style: none;
+    margin-top: 0;
+}
+
+.footer__socialize__item {
+    margin-top: 1em;
+}
+
+.theme-base-thoughtram .footer__socialize__item a {
+  color: #1A1A1A;
+  font-size: 0.8em;
+  background: #FFF;
+  padding: 0.4em;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+}
+
+.footer__logo-brain {
+    max-width: 100%;
+    width: 20%;
+    display: block;
+    margin: 0 auto;
+    margin-top: 1em;
+}
+
+.footer__copyright {
+    text-align: center;
+    margin: 2em 0 0 0;
+}
+
+@media screen and (min-width: 751px) {
+    .footer__logo-brain {
+        width: 8em;
+        margin-top: 2em;
+    }
+    .footer__socialize__item {
+        margin-top: 0;
+        display: inline-block;
+        width: 24%;
+        margin-left: 0;
+    }
+}
+@media screen and (min-width: 922px) {
+    .footer {
+        padding: 8em 0 3em 0;
+    }
+
+    .footer__logo-line {
+        margin-top: 4em;
+    }
+    .footer__socialize__item {
+        width: 24%;
+    }
+}
