@@ -13,7 +13,7 @@ At thoughtram we are commited to run workshops online and offline. Every once in
 
 Istanbul is the largest city in Turkey with a vibrant tech scene. We are happy to have a strong partner in Istanbul to support us with all local affairs.
 
-![webbox.io](http://webbox.io/images/logo/logo-box@2x.png)
+<img alt="webbox.io logo" style="max-width: 250px;" src="webbox-logo-250px.png">
 
 The workshopw will be held on **13th + 14th of September 2014**.
 
