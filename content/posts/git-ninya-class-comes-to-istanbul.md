@@ -15,7 +15,7 @@ Istanbul is the largest city in Turkey with a vibrant tech scene. We are happy t
 
 <img alt="webbox.io logo" style="max-width: 250px;" src="webbox-logo-250px.png">
 
-The workshopw will be held on **13th + 14th of September 2014**.
+The workshopw will be held on **20th + 20st of September 2014**.
 
 If you like to attend this workshop please head over to [the webbox.io website](http://webbox.io/workshops/git-ninja/) for more details and booking.
 
