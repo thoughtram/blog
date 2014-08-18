@@ -1,6 +1,6 @@
 ---
 title: "going back in time to split older commits"
-date: "2014-08-15"
+date: "2014-08-18"
 categories:
     - "thoughtram"
     - "git"
