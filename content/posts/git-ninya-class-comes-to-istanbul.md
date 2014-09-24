@@ -1,5 +1,5 @@
 ---
-title: "git ninya class comes to Istanbul"
+title: "git ninja class comes to Istanbul"
 date: "2014-07-05"
 categories:
     - "thoughtram"
