@@ -1,0 +1,27 @@
+# Site settings
+title: Blog | thoughtram - Extend your memory
+email: hello@thoughtram.io
+author: thoughtram UG
+description: "We are thoughtram. We enjoy learning new stuff every day and we love teaching it to others even more."
+baseurl: ""
+url: "http://blog.thoughtram.io/"
+google_analytics: "UA-51360648-2"
+animated: false
+show_related_posts: false
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+paginate: 5
+sass:
+  compressed: true
+
+pascal_precht:
+    name: Pascal Precht
+    email: pascal@thoughtram.io
+    web: http://twitter.com/PascalPrecht
+    gravatar: 893fa34d2dc5cbfa327da6b0d96c93e1
+christoph_burgdorf:
+    name: Christoph Burgdorf
+    email: christoph@thoughtram.io
+    web: http://twitter.com/cburgdorf

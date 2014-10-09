@@ -1,0 +1,29 @@
+<footer>
+  <!-- <div class="footer-content"> -->
+  <!--   <ul class="footer-links"> -->
+  <!--     <li><a class="footer-link" href="http://thoughtram.io/about-us.html" title="About us">About us</a></li> -->
+  <!--     <li><a class="footer-link" href="http://thoughtram.io/products.html" title="Products">Products</a></li> -->
+  <!--     <li><a class="footer-link" href="http://thoughtram.io/training.html" title="Training">Training</a></li> -->
+  <!--     <li><a class="footer-link" href="http://blog.thoughtram.io" title="thoughtram blog">Blog</a></li> -->
+  <!--     <li><a class="footer-link" href="http://thoughtram.io/contact.html" title="Contact">Contact</a></li> -->
+  <!--   </ul> -->
+  <!-- </div> -->
+  <div class="footer-footer">
+    <img class="footer-logo" src="/css/images/thoughtram-brain-white.png" alt="thoughtram logo">
+    <p>We are <img class="footer-logo-line" alt="thoughtram" src="/css/images/thoughtram-logo-line-white.png"></p>
+    <p class="copyright"><small>&copy; 2014 <a href="http://thoughtram.io" title="thoughtram website">thoughtram</a><!--  UG <a href="http://thoughtram.io/impressum.html">Impressum</a>--></small></p>
+  </div>
+</footer>
+
+{% if site.google_analytics %}
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', '{{ site.google_analytics }}', 'auto');
+ga('send', 'pageview');
+
+</script>
+{% endif %}
