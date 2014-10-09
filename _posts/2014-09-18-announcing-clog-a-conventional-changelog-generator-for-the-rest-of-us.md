@@ -80,6 +80,6 @@ clog is a work in progress and there are some things missing (like exposing a C 
 
 If you happen to use Rust for your project you can simply get clog via Rust's package manager Cargo. Otherwise you can also just grab the binary and put it somewhere on your machine. Given the small file size you may also directly put clog into your project folder so that everyone on the team has it and changelog generation can be made part of the build process.
 
-[clog for Mac (binary)](/clog/0.2.0/clog) [(source)](https://github.com/thoughtram/clog)
+[clog for Mac (binary)](/assets/clog) [(source)](https://github.com/thoughtram/clog)
 
 Binaries for Windows will follow shortly. Since none of us uses Windows, we first need figure out how to properly set up the build chain there.
