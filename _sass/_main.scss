@@ -39,9 +39,9 @@ p {
 
 .site-header {
   margin-bottom: 1.8em;
-  background-color: #123742;
+  // background-color: #123742;
   position: relative;
-  padding-top: 2em;
+  padding-top: 4em;
   padding-bottom: 1em;
 }
 
@@ -68,7 +68,7 @@ p {
 }
 
 .logo-line {
-  color: #fff;
+  color: #000;
   font-weight: 800;
   text-align: center;
   display: block;
@@ -119,7 +119,7 @@ p {
 .post-title {
   margin-top: 0;
   font-weight: 800;
-  color: #333;
+  color: #111;
   font-size: 28px;
   text-align: center;
   text-transform: uppercase;
@@ -389,8 +389,8 @@ li {
 @media screen and (min-width: 64em) {
 
   .site-header {
-    margin-bottom: 5em;
-    padding-top: 3em;
+    margin-bottom: 2em;
+    padding-top: 5em;
   }
 
   .site-header-skew {
