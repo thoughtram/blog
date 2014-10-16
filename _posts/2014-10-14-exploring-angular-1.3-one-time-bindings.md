@@ -12,7 +12,7 @@ author: pascal_precht
 
 The time has come. [Angular 1.3](http://angularjs.blogspot.de/2014/10/angularjs-130-superluminal-nudge.html) is finally out and it comes with tons of new features, bug fixes, improvements but also breaking changes. And because of all this new stuff happening there, we thought it would make sense to help making the adaption of this release easier for all of us, by exploring its main features and improvements and make a blog series out of it. This is the first post of "Exploring Angular 1.3" and it covers one of the most important features ever: **one-time binding**.
 
-Wait! Isn't this Angular thing actually all about *two-way* binding? Well, yes it is and that's great. However, Angulars implementation of two-way binding requires the framework to keep an eye on all values that are two-way bound. This can lead to performance issues and one-time bindings are here to help. But before we explore one-time bindings, let's and understand Angulars concepts of two-way binding and watchers first.
+Wait! Isn't this Angular thing actually all about *two-way* binding? Well, yes it is and that's great. However, Angulars implementation of two-way binding requires the framework to keep an eye on all values that are two-way bound. This can lead to performance issues and one-time bindings are here to help. But before we explore one-time bindings, let's understand Angulars concepts of two-way binding and watchers first.
 
 ## Understanding watchers and two-way binding
 
