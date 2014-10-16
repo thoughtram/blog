@@ -12,7 +12,7 @@ author: pascal_precht
 
 The time has come. [Angular 1.3](http://angularjs.blogspot.de/2014/10/angularjs-130-superluminal-nudge.html) is finally out and it comes with tons of new features, bug fixes, improvements but also breaking changes. And because of all this new stuff happening there, we thought it would make sense to help making the adaption of this release easier for all of us, by exploring its main features and improvements and make a blog series out of it. This is the first post of "Exploring Angular 1.3" and it covers one of the most important features ever: **one-time binding**.
 
-Wait! Isn't this Angular thing actually all about *two-way* binding? Well, yes it is and that's great! However, there are use cases where two-way binding isn't really necessary. And since Angular has to keep an eye on all values that are two-way bound, it's good to free up resources in such cases. Let's take a deeper look to understand what this actually means.
+Wait! Isn't this Angular thing actually all about *two-way* binding? Well, yes it is and that's great. However, Angulars implementation of two-way binding requires the framework to keep an eye on all values that are two-way bound. This can lead to performance issues and one-time bindings are here to help. But before we explore one-time bindings, let's and understand Angulars concepts of two-way binding and watchers first.
 
 ## Understanding watchers and two-way binding
 
@@ -45,19 +45,19 @@ Great! We just bound a model value to the view with an interpolation directive. 
 {% endraw %}
 {% endhighlight %}
 
-Clicking the button assigns the string `Christoph` to `name` which triggers a [$digest](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest) cycle that automatically updates the DOM accordingly. We're just updating the value one-way (top &rarr; down) but we actually set up a two-binding with two lines of code.
+Clicking the button assigns the string `Christoph` to `name` which triggers a [$digest](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest) cycle that automatically updates the DOM accordingly. In this particular case we're just updating the value one-way (top &rarr; down). However, when for example dealing with an `input` element that has an [ngModel](https://docs.angularjs.org/api/ng/directive/ngModel) directive applied, and a user changes its `value` property by typing something into it, the change is reflected back to the actual model.
 
-When a `$digest` cycle is triggered, Angular processes all registered watchers on the current scope and its children and checks for model mutations and calls dedicated watch listeners until the model is stabilized and no more listeners are fired. Once the `$digest` loop finishes the execution, the browser re-renders the DOM and reflects the changes.
+This happens because when a `$digest` cycle is triggered, Angular processes all registered watchers on the current scope and its children and checks for model mutations and calls dedicated watch listeners until the model is stabilized and no more listeners are fired. Once the `$digest` loop finishes the execution, the browser re-renders the DOM and reflects the changes.
 
 Here's a running example of the code described above:
 
 <iframe src="http://embed.plnkr.co/MGz5NrK1HKOy62fyVtmU/preview"></iframe>
 
-## The problem with two-way binding
+## The problem with too many watchers
 
-Now that we have a picture of how the two-way binding mechanism in Angular actually works, we might wonder why there is a feature for one-way binding. Two-way binding is a super powerful feature and in addition to that, as we saw, we are actually already able to just update a scope property top &rarr; down, which is sort of one-way, right? So what's the problem with two-way binding whatsoever?
+Now that we have a picture of how the two-way binding mechanism in Angular actually works, we might wonder why there is a feature for one-time binding. 
 
-Actually there's no problem with two-way binding in general. However, due to Angulars nature of using watchers for two-way binding, we might get some problems in terms of performance when having too many of them. As we learned, *watch expressions* are registered on the scope together with their callback listeners so Angular can process them during `$digest` cycles in order to update the view accordingly. That simply means, the more watchers are registered, the more Angular has to process.
+Due to Angulars nature of using watchers for two-way binding, we might get some problems in terms of performance when having too many of them. As we learned, *watch expressions* are registered on the scope together with their callback listeners so Angular can process them during `$digest` cycles in order to update the view accordingly. That simply means, the more watchers are registered, the more Angular has to process.
 
 Now imagine you have a lot of dynamic values in your view that have to be evaluated by Angular. Internationalization for example, is a very common use case where developers use Angulars two-way binding to localize their apps, even if the language isn't changeable during runtime, but set on initial page load. In that case every single string that is localized in the view and written to the scope, sets up a watch in order to get updated once something triggers the next `$digest`. This is a lot of overhead especially when your language actually doesn't change at runtime.
 
@@ -67,9 +67,9 @@ This is where one-time bindings come in. So what are one-time bindings? Let's ju
 
 >One-time expressions will stop recalculating once they are stable, which happens after the first digest...
 
-And this is exactly what the Angular world needs to tackle the problems mentioned above. So what does it look like when we want to use one-time binding? Angular 1.3 comes with a new syntax for interpolation directives in order to tell Angular that this particular interpolated value should be bound one-way.
+And this is exactly what the Angular world needs to tackle the problems mentioned above. So what does it look like when we want to use one-time binding? Angular 1.3 comes with a new syntax for interpolation directives and expressions in order to tell Angular that this particular interpolated value should be bound one-time.
 
-Using this new syntax is as easy as starting an expressions with `::`. So if we apply the one-time expression to our example above, we change this:
+Using this new syntax is as easy as starting an expression with `::`. So if we apply the one-time expression to our example above, we change this:
 
 {% highlight html %}
 {% raw %}
@@ -85,7 +85,7 @@ To this:
 {% endraw %}
 {% endhighlight %}
 
-This works for all kind of typical Angular expressions you're used to use throughout your app. This means you can use them in `ng-repeat` expressions or even for directives that expose attributes that set up a two-way binding from the inside out. From the outside you're able to just feed them with a one-time expression:
+This works for all kind of typical Angular expressions you're used to use throughout your app. Which means you can use them in `ng-repeat` expressions or even for directives that expose attributes that set up a two-way binding from the inside out. From the outside you're able to just feed them with a one-time expression:
 
 {% highlight html %}
 {% raw %}
