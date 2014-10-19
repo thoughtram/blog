@@ -12,11 +12,11 @@ author: pascal_precht
 
 The time has come. [Angular 1.3](http://angularjs.blogspot.de/2014/10/angularjs-130-superluminal-nudge.html) is finally out and it comes with tons of new features, bug fixes, improvements but also breaking changes. And because of all this new stuff happening there, we thought it would make sense to help making the adaption of this release easier for all of us, by exploring its main features and improvements and make a blog series out of it. This is the first post of "Exploring Angular 1.3" and it covers one of the most important features ever: **one-time binding**.
 
-Wait! Isn't this Angular thing actually all about *two-way* binding? Well, yes it is and that's great. However, Angulars implementation of two-way binding requires the framework to keep an eye on all values that are two-way bound. This can lead to performance issues and one-time bindings are here to help. But before we explore one-time bindings, let's understand Angulars concepts of two-way binding and watchers first.
+Wait! Isn't this Angular thing about databinding that automatically keeps the UI in sync? Well, yes it is and that's great. However, Angulars implementation of databinding requires the framework to keep an eye on all values that are bound. This can lead to performance issues and one-time bindings are here to help. But before we explore one-time bindings, let's understand Angulars concepts of databinding and watchers first.
 
-## Understanding watchers and two-way binding
+## Understanding data-binding and watchers
 
-In order to make two-way binding possible, Angular uses [$watch](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$watch) APIs to observe model mutations on the scope. What the scope actually is and where it comes from, depends on your application code. If you don't create a *child scope* by, for example, using the `ngController` directive to create an association between your DOM and your actual controller code, you're probably dealing with the [$rootScope](https://docs.angularjs.org/api/ng/service/$rootScope), which is (as the name says) the scope that acts as root scope for your application and created by Angular itself through the `ngApp` directive, unless you bootstrap your app manually.
+In order to make databinding possible, Angular uses [$watch](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$watch) APIs to observe model mutations on the scope. What the scope actually is and where it comes from, depends on your application code. If you don't create a *child scope* by, for example, using the `ngController` directive to create an association between your DOM and your actual controller code, you're probably dealing with the [$rootScope](https://docs.angularjs.org/api/ng/service/$rootScope), which is (as the name says) the scope that acts as root scope for your application and created by Angular itself through the `ngApp` directive, unless you bootstrap your app manually.
 
 However, at some point you always deal with a scope and that one is used to observe changes on it with the use of so called *watchers*. Watchers are registered through [directives](https://docs.angularjs.org/guide/directive) that are used in the DOM. So let's say we use the interpolation directive to reflect scope model values in the DOM:
 
@@ -55,11 +55,11 @@ Here's a running example of the code described above:
 
 ## The problem with too many watchers
 
-Now that we have a picture of how the two-way binding mechanism in Angular actually works, we might wonder why there is a feature for one-time binding. 
+Now that we have a picture of how the databinding mechanism in Angular actually works, we might wonder why there is a feature for one-time binding. 
 
-Due to Angulars nature of using watchers for two-way binding, we might get some problems in terms of performance when having too many of them. As we learned, *watch expressions* are registered on the scope together with their callback listeners so Angular can process them during `$digest` cycles in order to update the view accordingly. That simply means, the more watchers are registered, the more Angular has to process.
+Due to Angulars nature of using watchers for databinding, we might get some problems in terms of performance when having too many of them. As we learned, *watch expressions* are registered on the scope together with their callback listeners so Angular can process them during `$digest` cycles in order to update the view accordingly. That simply means, the more watchers are registered, the more Angular has to process.
 
-Now imagine you have a lot of dynamic values in your view that have to be evaluated by Angular. Internationalization for example, is a very common use case where developers use Angulars two-way binding to localize their apps, even if the language isn't changeable during runtime, but set on initial page load. In that case every single string that is localized in the view and written to the scope, sets up a watch in order to get updated once something triggers the next `$digest`. This is a lot of overhead especially when your language actually doesn't change at runtime.
+Now imagine you have a lot of dynamic values in your view that have to be evaluated by Angular. Internationalization for example, is a very common use case where developers use Angulars databinding to localize their apps, even if the language isn't changeable during runtime, but set on initial page load. In that case every single string that is localized in the view and written to the scope, sets up a watch in order to get updated once something triggers the next `$digest`. This is a lot of overhead especially when your language actually doesn't change at runtime.
 
 ## One-time bindings to the rescue!
 
