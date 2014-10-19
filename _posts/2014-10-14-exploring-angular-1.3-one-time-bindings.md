@@ -2,7 +2,7 @@
 layout:     post
 title:      Exploring Angular 1.3 - One-time bindings
 date:       2014-10-14
-summary:    The Angular team finally released version 1.3 of the great Angular framework. This is a blog series to explore everything you need to know about this release.
+summary:    Angular 1.3 is finally out and it comes with tons of new features, bug fixes, improvements but also breaking changes. This is the first article of "Exploring Angular 1.3".
 
 categories: 
   - angularjs
