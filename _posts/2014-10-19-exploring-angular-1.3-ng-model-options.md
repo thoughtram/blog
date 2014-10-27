@@ -25,7 +25,7 @@ Now, when typing something into the `input` element, the model gets updated acco
 
 <iframe src="http://embed.plnkr.co/dB0p5wysKLvjK7oKAA3b/preview"></iframe>
 
-[Magic](). If you're not familiar with what's going on here, I recommend heading over to the official docs and reading the chapter about the [concepts of Angular]().
+[Magic](http://weknowgifs.com/wp-content/uploads/2013/03/its-magic-shia-labeouf-gif.gif). If you're not familiar with what's going on here, I recommend heading over to the official docs and reading the chapter about the [concepts of Angular](https://docs.angularjs.org/guide/concepts).
 
 The reason why the view is updated immediately, is that every time the `input` element fires an `input` event, Angulars `$digest` loop is executed until the model stabilizes. And that's nice because we don't have set up any event listeners and update the DOM manually to reflect model values in the view; Angular takes care of that.
 
