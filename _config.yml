@@ -14,13 +14,3 @@ markdown: kramdown
 paginate: 5
 sass:
   compressed: true
-
-pascal_precht:
-    name: Pascal Precht
-    email: pascal@thoughtram.io
-    web: http://twitter.com/PascalPrecht
-    gravatar: 893fa34d2dc5cbfa327da6b0d96c93e1
-christoph_burgdorf:
-    name: Christoph Burgdorf
-    email: christoph@thoughtram.io
-    web: http://twitter.com/cburgdorf
