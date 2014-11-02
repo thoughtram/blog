@@ -2,11 +2,12 @@
 layout: post
 title: "Git Ninja Class in Amsterdam"
 date: "2014-11-02"
-summary: We are very happy to announce that, with the help of our new partner De Voorhoede, we'll bring our Git Ninja Class to Amsterdam in January 2015!
+summary: "We are very happy to announce that, with the help of our new partner De Voorhoede, we'll bring our Git Ninja Class to Amsterdam in January 2015!"
 
 categories: 
   - announcements
-author: Pascal Precht
+
+author: pascal_precht
 ---
 
 Today we are very happy to announce that **we will bring our Git Ninja Class to Amsterdam** in the Netherlands! Join us for another exciting two-day workshop experience about the true power of the git version control system.
