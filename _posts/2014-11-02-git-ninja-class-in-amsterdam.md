@@ -24,7 +24,7 @@ Tickets are already [on sale](http://www.eventbrite.de/e/git-ninja-class-amsterd
 
 You can find more information about the workshop [here](http://www.eventbrite.de/e/git-ninja-class-amsterdam-tickets-14095519077?aff=eorg).
 
-We're also planning to bring the Git Ninja Class to [Vienna](http://thoughtram.us8.list-manage.com/subscribe?u=dfbb1507fbced5a20d9dc5698&id=6114f2e898).
+We're also planning to bring the Git Ninja Class to [Vienna](http://thoughtram.us8.list-manage.com/subscribe?u=dfbb1507fbced5a20d9dc5698&id=6114f2e898) and [Paris](http://thoughtram.us8.list-manage1.com/subscribe?u=dfbb1507fbced5a20d9dc5698&id=e81307be35).
 
 See you in Amsterdam!
 
