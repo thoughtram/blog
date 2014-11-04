@@ -20,7 +20,7 @@ Of course, this wouldn't be possible without a strong helping hand. With [De Voo
 
 <a href="http://voorhoede.nl"><img style="max-width: 30%;" src="http://voorhoede.nl/assets/images/logo.svg"></a>
 
-Tickets are already [on sale](http://www.eventbrite.de/e/git-ninja-class-amsterdam-tickets-14095519077?aff=eorg) an until the end of November we offer a special ticket price of 500,00 €; the regular price is 600,00 € so you better be fast!
+Tickets are already [on sale](http://www.eventbrite.de/e/git-ninja-class-amsterdam-tickets-14095519077?aff=eorg) an until the end of November we offer a special ticket price of 400,00 €; the regular price is 500,00 € so you better be fast!
 
 You can find more information about the workshop [here](http://www.eventbrite.de/e/git-ninja-class-amsterdam-tickets-14095519077?aff=eorg).
 
