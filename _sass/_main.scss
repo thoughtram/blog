@@ -313,20 +313,178 @@ h6,
   line-height: 1.2;
 }
 
-.footer-content {
-  background: #4D8799;
-  padding: 1em;
+.thtrm-l-footer {
+  background-color: #4D8799;
 }
 
-.footer-links {
+.thtrm-l-footer__list {
+  display: block;
   list-style: none;
-  padding: 0;
+  padding-top: 1em;
+  padding-left: 0;
+
+  @media all and (min-width: 750px) {
+    text-align: center;
+  }
 
   li {
-    padding: 0;
+    padding-left: 0;
+
+    @media all and (min-width: 750px) {
+      display: inline-block;
+    }
+
+    &:before {
+      content: '';
+    }
+  }
+
+  a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
     text-align: center;
-    line-height: 26px;
-    font-weight: 300;
+    padding: 0.5em 0;
+    font-size: 19px;
+
+    @media all and (min-width: 750px) {
+      padding-left: 1em;
+      padding-right: 1em;
+      font-weight: 400;
+      font-size: 18px;
+    }
+
+    &:hover {
+      color: #fff;
+      background-color: rgba(255, 255, 255, 0.2);
+      transition: background-color 0.2s ease-out;
+    }
+
+    &:visited {
+      color: #fff;
+    }
+  }
+}
+
+.thtrm-l-footer__bottom {
+  background-color: #123742;
+  margin-top: 1em;
+  padding-bottom: 1em;
+  text-align: center;
+
+  p {
+    color: #4A7D8B;
+    font-size: 0.8em;
+    padding-top: 1em;
+
+    @media all and (min-width: 750px) {
+      font-weight: 600;
+      float: left;
+      padding-top: 0.6em;
+      margin-top: -3.4em;
+    }
+  }
+
+  a {
+    color: #4A7D8B;
+    text-decoration: none;
+
+    &:hover {
+      color: #ccc;
+      transition: color 0.2s ease-out;
+    }
+  }
+
+  .thtrm-m-list {
+    padding-top: 0;
+
+    @media all and (min-width: 750px) {
+      float: right;
+      margin-top: -2.2em;
+    }
+
+    li {
+      margin-left: 0;
+    }
+
+    a {
+      font-size: 0.7em;
+      padding: 0.5em;
+
+      @media all and (min-width: 750px) {
+        font-weight: 600;
+      }
+
+      i {
+        font-size: 1.2em;
+      }
+    }
+  }
+}
+
+.thtrm-m-footer__bottom__logo-slogan {
+
+  img:first-child {
+    display: block;
+    margin: 0 auto;
+    width: 60px;
+    padding-top: 2em;
+    opacity: 0.5;
+
+    @media all and (min-width: 750px) {
+      padding-top: 2em;
+      padding-bottom: 0.6em;
+      width: 40px;
+    }
+  }
+
+  p {
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding-top: 0.2em;
+    font-size: 1.2em;
+    opacity: 0.5;
+    float: none;
+
+    @media all and (min-width: 750px) {
+      font-size: 1.4em;
+      font-weight: 800;
+      display: none;
+    }
+
+    img:first-child {
+      height: 0.8em;
+      width: auto;
+      vertical-align: -3%;
+      padding-top: 0;
+      margin: 0;
+      display: inline-block;
+      opacity: 1;
+
+      @media all and (min-width: 750px) {
+        vertical-align: 0;
+      }
+    }
+  }
+}
+.thtrm-l-constraint {
+  max-width: 920px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.thtrm-m-list {
+  display: block;
+  list-style: none;
+  padding-top: 1em;
+  padding-left: 0;
+
+  li {
+    padding-left: 0;
 
     &:before {
       content: '';
@@ -334,13 +492,28 @@ h6,
   }
 }
 
-.footer-link {
+.thtrm-m-list--horizontally {
+  li {
+    display: inline-block;
+    margin-left: 1em;
+  }
+}
+
+.thtrm-m-uppercase-link {
+  display: block;
   color: #fff;
   text-decoration: none;
-  display: block;
+  text-transform: uppercase;
+  text-align: center;
   padding: 0.5em 0;
   font-size: 19px;
-  text-transform: uppercase;
+
+  @media all and (min-width: 750px) {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    font-weight: 400;
+    font-size: 18px;
+  }
 
   &:hover {
     color: #fff;
@@ -353,53 +526,9 @@ h6,
   }
 }
 
-.footer-footer {
-  background: #123742;
-  padding-bottom: 30px;
-  padding-top: 40px;
-  p {
-    text-align: center;
-    color: #fff;
-    text-transform: uppercase;
-    font-weight: 600;
-    padding-top: 10px;
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-
-  .copyright {
-    color: #4A7D8B;
-    text-transform: none;
-
-    small {
-      padding-top: 0;
-      font-size: 13px;
-    }
-
-    a {
-      color: #4A7D8B;
-      text-decoration: none;
-    }
-  }
-}
-
-.footer-logo-line {
-  height: 0.8em;
-  width: auto;
-  vertical-align: -3%;
-}
-
-.footer-logo {
-  max-width: 100%;
-  width: 60px;
-  display: block;
-  margin: 0 auto;
-}
-
 .p,
 li {
   font-size: 18px;
-  line-height: 1.6;
 }
 
 .small {
