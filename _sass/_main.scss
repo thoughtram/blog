@@ -377,6 +377,7 @@ h6,
     color: #4A7D8B;
     font-size: 0.8em;
     padding-top: 1em;
+    margin: 0;
 
     @media all and (min-width: 750px) {
       font-weight: 600;
@@ -430,7 +431,6 @@ h6,
     margin: 0 auto;
     width: 60px;
     padding-top: 2em;
-    opacity: 0.5;
 
     @media all and (min-width: 750px) {
       padding-top: 2em;
@@ -445,8 +445,8 @@ h6,
     font-weight: 600;
     padding-top: 0.2em;
     font-size: 1.2em;
-    opacity: 0.5;
     float: none;
+    margin: 0;
 
     @media all and (min-width: 750px) {
       font-size: 1.4em;
@@ -461,7 +461,6 @@ h6,
       padding-top: 0;
       margin: 0;
       display: inline-block;
-      opacity: 1;
 
       @media all and (min-width: 750px) {
         vertical-align: 0;
