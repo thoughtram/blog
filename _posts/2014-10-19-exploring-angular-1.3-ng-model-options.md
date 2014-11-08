@@ -11,6 +11,12 @@ author: pascal_precht
 ---
 
 Hi again. This is the second article of "Exploring Angular 1.3". If you haven't read the [first one](/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html) you might want to check out that too. In this article, we cover another feature that turns out to be very useful in our daily development of Angular applications. Introducing the `ngModelOptions` directive.
+We've written a few other articles on 1.3 already. Here's a list:
+
+- [Exploring Angular 1.3 - One-time bindings](http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html)
+- [Exploring Angular 1.3 - Angular-hint](http://blog.thoughtram.io/angularjs/2014/11/06/exploring-angular-1.3-angular-hint.html)
+
+
 
 `ngModelOptions` allows us to control how `ngModel` updates are done. This includes things like updating the model only after certain events are triggered or a debouncing delay, so that the view value is reflected back to the model only after a timer expires. To get an idea of what that actually means, let's start with the probably simplest use case that sets up a two-way binding using an `input` element that has a `ngModel` directive applied:
 
