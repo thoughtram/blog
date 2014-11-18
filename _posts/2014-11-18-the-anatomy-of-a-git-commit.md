@@ -2,7 +2,7 @@
 layout: post
 title: "The anatomy of a Git commit"
 date: "2014-11-18"
-summary: 
+summary: In this article we explore what a Git commit looks like internally and how Git uses cryptographic tooling to enforce integrity.
 
 categories: Git
 author: christoph_burgdorf
