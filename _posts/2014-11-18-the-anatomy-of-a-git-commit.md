@@ -12,7 +12,7 @@ Ever wondered what a Git commit looks like internally? Why it has those long rev
 
 ## What's up with those long revision names?
 
-One of the first things people notice when they switch from other version controls to Git is that revisions use hard to remember 40 char long hashes. Why do that if you can just use revision names such as `r4711`, `r4712` etc.? The short answer: Git has integrity. 
+One of the first things people notice when they switch from other version controls to Git is that revisions use hard to remember 40 char long hashes. Why do that if you can just use revision names such as `r4711`, `r4712` etc? The short answer: Git has integrity. 
 
 If you and me both look at revision `f4f78b319c308600eab015a5d6529add21660dc1` on our machines and Git tells us that we have a clean working directory, we can be 100% sure that we are looking at exactly the same files. There is no way someone could manipulate a single bit without Git knowing about it.
 
