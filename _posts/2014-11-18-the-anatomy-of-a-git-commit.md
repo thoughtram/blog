@@ -95,3 +95,17 @@ In this post, we explored what Git's long revision numbers are about and how the
 Please note that I simplified some parts intentionally in order to reduce the noise and make the essence easier to grasp. If you like to dig deeper, I highly recommend to read up on the [Git's internals](http://git-scm.com/book/en/v2/Git-Internals-Git-Objects).
 
 This post is part of a future blog series about Git internals and will also be part of our book [rebase - the complete guide on rebasing in git](https://leanpub.com/rebase-the-complete-guide-on-rebasing-in-git).
+
+*Update*
+
+It was [pointed out on reddit](http://www.reddit.com/r/git/comments/2mocvq/the_anatomy_of_a_git_commit/cm6unkp) that not only the metadata and the hash of the tree are hashed to become the commit hash but also the hash(es) of the parent commit(s). I left this out intentionally in order to lower the complexity of the post. For the curious reader, this is closer to what Git does in practice.
+
+    sha1(
+        commit message  => "second commit"
+        commiter        => Christoph Burgdorf <christoph.burgdorf@gmail.com>
+        commit date     => Sat Nov 8 11:13:49 2014 +0100
+        author          => Christoph Burgdorf <christoph.burgdorf@gmail.com>
+        author date     => Sat Nov 8 11:13:49 2014 +0100
+        tree            => 9c435a86e664be00db0d973e981425e4a3ef3f8d
+        parents         => [0d973e9c4353ef3f8ddb98a86e664be001425e4a]
+    )
