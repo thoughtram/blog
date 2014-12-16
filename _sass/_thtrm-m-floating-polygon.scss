@@ -1,0 +1,77 @@
+.thtrm-m-floating-polygon {
+  position: absolute;
+  background-image: url('../images/thoughtram_polygon_01.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 250px;
+  top: 18em;
+  left: -7em;
+  width: 250px;
+  height: 200px;
+
+  @media all and (min-width: 750px) {
+    background-size: 300px;
+    width: 300px;
+    height: 240px;
+    top: 3em;
+    left: -10em;
+  }
+
+  @media all and (min-width: 990px) {
+    background-size: 400px;
+    width: 400px;
+    height: 320px;
+    top: -12em;
+    left: -7em;
+  }
+}
+
+.thtrm-m-floating-polygon--right {
+  left: initial;
+  right: 1em;
+  top: 66em;
+
+
+  @media all and (min-width: 550px) {
+    top: 52em;
+  }
+
+  @media all and (min-width: 750px) {
+    top: -8em;
+    right: 1em;
+  }
+}
+
+.thtrm-m-floating-polygon--left {
+  background-image: url('../images/thoughtram_polygon_02.svg');
+  top: -7em;
+  left: -12em;
+
+  @media all and (min-width: 750px) {
+    left: -5em;
+  }
+
+  @media all and (min-width: 990px) {
+    top: -11em;
+    left: -1em;
+  }
+}
+
+.thtrm-m-floating-polygon--bottom-right {
+  background-image: url('../images/thoughtram_polygon_02.svg');
+  top: initial;
+  bottom: 14em;
+  right: 0;
+  left: initial;
+
+  @media all and (min-width: 990px) {
+    right: -3em;
+    bottom: 4em;
+  }
+
+  @media all and (min-width: 1150px) {
+    background-image: url('../images/thoughtram_polygon_01.svg');
+    right: 2em;
+    bottom: 6em;
+  }
+}

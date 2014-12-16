@@ -59,7 +59,7 @@ When I said `Hash-Of-Entire-Working-Directory` I made a bit of an oversimplifica
 
 Here is what Git's representation of the working directory looks like.
 
-<img alt="tree" style="max-width: 750px;" src="/assets/git_tree.png">
+<img alt="Visualization of a Git tree object" src="/assets/git_tree.png">
 
 Each file is stored as a blob object. So what does that mean? Let's keep things simple and just assume that Git generates the SHA-1 hash of the contents of `logo.png` and puts it somewhere addressable as `aa1b2fb696a831c89c53f787e03d863691d2b671`. It also generates the SHA-1 hash of the contents of `app.css` and puts it somewhere addressable as `4c511f16ef2644854d04cabebfcecc82be0eb04f`. Same goes for the `app.js` file. Notice that at this point Git doesn't even link the file name `logo.png` with the hash `aa1b2fb696a831c89c53f787e03d863691d2b671`. This is done on a higher level for good reasons.
 
@@ -88,14 +88,6 @@ It's all the meta data plus the hash of the root tree object. And of course Git 
 
 Remember that I said Git has integrity? You can't change a single thing about this commit without getting a different SHA-1 commit hash. Want to change the commit message? The commit message is part of the content that is used to produce the SHA-1 hash, changing it will change the commit hash. What if we just add a whitespace somewhere in `app.css`? Doesn't matter. The SHA-1 hash of `app.css` won't be `4c511f16ef2644854d04cabebfcecc82be0eb04f` anymore and that in turn will cause the `assets` tree object to not be `7cf2a17f3345635d59e063cffddd23573b6e4a75` anymore and that in turn will cause the root tree object to not be `9c435a86e664be00db0d973e981425e4a3ef3f8d` anymore. That's integrity.
 
-## Recap
-
-In this post, we explored what Git's long revision numbers are about and how they provided integrity using a solid cryptographic approach.
-
-Please note that I simplified some parts intentionally in order to reduce the noise and make the essence easier to grasp. If you like to dig deeper, I highly recommend to read up on the [Git's internals](http://git-scm.com/book/en/v2/Git-Internals-Git-Objects).
-
-This post is part of a future blog series about Git internals and will also be part of our book [rebase - the complete guide on rebasing in git](https://leanpub.com/rebase-the-complete-guide-on-rebasing-in-git).
-
 *Update*
 
 It was [pointed out on reddit](http://www.reddit.com/r/git/comments/2mocvq/the_anatomy_of_a_git_commit/cm6unkp) that not only the metadata and the hash of the tree are hashed to become the commit hash but also the hash(es) of the parent commit(s). I left this out intentionally in order to lower the complexity of the post. For the curious reader, this is closer to what Git does in practice.
@@ -109,3 +101,12 @@ It was [pointed out on reddit](http://www.reddit.com/r/git/comments/2mocvq/the_a
         tree            => 9c435a86e664be00db0d973e981425e4a3ef3f8d
         parents         => [0d973e9c4353ef3f8ddb98a86e664be001425e4a]
     )
+
+## Recap
+
+In this post, we explored what Git's long revision numbers are about and how they provided integrity using a solid cryptographic approach.
+
+Please note that I simplified some parts intentionally in order to reduce the noise and make the essence easier to grasp. If you like to dig deeper, I highly recommend to read up on the [Git's internals](http://git-scm.com/book/en/v2/Git-Internals-Git-Objects).
+
+This post is part of a future blog series about Git internals and will also be part of our book [rebase - the complete guide on rebasing in git](https://leanpub.com/rebase-the-complete-guide-on-rebasing-in-git).
+

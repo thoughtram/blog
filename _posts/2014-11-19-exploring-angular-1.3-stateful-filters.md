@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Exploring Angular 1.3 - Stateful filters
+title:      "Exploring Angular 1.3: Stateful filters"
 date:       2014-11-19
 summary:    Even if we suppose the 1.3 release to be a feature release, it turns out it comes with a possible breaking change. It makes all filters stateless by default. In this article we're going to take a look what that means.
 
@@ -70,7 +70,7 @@ In order to make Angular faster, a lot of changes landed in the 1.3 release that
 
 However, there's a reason why [Igor Minar](http://twitter.com/IgorMinar) said that:
 
->Angular 1.3 is the best Angular yet!
+>"Angular 1.3 is the best Angular yet!"
 
 In version 1.3, filters are much smarter. By default, they cache the evaluated value so they don't have to be re-evaluated all the time. Getting back to our simple `{% raw %}{{ jsonExpression | json}}{% endraw %}` example, the expression only gets re-evaluated when `jsonExpression` changes, which makes our code execution much faster.
 

@@ -1,8 +1,8 @@
 # Site settings
 title: Blog | thoughtram - Extend your memory
 email: hello@thoughtram.io
-author: thoughtram UG
-description: "We are thoughtram. We enjoy learning new stuff every day and we love teaching it to others even more."
+author: thoughtram
+description: "We write about technical things that we are working with and upcoming events that we are either running or attending to. Read about our latest thoughts."
 baseurl: ""
 url: "http://blog.thoughtram.io/"
 google_analytics: "UA-51360648-2"

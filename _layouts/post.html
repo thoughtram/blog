@@ -1,5 +1,5 @@
 ---
-layout: post-frame
+layout: post-layout
 ---
 
 {% assign minutes = content | number_of_words | divided_by: 180 %}
@@ -7,21 +7,32 @@ layout: post-frame
 {% assign minutes = 1 %}
 {% endif %}
 
+{% assign author = site.data.authors[page.author] %}
 
-<div class="post-header">
-  <h1 class="post-title">{{ page.title }}</h1>
-  <div class="author">
-  {% if author %}
-    <img class="avatar" src="/css/images/{{ author.gravatar }}.jpeg">
-    <span class="author-name">{{ author.name }}</span>
-  {% endif %}
-  <p class="post-meta">{{ page.date | date: "%b %-d, %Y" }} -{% if page.update_date %}Updated: {{ page.update_date | date: "%b %-d, %Y" }} -{% endif %}{{ minutes }} minute read</p>
+<section class="thtrm-m-section">
+  <div class="thtrm-l-constraint">
+    <div class="thtrm-m-section__content thtrm-m-section__content--blog-post">
+      <div class="thtrm-l-grid-units">
+        <div class="thtrm-l-grid-u--1-1 thtrm-l-grid-u--medium-3-4">
+          <article class="thtrm-m-article">
+            <h1 class="thtrm-m-article__title">{{ page.title }}</h1>
+            <p class="thtrm-m-article__date">{{ page.date | date: "%b %-d, %Y" }} - {% if page.update_date %}Updated: {{ page.update_date | date: "%b %-d, %Y" }} -{% endif %}{{ minutes }} minute read</p>
+            {{ content }}
+          </article>
+        </div>
+        <aside class="thtrm-l-grid-u--1-1 thtrm-l-grid-u--medium-1-4">
+          {% if author %}
+          <div class="thtrm-m-article-author">
+            <img alt="Picture of {{author.name}}" src="/css/images/{{ author.gravatar }}.jpeg">
+            <span>Written by <a title="{{author.name}} on twitter" href="{{author.web}}">{{ author.name }}</a></span>
+          </div>
+          {% endif %}
+          <iframe width="100%" height="400" src="http://leanpub.com/rebase-the-complete-guide-on-rebasing-in-git/embed" frameborder="0" allowtransparency="true"></iframe>
+        </aside>
+      </div>
+    </div>
   </div>
-</div>
-
-<article class="post-content">
-  {{ content }}
-</article>
+</section>
 
 {% if site.show_related_posts %}
   <h3 class="related-post-title">Related Posts</h3>

@@ -3,10 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="We write about technical things that we are working with and upcoming events that we are either running or attending to. Read about our latest thoughts.">
+    <meta name="description" content="{{ page.summary }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Blog | thoughtram - Extend your Memory</title>
-    <meta name="google-site-verification" content="o9eGPEgIETEqYGombq7NiQuBIB_qa6gz1yAL7PxKyK0">
+    <meta name="author" content="{{ site.author }}">
+
+    <title>{{page.title}}</title>
 
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
@@ -24,14 +25,16 @@
     <meta name="msapplication-TileColor" content="#4D8799">
 
     <meta property="og:locale" content="en_US">
-    <meta property="og:type" content="website">
-    <meta property="og:description" content="We write about technical things that we are working with and upcoming events that we are either running or attending to. Read about our latest thoughts.">
-    <meta property="og:url" content="http://blog.thoughtram.io">
-    <meta property="og:site_name" content="Blog | thoughtram - Extend your memory">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{{ page.title }}">
+    <meta property="og:description" content="{{page.summary}}">
+    <meta property="og:url" content="http://blog.thoughtram.io{{ page.url }}">
+    <meta property="og:site_name" content="{{ site.title }}">
     <meta property="og:image" content="http://thoughtram.io/images/thoughtram-brain-og.png">
+    <meta property="og:publisher" content="http://www.facebook.com/thoughtram">
 
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Blog | thoughtram - Extend your memory">
+    <meta property="twitter:title" content="{{page.title}}">
     <meta property="twitter:site" content="thoughtram Blog">
 
     <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}" type="text/css">
@@ -81,9 +84,9 @@
         </div>
       </section>
       {{ content }}
-  <!--<p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>-->
     </main>
 
     {% include footer.html %}
   </body>
 </html>
+

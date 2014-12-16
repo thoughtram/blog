@@ -1,20 +1,13 @@
-<div class="pagination clearfix mb1 mt4">
-  <div class="left">
-    {% if paginator.previous_page %}
-      {% if paginator.page == 2 %}
-        <a class="pagination-item" href="{{ site.baseurl }}/">Newer</a>
-      {% else %}
-        <a class="pagination-item" href="{{ site.baseurl }}/page{{paginator.previous_page}}/">Newer</a>
-      {% endif %}
+<div class="thtrm-m-pagination">
+  {% if paginator.previous_page %}
+    {% if paginator.page == 2 %}
+      <a title="Newer posts" class="thtrm-m-pagination__nav-link thtrm-m-pagination__nav-link--prev" href="{{ site.baseurl }}/">&larr; Newer Posts</a>
     {% else %}
-      <span class="pagination-item disabled">Newer</span>
+      <a title="Newer posts" class="thtrm-m-pagination__nav-link thtrm-m-pagination__nav-link--prev" href="{{ site.baseurl }}/page{{paginator.previous_page}}/">&larr; Newer Posts</a>
     {% endif %}
-  </div>
-  <div class="right">
-    {% if paginator.next_page %}
-      <a class="pagination-item" href="{{ site.baseurl }}/page{{paginator.next_page}}/">Older</a>
-    {% else %}
-      <span class="pagination-item disabled">Older</span>
-    {% endif %}
-  </div>
+  {% endif %}
+  <span class="thtrm-m-pagination__page-info">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
+  {% if paginator.next_page %}
+    <a title="Older posts" class="thtrm-m-pagination__nav-link thtrm-m-pagination__nav-link--next" href="{{ site.baseurl }}/page{{paginator.next_page}}/">Older Posts &rarr;</a>
+{% endif %}
 </div>

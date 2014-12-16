@@ -1,0 +1,47 @@
+/**
+*
+* List
+*
+**/
+
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+
+  @include small-only {
+    padding-left: 0;
+  }
+}
+
+ul li {
+  position: relative;
+  padding-left: 16px;
+
+  &::before {
+    font-size: 4px;
+  }
+}
+
+ol {
+  counter-reset: list;
+  > li {
+    @include numbered-list;
+    position: relative;
+    padding-left: 32px;
+
+    // This selected every adjacent <li>
+    // from the 10th and overrides the
+    // content property of each
+    &:nth-child(10n) ~ li::before,
+    &:nth-child(10n)::before {
+      content: counter(list);
+    }
+
+  }
+}
+
+ul ol,
+ol ul {
+  padding-top: 0;
+}
