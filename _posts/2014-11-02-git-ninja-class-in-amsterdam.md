@@ -10,7 +10,7 @@ categories:
 author: pascal_precht
 ---
 
-Today we are very happy to announce that **we will bring our Git Ninja Class to Amsterdam** in the Netherlands! Join us for another exciting two-day workshop experience about the true power of the git version control system.
+Today we are very happy to announce that **we will bring our Git Ninja Class to Amsterdam** in the Netherlands! Join us for another exciting two-day workshop experience about the true power of the Git version control system.
 
 The workshop takes place at the 15th and 16th January 2015 in the wonderful rooms of [De Voorhoede](http://voorhoede.nl/).
 
