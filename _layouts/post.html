@@ -18,8 +18,10 @@ layout: post-layout
             <h1 class="thtrm-m-article__title">{{ page.title }}</h1>
             <p class="thtrm-m-article__date">{{ page.date | date: "%b %-d, %Y" }} - {% if page.update_date %}Updated: {{ page.update_date | date: "%b %-d, %Y" }} -{% endif %}{{ minutes }} minute read</p>
             {{ content }}
+            <footer class="thtrm-m-article__footer">
+              <p>Liked the article and found it useful? How about sharing it with others on <a title="thoughtram on twitter" href="http://twitter.com/thoughtram">twitter</a>? We'd love to get your feedback!</p>
+            </footer>
           </article>
-          <p>Follow <a title="Follow thoughtram on twitter!" href="http://twitter.com/thoughtram">@thoughtram</a> on twitter for future articles!</p>
         </div>
         <aside class="thtrm-l-grid-u--1-1 thtrm-l-grid-u--medium-1-4">
           {% if author %}
