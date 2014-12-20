@@ -1,0 +1,46 @@
+.thtrm-m-book-ad {
+  text-align: center;
+}
+
+.thtrm-m-book-ad__title {
+  font-weight: bold;
+  font-size: 22px;
+  padding-top: 0;
+}
+
+.thtrm-m-book-ad__sub-title {
+  line-height: 22px;
+  padding-top: 0.4em;
+  font-size: 17px!important;
+  font-weight: 400;
+}
+
+.thtrm-m-book-ad__cover {
+  max-width: 80%;
+  display: block;
+  margin: 0 auto;
+  margin-top: 1.5em;
+}
+
+.thtrm-m-book-ad__buy-btn {
+  display: inline-block;
+  background: #59A659;
+  color: #FFF;
+  border-radius: 0.3em;
+  text-decoration: none;
+  padding: 0.5em 1em;
+  margin-top: 1.5em;
+  text-align: center;
+  font-weight: 600;
+  width: 80%;
+
+  &:visited {
+    color: #fff;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: #3C733C;
+  }
+}
