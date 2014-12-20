@@ -10,11 +10,11 @@ categories:
 author: pascal_precht
 ---
 
-We mainly took a look at completely new features that come with the Angular 1.3 release until now. Things like [ngModelOptions](http://blog.thoughtram.io/angularjs/2014/10/19/exploring-angular-1.3-ng-model-options.html), [Angular-hint](http://blog.thoughtram.io/angularjs/2014/11/06/exploring-angular-1.3-angular-hint.html) or [One-time Bindings](http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html) are not just minor improvements, but rather real extensions to the framework. However, there have not only been significant new features added to the release, but also a ton of bug fixes and nice little additions that we might have overlooked. One of them is the ES6 streamlined promise API and today we gonna take a look these what it brings to the table.
+We mainly took a look at completely new features that come with the Angular 1.3 release until now. Things like [ngModelOptions](http://blog.thoughtram.io/angularjs/2014/10/19/exploring-angular-1.3-ng-model-options.html), [Angular-hint](http://blog.thoughtram.io/angularjs/2014/11/06/exploring-angular-1.3-angular-hint.html) or [One-time Bindings](http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html) are not just minor improvements, but rather real extensions to the framework. However, there have not only been significant new features added to the release, but also a ton of bug fixes and nice little additions that we might have overlooked. One of them is the ES6 streamlined promise API and today we gonna take a look what it brings to the table.
 
 ## Asynchronous worlds with Promises
 
-In order to understand what the new streamlined addition to the existing promise API means, we first have to make sure we're all on the same page and know what promises are and how they've been implemented in Angular before. We don't want to go in too much detail here though, since there are a ton of resources in the interwebs, but let's take a very quick at promises and move on then.
+In order to understand what the new streamlined addition to the existing promise API means, we first have to make sure we're all on the same page and know what promises are and how they've been implemented in Angular before. We don't want to go in too much detail here though, since there are a ton of resources in the interwebs, but let's take a very quick look at promises and move on then.
 
 In just one sentence, a promise is an object that is used for deferred and asynchronous computations. So what does that mean? Well, in JavaScript we can have asynchronous code execution with, for example, callbacks. And with these things we're able to execute some code once another execution that ran before is done without blocking the actual code execution context. We call this *asynchronous*.
 
@@ -51,7 +51,7 @@ You get the idea right? While it is very common to have function calls that get 
 
 We can get around this issue by defining named functions first, and pass just these as callbacks instead of using anonymous functions all the time, but it's still not a very handy way to handle asynchronous JavaScript. And this is where promises come in.
 
-Promises are a software abstraction or proxies, that makes working with asynchronous operations much more pleasant. Coming back to our `onceDone()` function example, here's what the code would look like when `onceDone()` would use promises.
+Promises are a software abstraction or proxies, that make working with asynchronous operations much more pleasant. Coming back to our `onceDone()` function example, here's what the code would look like if `onceDone()` used promises.
 
 {% highlight js %}
 
@@ -63,7 +63,7 @@ promise.then(function () {
 
 {% endhighlight %}
 
-Looks very similar right? But there's a huge difference. As you can see, `onceDone()` returns something that is a promise which we can treat as first-class objects. This promise holds the actual state of the asynchronous code that has been called, which can be `fulfilled`, `rejected` or `pending`. We can pass promises around and even aggregating them. That's a whole different way to handle our asynchronous code.
+Looks very similar right? But there's a huge difference. As you can see, `onceDone()` returns something that is a promise which we can treat as first-class objects. This promise holds the actual state of the asynchronous code that has been called, which can be `fulfilled`, `rejected` or `pending`. We can pass promises around and even aggregating them. That's a whole different way of handling our asynchronous code.
 
 What we also see, is that the promise has a method `.then()`. This method expects to parameters which are functions of which one gets called when the asynchronous execution was fulfilled and the other one when it was rejected.
 
@@ -122,7 +122,7 @@ promise.then(function () {
 
 We have a function `anAsyncFunction()` which is asynchronous and we use the deferred API to get a promise out of it. One thing to notice here is that our function doesn't know anything about promises but we use the deferred API to get a promise back. The deferred API comes with a few more features that I don't want to detail here, but you can read about them in the [official docs](https://docs.angularjs.org/api/ng/service/$q#the-deferred-api).
 
-Have you ever used Angular's `$http` service? Sure you did. And as we know, XMLHttpRequests are asynchronous too. Guess what `$http` service uses to expose its `.success()` and `.error()` APIs? Right. Promises. When making XHR calls with `$http` we're also using `$` implicitly. It just adds some sugar APIs to the promise it returns:
+Have you ever used Angular's `$http` service? Sure you did. And as we know, XMLHttpRequests are asynchronous too. Guess what `$http` service uses to expose its `.success()` and `.error()` APIs? Right. Promises. When making XHR calls with `$http` we're also using `$q` implicitly. It just adds some sugar APIs to the promise it returns:
 
 
 {% highlight js %}
@@ -154,7 +154,7 @@ Okay, so we now got a picture of promises in Angular. There's also a nice talk b
 
 ## ES6 style Promises in Angular 1.3
 
-Although it's nice to have the deferred API in Angular to deal with promises, it turns out that the ECMAScript Standard defines a slight different API when it comes to promises. Taking a look at the [MDN docs on Promises](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise), we see that `Promise` is a constructor in ES6 that takes a `executor` function that has access to a `resolve` and a `reject` function to resolve and reject promises respectively.
+Although it's nice to have the deferred API in Angular to deal with promises, it turns out that the ECMAScript standard defines a slight different API. Taking a look at the [MDN docs on Promises](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise), we see that `Promise` is a constructor in ES6 that takes an `executor` function that has access to a `resolve` and a `reject` function to resolve and reject promises respectively.
 
 Angular 1.3 streamlined its promise APIs **partly** with the ES6 standard. I say partly here, because not all methods are supported yet. However, what the team *has* streamlined is that `$q` can also be used as a constructor now.
 
@@ -194,6 +194,6 @@ function myFunctionThatReturnsAPromise() {
 
 {% endhighlight %}
 
-Even if this is just an optical difference at a first glance, it's nice to know that can safe the lines of code to create a deferred first. Also, the fact that the `$q` API is now closer to the actual spec makes the code more reusable in the future.
+Even if this is just an optical difference at a first glance, it's nice to know that we can safe the lines of code to create a deferred first. Also, the fact that the `$q` API is now closer to the actual spec makes the code more reusable in the future.
 
 Now we might wonder, if we have to change all of our code where we've used `$q.defer()` to work with promises. The answer is no. As mentioned at the beginning of the article, this is a nice small addition (rather than a new feature or replacement) in the 1.3 release that doesn't break the code.
