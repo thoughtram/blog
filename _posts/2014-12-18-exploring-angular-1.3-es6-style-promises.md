@@ -65,7 +65,7 @@ promise.then(function () {
 
 Looks very similar right? But there's a huge difference. As you can see, `onceDone()` returns something that is a promise which we can treat as first-class objects. This promise holds the actual state of the asynchronous code that has been called, which can be `fulfilled`, `rejected` or `pending`. We can pass promises around and even aggregating them. That's a whole different way of handling our asynchronous code.
 
-What we also see, is that the promise has a method `.then()`. This method expects to parameters which are functions of which one gets called when the asynchronous execution was fulfilled and the other one when it was rejected.
+What we also see, is that the promise has a method `.then()`. This method expects two parameters which are functions of which one gets called when the asynchronous execution was fulfilled and the other one when it was rejected.
 
 {% highlight js %}
 
