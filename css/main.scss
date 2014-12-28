@@ -153,17 +153,24 @@ ol {
   display: block;
   margin-bottom: -3em;
   margin-top: -1.5em;
-  color: #333;
+  color: #999;
   text-decoration: none;
   text-align: center;
   padding: 0;
-  font-weight: 800;
 
   &:visited {
-    color: #222;
+    color: #999;
+  }
+
+  &:hover {
+    border-bottom: 1px solid #aaa;
   }
 
   @media all and (min-width: 750px) {
+    position: absolute;
+    right: 3em;
+    margin: 0;
+    top: 0;
     font-size: 1.2em;
   }
 }
