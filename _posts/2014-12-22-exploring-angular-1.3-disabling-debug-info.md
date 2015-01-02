@@ -2,7 +2,7 @@
 layout:     post
 title:      "Exploring Angular 1.3: Disabling Debug Info"
 date:       2014-12-22
-summary:    "Shadowed by all the bigger features that version 1.3 comes with, smaller features like disabling debug info for production code, do not really get the attention they deserve. This article details how to give your app a performance boost in production environments."
+summary:    "Shadowed by all the bigger features that version 1.3 comes with, smaller features like disabling debug info for production code, do not really get the attention they deserve. This article details how to give your app a performance boost in production environments with just a single line of code."
 
 categories: 
   - angularjs
