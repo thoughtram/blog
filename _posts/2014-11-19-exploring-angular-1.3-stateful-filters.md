@@ -4,6 +4,8 @@ title:      "Exploring Angular 1.3: Stateful filters"
 date:       2014-11-19
 summary:    Even if we suppose the 1.3 release to be a feature release, it turns out it comes with a possible breaking change. It makes all filters stateless by default. In this article we're going to take a look what that means.
 
+isExploringAngular13Article: true
+
 categories: 
   - angularjs
 

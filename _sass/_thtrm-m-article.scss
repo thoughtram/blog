@@ -5,6 +5,12 @@
   > a {
     color: #333;
     text-decoration: none;
+
+    &:hover {
+      .thtrm-m-article__title {
+        color: #4D8799;
+      }
+    }
   }
 
   > p {

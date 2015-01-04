@@ -4,6 +4,8 @@ title:      "Exploring Angular 1.3: ng-model-options"
 date:       2014-10-19
 summary:    In this article we explore the brand new ngModelOptions directive that allows us to control how ngModel updates are done in our Angular applications.
 
+isExploringAngular13Article: true
+
 categories: 
   - angularjs
 

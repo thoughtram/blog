@@ -4,6 +4,8 @@ title:      "Exploring Angular 1.3: ES6 Style Promises"
 date:       2014-12-18
 summary:    With the release of version 1.3, Angular starts streamlining  its promise APIs with the ECMAScript 6 standard to use $q as a promise constructor. This article details what these additions mean to us.
 
+isExploringAngular13Article: true
+
 categories: 
   - angularjs
 

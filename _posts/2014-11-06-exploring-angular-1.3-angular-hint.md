@@ -3,6 +3,7 @@ layout:     post
 title:      "Exploring Angular 1.3: Angular-hint"
 date:       2014-11-06
 summary:    In this article we are talking about the very useful angular-hint module which makes our lifes easier by informing us about common mistakes when developing angular applications and telling us about best practices which leads to better code.
+isExploringAngular13Article: true
 
 categories: 
   - angularjs

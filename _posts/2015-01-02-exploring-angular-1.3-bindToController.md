@@ -4,6 +4,8 @@ title:      "Exploring Angular 1.3: Binding to Directive Controllers"
 date:       2015-01-02
 summary:    "When Angular introduced the controllerAs syntax, it became a best practice to use it in order to prevent nested scope properties to be shadowed in templates and also to avoid using the scopes $parent property, since relying on DOM structure makes our code less maintainable. However, using controllerAs in directives with isolated scope turned out to be a bit cumbersome and in this article we are going to take a look why and how the 1.3 release fixes that."
 
+isExploringAngular13Article: true
+
 categories: 
 - angularjs
 
