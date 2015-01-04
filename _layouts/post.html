@@ -4,10 +4,11 @@ layout: post-layout
 
 {% assign minutes = content | number_of_words | divided_by: 180 %}
 {% if minutes == 0 %}
-{% assign minutes = 1 %}
+  {% assign minutes = 1 %}
 {% endif %}
 
 {% assign author = site.data.authors[page.author] %}
+{% assign ad = [1, 2, 3] %}
 
 <section class="thtrm-m-section">
   <div class="thtrm-l-constraint">
@@ -31,13 +32,27 @@ layout: post-layout
             <span>Written by <a title="{{author.name}} on twitter" href="{{author.web}}">{{ author.name }}</a></span>
           </div>
           {% endif %}
-          <div class="thtrm-m-book-ad">
-            <h4 class="thtrm-m-book-ad__title">Rebase</h4>
-            <p class="thtrm-m-book-ad__sub-title">The complete guide on rebasing in Git</p>
-            <img class="thtrm-m-book-ad__cover" alt="Rebase book cover" src="/images/rebase-book.png">
-            <a class="thtrm-m-book-ad__buy-btn" href="https://leanpub.com/rebase-the-complete-guide-on-rebasing-in-git" title="Rebase on Leanpub">Learn More</a>
+
+          <div class="thtrm-m-ad">
+            <img class="thtrm-m-ad__image" alt="Rebase book cover" src="/images/rebase-book.png">
+            <h4 class="thtrm-m-ad__title">Rebase {{ ad }}</h4>
+            <p class="thtrm-m-ad__sub-title">The complete guide on rebasing in Git</p>
+            <a class="thtrm-m-ad__btn" href="https://leanpub.com/rebase-the-complete-guide-on-rebasing-in-git" title="Rebase on Leanpub">Learn More</a>
           </div>
-          <!-- <iframe width="100%" height="400" src="http://leanpub.com/rebase-the-complete-guide-on-rebasing-in-git/embed" frameborder="0" allowtransparency="true"></iframe> -->
+
+          <div class="thtrm-m-ad">
+            <img class="thtrm-m-ad__image thtrm-m-ad__image--small" alt="Angular Logo" src="/images/angularjs-shield.png">
+            <h4 class="thtrm-m-ad__title">Angular Master Class</h4>
+            <p class="thtrm-m-ad__sub-title">We offer public workshops and in-house trainings on Angular</p>
+            <a class="thtrm-m-ad__btn" href="http://thoughtram.io/angular-master-class.html" title="Angular Master Class by thoughtram">More info</a>
+          </div>
+
+          <div class="thtrm-m-ad">
+            <img class="thtrm-m-ad__image" alt="Git Logo" src="/images/git-logo.png">
+            <h4 class="thtrm-m-ad__title">Git Master Class</h4>
+            <p class="thtrm-m-ad__sub-title">We offer public workshops and in-house trainings on the Git version control system</p>
+            <a class="thtrm-m-ad__btn" href="http://thoughtram.io/git-master-class.html" title="Git Master Class at by thoughtram">More info</a>
+          </div>
         </aside>
       </div>
     </div>
@@ -55,3 +70,10 @@ layout: post-layout
     </div>
   {% endfor %}
 {% endif %}
+
+<script>
+(function (doc) {
+  var num = Math.floor(Math.random() * (3 - 0));
+  doc.querySelectorAll('.thtrm-m-ad')[num].classList.add('thtrm-m-ad--visible');
+}(document));
+</script>

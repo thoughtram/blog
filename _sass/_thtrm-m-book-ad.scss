@@ -1,35 +1,44 @@
-.thtrm-m-book-ad {
+.thtrm-m-ad {
   text-align: center;
+  display: none;
 }
 
-.thtrm-m-book-ad__title {
+.thtrm-m-ad--visible {
+  display: block;
+}
+
+.thtrm-m-ad__title {
   font-weight: bold;
   font-size: 22px;
-  padding-top: 0;
+  padding-top: 0.5em;
 }
 
-.thtrm-m-book-ad__sub-title {
+.thtrm-m-ad__sub-title {
   line-height: 22px;
   padding-top: 0.4em;
   font-size: 17px!important;
   font-weight: 400;
 }
 
-.thtrm-m-book-ad__cover {
+.thtrm-m-ad__image {
   max-width: 80%;
   display: block;
   margin: 0 auto;
   margin-top: 1.5em;
 }
 
-.thtrm-m-book-ad__buy-btn {
+.thtrm-m-ad__image--small {
+  max-width: 55%;
+}
+
+.thtrm-m-ad__btn {
   display: inline-block;
   background: #59A659;
   color: #FFF;
   border-radius: 0.3em;
   text-decoration: none;
   padding: 0.5em 1em;
-  margin-top: 1.5em;
+  margin-top: 1em;
   text-align: center;
   font-weight: 600;
   width: 80%;
