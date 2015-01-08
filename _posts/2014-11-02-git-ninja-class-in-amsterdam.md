@@ -20,7 +20,7 @@ Of course, this wouldn't be possible without a strong helping hand. With [De Voo
 
 Tickets are <s>already [on sale](http://www.eventbrite.de/e/git-ninja-class-amsterdam-tickets-14095519077?aff=eorg) and **until the end of November we offer a special ticket price** of 400,00 €; the regular price is 500,00 € so you better be fast</s> sold out!
 
-You can find more information about the workshop [here](http://thoughtra.io/git-master-class.html).
+You can find more information about the workshop [here](http://thoughtram.io/git-master-class.html).
 
 See you in Amsterdam!
 
