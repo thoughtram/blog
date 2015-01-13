@@ -4,7 +4,7 @@ layout: default
 <section class="thtrm-m-section">
   <div class="thtrm-l-constraint">
     <div class="thtrm-m-section__content thtrm-m-section__content--blog-index">
-      <a class="thtrm-m-rss-link" title="RSS Feed" href="http://blog.thoughtram.io/feed"><i class="fa fa-rss"></i> RSS Feed</a>
+      <a class="thtrm-m-rss-link" title="RSS Feed" href="http://feeds.feedburner.com/thoughtram"><i class="fa fa-rss"></i> RSS Feed</a>
       {% for post in paginator.posts %}
         <div class="thtrm-m-article">
           <a title="{{ post.title }}" href="{{ post.url | prepend: site.baseurl }}">
