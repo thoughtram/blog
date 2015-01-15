@@ -52,7 +52,7 @@ app.controller('Ctrl', function ($http) {
   // Make XHR and update model accordingly
   $http.get('fetch/some/json/').then(function (response) {
     this.myModel = response.data;
-  });
+  }.bind(this));
 });
 {% endhighlight %}
 
