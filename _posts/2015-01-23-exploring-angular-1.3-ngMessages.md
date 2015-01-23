@@ -158,13 +158,13 @@ We probably also want to control what message shows up when, especially when mul
 `ngMessages` comes as a separate module. In order to use it, we first need to install it. One way to do so is to use npm:
 
 {% highlight sh %}
-$ npm install angular-route
+$ npm install angular-messages
 {% endhighlight %}
 
 Then, we need to embed the actual script in our document:
 
 {% highlight html %}
-<script src="path/to/angular-route.js"></script>
+<script src="path/to/angular-messages.js"></script>
 {% endhighlight %}
 
 Once done, we declare `ngMessages` as module dependency of our app and we are ready to go.
