@@ -189,6 +189,6 @@ Please note that we don't have to do the same with the `PageController` as long 
 
 Easy isn't it? Can we use that for services, too? Yes, we can but there's a small gotcha. It doesn't work with services that are defined using the `myModule.factory(fn)` API but only for those that are defined using `myModule.service(fn)`. That's because services that are defined using the `myModule.service(fn)` API are instantiated with the `new` operator under the hood whereas the others are not. For inheritance to work it's important that our constructor function is instantiated with `new` though.
 
-## Getting started with our boilerplate?
+## Getting started with our boilerplate
 
 There are plenty of different ways to get started with ES6 today. The sheer amount of different ways to approach it can be very confusing. At thoughtram we created a [boilerplate](https://github.com/thoughtram/es6-6to5-browserify-boilerplate) that makes it quite easy to get rolling. It uses the popular [6to5 transpiler](http://6to5.org/) to convert ES6 to ES5 code that works in all current major browsers. The boilerplate also uses [browserify](http://browserify.org/) to concat and minify all ES6 modules into a single file.
