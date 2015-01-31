@@ -187,7 +187,19 @@ angular
 
 Please note that we don't have to do the same with the `PageController` as long as it's not *explicitly* used as an Angular controller. In our case, it's only used *implicitly* by the `ProductPageController`.
 
+**Edit:** Evgeny [asked on G+](https://plus.google.com/+PascalPrecht/posts/Jre92W8GnJQ):
+
+>"how can be 'title' argument in constructor of next controller be legit? It doesn't look like the name of service".﻿
+
+*The parameters in our constructor **do** work together with Angulars DI. In fact, the constructor is not different from a traditional constructor function. But how can `title` be legit then? The reason for that to work is that the `title` parameter is only used by the `PageController` which isn't registered with `myModule.controller(fn)`. The `PageController` is only used implicitly by the `ProductPageController`.*
+
 Easy isn't it? Can we use that for services, too? Yes, we can but there's a small gotcha. It doesn't work with services that are defined using the `myModule.factory(fn)` API but only for those that are defined using `myModule.service(fn)`. That's because services that are defined using the `myModule.service(fn)` API are instantiated with the `new` operator under the hood whereas the others are not. For inheritance to work it's important that our constructor function is instantiated with `new` though.
+
+There's one more gotcha [pointed out by Eugeny](https://plus.google.com/+PascalPrecht/posts/Jre92W8GnJQ): When we use ES6 classes we lose the ability to use explicit dependency annotation with the inline array notation.
+
+In order to preserve dependency annotations for minification, we need to use the `$inject` property notation now:
+
+`MainController.$inject = ['SearchService'];`
 
 ## Getting started with our boilerplate
 
