@@ -259,3 +259,47 @@ app.directive('someDirective', function () {
 {% endhighlight %}
 
 As we can see, we don't need `$scope` anymore (yay!) and there's also no `link` nor `compile` function in this directive definition. At the same time we keep taking advantage of `controllerAs`.
+
+## Improvements in 1.4
+
+In version `1.4`, `bindToController` gets even more powerful. When having an isolated scope with properties to be bound to a controller, we always define those properties on the scope definition and `bindToController` is set to `true`. In `1.4` however, we can move all our property binding definitions to `bindToController` and make it an object literal.
+
+Here's an example with a component directive that uses `bindToController`. Instead of defining the scope properties on `scope`, we declaratively define what properties are bound to the component's controller:
+
+{% highlight js %}
+{% raw %}
+app.directive('someDirective', function () {
+  return {
+    scope: {},
+    bindToController: {
+      someObject: '=',
+      someString: '@',
+      someExpr: '&'
+    }
+    controller: function () {
+      this.name = 'Pascal';
+    },
+    controllerAs: 'ctrl',
+    template: '<div>{{ctrl.name}}</div>'
+  };
+});
+{% endraw %}
+{% endhighlight %}
+
+In addition to that, `bindToController` is no longer exclusive to isolated scope directives! Whenever we build a directive that introduces a new scope, we can take advantage of `bindToController`. So the following code also works:
+
+{% highlight js %}
+{% raw %}
+app.directive('someDirective', function () {
+  return {
+    scope: true
+    bindToController: {
+      someObject: '=',
+      someString: '@',
+      someExpr: '&'
+    },
+    ...
+  };
+});
+{% endraw %}
+{% endhighlight %}
