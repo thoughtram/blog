@@ -12,7 +12,7 @@ categories:
 author: pascal_precht
 ---
 
-One of the latest announcements that counts to the most exciting ones, is that the Angular team implements a completely new router for the 2.0 release that is much more flexible and powerful than the original one. Especially, when it comes to more complex application structures. [Rob Eisenberg](http://twitter.com/EisenbergEffect), creator of the recently announced [aurelia](http://aurelia.io) framework, gave an introduction talk on the new router at last years [ngEurope](http://ng-europe.org) conference and showed us the main concepts that make this router so much better.
+One of the latest announcements that counts as the most exciting ones, is that the Angular team implements a completely new router for the 2.0 release that is much more flexible and powerful than the original one. Especially, when it comes to more complex application structures. [Rob Eisenberg](http://twitter.com/EisenbergEffect), creator of the recently announced [aurelia](http://aurelia.io) framework, gave an introduction talk on the new router at last years [ngEurope](http://ng-europe.org) conference and showed us the main concepts that make this router so much better.
 
 It got even better, when the team announced that they plan to back port the new router to the 1.x branch of the Angular framework and having it ready in time for the 1.3 release. Unfortunately it turned out, that it took a bit more effort to make the new router available for both projects, especially considering that both should share as much code as possible. That's why the back port has been postponed to the next bigger 1.4 release, which is targeted to be ready in March, this year (yay!).
 
