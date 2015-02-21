@@ -35,6 +35,6 @@ The talk will be given at the local Angular meetup in Bangkok. We're still busy 
 
 ## Other events
 
-If you're interested in where else you can find us, head over to our [events](thoughtram.io/events.html) page to get an overview of upcoming events we're speaking at.
+If you're interested in where else you can find us, head over to our [events](http://thoughtram.io/events.html) page to get an overview of upcoming events we're speaking at.
 
 -- Christoph
