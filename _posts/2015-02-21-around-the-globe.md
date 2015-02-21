@@ -33,4 +33,8 @@ Roughly a week ago Pascal and I talked about "The best Angular yet" at the [ng-n
 
 The talk will be given at the local Angular meetup in Bangkok. We're still busy to find the perfect location for the meetup so stay tuned for updates regarding the exact location and time.
 
+## Other events
+
+If you're interested in where else you can find us, head over to our [events](thoughtram.io/events.html) page to get an overview of upcoming events we're speaking at.
+
 -- Christoph
