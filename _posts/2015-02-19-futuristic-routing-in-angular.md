@@ -259,7 +259,7 @@ Of course, just navigating to a component in some cases isn't enough. We might h
 
 Configuring a route that expects query parameters works pretty similar to what we already know when doing that with the original router. We can define placeholders in our route definition by using the `:` symbol followed by an identifer that is used to later expose the value of that placeholder in a dedicated `$routeParams` service.
 
-To get a better idea, here's our update route configuration that takes an additional user id parameter:
+To get a better idea, here's our updated route configuration that takes an additional user id parameter:
 
 {% highlight javascript %}
 app.controller('AppController', function ($router) {
@@ -348,7 +348,7 @@ That's it! Running this code in the browser shows that now two sibling component
 
 ## So much more to talk about
 
-Following the development on the new router and also actively contributing to it, they've been a couple of questions popping up that we haven't covered in this article yet. In fact, most of them aren't answered yet but you can follow them on GitHub since we've created issues accordingly. To give you an idea of what questions we are talking about, we've asked ourself for example if a [component can have it's own sub components and viewports](https://github.com/angular/router/issues/117) or [how to link to routes that have multiple viewports](https://github.com/angular/router/issues/118).
+Following the development on the new router and also actively contributing to it, there've been a couple of questions popping up that we haven't covered in this article yet. In fact, most of them aren't answered yet but you can follow them on GitHub since we've created issues accordingly. To give you an idea of what questions we are talking about, we've asked ourself for example if a [component can have it's own sub components and viewports](https://github.com/angular/router/issues/117) or [how to link to routes that have multiple viewports](https://github.com/angular/router/issues/118).
 
 We also haven't talked about nested routing and or if there's a [`resolve` equivalent](https://github.com/angular/router/issues/100) in the new router, but once we have answers to all these questions, we either going to update this article or write separate ones that cover each topic isolated.
 
