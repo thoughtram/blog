@@ -31,7 +31,11 @@ We are super happy about this and are very much looking forward to the event!
 
 Roughly a week ago Pascal and I talked about "The best Angular yet" at the [ng-nl](ng-nl.org) conference in Amsterdam. We are happy to share with you that we will bring this talk to Bangkok, Thailand on April 17th. I will present "The best Angular yet" alone since Pascal will be running a workshop in Switzerland then. Did I mention that we love traveling?
 
-The talk will be given at the local Angular meetup in Bangkok. We're still busy to find the perfect location for the meetup so stay tuned for updates regarding the exact location and time.
+The talk will be given at the local Angular meetup in Bangkok. <s>We're still busy to find the perfect location for the meetup so stay tuned for updates regarding the exact location and time.</s>
+
+The meetup will take place at the [Launchpad Co-working space](https://www.facebook.com/launchpadhq/info?tab=overview) and start at 4pm.
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3875.953055641859!2d100.52422600000001!3d13.721292000000002!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e298cdd6e8270d%3A0x7e9aa39655924697!2sLaunchpad+Co.%2C+Ltd!5e0!3m2!1sen!2s!4v1424792646877" width="600" height="450" frameborder="0" style="border:0"></iframe>
 
 ## Other events
 
