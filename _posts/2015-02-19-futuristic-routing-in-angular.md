@@ -124,13 +124,13 @@ We're going to talk about what a component actually is in a second, but let's fi
 
 {% highlight html %}
 <body ng-app="myApp" ng-controller="AppController">
-  <router-view-port></router-view-port>
+  <ng-viewport></ng-viewport>
 </body>
 {% endhighlight %}
 
-Right, there's no `<ng-view>` anymore. Instead the new router comes with a directive called `<router-view-port>` which can also be used as an attribute in case it's needed. A view port basically is a "hole" where component templates are loaded into. So the above code in it's current state is pretty much the same as using `<ng-view>` with the old routing system.
+Right, there's no `<ng-view>` anymore. Instead the new router comes with a directive called `<ng-viewport>` which can also be used as an attribute in case it's needed. A viewport basically is a "hole" where component templates are loaded into. So the above code in it's current state is pretty much the same as using `<ng-view>` with the old routing system.
 
-But what gets loaded into our view port you ask? Good question! This is where components come into play. When we configured the router, we said that the route `/` loads and instantiates the `welcome` component. But we haven't talked about what the `welcome` component actually is.
+But what gets loaded into our viewport you ask? Good question! This is where components come into play. When we configured the router, we said that the route `/` loads and instantiates the `welcome` component. But we haven't talked about what the `welcome` component actually is.
 
 **A component** in Angular 1, when using the new router, **is a controller with a template and an optional router** for that component. So if we say we have a `welcome` component, we need to create a corresponding controller and template for it. In fact, the new router already comes with a default configuration to load and instantiate components. This configuration behaves as follows:
 
@@ -332,15 +332,15 @@ app.controller('NavigationController', function () {
 <p>Yay, navigation goes here.</p>
 {% endhighlight %}
 
-Now we need to decide, *where* our components are actually rendered. We've learned that a component has viewports, in fact, a component can have multiple viewports. In our router configuration we said we have a viewport `navigation` and `main`. All we need to do is to use the `<router-view-port>` directive multiple times and give them the names accordingly.
+Now we need to decide, *where* our components are actually rendered. We've learned that a component has viewports, in fact, a component can have multiple viewports. In our router configuration we said we have a viewport `navigation` and `main`. All we need to do is to use the `<ng-viewport>` directive multiple times and give them the names accordingly.
 
 Here's our updated `index.html` that now introduces two viewports, one for each component specified in the router configuration:
 
 {% highlight html %}
 <body ng-app="myApp" ng-controller="AppController">
-  <nav router-view-port="navigation"></nav>
+  <nav ng-viewport="navigation"></nav>
 
-  <main router-view-port="main"></main>
+  <main ng-viewport="main"></main>
 </body>
 {% endhighlight %}
 
