@@ -245,7 +245,7 @@ Now, in order to get there from our `welcome` component, all we have to do is to
 <h1>Welcome!</h1>
 <p>Hello {{welcome.name}}</p>
 <button ng-click="welcome.changeName()">Change Name!</button>
-<p><a router-link="user">User View</a></p>
+<p><a ng-link="user">User View</a></p>
 {% endraw %}
 {% endhighlight %}
 
@@ -291,7 +291,7 @@ Okay cool. But how do we **link** to a component that takes parameters? We've le
 <h1>Welcome!</h1>
 <p>Hello {{welcome.name}}</p>
 <button ng-click="welcome.changeName()">Change Name!</button>
-<p><a router-link="user({ userId: 3 })">User View</a></p>
+<p><a ng-link="user({ userId: 3 })">User View</a></p>
 {% endraw %}
 {% endhighlight %}
 
