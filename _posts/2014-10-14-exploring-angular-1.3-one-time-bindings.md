@@ -40,7 +40,7 @@ Defining a property with exactly that identifier on our scope and assigning a va
 angular.module('myApp', [])
 .run(function ($rootScope) {
   $rootScope.name = "Pascal";
-}]);
+});
 {% endhighlight %}
 
 Great! We just bound a model value to the view with an interpolation directive. If now something changes the value, the view gets updated automatically. Let's add a button that updates the value of `name` once it's clicked:
