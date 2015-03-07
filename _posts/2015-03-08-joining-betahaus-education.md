@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Joining betahaus education"
-date:       2015-02-21
+date:       2015-03-08
 summary:    "If you are following the startup scene chances are you've heard about the betahaus before. It's a popular co-working space with branches in Berlin, Hamburg, Barcelona and Sofia.
 
 We're happy to announce to take part in the new betahaus education program that aims to deliver various formats including sessions, workshops and even series around topics such as tech, startup and everything digital.
