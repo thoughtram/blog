@@ -152,7 +152,7 @@ ol {
 
 .thtrm-m-rss-link {
   display: block;
-  margin-bottom: -3em;
+  margin-bottom: 0em;
   margin-top: -1.5em;
   color: #999;
   text-decoration: none;
@@ -177,11 +177,17 @@ ol {
 }
 
 .thtrm-m-categories-text {
-  font-size: 22px!important;
+  font-size: 20px!important;
+  margin-top: 1em;
+  padding-top: 0;
   font-style: italic;
-  padding-top:0;
-  margin-bottom: -1em;
   color: #444;
+
+  @media all and (min-width: 750px) {
+    font-size: 22px!important;
+    padding-top:0;
+    margin-bottom: -1em;
+  }
 
   .active {
     color: #4D8799;
