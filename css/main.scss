@@ -137,7 +137,8 @@ ol {
   padding-top: 0;
 }
 
-.thtrm-m-section__content--blog-index {
+.thtrm-m-section__content--blog-index,
+.thtrm-m-section__content--blog-categories {
   .thtrm-m-article:first-child {
     margin-top: -1em;
   }
@@ -170,8 +171,21 @@ ol {
     position: absolute;
     right: 3em;
     margin: 0;
-    top: 0;
+    top: 6em;
     font-size: 1.2em;
+  }
+}
+
+.thtrm-m-categories-text {
+  font-size: 22px!important;
+  font-style: italic;
+  padding-top:0;
+  margin-bottom: -1em;
+  color: #444;
+
+  .active {
+    color: #4D8799;
+    border-color: #4D8799;
   }
 }
 

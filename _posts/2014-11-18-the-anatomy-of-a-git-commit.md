@@ -5,6 +5,10 @@ date: "2014-11-18"
 summary: In this article we explore what a Git commit looks like internally and how Git uses cryptographic tooling to enforce integrity.
 
 categories: Git
+
+tags:
+  - git
+
 author: christoph_burgdorf
 ---
 

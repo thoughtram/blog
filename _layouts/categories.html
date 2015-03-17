@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Find all high quality and up to date articles on Angular written by thoughtram in one place.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Angular articles by thoughtram</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#4D8799">
+    <link rel="icon" sizes="192x192" href="/images/touch/chrome-touch-icon-192x192.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="thoughtram">
+    <link rel="apple-touch-icon" href="/images/touch/apple-touch-icon.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#4D8799">
+
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="Find all high quality and up to date articles on Angular written by thoughtram in one place.">
+    <meta property="og:url" content="http://blog.thoughtram.io/categories/angular/">
+    <meta property="og:site_name" content="Angular articles by thoughtram">
+    <meta property="og:image" content="http://blog.thoughtram.io/images/angularjs-shield.png">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Angular articles by thoughtram">
+    <meta property="twitter:site" content="thoughtram Blog">
+
+    <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}" type="text/css">
+  </head>
+  <body>
+    <!-- Add your site or app content here -->
+
+    <!--[if lt IE 10]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <header role="banner" class="thtrm-l-header has-backface-visibility--hidden">
+      <div class="thtrm-l-header__bar">
+        <h1 class="thtrm-l-header__logo"><a href="/" title="thoughtram official website"  aria-hidden="true">thoughtram</a></h1>
+        <button class="thtrm-l-header__menu-btn" role="button"><img src="/images/hamburger.svg" alt="Menu"></button>
+        <section class="thtrm-l-header__bar__actions">
+          <ul class="thtrm-l-header__bar__actions__navigation clear">
+            <li><a href="http://thoughtram.io" title="Home" >Home</a></li>
+            <li><a href="http://thoughtram.io/about-us.html" title="About us" >About us</a></li>
+            <li><a href="http://thoughtram.io/products.html" title="Products" >Products</a></li>
+            <li><a href="http://thoughtram.io/training.html" title="Training" >Training</a></li>
+            <li><a class="active" href="/" title="Blog" >Blog</a></li>
+          </ul>
+        </section>
+      </div>
+    </header>
+
+    <nav role="navigation" class="thtrm-l-navdrawer has-backface-visibility--hidden">
+      <h4 class="thtrm-l-navdrawer__headline">Navigation</h4>
+      <ul class="thtrm-l-navdrawer__navigation">
+        <li><a href="http://thoughtram.io/" title="Home" >Home</a></li>
+        <li><a href="http://thoughtram.io/about-us.html" title="About us" >About us</a></li>
+        <li><a href="http://thoughtram.io/products.html" title="Products" >Products</a></li>
+        <li><a href="http://thoughtram.io/training.html" title="Training" >Training</a></li>
+        <li><a href="/" title="Blog" >Blog</a></li>
+      </ul>
+    </nav>
+
+    <main role="main" class="thtrm-l-main thtrm-l-main--blog" itemprop="mainContentOfPage">
+      <section class="thtrm-m-section thtrm-m-section--image-banner">
+        <div class="thtrm-l-constraint">
+          <div class="thtrm-m-section__content">
+            <img alt="thoughtram brian in white" class="thtrm-m-banner-logo pulse" src="/images/thoughtram-brain-white.png">
+            <h1 class="thtrm-m-section__headline">thoughtram Blog</h1>
+            <p>Experiences and thoughts, written down.</p>
+          </div>
+        </div>
+      </section>
+      {{ content }}
+  <!--<p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>-->
+    </main>
+
+    {% include footer.html %}
+  </body>
+</html>

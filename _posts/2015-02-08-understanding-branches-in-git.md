@@ -8,6 +8,9 @@ categories:
 - git
 - rebase-book
 
+tags:
+  - git
+
 author: christoph_burgdorf
 ---
 

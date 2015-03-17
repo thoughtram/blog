@@ -8,6 +8,9 @@ isExploringAngular13Article: true
 categories: 
   - angularjs
 
+tags:
+  - angular
+
 author: pascal_precht
 ---
 

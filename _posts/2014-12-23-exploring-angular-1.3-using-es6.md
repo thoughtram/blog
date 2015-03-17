@@ -8,6 +8,9 @@ categories:
   - angularjs
   - es6
 
+tags:
+  - angular
+
 author: christoph_burgdorf
 ---
 
