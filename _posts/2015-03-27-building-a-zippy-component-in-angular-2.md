@@ -354,7 +354,7 @@ And here's the template:
 {% endraw %}
 {% endhighlight %}
 
-I've set up a repository so you can play with the code [here](https://github.com/thoughtram/angular-zippy). In fact, I've also added this component to the Angular project. The pull request is pending [here](https://github.com/angular/angular/pull/729) and likely to be merged the next few days.
+I've set up a repository so you can play with the code [here](https://github.com/thoughtram/angular-zippy). In fact, I've also added this component to the Angular project. The pull request is pending [here](https://github.com/angular/angular/pull/729) and likely to be merged the next few days. At this point I'd like to say thank you to [Victor](http://twitter.com/vberchet) and [Misko](http://twitter.com/mhevery) for helping me out on getting this implemented.
 
 You might notice that it also comes with e2e tests. The component itself even emits it's own events using `EventEmitter` annotations, which we haven't covered in this article.
 
