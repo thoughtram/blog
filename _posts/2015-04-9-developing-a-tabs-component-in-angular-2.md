@@ -204,7 +204,7 @@ Last but not least, we use the directive to iterate over our tabs collection to 
   directives: [For],
   inline: `
     <ul>
-      <li *for="#tab in tabs">{{tab.tabTitle}}</li>
+      <li *for="#tab of tabs">{{tab.tabTitle}}</li>
     </ul>
   `
 })
@@ -289,7 +289,7 @@ We simply iterate over all tabs we have, deactivate them, and activate the one t
   directives: [For],
   inline: `
     <ul>
-      <li *for="#tab in tabs" (click)="selectTab(tab)">
+      <li *for="#tab of tabs" (click)="selectTab(tab)">
         {{tab.tabTitle}}
       </li>
     </ul>
