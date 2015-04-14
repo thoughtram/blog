@@ -12,6 +12,7 @@ tags:
 
 author: pascal_precht
 ---
+{% include breaking-changes-hint.html %}
 Just recently, we wrote about how to [build a zippy component](http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html) in Angular 2. We explored how to get started with the framework and learned about some concepts that it comes with to build a very simple component. If you haven't read the article, you might want to check it out.
 
 As a follow up, we now want to build yet another component that is widely used in a lot of applications: Tabs. Building tabs has always been the de facto example when it comes to explaining directive controllers in Angular. Angular 2 does not have the concept of directive controllers, because the component itself is the execution context. It also makes it much easier to access other directives and components through dependency injection. However, you **do** want to [use directive controllers](http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html) in Angular 1 in order to make the migration process to Angular 2 easier.
@@ -58,15 +59,15 @@ Alright, now that we know what we want to build, let's get our hands dirty with 
 
 ## Building the components
 
-We start off by implementing a rather static version of the `<tabs>` element. If you've read our article on [building a zippy component in Angular 2](http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html), you know that we need the `Template` and `Component` annotations to tell Angular what the selector and template for our component should be.
+We start off by implementing a rather static version of the `<tabs>` element. If you've read our article on [building a zippy component in Angular 2](http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html), you know that we need the `View` and `Component` annotations to tell Angular what the selector and template for our component should be.
 
 {% highlight javascript %}
 {% raw %}
 @Component({
   selector: 'tabs'
 })
-@Template({
-  inline: `
+@View({
+  template: `
     <ul>
       <li>Tab 1</li>
       <li>Tab 2</li>
@@ -79,14 +80,14 @@ export class Tabs {
 {% endraw %}
 {% endhighlight %}
 
-When using `Template` annotations, we can specify the template inside the annotation using the `inline` property. The back tick syntax comes with ES6 and allows us to do multi-line string definition without using concatenation operators like `+`.
+When using `View` annotations, we can specify the template inside the annotation using the `template` property. The back tick syntax comes with ES6 and allows us to do multi-line string definition without using concatenation operators like `+`.
 
 As you can see, the component template already comes with a static list of tabs. This list will be replaced with a dynamic directive later, for now we keep it like this so we get a better picture of the direction we're going. We also need a place where the tab contents will go. Let's add an insertion point to our template. This will project the outer light DOM into the Shadow DOM (Emulation).
 
 {% highlight javascript %}
 {% raw %}
-@Template({
-  inline: `
+@View({
+  template: `
     <ul>
       <li>Tab 1</li>
       <li>Tab 2</li>
@@ -113,12 +114,12 @@ Of course, we do want to use `<tab>` elements inside our `<tabs>` component, so 
 {% raw %}
 @Component({
   selector: 'tab',
-  bind: {
+  properties: {
     'tabTitle': 'tab-title'
   }
 })
-@Template({
-  inline: `
+@View({
+  template: `
     <div>
       <content></content>
     </div>
@@ -184,11 +185,11 @@ import { For } from 'angular2/angular2';
 {% endraw %}
 {% endhighlight %}
 
-Then we need to add it to the list of used directives in our `Template` annotation:
+Then we need to add it to the list of used directives in our `View` annotation:
 
 {% highlight js %}
 {% raw %}
-@Template({
+@View({
   ...
   directives: [For]
 })
@@ -199,10 +200,10 @@ Last but not least, we use the directive to iterate over our tabs collection to 
 
 {% highlight js %}
 {% raw %}
-@Template({
+@View({
   ...
   directives: [For],
-  inline: `
+  template: `
     <ul>
       <li *for="#tab of tabs">{{tab.tabTitle}}</li>
     </ul>
@@ -237,8 +238,8 @@ Well, first we need a property that activates or deactivates a tab and depending
 
 {% highlight js %}
 {% raw %}
-@Template({
-  inline: `
+@View({
+  template: `
     <div [hidden]="!active">
       <content></content>
     </div>
@@ -284,10 +285,10 @@ We simply iterate over all tabs we have, deactivate them, and activate the one t
 
 {% highlight js %}
 {% raw %}
-@Template({
+@View({
   ...
   directives: [For],
-  inline: `
+  template: `
     <ul>
       <li *for="#tab of tabs" (click)="selectTab(tab)">
         {{tab.tabTitle}}
@@ -304,8 +305,8 @@ Here's the complete source in case you ran into any problems.
 
 {% highlight js %}
 {% raw %}
-@Template({
-  inline: `
+@View({
+  template: `
     <ul>
       <li *for="#tab of tabs" (click)="selectTab(tab)">
         {{tab.tabTitle}}
@@ -337,12 +338,12 @@ export class Tabs {
 
 @Component({
   selector: 'tab',
-  bind: {
+  properties: {
     'tabTitle': 'tab-title'
   }
 })
-@Template({
-  inline: `
+@View({
+  template: `
     <div [hidden]="!active">
       <content></content>
     </div>

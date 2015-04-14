@@ -12,6 +12,8 @@ tags:
 
 author: pascal_precht
 ---
+{% include breaking-changes-hint.html %}
+
 Even if Angular 2 is still in early development, we can already start playing with the code since it's up on GitHub and also published as npm module for early adopters. We are following the development of Angular 2 since the beginning on and are also contributing to the project. Just recently we've built a simple zippy component in Angular 2 and in this article we want to show you how.
 
 ## Getting started with Angular 2
@@ -67,11 +69,11 @@ The next thing we want to do, is to make our `Zippy` class an actual component a
 
 Annotations are a way to add meta information to our existing code. Those annotations are actually not supported by ES6 but have been developed as language extension and are considered by the Traceur transpiler, which is used in this project. We're not required to use annotations though. As mentioned, those are just transpiled to ES5 and then simply used by the framework. However, for simplicity sake we'll use them in this article.
 
-Angular provides us with a couple of annotation types so we can express our code in a much more elegant way. We need two annotations: `Component` and `Template`. Annotations can be imported just like classes by using ES6 module syntax.
+Angular provides us with a couple of annotation types so we can express our code in a much more elegant way. We need two annotations: `Component` and `View`. Annotations can be imported just like classes by using ES6 module syntax.
 
 {% highlight javascript %}
 {% raw %}
-import { Component, Template } from 'angular2/angular2';
+import { Component, View } from 'angular2/angular2';
 
 export class Zippy {
 
@@ -79,13 +81,13 @@ export class Zippy {
 {% endraw %}
 {% endhighlight %}
 
-The `Component` annotation lets us add information about what our component's element name will be, which attributes are bound to which properties and more. `Template` annotation gives Angular information about the component's template but also which directives are probably used inside of such a template.
+The `Component` annotation lets us add information about what our component's element name will be, which attributes are bound to which properties and more. `View` annotation gives Angular information about the component's view and template but also which directives are probably used inside of such a template.
 
 We want our zippy component to be usable as `<zippy>` element. So all we need to do, is to add a `Component` annotation with that particular information. To specify the element name, or rather CSS selector (since we could also build decorators), we need to add a `selector` property that matches a CSS selector.
 
 {% highlight javascript %}
 {% raw %}
-import { Component, Template } from 'angular2/angular2';
+import { Component, View } from 'angular2/angular2';
 
 @Component({
   selector: 'zippy'
@@ -96,17 +98,17 @@ export class Zippy {
 {% endraw %}
 {% endhighlight %}
 
-Next, our component needs a template. We add a `Template` annotation that tells Angular where to load the component template from like this:
+Next, our component needs a template. We add a `View` annotation that tells Angular where to load the component template from like this:
 
 {% highlight javascript %}
 {% raw %}
-import { Component, Template } from 'angular2/angular2';
+import { Component, View } from 'angular2/angular2';
 
 @Component({
   selector: 'zippy'
 })
-@Template({
-  url: 'zippy.html'
+@View({
+  templateUrl: 'zippy.html'
 })
 export class Zippy {
 
@@ -114,7 +116,7 @@ export class Zippy {
 {% endraw %}
 {% endhighlight %}
 
-Later at runtime, when Angular compiles this component, it'll fetch `zippy.html` asynchronously. You might wonder why we have `Component` **and** `Template` annotations. Why not just the component annotation with the same information? Well, it turns out that, depending on the environment where you component is going to be deployed you might want to use a different template. Extracting this information into a separate `Template` annotation, makes it easy to swap it out.
+Later at runtime, when Angular compiles this component, it'll fetch `zippy.html` asynchronously. You might wonder why we have `Component` **and** `View` annotations. Why not just the component annotation with the same information? Well, it turns out that, depending on the environment where you component is going to be deployed you might want to use a different template or even a different rendering environment. Extracting this information into a separate `View` annotation, makes it easy to swap it out.
 
 Let's create a file `src/zippy.html` with the following contents:
 
@@ -137,14 +139,14 @@ Alright, believe it or not, that's basically all we need to do to get this compo
 
 {% highlight javascript %}
 {% raw %}
-import {Component, Template} from 'angular2/angular2';
+import {Component, View} from 'angular2/angular2';
 import {Zippy} from 'zippy';
 
 @Component({
   selector: 'hello'
 })
-@Template({
-  inline: `<zippy></zippy>`,
+@View({
+  template: `<zippy></zippy>`,
   directives: [Zippy]
 })
 export class Hello {
@@ -254,7 +256,7 @@ In Angular 2, we don't need to specify how scope properties are bound in our com
 {% raw %}
 @Component({
   selector: 'zippy',
-  bind: {
+  properties: {
     'title': 'title'
   }
 })
@@ -264,15 +266,15 @@ export class Zippy {
 {% endraw %}
 {% endhighlight %}
 
-Notice the `bind` property in our component annotation? It's a hash where we can define which component attribute maps to which component property. Basically what we're doing here, is telling Angular that the value of the `title` **attribute** is projected to the `title` **property**.
+Notice the `properties` property in our component annotation? It's a hash where we can define which component attribute maps to which component property. Basically what we're doing here, is telling Angular that the value of the `title` **attribute** is projected to the `title` **property**.
 
 There's nothing more to do to make the title configurable, let's update the template annotation for `hello` app.
 
 {% highlight javascript %}
 {% raw %}
 ...
-@Template({
-  inline: `<zippy title="Details"></zippy>`,
+@View({
+  template: `<zippy title="Details"></zippy>`,
   directives: [Zippy]
 })
 ...
@@ -315,16 +317,16 @@ Yay, this is how we build a zippy component in Angular 2. Just to make sure we'r
 
 {% highlight javascript %}
 {% raw %}
-import {Component, Template} from 'angular2/angular2';
+import {Component, View} from 'angular2/angular2';
 
 @Component({
   selector: 'zippy',
-  bind: {
+  properties: {
     'title': 'title'
   }
 })
-@Template({
-  url: 'zippy.html'
+@View({
+  templateUrl: 'zippy.html'
 })
 export class Zippy {
 
