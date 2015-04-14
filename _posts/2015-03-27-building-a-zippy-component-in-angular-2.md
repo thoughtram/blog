@@ -246,7 +246,7 @@ Okay, we're almost there. Let's make the zippy title configurable. We want that 
 {% raw %}
 <zippy title="Details"></zippy>
 <zippy [title]="'Details'"></zippy>
-<zippy [title]="{{evaluatesToTitle}}"></zippy>
+<zippy [title]="evaluatesToTitle"></zippy>
 {% endraw %}
 {% endhighlight %}
 
