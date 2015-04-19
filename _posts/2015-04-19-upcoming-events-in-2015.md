@@ -16,7 +16,7 @@ Just recently, we wrote about how much we love to travel and making friends [aro
 
 ## Angular Master Class
 
-We've been running our workshops in several cities including Vienna, Istanbul, Switzerland and Amsterdam. However, we are always looking for new places and people that  to help us out making our trainings possible.
+We've been running our workshops in several cities including Vienna, Istanbul, Lugano and Amsterdam. However, we are always looking for new places and people that  to help us out making our trainings possible.
 
 Our Angular Master Class will come to the following cities:
 
