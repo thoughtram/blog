@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Upcoming events in 2015"
-date:       2015-04-09
+date:       2015-04-19
 summary:    "Just recently, we wrote about how much we love to travel and making friends around the globe. That's why we're making this part of our mission. Today we'd like to give you information about the next upcoming events that we'll be running or attending to."
 
 categories: 
