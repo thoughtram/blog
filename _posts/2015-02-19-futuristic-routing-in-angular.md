@@ -127,13 +127,13 @@ We're going to talk about what a component actually is in a second, but let's fi
 
 {% highlight html %}
 <body ng-app="myApp" ng-controller="AppController">
-  <ng-viewport></ng-viewport>
+  <ng-outlet></ng-outlet>
 </body>
 {% endhighlight %}
 
-Right, there's no `<ng-view>` anymore. Instead the new router comes with a directive called `<ng-viewport>` which can also be used as an attribute in case it's needed. A viewport basically is a "hole" where component templates are loaded into. So the above code in it's current state is pretty much the same as using `<ng-view>` with the old routing system.
+Right, there's no `<ng-view>` anymore. Instead the new router comes with a directive called `<ng-outlet>` which can also be used as an attribute in case it's needed. An outlet basically is a "hole" where component templates are loaded into. So the above code in it's current state is pretty much the same as using `<ng-view>` with the old routing system.
 
-But what gets loaded into our viewport you ask? Good question! This is where components come into play. When we configured the router, we said that the route `/` loads and instantiates the `welcome` component. But we haven't talked about what the `welcome` component actually is.
+But what gets loaded into our outlet you ask? Good question! This is where components come into play. When we configured the router, we said that the route `/` loads and instantiates the `welcome` component. But we haven't talked about what the `welcome` component actually is.
 
 **A component** in Angular 1, when using the new router, **is a controller with a template and an optional router** for that component. So if we say we have a `welcome` component, we need to create a corresponding controller and template for it. In fact, the new router already comes with a default configuration to load and instantiate components. This configuration behaves as follows:
 
@@ -142,13 +142,13 @@ But what gets loaded into our viewport you ask? Good question! This is where com
 
 Applying this to our configuration, it means that the router automatically tries to load `components/welcome/welcome.html` and instantiate `WelcomeController`.
 
-If we're not okay with that configuration, we can simply override this default behaviour by using the `$componentLoaderProvider` in our application configuration. It provides us with methods to configure the names of controllers to be instantiated as well as the paths from where to load component templates.
+If we're not okay with that configuration, we can simply override this default behaviour by using the `$componentMapperProvider` in our application configuration. It provides us with methods to configure the names of controllers to be instantiated as well as the paths from where to load component templates.
 
 The following code forces the router to load `[COMPONENT_NAME].html` instead of `components/[COMPONENT_NAME]/[COMPONENT_NAME].html`:
 
 {% highlight javascript %}
-app.config(function ($componentLoaderProvider) {
-  $componentLoaderProvider.setTemplateMapping(function (name) {
+app.config(function ($componentMapperProvider) {
+  $componentMapperProvider.setTemplateMapping(function (name) {
     // name == component name
     return name + '.html';
   });
@@ -306,7 +306,7 @@ You can see it in action right here:
 
 What we've done so far is not a very complex scenario, nor does it show the advantage over Angular's basic routing with `ngRoute`. There are other scenarios where the power of the new router really shines. One of them is being able to have sibling components per route. Exactly, we're finally able to load more than one component at a time!
 
-Imagine, when a user visits our app, we not only want to have a `welcome` component be loaded, we want to spin up another component for our navigation as well. So we end up with two components at the same time for one single route - `navigation` and `welcome`. We can configure our `$router` accordingly by specifying a `components` property which describes what components should be loaded for which viewport. Let's see how that works.
+Imagine, when a user visits our app, we not only want to have a `welcome` component be loaded, we want to spin up another component for our navigation as well. So we end up with two components at the same time for one single route - `navigation` and `welcome`. We can configure our `$router` accordingly by specifying a `components` property which describes what components should be loaded for which outlet. Let's see how that works.
 
 {% highlight javascript %}
 app.controller('AppController', function ($router) {
@@ -322,7 +322,7 @@ app.controller('AppController', function ($router) {
 });
 {% endhighlight %}
 
-Here we see that we expect *two* viewports `navigation` and `main` and we say that we want to load the `navigation` and `welcome` component respectively. Of course, we now need a `NavigationController` and `navigation.html` to make this work. Here's a simple controller with an even simpler template:
+Here we see that we expect *two* outlets `navigation` and `main` and we say that we want to load the `navigation` and `welcome` component respectively. Of course, we now need a `NavigationController` and `navigation.html` to make this work. Here's a simple controller with an even simpler template:
 
 {% highlight javascript %}
 app.controller('NavigationController', function () {
@@ -335,15 +335,15 @@ app.controller('NavigationController', function () {
 <p>Yay, navigation goes here.</p>
 {% endhighlight %}
 
-Now we need to decide, *where* our components are actually rendered. We've learned that a component has viewports, in fact, a component can have multiple viewports. In our router configuration we said we have a viewport `navigation` and `main`. All we need to do is to use the `<ng-viewport>` directive multiple times and give them the names accordingly.
+Now we need to decide, *where* our components are actually rendered. We've learned that a component has outlets, in fact, a component can have multiple outlets. In our router configuration we said we have an outlet `navigation` and `main`. All we need to do is to use the `<ng-outlet>` directive multiple times and give them the names accordingly.
 
-Here's our updated `index.html` that now introduces two viewports, one for each component specified in the router configuration:
+Here's our updated `index.html` that now introduces two outlets, one for each component specified in the router configuration:
 
 {% highlight html %}
 <body ng-app="myApp" ng-controller="AppController">
-  <nav ng-viewport="navigation"></nav>
+  <nav ng-outlet="navigation"></nav>
 
-  <main ng-viewport="main"></main>
+  <main ng-outlet="main"></main>
 </body>
 {% endhighlight %}
 
@@ -351,7 +351,7 @@ That's it! Running this code in the browser shows that now two sibling component
 
 ## So much more to talk about
 
-Following the development on the new router and also actively contributing to it, there've been a couple of questions popping up that we haven't covered in this article yet. In fact, most of them aren't answered yet but you can follow them on GitHub since we've created issues accordingly. To give you an idea of what questions we are talking about, we've asked ourself for example if a [component can have it's own sub components and viewports](https://github.com/angular/router/issues/117) or [how to link to routes that have multiple viewports](https://github.com/angular/router/issues/118).
+Following the development on the new router and also actively contributing to it, there've been a couple of questions popping up that we haven't covered in this article yet. In fact, most of them aren't answered yet but you can follow them on GitHub since we've created issues accordingly. To give you an idea of what questions we are talking about, we've asked ourself for example if a [component can have it's own sub components and outlets](https://github.com/angular/router/issues/117) or [how to link to routes that have multiple outlets](https://github.com/angular/router/issues/118).
 
 We also haven't talked about nested routing and or if there's a [`resolve` equivalent](https://github.com/angular/router/issues/100) in the new router, but once we have answers to all these questions, we either going to update this article or write separate ones that cover each topic isolated.
 
