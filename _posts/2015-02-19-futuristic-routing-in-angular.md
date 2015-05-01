@@ -101,7 +101,7 @@ Once installed we can take a look at `node_modules/angular-new-router/dist/` and
 Currently we are interested in the Angular 1 components, so what we need to do is to embed `router.es5.js` and add the new router module as dependency to our application like this:
 
 {% highlight javascript %}
-var app = angular.module('myApp', ['ngNewRouter']);
+var app = angular.module('myApp', ['ngComponentRouter']);
 {% endhighlight %}
 
 Great! Next up: configuration. Here we're going to encouter the first big difference when using the new router. As we know, in Angular 1 we have this `.config()` phase where we have access to service providers in order to configure services that are used later at runtime. That's why we can use the `$routeProvider` of `ngRoute` to configure our routes.
@@ -208,7 +208,7 @@ If you're not familiar with the `controller as` syntax. you might want to check 
 
 ## Linking to other components
 
-In order to have a very easy way to navigate from one component to another, the `ngNewRouter` module comes with a `routerLink` directive that we can use to tell our application, where to navigate. Let's say we have another component `user`, we'd extend our application with a new configuration for that component.
+In order to have a very easy way to navigate from one component to another, the `ngComponentRouter` module comes with a `routerLink` directive that we can use to tell our application, where to navigate. Let's say we have another component `user`, we'd extend our application with a new configuration for that component.
 
 {% highlight javascript %}
 app.controller('AppController', function ($router) {
@@ -287,7 +287,7 @@ app.controller('UserController', function ($routeParams) {
 });
 {% endhighlight %}
 
-Okay cool. But how do we **link** to a component that takes parameters? We've learned that `ngNewRouter` comes with a `routerLink` directive that takes a component name. It turns out, we can set parameters, for a route we want to navigate to, with that directive too! All we need to do is to pass a hash literal to specify the values. Here's our updated `welcome` component template:
+Okay cool. But how do we **link** to a component that takes parameters? We've learned that `ngComponentRouter` comes with a `routerLink` directive that takes a component name. It turns out, we can set parameters, for a route we want to navigate to, with that directive too! All we need to do is to pass a hash literal to specify the values. Here's our updated `welcome` component template:
 
 {% highlight html %}
 {% raw %}
