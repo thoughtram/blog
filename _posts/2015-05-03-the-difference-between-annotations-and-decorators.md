@@ -2,7 +2,7 @@
 layout:     post
 title:      "The difference between Annotations and Decorators"
 date:       2015-05-03
-summary:    "Last year, the Angular team announced it's ECMAScript language extension AtScript, which adds types and annotations to the language in order to enable better tooling, debugging and overall development experience. However, just recently at ng-conf, the team announced that AtScript becomes TypeScript, because both languages seem to solve the same problems. TypeScript implements a language feature called Decorators. In this article we're going to explore what exactly the difference between annotations and decorators is."
+summary:    "Last year, the Angular team announced it's ECMAScript language extension AtScript, which adds types and annotations to the language in order to enable better tooling, debugging and a better overall development experience. However, just recently at ng-conf, the team announced that AtScript becomes TypeScript, because both languages seem to solve the same problems. TypeScript implements a language feature called Decorators. In this article we're going to explore what exactly the difference between annotations and decorators is."
 
 categories: 
 - angular
