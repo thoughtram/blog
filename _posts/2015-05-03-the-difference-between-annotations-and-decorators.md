@@ -121,7 +121,7 @@ var MyClass = (function () {
 
 The reason why this translate to a nested array, is because a parameter can have more than one annotation.
 
-Okay, so now we know what those annotations are and what they translate to, but we still don't know how something like `@Component` makes a normal class actually a component in Angular 2. It turns out that Angular itself takes care of that. Annotations are really just meta data added to code. That's why `@Component` and `@View` are a very specific implementation details of Angular 2. In fact, there are a couple of other annotations that the framework comes with. But also only the framework knows that to do with that information.
+Okay, so now we know what those annotations are and what they translate to, but we still don't know how something like `@Component` makes a normal class actually a component in Angular 2. It turns out that Angular itself takes care of that. Annotations are really just meta data added to code. That's why `@Component` and `@View` are a very specific implementation details of Angular 2. In fact, there are a couple of other annotations that the framework comes with. But also only the framework knows what to do with that information.
 
 Another very interesting learning is that Angular expects the meta data on `annotations` and `parameters` properties of classes. If Traceur would not translate them to those particular properties, Angular 2 wouldn't know from where to get the meta data. Which makes **AtScript Annotations** just a very specific implementation of what annotations could actually be.
 
