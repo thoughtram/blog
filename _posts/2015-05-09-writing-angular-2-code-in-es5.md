@@ -35,7 +35,7 @@ In ES5 we don't have a module system yet. So ideally, we should be able to just 
 
 Boom. That's it.
 
-Now the next question comes up: How can we use access and use given annotations and/or decorators? Usually, in ES6, we would import them from the framework but now there's no way for us to import them.
+Now the next question comes up: How can we access and use given annotations and/or decorators? Usually, in ES6, we would import them from the framework but now there's no way for us to import them.
 
 Well, it turns out that the bundled version exposes an `angular` object on the current global scope or reuses an existing one, which has all annotations added to it. In our [last article](http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html) we've learned that annotations are just classes, which in the end are just functions. And those functions are called as constructor functions to add meta data to our components. That means, all we have to do is to call those annotation constructors manually and assign them to our component's `annotations` property.
 
@@ -58,7 +58,7 @@ HelloComponent.annotations = [
 {% endraw %}
 {% endhighlight %}
 
-That's it. We have constructor function that has a component annotation and a view annotation. The TypeScript equivalent would look something like this:
+That's it. We have a constructor function that has a component annotation and a view annotation. The TypeScript equivalent would look something like this:
 
 {% highlight javascript %}
 {% raw %}
@@ -76,7 +76,7 @@ class HelloComponent {
 
 You might wonder, why we use `ComponentAnnotation` and `ViewAnnotation` instead of `Component` and `View`. Well, if you've read our article on the [difference between annotations and decorators](http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html) it's very easy to understand. Since `alpha.22` we have support for decorators **and** annotations. The Traceur transpiler implements annotations, but Babel and TypeScript support ES7 decorators.
 
-In order to make the Angular code work with all those transpilers, it comes with both, annotation implementations and decorators implementations. Which means in fact, we could import and use `@ComponentAnnotation` and `@ViewAnnotation` in our ES6/TypeScript example as well, if we would transpile it with Traceur.
+In order to make the Angular code work with all those transpilers, it comes with both, annotation implementations and decorator implementations. Which means in fact, we could import and use `@ComponentAnnotation` and `@ViewAnnotation` in our ES6/TypeScript example as well, if we would transpile it with Traceur.
 
 So long story short: `@ComponentAnnotation` and `@ViewAnnotation` are really the annotations. `@Component` and `@View` are the decorators that use the annotations internally.
 
