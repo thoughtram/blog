@@ -24,7 +24,7 @@ Here are two little spoilers to give you an idea what our talks will be about.
 
 We've spent the last month digging a lot through the Angular 2 design documents and source code. In fact we already started to build an app with Angular 2 and are contributing back to the project itself.
 
-In [this talk](http://www.codetalks.de/2015/programm/dependency-injection-for-future-generations) Pascal will share his learnings about the new dependency injection in Angular 2. The talk will be held the **29th September from 16:00 to 16:45 on track 2** and that's the abstract.
+In [this talk](http://www.codetalks.de/2015/programm/dependency-injection-for-future-generations) Pascal will share his learnings about the new dependency injection system in Angular 2. The talk will be held the **29th September from 16:00 to 16:45 on track 2** and that's the abstract.
 
 >Because we think dependency injection is cool and that it makes life of all us developers a looot easier, we want to start off our talk by first understanding what dependency injection stands for and why it is such a blessing in disguise...and also because first things first. Once that is clear we can dive deeper into some existing implementations, to get a real feel of how it all works, and finish by looking at how these implementations are used inside the new Angular 2 framework, by taking advantage of decorators using TypeScript.
 
