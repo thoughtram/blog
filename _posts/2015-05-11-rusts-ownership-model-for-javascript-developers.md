@@ -2,7 +2,7 @@
 layout:     post
 title:      "Rust's Ownership model for JavaScript developers"
 date:       2015-05-11
-summary:    "Rust is an exciting new system programming language by Mozilla. In this post we explore Rusts concept of ownership that enables the language to achieve 100 % memory safety without garbage collection. We start with a simple JavaScript code and port it to Rust step by step."
+summary:    "Rust is an exciting new system programming language by Mozilla. In this post we explore Rust's concept of ownership that enables the language to achieve 100 % memory safety without garbage collection. We start with a simple JavaScript code and port it to Rust step by step."
 
 categories:
 - rust
@@ -12,7 +12,7 @@ tags:
 
 author: christoph_burgdorf
 ---
-It's been roughly one year ago since we organized Hannover's first [rust meetup](http://blog.thoughtram.io/announcements/rust/meetups/2014/06/24/organizing-hannovers-first-rust-meetup.html). Time has passed on and [nickel](http://nickel.rs/) has grown into a really nice web application framework with a very active community and 31 individual contributors as of the time of writing this.
+It's been roughly one year ago since we organized Hannover's first [Rust meetup](http://blog.thoughtram.io/announcements/rust/meetups/2014/06/24/organizing-hannovers-first-rust-meetup.html). Time has passed on and [nickel](http://nickel.rs/) has grown into a really nice web application framework with a very active community and 31 individual contributors as of the time of writing this.
 
 We also created [clog](https://github.com/thoughtram/clog) a changelog generator that started as a straight port of [conventional-changelog](https://github.com/ajoslin/conventional-changelog) but has since moved on to follow it's own ideas and currently powers projects such as nickel and [clap](https://github.com/kbknapp/clap-rs).
 
@@ -148,9 +148,9 @@ fn main() {
 {% endraw %}
 {% endhighlight %}
 
-The first thing to notice here is that Rust has no `class`es but instead has `struct`'s. It's out of the scope of this article to discuss the differences though. The second thing to notice is that methods aren't written in the `struct` definition but are attached to a `struct` through an `impl` block instead. 
+The first thing to notice here is that Rust has no classes but instead has structs. It's out of the scope of this article to discuss the differences though. The second thing to notice is that methods aren't written in the struct definition but are attached to a struct through an `impl` block instead. 
 
-Also does Rust not know any `constructor` concept. Instances of structs can simply be made by writting out the `struct`'s name followed by curly braces and a body that initializes all of the `struct`'s fields. However it's a common pattern to add a "static" `new` method to the `struct` that wraps the initialization code. This `new` method is quite compareable to the `constructor` in our ES6 classes.
+Also does Rust not know any `constructor` concept. Instances of structs can simply be made by writing out the structs name followed by curly braces and a body that initializes all of the structs fields. However it's a common pattern to add a "static" `new` method to the struct that wraps the initialization code. This `new` method is quite compareable to the `constructor` in our ES6 classes.
 
 To get things going we need to put the code that creates a config and both services in the `main` function.
 
@@ -173,7 +173,7 @@ When we look back at the JavaScript version we can see that there are three plac
 
 Since JavaScript is garbage collected we don't put much thought into that. A garbage collector will just regulary run checks and if it discovers that there is no reference anymore that points to the memory that was allocated for the `config`, it will free it up.
 
-Rust doesn't have a garbage collector but it doesn't force you to manage the memory manually either. Instead it created new rules to enforce memory safety without garbage collection, namely "Ownership".
+Rust doesn't have a garbage collector but it doesn't force you to manage the memory manually either. Instead it creates new rules to enforce memory safety without garbage collection, namely "Ownership".
 
 Being the owner of an object means that you (and only you) own the right to destroy it.
 
@@ -200,14 +200,16 @@ fn main() {
 {% endraw %}
 {% endhighlight %}
 
-You may be wondering why we can't just continue to use `config` without being the owner. The point is that since the `new` method is now the new owner, the memory may already be freed when we try to use `config` in the last line. The rust compiler prevents us from a potential runtime crash here.
+You may be wondering why we can't just continue to use `config` without being the owner. The point is that since the `new` method is now the new owner it may just decide to free up the memory. Keep in mind that the owner has the right to destroy the thing that it owns (either explicitly or implicity when it goes out of scope). 
+
+If we were allowed to use `config` in the last line the memory may already be freed and hell breaks loose. The rust compiler prevents us from a potential runtime crash here.
 
 
 **The concept of borrowing**
 
 The good news is that we don't **have** to transfer ownership each time we pass something to another method. We can just lend out a reference instead.
 
-Before we refactor our code to have the services borrow the config, we will temporary simplify the code one last time to make it obvious why the move happens.
+Before we refactor our code to have the services borrow the config, we will temporarily simplify the code one last time to make it obvious why the move happens.
 
 {% highlight rust %}
 {% raw %}
@@ -301,7 +303,7 @@ fn main() {
 
 Whew, this compiles! The `&Config` as the parameter type means that it now borrows a reference instead of taking ownership. The `main` method continues to be the owner with this change.
 
-But there's another thing that we changed. Because the `new` methods now expects a reference instead of the actual type, we need to change the call site, too.
+But there's another thing that we changed. Because the `new` methods now expect a reference instead of the actual type, we need to change the call site, too.
 
 {% highlight rust %}
 {% raw %}
@@ -414,7 +416,9 @@ fn main() {
 
 Whew, that's a lot of new syntax that we haven't seen yet. 
 
-Basically what the `'a` lifetime annotation says is that the `ProductService` can't live longer than the reference to the `Config` that it contains. The `'a` is really only a name that we get to choose, we could have picked `'config` but short single letter names are mostly used among the Rust community. 
+Basically what the `'a` lifetime annotation says is that the `ProductService` can't live longer than the reference to the `Config` that it contains. Rust doesn't infer that constrain for structs by itself so it needs us to bring clarity. The same helds true for the `BasketService` as it also keeps a reference to the `Config`.
+
+The `'a` is really only a name that we get to choose, we could have picked `'config` but short single letter names are mostly used among the Rust community. 
 
 We need to use the life time annotation in the `impl` blocks as well as those are written for the `ProductService` and `BasketService` which introduce those lifetimes. Please note that the `'a` of the `ProductService` is independend of the `'a` of the `BasketService` we could have picked different names for both.
 
