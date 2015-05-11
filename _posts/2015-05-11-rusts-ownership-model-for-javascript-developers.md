@@ -85,7 +85,7 @@ basketService.addProduct(product);
 {% endraw %}
 {% endhighlight %}
 
-It's a simple e-commerce example with four different classes working hand in hand. We have a `Product` class without any functionaly because it's sole purpose is represent a product in this demo context. Then there's a `Config` class which may contain a bunch of configurations such as API endpoints or simply a `debugMode` flag as in our simple example. And last but not least do we have a `ProductService` to retrieve products from and a `BasketService` to put products into a shopping basket. 
+It's a simple e-commerce example with four different classes working hand in hand. We have a `Product` class without any functionality because it's sole purpose is represent a product in this demo context. Then there's a `Config` class which may contain a bunch of configurations such as API endpoints or simply a `debugMode` flag as in our simple example. And last but not least do we have a `ProductService` to retrieve products from and a `BasketService` to put products into a shopping basket. 
 
 Let's fokus on what follows after the definition of those classes.
 
