@@ -428,7 +428,6 @@ Now that we got things working with the minimal code needed let's jump to the fi
 
 {% highlight rust %}
 {% raw %}
-#[derive(Debug)]
 struct Config {
     debug_mode: bool
 }
