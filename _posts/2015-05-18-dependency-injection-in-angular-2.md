@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Dependency Injection in Angular 2"
-date:       2015-05-15
+date:       2015-05-18
 summary:    "Dependency injection has always been one of Angular's biggest features and selling points. It allows us to inject dependencies in different code components, without needing to know, how those dependencies are created. However, it turns out that the current dependency injection system in Angular 1 has some problems that need to be solved in Angular 2, in order to build the next generation framework. In this article, we're going to explore the new dependency injection system for future generations."
 
 categories: 
