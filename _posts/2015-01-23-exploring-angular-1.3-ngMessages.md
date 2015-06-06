@@ -268,6 +268,8 @@ All we need to do is to define a template that contains the messages we want to 
 {% endraw %}
 {% endhighlight %}
 
+<p style="background: #f47676; border-radius: 0.3em; padding: 1em; border: red 1px solid;"><strong>Breaking change in Angular 1.4</strong>: <br><code>ngMessagesInclude</code> is no longer an attribute in Angular 1.4. If you're using an Angular version >= 1.4, we recommend reading <a href="http://blog.thoughtram.io/2015/06/06/ng-messages-revisited.html" tile="ngMessages revisited">this article</a> on breaking changes introduced in ngMessages.</p>
+
 If the template is *not* present in the document, Angular performs a `$templateRequest` to fetch the template first.
 
 Now we've learned that how we can define templates in order to reuse messages at different places in our application. You might think that this is a scenario where [HTML Templates](http://webcomponents.org/articles/introduction-to-template-element/) would be a better fit, instead of doing script overloading. I agree on that, since this is what the `<template>` element has been designed for. Unfortunately, at the time of writing this article, this was not supported, which is why I've created a corresponding issue [here](https://github.com/angular/angular.js/issues/10846).
