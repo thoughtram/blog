@@ -2,7 +2,7 @@
 layout:     post
 title:      "Routing in Angular 2"
 date:       2015-06-16
-update_date: 2015-06-16
+update_date_: 2015-06-16
 summary:    "A couple of months ago, we've written an article about the new router in Angular, how it can be used and how it differs from the standard router. The article mainly covered the usage of using the new router in Angular 1 apps, and has been written at a time where the router was in a very early state. In this article we would like to explore how to use the new router in Angular 2."
 
 categories: 
@@ -242,13 +242,14 @@ Now the router actually knows for what to generate URLs when using `RouterLink`.
 
 It's very common to have sibling outlets in a state (or component). In Angular 1, the UI-Router comes with a **very** powerful mechanism to support sibling states. Of course, such a feature is supported in the new component router too. At the time of writing this article, **this feature was still in development and didn't work yet**, but we can still take a look at what the APIs will look like.
 
+
 Having a component with multiple outlets is easy. Let's say we have a dashboard component component that needs to load a navigation component and a statistics component. First we would of course setup a route config to be able to navigate to the dashboard component.
 
 {% highlight js %}
 import { Dashboard } from './components/dashboard';
 
 @RouteConfig([
-  { path: '/dashboard', component: Dashboard, as 'dashboard'}
+  { path: '/dashboard', component: Dashboard, as: 'dashboard'}
 ])
 class App {
 
@@ -275,6 +276,10 @@ class Dashboard {
 
 }
 {% endhighlight %}
+
+<p style="background: #F2AEAE; border-radius: 0.3em; margin-top: 1.4em; padding: 1em; border: #F56B6B 1px solid;"><strong>Attention</strong>: <br>
+The <code>components</code> property has been removed as of <a href="https://github.com/angular/angular/issues/2329">#2329</a> but the feature will be reintroduced with a different mechanism.
+</p>
 
 Again, `Navigation` and `Statistics` are really just two components that don't even have to know that they are part of a route configuration. We can also see how the `as` property in the route configuration can be nicely used as an alias for component combinations.
 
