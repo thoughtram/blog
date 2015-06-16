@@ -21,7 +21,18 @@ layout: post-layout
             {{ content }}
             <footer class="thtrm-m-article__footer">
               <p>Liked the article and found it useful? How about sharing it with others on <a title="thoughtram on twitter" href="http://twitter.com/thoughtram">twitter</a>? We'd love to get your feedback!</p>
+
               <p>You might also be interested in subscribing to our <a title="RSS Feed" href="http://feeds.feedburner.com/thoughtram"><i class="fa fa-rss"></i> RSS Feed</a>.</p>
+              {% if page.relatedLinks %}
+                <h3 style="font-weight: normal; margin-top: 1.5em; border-top: 1px solid #DDD">Related articles and links</h3>
+                <ul class="thtrm-list">
+                {% for link in page.relatedLinks %}
+                <li>
+                  <a href="{{ link.url}}" title="{{link.title}}">{{link.title}}</a>
+                </li>
+                {% endfor %}
+                <ul>
+              {% endif %}
             </footer>
           </article>
         </div>
@@ -33,12 +44,12 @@ layout: post-layout
           </div>
           {% endif %}
 
-          <div class="thtrm-m-ad">
-            <img class="thtrm-m-ad__image thtrm-m-ad__image--small" alt="Angular Logo" src="/images/angularconnect-shield.png">
-            <h4 class="thtrm-m-ad__title">Meet us at AngularConnect</h4>
-            <p class="thtrm-m-ad__sub-title">We're sponsoring AngularConnect and looking forward to seeing you there!</p>
-            <a class="thtrm-m-ad__btn" href="http://blog.thoughtram.io/announcements/2015/05/11/sponsoring-angularconnect.html" title="AngularConnect Conference">More info</a>
-          </div>
+          <!-- <div class="thtrm-m-ad"> -->
+          <!--   <img class="thtrm-m-ad__image thtrm-m-ad__image--small" alt="Angular Logo" src="/images/angularconnect-shield.png"> -->
+          <!--   <h4 class="thtrm-m-ad__title">Meet us at AngularConnect</h4> -->
+          <!--   <p class="thtrm-m-ad__sub-title">We're sponsoring AngularConnect and looking forward to seeing you there!</p> -->
+          <!--   <a class="thtrm-m-ad__btn" href="http://blog.thoughtram.io/announcements/2015/05/11/sponsoring-angularconnect.html" title="AngularConnect Conference">More info</a> -->
+          <!-- </div> -->
 
           <!-- <div class="thtrm-m-ad"> -->
           <!--   <img class="thtrm-m-ad__image thtrm-m-ad__image--small" alt="Angular Logo" src="/images/angularjs-shield.png"> -->
@@ -115,21 +126,9 @@ layout: post-layout
   </div>
 </section>
 
-{% if site.show_related_posts %}
-  <h3 class="related-post-title">Related Posts</h3>
-  {% for post in site.related_posts %}
-    <div class="post ml2">
-      <a href="{{ post.url | prepend: site.baseurl }}" class="post-link">
-        <h4 class="post-title">{{ post.title }}</h4>
-        <p class="post-summary">{{ post.summary }}</p>
-      </a>
-    </div>
-  {% endfor %}
-{% endif %}
-
 <script>
 (function (doc) {
-  var num = Math.floor(Math.random() * (3 - 0));
+  var num = Math.floor(Math.random() * (2 - 0));
   doc.querySelectorAll('.thtrm-m-ad')[num].classList.add('thtrm-m-ad--visible');
 }(document));
 </script>

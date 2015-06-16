@@ -1,6 +1,10 @@
 ---
 layout:     post
 title:      "Futuristic Routing in Angular"
+relatedLinks:
+  -
+    title: "Routing in Angular 2"
+    url: "http://blog.thoughtram.io/angular/2015/06/16/routing-in-angular-2.html"
 date:       2015-02-19
 summary:    "A few months ago the Angular team announced that there's going to be a completely new router component in one of the future Angular releases. In fact, the new router is being implemented for Angular 2.0 and was planned to be back ported for the 1.3 release. Unfortunately, it turned out that it takes a bit more effort to make the same powerful router available for both development branches based on the same code base, so the team decided to postpone the back port of the new router to the next bigger 1.4 release. In this article we discuss the new router APIs and how it's going to change the way we implement component based routing in our Angular applications."
 

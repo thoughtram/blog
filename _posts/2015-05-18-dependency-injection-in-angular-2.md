@@ -1,7 +1,18 @@
 ---
 layout:     post
 title:      "Dependency Injection in Angular 2"
+relatedLinks:
+  -
+    title: "Talk: Dependency Injection for Future Generations"
+    url: "https://www.youtube.com/watch?v=8c-qv9TisVE"
+  -
+    title: "The difference between decorators and annotations"
+    url: "http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html"
+  -
+    title: "Builing a zippy component in Angular 2"
+    url: "http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html"
 date:       2015-05-18
+update_date: 2015-06-16
 summary:    "Dependency injection has always been one of Angular's biggest features and selling points. It allows us to inject dependencies in different code components, without needing to know, how those dependencies are created. However, it turns out that the current dependency injection system in Angular 1 has some problems that need to be solved in Angular 2, in order to build the next generation framework. In this article, we're going to explore the new dependency injection system for future generations."
 
 categories: 

@@ -1,6 +1,13 @@
 ---
 layout:     post
 title:      "Developing a zippy component in Angular 2"
+relatedLinks:
+  -
+    title: "Using ES6 with Angular today"
+    url: "http://blog.thoughtram.io/angularjs/es6/2015/01/23/exploring-angular-1.3-using-es6.html"
+  -
+    title: "Integrating Web Components with AngularJS"
+    url: "http://pascalprecht.github.io/2014/10/25/integrating-web-components-with-angularjs/"
 date:       2015-03-27
 summary:    "Even if Angular 2 is still in early development, we can already start playing with the code since it's up on GitHub and also published as npm module. We are following the development of Angular 2 since the beginning on and are also contributing to the project. Just recently we've built a simple zippy component in Angular 2 and in this article we want to show how."
 

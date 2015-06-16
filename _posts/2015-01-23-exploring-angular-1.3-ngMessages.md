@@ -1,6 +1,13 @@
 ---
 layout:     post
 title:      "Exploring Angular 1.3: ngMessages"
+relatedLinks:
+  -
+    title: "ngMessages revisited"
+    url: "http://blog.thoughtram.io/2015/06/06/ng-messages-revisited.html"
+  -
+    title: "Exploring Angular 1.3: Validators pipeline"
+    url: "http://blog.thoughtram.io/angularjs/2015/01/11/exploring-angular-1.3-validators-pipeline.html"
 date:       2015-01-23
 summary:    "Our blog series on Angular 1.3 already covers tons of information about the latest bigger release of the framework. Some of the articles cover form related improvements in features like the newly introduced validators pipeline. However, there's another bigger feature that the 1.3 release brings to the table, which is the ngMessages module. In this article we're going to discuss what it does and how it improves the way we handle validation messages when dealing with forms."
 

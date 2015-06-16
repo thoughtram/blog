@@ -1,7 +1,18 @@
 ---
 layout:     post
 title:      "Writing Angular 2 code in ES5"
+relatedLinks:
+  -
+    title: "The difference between decorators and annotations"
+    url: "http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html"
+  -
+    title: "Builing a zippy component in Angular 2"
+    url: "http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html"
+  -
+    title: "Angular ES5 Demo"
+    url: "http://plnkr.co/edit/XmZkHzl407z93R5Kf0pv?p=preview"
 date:       2015-05-09
+update_date: 2015-06-16
 summary:    "Angular 2 is written in TypeScript to take advantage of language features like types and meta data annotations through decorators. While this is great for tooling, a lot of people don't like the syntax of decorators and maybe even ES6 classes. This article discusses how to write an Angular 2 application in ES5."
 
 categories: 

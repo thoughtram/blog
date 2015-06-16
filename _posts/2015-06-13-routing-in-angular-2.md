@@ -1,6 +1,13 @@
 ---
 layout:     post
 title:      "Routing in Angular 2"
+relatedLinks:
+  -
+    title: "Futuristic Routing in Angular"
+    url: "http://blog.thoughtram.io/angularjs/2015/02/19/futuristic-routing-in-angular.html"
+  -
+    title: "Dependency Injection in Angular 2"
+    url: "http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html"
 date:       2015-06-16
 update_date: 2015-06-16
 summary:    "A couple of months ago, we've written an article about the new router in Angular, how it can be used and how it differs from the standard router. The article mainly covered the usage of using the new router in Angular 1 apps, and has been written at a time where the router was in a very early state. In this article we would like to explore how to use the new router in Angular 2."

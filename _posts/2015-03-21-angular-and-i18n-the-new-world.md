@@ -1,6 +1,10 @@
 ---
 layout:     post
 title:      "Angular and i18n - The new world"
+relatedLinks:
+  -
+    title: "Talk: Better i18n for your Angular apps"
+    url: "https://www.youtube.com/watch?v=iBBkCA1M-mc"
 date:       2015-03-21
 summary:    "At this year's ng-conf, Pascal and Chirayu Krishnappa, a core Angular team member, have given a talk on the new internationalization story that is evolving for both, the Angular of today 1.x and the Angular of tomorrow. The focus of the talk was to clarify what internationalization actually means and also that it's not just about changing the locale. This article is a write-up of the talk that goes into a bit more detail to show you what the new i18n story is about."
 
