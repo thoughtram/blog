@@ -12,7 +12,7 @@ relatedLinks:
     title: "Builing a zippy component in Angular 2"
     url: "http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html"
 date:       2015-05-18
-update_date: 2015-06-16
+update_date: 2015-06-17
 summary:    "Dependency injection has always been one of Angular's biggest features and selling points. It allows us to inject dependencies in different code components, without needing to know, how those dependencies are created. However, it turns out that the current dependency injection system in Angular 1 has some problems that need to be solved in Angular 2, in order to build the next generation framework. In this article, we're going to explore the new dependency injection system for future generations."
 
 categories: 
@@ -23,6 +23,9 @@ tags:
 
 author: pascal_precht
 ---
+
+{% include breaking-changes-hint.html %}
+
 Dependency injection has always been one of Angular's biggest features and selling points. It allows us to inject dependencies in different components across our applications, without needing to know, how those dependencies are created, or what dependencies they need themselves. However, it turns out that the current dependency injection system in Angular 1 has some problems that need to be solved in Angular 2, in order to build the next generation framework. In this article, we're going to explore the new dependency injection system for future generations.
 
 Before we jump right into the new stuff, lets first understand what dependency injection is, and what the problems with the DI in Angular 1 are.
@@ -441,12 +444,12 @@ class App {
 
 Awesome! All of a sudden, we don't have any injector machinery at all anymore. But there's one last thing: What if we want a different binding configuration in a specific component?
 
-Lets say we have `NameService` as application wide injectable for the type `NameService`, but one particular component should get a different one? This is where the `@Component` annotations' `injectables` property comes in. It allows us to add bindings to a specific component (and it's child components).
+Lets say we have `NameService` as application wide injectable for the type `NameService`, but one particular component should get a different one? This is where the `@Component` annotations' `appInjector` property comes in. It allows us to add bindings to a specific component (and it's child components).
 
 {% highlight js %}
 @Component({
   selector: 'app',
-  injectables: [NameService]
+  appInjector: [NameService]
 })
 @View({
   template: '<h1>Hello {{name}}!</h1>'
@@ -456,7 +459,7 @@ class App {
 }
 {% endhighlight %}
 
-To make things clear: `injectables` doesn't configure the instances that will be injected. It creates a child injector's binding recipes.
+To make things clear: `appInjector` doesn't configure the instances that will be injected. It creates a child injector's binding recipes.
 
 ## Conclusion
 
