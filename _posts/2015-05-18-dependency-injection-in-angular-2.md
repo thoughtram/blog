@@ -12,7 +12,7 @@ relatedLinks:
     title: "Builing a zippy component in Angular 2"
     url: "http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html"
 date:       2015-05-18
-update_date: 2015-06-17
+update_date: 2015-06-20
 summary:    "Dependency injection has always been one of Angular's biggest features and selling points. It allows us to inject dependencies in different code components, without needing to know, how those dependencies are created. However, it turns out that the current dependency injection system in Angular 1 has some problems that need to be solved in Angular 2, in order to build the next generation framework. In this article, we're going to explore the new dependency injection system for future generations."
 
 categories: 
@@ -465,4 +465,4 @@ To make things clear: `appInjector` doesn't configure the instances that will be
 
 The new dependency injection system in Angular solves all the problems that we have with the current DI in Angular 1. No name collisions anymore. Dependencies can be injected synchronous or asynchronous. It's an isolated component of the framework that can be used as standalone system, without Angular 2 itself. And we finally have proper factories.
 
-I gave a talk about that topic at [JSConf Budapest 2015](http://jsconfbp.com), you can find the slides [here](http://pascalprecht.github.io/slides/dependency-injection-for-future-generations/). I would like to thank [Merrick](http://twitter.com/iammerrick) for letting me use some ideas of his talk at ng-vegas, and [Vojta](http://twitter.com/vojtajina) who built the original version of the new dependency injection system for Angular 2.
+I gave a talk about that topic at [JSConf Budapest 2015](http://jsconfbp.com), <s>you can find the slides [here](http://pascalprecht.github.io/slides/dependency-injection-for-future-generations/)</s>. An updated version of the slide deck is [here](http://pascalprecht.github.io/slides/di-in-angular-2/#/). I would like to thank [Merrick](http://twitter.com/iammerrick) for letting me use some ideas of his talk at ng-vegas, and [Vojta](http://twitter.com/vojtajina) who built the original version of the new dependency injection system for Angular 2.
