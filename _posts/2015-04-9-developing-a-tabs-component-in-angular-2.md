@@ -118,9 +118,7 @@ Of course, we do want to use `<tab>` elements inside our `<tabs>` component, so 
 {% raw %}
 @Component({
   selector: 'tab',
-  properties: {
-    'tabTitle': 'tab-title'
-  }
+  properties: ['tabTitle: tab-title']
 })
 @View({
   template: `
@@ -185,7 +183,7 @@ The method just simply pushes the given object into our collection and we're goo
 
 {% highlight javascript %}
 {% raw %}
-import { For } from 'angular2/angular2';
+import { NgFor } from 'angular2/angular2';
 {% endraw %}
 {% endhighlight %}
 
@@ -195,7 +193,7 @@ Then we need to add it to the list of used directives in our `View` annotation:
 {% raw %}
 @View({
   ...
-  directives: [For]
+  directives: [NgFor]
 })
 {% endraw %}
 {% endhighlight %}
@@ -206,10 +204,10 @@ Last but not least, we use the directive to iterate over our tabs collection to 
 {% raw %}
 @View({
   ...
-  directives: [For],
+  directives: [NgFor],
   template: `
     <ul>
-      <li *for="#tab of tabs">{{tab.tabTitle}}</li>
+      <li *ng-for="#tab of tabs">{{tab.tabTitle}}</li>
     </ul>
   `
 })
@@ -291,10 +289,10 @@ We simply iterate over all tabs we have, deactivate them, and activate the one t
 {% raw %}
 @View({
   ...
-  directives: [For],
+  directives: [NgFor],
   template: `
     <ul>
-      <li *for="#tab of tabs" (click)="selectTab(tab)">
+      <li *ng-for="#tab of tabs" (click)="selectTab(tab)">
         {{tab.tabTitle}}
       </li>
     </ul>
@@ -309,16 +307,19 @@ Here's the complete source in case you ran into any problems.
 
 {% highlight js %}
 {% raw %}
+@Component({
+  selector: 'tabs'
+})
 @View({
   template: `
     <ul>
-      <li *for="#tab of tabs" (click)="selectTab(tab)">
+      <li *ng-for="#tab of tabs" (click)="selectTab(tab)">
         {{tab.tabTitle}}
       </li>
     </ul>
     <content></content>
   `,
-  directives: [For]
+  directives: [NgFor]
 })
 export class Tabs {
   constructor() {
@@ -342,9 +343,7 @@ export class Tabs {
 
 @Component({
   selector: 'tab',
-  properties: {
-    'tabTitle': 'tab-title'
-  }
+  properties: ['tabTitle: tab-title']
 })
 @View({
   template: `
@@ -364,3 +363,5 @@ export class Tab {
 ## Where to go from here
 
 This is a very rudimentary implementation of a tabs component. We can use that as a starting point to make it better over time. For example, we haven't done anything in terms of accessibility. It would also be nice if the component emits some custom events when a tab is activated. We'll cover working with events in Angular 2 in another article.
+
+You can find the running code in [this repository](https://github.com/thoughtram/angular-tabs).

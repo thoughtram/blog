@@ -8,7 +8,11 @@ relatedLinks:
   -
     title: "Integrating Web Components with AngularJS"
     url: "http://pascalprecht.github.io/2014/10/25/integrating-web-components-with-angularjs/"
+  -
+    title: "The difference between Annotations and Decorators"
+    url: "http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html"
 date:       2015-03-27
+update_date: 2015-06-23
 summary:    "Even if Angular 2 is still in early development, we can already start playing with the code since it's up on GitHub and also published as npm module. We are following the development of Angular 2 since the beginning on and are also contributing to the project. Just recently we've built a simple zippy component in Angular 2 and in this article we want to show how."
 
 categories: 
@@ -76,11 +80,14 @@ The next thing we want to do, is to make our `Zippy` class an actual component a
 
 Annotations are a way to add meta information to our existing code. Those annotations are actually not supported by ES6 but have been developed as language extension and are considered by the Traceur transpiler, which is used in this project. We're not required to use annotations though. As mentioned, those are just transpiled to ES5 and then simply used by the framework. However, for simplicity sake we'll use them in this article.
 
-Angular provides us with a couple of annotation types so we can express our code in a much more elegant way. We need two annotations: `Component` and `View`. Annotations can be imported just like classes by using ES6 module syntax.
+Angular provides us with a couple of annotation types so we can express our code in a much more elegant way. We need two annotations: `ComponentAnnotation` and `ViewAnnotation`. Annotations can be imported just like classes by using ES6 module syntax. We also import both annotations with a shorter name to match with provided decorators. This is for easy migration when we switch from Traceur to TypeScript or Babel in the future. If this is unclear to you, you might want to read our article on [the difference between annotations and decorators](http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html).
 
 {% highlight javascript %}
 {% raw %}
-import { Component, View } from 'angular2/angular2';
+import { 
+  ComponentAnnotation as Component,
+  ViewAnnotation as View 
+} from 'angular2/angular2';
 
 export class Zippy {
 
@@ -94,7 +101,10 @@ We want our zippy component to be usable as `<zippy>` element. So all we need to
 
 {% highlight javascript %}
 {% raw %}
-import { Component, View } from 'angular2/angular2';
+import { 
+  ComponentAnnotation as Component,
+  ViewAnnotation as View
+} from 'angular2/angular2';
 
 @Component({
   selector: 'zippy'
@@ -109,7 +119,10 @@ Next, our component needs a template. We add a `View` annotation that tells Angu
 
 {% highlight javascript %}
 {% raw %}
-import { Component, View } from 'angular2/angular2';
+import { 
+  ComponentAnnotation as Component,
+  ViewAnnotation as View
+} from 'angular2/angular2';
 
 @Component({
   selector: 'zippy'
@@ -146,7 +159,10 @@ Alright, believe it or not, that's basically all we need to do to get this compo
 
 {% highlight javascript %}
 {% raw %}
-import {Component, View} from 'angular2/angular2';
+import { 
+  ComponentAnnotation as Component,
+  ViewAnnotation as View
+} from 'angular2/angular2';
 import {Zippy} from 'zippy';
 
 @Component({
@@ -263,9 +279,7 @@ In Angular 2, we don't need to specify how scope properties are bound in our com
 {% raw %}
 @Component({
   selector: 'zippy',
-  properties: {
-    'title': 'title'
-  }
+  properties: ['title']
 })
 export class Zippy {
   ...
@@ -273,9 +287,21 @@ export class Zippy {
 {% endraw %}
 {% endhighlight %}
 
-Notice the `properties` property in our component annotation? It's a hash where we can define which component attribute maps to which component property. Basically what we're doing here, is telling Angular that the value of the `title` **attribute** is projected to the `title` **property**.
+Notice the `properties` property in our component annotation? It's a list of property names where we can define which component attribute maps to which component property. Basically what we're doing here, is telling Angular that the value of the `title` **attribute** is projected to the `title` **property**. If we want to map the `title` property to a different attribute name, we can do so by suing the following syntax:
 
-There's nothing more to do to make the title configurable, let's update the template annotation for `hello` app.
+{% highlight javascript %}
+{% raw %}
+@Component({
+  selector: 'zippy',
+  properties: ['title: zippy-title']
+})
+export class Zippy {
+  ...
+}
+{% endraw %}
+{% endhighlight %}
+
+But for simplicity's sake, we stick with the shorthand synax. There's nothing more to do to make the title configurable, let's update the template annotation for `hello` app.
 
 {% highlight javascript %}
 {% raw %}
@@ -324,13 +350,14 @@ Yay, this is how we build a zippy component in Angular 2. Just to make sure we'r
 
 {% highlight javascript %}
 {% raw %}
-import {Component, View} from 'angular2/angular2';
+import { 
+  ComponentAnnotation as Component,
+  ViewAnnotation as View
+} from 'angular2/angular2';
 
 @Component({
   selector: 'zippy',
-  properties: {
-    'title': 'title'
-  }
+  properties: ['title']
 })
 @View({
   templateUrl: 'zippy.html'
@@ -363,8 +390,8 @@ And here's the template:
 {% endraw %}
 {% endhighlight %}
 
-I've set up a repository so you can play with the code [here](https://github.com/thoughtram/angular-zippy). In fact, I've also added this component to the Angular project. The pull request is pending [here](https://github.com/angular/angular/pull/729) and likely to be merged the next few days. At this point I'd like to say thank you to [Victor](http://twitter.com/vberchet) and [Misko](http://twitter.com/mhevery) for helping me out on getting this implemented.
+I've set up a repository so you can play with the code [here](https://github.com/thoughtram/angular-zippy). In fact, I've also added this component to the Angular project. The pull request is <s>pending</s> merged [here](https://github.com/angular/angular/pull/729) <s>and likely to be merged the next few days</s>. At this point I'd like to say thank you to [Victor](http://twitter.com/vberchet) and [Misko](http://twitter.com/mhevery) for helping me out on getting this implemented.
 
-You might notice that it also comes with e2e tests. The component itself even emits it's own events using `EventEmitter` annotations, which we haven't covered in this article.
+You might notice that it also comes with e2e tests. The component itself even emits it's own events using `EventEmitter`, which we haven't covered in this article. Those will be discussed in another article.
 
 Go and check it out!
