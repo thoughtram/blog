@@ -1,19 +1,6 @@
 ---
 layout:     post
 title:      "Taking Angular Master Class to the next level"
-relatedLinks:
-  -
-    title: "Futuristic Routing in Angular"
-    url: "http://blog.thoughtram.io/angularjs/2015/02/19/futuristic-routing-in-angular.html"
-  -
-    title: "Dependency Injection in Angular 2"
-    url: "http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html"
-  -
-    title: "Developing a zippy component in Angular 2"
-    url: "http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html"
-  -
-    title: "Developing a tabs component in Angular 2"
-    url: "http://blog.thoughtram.io/angular/2015/04/09/developing-a-tabs-component-in-angular-2.html"
 date:       2015-06-25
 update_date: 2015-06-25
 summary:    "We've been running our Angular Master Class since a couple of months now and travelled to many different countries and cities to meet you in person and exchange our experiences. We also always collect feedback to make our material and trainings even better. We listened. Here's what we did."
