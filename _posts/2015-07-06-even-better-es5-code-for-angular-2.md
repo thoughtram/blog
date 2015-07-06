@@ -12,7 +12,7 @@ relatedLinks:
     title: "Dependency Injection in Angular 2"
     url: "http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html"
 date:       2015-07-06
-update_date: 2015-07-06
+update_date_: 2015-07-06
 summary:    "One of the biggest things to consider when it comes to using Angular 2, is the upgrade path from Angular 1. Angular 2 is entirely written in TypeScript but browsers today only support ES5 or some features of ES6. However, nobody prevents us from writing Angular 2 code in ES5. A couple of weeks ago we wrote about exactly that. This time, we take a look at a new, much better, syntax to write Angular 2 in ES5."
 
 categories: 
@@ -26,9 +26,9 @@ author: pascal_precht
 
 {% include breaking-changes-hint.html %}
 
-A couple of weeks ago we wrote about how to write [Angular 2 code in ES5](http://blog.thoughtram.io/angular/2015/05/09/writing-angular-2-code-in-es5.html) and took a closer look at what [annotations and decorators](http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html) translate to. While it is nice that we can all write Angular 2 applications without the hassle of setting up a development environment for TypeScript, Babel or SystemJS, it turns out that the syntax is still quite wordy. Of course, this isn't really a big problem, because it is just the syntax after all. That's why the Angular team works hard on making even the ES5 experience much better. All improvements that land in the ES5 world shrinks the gap between Angular 1 and Angular 2 syntax, in fact, upgrading will be rather boring.
+A couple of weeks ago we wrote about how to write [Angular 2 code in ES5](http://blog.thoughtram.io/angular/2015/05/09/writing-angular-2-code-in-es5.html) and took a closer look at what [annotations and decorators](http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html) translate to. While it is nice that we can all write Angular 2 applications without the hassle of setting up a development environment for TypeScript, Babel or SystemJS, it turns out that the syntax is still quite wordy. Of course, this isn't really a big problem, because it is just the syntax after all. That's why the Angular team works hard on making even the ES5 experience much better. All improvements that land in the ES5 world shrink the gap between Angular 1 and Angular 2 syntax, in fact, upgrading will be rather boring.
 
-In this article we're going to take a closer look at the ES5 syntax improvements and how it makes migrating even easier.
+In this article we're going to take a closer look at the ES5 syntax improvements and how they make upgrading even easier.
 
 ## Angular 2 in ES5 before syntactical improvements
 
