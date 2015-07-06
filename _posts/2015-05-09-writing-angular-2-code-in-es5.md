@@ -9,10 +9,13 @@ relatedLinks:
     title: "Builing a zippy component in Angular 2"
     url: "http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html"
   -
+    title: "Even better ES5 code for Angular 2"
+    url: "http://blog.thoughtram.io/angular/2015/07/06/even-better-es5-code-for-angular-2.html"
+  -
     title: "Angular ES5 Demo"
     url: "http://plnkr.co/edit/XmZkHzl407z93R5Kf0pv?p=preview"
 date:       2015-05-09
-update_date: 2015-06-16
+update_date_: 2015-07-06
 summary:    "Angular 2 is written in TypeScript to take advantage of language features like types and meta data annotations through decorators. While this is great for tooling, a lot of people don't like the syntax of decorators and maybe even ES6 classes. This article discusses how to write an Angular 2 application in ES5."
 
 categories: 
@@ -119,7 +122,7 @@ Great we've just bootstrapped our Angular 2 application written in ES5! Was it t
 
 ## Injecting services in ES5
 
-Let's say we want to add a `GreetingService` to our component. The `@Component` annotation takes a property `injectables` to define injectable types for this particular component. This is easy to add. First we build the service. A service in Angular 2 is just a class, which translates to just a function, which is also just an object in JavaScript.
+Let's say we want to add a `GreetingService` to our component. The `@Component` annotation takes a property `viewInjector` to define injectable types for this particular component. This is easy to add. First we build the service. A service in Angular 2 is just a class, which translates to just a function, which is also just an object in JavaScript.
 
 {% highlight javascript %}
 {% raw %}
@@ -138,7 +141,7 @@ Next we tell our component about it's injectable types:
 HelloComponent.annotations = [
   new angular.ComponentAnnotation({
     selector: 'hello-cmp',
-    injectables: [GreetingService]
+    viewInjector: [GreetingService]
   }),
   ...
 ];
@@ -166,5 +169,7 @@ HelloComponent.parameters = [[GreetingService]];
 If you wonder why we define a nested array, this is because one constructor parameter can have more than one associated annotation.
 
 Cool, so it turns out that writing Angular 2 code is actually not weird at all. In addition to that, it kind of gets clear that writing Angular code in ES5 requires more typing. But again, in the end it's up to the application author which language or transpiler to use.
+
+There's even a [better syntax](http://blog.thoughtram.io/angular/2015/07/06/even-better-es5-code-for-angular-2.html), that makes writing and reading Angular 2 code a breeze.
 
 You can find a running example of that Angular 2 app in ES5 right [here](http://plnkr.co/edit/XmZkHzl407z93R5Kf0pv?p=preview).
