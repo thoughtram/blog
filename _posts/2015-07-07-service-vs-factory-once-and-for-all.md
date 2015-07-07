@@ -53,7 +53,7 @@ Okay, clear. Now the same thing as a factory:
 {% raw %}
 app.factory('MyService', function () {
   return {
-    sayHello = function () {
+    sayHello: function () {
       console.log('hello');
     };
   }
