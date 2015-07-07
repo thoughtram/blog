@@ -148,7 +148,7 @@ app.service('MyService', function () {
 
   // we could do additional work here too
   return {
-    sayHello = function () {
+    sayHello: function () {
       console.log('hello');
     };
   }
