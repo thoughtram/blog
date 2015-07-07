@@ -18,7 +18,7 @@ tags:
 author: pascal_precht
 ---
 
-Wait, what? Yet another article that answers the big question: Service vs Factory, what should I use? Yes, it seems that this is not needed anymore, since there are a ton resources in the internet that discuss that topic. It turns out that this question still pops up every week or so on different channels, and even after reading the top ten answers on StackOverflow, it's still not very clear. Despite that, it also appears that the current resources on the web don't really promote the actual best practice, especially if we consider the recent movements of the web platform. ES6 I'm looking at you!
+Wait, what? Yet another article that answers the big question: Service vs Factory, what should I use? Yes, it seems that this is not needed anymore, since there are a ton of resources in the internet that discuss that topic. It turns out that this question still pops up every week or so on different channels, and even after reading the top ten answers on StackOverflow, it's still not very clear. Despite that, it also appears that the current resources on the web don't really promote the actual best practice, especially if we consider the recent movements of the web platform. ES6 I'm looking at you!
 
 This article explains once and for all the difference between services and factories and why **we want to prefer services over factories**.
 
@@ -179,3 +179,5 @@ app.service('MyService', MyService);
 An ES6 class is really just a constructor function in ES5. We wrote about that in [Using ES6 with Angular today](http://blog.thoughtram.io/angularjs/es6/2015/01/23/exploring-angular-1.3-using-es6.html), if you haven't read that article yet, I'd recommend checking that out.
 
 With factories, this is not possible because they are simply called as functions. I hope this article made everything clear and encourages people to **not** use factories over services, if they don't know what to use.
+
+This and more you learn in our [Angular Master Class](http://thoughtram.io/angular-master-class.html)!
