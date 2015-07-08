@@ -6,7 +6,7 @@ relatedLinks:
     title: "Using ES6 with Angular today"
     url: "http://blog.thoughtram.io/angularjs/es6/2015/01/23/exploring-angular-1.3-using-es6.html"
 date:       2015-07-07
-update_date: 2015-07-07
+update_date_: 2015-07-07
 summary:    "Yes, this is yet another article on services vs factories in AngularJS. Why is that? Well... it turns out that despite the fact that this question pops up every week or so, it also turns out that the current web doesn't really promote the actual best practice. This article explains once and for all, what the difference between services and factories is and why you should use service."
 
 categories: 
@@ -158,9 +158,9 @@ app.service('MyService', function () {
 
 Hoppla, so what now? We just realised that, depending on how we write our services, there's no difference between the two at all anymore. The big question remains: Which one should we use?
 
-## Prefer services over factories where possible
+## Services allow us to use ES6 classes
 
-Of course, writing services in that way is kind of contra productive, since it's called as a constructor function, so it should also be used like one. Is there any advantage over the other at all then? Yes, there is. It turns out that it's actually better to use services where possible. The reason for that is simply that a service is a constructor function and a factory is not. Working with constructor functions in ES5 allows us to easily use ES6 classes when we migrate to ES6.
+Of course, writing services in that way is kind of contra productive, since it's called as a constructor function, so it should also be used like one. Is there any advantage over the other at all then? Yes, there is. It turns out that it's actually better to use services where possible, when it comes to migrating to ES6. The reason for that is simply that a service is a constructor function and a factory is not. Working with constructor functions in ES5 allows us to easily use ES6 classes when we migrate to ES6.
 
 For example, we can take our code and rewrite it in ES6 like this:
 
