@@ -179,7 +179,7 @@ PLACEHOLDERS
 
 A placeholder cannot be changed by a translator. However, they are able to move them around inside the message in case it's needed for the locale messages are translated to. We also notice that we get some meta information on what the placeholder `EXPRESSION` is about.
 
-Of course, our translator probably doesn't no about Angular at all and even `EXPRESSION` doesn't really tell anything. In such cases we can explicitly define the name of a placeholder that ends up in a message and we're even able to provide and example to give even more information.
+Of course, our translator probably doesn't know about Angular at all and even `EXPRESSION` doesn't really tell anything. In such cases we can explicitly define the name of a placeholder that ends up in a message and we're even able to provide and example to give even more information.
 
 Something like this would be more useful to the translator:
 
