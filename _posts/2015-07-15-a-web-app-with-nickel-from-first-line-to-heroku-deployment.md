@@ -7,7 +7,7 @@ relatedLinks:
     title: "Rust's Ownership model for JavaScript developers"
     url: "http://blog.thoughtram.io/rust/2015/05/11/rusts-ownership-model-for-javascript-developers.html"
 
-summary:    "Occasionally people ask about Nickel projects that they can dig into to get a feel of some real world Nickel code. In case you never heard of Nickel, it's an web application server written in Rust. We thought it'd be nice to write a simple web application with Nickel, deploy it to Heroku and blog about it."
+summary:    "Occasionally people ask about Nickel projects that they can dig into to get a feel of some real world Nickel code. In case you never heard of Nickel, it's a web application server written in Rust. We thought it'd be nice to write a simple web application with Nickel, deploy it to Heroku and blog about it."
 
 categories:
 - rust
@@ -19,21 +19,21 @@ author: christoph_burgdorf
 ---
 
 
-Occasionally people ask about [Nickel](nickel.rs) projects that they can dig into to get a feel of some real world Nickel code. In case you never heard of Nickel, it's an web application server written in Rust. We thought it'd be nice to write a simple web application with Nickel, deploy it to Heroku and blog about it.
+Occasionally people ask about [Nickel](nickel.rs) projects that they can dig into to get a feel of some real world Nickel code. In case you never heard of Nickel, it's a web application server written in Rust. We thought it'd be nice to write a simple web application with Nickel, deploy it to Heroku and blog about it.
 
 ##Defining the scope of the application
 
-What's better than dogfooding your project? Dogfooding two of your projects at once! In case you missed it, with the help of awesome contributors, we created [clog](https://github.com/thoughtram/clog) which is a small tool to generate nice changelogs from semantic git histories. Clog parses commit messages that follow the Angular Commit Message Conventions which are quite popular among many projects such as [Angular](github.com/angular/angular), [Hoodie](https://github.com/hoodiehq/hoodie-server), [Nickel](https://github.com/nickel-org/nickel.rs), [Clap.rs](https://github.com/kbknapp/clap-rs) and many more. Clog started as a fork of the Node.js based [conventional changelog](https://github.com/ajoslin/conventional-changelog) project but has since moved on to follow it's own ideas.
+What's better than dog fooding your project? Dog fooding two of your projects at once! In case you missed it, with the help of awesome contributors, we created [Clog](https://github.com/thoughtram/clog) which is a small tool to generate nice changelogs from semantic Git histories. Clog parses commit messages that follow the Angular commit message conventions which are quite popular among many projects such as [Angular](github.com/angular/angular), [angular-translate](https://github.com/angular-translate/angular-translate), [Hoodie](https://github.com/hoodiehq/hoodie-server), [Nickel](https://github.com/nickel-org/nickel.rs), [Clap.rs](https://github.com/kbknapp/clap-rs) and many more. Clog started as a fork of the Node.js based [conventional changelog](https://github.com/ajoslin/conventional-changelog) project but has since moved on to follow it's own ideas.
 
-So let's build a website that let's you generate a nicely formatted changelog for any public repository on Github - right from your browser. Let's keep that as simple as possible and focus on the important parts.
+Let's build a website that lets you generate a nicely formatted changelog for any public repository on GitHub - right from your browser. Let's keep that as simple as possible and focus on the important parts.
 
-- Use nickel to build a JSON API that can be consumed from an SPA
-- Make nickel serve an Angular application as static html so that frontend and backend are nicely decoupled.
-- Deploy that app to Heroku
+- Use Nickel to build a JSON API that can be consumed from a frontend
+- Make Nickel serve an Angular application as static html so that frontend and backend are nicely decoupled.
+- Deploy the app to Heroku
 
 ##Bootstrapping our Nickel application
 
-This article assumes a basic understanding of Rust. If you've never build anything with Rust before, the [Getting Started]() section of the official Rust book should clarify all basic questions.
+This article assumes a basic understanding of Rust. If you've never built anything with Rust before, the [Getting Started](https://doc.rust-lang.org/stable/book/getting-started.html) section of the official Rust book should answer all basic questions.
 
 The easiest way to bootstrap a Rust project is through Cargo: Rust's official package manager.
 
@@ -83,15 +83,15 @@ fn main() {
 {% endraw %}
 {% endhighlight %}
 
-However, when we try to execute our little app with `Cargo run` we run into an error.
+However, when we try to execute our little app with the `cargo run` command we run into an error.
 
 ![Nickel Missing Trait Error](/assets/nickel_missing_trait_error.png)
 
-The reason for that is quite simple. Even though the HTTP Verb handler registration methods such as `get`, `put`, `post` and `delete` appear to exist directly on the [`Nickel`](http://docs.nickel.rs/nickel/struct.Nickel.html) object that is returned by `Nickel::new()`, they are in fact methods from the [`HttpRouter`](http://docs.nickel.rs/nickel/router/http_router/trait.HttpRouter.html#method.get) trait which just happens to be [implemented](https://github.com/nickel-org/nickel.rs/blob/6fbfbfde2985c5724942835fec95953a3a996b65/src/nickel.rs#L17-L23) for the Nickel facade object.
+The reason for that is quite simple. Even though the HTTP Verb handler registration methods such as `get`, `put`, `post` and `delete` appear to exist directly on the [`Nickel` object](http://docs.nickel.rs/nickel/struct.Nickel.html) that is returned by `Nickel::new()`, they are in fact methods from the [`HttpRouter` trait](http://docs.nickel.rs/nickel/router/http_router/trait.HttpRouter.html#method.get) which just happens to be [implemented](https://github.com/nickel-org/nickel.rs/blob/6fbfbfde2985c5724942835fec95953a3a996b65/src/nickel.rs#L17-L23) for the Nickel facade object.
 
-Traits are an extremely powerful concept of the Rust language and it's out of the scope of this article to explain them in detail. If haven't fully groked them yet, I recommend to head over to the [trait chapter](https://doc.rust-lang.org/stable/book/traits.html) of the official Rust book.
+Traits are an extremely powerful concept of the Rust language but it's out of the scope of this article to explain them in detail. If you haven't fully groked them yet, I recommend to head over to the [trait chapter](https://doc.rust-lang.org/stable/book/traits.html) of the official Rust book.
 
-Luckily Rust's compiler is smart enough to give us the right hint here. We need to bring the `HttpRouter` trait into scope. Since Nickel exposes that trait on it's top level module we can simply change our import to look like this.
+Luckily Rust's compiler is smart enough to give us the right hint here. We need to bring the `HttpRouter` trait into scope. Since Nickel exposes that trait on it's top level module we can simply change our import to this.
 
 {% highlight rust %}
 {% raw %}
@@ -101,14 +101,14 @@ use nickel::{ Nickel, HttpRouter };
 
 Once we have brought the trait into scope, the methods become available on the Nickel facade object. You may think of them as extension methods.
 
-Great, after we fixed that issue we can run our server with `Cargo run` and point our browser to `http://127.0.0.1:6767` to finally see the text `Hello from Nickel`. That wasn't too hairy, was it?
+Great, after we fixed that issue we can run our server with `cargo run` and point our browser to `http://127.0.0.1:6767` to finally see the text `Hello from Nickel`. That wasn't too hairy, was it?
 
 ##Generating a changelog
 
 In order to generate our first changelog we need to do three things.
 
-- Clone the repository that we want to generate the changelog for
-- Generate the changelog with clog
+- Clone the repository that we want to generate the changelog from
+- Generate the changelog with Clog
 - Delete the repository to clean up the file system of the server
 
 In order to achieve the downloading part, create a file called `git.rs` with the following contents.
@@ -134,9 +134,9 @@ pub fn clone (repo_url: &str, into_directory: &str) -> Result<String, Error> {
 {% endraw %}
 {% endhighlight %}
 
-We won't go through the code line by line. It should be pretty clear to understand just by looking at the method signature. It takes an URI to a git repository and clones it into whatever path was specified with the second parameter. It returns an `Result<String, Error>` that either carries a `String` with the message that was send to `stdout` or an `Error` that carries a `String` with the message that was send to `stderr`.
+We won't go through the code line by line. It should be pretty clear to understand just by looking at the method signature. It takes an URI to a Git repository and clones it into whatever path was specified with the second parameter. It returns an `Result<String, Error>` that either carries a `String` with the message that was send to `stdout` or an `Error` that carries a `String` with the message that was send to `stderr`.
 
-Before we are going to use that, let's move on and write the code that will interact with clog. We create a file called `clog_interact.rs` with the following contents.
+Before we are going to use that, let's move on and write the code that will interact with Clog. We create a file called `clog_interact.rs` with the following contents.
 
 {% highlight rust %}
 {% raw %}
@@ -197,7 +197,7 @@ fn main() {
 {% endraw %}
 {% endhighlight %}
 
-Let's shed some light on the code. In order to use `clog` we first need to add it to our `Cargo.toml` file as we did before with `Nickel`. Then add an `extern crate clog;` statement. We also need to add `mod git;` and `mod clog_interop;` in order to have the compiler include those modules. Otherwise it would be just two Rust files that happen to be placed in our project directory.
+Let's shed some light on the code. In order to use Clog we first need to add it to our `Cargo.toml` file as we did before with Nickel. Then add an `extern crate clog;` statement. We also need to add `mod git;` and `mod clog_interop;` in order to have the compiler include those modules. Otherwise it would be just two Rust files that happen to be placed in our project directory.
 
 The rest should be pretty straight forward. We hardcoded the `repo_uri` to fetch the [Angular 2](github.com/angular/angular) repository and clone it into a local folder called `some-unique-id`. We probably have some work here down the road to get that production ready.
 
@@ -207,17 +207,17 @@ This is a common source of confusion for newcomers but Ryman from the Nickel tea
 
 The gist is that the handler gets called again and again for every request hence you can't *move* the `String` since it could only be moved once.
 
-If we start our server again with `Cargo run` and open up the website in the browser we should see something like this.
+If we start our server again with `cargo run` and open up the website in the browser we should see something like this.
 
 ![Raw Clog Output](/assets/raw_clog_output.png)
 
 Hooray! That's a markdown formatted changelog of the Angular 2 project.
 
-##Working with `JSON` data
+##Working with JSON data
 
-We now have our server to clone a repository, generate a markdown changelog and return it to the browser as is. That's all nice so far. In order to create something slightly more nice and flexible we need to build a proper JSON API that can be consumed from a frontend.
+We now have our server to clone a repository, generate a markdown changelog and return it to the browser as is. That's all nice so far. In order to create something slightly nicer and more flexible we need to build a proper JSON API that can be consumed from a frontend.
 
-Let's sketch out how the JSON request and response objects may look like.
+Let's sketch out what the JSON request and response objects may look like.
 
 **Request Object**
 
@@ -229,7 +229,7 @@ Let's sketch out how the JSON request and response objects may look like.
 {% endraw %}
 {% endhighlight %}
 
-We don't need anything apart from the `repository` itself so far. However, we may add things like `version_name` or `subtitle` later on to expose other clog features to the frontend.
+We don't need anything apart from the `repository` itself so far. However, we may add things like `version_name` or `subtitle` later on to expose other Clog features to the frontend.
 
 **Response Object**
 
@@ -331,7 +331,7 @@ mod clog_result;
 {% endraw %}
 {% endhighlight %}
 
-The biggest suprise here may be that JSON support is currently not baked into the std library but instead needs to be pulled in via the `rustc-serialize` crate. Another catch here is that in the `Cargo.toml` one has to add the crate as `rustc-serialize = "*"` (hyphenated) whereas in Rust code underscores are being used.
+The biggest suprise here may be that JSON support is currently not baked into the standard library but instead needs to be pulled in via the `rustc-serialize` crate. Another catch here is that in the `Cargo.toml` one has to add the crate as `rustc-serialize = "*"` (hyphenated) whereas in Rust code underscores are being used.
 
 Great! We are almost there. We can already use `curl` to try out our API.
 
@@ -341,7 +341,7 @@ curl 'http://127.0.0.1:6767/generate' -H 'Cache-Control: no-cache' -H 'Content-T
 {% endraw %}
 {% endhighlight %}
 
-There's still one big flaw though. We are still cloning into a directory called `some-unique-id`. For every request. This will break apart as soon as we have two simultanous requests to our API. So let's change the code to actually use real unique names for the directories that we clone into. And again, there's a crate for that. It's name is `uuid`.
+There's still one big flaw though. We are still cloning into a directory called `some-unique-id`. For every request. This will break apart as soon as we have two simultanous requests to our API. Let's change the code to actually use real unique names for the directories that we clone into. And again, there's a crate for that. It's name is `uuid`.
 
 With that crate in place, the fix is as easy as setting `repo_name` from *inside* of our handler to a unique string. 
 
@@ -359,7 +359,7 @@ With this change in place our API is pretty much ready to use. We can improve er
 
 Now that we have our API in place, we just need a simple frontend to serve as a basic use case. If we would aim for a proper scalable solution, we'd most likely not serve the frontend from the same server that serves the API. For the purpose of this blog post and to show off Nickels features, we will just keep the entire project together.
 
-We won't cover the frontend part in the same depth as we did for the backend. You can simply jump to [repository](https://github.com/thoughtram/demo-clog-website) on GitHub that contains the entire code that was written for this post.
+We won't cover the frontend part in the same depth as we did for the backend. You can simply jump to the [repository](https://github.com/thoughtram/demo-clog-website) on GitHub that contains the entire code that was written for this post.
 
 Let's just assume that we are building a simple web app with a text input for the user to enter the URL to a repository on GitHub and a button to request the changelog from the API that we built.
 
@@ -384,7 +384,7 @@ Voilà! We have a real working website.
 
 Now that we have our app running just fine on our development machine wouldn't it be nice to actually ship it for the world to see? Let's do exactly that and host it on Heroku. Hosting a Nickel app on Heroku is quite easy these days. If you've never worked with Heroku before, you first need to register at their website and download the [Heroku CLI tool](https://toolbelt.heroku.com/) that we will use for the next steps.
 
-Once you have the Heroku CLI installed and logged in, you can simply create the app endpoint form your existing repository through the following command.
+Once you have the Heroku CLI installed and logged in, you can simply create the app endpoint from your existing repository through the following command.
 
 {% highlight bash %}
 {% raw %}
@@ -394,7 +394,7 @@ heroku create demo-clog-website --buildpack https://github.com/emk/heroku-buildp
 
 Notice that the first parameter of the `heroku create` command will be the name that Heroku will use as a subdomain to serve your site. So in this case it's `http://demo-clog-website.herokuapp.com`.
 
-This will also add a new git remote called `heroku` to your repository. Deploying the site is as simple as running `git push heroku master`.
+This will also add a new Git remote called `heroku` to your repository. Deploying the site is as simple as running `git push heroku master`.
 
 ![Heroku Rejected Buildpack](/assets/heroku_rejected.png)
 
@@ -418,7 +418,7 @@ web: ./target/release/clog-website
 
 The `Procfile` tells Heroku which command to invoke to start the process. Since `Cargo` puts the executable at `target/release/our-app-name` we have to set this up accordingly.
 
-After we created and commited both files to our repository we deploy our site again with `git push heroku master`. The deployment should run just fine so let's check the live site.
+After we created and committed both files to our repository we deploy our site again with `git push heroku master`. The deployment should run just fine so let's check the live site.
 
 ![Heroku Application Error](/assets/heroku_application_error.png)
 
