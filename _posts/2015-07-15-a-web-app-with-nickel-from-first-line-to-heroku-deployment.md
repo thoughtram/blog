@@ -85,7 +85,17 @@ fn main() {
 
 However, when we try to execute our little app with the `cargo run` command we run into an error.
 
-![Nickel Missing Trait Error](/assets/nickel_missing_trait_error.png)
+{% highlight rust %}
+{% raw %}
+$ cargo run
+   Compiling clog-website v0.1.0 (file:///Users/cburgdorf/Documents/hacking/clog-website)
+src/main.rs:9:12: 9:55 error: no method named `get` found for type `nickel::nickel::Nickel` in the current scope
+src/main.rs:9     server.get("**", middleware!("Hello from Nickel"));
+                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/main.rs:9:12: 9:55 help: items from traits can only be used if the trait is in scope; the following trait is implemented but not in scope, perhaps add a `use` for it:
+src/main.rs:9:12: 9:55 help: candidate #1: use `nickel::router::http_router::HttpRouter`
+{% endraw %}
+{% endhighlight %}
 
 The reason for that is quite simple. Even though the HTTP Verb handler registration methods such as `get`, `put`, `post` and `delete` appear to exist directly on the [`Nickel` object](http://docs.nickel.rs/nickel/struct.Nickel.html) that is returned by `Nickel::new()`, they are in fact methods from the [`HttpRouter` trait](http://docs.nickel.rs/nickel/router/http_router/trait.HttpRouter.html#method.get) which just happens to be [implemented](https://github.com/nickel-org/nickel.rs/blob/6fbfbfde2985c5724942835fec95953a3a996b65/src/nickel.rs#L17-L23) for the Nickel facade object.
 
@@ -396,7 +406,33 @@ Notice that the first parameter of the `heroku create` command will be the name 
 
 This will also add a new Git remote called `heroku` to your repository. Deploying the site is as simple as running `git push heroku master`.
 
-![Heroku Rejected Buildpack](/assets/heroku_rejected.png)
+{% highlight bash %}
+{% raw %}
+$ git push heroku master
+Counting objects: 28, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (24/24), done.
+Writing objects: 100% (28/28), 5.73 KiB | 0 bytes/s, done.
+Total 28 (delta 5), reused 0 (delta 0)
+remote: Compressing source files... done.
+remote: Building source:
+remote: 
+remote: -----> Fetching custom git buildpack... done
+remote: 
+remote:  !     Push rejected, no Cedar-supported app detected
+remote: HINT: This occurs when Heroku cannot detect the buildpack
+remote:       to use for this application automatically.
+remote: See https://devcenter.heroku.com/articles/buildpacks
+remote: 
+remote: Verifying deploy....
+remote: 
+remote: !   Push rejected to demo-clog-website.
+remote: 
+To https://git.heroku.com/demo-clog-website.git
+ ! [remote rejected] master -> master (pre-receive hook declined)
+error: failed to push some refs to 'https://git.heroku.com/demo-clog-website.git'
+{% endraw %}
+{% endhighlight %}
 
 Awww snap! We seem to be missing something as Heroku rejected to build the app. Heroku is capable of hosting apps with all kind of different tech stacks. The way that works is through special buildpacks that configure the server. When we created our app we set the buildpack to an unofficial (yet, usuable!) buildpack for Rust. But we are still missing two important files to give Heroku the right hints how to treat our program.
 
@@ -424,7 +460,18 @@ After we created and committed both files to our repository we deploy our site a
 
 The live site just yields a generic Heroku error page, so let's dig into the output of the `heroku logs` command.
 
-![Heroku Application Error](/assets/heroku_timeout.png)
+{% highlight bash %}
+{% raw %}
+heroku[web.1]: Starting process with command `./target/release/clog-website`
+app[web.1]: Listening on http://127.0.0.1:6767
+app[web.1]: Ctrl-C to shutdown server
+heroku[web.1]: Error R10 (Boot timeout) -> Web process failed to bind to $PORT within 60 seconds of launch
+heroku[web.1]: Stopping process with SIGKILL
+heroku[web.1]: State changed from starting to crashed
+heroku[web.1]: State changed from crashed to starting
+heroku[web.1]: Process exited with status 137
+{% endraw %}
+{% endhighlight %}
 
 From the logs we can clearly see that the server started successfuly but was shut down after a 60 seconds timeout because it failed to bind to `$PORT`.
 
