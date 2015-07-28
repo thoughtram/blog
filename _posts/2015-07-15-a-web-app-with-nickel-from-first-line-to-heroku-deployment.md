@@ -1,13 +1,13 @@
 ---
 layout:     post
-title:      "A web app with Nickel: From first line to heroku deployment"
+title:      "A web app with Nickel: From first line to Heroku deployment"
 date:       2015-07-28
 relatedLinks:
   -
     title: "Rust's Ownership model for JavaScript developers"
     url: "http://blog.thoughtram.io/rust/2015/05/11/rusts-ownership-model-for-javascript-developers.html"
 
-summary:    "Occasionally people ask about Nickel projects that they can dig into to get a feel of some real world Nickel code. In case you never heard of Nickel, it's an web application server written in Rust. We thought it'd be nice to write a simple web application with Nickel, deploy it to heroku and blog about it."
+summary:    "Occasionally people ask about Nickel projects that they can dig into to get a feel of some real world Nickel code. In case you never heard of Nickel, it's an web application server written in Rust. We thought it'd be nice to write a simple web application with Nickel, deploy it to Heroku and blog about it."
 
 categories:
 - rust
@@ -19,7 +19,7 @@ author: christoph_burgdorf
 ---
 
 
-Occasionally people ask about [Nickel](nickel.rs) projects that they can dig into to get a feel of some real world Nickel code. In case you never heard of Nickel, it's an web application server written in Rust. We thought it'd be nice to write a simple web application with Nickel, deploy it to heroku and blog about it.
+Occasionally people ask about [Nickel](nickel.rs) projects that they can dig into to get a feel of some real world Nickel code. In case you never heard of Nickel, it's an web application server written in Rust. We thought it'd be nice to write a simple web application with Nickel, deploy it to Heroku and blog about it.
 
 ##Defining the scope of the application
 
@@ -29,7 +29,7 @@ So let's build a website that let's you generate a nicely formatted changelog fo
 
 - Use nickel to build a JSON API that can be consumed from an SPA
 - Make nickel serve an Angular application as static html so that frontend and backend are nicely decoupled.
-- Deploy that app to heroku
+- Deploy that app to Heroku
 
 ##Bootstrapping our Nickel application
 
@@ -380,11 +380,11 @@ We will create two individual mounts for `assets` and `assets/templates` so that
 
 Voilà! We have a real working website.
 
-##Deploying our application to heroku
+##Deploying our application to Heroku
 
-Now that we have our app running just fine on our development machine wouldn't it be nice to actually ship it for the world to see? Let's do exactly that and host it on heroku. Hosting a Nickel app on heroku is quite easy these days. If you've never worked with heroku before, you first need to register at their website and download the [Heroku CLI tool](https://toolbelt.heroku.com/) that we will use for the next steps.
+Now that we have our app running just fine on our development machine wouldn't it be nice to actually ship it for the world to see? Let's do exactly that and host it on Heroku. Hosting a Nickel app on Heroku is quite easy these days. If you've never worked with Heroku before, you first need to register at their website and download the [Heroku CLI tool](https://toolbelt.heroku.com/) that we will use for the next steps.
 
-Once you have the heroku CLI installed and logged in, you can simply create the app endpoint form your existing repository through the following command.
+Once you have the Heroku CLI installed and logged in, you can simply create the app endpoint form your existing repository through the following command.
 
 {% highlight bash %}
 {% raw %}
@@ -392,13 +392,13 @@ heroku create demo-clog-website --buildpack https://github.com/emk/heroku-buildp
 {% endraw %}
 {% endhighlight %}
 
-Notice that the first parameter of the `heroku create` command will be the name that heroku will use as a subdomain to serve your site. So in this case it's `http://demo-clog-website.herokuapp.com`.
+Notice that the first parameter of the `heroku create` command will be the name that Heroku will use as a subdomain to serve your site. So in this case it's `http://demo-clog-website.herokuapp.com`.
 
 This will also add a new git remote called `heroku` to your repository. Deploying the site is as simple as running `git push heroku master`.
 
 ![Heroku Rejected Buildpack](/assets/heroku_rejected.png)
 
-Awww snap! We seem to be missing something as heroku rejected to build the app. Heroku is capable of hosting apps with all kind of different tech stacks. The way that works is through special buildpacks that configure the server. When we created our app we set the buildpack to an unofficial (yet, usuable!) buildpack for Rust. But we are still missing two important files to give heroku the right hints how to treat our program.
+Awww snap! We seem to be missing something as Heroku rejected to build the app. Heroku is capable of hosting apps with all kind of different tech stacks. The way that works is through special buildpacks that configure the server. When we created our app we set the buildpack to an unofficial (yet, usuable!) buildpack for Rust. But we are still missing two important files to give Heroku the right hints how to treat our program.
 
 **RustConfig**
 {% highlight bash %}
@@ -416,13 +416,13 @@ web: ./target/release/clog-website
 {% endraw %}
 {% endhighlight %}
 
-The `Procfile` tells heroku which command to invoke to start the process. Since `Cargo` puts the executable at `target/release/our-app-name` we have to set this up accordingly.
+The `Procfile` tells Heroku which command to invoke to start the process. Since `Cargo` puts the executable at `target/release/our-app-name` we have to set this up accordingly.
 
 After we created and commited both files to our repository we deploy our site again with `git push heroku master`. The deployment should run just fine so let's check the live site.
 
 ![Heroku Application Error](/assets/heroku_application_error.png)
 
-The live site just yields a generic heroku error page, so let's dig into the output of the `heroku logs` command.
+The live site just yields a generic Heroku error page, so let's dig into the output of the `heroku logs` command.
 
 ![Heroku Application Error](/assets/heroku_timeout.png)
 
