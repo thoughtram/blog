@@ -6,7 +6,7 @@ relatedLinks:
     title: "Using ES6 with Angular today"
     url: "http://blog.thoughtram.io/angularjs/es6/2015/01/23/exploring-angular-1.3-using-es6.html"
 date:       2015-07-07
-update_date_: 2015-07-07
+update_date: 2015-07-07
 summary:    "Yes, this is yet another article on services vs factories in AngularJS. Why is that? Well... it turns out that despite the fact that this question pops up every week or so, it also turns out that the current web doesn't really promote the actual best practice. This article explains once and for all, what the difference between services and factories is and why you should use service."
 
 categories: 
