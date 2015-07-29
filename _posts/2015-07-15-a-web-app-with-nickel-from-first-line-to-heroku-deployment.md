@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "A web app with Nickel: From first line to Heroku deployment"
-date:       2015-07-28
+date:       2015-07-29
 relatedLinks:
   -
     title: "Rust's Ownership model for JavaScript developers"
