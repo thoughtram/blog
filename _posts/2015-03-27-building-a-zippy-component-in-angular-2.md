@@ -314,6 +314,18 @@ But for simplicity's sake, we stick with the shorthand synax. There's nothing mo
 {% endraw %}
 {% endhighlight %}
 
+Now we need to change the template of zippy to make title to appear at correct place, let's udpate the template for zippy title.
+
+{% highlight html %}
+{% raw %}
+...
+<div class="zippy__title" (click)="toggle()">
+  {{ visible ? '&blacktriangledown;' : '&blacktriangleright;' }} {{title}}
+</div>
+...
+{% endraw %}
+{% endhighlight %}
+
 ## Insertion Points instead of Transclusion
 
 Our component's title is configurable. But what we really want to enable, is that a consumer can decide what goes **into** the component and what not, right?
