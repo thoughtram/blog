@@ -75,7 +75,7 @@ The APIs of a DOM element are:
 - **Methods** - As already mentioned, methods are just the functions on a DOM object that we can call and execute in JavaScript. `setAttribute()` for example is such a method.
 - **Events** - Of course, last but not least, we have events. The bread and butter when it comes to notifying subscribers that something happened. Like `click`, `focus` or `input`. DOM elements can also fire their own custom events.
 
-The most interesting part here, is how attributes and properties behave on a DOM object. Especially when we realise, that they behave differently across elements.
+The most interesting part here, is how attributes and properties behave on a DOM object. Especially when we realize, that they behave differently across elements.
 
 Let's just take this simple `input` example here:
 
