@@ -1,7 +1,36 @@
 ---
 layout:     post
 title:      "Exploring Angular 1.3: One-time bindings"
+relatedLinks:
+  -
+    title: "Exploring Angular 1.3: ng-model-options"
+    url: "http://blog.thoughtram.io/angularjs/2014/10/19/exploring-angular-1.3-ng-model-options.html"
+  -
+    title: "Exploring Angular 1.3: Angular-hint"
+    url: "http://blog.thoughtram.io/angularjs/2014/11/06/exploring-angular-1.3-angular-hint.html"
+  -
+    title: "Exploring Angular 1.3: Stateful Filters"
+    url: "http://blog.thoughtram.io/angularjs/2014/11/19/exploring-angular-1.3-stateful-filters.html"
+  -
+    title: "Exploring Angular 1.3: ES6 Style Promises"
+    url: "http://blog.thoughtram.io/angularjs/2014/12/18/exploring-angular-1.3-es6-style-promises.html"
+  -
+    title: "Exploring Angular 1.3: Disabling Debug Info"
+    url: "http://blog.thoughtram.io/angularjs/2014/12/22/exploring-angular-1.3-disabling-debug-info.html"
+  -
+    title: "Exploring Angular 1.3: Binding to Directive Controllers"
+    url: "http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html"
+  -
+    title: "Exploring Angular 1.3: Validators Pipeline"
+    url: "http://blog.thoughtram.io/angularjs/2015/01/11/exploring-angular-1.3-validators-pipeline.html"
+  -
+    title: "Exploring Angular 1.3: Go fast with $applyAsync"
+    url: "http://blog.thoughtram.io/angularjs/2015/01/14/exploring-angular-1.3-speed-up-with-applyAsync.html"
+  -
+    title: "Exploring Angular 1.3: ngMessages"
+    url: "http://blog.thoughtram.io/angularjs/2015/01/23/exploring-angular-1.3-ngMessages.html"
 date:       2014-10-14
+update_date: 2015-08-13
 summary:    Angular 1.3 is finally out and it comes with tons of new features, bug fixes, improvements but also breaking changes. This is the first article of "Exploring Angular 1.3".
 isExploringAngular13Article: true
 

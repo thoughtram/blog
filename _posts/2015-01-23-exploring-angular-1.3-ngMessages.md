@@ -6,9 +6,34 @@ relatedLinks:
     title: "ngMessages revisited"
     url: "http://blog.thoughtram.io/2015/06/06/ng-messages-revisited.html"
   -
-    title: "Exploring Angular 1.3: Validators pipeline"
+    title: "Exploring Angular 1.3: One-time bindings"
+    url: "http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html"
+  -
+    title: "Exploring Angular 1.3: ng-model-options"
+    url: "http://blog.thoughtram.io/angularjs/2014/10/19/exploring-angular-1.3-ng-model-options.html"
+  -
+    title: "Exploring Angular 1.3: Angular-hint"
+    url: "http://blog.thoughtram.io/angularjs/2014/11/06/exploring-angular-1.3-angular-hint.html"
+  -
+    title: "Exploring Angular 1.3: Stateful Filters"
+    url: "http://blog.thoughtram.io/angularjs/2014/11/19/exploring-angular-1.3-stateful-filters.html"
+  -
+    title: "Exploring Angular 1.3: ES6 Style Promises"
+    url: "http://blog.thoughtram.io/angularjs/2014/12/18/exploring-angular-1.3-es6-style-promises.html"
+  -
+    title: "Exploring Angular 1.3: Disabling Debug Info"
+    url: "http://blog.thoughtram.io/angularjs/2014/12/22/exploring-angular-1.3-disabling-debug-info.html"
+  -
+    title: "Exploring Angular 1.3: Binding to Directive Controllers"
+    url: "http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html"
+  -
+    title: "Exploring Angular 1.3: Validators Pipeline"
     url: "http://blog.thoughtram.io/angularjs/2015/01/11/exploring-angular-1.3-validators-pipeline.html"
+  -
+    title: "Exploring Angular 1.3: Go fast with $applyAsync"
+    url: "http://blog.thoughtram.io/angularjs/2015/01/14/exploring-angular-1.3-speed-up-with-applyAsync.html"
 date:       2015-01-23
+update_date: 2015-08-13
 summary:    "Our blog series on Angular 1.3 already covers tons of information about the latest bigger release of the framework. Some of the articles cover form related improvements in features like the newly introduced validators pipeline. However, there's another bigger feature that the 1.3 release brings to the table, which is the ngMessages module. In this article we're going to discuss what it does and how it improves the way we handle validation messages when dealing with forms."
 
 isExploringAngular13Article: true
