@@ -12,7 +12,7 @@ relatedLinks:
     title: "Builing a zippy component in Angular 2"
     url: "http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html"
 date:       2015-05-18
-update_date: 2015-06-20
+update_date: 2015-08-17
 summary:    "Dependency injection has always been one of Angular's biggest features and selling points. It allows us to inject dependencies in different code components, without needing to know, how those dependencies are created. However, it turns out that the current dependency injection system in Angular 1 has some problems that need to be solved in Angular 2, in order to build the next generation framework. In this article, we're going to explore the new dependency injection system for future generations."
 
 categories: 
@@ -283,58 +283,8 @@ bind(Engine).toFactory((dep1, dep2) => {
 }, [Token1, Token2])
 {% endhighlight %}
 
-**Asynchronous Factories**
 
-What if an engine needs some data to be instantiated that is asynchronously fetched frome the server first? No problem, `.toAsyncFactory()` got us covered:
-
-{% highlight js %}
-bind(Engine).toAsyncFactory(() => {
-  return new Promise((resolve) => {
-    fetch('/engineData.json')
-      .then((data) => {
-        resolve(new Engine(data));
-      });
-  });
-})
-{% endhighlight %}
-
-An async factory needs to return a promise that either resolves or rejects. Here we're binding the token `Engine` to a factory function that creates a promise that resolves with a new instance of `Engine` and data.
-
-Awesome, even asynchronicity is not a problem anymore. If we want to get an instance of that particular engine, we need to use `injector.asyncGet()` instead of `injector.get()`, since the injector needs to decide between those two strategies.
-
-## More decorators
-
-There are a couple more decorators next to `Inject` that make injecting dependencies a breeze. Here's what they look like.
-
-**@InjectPromise**
-
-When `toAsyncFactory()` is used for a binding, we get a promise. Therefore, we have another decorator `@InjectPromise` that explicitly tells the DI to inject a promise when we ask for a type that is bound to an async factory.
-
-{% highlight js %}
-class Car {
-  constructor(@InjectPromise(Engine) enginePromise) {
-    enginePromise.then((engine) => {
-
-    });
-  }
-}
-{% endhighlight %}
-
-**@InjectLazy**
-
-Sometimes we want to decide conditionally if we really want to instantiate a dependency or not. `@InjectLazy` exposes us the factory function that is otherwise used internally by the DI system to create an object.
-
-{% highlight js %}
-class Car {
-  constructor(@InjectFactory(Engine) engineFn) {
-    if (condition) {
-      this.engine = engineFn();
-    }
-  }
-}
-{% endhighlight %}
-
-**@Optional**
+## Optional Dependencies
 
 The `@Optional` decorator lets us declare dependencies as optional. This comes in handy if, for example, our application expects a third-party library, and in case it's not available, it can fallback.
 
@@ -349,7 +299,7 @@ class Car {
 }
 {% endhighlight %}
 
-Those are all DI specific decorators that the framework comes with and meant to be used by the outside world. As you can see, Angular 2's DI solves pretty much all issues we have with Angular 1's DI. But there's still one thing we haven't talked about yet. Does the new DI still create singletons?
+As you can see, Angular 2's DI solves pretty much all issues we have with Angular 1's DI. But there's still one thing we haven't talked about yet. Does the new DI still create singletons? The answer is yes.
 
 ## Transient Dependencies and Child Injectors
 
@@ -363,11 +313,11 @@ bind(Engine).toFactory(() => {
 })
 {% endhighlight %}
 
-We can create a **child injector** using `Injector.createAndResolveChild()`. A child injector introduces it's own bindings and an instance of an object will be different from the parent injector's instance.
+We can create a **child injector** using `Injector.resolveAndCreateChild()`. A child injector introduces it's own bindings and an instance of an object will be different from the parent injector's instance.
 
 {% highlight js %}
-var injector = Injector.createAndResolve([Engine]);
-var childInjector = Injector.createAndResolveChild([Engine]);
+var injector = Injector.resolveAndCreate([Engine]);
+var childInjector = injector.resolveAndCreateChild([Engine]);
 
 injector.get(Engine) !== childInjector.get(Engine);
 {% endhighlight %}
@@ -377,6 +327,8 @@ Child injectors are even more interesting. It turns out that a child injector wi
 <img style="margin-bottom: 2em;" alt="Child injectors" src="/images/transient-dependencies-4.svg">
 
 The graphic shows three injectors where two of them are child injectors. Each injector gets it's own configuration of bindings. Now, if we ask the second child injector for an instance of type `Car`, the car object will be created by that child injector. However, the engine will be created by the first child injector and the tires and doors will be created by the outer most parent injector. It kind of works like a prototype chain.
+
+We can even configure the **visibility** of dependencies, and also until where a child injector should look things up. However, this will be covered in another article.
 
 ## How is it used in Angular 2 then?
 
@@ -444,12 +396,12 @@ class App {
 
 Awesome! All of a sudden, we don't have any injector machinery at all anymore. But there's one last thing: What if we want a different binding configuration in a specific component?
 
-Lets say we have `NameService` as application wide injectable for the type `NameService`, but one particular component should get a different one? This is where the `@Component` annotations' `appInjector` property comes in. It allows us to add bindings to a specific component (and it's child components).
+Lets say we have `NameService` as application wide injectable for the type `NameService`, but one particular component should get a different one? This is where the `@Component` annotations' `bindings` property comes in. It allows us to add bindings to a specific component (and it's child components).
 
 {% highlight js %}
 @Component({
   selector: 'app',
-  appInjector: [NameService]
+  bindings: [NameService]
 })
 @View({
   template: '<h1>Hello {{name}}!</h1>'
@@ -459,10 +411,10 @@ class App {
 }
 {% endhighlight %}
 
-To make things clear: `appInjector` doesn't configure the instances that will be injected. It creates a child injector's binding recipes.
+To make things clear: `bindings` doesn't configure the instances that will be injected. It creates a child injector's binding recipes. As mentioned earlier, we can also configure the visibility of our bindings, to be even more specific which component can inject what. E.g. the `viewBindings` property allows to make dependencies only available for a component's view, but not it's children. We're going to cover that in another article.
 
 ## Conclusion
 
-The new dependency injection system in Angular solves all the problems that we have with the current DI in Angular 1. No name collisions anymore. Dependencies can be injected synchronous or asynchronous. It's an isolated component of the framework that can be used as standalone system, without Angular 2 itself. And we finally have proper factories.
+The new dependency injection system in Angular solves all the problems that we have with the current DI in Angular 1. No name collisions anymore. It's an isolated component of the framework that can be used as standalone system, without Angular 2 itself.
 
-I gave a talk about that topic at [JSConf Budapest 2015](http://jsconfbp.com), <s>you can find the slides [here](http://pascalprecht.github.io/slides/dependency-injection-for-future-generations/)</s>. An updated version of the slide deck is [here](http://pascalprecht.github.io/slides/di-in-angular-2/#/). I would like to thank [Merrick](http://twitter.com/iammerrick) for letting me use some ideas of his talk at ng-vegas, and [Vojta](http://twitter.com/vojtajina) who built the original version of the new dependency injection system for Angular 2.
+I gave a talk about that topic at [JSConf Budapest 2015](http://jsconfbp.com), <s>you can find the slides <a href="http://pascalprecht.github.io/slides/dependency-injection-for-future-generations/">here</a></s>. An updated version of the slide deck is [here](http://pascalprecht.github.io/slides/di-in-angular-2/#/). I would like to thank [Merrick](http://twitter.com/iammerrick) for letting me use some ideas of his talk at ng-vegas, and [Vojta](http://twitter.com/vojtajina) who built the original version of the new dependency injection system for Angular 2.
