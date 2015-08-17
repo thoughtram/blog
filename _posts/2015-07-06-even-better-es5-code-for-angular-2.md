@@ -79,7 +79,7 @@ Let's take our `HelloComponent` and refactor it with the better syntax:
 
 {% highlight javascript %}
 {% raw %}
-var HelloComponent = angular.
+var HelloComponent = ng.
   Component({
     selector: 'hello-cmp'
   })
@@ -108,7 +108,7 @@ The `extends` property allows us to extend existing classes or components. Here'
 
 {% highlight javascript %}
 {% raw %}
-var OtherComponent = angular
+var OtherComponent = ng
   .Component({
     selector: 'other-cmp'
   })
@@ -121,7 +121,7 @@ var OtherComponent = angular
     }
   })
 
-var HelloComponent = angular.
+var HelloComponent = ng.
   Component({
     selector: 'hello-cmp'
   })
@@ -159,7 +159,7 @@ That's pretty straight forward. But why do properties have to be arrays otherwis
 
 {% highlight javascript %}
 {% raw %}
-var HelloComponent = angular.
+var HelloComponent = ng.
   Component({
     selector: 'hello-cmp',
     viewInjector: [Service]
