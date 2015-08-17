@@ -160,10 +160,22 @@ There's a lot more to explore about decorators, but that is out of the scope of 
 
 As you might know, the Angular team announced earlier this year that they're going to drop the term "AtScript" in favour of TypeScript, since both languages seem to solve the same problems. In addition, there were announcements that TypeScript will support annotations **and** decorators once version 1.5 alpha is out.
 
-It turns out that it actually doesn't. TypeScript supports decorators, but doesn't know about Angular 2 specific annotations. Which makes sense, because they are an implementation detail of Angular. That also means that either we as consumers, or the framework needs to provide those decorators in order to make the code compile. Only the latter really makes sense. Luckily, generators for both, annotation and parameter, decorators have landed in the Angular 2 code base lately.
+It turns out that it actually doesn't. TypeScript supports decorators, but doesn't know about Angular 2 specific annotations. Which makes sense, because they are an implementation detail of Angular. That also means that either we as consumers, or the framework needs to provide those decorators in order to make the code compile. Only the latter really makes sense. Luckily, generators for both, annotation and parameter, decorators have landed in the Angular 2 code base lately. So what the famework behind the scenes does, is it comes with annotation implementations, which are then passed to the decorator generator to make decorators out of them. Then also why we have to write the following code when transpiling with traceur:
+
+{% highlight javascript %}
+{% raw %}
+import {
+  ComponentAnnotation as Component,
+  ViewAnnotation as View
+} from 'angular2/angular2';
+{% endraw %}
+{% endhighlight %}
+
+As we can see, we're actually importing the annotation rather than the decorator. This is simply just because traceur doesn't understand decorators, but does understand `@Component` and `@View` annotations. Which is why we're also importing them with these namespaces respectively.
+
 
 ## Conclusion
 
-"AtScript Annotations" and decorators are nearly the same thing. From a consumer perspective we have exactly the same syntax. The only thing that differs is that we don't have control over how AtScript annotations are added as meta data to our code. Whereas decorators is rather an interface to build something that ends up as annotation. Over a long term, however, we can just focus on decorators, since those are a real proposed standard. AtScript is TypeScript and TypeScript implements decorators.
+"AtScript Annotations" and decorators are nearly the same thing. From a consumer perspective we have exactly the same syntax. The only thing that differs is that we don't have control over how AtScript annotations are added as meta data to our code. Whereas decorators are rather an interface to build something that ends up as annotation. Over a long term, however, we can just focus on decorators, since those are a real proposed standard. AtScript is deprecated, and TypeScript implements decorators.
 
 I hope this article made some things clear though.
