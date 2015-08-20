@@ -15,14 +15,14 @@ relatedLinks:
     title: "Angular ES5 Demo"
     url: "http://plnkr.co/edit/XmZkHzl407z93R5Kf0pv?p=preview"
 date:       2015-05-09
-update_date_: 2015-07-06
+update_date: 2015-07-06
 summary:    "Angular 2 is written in TypeScript to take advantage of language features like types and meta data annotations through decorators. While this is great for tooling, a lot of people don't like the syntax of decorators and maybe even ES6 classes. This article discusses how to write an Angular 2 application in ES5."
 
 categories: 
 - angular
 
 tags:
-- angular
+- angular2
 
 author: pascal_precht
 ---

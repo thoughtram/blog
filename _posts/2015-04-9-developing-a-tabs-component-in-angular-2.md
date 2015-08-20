@@ -13,7 +13,7 @@ categories:
 - angular
 
 tags:
-- angular
+- angular2
 
 author: pascal_precht
 ---
