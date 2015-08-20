@@ -6,13 +6,15 @@ relatedLinks:
     title: "Talk: Dependency Injection for Future Generations"
     url: "https://www.youtube.com/watch?v=8c-qv9TisVE"
   -
+    title: "Host and Visibility in Angular 2's Dependency Injection"
+  -
     title: "The difference between decorators and annotations"
     url: "http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html"
   -
     title: "Builing a zippy component in Angular 2"
     url: "http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html"
 date:       2015-05-18
-update_date: 2015-08-17
+update_date_: 2015-08-20
 summary:    "Dependency injection has always been one of Angular's biggest features and selling points. It allows us to inject dependencies in different code components, without needing to know, how those dependencies are created. However, it turns out that the current dependency injection system in Angular 1 has some problems that need to be solved in Angular 2, in order to build the next generation framework. In this article, we're going to explore the new dependency injection system for future generations."
 
 categories: 
@@ -411,7 +413,7 @@ class App {
 }
 {% endhighlight %}
 
-To make things clear: `bindings` doesn't configure the instances that will be injected. It creates a child injector's binding recipes. As mentioned earlier, we can also configure the visibility of our bindings, to be even more specific which component can inject what. E.g. the `viewBindings` property allows to make dependencies only available for a component's view, but not it's children. We're going to cover that in another article.
+To make things clear: `bindings` doesn't configure the instances that will be injected. It creates a child injector's binding recipes. As mentioned earlier, we can also configure the visibility of our bindings, to be even more specific which component can inject what. E.g. the `viewBindings` property allows to make dependencies only available for a component's view, but not it's children. <s>We're going to cover that in another article.</s> Dependency injection host and visibility are covered in [this article](http://blog.thoughtram.io/angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html).
 
 ## Conclusion
 
