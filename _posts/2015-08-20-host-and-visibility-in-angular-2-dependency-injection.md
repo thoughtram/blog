@@ -6,6 +6,9 @@ relatedLinks:
     title: "Dependency Injection in Angular 2"
     url: "http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html"
   -
+    title: "Angular 2 Bits: Unified Dependency Injection"
+    url: "http://victorsavkin.com/post/102965317996/angular-2-bits-unified-dependency-injection"
+  -
     title: "The difference between Annotations and Decorators"
     url: "http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html"
   -
