@@ -224,7 +224,7 @@ class VideoPlayer {
 {% endraw %}
 {% endhighlight %}
 
-What now happens is, that `<custom-video>` would get an instance of `SpecificVideoService` but it actually needs an instance of `VideoService`. However, do to the lookup that happens in the injector tree, the binding defined in `<video-player>` is the next one that is available. How can we get around that? This is exactly where `viewBindings` come in. With `viewBindings` we can tell the DI system very specifically, which bindings are available to which child injectors (Light DOM or Shadow DOM).
+What now happens is, that `<custom-video>` would get an instance of `SpecificVideoService` but it actually needs an instance of `VideoService`. However, due to the lookup that happens in the injector tree, the binding defined in `<video-player>` is the next one that is available. How can we get around that? This is exactly where `viewBindings` come in. With `viewBindings` we can tell the DI system very specifically, which bindings are available to which child injectors (Light DOM or Shadow DOM).
 
 To make our code work as expected, all we have to do is to make the `VideoService` binding of `<video-player>` explicitly available only for it's view:
 
