@@ -7,6 +7,7 @@ relatedLinks:
     url: "https://www.youtube.com/watch?v=8c-qv9TisVE"
   -
     title: "Host and Visibility in Angular 2's Dependency Injection"
+    url: "http://blog.thoughtram.io/angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html"
   -
     title: "The difference between decorators and annotations"
     url: "http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html"
