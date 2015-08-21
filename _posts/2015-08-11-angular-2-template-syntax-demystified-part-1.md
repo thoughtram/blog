@@ -21,13 +21,13 @@ tags:
 author: pascal_precht
 ---
 
-I think we've been all through this. We see Angular 2 template code the very first time and all of a sudden we have these weird brackets and paranthesis spread all over our HTML. Around a year ago I've written an article about how to [integrate Web Components with AngularJS](https://pascalprecht.github.io/2014/10/25/integrating-web-components-with-angularjs/), which explains how we can use, or not use, Web Components in AngularJS applications today. If you haven't read it yet, I highly recommend you doing so. It's old but the content is still true.
+I think we've been all through this. We see Angular 2 template code the very first time and all of a sudden we have these weird brackets and parentheses spread all over our HTML. Around a year ago I've written an article about how to [integrate Web Components with AngularJS](https://pascalprecht.github.io/2014/10/25/integrating-web-components-with-angularjs/), which explains how we can use, or not use, Web Components in AngularJS applications today. If you haven't read it yet, I highly recommend you doing so. It's old but the content is still true.
 
 It also touches on the new template syntax in Angular 2 and how it tends to solve the existing issues. However, it still seems a mystery for a lot of people and that's why we're going to explore the Angular 2's template syntax in this article. **Please note** that this is the first part of "Angular 2 Template Syntax Demystified". There's going to be another article soon.
 
 ## What it looks like
 
-Just to make sure that everyone knows what we are talking about when mentioning "weird" brackets and paranthesis in our HTML, we're going to make a quick recap on what this template syntax looks like.
+Just to make sure that everyone knows what we are talking about when mentioning "weird" brackets and parentheses in our HTML, we're going to make a quick recap on what this template syntax looks like.
 
 If you've read the [step-by-step guide](https://angular.io/docs/js/latest/guide/) you've probably seen the following syntaxes:
 
@@ -71,7 +71,7 @@ Property binding is the syntax where we use brackets to bind values to an elemen
 The APIs of a DOM element are:
 
 - **Attributes** - Attributes are the things we use in HTML to provide elements with data. In fact, attributes are the only way in plain HTML to put values into an element. However, the type of an attribute value in HTML is always `String`, which is not always what we want especially when building applications with frameworks like Angular.
-- **Properties** - Properties are simply the properties of a DOM object. E.g. if we query a DOM element with `document.querySelector()`, we get a DOM object back which simply has it's own properties and methods. Those properties are no special in any way, they behave like any other object properties in JavaScript. That also means we can assign any kind of value to a property, not just strings.
+- **Properties** - Properties are simply the properties of a DOM object. E.g. if we query a DOM element with `document.querySelector()`, we get a DOM object back which simply has its own properties and methods. Those properties are no special in any way, they behave like any other object properties in JavaScript. That also means we can assign any kind of value to a property, not just strings.
 - **Methods** - As already mentioned, methods are just the functions on a DOM object that we can call and execute in JavaScript. `setAttribute()` for example is such a method.
 - **Events** - Of course, last but not least, we have events. The bread and butter when it comes to notifying subscribers that something happened. Like `click`, `focus` or `input`. DOM elements can also fire their own custom events.
 
@@ -94,7 +94,7 @@ input.value // 'thoughtram'
 {% endraw %}
 {% endhighlight %}
 
-Alright, we access the `value` property and as expected, it returns the string `thoughtram`. But what happens when we change that value and read from it's attribute?
+Alright, we access the `value` property and as expected, it returns the string `thoughtram`. But what happens when we change that value and read from its attribute?
 
 {% highlight javascript %}
 {% raw %}
@@ -103,7 +103,7 @@ input.getAttribute('value'); // 'thoughtram'
 {% endraw %}
 {% endhighlight %}
 
-As we can see, the property value is not reflected back to the attribute. There are very few elements that actually reflect their property value back to it's attribute. For example the `src` property of an `img` element. Changing it's property will also change it's attribute. In addition to that, a property can really get any value, whereas an attribute is always a string.
+As we can see, the property value is not reflected back to the attribute. There are very few elements that actually reflect their property value back to its attribute. For example the `src` property of an `img` element. Changing its property will also change its attribute. In addition to that, a property can really get any value, whereas an attribute is always a string.
 
 So how could we pass objects to directives in AngularJS? Well, as most of us know, there's this directive definition object (DDO), which allows us to specify how directives' scope properties (or controller properties) are bound to the outside world. The following code for example, allows us to pass an expression to a directive via attributes, that actually results in an object once evaluated.
 
@@ -160,7 +160,7 @@ That's why Angular 2 always binds to properties rather than attributes (as Angul
 {% endraw %}
 {% endhighlight %}
 
-Another feature that property binding brings to the table is **escaping**. Just think about the `img` tag and it's `src` attribute. What happens when the browser ecounters an `img` tag with a source when parsing the HTML? Right, it tries to request the source of that image. If we'd have HTML like this:
+Another feature that property binding brings to the table is **escaping**. Just think about the `img` tag and its `src` attribute. What happens when the browser ecounters an `img` tag with a source when parsing the HTML? Right, it tries to request the source of that image. If we'd have HTML like this:
 
 {% highlight html %}
 {% raw %}
@@ -216,7 +216,7 @@ That's why in Angular 2 we have the parethesis syntax where we can bind to **any
 {% endraw %}
 {% endhighlight %}
 
-The parenthesis simply tell Angular that the expression inside the symbols is an event name that it needs to add an event listener for. `statement()` is simply the statement expression that gets executed whenever such an event is fired on that element. Having such a generic binding, all directives that intercepted for us in AngularJS will go away in Angular 2. This framework is getting simpler and simpler.
+The parentheses simply tell Angular that the expression inside the symbols is an event name that it needs to add an event listener for. `statement()` is simply the statement expression that gets executed whenever such an event is fired on that element. Having such a generic binding, all directives that intercepted for us in AngularJS will go away in Angular 2. This framework is getting simpler and simpler.
 
 **Event Bubbling**
 
