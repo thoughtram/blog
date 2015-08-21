@@ -140,7 +140,7 @@ app.service('OtherService', function (Car) {
 
 This is all cool but it turns out, that the existing DI has some problem though:
 
-- **Internal cache** - Dependencies are served as singletons. Whenver we ask for a service, it is created only once per application lifecycle. Creating factory machinery is quite hairy.
+- **Internal cache** - Dependencies are served as singletons. Whenever we ask for a service, it is created only once per application lifecycle. Creating factory machinery is quite hairy.
 - **Synchronous by default** - There's no clean way to ask for asynchronous dependencies in Angular 1.
 - **Namespace collision** - There can only be one token of a "type" in an application. If we have a car service, and there's a third-party extension that also introduces a service with the same name, we have a problem.
 - **Built into the framework** - Angular 1's DI is baked right into the framework. There's no way for us to use it decoupled as a standalone system.
