@@ -107,7 +107,7 @@ We need to maintain a `main` function now. Doing that manually can be quite hair
 
 {% highlight js %}
 function main() {
-  var injector = new Injector(...)A
+  var injector = new Injector(...)
   var car = injector.get(Car);
 
   car.drive();
@@ -149,7 +149,7 @@ These problems need to be solved in order to take the DI of Angular to the next 
 
 ## Dependency Injection in Angular 2
 
-Before we take a look at actual code, lets first understand the concept behind the new DI in Angular 2. The following graphic illustrates required components in the new DI system:
+Before we take a look at actual code, let's first understand the concept behind the new DI in Angular 2. The following graphic illustrates required components in the new DI system:
 
 <img alt="DI in Angular 2" src="/images/di-in-angular2-5.svg" style="margin-top: 3em;">
 
