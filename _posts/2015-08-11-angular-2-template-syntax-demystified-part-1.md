@@ -9,7 +9,7 @@ relatedLinks:
     title: "Binding to directive controllers"
     url: "http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html"
 date:       2015-08-11
-update_date_: 2015-08-11
+update_date: 2015-08-25
 summary:    "Angular 2 introduces it's own kind of template syntax in order to implement different binding strategies. This enables the framework to work with any element, no matter if it's a web component or a native one. However, looking at this syntax the very first time raises a lot of questions. This article discusses the template syntax in Angular 2, why it's there and how it works."
 
 categories: 
@@ -249,7 +249,7 @@ Of course, using parenthesis (with or without `^`) is also just a shorthand synt
 {% highlight html %}
 {% raw %}
 <ANY on-{EVENT_NAME}="{STATEMENT}"></ANY>
-<ANY bind-bubble-{EVENT_NAME}="{STATEMENT}"></ANY>
+<ANY onbubble-{EVENT_NAME}="{STATEMENT}"></ANY>
 {% endraw %}
 {% endhighlight %}
 
