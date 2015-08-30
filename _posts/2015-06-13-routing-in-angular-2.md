@@ -237,9 +237,9 @@ import { Contact } from './components/contact';
 ...
 
 @RouteConfig([
-  { path: '/', component: Start, as 'start'}
-  { path: '/about', component: About, as 'about'}
-  { path: '/contact', component: Contact, as 'contact'}
+  { path: '/', component: Start, as: 'start'},
+  { path: '/about', component: About, as: 'about'},
+  { path: '/contact', component: Contact, as: 'contact'},
 ])
 {% endhighlight %}
 
