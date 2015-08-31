@@ -17,7 +17,7 @@ author: christoph_burgdorf
 
 Time is a weird thing. When you are doing something you love, it just seems to rush by. Over one year passed since we officially [announced](http://blog.thoughtram.io/announcements/2014/06/23/announcing-our-first-workshop.html) thoughtram as project to create high quality trainings.
 
-Back then Pascal and I were both employed as Software Engineers at [CouchCommerce](http://www.couchcommerce.com/) where we had a stable job, cool technical challenges, lovely and talented co-workwers, a modern tech stack and very competitive salaries.
+Back then Pascal and I were both employed as Software Engineers at [CouchCommerce](http://www.couchcommerce.com/) where we had a stable job, cool technical challenges, lovely and talented co-workers, a modern tech stack and very competitive salaries.
 
 When we started thoughtram it was really just a side project for us to share our knowledge on another level. We already spoke a lot at meetups and conferences so it was something like the logical consequence for us to expand on that and run workshops. We didn't even bother to register a company when we started. We ran our first [workshop on Git](http://thoughtram.io/git-master-class.html) in September 2014 and the feedback was so overwhelmingly great that we founded thoughtram as a company right after that in October 2014.
 
