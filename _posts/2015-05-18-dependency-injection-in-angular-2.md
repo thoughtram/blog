@@ -18,7 +18,7 @@ relatedLinks:
     title: "Angular 2 Bits: Unified Dependency Injection"
     url: "http://victorsavkin.com/post/102965317996/angular-2-bits-unified-dependency-injection"
 date:       2015-05-18
-update_date: 2015-08-20
+update_date: 2015-09-03
 summary:    "Dependency injection has always been one of Angular's biggest features and selling points. It allows us to inject dependencies in different code components, without needing to know, how those dependencies are created. However, it turns out that the current dependency injection system in Angular 1 has some problems that need to be solved in Angular 2, in order to build the next generation framework. In this article, we're going to explore the new dependency injection system for future generations."
 
 categories: 
@@ -242,7 +242,7 @@ Angular 2's DI introduces a couple of other binding recipes which we explore in 
 
 ## Other binding instructions
 
-Sometimes, we don't want to get an instance of a class, but rather just a single value of something or a factory function where more configuration is needed. Asynchronous dependencies can also be part of our application, where binding to a simple class simple doesn't cut it. That's why the binding mechanism of Angular 2's DI comes with more than just one recipe. Lets take a quick look at them.
+Sometimes, we don't want to get an instance of a class, but rather just a single value of something or a factory function where more configuration is needed. That's why the binding mechanism of Angular 2's DI comes with more than just one recipe. Lets take a quick look at them.
 
 **Binding to values**
 
@@ -338,7 +338,7 @@ We can even configure the **visibility** of dependencies, and also until where a
 
 ## How is it used in Angular 2 then?
 
-Now that we've learned how the DI in Angular 2 works, you might wonder how it is used in the framework itself. Do we have to create injectors manually when we build Angular 2 components? Luckily, the Angular spent a lot of energy and time to find a nice API that hides all the injector machinery when building components in Angular 2.
+Now that we've learned how the DI in Angular 2 works, you might wonder how it is used in the framework itself. Do we have to create injectors manually when we build Angular 2 components? Luckily, the Angular team spent a lot of energy and time to find a nice API that hides all the injector machinery when building components in Angular 2.
 
 Lets take a look at the following simple Angular 2 component.
 
