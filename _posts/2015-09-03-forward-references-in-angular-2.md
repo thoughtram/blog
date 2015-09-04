@@ -6,19 +6,11 @@ relatedLinks:
     title: "Dependency Injection in Angular 2"
     url: "http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html"
   -
-    title: "Angular 2 Bits: Unified Dependency Injection"
-    url: "http://victorsavkin.com/post/102965317996/angular-2-bits-unified-dependency-injection"
-  -
-    title: "The difference between Annotations and Decorators"
-    url: "http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html"
-  -
-    title: "View Encapsulation in Angular 2"
-    url: "http://blog.thoughtram.io/angular/2015/06/29/shadow-dom-strategies-in-angular2.html"
-
     title: "Host and Visibility in Angular 2's Dependency Injection"
     url: "http://blog.thoughtram.io/angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html"
+
 date:       2015-09-03
-update_date: 2015-09-03
+update_date: 2015-09-04
 summary:    "Even though we already covered many aspects of the dependency injection system in Angular 2 there are still some features left that we haven't covered yet. Some of them more bold and some more subtile. In this article we like to explore forward references. Why they exist and how we can use them."
 
 categories:
@@ -34,7 +26,7 @@ author: christoph_burgdorf
 
 In our article on [Dependency Injection in Angular 2](http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html) we explored what dependency injection actually is, and how it is implemented in the Angular 2 framework. If you haven't read that article yet, I highly recommend you doing so, since this article is based on it.
 
-In a [previous article](http://blog.thoughtram.io/angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html) we learned about **host** and **visibility of dependencies** as another aspect of Angular 2's DI system. But that doesn't mean that we've already discovered all features of Angular 2's dependency injection machinery yet. In this article we'll take a look at **forward references** another tiny, yet useful feature of the DI system in Angular 2.
+In a [another article](http://blog.thoughtram.io/angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html) we even learned about **host** and **visibility of dependencies** as another aspect of Angular 2's DI system. But that doesn't mean that we've already discovered all features of the machinery yet. In this article we'll take a look at **forward references**. Another tiny, yet useful feature of the DI system in Angular 2.
 
 ## Understanding the problem
 
@@ -72,7 +64,7 @@ export class NameService {
 {% endraw %}
 {% endhighlight %}
 
-This works well, but let's see what happens when we inline the contents of `nameService.ts` directly in `app.ts`. I this case, you probably wouldn't want to do that but bear with me as I'm trying make my point.
+This works well, but let's see what happens when we inline the contents of `nameService.ts` directly in `app.ts`. In this case, you probably wouldn't want to do that but bear with me as I'm trying to make my point.
 
 
 {% highlight ts %}
@@ -102,7 +94,7 @@ bootstrap(AppComponent, [NameService]);
 {% endhighlight %}
 
 
-When we try to run this code we notice that it stopped working. In my case, I wasn't even able to get an error reported to the console which I assume boils down to some glitch with debugging TypeScript code with source maps. Anyways, when we use the debuggers "Pause on exceptions" feature we can follow the rabbit into it's whole somewhere deep down inside the Angular 2 framework.
+When we try to run this code we notice that it stopped working. In my case, I wasn't even able to get an error reported to the console which I assume boils down to some glitch with debugging TypeScript code with source maps. Anyways, when we use the debuggers "Pause on exceptions" feature we can follow the rabbit into it's hole somewhere deep down inside the Angular 2 framework.
 
 `Cannot resolve all parameters for AppComponent(undefined). Make sure they all have valid type or annotations`.
 
@@ -149,7 +141,7 @@ Consider this ES6 code:
 
 {% highlight js %}
 {% raw %}
-class Dog extends Animal{
+class Dog extends Animal {
 
 }
 
@@ -179,7 +171,7 @@ function Animal {
   }
 }
 
-class Dog extends Animal{
+class Dog extends Animal {
 
 }
 
@@ -194,7 +186,7 @@ However, try making `Animal` an expression rather than a function declaration.
 
 {% highlight js %}
 {% raw %}
-class Dog extends Animal{
+class Dog extends Animal {
 
 }
 
@@ -218,7 +210,7 @@ Again, this will be hoisted but now it becomes this.
 
 let Animal, defaultMove, dog;
 
-class Dog extends Animal{
+class Dog extends Animal {
 
 }
 
