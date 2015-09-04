@@ -18,6 +18,8 @@ categories:
 tags:
   - angular2
 
+topic: routing
+
 author: pascal_precht
 ---
 

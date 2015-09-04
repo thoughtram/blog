@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Exploring Angular 2 is a curated collection of high quality articles and guides about exploring the Angular 2 framework.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Exploring Angular 2 by thoughtram</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#4D8799">
+    <link rel="icon" sizes="192x192" href="/images/touch/chrome-touch-icon-192x192.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="thoughtram">
+    <link rel="apple-touch-icon" href="/images/touch/apple-touch-icon.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#4D8799">
+
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="Exploring Angular 2 is a curated collection of high quality articles and guides about exploring the Angular 2 framework.">
+    <meta property="og:url" content="http://blog.thoughtram.io/exploring-angular-2/">
+    <meta property="og:site_name" content="Exploring Angular 2">
+    <meta property="og:image" content="http://blog.thoughtram.io/images/angular2-logo.svg">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Exploring Angular 2">
+    <meta property="twitter:site" content="Exploring Angular 2 by thoughtram">
+
+    <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}" type="text/css">
+  </head>
+  <body>
+    <main role="main" class="thtrm-l-main thtrm-l-main--blog" itemprop="mainContentOfPage">
+      <section class="thtrm-m-section thtrm-m-section--image-banner thtrm-m-section--image-banner-small">
+        <div class="thtrm-l-constraint">
+          <div class="thtrm-m-section__content">
+            <img alt="Angular 2 Logo" src="/images/angular2-logo.svg">
+            <h2 class="thtrm-m-section__headline">Exploring Angular 2</h2>
+            <p class="thtrm-m-teaser-text"><strong>Exploring Angular 2</strong> is a curated collection of high quality articles and guides about exploring the Angular 2 framework.</p>
+          </div>
+        </div>
+      </section>
+      {{ content }}
+    </main>
+<footer role="contentinfo">
+  <div class="thtrm-l-constraint clear">
+    <p class="thtrm-m-btyb-text">Brought to you by
+    <a href="http://thoughtram.io" title="thoughtram.io"><img src="/images/thoughtram-brain-with-logo-line-blue.png" alt="thoughtram logo"></a></p>
+  </div>
+</footer>
+
+<script src="/scripts/main.js"></script>
+
+{% if site.google_analytics %}
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', '{{ site.google_analytics }}', 'auto');
+ga('send', 'pageview');
+
+</script>
+{% endif %}
+  </body>
+</html>

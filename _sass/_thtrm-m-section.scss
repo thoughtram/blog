@@ -4,6 +4,10 @@
   padding-top: 4em;
   padding-bottom: 6em;
 
+  &.thtrm-m-section--thin {
+    padding-bottom: 1em;
+  }
+
   @media all and (min-width: 750px) {
     padding-top: 5em;
     padding-bottom: 9em;
@@ -15,6 +19,10 @@
 
   @media all and (min-width: 1150px) {
     padding-bottom: 12em;
+
+    &.thtrm-m-section--thin {
+      padding-bottom: 1em;
+    }
   }
 }
 
@@ -66,6 +74,11 @@
 
 .thtrm-m-section--image-banner-2 {
   background-image: url('../images/banner-6.jpg');
+}
+
+.thtrm-m-section--dark-background {
+  background-image: none;
+  background-color: #555;
 }
 
 .thtrm-m-section__content {

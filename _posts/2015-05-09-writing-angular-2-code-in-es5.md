@@ -24,6 +24,8 @@ categories:
 tags:
 - angular2
 
+topic: upgrade
+
 author: pascal_precht
 ---
 

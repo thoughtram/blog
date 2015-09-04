@@ -24,6 +24,8 @@ categories:
 tags:
   - angular2
 
+topic: di
+
 author: pascal_precht
 ---
 

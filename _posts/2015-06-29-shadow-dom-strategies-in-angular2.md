@@ -18,6 +18,8 @@ categories:
 tags:
   - angular2
 
+topic: views
+
 author: pascal_precht
 ---
 

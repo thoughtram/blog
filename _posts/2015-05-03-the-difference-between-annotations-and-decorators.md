@@ -11,6 +11,8 @@ categories:
 tags:
 - angular2
 
+topic: others
+
 author: pascal_precht
 ---
 

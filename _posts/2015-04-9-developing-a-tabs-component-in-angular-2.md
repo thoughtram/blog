@@ -15,6 +15,8 @@ categories:
 tags:
 - angular2
 
+topic: getting-started
+
 author: pascal_precht
 ---
 {% include breaking-changes-hint.html %}
