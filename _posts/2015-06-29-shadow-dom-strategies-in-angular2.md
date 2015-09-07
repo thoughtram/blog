@@ -110,9 +110,9 @@ Will make Angular creating a DOM like this:
           ▾ Details
         </div>
         <div [hidden]="!visible" class="zippy__content">
-          <script tyle="ng/contentStart"></script>
+          <script type="ng/contentStart"></script>
             ...
-          <script tyle="ng/contentEnd"></script>
+          <script type="ng/contentEnd"></script>
         </div>
       </div>
     </zippy>
