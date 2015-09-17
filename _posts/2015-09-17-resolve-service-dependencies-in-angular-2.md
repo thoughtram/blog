@@ -218,7 +218,7 @@ All we have to do is to import it and put it on our `DataService` like this:
 import {Injectable} from 'angular2/core';
 import {Http} from 'angular2/http';
 
-@Injectable
+@Injectable()
 class DataService {
   items:Array<any>;
 
