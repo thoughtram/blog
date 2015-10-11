@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Resolving Service Dependencies in Angular 2"
+title:      "Injecting services in services in Angular 2"
 relatedLinks:
   -
     title: "Dependency Injection in Angular 2"
@@ -16,7 +16,7 @@ relatedLinks:
     url: "http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html"
 
 date:       2015-09-17
-update_date: 2015-09-17
+update_date: 2015-10-11
 summary: "When writing Angular 2 applications, it often happens that we build services that depend on other service instances. In our previous articles, we learned about the Dependency Injection system in Angular 2 and how it works. However, it turns out that we might run into unexpected behaviour when injecting service dependencies. This article details how to do it right."
 
 categories:
@@ -84,7 +84,7 @@ class DataService {
 {% endraw %}
 {% endhighlight %}
 
-Of course, in order to actually be able to ask for something of type `DataService`, we have to provide a binding for our injector. We can do that by passing a binding to `bootstrap()` when bootstrapping our app.
+Of course, in order to actually be able to ask for something of type `DataService`, we have to add a provider for our injector. We can do that by passing a provider to `bootstrap()` when bootstrapping our app.
 
 {% highlight ts %}
 {% raw %}
@@ -94,19 +94,19 @@ bootstrap(AppComponent, [DataService]);
 
 Until now there's nothing new here. If this *is* new to you, you might want to read our article on [Dependency Injection in Angular 2](http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html) first.
 
-So where is the problem? Well, the problem occurs as soon as we try to inject a dependency into our service. We could for example use `Http` in our `DataService` to fetch our data from a remote server. Let's quickly do that. First, we need bindings for the injector, so it knows about `Http`.
+So where is the problem? Well, the problem occurs as soon as we try to inject a dependency into our service. We could for example use `Http` in our `DataService` to fetch our data from a remote server. Let's quickly do that. First, we need providers for the injector, so it knows about `Http`.
 
 {% highlight ts %}
 {% raw %}
-import {HTTP_BINDINGS} from 'angular2/http';
+import {HTTP_PROVIDERS} from 'angular2/http';
 
 ...
 
-bootstrap(AppComponent, [HTTP_BINDINGS, DataService]);
+bootstrap(AppComponent, [HTTP_PROVIDERS, DataService]);
 {% endraw %}
 {% endhighlight %}
 
-Angular's http module exposes `HTTP_BINDINGS`, which has all the bindings we need to hook up some http action in our service. Next, we need to inject an instance of `Http` in our service to actually use it.
+Angular's http module exposes `HTTP_PROVIDERS`, which has all the providers we need to hook up some http action in our service. Next, we need to inject an instance of `Http` in our service to actually use it.
 
 {% highlight ts %}
 {% raw %}
@@ -129,7 +129,7 @@ class DataService {
 Cannot resolve all parameters for DataService(?). Make sure they all have valid type or annotations.
 ```
 
-It basically says that it can't resolve the `Http` dependency of `DataService` because Angular doesn't know the type and therefore, no binding that can be used to resolve the dependency. Uhm.. wait what? Didn't we put the type in the constructor?
+It basically says that it can't resolve the `Http` dependency of `DataService` because Angular doesn't know the type and therefore, no provider that can be used to resolve the dependency. Uhm.. wait what? Didn't we put the type in the constructor?
 
 Yea, we did. Unfortunately it turns out this is not enough. However, obviously it **does** work when we inject `DataService` in our `AppComponent`. So what's the problem here? Let's take a step back and recap real quick where the metadata, that Angular's DI need, comes from.
 
