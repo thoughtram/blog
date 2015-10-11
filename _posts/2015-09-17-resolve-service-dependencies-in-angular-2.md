@@ -32,7 +32,7 @@ author: pascal_precht
 
 If you're following our articles on [Dependency Injection in Angular 2](http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html), you know how the DI system in Angular works. It takes advantage of metadata on our code, added through annotations, to get all the information it needs so it can resolve dependencies for us.
 
-Angular 2 applications can basically written in any language, as long as it compiles to JavaScript in some way. When writing our application in TypeScript, we use decorators to add metadata to our code. Sometimes, we can even omit some decorators and simply rely on type annotations. However, it turns out that, when it comes to DI, we might run into unexpected behaviour when injecting dependencies into services.
+Angular 2 applications can basically be written in any language, as long as it compiles to JavaScript in some way. When writing our application in TypeScript, we use decorators to add metadata to our code. Sometimes, we can even omit some decorators and simply rely on type annotations. However, it turns out that, when it comes to DI, we might run into unexpected behaviour when injecting dependencies into services.
 
 This article discusses what this unexpected problem is, why it exists and how it can be solved.
 
