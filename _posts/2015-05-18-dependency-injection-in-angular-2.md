@@ -160,7 +160,7 @@ Before we take a look at actual code, let's first understand the concept behind 
 The DI in Angular 2 basically consists of three things:
 
 - **Injector** - The injector object that exposes APIs to us to create instances of dependencies.
-- **Provider** - A provider is like a recipe that tells the injector **how** to create an instance of a depedency. A provider takes a token and maps that to a factory function that creates an object.
+- **Provider** - A provider is like a recipe that tells the injector **how** to create an instance of a dependency. A provider takes a token and maps that to a factory function that creates an object.
 - **Dependency** - A dependency is the **type** of which an object should be created.
 
 Okay, now that we have an idea of what the concept looks like, lets see how this is translated to code. We stick with our `Car` class and it's dependencies. Here's how we can use Angular 2's DI to get an instance of `Car`:
