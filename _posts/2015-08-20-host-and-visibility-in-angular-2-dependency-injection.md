@@ -15,7 +15,7 @@ relatedLinks:
     title: "View Encapsulation in Angular 2"
     url: "http://blog.thoughtram.io/angular/2015/06/29/shadow-dom-strategies-in-angular2.html"
 date:       2015-08-20
-update_date: 2015-10-11
+update_date: 2015-10-12
 summary:    "One of our articles discussed the concepts and ideas behind the dependency injection pattern, and also, how that pattern is implemented in the Angular 2 framework. We covered what injector providers are and how those relate to actual dependency instances. Even though this article gave us a very good picture of what is going on, there's still one topic unexplored: Visibility."
 
 categories: 
@@ -78,12 +78,12 @@ Of course, this code is very simplified and as we can see, there are also no pro
 {% highlight js %}
 {% raw %}
 var injector = Injector.resolveAndCreate([
-  provide(Car, {asClass: Car}),
-  provide(Engine, {asClass: Engine})
+  provide(Car, {useClass: Car}),
+  provide(Engine, {useClass: Engine})
 ]);
 var childInjector = injector.resolveAndCreateChild();
 var grandChildInjector = childInjector.resolveAndCreateChild([
-  provide(Car, {asClass: Convertible})
+  provide(Car, {useClass: Convertible})
 ]);
 {% endraw %}
 {% endhighlight %}
@@ -129,7 +129,7 @@ Our `<video-player>` component consists of a couple of other components. Let's s
 @Component({
   selector: 'video-player',
   providers: [
-    PlayerService // shorthand for provide(PlayerService, {asClass: PlayerService})
+    PlayerService // shorthand for provide(PlayerService, {useClass: PlayerService})
   ]
 })
 @View({ ... })
@@ -219,7 +219,7 @@ We know that, if `<custom-video>` ask its injector for a dependency, the injecto
   selector: 'video-player',
   providers: [
     PlayerService,
-    provide(VideoService, {asClass: SpecificVideoService})
+    provide(VideoService, {useClass: SpecificVideoService})
   ]
 })
 @View({ ... })
@@ -241,7 +241,7 @@ To make our code work as expected, all we have to do is to make the `VideoServic
     PlayerService
   ],
   viewProviders: [
-    provide(VideoService, {asClass: SpecificVideoService})
+    provide(VideoService, {useClass: SpecificVideoService})
   ]
 })
 @View({ ... })

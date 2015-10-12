@@ -21,7 +21,7 @@ relatedLinks:
     title: "Angular 2 Bits: Unified Dependency Injection"
     url: "http://victorsavkin.com/post/102965317996/angular-2-bits-unified-dependency-injection"
 date:       2015-05-18
-update_date: 2015-10-11
+update_date: 2015-10-12
 summary:    "Dependency injection has always been one of Angular's biggest features and selling points. It allows us to inject dependencies in different code components, without needing to know, how those dependencies are created. However, it turns out that the current dependency injection system in Angular 1 has some problems that need to be solved in Angular 2, in order to build the next generation framework. In this article, we're going to explore the new dependency injection system for future generations."
 
 categories: 
@@ -223,19 +223,19 @@ Again, you might wonder how this list of classes is supposed to be a list of pro
 import {provide} from 'angular2/angular2';
 
 var injector = Injector.resolveAndCreate([
-  provide(Car, {asClass: Car}),
-  provide(Engine, {asClass: Engine}),
-  provide(Tires, {asClass: Tires}),
-  provide(Doors {asClass: Doors})
+  provide(Car, {useClass: Car}),
+  provide(Engine, {useClass: Engine}),
+  provide(Tires, {useClass: Tires}),
+  provide(Doors {useClass: Doors})
 ]);
 {% endhighlight %}
 
 We have a function `provide()` that maps a **token** to a configuration object. The token can either be a type or a string. If you read those providers now, it's much easier to understand what's happening. We provide an instance of type `Car` via the class `Car`,  type `Engine` via the class `Engine` and so on and so forth. This is the recipe mechanism we were talking about earlier. So with the providers we not only let the injector know which dependencies are used across the application, we also configure how objects of these dependencies are created.
 
-Now the next question comes up: When do we want to use the longer instead of the shorthand syntax? There's no reason to write `provide(Foo, {asClass: Foo})` if we could just stick with `Foo`, right? Yes, that's correct. That's why we started with the shorthand syntax in the first place. However, the longer syntax enables us to do something very very powerful. Take a look at the next code snippet.
+Now the next question comes up: When do we want to use the longer instead of the shorthand syntax? There's no reason to write `provide(Foo, {useClass: Foo})` if we could just stick with `Foo`, right? Yes, that's correct. That's why we started with the shorthand syntax in the first place. However, the longer syntax enables us to do something very very powerful. Take a look at the next code snippet.
 
 {% highlight js %}
-provide(Engine, {asClass: OtherEngine})
+provide(Engine, {useClass: OtherEngine})
 {% endhighlight %}
 
 Right. We can map a token to pretty much what ever we want. Here we're mapping the token `Engine` to the class `OtherEngine`. Which means, when we now ask for an object of type `Engine`, we get an instance of class `OtherEngine`.
@@ -250,10 +250,10 @@ Sometimes, we don't want to get an instance of a class, but rather just a single
 
 **Providing values**
 
-We can provide a simple value using `{asValue: value}`
+We can provide a simple value using `{useValue: value}`
 
 {% highlight js %}
-provide(String, {asValue: 'Hello World'})
+provide(String, {useValue: 'Hello World'})
 {% endhighlight %}
 
 This comes in handy when we want to provide simple configuration values.
@@ -263,8 +263,8 @@ This comes in handy when we want to provide simple configuration values.
 We can map an alias token to another token like this:
 
 {% highlight js %}
-provide(Engine, {asClass: Engine})
-provide(V8, {asAlias: Engine})
+provide(Engine, {useClass: Engine})
+provide(V8, {useExisting: Engine})
 {% endhighlight %}
 
 **Providing factories**
@@ -272,7 +272,7 @@ provide(V8, {asAlias: Engine})
 Yes, our beloved factories.
 
 {% highlight js %}
-provide(Engine, {asFactory: () => {
+provide(Engine, {useFactory: () => {
   return function () {
     if (IS_V8) {
       return new V8Engine();
@@ -287,7 +287,7 @@ Of course, a factory might have its own dependencies. Passing dependencies to fa
 
 {% highlight js %}
 provide(Engine, {
-  asFactory: (car, engine) => {
+  useFactory: (car, engine) => {
 
   },
   deps: [Car, Engine]
@@ -319,7 +319,7 @@ If we need a transient dependency, something that we want a new instance every t
 **Factories** can return instances of classes. Those won't be singletons.
 
 {% highlight js %}
-provide(Engine, {asFactory: () => {
+provide(Engine, {useFactory: () => {
   return () => {
     return new Engine();
   }
