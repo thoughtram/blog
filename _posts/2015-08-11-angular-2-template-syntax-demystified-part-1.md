@@ -188,7 +188,7 @@ It turns out, that interpolation syntax is just a shorthand syntax for property 
 
 {% highlight html %}
 {% raw %}
-<p [textContent]="interpolate(['Hello'], [name])"></p>
+<p [text-content]="interpolate(['Hello'], [name])"></p>
 {% endraw %}
 {% endhighlight %}
 
@@ -222,7 +222,7 @@ The parentheses simply tell Angular that the expression inside the symbols is an
 
 **Event Bubbling**
 
-When binding to events in Angular 2, events are only caught on the same element by default. E.g. if we have a DOM structure like this:
+When binding to events in Angular 2, events are caught on the same element as well as from events that bubble up from child elements. E.g. if we have a DOM structure like this:
 
 {% highlight html %}
 {% raw %}
@@ -232,26 +232,15 @@ When binding to events in Angular 2, events are only caught on the same element 
 {% endraw %}
 {% endhighlight %}
 
-This will only execute the given statement, if the first `div` element is clicked. Clicking elements inside that `div` won't trigger the event handler. If we also want to execute our handler when the event bubbled up from a child element, we have to be explicit by adding `^` symbol to our binding:
-
-{% highlight html %}
-{% raw %}
-<div (^click)="statement()">
-  <div></div>
-</div>
-{% endraw %}
-{% endhighlight %}
-
-Events that bubble up from children elements will now also be caught. This however, currently only works for native events.
+This will execute the given statement, if the first `div` or any of it's child elements are clicked.
 
 **Canonical syntax**
 
-Of course, using parenthesis (with or without `^`) is also just a shorthand syntax, so we as developers can save some key strokes. We can always use the canonical syntax, which is `on-*` and `bind-bubble-*` respectively.
+Of course, using parenthesis is also just a shorthand syntax, so we as developers can save some key strokes. We can always use the canonical syntax, which is `on-*`.
 
 {% highlight html %}
 {% raw %}
 <ANY on-{EVENT_NAME}="{STATEMENT}"></ANY>
-<ANY onbubble-{EVENT_NAME}="{STATEMENT}"></ANY>
 {% endraw %}
 {% endhighlight %}
 
@@ -289,7 +278,7 @@ Since this is quite a lot of typing to implement such a common scenario, Angular
 
 {% highlight html %}
 {% raw %}
-<input [ng-model]="name" (ng-model)="name = $event">
+<input [ng-model]="name" (ng-model-change)="name = $event">
 
 <p>Hello {{name}}</p>
 {% endraw %}
