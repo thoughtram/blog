@@ -76,8 +76,8 @@ In addition to that, Angular validates certain input types automatically without
 {% highlight html %}
 {% raw %}
 <form name="myForm">
-  <input type="email">
-  <p ng-if="myForm.$error.email">Email address is not valid!</p>
+  <input type="email" name="emailField">
+  <p ng-if="myForm.emailField.$error.email">Email address is not valid!</p>
 </form>
 {% endraw %}
 {% endhighlight %}
