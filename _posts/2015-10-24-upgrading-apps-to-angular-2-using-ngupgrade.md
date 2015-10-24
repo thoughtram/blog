@@ -1,6 +1,19 @@
 ---
 layout:     post
 title:      "Upgrading apps to Angular 2 using ngUpgrade"
+relatedLinks:
+  -
+    title: "Dependency Injection in Angular 2"
+    url: "http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html"
+  -
+    title: "Exploring Angular 2"
+    url: "http://blog.thoughtram.io/exploring-angular-2"
+  -
+    title: "Writing Angular 2 code in ES5"
+    url: "http://blog.thoughtram.io/angular/2015/05/09/writing-angular-2-code-in-es5.html"
+  -
+    title: "Resolving Service Dependencies in Angular 2"
+    url: "http://blog.thoughtram.io/angular/2015/09/17/resolve-service-dependencies-in-angular-2.html"
 
 date:       2015-10-24
 update_date: 2015-10-24
