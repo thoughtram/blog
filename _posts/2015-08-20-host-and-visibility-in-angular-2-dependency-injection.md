@@ -132,7 +132,6 @@ Our `<video-player>` component consists of a couple of other components. Let's s
     PlayerService // shorthand for provide(PlayerService, {useClass: PlayerService})
   ]
 })
-@View({ ... })
 class VideoPlayer {
   ...
 }
@@ -144,7 +143,6 @@ class VideoPlayer {
 {% highlight javascript %}
 {% raw %}
 @Component({ ... })
-@View({ ... })
 class PlayButton {
   constructor(playerService: PlayerService) {
 
@@ -164,7 +162,6 @@ Luckily, this is covered by Angular 2's dependency injection system. If we need 
 {% highlight javascript %}
 {% raw %}
 @Component({ ... })
-@View({ ... })
 class PlayButton {
   constructor(@Host() playerService: PlayerService) {
 
@@ -202,7 +199,6 @@ Now `<video-player>` has a child element (with it's own injector) that it needs 
 {% highlight javascript %}
 {% raw %}
 @Component({ ... })
-@View({ ... })
 class CustomVideo {
   constructor(videoService: VideoService) {
 
@@ -222,7 +218,6 @@ We know that, if `<custom-video>` ask its injector for a dependency, the injecto
     provide(VideoService, {useClass: SpecificVideoService})
   ]
 })
-@View({ ... })
 class VideoPlayer {
   ...
 }
@@ -244,7 +239,6 @@ To make our code work as expected, all we have to do is to make the `VideoServic
     provide(VideoService, {useClass: SpecificVideoService})
   ]
 })
-@View({ ... })
 class VideoPlayer {
   ...
 }

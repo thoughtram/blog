@@ -41,14 +41,12 @@ Angular 2 components are designed with exactly that in mind. A component comes w
 
 ## Component inline styles
 
-The easiest way to add styles to a component is taking advantage of the `@View` decorators that allow us to define component inline styles. All we need to do is to add a `styles` property to the decorator and define the styles. To see what that looks like, here's a snippet of our zippy component that we've built a while ago.
+The easiest way to add styles to a component is taking advantage of the `@Component` decorators that allow us to define component inline styles. All we need to do is to add a `styles` property to the decorator and define the styles. To see what that looks like, here's a snippet of our zippy component that we've built a while ago.
 
 {% highlight js %}
 @Component({
   selector: 'zippy',
-  properties: ['title']
-})
-@View({
+  properties: ['title'],
   templateUrl: 'zippy.html',
   styles: [`
     .zippy {
@@ -94,9 +92,7 @@ In an ideal world, we don't have to mix our styles with our application code. Th
 {% highlight js %}
 @Component({
   selector: 'zippy',
-  properties: ['title']
-})
-@View({
+  properties: ['title'],
   templateUrl: 'zippy.html',
   styleUrls: ['zippy.css']
 })
@@ -108,9 +104,7 @@ Where do **those** end up in the DOM? Well, for the same reason as explained ear
 {% highlight js %}
 @Component({
   selector: 'zippy',
-  properties: ['title']
-})
-@View({
+  properties: ['title'],
   templateUrl: 'zippy.html',
   styles: ['.zippy { background: green; }'],
   styleUrls: ['zippy.css']

@@ -10,7 +10,7 @@ relatedLinks:
     url: "http://blog.thoughtram.io/angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html"
 
 date:       2015-09-03
-update_date: 2015-09-04
+update_date: 2015-10-25
 summary:    "Even though we already covered many aspects of the dependency injection system in Angular 2 there are still some features left that we haven't covered yet. Some of them more bold and some more subtile. In this article we like to explore forward references. Why they exist and how we can use them."
 
 categories:
@@ -35,14 +35,11 @@ As a small recap, here we have an `AppComponent` that relies on DI to get a `Nam
 **app.ts**
 {% highlight ts %}
 {% raw %}
-import {Component, View, bootstrap} from 'angular2/angular2';
+import {Component, bootstrap} from 'angular2/angular2';
 import {NameService} from './nameService';
 @Component({
-  selector: 'my-app'
-})
-@View({
+  selector: 'my-app',
   template: '<h1>Favourite framework: {{ name }}</h1>'
-})
 class AppComponent {
   name: String
   constructor(nameService: NameService) {
@@ -69,13 +66,10 @@ This works well, but let's see what happens when we inline the contents of `name
 
 {% highlight ts %}
 {% raw %}
-import {Component, View, bootstrap} from 'angular2/angular2';
+import {Component, bootstrap} from 'angular2/angular2';
 @Component({
-  selector: 'my-app'
-})
-@View({
+  selector: 'my-app',
   template: '<h1>Favourite framework: {{ name }}</h1>'
-})
 class AppComponent {
   name: String
   constructor(nameService: NameService) {
@@ -104,7 +98,7 @@ Let's see what happens when we move `NameService` to the top so that it's declar
 
 {% highlight ts %}
 {% raw %}
-import {Component, View, bootstrap} from 'angular2/angular2';
+import {Component, bootstrap} from 'angular2/angular2';
 
 class NameService {
   getName () {
@@ -113,9 +107,7 @@ class NameService {
 }
 
 @Component({
-  selector: 'my-app'
-})
-@View({
+  selector: 'my-app',
   template: '<h1>Favourite framework: {{ name }}</h1>'
 })
 class AppComponent {
@@ -285,13 +277,11 @@ Turns out there is a solution we can reach for. Instead of annotating our `nameS
 
 {% highlight ts %}
 {% raw %}
-import { Component, View, Inject,
+import { Component, Inject,
          forwardRef, bootstrap} from 'angular2/angular2';
 
 @Component({
-  selector: 'my-app'
-})
-@View({
+  selector: 'my-app',
   template: '<h1>Favourite framework: {{ name }}</h1>'
 })
 class AppComponent {
