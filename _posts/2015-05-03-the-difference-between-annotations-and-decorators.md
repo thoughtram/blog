@@ -2,7 +2,7 @@
 layout:     post
 title:      "The difference between Annotations and Decorators"
 date:       2015-05-03
-update_date: 2015-05-03
+update_date_: 2015-05-03
 summary:    "Last year, the Angular team announced it's ECMAScript language extension AtScript, which adds types and annotations to the language in order to enable better tooling, debugging and a better overall development experience. However, just recently at ng-conf, the team announced that AtScript becomes TypeScript, because both languages seem to solve the same problems. TypeScript implements a language feature called Decorators. In this article we're going to explore what exactly the difference between annotations and decorators is."
 
 categories: 
@@ -22,7 +22,7 @@ But how do those annotations actually work? And what are decorators then? This a
 
 ## Annotations
 
-Let's start off with annotations. As mentioned, the Angular team announced AtScript  as their language extension to JavaScript. AtScript comes with features like **Type Annotations**, **Field Annotations** and **MetaData Annotations**. We're going to focus on metadata annotations. Let's take a look at the following Angular 2 component to get an idea of what metadata  annotations can look like:
+Let's start off with annotations. As mentioned, the Angular team announced AtScript  as their language extension to JavaScript. AtScript comes with features like **Type Annotations**, **Field Annotations** and **MetaData Annotations**. We're going to focus on metadata annotations. Let's take a look at the following Angular 2 component to get an idea of what metadata annotations can look like:
 
 {% highlight javascript %}
 {% raw %}
@@ -43,7 +43,7 @@ export class Tabs {
 {% endraw %}
 {% endhighlight %}
 
-We have a class `Tabs` that is basically empty. The class has two annotations, `@Component` and `@View`. If we'd remove all annotations, what would be left is just an empty class that doesn't have any special meaning right? So it seems that `@Component` and `@View` add some meta data to the class in order to give it a specific meaning. This is what annotations are all about. They are a declarative way to add meta data to code.
+We have a class `Tabs` that is basically empty. The class has two annotations, `@Component` and `@View`. If we'd remove all annotations, what would be left is just an empty class that doesn't have any special meaning right? So it seems that `@Component` and `@View` add some metadata to the class in order to give it a specific meaning. This is what annotations are all about. They are a declarative way to add metadata to code.
 
 `@Component` is an annotation that tells Angular, that the class, which the annotation is attached to, is a component. The `@View` annotation, gives Angular information about the view of the component. In this case, it's an HTML template.
 
@@ -57,7 +57,10 @@ Okay, even if that seems to be quite clear, there are a few questions coming up:
 
 {% highlight javascript %}
 {% raw %}
-import { Component, View } from 'angular2/angular2';
+import { 
+  ComponentMetadata as Component,
+  ViewMetadata as View
+} from 'angular2/angular2';
 {% endraw %}
 {% endhighlight %}
 
@@ -65,7 +68,7 @@ This pretty much answers our first question. Both annotations are provided by th
 
 {% highlight javascript %}
 {% raw %}
-export class Component extends Directive {
+export class ComponentMetadata extends DirectiveMetadata {
 
   constructor() {
     ...
@@ -74,7 +77,7 @@ export class Component extends Directive {
 {% endraw %}
 {% endhighlight %}
 
-We can see that `@Component` and `@View` are in fact an implementation detail of the Angular framework. This answers our second question.
+We can see that `ComponentMetadata` and `ViewMetadata` are in fact an implementation detail of the Angular framework. This answers our second question.
 
 But wait. It's just yet another class? How can just a simple class change the way how other classes behave? And why are we able to use those classes as annotations by just prefixing them with an `@` sign? Well, actually we can't. Annotations are not available in browser's of today, which means we need to transpile it to something that *does* run in current browsers.
 
@@ -86,8 +89,8 @@ var Tabs = (function () {
   function Tabs() {}
 
   Tabs.annotations = [
-    new Component({...}),
-    new View({...})
+    new ComponentMetadata({...}),
+    new ViewMetadata({...})
   ];
 
   return Tabs;
@@ -124,29 +127,29 @@ var MyClass = (function () {
 
 The reason why this translate to a nested array, is because a parameter can have more than one annotation.
 
-Okay, so now we know what those annotations are and what they translate to, but we still don't know how something like `@Component` makes a normal class actually a component in Angular 2. It turns out that Angular itself takes care of that. Annotations are really just meta data added to code. That's why `@Component` and `@View` are a very specific implementation details of Angular 2. In fact, there are a couple of other annotations that the framework comes with. But also only the framework knows what to do with that information.
+Okay, so now we know what those metadata annotations are and what they translate to, but we still don't know how something like `@Component` makes a normal class actually a component in Angular 2. It turns out that Angular itself takes care of that. Annotations are really just metadata added to code. That's why `@Component` and `@View` are a very specific implementation details of Angular 2. In fact, there are a couple of other annotations that the framework comes with. But also only the framework knows what to do with that information.
 
-Another very interesting learning is that Angular expects the meta data on `annotations` and `parameters` properties of classes. If Traceur would not translate them to those particular properties, Angular 2 wouldn't know from where to get the meta data. Which makes **AtScript Annotations** just a very specific implementation of what annotations could actually be.
+Another very interesting learning is that Angular expects the metadata on `annotations` and `parameters` properties of classes. If Traceur would not translate them to those particular properties, Angular 2 wouldn't know from where to get the metadata. Which makes **AtScript Annotations** just a very specific implementation of what annotations could actually be.
 
-Wouldn't it be nicer if you as a consumer could decide where your meta data is attached to in your code? This is where decorators come in.
+Wouldn't it be nicer if you as a consumer could decide where your metadata is attached to in your code? Yes! And this is where decorators come into play.
 
 ## Decorators
 
-Decorators are a [proposed standard](https://github.com/wycats/javascript-decorators) for ECMAScript 7 by Yehuda Katz, to annotate and modify classes and properties at design time. This sounds pretty much like what annotations do right? Well... sort of. Let's take a look at what a decorator looks like:
+Decorators are a [proposed standard](https://github.com/wycats/javascript-decorators) for ECMAScript 2016 by Yehuda Katz, to annotate and modify classes and properties at design time. This sounds pretty much like what annotations do right? Well... sort of. Let's take a look at what a decorator looks like:
 
 {% highlight javascript %}
 {% raw %}
 // A simple decorator
-@annotation
+@decoratorExpression
 class MyClass { }
 {% endraw %}
 {% endhighlight %}
 
-Wait. This looks exactly like an AtScript annotation! That's right. But it isn't. From a consumer perspective, a decorator indeed looks like the thing that we know as "AtScript Annotation". There is a significant difference though. **You** are in charge of what your decorator does to your code. Taking the code above, a corresponding decorator implementation for `@annotation` could look like this:
+Wait. This looks exactly like an AtScript annotation! That's right. But it isn't. From a consumer perspective, a decorator indeed looks like the thing that we know as "AtScript Annotation". There is a significant difference though. **We** are in charge of what our decorator does to our code. Taking the code above, a corresponding decorator implementation for `@decoratorExpression` could look like this:
 
 {% highlight javascript %}
 {% raw %}
-function annotation(target) {
+function decoratorExpression(target) {
    // Add a property on target
    target.annotated = true;
 }
@@ -155,7 +158,7 @@ function annotation(target) {
 
 Right. A decorator is just a function that gives you access to the `target` that needs to be decorated. Get the idea? Instead of having a transpiler that decides where your annotations go, we are in charge of defining what a specific decoration/annotation does.
 
-This, of course, also enables us to implement a decorator that adds meta data to our code the same way AtScript annotations do (I keep referring to "AtScript annotations" because what they do, is really an AtScript specific thing). Or in other words: with decorators, we can build annotations.
+This, of course, also enables us to implement a decorator that adds metadata to our code the same way AtScript annotations do (I keep referring to "AtScript annotations" because what they do, is really an AtScript specific thing). Or in other words: with decorators, we can build annotations.
 
 There's a lot more to explore about decorators, but that is out of the scope of this article. I recommend checking out [Yehuda's proposal](https://github.com/wycats/javascript-decorators) to learn more about the feature.
 
@@ -163,22 +166,22 @@ There's a lot more to explore about decorators, but that is out of the scope of 
 
 As you might know, the Angular team announced earlier this year that they're going to drop the term "AtScript" in favour of TypeScript, since both languages seem to solve the same problems. In addition, there were announcements that TypeScript will support annotations **and** decorators once version 1.5 alpha is out.
 
-It turns out that it actually doesn't. TypeScript supports decorators, but doesn't know about Angular 2 specific annotations. Which makes sense, because they are an implementation detail of Angular. That also means that either we as consumers, or the framework needs to provide those decorators in order to make the code compile. Only the latter really makes sense. Luckily, generators for both, annotation and parameter, decorators have landed in the Angular 2 code base lately. So what the famework behind the scenes does, is it comes with annotation implementations, which are then passed to the decorator generator to make decorators out of them. Then also why we have to write the following code when transpiling with traceur:
+It turns out that it actually doesn't. TypeScript supports decorators, but doesn't know about Angular 2 specific annotations. Which makes sense, because they are an implementation detail of Angular. That also means that either we as consumers, or the framework needs to provide those decorators in order to make the code compile. Only the latter really makes sense. Luckily, generators for both, annotation and parameter decorators, have landed in the Angular 2 code base lately. So what the framework behind the scenes does is, it comes with metadata annotation implementations, which are then passed to the decorator generator to make decorators out of them. That's also why we have to write the following code when transpiling with traceur:
 
 {% highlight javascript %}
 {% raw %}
 import {
-  ComponentAnnotation as Component,
-  ViewAnnotation as View
+  ComponentMetadata as Component,
+  ViewMetadata as View
 } from 'angular2/angular2';
 {% endraw %}
 {% endhighlight %}
 
-As we can see, we're actually importing the annotation rather than the decorator. This is simply just because traceur doesn't understand decorators, but does understand `@Component` and `@View` annotations. Which is why we're also importing them with these namespaces respectively.
+As we can see, we're actually importing the metadata rather than the decorator. This is simply just because traceur doesn't understand decorators, but does understand `@Component` and `@View` annotations. Which is why we're also importing them with these namespaces respectively.
 
 
 ## Conclusion
 
-"AtScript Annotations" and decorators are nearly the same thing. From a consumer perspective we have exactly the same syntax. The only thing that differs is that we don't have control over how AtScript annotations are added as meta data to our code. Whereas decorators are rather an interface to build something that ends up as annotation. Over a long term, however, we can just focus on decorators, since those are a real proposed standard. AtScript is deprecated, and TypeScript implements decorators.
+"AtScript Annotations" and decorators are nearly the same thing. From a consumer perspective we have exactly the same syntax. The only thing that differs is that we don't have control over how AtScript annotations are added as metadata to our code. Whereas decorators are rather an interface to build something that ends up as annotation. Over a long term, however, we can just focus on decorators, since those are a real proposed standard. AtScript is deprecated, and TypeScript implements decorators.
 
 I hope this article made some things clear though.
