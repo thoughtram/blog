@@ -12,7 +12,7 @@ relatedLinks:
     title: "The difference between Annotations and Decorators"
     url: "http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html"
 date:       2015-03-27
-update_date: 2015-06-23
+update_date: 2015-10-25
 summary:    "Even if Angular 2 is still in early development, we can already start playing with the code since it's up on GitHub and also published as npm module. We are following the development of Angular 2 since the beginning on and are also contributing to the project. Just recently we've built a simple zippy component in Angular 2 and in this article we want to show how."
 
 categories: 
@@ -76,19 +76,18 @@ export class Zippy {
 {% endraw %}
 {% endhighlight %}
 
-Angular 2 doesn't come with it's own module system anymore, since ES6 already provides a system that lets us load module asynchronously. That means we can just write plain ES6 code without any Angular specific bits which makes our code more reusable.
+Angular 2 doesn't come with it's own module system anymore, since ES2015 already provides a module system. That means we can just write plain ES2015 code without any Angular specific bits which makes our code more reusable.
 
 The next thing we want to do, is to make our `Zippy` class an actual component and give it a template so that we can see that it is ready to be used. In order to tell Angular that this particular class is a component, we use something called "Annotations".
 
-Annotations are a way to add meta information to our existing code. Those annotations are actually not supported by ES6 but have been developed as language extension and are considered by the Traceur transpiler, which is used in this project. We're not required to use annotations though. As mentioned, those are just transpiled to ES5 and then simply used by the framework. However, for simplicity sake we'll use them in this article.
+Annotations are a way to add metadata to our existing code. Those annotations are actually not supported by ES2015 but have been developed as language extension and are considered by the Traceur transpiler, which is used in this project. We're not required to use annotations though. As mentioned, those are just transpiled to ES5 and then simply used by the framework. However, for simplicity sake we'll use them in this article.
 
-Angular provides us with a couple of annotation types so we can express our code in a much more elegant way. We need two annotations: `ComponentAnnotation` and `ViewAnnotation`. Annotations can be imported just like classes by using ES6 module syntax. We also import both annotations with a shorter name to match with provided decorators. This is for easy migration when we switch from Traceur to TypeScript or Babel in the future. If this is unclear to you, you might want to read our article on [the difference between annotations and decorators](http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html).
+Angular provides us with a couple of metadata types so we can express our code in a much more elegant way. In order to build a component, We need the `ComponentMetadata`. Metadata annotations can be imported just like classes by using ES2015 module syntax. We also import both metadata annotations with a shorter name so they match the **decorators** provided by the framework. This is for easy migration when we switch from Traceur to TypeScript or Babel in the future. If this is unclear to you, you might want to read our article on [the difference between annotations and decorators](http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html).
 
 {% highlight javascript %}
 {% raw %}
 import { 
-  ComponentAnnotation as Component,
-  ViewAnnotation as View 
+  ComponentMetadata as Component,
 } from 'angular2/angular2';
 
 export class Zippy {
@@ -97,15 +96,14 @@ export class Zippy {
 {% endraw %}
 {% endhighlight %}
 
-The `Component` annotation lets us add information about what our component's element name will be, which attributes are bound to which properties and more. `View` annotation gives Angular information about the component's view and template but also which directives are probably used inside of such a template.
+The `ComponentMetadata` annotation adds information about what our component's element name will be, which attributes are bound to which input properties and more. We can also add information about the component's view and template.
 
-We want our zippy component to be usable as `<zippy>` element. So all we need to do, is to add a `Component` annotation with that particular information. To specify the element name, or rather CSS selector (since we could also build decorators), we need to add a `selector` property that matches a CSS selector.
+We want our zippy component to be usable as `<zippy>` element. So all we need to do, is to add a `ComponentMetadata` annotation with that particular information. To specify the element name, or rather CSS selector (since we could also build decorators), we need to add a `selector` property that matches a CSS selector.
 
 {% highlight javascript %}
 {% raw %}
 import { 
-  ComponentAnnotation as Component,
-  ViewAnnotation as View
+  ComponentMetadata as Component,
 } from 'angular2/angular2';
 
 @Component({
@@ -117,19 +115,16 @@ export class Zippy {
 {% endraw %}
 {% endhighlight %}
 
-Next, our component needs a template. We add a `View` annotation that tells Angular where to load the component template from like this:
+Next, our component needs a template. We add information about the component's view. `templateUrl` tells Angular where to load the component template from:
 
 {% highlight javascript %}
 {% raw %}
 import { 
-  ComponentAnnotation as Component,
-  ViewAnnotation as View
+  ComponentMetadata as Component,
 } from 'angular2/angular2';
 
 @Component({
-  selector: 'zippy'
-})
-@View({
+  selector: 'zippy',
   templateUrl: 'zippy.html'
 })
 export class Zippy {
@@ -138,9 +133,7 @@ export class Zippy {
 {% endraw %}
 {% endhighlight %}
 
-Later at runtime, when Angular compiles this component, it'll fetch `zippy.html` asynchronously. You might wonder why we have `Component` **and** `View` annotations. Why not just the component annotation with the same information? Well, it turns out that, depending on the environment where you component is going to be deployed you might want to use a different template or even a different rendering environment. Extracting this information into a separate `View` annotation, makes it easy to swap it out.
-
-Let's create a file `src/zippy.html` with the following contents:
+Later at runtime, when Angular compiles this component, it'll fetch `zippy.html` asynchronously. Let's create a file `src/zippy.html` with the following contents:
 
 {% highlight html %}
 {% raw %}
@@ -162,15 +155,12 @@ Alright, believe it or not, that's basically all we need to do to get this compo
 {% highlight javascript %}
 {% raw %}
 import { 
-  ComponentAnnotation as Component,
-  ViewAnnotation as View
+  ComponentMetadata as Component,
 } from 'angular2/angular2';
 import {Zippy} from 'zippy';
 
 @Component({
-  selector: 'hello'
-})
-@View({
+  selector: 'hello',
   template: `<zippy></zippy>`,
   directives: [Zippy]
 })
@@ -206,7 +196,7 @@ Instead of adding an `ngClick` directive (which we don't have in Angular 2), to 
 {% endraw %}
 {% endhighlight %}
 
-If you're not familiar with this syntax I recommend you either reading this article on [integrating Web Components with Angular](http://pascalprecht.github.io/2014/10/25/integrating-web-components-with-angularjs/) or watch [Misko's keynote](https://www.youtube.com/watch?v=-dMBcqwvYA0) from this year's ng-conf.
+If you're not familiar with this syntax I recommend you either reading this article on [integrating Web Components with Angular](http://pascalprecht.github.io/2014/10/25/integrating-web-components-with-angularjs/), or this article about [Angular 2's template syntax demystified](http://blog.thoughtram.io/angular/2015/08/11/angular-2-template-syntax-demystified-part-1.html). [Misko's keynote](https://www.youtube.com/watch?v=-dMBcqwvYA0) from this year's ng-conf is also a nice resource.
 
 Now we're basically listening on a `click` event and execute a **statement**. But where does `toggle()` come from? We can access component methods directly in our template in Angular 2. There's no `$scope` service or controller that provides those methods. Which means, `toggle()` is just a method defined in `Zippy`.
 
@@ -275,13 +265,13 @@ Okay, we're almost there. Let's make the zippy title configurable. We want that 
 {% endraw %}
 {% endhighlight %}
 
-In Angular 2, we don't need to specify how scope properties are bound in our component, the consumer does. That means, this gets **a lot** easier in Angular to, because all we need to do is this:
+In Angular 2, we don't need to specify how scope properties are bound in our component, the consumer does. That means, this gets **a lot** easier in Angular too, because all we need to do is this:
 
 {% highlight javascript %}
 {% raw %}
 @Component({
   selector: 'zippy',
-  properties: ['title']
+  inputs: ['title']
 })
 export class Zippy {
   ...
@@ -289,13 +279,13 @@ export class Zippy {
 {% endraw %}
 {% endhighlight %}
 
-Notice the `properties` property in our component annotation? It's a list of property names where we can define which component attribute maps to which component property. Basically what we're doing here, is telling Angular that the value of the `title` **attribute** is projected to the `title` **property**. If we want to map the `title` property to a different attribute name, we can do so by suing the following syntax:
+Notice the `inputs` property in our component annotation? It's a list of property names where we can define which component attribute maps to which component input property. Basically what we're doing here, is telling Angular that the value of the `title` **attribute** is projected to the `title` **property**. Input data that flows into the component. If we want to map the `title` property to a different attribute name, we can do so by using the following syntax:
 
 {% highlight javascript %}
 {% raw %}
 @Component({
   selector: 'zippy',
-  properties: ['title: zippy-title']
+  inputs: ['title: zippy-title']
 })
 export class Zippy {
   ...
@@ -342,21 +332,21 @@ We could for example use our component like this:
 {% endraw %}
 {% endhighlight %}
 
-In order to make this work, we've used transclusion in Angular 1. We don't need transclusion anymore, since Angular 2 makes use of Shadow DOM which is part of the Web Components specification. Shadow DOM comes with something called "Content Insertion Points", which lets us specify, where DOM from the outside world is projected in the Shadow DOM of the component.
+In order to make this work, we've used transclusion in Angular 1. We don't need transclusion anymore, since Angular 2 makes use of Shadow DOM (Emulation) which is part of the Web Components specification. Shadow DOM comes with something called "Content Insertion Points" or "Content Projection", which lets us specify, where DOM from the outside world is projected in the Shadow DOM or view of the component.
 
-I know, it's hard to believe, but all we need to do is adding a `<content>` tag to our component template.
+I know, it's hard to believe, but all we need to do is adding a `<ng-content>` tag to our component template.
 
 {% highlight html %}
 {% raw %}
 ...
 <div class="zippy__content" [hidden]="!visible">
-  <content></content>
+  <ng-content></ng-content>
 </div>
 ...
 {% endraw %}
 {% endhighlight %}
 
-Angular 2 uses Shadow DOM (Emulation) by default, so we can just take advantage of that technology. It turns out that insertion points in Shadow DOM are even more powerful than transclusion in Angular. The `<content>` tag lets us define **which** DOM elements are projected. If you want to learn more about Shadow DOM, I recommend the articles on [html5rocks.com](http://www.html5rocks.com/en/tutorials/webcomponents/shadowdom/) or watch [this talk](https://www.youtube.com/watch?v=gSTNTXtQwaY) from ng-europe.
+Angular 2 uses Shadow DOM (Emulation) by default, so we can just take advantage of that technology. <s>It turns out that insertion points in Shadow DOM are even more powerful than transclusion in Angular.</s> Angular 1.5 introduces multiple transclusion slots, so we can explicitly "pick" which DOM is going to be projected into our directive's template. The `<ng-content>` tag lets us define **which** DOM elements are projected too. If you want to learn more about Shadow DOM, I recommend the articles on [html5rocks.com](http://www.html5rocks.com/en/tutorials/webcomponents/shadowdom/) or watch [this talk](https://www.youtube.com/watch?v=gSTNTXtQwaY) from ng-europe.
 
 ## Putting it all together
 
@@ -365,15 +355,12 @@ Yay, this is how we build a zippy component in Angular 2. Just to make sure we'r
 {% highlight javascript %}
 {% raw %}
 import { 
-  ComponentAnnotation as Component,
-  ViewAnnotation as View
+  ComponentMetadata as Component,
 } from 'angular2/angular2';
 
 @Component({
   selector: 'zippy',
-  properties: ['title']
-})
-@View({
+  inputs: ['title'],
   templateUrl: 'zippy.html'
 })
 export class Zippy {
