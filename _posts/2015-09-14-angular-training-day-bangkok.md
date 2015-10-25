@@ -7,10 +7,7 @@ update_date: 2015-09-14
 summary:    "We are happy to tell you that we are coming to Bangkok again this year! This time we'll come to run a free Angular Training Day in the brand new rooms of the Growth cafe & co. co-working space. We are excited to meet you there!"
 
 categories:
-  - angular
-
-tags:
-  - angular2
+  - announcements
 
 author: christoph_burgdorf
 ---
