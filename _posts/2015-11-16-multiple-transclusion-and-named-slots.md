@@ -50,7 +50,7 @@ angular.module('myApp', [])
   return {
     restrict: 'E',
     scope: {},
-    translcude: true,
+    transclude: true,
     template: `
       <div class="summary" ng-click="open = !open">
         {{ open ? '&blacktriangledown;' : '&blacktriangleright;' }} Details
