@@ -157,7 +157,7 @@ class RootCmp { }
 // at bootstrap
 bootstrap(RooCmp, [
   provide(PLATFORM_DIRECTIVES, {useValue: Draggable, multi: true}),
-  provide(PLATFORM_DIRECTIVES, {useValue: Morhpable, multi: true})
+  provide(PLATFORM_DIRECTIVES, {useValue: Morphable, multi: true})
 ]);
 {% endraw %}
 {% endhighlight %}
