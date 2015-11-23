@@ -87,7 +87,7 @@ var injector = Injector.resolveAndCreate([
   provide(SOME_TOKEN, {useValue: 'dependency two', multi: true})
 ]);
 
-var dependencies = injector.get(SOME_TOKEN); 
+var dependencies = injector.get(SOME_TOKEN);
 // dependencies == ['dependency one', 'dependency two']
 
 {% endhighlight %}
@@ -115,7 +115,7 @@ var injector = Injector.resolveAndCreate([
 ]);
 
 var engine = injector.get(Engine);
-// engine instanceof TurboeEngine
+// engine instanceof TurboEngine
 {% endhighlight %}
 
 This means, with multi providers we can basically **extend** the thing that is being injected for a particular token. Angular uses this mechanism to provide pluggable hooks.
