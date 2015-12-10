@@ -27,7 +27,7 @@ A few days ago, we asked on twitter who's interested to learn about an **unheard
 
 **This feature is available since Angular 1.4**
 
-So if you're on this version (or higher), whatever you learn in the next couple of minutes, it is sitting right there. Waiting for you to be used.
+If you're on version 1.4 or higher, this feature is already available to use. So, what you learn in the next couple of minutes you can use straight away!
 
 ## Understanding Pluralization and Gender Selection
 
