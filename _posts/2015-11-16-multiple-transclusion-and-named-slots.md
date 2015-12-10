@@ -2,7 +2,7 @@
 layout:     post
 title:      "Multiple Transclusion and named Slots"
 date:       2015-11-16
-update_date: 2015-11-16
+update_date_: 2015-12-10
 summary:    "Angular 1.5 is right around the corner, in fact, some beta releases are already out there and we're super happy to more and more awesome features are being added to the framework. One of those bigger features in the 1.5 release is multiple transclusion via named slots. In this article we're going to discuss what it's all about and how it helps the framework to align more with the web components technologies."
 
 categories:
@@ -128,7 +128,7 @@ angular.module('myApp', [])
     restrict: 'E',
     scope: {},
     transclude: {
-      span: 'summarySlot',
+      'summarySlot': 'span',
     },
     template: `
       <div class="summary" ng-click="open = !open">
@@ -143,7 +143,7 @@ angular.module('myApp', [])
 
 We basically made two changes:
 
-- We changed the `transclude` property to an object which specifies the transclusion slots. The key is the name of a element or directive in camel-case, the value a name we can use later in our template to transclude this particular DOM.
+- We changed the `transclude` property to an object which specifies the transclusion slots. The key is the name of a <s>element or directive in camel-case</s> slot we can later use in our template, the value the name of an <s>element or directive in camel-case</s> we want to transclude.
 - We replaced the default `"Details"` summary with an element that has `ng-transclude="summarySlot"`. As you can see, `ng-transclude` now excepts a string which is the name of a transclusion slot that we've defined earlier.
 
 The original `ng-transclude` stays as is, since it simply takes the rest to be transcluded. We can now use our `<ng-details>` component like this:
@@ -166,9 +166,21 @@ We can even make transclusion slots optional by prefixing the slot name with a `
 {% highlight html %}
 {% raw %}
 transclude: {
-  someDirective: '?optionalSlot'
+  '?summarySlot': 'span'
 }
 {% endraw %}
 {% endhighlight %}
+
+This is already very cool, but our `ng-details` directive still lacks one specific behaviour. If we don't specify a `<summary>`, `<details>` defaults to `"Details"`. Our component however, doesn't do this. We can provide a fallback summary by simply putting something into the DOM where other elements will be transcluded to:
+
+{% highlight js %}
+{% raw %}
+<div class="summary" ng-click="open = !open">
+  {{ open ? '&blacktriangledown;' : '&blacktriangleright;' }} <span ng-transclude="summarySlot">Details</span>
+</div>
+{% endraw %}
+{% endhighlight %}
+
+Seen what happened? We just put `"Details"` as text into our span element. This text will be replace with the transcluded DOM, if it is applied.
 
 What are you waiting for? Start using multiple transclusion in your directives and design beautful APIs for your consumers!
