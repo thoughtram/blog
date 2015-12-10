@@ -2,7 +2,7 @@
 layout:     post
 title:      "Multiple Transclusion and named Slots"
 date:       2015-11-16
-update_date_: 2015-12-10
+update_date: 2015-12-10
 summary:    "Angular 1.5 is right around the corner, in fact, some beta releases are already out there and we're super happy to more and more awesome features are being added to the framework. One of those bigger features in the 1.5 release is multiple transclusion via named slots. In this article we're going to discuss what it's all about and how it helps the framework to align more with the web components technologies."
 
 categories:
