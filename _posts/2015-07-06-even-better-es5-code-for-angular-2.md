@@ -12,7 +12,7 @@ relatedLinks:
     title: "Dependency Injection in Angular 2"
     url: "http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html"
 date:       2015-07-06
-update_date_: 2015-07-06
+update_date: 2015-12-12
 summary:    "One of the biggest things to consider when it comes to using Angular 2, is the upgrade path from Angular 1. Angular 2 is entirely written in TypeScript but browsers today only support ES5 or some features of ES6. However, nobody prevents us from writing Angular 2 code in ES5. A couple of weeks ago we wrote about exactly that. This time, we take a look at a new, much better, syntax to write Angular 2 in ES5."
 
 categories: 
@@ -59,10 +59,8 @@ var HelloComponent = function () {
 };
 
 HelloComponent.annotations = [
-  new angular.ComponentAnnotation({
-    selector: 'hello-cmp'
-  }),
-  new angular.ViewAnnotation({
+  new ng.Component({
+    selector: 'hello-cmp',
     template: 'Hello World!'
   })
 ];
@@ -75,17 +73,13 @@ Let's take a look at how this can be done better with the more improved syntax f
 
 ## Angular 2 in ES5 after syntactical improvements
 
-Since `alpha.26`, Angular provides a nicer more readable syntax when it comes to writing a component in ES5. Instead of using `angular.ComponentAnnotation()` and `angular.ViewAnnotation()` directly, we can use chainable `Component()`, `View()` and `Class()` methods. With a bit of straight forward indentation, we can make our ES5 code look very similar to the ES7 or TypeScript versions.
-
-Let's take our `HelloComponent` and refactor it with the better syntax:
+Angular 2 comes with helper functions to create components and services right out of the box. Let's take our `HelloComponent` and refactor it with the better syntax:
 
 {% highlight javascript %}
 {% raw %}
-var HelloComponent = ng.
+var HelloComponent = ng.core
   Component({
-    selector: 'hello-cmp'
-  })
-  .View({
+    selector: 'hello-cmp',
     template: 'Hello World!'
   })
   .Class({
@@ -96,7 +90,7 @@ var HelloComponent = ng.
 {% endraw %}
 {% endhighlight %}
 
-As we can see, `Component()` and `View()` are pretty much the equivalent to `@Component` and `@View` decorators respectively. They take care of creating annotations on our component, while we pass `ComponentArgs` and `ViewArgs` to them accordingly. What about `Class()`? It's pretty obvious that `Class()` takes the constructor function of our component, but can it also extend other "classes" or consume prototype methods as we would like to create?
+As we can see, `Component()` is pretty much the equivalent of `@Component` decorator. It takes care of creating annotations on our component, while we pass `ComponentArgs` to it accordingly. What about `Class()`? It's pretty obvious that `Class()` takes the constructor function of our component, but can it also extend other "classes" or consume prototype methods as we would like to create?
 
 Yeap, all that is possible let's quickly go through all possible properties of Angular's `Class()` method.
 
@@ -110,11 +104,9 @@ The `extends` property allows us to extend existing classes or components. Here'
 
 {% highlight javascript %}
 {% raw %}
-var OtherComponent = ng
+var OtherComponent = ng.core
   .Component({
-    selector: 'other-cmp'
-  })
-  .View({
+    selector: 'other-cmp',
     template: '<p>Other</p>'
   })
   .Class({
@@ -125,9 +117,7 @@ var OtherComponent = ng
 
 var HelloComponent = ng.
   Component({
-    selector: 'hello-cmp'
-  })
-  .View({
+    selector: 'hello-cmp',
     template: 'Hello World!'
   })
   .Class({
@@ -161,10 +151,10 @@ That's pretty straight forward. But why do properties have to be arrays otherwis
 
 {% highlight javascript %}
 {% raw %}
-var HelloComponent = ng.
+var HelloComponent = ng.core
   Component({
     selector: 'hello-cmp',
-    viewInjector: [Service]
+    viewProviders: [Service]
   })
   .View({
     template: 'Hello World!'

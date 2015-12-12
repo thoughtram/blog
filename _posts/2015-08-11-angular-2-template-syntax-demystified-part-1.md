@@ -9,7 +9,7 @@ relatedLinks:
     title: "Binding to directive controllers"
     url: "http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html"
 date:       2015-08-11
-update_date: 2015-08-25
+update_date: 2015-12-12
 summary:    "Angular 2 introduces it's own kind of template syntax in order to implement different binding strategies. This enables the framework to work with any element, no matter if it's a web component or a native one. However, looking at this syntax the very first time raises a lot of questions. This article discusses the template syntax in Angular 2, why it's there and how it works."
 
 categories: 
@@ -37,7 +37,7 @@ If you've read the [step-by-step guide](https://angular.io/docs/js/latest/guide/
 {% raw %}
 <p>My name: {{ myName}}</p>
 <ul>
-  <li *ng-for="#name of names">
+  <li *ngFor="#name of names">
     ...
   </li>
 </ul>
@@ -50,7 +50,7 @@ And that's not all, in fact we could add some more:
 {% highlight html %}
 {% raw %}
 <todo [todo]="todo"></todo>
-<input [(ng-model)]="foo">
+<input [(ngModel)]="foo">
 {% endraw %}
 {% endhighlight %}
 
@@ -188,7 +188,7 @@ It turns out, that interpolation syntax is just a shorthand syntax for property 
 
 {% highlight html %}
 {% raw %}
-<p [text-content]="interpolate(['Hello'], [name])"></p>
+<p [textContent]="interpolate(['Hello'], [name])"></p>
 {% endraw %}
 {% endhighlight %}
 
@@ -206,7 +206,7 @@ Which makes it an alpha numeric version that all preprocessors should be able to
 
 ## Event Binding
 
-Binding to properties through HTML is already super powerful. But sometimes we need to be able to react to certain things that happen during runtime of our application. This is what DOM events are for and they are part of our browser platforms since years. Just think of `click`, `input` and `focus` events. However, nowadays it's also very common for elements to fire their own **custom events**. A Web Component `<date-picker>` for example, could fire a `datechanged` event.
+Binding to properties through HTML is already super powerful. But sometimes we need to be able to react to certain things that happen during runtime of our application. This is what DOM events are for and they are part of our browser platforms since years. Just think of `click`, `input` and `focus` events. However, nowadays it's also very common for elements to fire their own **custom events**. A Web Component `<date-picker>` for example, could fire a `dateChanged` event.
 
 In AngularJS, we have a lot of directives that help us out notifying the framework when an event is fired. That's why we have things like `ng-click`, `ng-focus` etc. They simply notify Angular that an event has been fired and application state could have changed. Without these directives, Angular's two-way data binding wouldn't work out-of-the-box. Unfortunately, that doesn't really scale. How can our `<date-picker>` Web Component notify Angular that a change has happened? Correct, we would need to create a directive for each and every event and it's not uncommon for elements to fire more than just one event.
 
@@ -214,7 +214,7 @@ That's why in Angular 2 we have the parethesis syntax where we can bind to **any
 
 {% highlight html %}
 {% raw %}
-<date-picker (datechanged)="statement()"></date-picker>
+<date-picker (dateChanged)="statement()"></date-picker>
 {% endraw %}
 {% endhighlight %}
 
@@ -274,11 +274,11 @@ This can be easily fixed by adding an event binding accordingly:
 
 We listen to the `input` event and whenever it is fired, we update the value of our `name` expression by pulling the new value out of the event object.
 
-Since this is quite a lot of typing to implement such a common scenario, Angular 2 comes with an `ng-model` directive that saves some key strokes for us, by unifying the property and event binding, and also the extraction of the target's value. Here's the exact same code using `ng-model`:
+Since this is quite a lot of typing to implement such a common scenario, Angular 2 comes with an `ngModel` directive that saves some key strokes for us, by unifying the property and event binding, and also the extraction of the target's value. Here's the exact same code using `ngModel`:
 
 {% highlight html %}
 {% raw %}
-<input [ng-model]="name" (ng-model-change)="name = $event">
+<input [ngModel]="name" (ngModelChange)="name = $event">
 
 <p>Hello {{name}}</p>
 {% endraw %}
@@ -288,7 +288,7 @@ It gets even better! We can shorten that syntax even further by merging both bin
 
 {% highlight html %}
 {% raw %}
-<input [(ng-model)]="name">
+<input [(ngModel)]="name">
 
 <p>Hello {{name}}</p>
 {% endraw %}

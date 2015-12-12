@@ -15,7 +15,7 @@ relatedLinks:
     title: "Angular ES5 Demo"
     url: "http://plnkr.co/edit/XmZkHzl407z93R5Kf0pv?p=preview"
 date:       2015-05-09
-update_date: 2015-07-06
+update_date: 2015-12-12
 summary:    "Angular 2 is written in TypeScript to take advantage of language features like types and meta data annotations through decorators. While this is great for tooling, a lot of people don't like the syntax of decorators and maybe even ES6 classes. This article discusses how to write an Angular 2 application in ES5."
 
 categories: 
@@ -64,10 +64,8 @@ var HelloComponent = function () {
 };
 
 HelloComponent.annotations = [
-  new angular.ComponentAnnotation({
-    selector: 'hello-cmp'
-  }),
-  new angular.ViewAnnotation({
+  new ng.Component({
+    selector: 'hello-cmp',
     template: 'Hello World!'
   })
 ];
@@ -79,9 +77,7 @@ That's it. We have a constructor function that has a component annotation and a 
 {% highlight javascript %}
 {% raw %}
 @Component({
-  selector: 'hello-cmp'
-})
-@View({
+  selector: 'hello-cmp',
   template: 'Hello World!'
 })
 class HelloComponent {
@@ -89,14 +85,6 @@ class HelloComponent {
 }
 {% endraw %}
 {% endhighlight %}
-
-You might wonder, why we use `ComponentAnnotation` and `ViewAnnotation` instead of `Component` and `View`. Well, if you've read our article on the [difference between annotations and decorators](http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html) it's very easy to understand. Since `alpha.22` we have support for decorators **and** annotations. The Traceur transpiler implements annotations, but Babel and TypeScript support ES7 decorators.
-
-In order to make the Angular code work with all those transpilers, it comes with both, annotation implementations and decorator implementations. Which means in fact, we could import and use `@ComponentAnnotation` and `@ViewAnnotation` in our ES6/TypeScript example as well, if we would transpile it with Traceur.
-
-So long story short: `@ComponentAnnotation` and `@ViewAnnotation` are really the annotations. `@Component` and `@View` are the decorators that use the annotations internally.
-
-We need to use the annotations, because we're writing in a language that doesn't have decorators support yet.
 
 ## Bootstrapping an Angular 2 app in ES5
 
@@ -124,7 +112,7 @@ Great we've just bootstrapped our Angular 2 application written in ES5! Was it t
 
 ## Injecting services in ES5
 
-Let's say we want to add a `GreetingService` to our component. The `@Component` annotation takes a property `viewInjector` to define injectable types for this particular component. This is easy to add. First we build the service. A service in Angular 2 is just a class, which translates to just a function, which is also just an object in JavaScript.
+Let's say we want to add a `GreetingService` to our component. The `@Component` annotation takes a property `viewProviders` to define injectable types for this particular component. This is easy to add. First we build the service. A service in Angular 2 is just a class, which translates to just a function, which is also just an object in JavaScript.
 
 {% highlight javascript %}
 {% raw %}
@@ -141,9 +129,9 @@ Next we tell our component about it's injectable types:
 {% highlight javascript %}
 {% raw %}
 HelloComponent.annotations = [
-  new angular.ComponentAnnotation({
+  new ng.Component({
     selector: 'hello-cmp',
-    viewInjector: [GreetingService]
+    viewProviders: [GreetingService]
   }),
   ...
 ];
@@ -164,7 +152,7 @@ To make our component explicitly ask for something that is a `GreetingService`, 
 
 {% highlight javascript %}
 {% raw %}
-HelloComponent.parameters = [[GreetingService]];
+HelloComponent.parameters = [new ng.core.Inject(GreetingService)];
 {% endraw %}
 {% endhighlight %}
 

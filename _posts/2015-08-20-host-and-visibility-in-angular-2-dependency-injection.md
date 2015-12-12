@@ -15,7 +15,7 @@ relatedLinks:
     title: "View Encapsulation in Angular 2"
     url: "http://blog.thoughtram.io/angular/2015/06/29/shadow-dom-strategies-in-angular2.html"
 date:       2015-08-20
-update_date: 2015-10-12
+update_date: 2015-12-12
 summary:    "One of our articles discussed the concepts and ideas behind the dependency injection pattern, and also, how that pattern is implemented in the Angular 2 framework. We covered what injector providers are and how those relate to actual dependency instances. Even though this article gave us a very good picture of what is going on, there's still one topic unexplored: Visibility."
 
 categories: 

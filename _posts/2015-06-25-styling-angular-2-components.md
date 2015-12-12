@@ -15,7 +15,7 @@ relatedLinks:
     title: "Developing a tabs component in Angular 2"
     url: "http://blog.thoughtram.io/angular/2015/04/09/developing-a-tabs-component-in-angular-2.html"
 date:       2015-06-25
-update_date: 2015-06-25
+update_date: 2015-12-12
 summary:    "Most of our articles on Angular 2 covered how to build simple components or detailed some certain parts of the framework in a standalone context. In this article we are going to explore the different ways of styling Angular 2 components."
 
 categories: 
@@ -46,7 +46,6 @@ The easiest way to add styles to a component is taking advantage of the `@Compon
 {% highlight js %}
 @Component({
   selector: 'zippy',
-  properties: ['title'],
   templateUrl: 'zippy.html',
   styles: [`
     .zippy {
@@ -54,7 +53,9 @@ The easiest way to add styles to a component is taking advantage of the `@Compon
     }
   `]
 })
-class Zippy { }
+class Zippy {
+  @Input() title: string;
+}
 {% endhighlight %}
 
 This is pretty straight forward. You might wonder though, why the value of that property is a list and not just a (multi-line) string. Well, I wonder too. That's why I asked the [question](https://github.com/angular/angular/issues/2730) right away.
@@ -77,11 +78,11 @@ Okay, so defining styles on the component is pretty clear, but were do those end
 </html>
 {% endhighlight %}
 
-What's going on there? The reason why Angular takes our styles and puts them up there, is because of the **Shadow DOM Strategy** that we are using. Angular 2 comes with three different Shadow DOM strategies in order to support both, browsers that don't support Shadow DOM, and also the ones that do support it. The Shadow DOM strategies will be explored in another article, but we have to touch on this though in order to understand why this is happening.
+What's going on there? The reason why Angular takes our styles and puts them up there, is because of the **View Encapsulation** that we are using. Angular 2 comes with three different view encapsulation types in order to support both, browsers that don't support Shadow DOM, and also the ones that do support it. The view encapsulations <s>will be explored in another article</s> are covered in [this article](http://blog.thoughtram.io/angular/2015/06/29/shadow-dom-strategies-in-angular2.html), but we have to touch on this though in order to understand why this is happening.
 
-Angular 2 currently uses the `EmulatedUnscopedShadowDomStrategy` by default. Which basically means, there's no usage of any Shadow DOM at all. One of the nice features of Shadow DOM is style encapsulation. It allows us to scope styles to a specific component without affecting the outer world.
+Angular 2 currently uses the `Emuldated View Encapsulation` by default. Which basically means, there's no usage of any Shadow DOM at all. One of the nice features of Shadow DOM is style encapsulation. It allows us to scope styles to a specific component without affecting the outer world.
 
-To take advantage of style encapsulation, styles have to be put into the `shadowRoot` of a component. Due to the Shadow DOM strategy that is used, there is no `shadowRoot` to put our styles into. That's why Angular writes them into the head. But as mentioned, there's another article in the making that will explain all three Shadow DOM strategies.
+To take advantage of style encapsulation, styles have to be put into the `shadowRoot` of a component. Due to the Shadow DOM strategy that is used, there is no `shadowRoot` to put our styles into. That's why Angular writes them into the head. But as mentioned, there's another article that explains all three view encapsulations.
 
 Let's take a look at another way of adding styles to our component.
 
@@ -92,11 +93,12 @@ In an ideal world, we don't have to mix our styles with our application code. Th
 {% highlight js %}
 @Component({
   selector: 'zippy',
-  properties: ['title'],
   templateUrl: 'zippy.html',
   styleUrls: ['zippy.css']
 })
-class Zippy { }
+class Zippy {
+  @Input() title: string;
+}
 {% endhighlight %}
 
 Where do **those** end up in the DOM? Well, for the same reason as explained earlier, they are written into the head of the document. But not only that, when Angular fetches the style resources, it takes the text response, inlines and appends them after all component inline styles. So if we would have a configuration like this:
@@ -104,12 +106,13 @@ Where do **those** end up in the DOM? Well, for the same reason as explained ear
 {% highlight js %}
 @Component({
   selector: 'zippy',
-  properties: ['title'],
   templateUrl: 'zippy.html',
   styles: ['.zippy { background: green; }'],
   styleUrls: ['zippy.css']
 })
-class Zippy { }
+class Zippy {
+  @Input() title: string;
+}
 {% endhighlight %}
 
 And the `zippy.css` content would look like this:

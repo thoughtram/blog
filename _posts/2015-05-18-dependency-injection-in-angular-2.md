@@ -21,7 +21,7 @@ relatedLinks:
     title: "Angular 2 Bits: Unified Dependency Injection"
     url: "http://victorsavkin.com/post/102965317996/angular-2-bits-unified-dependency-injection"
 date:       2015-05-18
-update_date: 2015-10-12
+update_date: 2015-12-12
 summary:    "Dependency injection has always been one of Angular's biggest features and selling points. It allows us to inject dependencies in different code components, without needing to know, how those dependencies are created. However, it turns out that the current dependency injection system in Angular 1 has some problems that need to be solved in Angular 2, in order to build the next generation framework. In this article, we're going to explore the new dependency injection system for future generations."
 
 categories: 
@@ -181,7 +181,7 @@ var car = injector.get(Car);
 We import `Injector` from Angular 2 which exposes some static APIs to create injectors. `resolveAndCreate()` is basically a factory function that creates an injector and takes a list of providers. We'll explore how those classes are supposed to be providers in a second, but for now we focus on `injector.get()`. See how we ask for an instance of `Car` in the last line? How does our injector know, which dependencies need to be created in order to instantiate a car? A look at our `Car` class will explain...
 
 {% highlight js %}
-import { Inject } from 'angular2/di';
+import { Inject } from 'angular2/core';
 
 class Car {
   constructor(
@@ -220,7 +220,7 @@ var injector = Injector.resolveAndCreate([
 Again, you might wonder how this list of classes is supposed to be a list of providers. Well, it turns out that this is actually a shorthand syntax. If we translate this to the longer, more verbose, syntax, things might become a bit more clear.
 
 {% highlight js %}
-import {provide} from 'angular2/angular2';
+import {provide} from 'angular2/core';
 
 var injector = Injector.resolveAndCreate([
   provide(Car, {useClass: Car}),
@@ -316,7 +316,7 @@ As you can see, Angular 2's DI solves pretty much all issues we have with Angula
 
 If we need a transient dependency, something that we want a new instance every time we ask for a dependency, we have two options:
 
-**Factories** can return instances of classes. Those won't be singletons.
+**Factories** can return instances of classes. Those won't be singletons. Note that in the following code we're **creating** a factory.
 
 {% highlight js %}
 provide(Engine, {useFactory: () => {
@@ -351,9 +351,7 @@ Lets take a look at the following simple Angular 2 component.
 
 {% highlight js %}
 @Component({
-  selector: 'app'
-})
-@View({
+  selector: 'app',
   template: '<h1>Hello {{name}}!</h1>'
 })
 class App {
@@ -414,9 +412,7 @@ Lets say we have `NameService` as application wide injectable for the type `Name
 {% highlight js %}
 @Component({
   selector: 'app',
-  providers: [NameService]
-})
-@View({
+  providers: [NameService],
   template: '<h1>Hello {{name}}!</h1>'
 })
 class App {

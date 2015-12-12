@@ -12,7 +12,7 @@ relatedLinks:
     title: "The difference between Annotations and Decorators"
     url: "http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html"
 date:       2015-03-27
-update_date: 2015-10-25
+update_date: 2015-12-11
 summary:    "Even if Angular 2 is still in early development, we can already start playing with the code since it's up on GitHub and also published as npm module. We are following the development of Angular 2 since the beginning on and are also contributing to the project. Just recently we've built a simple zippy component in Angular 2 and in this article we want to show how."
 
 categories: 
@@ -78,17 +78,15 @@ export class Zippy {
 
 Angular 2 doesn't come with it's own module system anymore, since ES2015 already provides a module system. That means we can just write plain ES2015 code without any Angular specific bits which makes our code more reusable.
 
-The next thing we want to do, is to make our `Zippy` class an actual component and give it a template so that we can see that it is ready to be used. In order to tell Angular that this particular class is a component, we use something called "Annotations".
+The next thing we want to do, is to make our `Zippy` class an actual component and give it a template so that we can see that it is ready to be used. In order to tell Angular that this particular class is a component, we use something called "Decorators".
 
-Annotations are a way to add metadata to our existing code. Those annotations are actually not supported by ES2015 but have been developed as language extension and are considered by the Traceur transpiler, which is used in this project. We're not required to use annotations though. As mentioned, those are just transpiled to ES5 and then simply used by the framework. However, for simplicity sake we'll use them in this article.
+Decorators are a way to add metadata to our existing code. Those decorators are actually not supported by ES2015 but have been developed as language extension of the TypeScript transpiler, which is used in this project. We're not required to use decorators though. As mentioned, those are just transpiled to ES5 and then simply used by the framework. However, for simplicity sake we'll use them in this article.
 
-Angular provides us with a couple of metadata types so we can express our code in a much more elegant way. In order to build a component, We need the `ComponentMetadata`. Metadata annotations can be imported just like classes by using ES2015 module syntax. We also import both metadata annotations with a shorter name so they match the **decorators** provided by the framework. This is for easy migration when we switch from Traceur to TypeScript or Babel in the future. If this is unclear to you, you might want to read our article on [the difference between annotations and decorators](http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html).
+Angular provides us with a couple of decorators so we can express our code in a much more elegant way. In order to build a component, We need the `@Component()`. Decorators can be imported just like classes by using ES2015 module syntax. If you heard about **annotations in traceur** before and wonder how they relate to decorators, you might want to read our article on [the difference between annotations and decorators](http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html).
 
 {% highlight javascript %}
 {% raw %}
-import { 
-  ComponentMetadata as Component,
-} from 'angular2/angular2';
+import {Component} from 'angular2/core';
 
 export class Zippy {
 
@@ -96,15 +94,13 @@ export class Zippy {
 {% endraw %}
 {% endhighlight %}
 
-The `ComponentMetadata` annotation adds information about what our component's element name will be, which attributes are bound to which input properties and more. We can also add information about the component's view and template.
+The `Component` decorator adds information about what our component's element name will be, which attributes are bound to which input properties and more. We can also add information about the component's view and template.
 
-We want our zippy component to be usable as `<zippy>` element. So all we need to do, is to add a `ComponentMetadata` annotation with that particular information. To specify the element name, or rather CSS selector (since we could also build decorators), we need to add a `selector` property that matches a CSS selector.
+We want our zippy component to be usable as `<zippy>` element. So all we need to do, is to add a `@Component()` decorator with that particular information. To specify the element name, or rather CSS selector (since we could also build decorators), we need to add a `selector` property that matches a CSS selector.
 
 {% highlight javascript %}
 {% raw %}
-import { 
-  ComponentMetadata as Component,
-} from 'angular2/angular2';
+import {Component} from 'angular2/core';
 
 @Component({
   selector: 'zippy'
@@ -119,9 +115,7 @@ Next, our component needs a template. We add information about the component's v
 
 {% highlight javascript %}
 {% raw %}
-import { 
-  ComponentMetadata as Component,
-} from 'angular2/angular2';
+import {Component} from 'angular2/core';
 
 @Component({
   selector: 'zippy',
@@ -154,9 +148,7 @@ Alright, believe it or not, that's basically all we need to do to get this compo
 
 {% highlight javascript %}
 {% raw %}
-import { 
-  ComponentMetadata as Component,
-} from 'angular2/angular2';
+import {Component} from 'angular2/core';
 import {Zippy} from 'zippy';
 
 @Component({
@@ -265,35 +257,37 @@ Okay, we're almost there. Let's make the zippy title configurable. We want that 
 {% endraw %}
 {% endhighlight %}
 
-In Angular 2, we don't need to specify how scope properties are bound in our component, the consumer does. That means, this gets **a lot** easier in Angular too, because all we need to do is this:
+In Angular 2, we don't need to specify how scope properties are bound in our component, the consumer does. That means, this gets **a lot** easier in Angular too, because all we need to do is to import the `@Input()` decorator and teach our component about an input property, like this:
 
 {% highlight javascript %}
 {% raw %}
+import {Component, Input} from 'angular2/core';
+
 @Component({
-  selector: 'zippy',
-  inputs: ['title']
+  selector: 'zippy'
 })
 export class Zippy {
+  @Input() title: string;
   ...
 }
 {% endraw %}
 {% endhighlight %}
 
-Notice the `inputs` property in our component annotation? It's a list of property names where we can define which component attribute maps to which component input property. Basically what we're doing here, is telling Angular that the value of the `title` **attribute** is projected to the `title` **property**. Input data that flows into the component. If we want to map the `title` property to a different attribute name, we can do so by using the following syntax:
+Basically what we're doing here, is telling Angular that the value of the `title` **attribute** is projected to the `title` **property**. Input data that flows into the component. If we want to map the `title` property to a different attribute name, we can do so by passing the attribute name to `@Input()`:
 
 {% highlight javascript %}
 {% raw %}
 @Component({
-  selector: 'zippy',
-  inputs: ['title: zippy-title']
+  selector: 'zippy'
 })
 export class Zippy {
+  @Input('zippyTitle') title: string;
   ...
 }
 {% endraw %}
 {% endhighlight %}
 
-But for simplicity's sake, we stick with the shorthand synax. There's nothing more to do to make the title configurable, let's update the template annotation for `hello` app.
+But for simplicity's sake, we stick with the shorthand synax. There's nothing more to do to make the title configurable, let's update the template for `hello` app.
 
 {% highlight javascript %}
 {% raw %}
@@ -354,20 +348,16 @@ Yay, this is how we build a zippy component in Angular 2. Just to make sure we'r
 
 {% highlight javascript %}
 {% raw %}
-import { 
-  ComponentMetadata as Component,
-} from 'angular2/angular2';
+import {Component, Input} from 'angular2/core';
 
 @Component({
   selector: 'zippy',
-  inputs: ['title'],
   templateUrl: 'zippy.html'
 })
 export class Zippy {
 
-  constructor() {
-    this.visible = true;
-  }
+  @Input() title: string;
+  visible: boolean = true;
 
   toggle() {
     this.visible = !this.visible;

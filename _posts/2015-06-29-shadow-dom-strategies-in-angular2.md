@@ -9,7 +9,7 @@ relatedLinks:
     title: "Dependency Injection in Angular 2"
     url: "http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html"
 date:       2015-06-29
-update_date: 2015-10-25
+update_date: 2015-12-12
 summary:    "Angular 2 has been rewritten from scratch to take advantage of a lot of new technologies that are coming to the web. One of those technologies are Web Components. In fact, Web Components is a set of four technologies: HTML Imports, Templates, Shadow DOM and Custom Elements. Angular uses templates for structural DOM changes, and Shadow DOM for styles and DOM encapsulation. This article explores Angular 2's view encapsulation  and how we can use it."
 
 categories: 
@@ -60,11 +60,10 @@ You might wonder why we have three types. Why not just one for native Shadow DOM
 Angular doesn't use Shadow DOM at all. Styles applied to our component are written to the document head. We talked about that in a more detail in [styling Angular 2 components](http://blog.thoughtram.io/angular/2015/06/25/styling-angular-2-components.html), but to make a quick recap, having a zippy component with styles like this (note that we set the `encapsulation` property in our `@Component` decorator):
 
 {% highlight js %}
-import {ViewEncapsulation} from 'angular2/angular2';
+import {ViewEncapsulation} from 'angular2/core';
 
 @Component({
   selector: 'zippy',
-  properties: ['title'],
   templateUrl: 'zippy.html',
   styles: [`
     .zippy {
@@ -73,7 +72,9 @@ import {ViewEncapsulation} from 'angular2/angular2';
   `],
   encapsulation: ViewEncapsulation.None
 })
-class Zippy { }
+class Zippy {
+  @Input() title: string;
+}
 {% endhighlight %}
 
 And a template like this:

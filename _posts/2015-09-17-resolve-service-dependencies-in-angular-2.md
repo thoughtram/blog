@@ -16,7 +16,7 @@ relatedLinks:
     url: "http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html"
 
 date:       2015-09-17
-update_date: 2015-10-11
+update_date: 2015-12-12
 summary: "When writing Angular 2 applications, it often happens that we build services that depend on other service instances. In our previous articles, we learned about the Dependency Injection system in Angular 2 and how it works. However, it turns out that we might run into unexpected behaviour when injecting service dependencies. This article details how to do it right."
 
 categories:
@@ -43,13 +43,10 @@ Let's say we have a simple Angular 2 component which has a `DataService` depende
 {% highlight ts %}
 {% raw %}
 @Component({
-  selector: 'my-app'
-})
-@View({
-  directives: [NgFor],
+  selector: 'my-app',
   template: `
     <ul>
-      <li *ng-for="#item in items">{{item.name}}</li>
+      <li *ngFor="#item of items">{{item.name}}</li>
     </ul>
   `
 })

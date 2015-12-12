@@ -16,7 +16,7 @@ relatedLinks:
     url: "http://blog.thoughtram.io/angular/2015/09/17/resolve-service-dependencies-in-angular-2.html"
 
 date:       2015-10-24
-update_date: 2015-10-24
+update_date: 2015-12-12
 summary:    "One of the hottest topics when it comes to Angular 2, is how to get our existing AngularJS applications upgrade to the next major version of the framework. The APIs of Angular 2 are stablelising and a module to help upgrading existing AngularJS apps is emerging. This module is called ngUpgrade and in this article we're going to explore what comes into play when upgrading an app and also how ngUpgrade gives us a helping hand."
 
 categories:
@@ -196,8 +196,6 @@ var app = angular.module('myApp', []);
 adapter.bootstrap(document.body, ['myApp']);
 {% endhighlight %}
 
-**Note**: At the time of writing this article, there was no package for `ngUpgrade` yet. Don't be surprised if you can't import from `angular2/upgrade`.
-
 Cool, our app is now bootstrapped using `ngUpgrade` and we can start mixing Angular 1 components with Angular 2 components.
 
 ##Downgrading Angular 2 components
@@ -229,14 +227,13 @@ Upgrading this to Angular 2 looks something like this:
 {% raw %}
 @Component({
   selector: 'product-detail',
-  inputs: ['product']
   template: `
     <h2>{{product.name}}</h2>
     <p>{{product.description}}</p>
   `
 })
 class ProductDetail {
-  ...
+  @Input() product: Product;
 }
 {% endraw %}
 {% endhighlight %}
@@ -265,12 +262,10 @@ Let's say we continued upgrading our application and have a `ProductList` compon
 {% raw %}
 @Component({
   selector: 'product-list',
-  inputs: ['products'],
-  directives: [NgFor],
   template: `
     <h2>Product List</h2>
     <ol>
-      <li *ng-for="#product of products">
+      <li *ngFor="#product of products">
         <product-list-item [product]="product">
         </product-list-item>
       </li>
@@ -278,6 +273,7 @@ Let's say we continued upgrading our application and have a `ProductList` compon
   `
 })
 class ProductList {
+  @Input() products: Product[];
   ...
 }
 {% endraw %}
@@ -291,9 +287,7 @@ class ProductList {
 {% raw %}
 @Component({
   selector: 'product-list',
-  inputs: ['products'],
   directives: [
-    NgFor,
     adapter.upgradeNg1Component('productListItem')
   ],
   template: `
@@ -307,6 +301,7 @@ class ProductList {
   `
 })
 class ProductList {
+  @Input() products: Product[];
   ...
 }
 {% endraw %}

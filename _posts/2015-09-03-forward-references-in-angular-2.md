@@ -10,7 +10,7 @@ relatedLinks:
     url: "http://blog.thoughtram.io/angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html"
 
 date:       2015-09-03
-update_date: 2015-10-25
+update_date: 2015-12-12
 summary:    "Even though we already covered many aspects of the dependency injection system in Angular 2 there are still some features left that we haven't covered yet. Some of them more bold and some more subtile. In this article we like to explore forward references. Why they exist and how we can use them."
 
 categories:
@@ -35,11 +35,14 @@ As a small recap, here we have an `AppComponent` that relies on DI to get a `Nam
 **app.ts**
 {% highlight ts %}
 {% raw %}
-import {Component, bootstrap} from 'angular2/angular2';
+import {Component} from 'angular2/angular2';
+import {bootstrap} from 'angular2/platform/browser';
 import {NameService} from './nameService';
+
 @Component({
   selector: 'my-app',
   template: '<h1>Favourite framework: {{ name }}</h1>'
+})
 class AppComponent {
   name: String
   constructor(nameService: NameService) {
@@ -66,10 +69,13 @@ This works well, but let's see what happens when we inline the contents of `name
 
 {% highlight ts %}
 {% raw %}
-import {Component, bootstrap} from 'angular2/angular2';
+import {Component} from 'angular2/angular2';
+import {bootstrap} from 'angular2/platform/browser';
+
 @Component({
   selector: 'my-app',
   template: '<h1>Favourite framework: {{ name }}</h1>'
+})
 class AppComponent {
   name: String
   constructor(nameService: NameService) {
@@ -92,13 +98,14 @@ When we try to run this code we notice that it stopped working. In my case, I wa
 
 `Cannot resolve all parameters for AppComponent(undefined). Make sure they all have valid type or annotations`.
 
-Ok, this gives us a little hint. It seems `NameService` is undefined in the constructor of `AppComponent`. This makes sense if you look at the flow of the code because we already used `NameService` in the constructor of `AppComponent` before we actually declared it. But on the other hand, using regular ES5 constructor functions that would be totally valid because function declarations get hoisted to the top by the JavaScript interpreter behind the scenes. And then, aren't ES6 classes just sugar on top of regular ES5 functions after all?
+Ok, this gives us a little hint. It seems `NameService` is undefined in the constructor of `AppComponent`. This makes sense if you look at the flow of the code because we already used `NameService` in the constructor of `AppComponent` before we actually declared it. But on the other hand, using regular ES5 constructor functions that would be totally valid because function declarations get hoisted to the top by the JavaScript interpreter behind the scenes. And then, aren't ES2015 classes just sugar on top of regular ES5 functions after all?
 
 Let's see what happens when we move `NameService` to the top so that it's declared before it's first usage.
 
 {% highlight ts %}
 {% raw %}
-import {Component, bootstrap} from 'angular2/angular2';
+import {Component} from 'angular2/angular2';
+import {bootstrap} from 'angular2/platform/browser';
 
 class NameService {
   getName () {
@@ -277,8 +284,8 @@ Turns out there is a solution we can reach for. Instead of annotating our `nameS
 
 {% highlight ts %}
 {% raw %}
-import { Component, Inject,
-         forwardRef, bootstrap} from 'angular2/angular2';
+import {Component, Inject, forwardRef} from 'angular2/core';
+import {bootstrap} from 'angular2/platform/browser';
 
 @Component({
   selector: 'my-app',

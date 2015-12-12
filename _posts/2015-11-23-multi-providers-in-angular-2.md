@@ -2,7 +2,7 @@
 layout:     post
 title:      "Multi Providers in Angular 2"
 date:       2015-11-23
-update_date: 2015-11-23
+update_date: 2015-12-12
 summary:    "Angular 2 has an entirely revamped dependency injection system, which turns out to be extremely flexible. While we've already covered the basics and some advanced topics regarding DI in our last articles, we haven't talked about a specific feature that we don't necessarily need in our daily basis. This feature is called multi providers and in this article we're going to detail what they are and how they enable a pluggable dependency system in the Angular 2 platform."
 
 categories:
@@ -129,7 +129,7 @@ In Angular 2 we always had to explicitly define directives that are used in our 
   directives: [NgFor], // also CORE_DIRECTIVES
   template: `
     <ul>
-      <li *ng-for="#item of items">
+      <li *ngFor="#item of items">
         {{item.name}}
       </li>
     </ul>

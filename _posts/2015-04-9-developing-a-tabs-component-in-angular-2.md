@@ -6,7 +6,7 @@ relatedLinks:
     title: "Builing a zippy component in Angular 2"
     url: "http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html"
 date:       2015-04-09
-update_date: 2015-11-17
+update_date: 2015-12-12
 summary:    "In our last article we learned how to build a zippy component in Angular 2. This article details how to build another simple, but widely used type of component: tabs. Building tabs in Angular has always been the de facto example to example controllers in directives. Angular 2 makes it much easier and here's how you do it."
 
 categories:
@@ -35,10 +35,10 @@ Of course, in Angular, those implementation details are hidden behind some nice 
 {% highlight html %}
 {% raw %}
 <tabs>
-  <tab tab-title="Tab 1">
+  <tab tabTitle="Tab 1">
     Here's some content.
   </tab>
-  <tab tab-title="Tab 2">
+  <tab tabTitle="Tab 2">
     And here's more in another tab.
   </tab>
 </tabs>
@@ -49,14 +49,14 @@ We have a `<tab>` element that simply represents a single tab which has a title,
 
 If you've been following the development and concepts of Angular 2, you probably learned that, in Angular 2, the **consumer** of a component is in charge of deciding how a value is passed to a component. Whereas in Angular 1, the directive defines how a value is bound to it's scope, so the consumer needs to know about the inner workings of a directive.
 
-This means, talking about the `tab-title` attribute that we have in the code above, consumers can either write to the component attribute (if it exists), or to the component property. The latter would allow the consumer to pass expressions to the component that first get evaluated. Here's what it could look like:
+This means, talking about the `tabTitle` attribute that we have in the code above, consumers can either write to the component attribute (if it exists), or to the component property. The latter would allow the consumer to pass expressions to the component that first get evaluated. Here's what it could look like:
 
 {% highlight html %}
 {% raw %}
-<tab tab-title="This is just a String">
+<tab tabTitle="This is just a String">
   ...
 </tab>
-<tab [tab-title]="thisIsAnExpression">
+<tab [tabTitle]="thisIsAnExpression">
   ...
 </tab>
 {% endraw %}
@@ -67,7 +67,7 @@ Alright, now that we know what we want to build, let's get our hands dirty with 
 ## Building the components
 
 We start off by implementing a rather static version of the `<tabs>` element. If you've read our article on [building a zippy component in Angular 2](http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html),
-you know that we need the ~~`View` and~~(not needed since alpha.39) `Component` annotation to tell Angular what the selector and template for our component should be.
+you know that we need the ~~`View` and~~(not needed since alpha.39) `Component` decorator to tell Angular what the selector and template for our component should be.
 
 {% highlight ts %}
 {% raw %}
@@ -86,7 +86,7 @@ export class Tabs {
 {% endraw %}
 {% endhighlight %}
 
-When using `Component` annotation, we can specify the template inside the annotation using the `template` property. The back tick syntax comes with ES6 and allows us to do multi-line string definition without using concatenation operators like `+`.
+When using the `Component` decorator, we can specify the template using the `template` property. The back tick syntax comes with ES2015 and allows us to do multi-line string definition without using concatenation operators like `+`.
 
 As you can see, the component template already comes with a static list of tabs. This list will be replaced with a dynamic directive later, for now we keep it like this so we get a better picture of the direction we're going. We also need a place where the tab contents will go. Let's add an insertion point to our template. This will project the outer light DOM into the Shadow DOM (Emulation).
 
@@ -99,7 +99,7 @@ As you can see, the component template already comes with a static list of tabs.
       <li>Tab 1</li>
       <li>Tab 2</li>
     </ul>
-    <content></content>
+    <ng-content></ng-content>
   `
 })
 {% endraw %}
@@ -115,36 +115,35 @@ Cool, we can already start using our `<tabs>` component and write HTML into it l
 {% endraw %}
 {% endhighlight %}
 
-Of course, we do want to use `<tab>` elements inside our `<tabs>` component, so let's build that one. It turns out that the `<tab>` element is actually quite primitive. It's basically just a container element that has an insertion point to project light DOM. We shouldn't forget the configurable `tab-title`. Here's how we do it.
+Of course, we do want to use `<tab>` elements inside our `<tabs>` component, so let's build that one. It turns out that the `<tab>` element is actually quite primitive. It's basically just a container element that has an insertion point to project light DOM. We shouldn't forget the configurable `tabTitle`. Here's how we do it.
 
 {% highlight ts %}
 {% raw %}
 @Component({
   selector: 'tab',
-  inputs: ['tabTitle: tab-title']
   template: `
     <div>
-      <content></content>
+      <ng-content></ng-content>
     </div>
   `
 })
 export class Tab {
-
+  @Input() tabTitle;
 }
 {% endraw %}
 {% endhighlight %}
 
-The element should be named `<tab>` so we set the `selector` property accordingly. We bind the `tab-title` **input** to the component's `tabTitle` **property**. Last but not least we add a template that is just a div with an insertion point.
+The element should be named `<tab>` so we set the `selector` property accordingly. We bind the `tabTitle` **input** to the component's `tabTitle` **property**. Last but not least we add a template that is just a div with an insertion point.
 
 Wait, that's it? Well, sort of. There's a tiny bit more we need to do, but let's just use our new `<tab>` component in our `<tabs>` component.
 
 {% highlight html %}
 {% raw %}
 <tabs>
-  <tab tab-title="Foo">
+  <tab tabTitle="Foo">
     Content of tab Foo
   </tab>
-  <tab tab-title="Bar">
+  <tab tabTitle="Bar">
     Content of tab Bar
   </tab>
 </tabs>
@@ -162,11 +161,7 @@ We're getting there. Let's first make our `<tabs>` component to actually use the
 export class Tabs {
 
   // typescript needs to know what properties will exist on class instances
-  tabs: Tab[];
-
-  constructor() {
-    this.tabs = [];
-  }
+  tabs: Tab[] = [];
 }
 {% endraw %}
 {% endhighlight %}
@@ -184,39 +179,15 @@ export class Tabs {
 {% endraw %}
 {% endhighlight %}
 
-The method just simply pushes the given object into our collection and we're good. Next we update the template so that the list is generated dynamically based on our collection. In Angular 1 we have a `ngRepeat` directive that lets us iterate over a collection to repeat DOM. Angular 2 has a `For` directive that pretty much solves the exact same problem. In order to use it in our template, we first need to import it (just like everything else):
-
-**Note**
-> since alpha.46, build in Angular directives like `ngFor`, `ngIf`, `ngSwitch` are included automatically
-and you don't have to explicitly include them via module `import` + `directives` Component annotation configuration.
-
-{% highlight ts %}
-{% raw %}
-import { NgFor } from 'angular2/angular2';
-{% endraw %}
-{% endhighlight %}
-
-Then we need to add it to the list of used directives in our `Component` annotation:
+The method just simply pushes the given object into our collection and we're good. Next we update the template so that the list is generated dynamically based on our collection. In Angular 1 we have a `ngRepeat` directive that lets us iterate over a collection to repeat DOM. Angular 2 has an `ngFor` directive that pretty much solves the exact same problem. We use the directive to iterate over our tabs collection to generate a dynamic list of tab titles in the component's template.
 
 {% highlight ts %}
 {% raw %}
 @Component({
   ...
-  directives: [NgFor]
-})
-{% endraw %}
-{% endhighlight %}
-
-Last but not least, we use the directive to iterate over our tabs collection to generate a dynamic list of tab titles in the component's template.
-
-{% highlight ts %}
-{% raw %}
-@Component({
-  ...
-  directives: [NgFor],
   template: `
     <ul>
-      <li *ng-for="#tab of tabs">{{ tab.tabTitle }}</li>
+      <li *ngFor="#tab of tabs">{{ tab.tabTitle }}</li>
     </ul>
   `
 })
@@ -262,7 +233,7 @@ Well, first we need a property that activates or deactivates a tab and depending
 @Component({
   template: `
     <div [hidden]="!active">
-      <content></content>
+      <ng-content></ng-content>
     </div>
   `
 })
@@ -311,7 +282,7 @@ We simply iterate over all tabs we have, deactivate them, and activate the one t
   directives: [NgFor],
   template: `
     <ul>
-      <li *ng-for="#tab of tabs" (click)="selectTab(tab)">
+      <li *ngFor="#tab of tabs" (click)="selectTab(tab)">
         {{tab.tabTitle}}
       </li>
     </ul>
@@ -330,20 +301,17 @@ Here's the complete source in case you ran into any problems.
   selector: 'tabs',
   template: `
     <ul>
-      <li *ng-for="#tab of tabs" (click)="selectTab(tab)">
+      <li *ngFor="#tab of tabs" (click)="selectTab(tab)">
         {{tab.tabTitle}}
       </li>
     </ul>
-    <content></content>
+    <ng-content></ng-content>
   `,
-  directives: [NgFor]
 })
 export class Tabs {
-  constructor() {
-    this.tabs = [];
-  }
+  tabs: Tab[] = [];
 
-  selectTab(tab) {
+  selectTab(tab: Tab) {
     this.tabs.forEach((tab) => {
       tab.active = false;
     });
@@ -360,14 +328,16 @@ export class Tabs {
 
 @Component({
   selector: 'tab',
-  inputs: ['tabTitle: tab-title'],
   template: `
     <div [hidden]="!active">
-      <content></content>
+      <ng-content></ng-content>
     </div>
   `
 })
 export class Tab {
+
+  @Input() tabTitle: string;
+
   constructor(tabs:Tabs) {
     tabs.addTab(this);
   }
@@ -392,5 +362,3 @@ Those are more advanced concepts, which we will cover in future articles.
 If you're just curious how it looks like, you can find live demo in [this plunk](http://plnkr.co/edit/Y5VVAATuKJXhMz69SxfF?p=preview)
 
 Stay tuned!
-
-
