@@ -109,7 +109,7 @@ With `ngMessageFormat` included, we can overload Angular expressions using a com
 {% endraw %}
 {% endhighlight %}
 
-Whereas `EXPRESSION` is the expression that needs to be evaluated, `TYPE` specifies what we want to do `plural` or `gender` for pluralization and gender selection respectively. Let's use this syntax to output our notification, based on `numberOfMessages`.
+Whereas `EXPRESSION` is the expression that needs to be evaluated, `TYPE` specifies what we want to do `plural` or `select` for pluralization and gender selection respectively. Let's use this syntax to output our notification, based on `numberOfMessages`.
 
 {% highlight html %}
 {% raw %}
@@ -129,7 +129,7 @@ Gender selection uses the exact same syntax. All we have to do is to change the 
 
 {% highlight html %}
 {% raw %}
-{{genderExpression, gender,
+{{genderExpression, select,
     male { Send him a message. }
     female { Send her a message. }
     other { Send them a message. }
