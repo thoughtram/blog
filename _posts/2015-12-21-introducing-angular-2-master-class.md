@@ -31,7 +31,7 @@ Here are the facts:
 Betahaus<br>
 Prinzessinnenstr. 19-20<br>
 10969 Berlin<br>
-Germay<br>
+Germany<br>
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2428.7069581788373!2d13.410009815715265!3d52.502543945275306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a84e2d8d4701a9%3A0x1687d2a7997ddff1!2sbetahaus!5e0!3m2!1sen!2sde!4v1450713470274" frameborder="0" style="border:0" allowfullscreen></iframe>
 
