@@ -20,7 +20,7 @@ Just like the previous edition, Angular 2 Master Class is an evolving experience
 
 With “_Jump Start_” we want to debut and roll out our new material for the very first time to give you a nice overall picture about the next version of the framework.
 
-Join us at the **26th January** in the beautiful city of **Berlin** (grab your ticket here)!
+Join us at the **26th January** in the beautiful city of **Berlin** (grab your ticket [here](http://www.eventbrite.de/e/angular-2-master-class-jump-start-tickets-20093393882))!
 
 Here are the facts:
 
