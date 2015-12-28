@@ -16,8 +16,6 @@ topic: di
 author: pascal_precht
 ---
 
-{% include breaking-changes-hint.html %}
-
 The new dependency injection system in Angular 2 comes with a feature called "Multi Providers" that basically enable us, the consumer of the platform, to hook into certain operations and plug in custom functionality we might need in our application use case. We're going to discuss what they look like, how they work and how Angular itself takes advantage of them to keep the platform flexible and extendible.
 
 ## Recap: What is a provider?

@@ -35,8 +35,6 @@ topic: di
 author: pascal_precht
 ---
 
-{% include breaking-changes-hint.html %}
-
 Dependency injection has always been one of Angular's biggest features and selling points. It allows us to inject dependencies in different components across our applications, without needing to know, how those dependencies are created, or what dependencies they need themselves. However, it turns out that the current dependency injection system in Angular 1 has some problems that need to be solved in Angular 2, in order to build the next generation framework. In this article, we're going to explore the new dependency injection system for future generations.
 
 Before we jump right into the new stuff, lets first understand what dependency injection is, and what the problems with the DI in Angular 1 are.

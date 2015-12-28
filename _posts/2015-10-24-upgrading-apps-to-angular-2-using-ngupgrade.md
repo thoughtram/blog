@@ -30,8 +30,6 @@ topic: upgrade
 author: pascal_precht
 ---
 
-{% include breaking-changes-hint.html %}
-
 Upgrading an existing AngularJS application to Angular 2 is surely one of the most interesting topics when it comes to Angular 2. A long time it has been unclear what a dedicated upgrade path will actually look like, since Angular 2 is still in alpha state and APIs aren't stable yet, which makes it hard to "assume" where things will go and what's the best way to get there.
 
 Earlier this year however, the Angular team has made an [official announcement](http://angularjs.blogspot.de/2015/08/angular-1-and-angular-2-coexistence.html) in which they talk about what are the available upgrade strategies and what things of both frameworks have to interoperate in order to run them side-by-side on the same website. While the blog post is rather a kind of birds-eye view where no code is shown, a dedicated [design document](https://docs.google.com/document/d/1xvBZoFuNq9hsgRhPPZOJC-Z48AHEbIBPlOCBTSD8m0Y) has been created that gives a more concrete idea on what the APIs will look like.

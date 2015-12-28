@@ -26,8 +26,6 @@ topic: upgrade
 author: pascal_precht
 ---
 
-{% include breaking-changes-hint.html %}
-
 A couple of weeks ago we wrote about how to write [Angular 2 code in ES5](http://blog.thoughtram.io/angular/2015/05/09/writing-angular-2-code-in-es5.html) and took a closer look at what [annotations and decorators](http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html) translate to. While it is nice that we can all write Angular 2 applications without the hassle of setting up a development environment for TypeScript, Babel or SystemJS, it turns out that the syntax is still quite wordy. Of course, this isn't really a big problem, because it is just the syntax after all. That's why the Angular team works hard on making even the ES5 experience much better. All improvements that land in the ES5 world shrink the gap between Angular 1 and Angular 2 syntax, in fact, upgrading will be rather boring.
 
 In this article we're going to take a closer look at the ES5 syntax improvements and how they make upgrading even easier.
@@ -39,9 +37,7 @@ In order to understand the syntactical improvements in ES5 when building Angular
 {% highlight javascript %}
 {% raw %}
 @Component({
-  selector: 'hello-cmp'
-})
-@View({
+  selector: 'hello-cmp',
   template: 'Hello World!'
 })
 class HelloComponent {

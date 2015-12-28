@@ -29,8 +29,6 @@ topic: views
 author: pascal_precht
 ---
 
-{% include breaking-changes-hint.html %}
-
 Until now, we mostly talked about how to create simple components in Angular 2, like a [zippy](http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html) or a [tabs](http://blog.thoughtram.io/angular/2015/04/09/developing-a-tabs-component-in-angular-2.html) component, and we also covered some isolated parts of the framework like the new [dependency injection](http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html). In this article we are going to discuss another essential part when it comes to building components: **Styling**.
 
 A component in Angular 2 is basically a controller class with a template. But as all of us know, a component also needs it's own styles, especially when it comes to sharing reusable components across applications, which is what we want to achieve in the modern web anyways, right?
