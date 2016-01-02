@@ -374,7 +374,7 @@ And here's the template:
     {{ visible ? '&blacktriangledown;' : '&blacktriangleright;' }} {{title}}
   </div>
   <div [hidden]="!visible" class="zippy__content">
-    <content></content>
+    <ng-content></ng-content>
   </div>
 </div>
 {% endraw %}
