@@ -81,7 +81,7 @@ Events on the other hand are for async operations that can continue to emit new 
 
 Well, with Observables you can. You get the power of first class objects but without the limitations of singularity.
 
-In fact, in a modern .NET language such as F#, which embraces Observables all the way down, every `IEvent<T>` inherits from `IObservable<T>`. Angular also went down this path and made `EventEmiter<T>` implement Observable<T>.
+In fact, in a modern .NET language such as F#, which embraces Observables all the way down, every `IEvent<T>` inherits from `IObservable<T>`. Angular also went down this path and made `EventEmiter<T>` implement `Observable<T>`.
 
 ## Smart service, dumb component
 
