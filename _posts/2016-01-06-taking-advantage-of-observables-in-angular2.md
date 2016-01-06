@@ -2,6 +2,12 @@
 layout:     post
 title:      "Taking advantage of Observables in Angular 2"
 
+relatedLinks:
+  -
+    title: "Taking advantage of Observables in Angular 2 - Part 2"
+    url: "http://blog.thoughtram.io/angular/2016/01/07/taking-advantage-of-observables-in-angular2-pt2.html"
+
+
 date:       2016-01-06
 update_date: 2015-01-06
 summary:    "Angular 2 favors Observables over Promises when it comes to async. The rational behind this decision may not be obvious right from the start. There is definitely a learning curve to master Observables in all their beauty. In this article we like to explore some practical advantages with Observables for server communication."
