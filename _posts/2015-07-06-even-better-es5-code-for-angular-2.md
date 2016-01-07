@@ -74,7 +74,7 @@ Angular 2 comes with helper functions to create components and services right ou
 {% highlight javascript %}
 {% raw %}
 var HelloComponent = ng.core
-  Component({
+  .Component({
     selector: 'hello-cmp',
     template: 'Hello World!'
   })
