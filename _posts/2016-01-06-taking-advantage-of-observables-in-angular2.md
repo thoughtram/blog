@@ -221,7 +221,7 @@ Now that we got the semantics right, there's one more little trick that we can u
   `
 })
 export class App {
-  items: Array<string>;
+  items: Observable<Array<string>>;
   term = new Control();
   constructor(private wikipediaService: WikipediaService) {
     this.items = this.term.valueChanges

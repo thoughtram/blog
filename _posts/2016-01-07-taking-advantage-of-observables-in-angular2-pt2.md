@@ -60,7 +60,7 @@ We also built an `App` component that uses this service and applies some Rx gymn
   `
 })
 export class App {
-  items: Array<string>;
+  items: Observable<Array<string>>;
   term = new Control();
   constructor(private wikipediaService: WikipediaService) {
     this.items = this.term.valueChanges
@@ -130,7 +130,7 @@ This dramatically simplifies our `App` component.
   `
 })
 export class App {
-  items: Array<string>;
+  items: Observable<Array<string>>;
   term = new Control();
   constructor(private wikipediaService: WikipediaService) {
     this.items = wikipediaService.search(this.term.valueChanges);
@@ -142,4 +142,4 @@ See what happened? We just wire together event streams like lego blocks!
 
 You can play around with the plnkr right here. Enjoy!
 
-<iframe src="http://embed.plnkr.co/J7RrFDFDaXR8C40wQeCS/"></iframe>
+<iframe src="http://embed.plnkr.co/GNi2FVAofVEzSUQ8kEYY/"></iframe>
