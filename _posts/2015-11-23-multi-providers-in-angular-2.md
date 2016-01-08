@@ -20,7 +20,7 @@ The new dependency injection system in Angular 2 comes with a feature called "Mu
 
 ## Recap: What is a provider?
 
-If you've read our article on [Dependency Injection in Angular2]() you can probably skip this section, as you're familiar with the provider terminology,  how they work, and how they relate to actual dependencies being injected. If you haven't read about providers yet, here's a quick recap.
+If you've read our article on [Dependency Injection in Angular2](http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html) you can probably skip this section, as you're familiar with the provider terminology,  how they work, and how they relate to actual dependencies being injected. If you haven't read about providers yet, here's a quick recap.
 
 **A provider is an instruction that describes how an object for a certain token is created.**
 
