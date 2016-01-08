@@ -73,7 +73,7 @@ export class WikipediaService {
     return this.jsonp
                 .get('http://en.wikipedia.org/w/api.php?callback=JSONP_CALLBACK', { search })
                 .toPromise()
-                .then((request) => request.json()[1]);
+                .then((response) => response.json()[1]);
   }
 }
 {% endhighlight %}
@@ -167,7 +167,7 @@ search (term: string) {
   search.set('format', 'json');
   return this.jsonp
               .get('http://en.wikipedia.org/w/api.php?callback=JSONP_CALLBACK', { search })
-              .map((request) => request.json()[1]);
+              .map((response) => response.json()[1]);
 }
 {% endhighlight %}
 
