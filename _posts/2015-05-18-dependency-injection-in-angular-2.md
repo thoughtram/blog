@@ -164,7 +164,7 @@ The DI in Angular 2 basically consists of three things:
 Okay, now that we have an idea of what the concept looks like, lets see how this is translated to code. We stick with our `Car` class and it's dependencies. Here's how we can use Angular 2's DI to get an instance of `Car`:
 
 {% highlight js %}
-import { Injector } from 'angular2/di';
+import { Injector } from 'angular2/core';
 
 var injector = Injector.resolveAndCreate([
   Car,
