@@ -152,3 +152,5 @@ app.config(['$compileProvider', function ($compileProvider) {
 Yay, just one line of code and our production application runs faster! But what if we **do** want to have this debug information in our application because something's wrong in our production environment and we need to debug?
 
 Angular got us covered. The global `angular` object comes with a new `.reloadWithDebugInfo()` method, which does exactly what it says. It reloads the browser with debug information to make your life easier again. And since the `angular` object is global, we can just call it directly from the browsers console. Neat ha?
+
+Note! When you disable debugInfo, you will no longer be able to do `$element.scope()` or `$element.isolateScope()`. If your code is relying on these methods, you will need to refactor.
