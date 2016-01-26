@@ -55,7 +55,7 @@ Nothing special going on here. We have three functions `foo`, `bar` and `baz` th
 {% highlight javascript %}
 var start,
     time = 0;
-    timer = performance ? performance.now || Date.now;
+    timer = performance ? performance.now : Date.now;
 
 // start timer
 start = timer();
