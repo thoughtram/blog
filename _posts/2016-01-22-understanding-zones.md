@@ -87,7 +87,7 @@ time = timer() - start;
 
 We extended the code sequence with another operation, but this time it's asynchronous. What effect does that have on our profiling? Well, we'll see that there's not such a big difference.
 
-There is in fact one more operation, so it takes slightly longer to execute this code, however, the actual execution time of when the `setTimeout()` call returns is not part of the overall profiling. This is because asynchronous operations added to the browser's **event queue**, which eventually gets cleaned up by the **event loop** once there's time for that.
+There is in fact one more operation, so it takes slightly longer to execute this code, however, the actual execution time of when the `setTimeout()` call returns is not part of the overall profiling. This is because asynchronous operations are added to the browser's **event queue**, which eventually gets cleaned up by the **event loop** once there's time for that.
 
 If this is entirely new to you, you might want to watch this [great talk](https://www.youtube.com/watch?v=8aGhZQkoFbQ) on how the browser event loops works.
 
