@@ -122,7 +122,7 @@ But wait, where does the `onTurnDone` event emitter come from? This is not part 
 
 If "Observables" and "Streams" are super new to you, you might want to read our article on [Taking advantage of Observables in Angular 2](http://blog.thoughtram.io/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html).
 
-The main reason Angular adds its own event emitters instead of relying on `beforeTask` and `afterTask` callbacks, is that it has keep to keep track of timers and other micro tasks. It's also nice that Observables are used as an API to handle these events.
+The main reason Angular adds its own event emitters instead of relying on `beforeTask` and `afterTask` callbacks, is that it has to keep track of timers and other micro tasks. It's also nice that Observables are used as an API to handle these events.
 
 ## Running code outside Angular's zone
 
