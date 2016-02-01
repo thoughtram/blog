@@ -28,7 +28,7 @@ categories:
 tags:
   - angular2
 
-topic: changdetection
+topic: changedetection
 author: pascal_precht
 ---
 
