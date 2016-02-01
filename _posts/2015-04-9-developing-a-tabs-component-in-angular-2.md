@@ -358,6 +358,6 @@ We can take totally different approach how to implement our simple tabs ( which 
 leveraging special Angular 2 `@ContentChildren` property decorator with `QueryList` type and `AfterContentInit` life cycle interface.
 Those are more advanced concepts, which we will cover in future articles.
 
-If you're just curious how it looks like, you can find live demo in [this plunk](http://plnkr.co/edit/Y5VVAATuKJXhMz69SxfF?p=preview)
+If you're just curious how it looks like, you can find live demo in [this plunk](https://plnkr.co/edit/afhLA8wHw9LRnzwwTT3M?p=preview)
 
 Stay tuned!
