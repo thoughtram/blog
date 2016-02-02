@@ -166,7 +166,7 @@ Nothing special going on here. We have component that calls `processWithinAngula
 {% raw %}
 increaseProgress(doneCallback: () => void) {
   this.progress += 1;
-  console.log(`Current progress: ${this.progress}%`);
+  console.log(`Current progress: ${this.progress}`);
 
   if (this.progress < 100) {
     window.setTimeout(() => {
