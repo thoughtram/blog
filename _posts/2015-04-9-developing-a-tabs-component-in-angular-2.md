@@ -5,8 +5,11 @@ relatedLinks:
   -
     title: "Builing a zippy component in Angular 2"
     url: "http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html"
+  -
+    title: "Creating a tabs component using @ContentChildren"
+    url: "http://juristr.com/blog/2016/02/learning-ng2-creating-tab-component"
 date:       2015-04-09
-update_date: 2015-12-12
+update_date: 2016-02-02
 summary:    "In our last article we learned how to build a zippy component in Angular 2. This article details how to build another simple, but widely used type of component: tabs. Building tabs in Angular has always been the de facto example to example controllers in directives. Angular 2 makes it much easier and here's how you do it."
 
 categories:
@@ -354,9 +357,9 @@ You can find the running code in [this plunk](http://plnkr.co/edit/1no1sjZ9Lkv4g
 
 Angular 2 is so awesome that there is not just one way how to do things!
 
-We can take totally different approach how to implement our simple tabs ( which isn't so easily possible in Angular 1 ),
+We can take a totally different approach how to implement our simple tabs ( which isn't so easily possible in Angular 1 ),
 leveraging special Angular 2 `@ContentChildren` property decorator with `QueryList` type and `AfterContentInit` life cycle interface.
-Those are more advanced concepts, which we will cover in future articles.
+Those are more advanced concepts, which are covered in more details by [Juri Strumpflohner](https://twitter.com/juristr) in [his follow-up article](http://juristr.com/blog/2016/02/learning-ng2-creating-tab-component).
 
 If you're just curious how it looks like, you can find live demo in [this plunk](https://plnkr.co/edit/afhLA8wHw9LRnzwwTT3M?p=preview)
 
