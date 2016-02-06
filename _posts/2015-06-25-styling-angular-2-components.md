@@ -3,6 +3,9 @@ layout:     post
 title:      "Styling Angular 2 components"
 relatedLinks:
   -
+    title: "Exploring Angular 2 - Article Series"
+    url: "http://blog.thoughtram.io/exploring-angular-2"
+  -
     title: "Futuristic Routing in Angular"
     url: "http://blog.thoughtram.io/angularjs/2015/02/19/futuristic-routing-in-angular.html"
   -

@@ -3,6 +3,9 @@ layout:     post
 title:      "Even better ES5 code for Angular 2"
 relatedLinks:
   -
+    title: "Exploring Angular 2 - Article Series"
+    url: "http://blog.thoughtram.io/exploring-angular-2"
+  -
     title: "Writing Angular 2 Code in ES5"
     url: "http://blog.thoughtram.io/angular/2015/05/09/writing-angular-2-code-in-es5.html"
   -

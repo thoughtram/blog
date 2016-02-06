@@ -3,6 +3,9 @@ layout:     post
 title:      "Dependency Injection in Angular 2"
 relatedLinks:
   -
+    title: "Exploring Angular 2 - Article Series"
+    url: "http://blog.thoughtram.io/exploring-angular-2"
+  -
     title: "Talk: Dependency Injection for Future Generations"
     url: "https://www.youtube.com/watch?v=8c-qv9TisVE"
   -

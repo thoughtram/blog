@@ -3,6 +3,9 @@ layout:     post
 title:      "Writing Angular 2 code in ES5"
 relatedLinks:
   -
+    title: "Exploring Angular 2 - Article Series"
+    url: "http://blog.thoughtram.io/exploring-angular-2"
+  -
     title: "The difference between decorators and annotations"
     url: "http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html"
   -

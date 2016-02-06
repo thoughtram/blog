@@ -3,6 +3,9 @@ layout:     post
 title:      "View Encapsulation in Angular 2"
 relatedLinks:
   -
+    title: "Exploring Angular 2 - Article Series"
+    url: "http://blog.thoughtram.io/exploring-angular-2"
+  -
     title: "Styling Angular 2 components"
     url: "http://blog.thoughtram.io/angular/2015/06/25/styling-angular-2-components.html"
   -

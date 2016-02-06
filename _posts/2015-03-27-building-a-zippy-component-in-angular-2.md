@@ -3,6 +3,9 @@ layout:     post
 title:      "Developing a zippy component in Angular 2"
 relatedLinks:
   -
+    title: "Exploring Angular 2 - Article Series"
+    url: "http://blog.thoughtram.io/exploring-angular-2"
+  -
     title: "Using ES6 with Angular today"
     url: "http://blog.thoughtram.io/angularjs/es6/2015/01/23/exploring-angular-1.3-using-es6.html"
   -

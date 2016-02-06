@@ -6,6 +6,9 @@ relatedLinks:
   -
     title: "Taking advantage of Observables in Angular 2 - Part 2"
     url: "http://blog.thoughtram.io/angular/2016/01/07/taking-advantage-of-observables-in-angular2-pt2.html"
+  -
+    title: "Exploring Angular 2 - Article Series"
+    url: "http://blog.thoughtram.io/exploring-angular-2"
 
 
 date:       2016-01-06

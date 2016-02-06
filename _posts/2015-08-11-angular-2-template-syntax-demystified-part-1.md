@@ -3,6 +3,9 @@ layout:     post
 title:      "Angular 2 Template Syntax Demystified - Part 1"
 relatedLinks:
   -
+    title: "Exploring Angular 2 - Article Series"
+    url: "http://blog.thoughtram.io/exploring-angular-2"
+  -
     title: "Integrating Web Components with AngularJS"
     url: "https://pascalprecht.github.io/2014/10/25/integrating-web-components-with-angularjs/"
   -

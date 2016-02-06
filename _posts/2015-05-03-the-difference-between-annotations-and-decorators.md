@@ -14,6 +14,11 @@ tags:
 topic: others
 
 author: pascal_precht
+
+relatedLinks:
+  -
+    title: "Exploring Angular 2 - Article Series"
+    url: "http://blog.thoughtram.io/exploring-angular-2"
 ---
 
 Last year, the Angular team announced it's ECMAScript language extension AtScript, which adds types and annotations to the language in order to enable better tooling, debugging and overall development experience. Half a year later at ng-conf, the team announced that AtScript becomes TypeScript, which supports annotations and another feature called "decorators".

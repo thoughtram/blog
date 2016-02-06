@@ -4,6 +4,9 @@ title:      "Understanding Zones"
 
 relatedLinks:
   -
+    title: "Exploring Angular 2 - Article Series"
+    url: "http://blog.thoughtram.io/exploring-angular-2"
+  -
     title: "Brian's talk on Zones at NG-Conf 2014"
     url: "https://www.youtube.com/watch?v=3IqtmUscE_U"
   -

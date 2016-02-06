@@ -4,6 +4,9 @@ title:      "Zones in Angular 2"
 
 relatedLinks:
   -
+    title: "Exploring Angular 2 - Article Series"
+    url: "http://blog.thoughtram.io/exploring-angular-2"
+  -
     title: "Understanding Zones"
     url: "http://blog.thoughtram.io/angular/2016/01/22/understanding-zones.html"
   -
