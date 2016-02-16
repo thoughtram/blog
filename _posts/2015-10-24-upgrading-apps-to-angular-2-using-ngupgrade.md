@@ -117,7 +117,7 @@ If we plan to not only upgrade the framework, but also the language in which we'
 
 **Write new components in ES2015 or TypeScript**
 
-This is an interesting one. When we saw Angular 2 code the very first time, some of us were scared because all of a sudden there were classes and decorators. Despite the fact that we **don't** have have to write our Angular 2 apps in TypeScript (as explained in [this article](http://blog.thoughtram.io/angular/2015/05/09/writing-angular-2-code-in-es5.html)), ES2015 is the next standardized version, which means we will write it sooner or later anyways.
+This is an interesting one. When we saw Angular 2 code the very first time, some of us were scared because all of a sudden there were classes and decorators. Despite the fact that we **don't** have to write our Angular 2 apps in TypeScript (as explained in [this article](http://blog.thoughtram.io/angular/2015/05/09/writing-angular-2-code-in-es5.html)), ES2015 is the next standardized version, which means we will write it sooner or later anyways.
 
 We wrote about [how to write Angular in ES2015](http://blog.thoughtram.io/angularjs/es6/2015/01/23/exploring-angular-1.3-using-es6.html) today and if we do plan to upgrade but can't do it right now, we should definitely write our **new** components in ES2015 or TypeScript.
 
