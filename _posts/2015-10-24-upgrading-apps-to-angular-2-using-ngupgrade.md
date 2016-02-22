@@ -117,7 +117,7 @@ If we plan to not only upgrade the framework, but also the language in which we'
 
 **Write new components in ES2015 or TypeScript**
 
-This is an interesting one. When we saw Angular 2 code the very first time, some of us were scared because all of a sudden there were classes and decorators. Despite the fact that we **don't** have have to write our Angular 2 apps in TypeScript (as explained in [this article](http://blog.thoughtram.io/angular/2015/05/09/writing-angular-2-code-in-es5.html)), ES2015 is the next standardized version, which means we will write it sooner or later anyways.
+This is an interesting one. When we saw Angular 2 code the very first time, some of us were scared because all of a sudden there were classes and decorators. Despite the fact that we **don't** have to write our Angular 2 apps in TypeScript (as explained in [this article](http://blog.thoughtram.io/angular/2015/05/09/writing-angular-2-code-in-es5.html)), ES2015 is the next standardized version, which means we will write it sooner or later anyways.
 
 We wrote about [how to write Angular in ES2015](http://blog.thoughtram.io/angularjs/es6/2015/01/23/exploring-angular-1.3-using-es6.html) today and if we do plan to upgrade but can't do it right now, we should definitely write our **new** components in ES2015 or TypeScript.
 
@@ -199,7 +199,7 @@ adapter.bootstrap(document.body, ['myApp']);
 
 Cool, our app is now bootstrapped using `ngUpgrade` and we can start mixing Angular 1 components with Angular 2 components.
 
-##Downgrading Angular 2 components
+## Downgrading Angular 2 components
 
 Let's upgrade our first component to Angular 2 and use it in our Angular 1 application. Here we have a `productDetail` directive that needs to be upgraded:
 
@@ -253,7 +253,7 @@ Yay! That's it! The adapter will bootstrap this component from within the Angula
 
 But wait, our Angular 2 component is just an Angular 1 component eventually? Yes and no. The directive is controlled by Angular 1, but the component's view will be controller by Angular 2. This means the resulting Angular 1 components takes advantage of Angular 2 features and performance.
 
-##Upgrading Angular 1 components
+## Upgrading Angular 1 components
 
 There might be cases where one component has already been upgraded to Angular 2, but it still uses Angular 1 directives in its template. `ngUpgrade` allows us to use Angular 1 directives in Angular 2 components by upgrading them using `upgradeNg1Component()`.
 
@@ -417,7 +417,7 @@ app.factory('ProductService',
 {% endraw %}
 {% endhighlight %}
 
-##Conclusion
+## Conclusion
 
 `ngUpgrade` provides many useful APIs and is a big step forward when it comes to truly upgrading an application from Angular 1 to Angular 2. At [AngularConnect](http://angularconnect.com) we gave a workshop on upgrading and we've open sourced a [repository](https://github.com/thoughtram/angular-upgrade-demo) that shows all the steps we've been through, from preparation to upgrade. Make sure to check out the `steps` branch.
 
