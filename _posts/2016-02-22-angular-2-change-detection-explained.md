@@ -171,7 +171,7 @@ The reason for that is that it has to be written in a dynamic way, so it can che
 
 **Angular creates change detector classes at runtime** for each component, which are monomorphic, because they know exactly what the shape of the component's model is. VMs can perfectly optimize this code, which makes it very fast to execute. The good thing is that we don't have to care about that too much, because Angular does it automatically.
 
-Check out [Victor Savkin's](http://twitter.com/vsavkin) talk on [Change Detection Reinvented](https://www.youtube.com/watch?v=jvKGQSFQf10) for a deeper explanation on this.
+Check out [Victor Savkin's](http://twitter.com/victorsavkin) talk on [Change Detection Reinvented](https://www.youtube.com/watch?v=jvKGQSFQf10) for a deeper explanation on this.
 
 ## Smarter Change Detection
 
@@ -368,6 +368,6 @@ Hopefully this made a little bit more clear how using immutable data structures 
 
 ## Credits
 
-I'd like to thank [Jurgen Van De Moere](http://twitter.com/jvandemo) for being a **huge** help and support when I was preparing this talk. He spent a lot of time with me discussing my understandings and raised a lot of good questions that helped me putting this content together. He also made sure that the demos looks as nice as they do. His CSS skills are amazing - Jurgen, thank you so so much for being such a supportive and nice person.
+I'd like to thank [Jurgen Van De Moere](http://twitter.com/jvandemo) for being a **huge** help and support when I was preparing this talk. He spent a lot of time with me discussing my understandings and raised a lot of good questions that helped me putting this content together. He also made sure that the demos look as nice as they do. His CSS skills are amazing - Jurgen, thank you so so much for being such a supportive and nice person.
 
-I'd also like to thank [Victor Savkin](http://twitter.com/vsavkin) for answering a lot of my questions regarding change detection in Angular 2, plus all the very informal articles that he's written - Thanks Victor!
+I'd also like to thank [Victor Savkin](http://twitter.com/victorsavkin) for answering a lot of my questions regarding change detection in Angular 2, plus all the very informal articles that he's written - Thanks Victor!
