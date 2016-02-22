@@ -114,7 +114,7 @@ They are all asynchronous. Which brings us to the conclusion that, basically whe
 
 ## Who notifies Angular?
 
-Alright, we no know what causes application state change. But what is it that tells Angular, that at this particular moment, the view has to be updated?
+Alright, we now know what causes application state change. But what is it that tells Angular, that at this particular moment, the view has to be updated?
 
 Angular allows us to use native APIs directly. There are no interceptor methods we have to call so Angular gets notified to update the DOM. Is that pure magic?
 
@@ -169,7 +169,7 @@ What does that mean? Well, when we said that each component has its own change d
 
 The reason for that is that it has to be written in a dynamic way, so it can check every component no matter what it's model structure looks like. VMs don't like this sort of dynamic code, because they can't optimize it. It's considered **polymorphic** as the shape of the objects isn't always the same.
 
-**Angular creates change detector classes at runtime** for each component, which are monomorphic, because they no exactly what the shape of the component's model is. VMs can perfectly optimize this code, which makes it very fast to execute. The good thing is that we don't have to care about that too much, because Angular does it automatically.
+**Angular creates change detector classes at runtime** for each component, which are monomorphic, because they know exactly what the shape of the component's model is. VMs can perfectly optimize this code, which makes it very fast to execute. The good thing is that we don't have to care about that too much, because Angular does it automatically.
 
 Check out [Victor Savkin's](http://twitter.com/vsavkin) talk on [Change Detection Reinvented](https://www.youtube.com/watch?v=jvKGQSFQf10) for a deeper explanation on this.
 
@@ -322,7 +322,7 @@ Here's what our change detector tree might look like (we've set **all** to `OnPu
 
 How can we inform Angular about this change? How can we tell Angular that change detection **needs** to be performed for this component, even though the entire tree is set to `OnPush`?
 
-No worries, Angular got us covered. As we've learned earlier, change detection is **always** performed from top to bottom. So what we need is a way to detect changes for the entire path of the tree to the component where the change happened. Angular can't now which path it is, but we do.
+No worries, Angular got us covered. As we've learned earlier, change detection is **always** performed from top to bottom. So what we need is a way to detect changes for the entire path of the tree to the component where the change happened. Angular can't know which path it is, but we do.
 
 We can access a component's `ChangeDetectorRef` via [dependency injection](http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html), which comes with an API called `markForCheck()`. This method does exactly what we need! It marks the from path of our component until root to be checked for the next change detection run.
 
