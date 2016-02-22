@@ -360,6 +360,14 @@ How cool is that? Once the change detection run is over, it'll restore the `OnPu
 
 ## There's more...
 
-In fact there are some more APIs which we haven't covered in this article, but feel free to check out the slides and/or the recording of the talk. 
+In fact there are some more APIs which we haven't covered in this article, but feel free to check out the slides and/or the recording of the talk.
+
+There are also some demos to play with in this [repository](https://github.com/thoughtram/angular2-change-detection-demos), which you can run on your local machine.
 
 Hopefully this made a little bit more clear how using immutable data structures or Observables can make our Angular application even faster.
+
+## Credits
+
+I'd like to thank [Jurgen Van De Moere](http://twitter.com/jvandemo) for being a **huge** help and support when I was preparing this talk. He spent a lot of time with me discussing my understandings and raised a lot of good questions that helped me putting this content together. He also made sure that the demos looks as nice as they do. His CSS skills are amazing - Jurgen, thank you so so much for being such a supportive and nice person.
+
+I'd also like to thank [Victor Savkin](http://twitter.com/vsavkin) for answering a lot of my questions regarding change detection in Angular 2, plus all the very informal articles that he's written - Thanks Victor!
