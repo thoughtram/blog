@@ -45,7 +45,7 @@ This state might end up as paragraphs, forms, links or buttons in the user inter
 
 <img style="background: #0c4eb2; padding: 0 1em;" src="/images/cd-4.svg">
 
-However, it gets trickier when a change happens at runtime. Some time later when the DOM has already been rendered. How do we figure out what has changed in our model, and where do we need to update the DOM? Accessing the DOM tree is always expensive, so not only that we need to find out where updates are needed, we want to keep that access as tiny as possible.
+However, it gets trickier when a change happens at runtime. Some time later when the DOM has already been rendered. How do we figure out what has changed in our model, and where do we need to update the DOM? Accessing the DOM tree is always expensive, so not only do we need to find out where updates are needed, we want to keep that access as tiny as possible.
 
 This can be tackled in many different ways. One way for instance is simply making an http request and re-render the whole page. Another approach is the concept of diffing the DOM of the new state with the previous state and only render the difference, which is what ReactJS is doing with **Virtual DOM**.
 
