@@ -55,7 +55,7 @@ So basically the goal of change detection is always projecting data and its chan
 
 ## What causes change?
 
-Now that we know what change detection is all about, we might wonder, when exactly can such a change happen? When does Angular know that it has to update the view? Well, lets take a look at the following code:
+Now that we know what change detection is all about, we might wonder, when exactly can such a change happen? When does Angular know that it has to update the view? Well, let's take a look at the following code:
 
 {% highlight javascript %}
 {% raw %}
@@ -104,7 +104,7 @@ class ContactsApp implements OnInit{
 
 This component holds a list of contacts and when it initializes, it performs an http request. Once this request comes back, the list gets updated. Again, at this point, our application state has changed so we will want to update the view.
 
-Basically application state change can caused by three things:
+Basically application state change can be caused by three things:
 
 - **Events** - `click`, `submit`, ...
 - **XHR** - Fetching data from a remote server
@@ -118,7 +118,7 @@ Alright, we now know what causes application state change. But what is it that t
 
 Angular allows us to use native APIs directly. There are no interceptor methods we have to call so Angular gets notified to update the DOM. Is that pure magic?
 
-If you've followed our latest articles, you know that [Zones](http://blog.thoughtram.io/angular/2016/01/22/understanding-zones.html) take care of this. In fact, Angular comes with its own zone called `NgZone`, which we've written about in our article [Zones in Angular 2](http://blog.thoughtram.io/angular/2016/02/01/zones-in-angular-2.html). You might want to read that too.
+If you've followed our latest articles, you know that [Zones](http://blog.thoughtram.io/angular/2016/01/22/understanding-zones.html) take care of this. In fact, Angular comes with its own zone called `NgZone`, which we've written about in our article [Zones in Angular 2](http://blog.thoughtram.io/angular/2016/02/01/zones-in-angular-2.html). You might want to read that, too.
 
 The short version is, that somewhere in Angular's source code, there's this thing called `ApplicationRef`, which listens to `NgZones` `onTurnDone` event. Whenever this event is fired, it executes a `tick()` function which essentially performs change detection.
 
@@ -131,7 +131,7 @@ class ApplicationRef {
 
   constructor(private zone: NgZone) {
     this.zone.onTurnDone
-      .subscribe(() => this.zone.run(() => this.tick()));
+      .subscribe(() => this.zone.run(() => this.tick());
   }
 
   tick() {
@@ -263,7 +263,7 @@ As we can see, `VCardCmp` only depends on its input properties. Great. We can te
   template: `
     <h2>{{vData.name}}</h2>
     <span>{{vData.email}}</span>
-  `
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 class VCardCmp {
@@ -370,4 +370,4 @@ Hopefully this made a little bit more clear how using immutable data structures 
 
 I'd like to thank [Jurgen Van De Moere](http://twitter.com/jvandemo) for being a **huge** help and support when I was preparing this talk. He spent a lot of time with me discussing my understandings and raised a lot of good questions that helped me put this content together. He also made sure that the demos look as nice as they do. His CSS skills are amazing - Jurgen, thank you so so much for being such a supportive and nice person.
 
-I'd also like to thank [Victor Savkin](http://twitter.com/victorsavkin) for answering a lot of my questions regarding change detection in Angular 2, plus all the very informal articles that he's written - Thanks Victor!
+I'd also like to thank [Victor Savkin](http://twitter.com/victorsavkin) for answering a lot of my questions regarding change detection in Angular 2, plus all the very informative articles that he's written - Thanks Victor!
