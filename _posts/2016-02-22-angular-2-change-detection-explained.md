@@ -45,9 +45,9 @@ This state might end up as paragraphs, forms, links or buttons in the user inter
 
 <img style="background: #0c4eb2; padding: 0 1em;" src="/images/cd-4.svg">
 
-However, it gets trickier when a change happens at runtime. Some time later when the DOM has already been rendered. How do we figure out what has changed in our model, and where do we need to update the DOM? Accessing the DOM tree is always expensive, so not only that we need to find out where updates are needed, but we also want to keep that access as tiny as possible.
+However, it gets trickier when a change happens at runtime. Some time later when the DOM has already been rendered. How do we figure out what has changed in our model, and where do we need to update the DOM? Accessing the DOM tree is always expensive, so not only do we need to find out where updates are needed, but we also want to keep that access as tiny as possible.
 
-This can be tackled in many different ways. One way for instance is simply by making an http request and re-rendering the whole page. Another approach is the concept of diffing the DOM of the new state with the previous state and only render the difference, which is what ReactJS is doing with **Virtual DOM**.
+This can be tackled in many different ways. One way, for instance, is simply making a http request and re-rendering the whole page. Another approach is the concept of diffing the DOM of the new state with the previous state and only render the difference, which is what ReactJS is doing with **Virtual DOM**.
 
 [Tero](http://twitter.com/tero) has written an awesome article on [Change and its detection in JavaScript frameworks](http://teropa.info/blog/2015/03/02/change-and-its-detection-in-javascript-frameworks.html), we recommend checking it out if you're more interested in how different frameworks solve this issue. In this article we're going to focus on Angular 2.
 
@@ -78,7 +78,7 @@ class MyApp {
 {% endraw %}
 {% endhighlight %}
 
-If this is the first time you're seeing an Angular 2 component, you might want to read out article on [building a tabs component](http://blog.thoughtram.io/angular/2015/04/09/developing-a-tabs-component-in-angular-2.html).
+If this is the first time you're seeing an Angular 2 component, you might want to read our article on [building a tabs component](http://blog.thoughtram.io/angular/2015/04/09/developing-a-tabs-component-in-angular-2.html).
 
 The component above simply displays two properties and provides a method to change them when the button in the template is clicked. The moment this particular button is clicked is the moment when application state has changed, because it changes the properties of the component. That's the moment we want to update the view.
 
@@ -102,7 +102,7 @@ class ContactsApp implements OnInit{
 {% endraw %}
 {% endhighlight %}
 
-This component holds a list of contacts and when it initializes, it performs an http request. Once this request comes back, the list gets updated. Again, at this point, our application state has changed so we will want to update the view.
+This component holds a list of contacts and when it initializes, it performs a http request. Once this request comes back, the list gets updated. Again, at this point, our application state has changed so we will want to update the view.
 
 Basically application state change can be caused by three things:
 
@@ -156,7 +156,7 @@ Let's assume that somewhere in our component tree an event is fired, maybe a but
 
 Since each component has its own change detector, and an Angular application consists of a component tree, the logical result is that we're having a **change detector tree** too. This tree can also be viewed as a directed graph where data always flows from top to bottom.
 
-The reason why data flows from top to bottom, is because change detection is also always performed from top to bottom for every single component, every single time, starting from the root component. This is awesome, as unidirectional data flow is more predictable than cycles. We always know where the data we use in our views comes from, because it can only come from its component.
+The reason why data flows from top to bottom, is because change detection is also always performed from top to bottom for every single component, every single time, starting from the root component. This is awesome, as unidirectional data flow is more predictable than cycles. We always know where the data we use in our views comes from, because it can only result from its component.
 
 Another interesting observation is that change detection gets stable after a single pass. Meaning that, if one of our components causes any additional side effects after the first run during change detection, Angular will throw an error.
 
@@ -165,9 +165,9 @@ Another interesting observation is that change detection gets stable after a sin
 
 By default, even if we have to check every single component every single time an event happens, Angular is very fast. It can perform hundreds of thousands of checks within a couple of milliseconds. This is mainly due to the fact that **Angular generates VM friendly code**.
 
-What does that mean? Well, when we said that each component has its own change detector, it's not that there's this single generic thing in Angular that takes care of change detection for each individual component.
+What does that mean? Well, when we said that each component has its own change detector, it's not like there's this single generic thing in Angular that takes care of change detection for each individual component.
 
-The reason for that is that it has to be written in a dynamic way, so it can check every component no matter what its model structure looks like. VMs don't like this sort of dynamic code, because they can't optimize it. It's considered **polymorphic** as the shape of the objects isn't always the same.
+The reason for that is, that it has to be written in a dynamic way, so it can check every component no matter what its model structure looks like. VMs don't like this sort of dynamic code, because they can't optimize it. It's considered **polymorphic** as the shape of the objects isn't always the same.
 
 **Angular creates change detector classes at runtime** for each component, which are monomorphic, because they know exactly what the shape of the component's model is. VMs can perfectly optimize this code, which makes it very fast to execute. The good thing is that we don't have to care about that too much, because Angular does it automatically.
 
@@ -204,7 +204,7 @@ class VCardApp {
 {% endraw %}
 {% endhighlight %}
 
-`VCardApp` uses `<v-card>` as a child component, which has an input property `vData`. We're passing data to that component with `VCardApp`'s own `vData` property. `vData` is an object with two properties. In addtion, there's a method `changeData()`, which changes the name of `vData`. No magic going on here.
+`VCardApp` uses `<v-card>` as a child component, which has an input property `vData`. We're passing data to that component with `VCardApp`'s own `vData` property. `vData` is an object with two properties. In addition, there's a method `changeData()`, which changes the name of `vData`. No magic going on here.
 
 The important part is that `changeData()` mutates `vData` by changing its `name` property. Even though that property is going to be changed, the `vData` reference itself stays the same.
 
@@ -232,7 +232,7 @@ vData === vData2 // false
 {% endraw %}
 {% endhighlight %}
 
-`someAPIForImmutables` can be any API we want to use for immutable data structures. However, as we can see, we can't simply change the `name` property, we'll get a new object with that particular change and this object has a new reference. 
+`someAPIForImmutables` can be any API we want to use for immutable data structures. However, as we can see, we can't simply change the `name` property. We'll get a new object with that particular change and this object has a new reference. 
 Or in short: **If there's a change, we get a new reference**.
 
 ## Reducing the number of checks
@@ -308,7 +308,7 @@ class CartBadgeCmp {
 
 Let's say we build an e-commerce application with a shopping cart. Whenever a user puts a product into the shopping cart, we want a little counter to show up in our UI, so the user can see the amount of products in the cart.
 
-`CartBadgeCmp` does exactly that. It has a `counter` and an input property `addItemStream`, which is a stream of events that get fired, whenever a product is added to the shopping cart. 
+`CartBadgeCmp` does exactly that. It has a `counter` and an input property `addItemStream`, which is a stream of events that gets fired, whenever a product is added to the shopping cart. 
 
 We won't go into much detail on how observables work in this article. If you want to learn more about observables, make sure to read our article on [taking advantage of Observables in Angular 2](http://blog.thoughtram.io/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html).
 
@@ -364,7 +364,7 @@ In fact there are some more APIs which we haven't covered in this article, but f
 
 There are also some demos to play with in this [repository](https://github.com/thoughtram/angular2-change-detection-demos), which you can run on your local machine.
 
-Hopefully this made a little bit more clear how using immutable data structures or Observables can make our Angular application even faster.
+Hopefully this made it a little bit more clear how using immutable data structures or Observables can make our Angular application even faster.
 
 ## Credits
 
