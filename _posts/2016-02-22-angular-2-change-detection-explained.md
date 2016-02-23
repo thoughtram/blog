@@ -131,7 +131,7 @@ class ApplicationRef {
 
   constructor(private zone: NgZone) {
     this.zone.onTurnDone
-      .subscribe(() => this.zone.run(() => this.tick());
+      .subscribe(() => this.zone.run(() => this.tick()));
   }
 
   tick() {
