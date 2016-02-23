@@ -161,12 +161,12 @@ Isn't that cool? Here's the code in action:
 
 <iframe src="http://embed.plnkr.co/R6s7EYUOJ1NlsDqpt0gP/"></iframe>
 
-We can even make transclusion slots optional by prefixing the slot name with a `?` like this:
+We can even make transclusion slots optional by prefixing the element tag name with a `?` like this:
 
 {% highlight html %}
 {% raw %}
 transclude: {
-  '?summarySlot': 'span'
+  'summarySlot': '?span'
 }
 {% endraw %}
 {% endhighlight %}
