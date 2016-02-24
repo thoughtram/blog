@@ -255,7 +255,7 @@ class VCardCmp {
 {% endraw %}
 {% endhighlight %}
 
-As we can see, `VCardCmp` only depends on its input properties. Great. We can tell Angular to skip change detection for this component's subtree, if only one of its inputs has changed, by setting the change detection strategy to `OnPush` like this:
+As we can see, `VCardCmp` only depends on its input properties. Great. We can tell Angular to skip change detection for this component's subtree if none of its inputs changed by setting the change detection strategy to `OnPush` like this:
 
 {% highlight javascript %}
 {% raw %}
