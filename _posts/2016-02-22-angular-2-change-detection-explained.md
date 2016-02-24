@@ -49,7 +49,7 @@ However, it gets trickier when a change happens at runtime. Some time later when
 
 This can be tackled in many different ways. One way, for instance, is simply making a http request and re-rendering the whole page. Another approach is the concept of diffing the DOM of the new state with the previous state and only render the difference, which is what ReactJS is doing with **Virtual DOM**.
 
-[Tero](http://twitter.com/tero) has written an awesome article on [Change and its detection in JavaScript frameworks](http://teropa.info/blog/2015/03/02/change-and-its-detection-in-javascript-frameworks.html), we recommend checking it out if you're more interested in how different frameworks solve this issue. In this article we're going to focus on Angular 2.
+[Tero](http://twitter.com/teropa) has written an awesome article on [Change and its detection in JavaScript frameworks](http://teropa.info/blog/2015/03/02/change-and-its-detection-in-javascript-frameworks.html), we recommend checking it out if you're more interested in how different frameworks solve this issue. In this article we're going to focus on Angular 2.
 
 So basically the goal of change detection is always projecting data and its change.
 
