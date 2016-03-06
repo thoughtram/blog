@@ -158,7 +158,7 @@ As we said, it would be a waste of resources to send out another request for a s
 
 **Dealing with out-of-order responses**
 
-Dealing with out of order responses can be a tricky task. Basically we need a way to express that we aren't interested anymore in results from previous in-flight requests as soon as we are sending out new requests. In other words: cancel out all previous request as soon as we start a new one. As I briefly mentioned in the beginning Observables are disposable which mean we can unsubscribe from then.
+Dealing with out of order responses can be a tricky task. Basically we need a way to express that we aren't interested anymore in results from previous in-flight requests as soon as we are sending out new requests. In other words: cancel out all previous request as soon as we start a new one. As I briefly mentioned in the beginning Observables are disposable which means we can unsubscribe from them.
 
 This is where we want to change our `WikipediaService` to return an `Observable<Array<string>>` instead of an `Promise<Array<string>>`. That's as easy as dropping `toPromise` and using `map` instead of `then`.
 
