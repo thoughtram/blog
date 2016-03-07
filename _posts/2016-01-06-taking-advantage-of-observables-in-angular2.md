@@ -61,6 +61,7 @@ Let's start with a Promise-based implementation that doesn't handle any of the d
 This is what our `WikipediaService` looks like. Despite the fact that the Http/JsonP API still has some little unergonomic parts, there shouldn't be much of surprise here.
 
 {% highlight ts %}
+{% raw %}
 import {Injectable} from 'angular2/core';
 import {URLSearchParams, Jsonp} from 'angular2/http';
 
@@ -79,6 +80,7 @@ export class WikipediaService {
                 .then((response) => response.json()[1]);
   }
 }
+{% endraw %}
 {% endhighlight %}
 
 Basically we are injecting the `Jsonp` service to make a `GET` request against the wikipedia API with a given search term. Notice that we call `toPromise` in order to get from an `Observable<Response>` to a `Promise<Response>`. With a little bit of `then`-chaining we eventually end up with a `Promise<Array<string>>` as the return type of our `search` method.
@@ -86,6 +88,7 @@ Basically we are injecting the `Jsonp` service to make a `GET` request against t
 So far so good, let's take a look at the `app.ts` file that holds our `App` Component.
 
 {% highlight ts %}
+{% raw %}
 // check the plnkr for the full list of imports
 import {...} from '...';
 
@@ -114,6 +117,7 @@ export class App {
 
 bootstrap(App, [WikipediaService, JSONP_PROVIDERS])
     .catch(err => console.error(err));
+{% endraw %}
 {% endhighlight %}
 
 Not much of a surprise here either. We inject our `WikipediaService` and expose it's functionality via a `search` method to the template. The template simply binds to `keyup` and calls `search(term.value)` leveraging Angular 2's awesome *template ref* feature.
@@ -133,7 +137,9 @@ Let's change our code to not hammer the endpoint with every keystroke but instea
 To unveil such super powers we first need to get an `Observable<string>` that carries the search term that the user types in. Instead of manually binding to the `keyup` event we use `ngFormControl` from within our template and set it to the name `"term"`.
 
 {% highlight ts %}
+{% raw %}
 <input type="text" [ngFormControl]="term"/>
+{% endraw %}
 {% endhighlight %}
 
 In our component we create an instance of `Control` from `angular2/common` and expose it as a field under the name `term` on our component.
@@ -141,6 +147,7 @@ In our component we create an instance of `Control` from `angular2/common` and e
 Behind the scenes `term` automatically exposes an `Observable<string>` as property `valueChanges` that we can subscribe to. Now that we have an `Observable<string>`, taming the user input is as easy as calling `debounceTime(400)` on our Observable. This will return a new `Observable<string>` that will only emit a new value when there haven't been coming new values for 400ms.
 
 {% highlight ts %}
+{% raw %}
 export class App {
   items: Array<string>;
   term = new Control();
@@ -150,6 +157,7 @@ export class App {
              .subscribe(term => this.wikipediaService.search(term).then(items => this.items = items));
   }
 }
+{% endraw %}
 {% endhighlight %}
 
 **Don't hit me twice**
@@ -163,6 +171,7 @@ Dealing with out of order responses can be a tricky task. Basically we need a wa
 This is where we want to change our `WikipediaService` to return an `Observable<Array<string>>` instead of an `Promise<Array<string>>`. That's as easy as dropping `toPromise` and using `map` instead of `then`.
 
 {% highlight ts %}
+{% raw %}
 search (term: string) {
   var search = new URLSearchParams()
   search.set('action', 'opensearch');
@@ -172,26 +181,31 @@ search (term: string) {
               .get('http://en.wikipedia.org/w/api.php?callback=JSONP_CALLBACK', { search })
               .map((response) => response.json()[1]);
 }
+{% endraw %}
 {% endhighlight %}
 
 Now that our `WikipediaSerice` returns an Observable instead of a Promise we simply need to replace `then` with `subscribe` in our `App` component.
 
 {% highlight ts %}
+{% raw %}
 this.term.valueChanges
            .debounceTime(400)
            .distinctUntilChanged()
            .subscribe(term => this.wikipediaService.search(term).subscribe(items => this.items = items));
+{% endraw %}
 {% endhighlight %}
 
 But now we have two `subscribe` calls. This is needlessly verbose and often a sign for unidiomatic usage.
 The good news is, now that `search` returns an `Observable<Array<string>>` we can simply use `flatMap` to project our `Observable<string>` into the desired `Observable<Array<string>>` by composing the Observables.
 
 {% highlight ts %}
+{% raw %}
 this.term.valueChanges
          .debounceTime(400)
          .distinctUntilChanged()
          .flatMap(term => this.wikipediaService.search(term))
          .subscribe(items => this.items = items);
+{% endraw %}
 {% endhighlight %}
 
 You may be wondering what `flatMap` does and why we can't use `map` here. The answer is quite simple. The `map` operator expects a function that takes a value `T` and returns a value `U`. For instance a function that takes in a `string` and returns a `Number`. Hence when you use `map` you get from an `Observable<T>` to an `Observable<U>`. However, our `search` method produces an `Observable<Array>` itself. So coming from an `Observable<string>` that we have right after `distinctUntilChanged`, map would take us to an `Observable<Observable<Array<string>>`. That's not quite what we want.
@@ -206,11 +220,12 @@ So does this solve our out-of-order response issues? Unfortunately not. So, why 
 
 What?! You may be wondering if I'm kidding you but no I am not. That's the beautify of Rx with all it's useful operators. The `switchMap` operator is comparable to `flatMap` in a way. Both operators automatically subscribe to the Observable that the function produces and flatten the result for us. The difference is that the `switchMap` operator automatically unsubscribes from previous subscriptions as soon as the outer Observable emits new values.
 
-##Putting some sugar on top
+## Putting some sugar on top
 
 Now that we got the semantics right, there's one more little trick that we can use to save us some typing. Instead of manually subscribing to the Observable we can let Angular do the unwrapping for us right from within the template. All we have to do to accomplish that is to use the `AsyncPipe` in our template and expose the `Observable<Array<string>>` instead of `Array<string>`.
 
 {% highlight ts %}
+{% raw %}
 @Component({
   selector: 'my-app',
   template: `
@@ -233,6 +248,7 @@ export class App {
                  .switchMap(term => this.wikipediaService.search(term));
   }
 }
+{% endraw %}
 {% endhighlight %}
 
 And voilà, here is our final version in a plnkr.
