@@ -28,6 +28,7 @@ In a [previous post](http://blog.thoughtram.io/angular/2016/01/06/taking-advanta
 As a recap, we built a simple wikipedia search demo consisting of a `WikipediaService` to query a JSONP API.
 
 {% highlight ts %}
+{% raw %}
 import {Injectable} from 'angular2/core';
 import {URLSearchParams, Jsonp} from 'angular2/http';
 
@@ -45,11 +46,13 @@ export class WikipediaService {
                 .map((response) => response.json()[1]);
   }
 }
+{% endraw %}
 {% endhighlight %}
 
 We also built an `App` component that uses this service and applies some Rx gymnastics to tame the user input, prevent duplicate requests and deal with out-of-order responses.
 
 {% highlight ts %}
+{% raw %}
 @Component({
   selector: 'my-app',
   template: `
@@ -72,11 +75,12 @@ export class App {
                  .switchMap(term => this.wikipediaService.search(term));
   }
 }
+{% endraw %}
 {% endhighlight %}
 
 Thinking ahead we can refactor our code even further and let our API design leverage from the power of Observables.
 
-##Observables = Promises + Events (in a way!)
+## Observables = Promises + Events (in a way!)
 
 In a way Observables may be seen as the clever child of Events and Promises. Promises are first class objects that encapsulate the state of an asynchronous operation. But they are for singular operations only. A request is such an operation. You invoke a method, kicking off some async task and get a first class object that eventually will get you to the result of the operation (ignoring error handling for now).
 
@@ -93,6 +97,7 @@ With that in mind: wouldn't it be actually nice if we could save the component f
 To let code speak we can transform our `WikipediaService` into this.
 
 {% highlight ts %}
+{% raw %}
 @Injectable()
 export class WikipediaService {
   constructor(private jsonp: Jsonp) {}
@@ -113,6 +118,7 @@ export class WikipediaService {
                 .map((response) => response.json()[1]);
   }
 }
+{% endraw %}
 {% endhighlight %}
 
 Notice that the service still exposes the previous api as `rawSearch` and builds a more clever `search` API on top of it.
@@ -120,6 +126,7 @@ Notice that the service still exposes the previous api as `rawSearch` and builds
 This dramatically simplifies our `App` component.
 
 {% highlight ts %}
+{% raw %}
 @Component({
   selector: 'my-app',
   template: `
@@ -139,6 +146,7 @@ export class App {
     this.items = wikipediaService.search(this.term.valueChanges);
   }
 }
+{% endraw %}
 {% endhighlight %}
 
 See what happened? We just wire together event streams like lego blocks!
