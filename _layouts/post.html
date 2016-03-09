@@ -20,8 +20,7 @@ layout: post-layout
             <p class="thtrm-m-article__date">{{ page.date | date: "%b %-d, %Y" }} - {% if page.update_date %}Updated: {{ page.update_date | date: "%b %-d, %Y" }} - {% endif %}{{ minutes }} minute read</p>
             {{ content }}
             <footer class="thtrm-m-article__footer">
-              <p>Liked the article and found it useful? How about sharing it with others on <a title="thoughtram on twitter" href="http://twitter.com/thoughtram">twitter</a>? We'd love to get your feedback!</p>
-              
+              <p>{% include share-links.html %}</p>
               <p>We regularly write articles and offer <a href="http://thoughtram.io/git-master-class.html">Git</a> and <a href="http://thoughtram.io/angular-master-class.html">Angular</a> trainings. Subscribe here to get the latest updates about our articles and <strong>trainings in your city</strong>:</p>
               <!-- Begin MailChimp Signup Form -->
               <link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
@@ -65,6 +64,9 @@ layout: post-layout
             <span>Written by <a title="{{author.name}} on twitter" href="{{author.web}}">{{ author.name }}</a></span>
           </div>
           {% endif %}
+          <div class="thtrm-m-ad thtrm-m-ad--visible">
+            <p class="thtrm-m-ad__sub-title">{% include share-links.html %}</p>
+          </div>
 
           <!-- <div class="thtrm-m-ad"> -->
           <!--   <img class="thtrm-m-ad__image thtrm-m-ad__image--small" alt="Angular Logo" src="/images/angularconnect-shield.png"> -->
