@@ -4,7 +4,7 @@ email: hello@thoughtram.io
 author: thoughtram
 description: "We write about technical things that we are working with and upcoming events that we are either running or attending to. Read about our latest thoughts."
 baseurl: ""
-url: "http://blog.thoughtram.io/"
+url: "http://blog.thoughtram.io"
 google_analytics: "UA-51360648-2"
 animated: false
 show_related_posts: false
