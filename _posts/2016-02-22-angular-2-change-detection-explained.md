@@ -3,6 +3,8 @@ layout:     post
 title:      "Angular 2 Change Detection Explained"
 
 relatedLinks:
+  - title: "Angular 2 Change Detection Explained - Talk"
+    url: https://www.youtube.com/watch?v=CUxD91DWkGM
   -
     title: "Angular 2 Change Detection Explained - Slides"
     url: "http://pascalprecht.github.io/slides/angular-2-change-detection-explained/#/"
@@ -33,7 +35,7 @@ topic: changedetection
 author: pascal_precht
 ---
 
-[NG-NL](http://ng-nl.org) has happened and it was awesome! I had the honour of giving a talk about change detection in Angular 2 and it seemed to be a huge success as attendees liked it a lot. With this article, we'd like to transform the talk into a written version, so everyone can read about how Angular's change detection works and how to make it faster for our use cases. If you're interested in the talk, you can view the [slides here](http://pascalprecht.github.io/slides/angular-2-change-detection-explained/#/) and as soon as the talk recording is up, you'll find it here as well.
+[NG-NL](http://ng-nl.org) has happened and it was awesome! I had the honour of giving a talk about change detection in Angular 2 and it seemed to be a huge success as attendees liked it a lot. With this article, we'd like to transform the talk into a written version, so everyone can read about how Angular's change detection works and how to make it faster for our use cases. If you're interested in the talk, you can view the [slides here](http://pascalprecht.github.io/slides/angular-2-change-detection-explained/#/) and <s>as soon as the talk recording is up, you'll find it here as well</s> [watch the recording](https://www.youtube.com/watch?v=CUxD91DWkGM) on Youtube.
 
 Now let's take a look at this beast.
 
