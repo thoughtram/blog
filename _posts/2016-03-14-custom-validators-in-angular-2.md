@@ -380,6 +380,7 @@ Here's the full code for our custom email validator:
 
 {% highlight ts %}
 {% raw %}
+import {provide, Directive, forwardRef} from 'angular2/core';
 import {Control} from 'angular2/common';
 
 function validateEmailFactory(emailBlackList: EmailBlackList) {
@@ -398,7 +399,7 @@ function validateEmailFactory(emailBlackList: EmailBlackList) {
   selector: '[validateEmail][ngControl],[validateEmail][ngModel],[validateEmail][ngFormControl]',
   providers: [
     provide(NG_VALIDATORS, {
-      useExisting: EmailValidator, 
+      useExisting: forwardRef(() => EmailValidator),
       multi: true
     })
   ]
