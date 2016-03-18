@@ -8,7 +8,7 @@ url: "http://blog.thoughtram.io"
 google_analytics: "UA-51360648-2"
 animated: false
 show_related_posts: false
-
+highlighter: rouge
 # Build settings
 markdown: kramdown
 paginate: 5
