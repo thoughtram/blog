@@ -146,7 +146,7 @@ function validateEmail(c: Control) {
 {% endraw %}
 {% endhighlight %}
 
-Pretty straight forward right? We import `Control` from `angular2/common` to have the type information the the function's signature and simply test a regular expression with the `Control`'s value. That's it. That's a validator.
+Pretty straight forward right? We import `Control` from `angular2/common` to have the type information the function's signature and simply test a regular expression with the `Control`'s value. That's it. That's a validator.
 
 But how do we apply them to other form controls? Well, we've seen how `Validators.required` and the other validators are added to the `new Control()` calls. `Control()` takes an initial value, a synchronous validator and an asynchronous validator. Which means, we do exactly the same with our custom validators.
 
