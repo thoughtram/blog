@@ -252,7 +252,7 @@ class EmailValidator {}
 {% endraw %}
 {% endhighlight %}
 
-Again, if you've read our article on multi providers, this should look very familiar to you. We basically add a new value to the `NG_VALIDATORS` token by taking advantage of multi providers. Angular will pick our validator up by injecting what it gets for `NG_VALIDATOR`, and performs validation on a form control. Awesome, we can now use our validator for model-driven **and** for template-driven forms!
+Again, if you've read our article on multi providers, this should look very familiar to you. We basically add a new value to the `NG_VALIDATORS` token by taking advantage of multi providers. Angular will pick our validator up by injecting what it gets for `NG_VALIDATORS`, and performs validation on a form control. Awesome, we can now use our validator for model-driven **and** for template-driven forms!
 
 ## Custom Validators with dependencies
 
