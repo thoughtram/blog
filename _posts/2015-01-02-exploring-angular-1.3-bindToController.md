@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Exploring Angular 1.3: Binding to Directive Controllers"
+title:      "Binding to Directive Controllers in Angular 1.3"
 relatedLinks:
   -
     title: "Exploring Angular 1.3: One-time bindings"

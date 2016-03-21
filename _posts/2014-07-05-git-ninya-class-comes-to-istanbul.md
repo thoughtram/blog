@@ -1,11 +1,15 @@
 ---
 layout: post
-title: "Git Ninya Class comes to Istanbul"
+title: "Git Ninja Class comes to Istanbul"
 date: "2014-07-05"
 summary: Today we are happy to announce that our Git Ninja Class is coming to Istanbul!
 
 categories:
   - announcements
+tags:
+  - training
+  - announcements
+  - git
 author: pascal_precht
 ---
 

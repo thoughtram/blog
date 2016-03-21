@@ -14,6 +14,7 @@ relatedLinks:
     url: "http://blog.thoughtram.io/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html"
 
 date: 2016-02-01
+update_date: 2016-02-01
 
 summary: "In our last article we've talked about what Zones are and how they change the way we deal with asynchronous code. In this article we're going to discuss what role they play in the Angular 2 platform, with the Angular 2 specific NgZone."
 

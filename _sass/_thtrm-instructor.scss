@@ -1,0 +1,69 @@
+.thtrm-instructor {
+  background-color: #90BAC7;
+  background-image: url('/images/instructor-christoph.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-blend-mode: multiply;
+  text-align: center;
+  position: relative;
+  height: 500px;
+
+  .thtrm-table-layout-cell:nth-child(2) & {
+    background-image: url('/images/instructor-pascal.jpg');
+;
+  }
+
+  @include tablet {
+    height: 450px;
+  }
+}
+
+.thtrm-instructor-content {
+  position: absolute;
+  left: 1em;
+  right: 1em;
+  bottom: 2em;
+
+  @include tablet {
+    left: 2em;
+    right: 2em;
+    bottom: 3em;
+  }
+}
+
+.thtrm-instructor-name {
+  color: #fff;
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 24px;
+  margin-bottom: 0.5em;
+}
+
+.thtrm-instructor-text {
+  color: #fff;
+  font-size: 18px;
+}
+
+.thtrm-instructor-cta {
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: 2px solid #fff;
+  display: inline-block;
+  padding: 0.5em 1em;
+  font-weight: 600;
+  margin-top: 1em;
+  margin-left: 0.5em;
+  // transition: (color .2s ease-out, background .2s ease-in);
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:hover {
+    background-color: #fff;
+    color: #123742;
+  }
+}
+

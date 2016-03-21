@@ -3,10 +3,19 @@ layout:     post
 title:      We are thoughtram
 date:       2014-06-06
 summary:    We enjoy learning new stuff every day and we love teaching it to others even more.
+imageUrl:   "/images/banner/we-are-thoughtram.jpg"
 
 categories: 
   - announcements
+tags:
+  - announcements
+  - company
+
 author: pascal_precht
+
+authors:
+  - pascal_precht
+  - christoph_burgdorf
 ---
 
 Hey there,

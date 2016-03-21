@@ -11,7 +11,10 @@ isExploringAngular13Article: false
 
 categories: 
 - angularjs
-
+tags:
+  - angular
+  - training
+  - announcements
 author: christoph_burgdorf
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Taking advantage of Observables in Angular 2"
-
+imageUrl: "/images/banner/taking-advantage-of-observables.png"
 relatedLinks:
   -
     title: "Taking advantage of Observables in Angular 2 - Part 2"

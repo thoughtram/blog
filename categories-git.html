@@ -1,26 +1,22 @@
 ---
-layout: categories
-title: Git articles
+layout: default
+title: Git articles by thoughtram
 permalink: /categories/git/
 ---
 
-<section class="thtrm-m-section">
-  <div class="thtrm-l-constraint">
-    <div class="thtrm-m-section__content thtrm-m-section__content--blog-index">
-
-      <a class="thtrm-m-rss-link" title="RSS Feed" href="http://feeds.feedburner.com/thoughtram"><i class="fa fa-rss"></i> RSS Feed</a>
-      <p class="thtrm-m-categories-text">Only interested in <a title="Angular articles by thoughtram" href="/categories/angular/">Angular</a>, <a title="Angular 2 articles by thoughtram" href="/categories/angular-2/">Angular 2</a> or <a class="active" title="Git articles by thoughtram" href="/categories/git">Git</a>?</p>
-      {% for post in site.posts %}
-        {% if post.tags contains 'git' %}
-        <div class="thtrm-m-article">
-          <a title="{{ post.title }}" href="{{ post.url | prepend: site.baseurl }}">
-            <p class="thtrm-m-article__date">{{ post.date | date: "%b %-d, %Y" }}</p>
-            <h2 class="thtrm-m-article__title">{{ post.title }}</h2>
-            <p class="thtrm-m-article__summary">{{ post.summary }}</p>
-          </a>
-        </div>
-        {% endif %}
-      {% endfor %}
+<h2 class="thtrm-section-headline thtrm-section-headline--with-margin">Git articles</h2>
+<ul class="thtrm-three-column-list thtrm-three-column-list--with-padding">
+{% for post in site.posts %}
+  {% if post.tags contains 'git' %}
+  <li>
+    <div class="thtrm-article-card thtrm-article-card--with-border">
+      <div class="thtrm-article-card-content ">
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.summary | truncatewords: 20 }}</p>
+        <a href="{{ post.url | prepend: site.baseurl }}" title="{{post.title}}" class="thtrm-cta thtrm-cta--small">Read More</a>
+      </div>
     </div>
-  </div>
-</section>
+  </li>
+  {% endif %}
+{% endfor %}
+</ul>

@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Exploring Angular 1.3: One-time bindings"
+title:      "One-time bindings in Angular 1.3"
 relatedLinks:
   -
     title: "Exploring Angular 1.3: ng-model-options"

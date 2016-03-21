@@ -1,0 +1,34 @@
+$phabletViewport: "(min-width: 640px)";
+$tabletViewport: "(min-width: 840px)";
+$desktopViewport: "(min-width: 990px)";
+$tvViewport: "(min-width: 1500px)";
+
+$thtrmBlue: "#4D8799";
+$thtrmDarkBlue: "#3E6F7E";
+$thtrmDarkerBlue: "#123742";
+$thtrmEvenDarkerBlue: "#384c54";
+
+@mixin phablet {
+  @media #{$phabletViewport} {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media #{$tabletViewport} {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media #{$desktopViewport} {
+    @content;
+  }
+}
+
+@mixin tv {
+  @media #{$tvViewport} {
+    @content;
+  }
+}
+

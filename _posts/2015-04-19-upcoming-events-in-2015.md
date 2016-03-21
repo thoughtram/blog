@@ -9,6 +9,7 @@ categories:
 
 tags:
 - announcements
+- company
 
 author: pascal_precht
 ---

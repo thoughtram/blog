@@ -5,6 +5,10 @@ date:       "2014-07-04"
 summary:    It's on! You can now buy the first bunch of tickets for our Git Ninja Class workshop in Hannover, Germany!
 
 categories: announcements
+tags:
+  - training
+  - announcements
+  - git
 author: pascal_precht
 ---
 

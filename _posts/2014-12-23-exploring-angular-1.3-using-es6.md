@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Using ES6 with Angular today
+title:      "Using ES6 with Angular today"
 date:       2015-01-23
 summary:    One of the most exciting upcoming changes for Angular 2.0 is that it's entirely written in ES6 - the next version of JavaScript. There's no need to wait until Angular 2.0 though. You can start writing your Angular apps with ES6 today - even with Angular 1.x. In this post we are going to look at two very exciting ES6 features and how they can play a role in the context of an Angular application. Modules and Inheritance.
 
@@ -10,6 +10,7 @@ categories:
 
 tags:
   - angular
+  - es2015
 
 author: christoph_burgdorf
 ---

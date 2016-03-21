@@ -8,7 +8,9 @@ isExploringAngular13Article: false
 
 categories: 
 - angularjs
-
+tags:
+  - announcements
+  - company
 author: christoph_burgdorf
 ---
 

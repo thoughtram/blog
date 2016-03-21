@@ -1,6 +1,7 @@
 ---
 layout:     post
 title:      "Service vs Factory - Once and for all"
+imageUrl: "/images/banner/service-vs-factory.png"
 relatedLinks:
   -
     title: "Using ES6 with Angular today"

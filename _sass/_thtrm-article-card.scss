@@ -1,0 +1,97 @@
+.thtrm-article-card {
+  display: block;
+  background: #eee;
+  color: #555;
+  text-decoration: none;
+  line-height: 1.5;
+
+  .material-icons {
+    vertical-align: -12%;
+    font-size: 18px;
+  }
+
+  &--transparent {
+    background: transparent;
+    &:hover {
+      background: #ddd;
+    }
+  }
+
+  &--with-border {
+    border: 3px solid #f2f2f2!important;
+    background: transparent;
+  }
+
+  &--without-padding {
+    &:hover {
+      background: transparent;
+    }
+
+    .thtrm-article-card-content {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  .thtrm-article-card-list & {
+    border-top: 2px solid #ccc;
+
+    &:hover {
+      background: #ddd;
+    }
+  }
+
+  @include tablet {
+    li:first-child & {
+      border-top: none;
+    }
+  }
+}
+
+.thtrm-article-card-content {
+  padding: 1.4em;
+
+  .thtrm-article-card-list & {
+    padding: 1.6em;
+  }
+
+  h2 {
+    font-size: 22px;
+    line-height: 1.4;
+    margin: 0;
+    margin-bottom: 0.5em;
+    color: #444;
+  }
+
+  h3 {
+    margin: 0;
+    margin-bottom: 0.2em;
+    color: #444;
+  }
+
+  > span {
+    color: #777;
+    font-size: 14px;
+  }
+}
+
+.thtrm-article-card-image {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  height: 250px;
+
+  @include tablet {
+    height: 300px;
+  }
+
+  .thtrm-three-column-list--with-padding & {
+    height: 200px;
+  }
+}
+
+.thtrm-article-card-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}

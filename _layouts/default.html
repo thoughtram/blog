@@ -34,6 +34,7 @@
     <meta property="twitter:title" content="Articles by thoughtram">
     <meta property="twitter:site" content="thoughtram">
 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}" type="text/css">
   </head>
   <body>
@@ -43,43 +44,27 @@
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <header role="banner" class="thtrm-l-header has-backface-visibility--hidden">
-      <div class="thtrm-l-header__bar">
-        <h1 class="thtrm-l-header__logo"><a href="/" title="thoughtram official website"  aria-hidden="true">thoughtram</a></h1>
-        <button class="thtrm-l-header__menu-btn" role="button"><img src="/images/hamburger.svg" alt="Menu"></button>
-        <section class="thtrm-l-header__bar__actions">
-          <ul class="thtrm-l-header__bar__actions__navigation clear">
-            <li><a href="http://thoughtram.io" title="Home" >Home</a></li>
-            <li><a href="http://thoughtram.io/training.html" title="Training" >Training</a></li>
-            <li><a href="/" class="active" title="Blog" >Blog</a></li>
-          </ul>
-        </section>
+    <header class="thtrm-header" role="banner">
+      <div class="thtrm-header-bar">
+        <div class="thtrm-constraint">
+          <a href="http://thoughtram.io" class="thtrm-header-logo-link" title="thoughtram.io Start Page"><h1 class="thtrm-header-logo">thoughtram</h1></a>
+          <div class="thtrm-header-menu-wrapper">
+            <span role="button" tabindex="0" class="thtrm-header-menu-label">Menu</span>
+            <ul class="thtrm-header-menu">
+              <li><a title="Training" class="thtrm-header-menu-item" href="http://thoughtram.io/training.html">Training</a></li>
+              <li><a title="Code Review" class="thtrm-header-menu-item" href="http://thoughtram.io/code-review.html">Code Review</a></li>
+              <li><a title="Blog" class="thtrm-header-menu-item active" href="/">Blog</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </header>
 
-    <nav role="navigation" class="thtrm-l-navdrawer has-backface-visibility--hidden">
-      <h4 class="thtrm-l-navdrawer__headline">Navigation</h4>
-      <ul class="thtrm-l-navdrawer__navigation">
-        <li><a href="http://thoughtram.io/" title="Home" >Home</a></li>
-        <li><a href="http://thoughtram.io/training.html" title="Training" >Training</a></li>
-        <li><a class="active" href="/" title="Blog" >Blog</a></li>
-      </ul>
-    </nav>
-
-    <main role="main" class="thtrm-l-main thtrm-l-main--blog" itemprop="mainContentOfPage">
-      <section class="thtrm-m-section thtrm-m-section--image-banner">
-        <div class="thtrm-l-constraint">
-          <div class="thtrm-m-section__content">
-            <img alt="thoughtram brian in white" class="thtrm-m-banner-logo pulse" src="/images/thoughtram-brain-white.png">
-            <h1 class="thtrm-m-section__headline">thoughtram Blog</h1>
-            <p>Experiences and thoughts, written down.</p>
-          </div>
-        </div>
-      </section>
-      {{ content }}
-  <!--<p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>-->
+    <main role="main" class="thtrm-main">
+      <div class="thtrm-constraint">
+        {{ content }}
+      </div>
     </main>
-
     {% include footer.html %}
   </body>
 </html>

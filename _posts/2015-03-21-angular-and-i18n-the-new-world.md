@@ -12,7 +12,8 @@ categories:
 - angular
 
 tags:
-- angular
+  - angular
+  - i18n
 
 author: pascal_precht
 ---

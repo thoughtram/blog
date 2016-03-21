@@ -1,0 +1,39 @@
+.thtrm-article-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-left: 2em;
+
+  > li {
+    margin-top: 1em;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+.thtrm-article {
+  text-decoration: none;
+  color: #384c54;
+
+  > img {
+    margin-bottom: 0.5em;
+  }
+
+  > h4 {
+    margin: 0;
+    font-size: 22px;
+  }
+
+  > span {
+    display: block;
+    margin-top: 0.2em;
+  }
+
+  > p {
+    font-size: 16px;
+    margin-top: 1em;
+    line-height: 1.4;
+  }
+}

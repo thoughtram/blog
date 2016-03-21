@@ -1,25 +1,22 @@
 ---
-layout: blog-series
-title: Exploring Angular 1.3
+layout: default
+title: Exploring Angular 1.3 by thoughtram
 permalink: /exploring-angular-1.3/
 ---
 
-<section class="thtrm-m-section">
-  <div class="thtrm-l-constraint">
-    <div class="thtrm-m-section__content thtrm-m-section__content--blog-index">
-      <!-- <img style="display: block; margin: 0 auto; margin-bottom: 2em;" src="/images/angularjs-shield.png"> -->
-      <!-- <h2 class="thtrm-m-section__headline">Exploring Angular 1.3</h2> -->
-      {% for post in site.posts %}
-        {% if post.isExploringAngular13Article %}
-        <div class="thtrm-m-article">
-          <a title="{{ post.title }}" href="{{ post.url | prepend: site.baseurl }}">
-            <!-- <p class="thtrm-m-article__date">{{ post.date | date: "%b %-d, %Y" }}</p> -->
-            <h2 class="thtrm-m-article__title">{{ post.title }}</h2>
-            <p class="thtrm-m-article__summary">{{ post.summary }}</p>
-          </a>
-        </div>
-        {% endif %}
-      {% endfor %}
+<h2 class="thtrm-section-headline thtrm-section-headline--with-margin">Series: Exploring Angular 1.3</h2>
+<ul class="thtrm-three-column-list thtrm-three-column-list--with-padding">
+{% for post in site.posts %}
+  {% if post.isExploringAngular13Article %}
+  <li>
+    <div class="thtrm-article-card thtrm-article-card--with-border">
+      <div class="thtrm-article-card-content ">
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.summary | truncatewords: 20 }}</p>
+        <a href="{{ post.url | prepend: site.baseurl }}" title="{{post.title}}" class="thtrm-cta thtrm-cta--small">Read More</a>
+      </div>
     </div>
-  </div>
-</section>
+  </li>
+  {% endif %}
+{% endfor %}
+</ul>

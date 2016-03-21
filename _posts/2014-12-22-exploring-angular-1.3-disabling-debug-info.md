@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Exploring Angular 1.3: Disabling Debug Info"
+title:      "Disabling Debug Info in Angular 1.3"
 relatedLinks:
   -
     title: "Exploring Angular 1.3: One-time bindings"
@@ -40,6 +40,7 @@ categories:
 
 tags:
   - angular
+  - performance
 
 author: pascal_precht
 ---

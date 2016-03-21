@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Angular 2 Change Detection Explained"
-
+imageUrl:   "/images/change-detection-explained-bg.jpeg"
 relatedLinks:
   - title: "Angular 2 Change Detection Explained - Talk"
     url: https://www.youtube.com/watch?v=CUxD91DWkGM
