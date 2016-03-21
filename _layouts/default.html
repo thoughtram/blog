@@ -34,6 +34,7 @@
     <meta property="twitter:title" content="Articles by thoughtram">
     <meta property="twitter:site" content="thoughtram">
 
+    <link rel="stylesheet" href="http://thoughtram.io/styles/main.css">
     <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}" type="text/css">
   </head>
   <body>
@@ -43,7 +44,78 @@
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <header role="banner" class="thtrm-l-header has-backface-visibility--hidden">
+    <header class="thtrm-header" role="banner">
+      <div class="thtrm-header-bar">
+        <a href="/" title="thoughtram.io Start Page"><h1 class="thtrm-header-logo">thoughtram</h1></a>
+        <div class="thtrm-header-menu-wrapper">
+          <span role="button" tabindex="0" class="thtrm-header-menu-label">Menu</span>
+          <ul class="thtrm-header-menu">
+            <li><a title="Training" class="thtrm-header-menu-item" href="/training.html">Training</a></li>
+            <li><a title="Code Review" class="thtrm-header-menu-item" href="/code-review.html">Code Review</a></li>
+            <li><a title="Blog" class="thtrm-header-menu-item active" href="http://blog.thoughtram.io">Blog</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main role="main" class="thtrm-main">
+      <div class="thtrm-constraint">
+
+        <div class="thtrm-table-layout">
+          <div class="thtrm-table-layout-row thtrm-table-layout-row--with-two-columns thtrm-table-layout-row--2-3">
+            <div class="thtrm-table-layout-cell">
+              <a title="{{site.posts[0].title}}" style="background-image: url('{{ site.posts[0].imageUrl}}');" href="{{site.posts[0].url | prepend: site.baseurl}}" class="thtrm-promo-post">
+                <div class="thtrm-promo-post-info">
+                  <h2>{{ site.posts[0].title }}</h2>
+                  <span>{{ site.posts[0].date | date: "%b %-d, %Y" }}</span>
+                </div>
+              </a>
+            </div>
+            <div class="thtrm-table-layout-cell">
+              <a title="{{site.posts[1].title}}" style="background-image: url('{{ site.posts[1].imageUrl}}');" href="{{site.posts[1].url | prepend: site.baseurl}}" class="thtrm-promo-post thtrm-promo-post--sub">
+                <div class="thtrm-promo-post-info">
+                  <h3>{{ site.posts[1].title }}</h3>
+                  <span>{{ site.posts[1].date | date: "%b %-d, %Y" }}</span>
+                </div>
+              </a>
+              <a title="{{site.posts[2].title}}" style="background-image: url('{{ site.posts[2].imageUrl}}');" href="{{site.posts[2].url | prepend: site.baseurl}}" class="thtrm-promo-post thtrm-promo-post--sub">
+                <div class="thtrm-promo-post-info">
+                  <h3>{{ site.posts[2].title }}</h3>
+                  <span>{{ site.posts[2].date | date: "%b %-d, %Y" }}</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="thtrm-table-layout" style="margin-top: 2em;">
+          <div class="thtrm-table-layout-row thtrm-table-layout-row--with-two-columns">
+            <div class="thtrm-table-layout-cell">
+              <a href="{{ site.posts[3].url | prepend: site.baseurl }}" title="{{site.posts[3].title}}">
+                <img src="{{ site.posts[3].imageUrl }}" style="max-width: 100%;">
+                  <h4>{{ site.posts[3].title }}</h4>
+                  <p>{{ site.posts[3].summary}}</p>
+              </a>
+            </div>
+            <div class="thtrm-table-layout-cell">
+              {% for post in paginator.posts %}
+              <a href="{{ post.url | prepend: site.baseurl }}" title="{{post.title}}">
+                  <h4>{{ post.title }}</h4>
+                  <p>{{ post.summary}}</p>
+              </a>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+    {% include footer.html %}
+
+
+
+
+    <!-- <header role="banner" class="thtrm-l-header has-backface-visibility--hidden">
       <div class="thtrm-l-header__bar">
         <h1 class="thtrm-l-header__logo"><a href="/" title="thoughtram official website"  aria-hidden="true">thoughtram</a></h1>
         <button class="thtrm-l-header__menu-btn" role="button"><img src="/images/hamburger.svg" alt="Menu"></button>
@@ -55,18 +127,18 @@
           </ul>
         </section>
       </div>
-    </header>
+      </header> -->
 
-    <nav role="navigation" class="thtrm-l-navdrawer has-backface-visibility--hidden">
+    <!-- <nav role="navigation" class="thtrm-l-navdrawer has-backface-visibility--hidden">
       <h4 class="thtrm-l-navdrawer__headline">Navigation</h4>
       <ul class="thtrm-l-navdrawer__navigation">
         <li><a href="http://thoughtram.io/" title="Home" >Home</a></li>
         <li><a href="http://thoughtram.io/training.html" title="Training" >Training</a></li>
         <li><a class="active" href="/" title="Blog" >Blog</a></li>
       </ul>
-    </nav>
+      </nav> -->
 
-    <main role="main" class="thtrm-l-main thtrm-l-main--blog" itemprop="mainContentOfPage">
+    <!-- <main role="main" class="thtrm-l-main thtrm-l-main--blog" itemprop="mainContentOfPage">
       <section class="thtrm-m-section thtrm-m-section--image-banner">
         <div class="thtrm-l-constraint">
           <div class="thtrm-m-section__content">
@@ -77,9 +149,7 @@
         </div>
       </section>
       {{ content }}
-  <!--<p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>-->
-    </main>
+    </main> -->
 
-    {% include footer.html %}
   </body>
 </html>

@@ -1,6 +1,7 @@
 ---
 layout:     post
 title:      "Custom Validators in Angular 2"
+imageUrl:  "http://thoughtram.io/images/thoughtram-crowd.jpg"
 
 date: 2016-03-14
 
