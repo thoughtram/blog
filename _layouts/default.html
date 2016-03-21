@@ -98,12 +98,13 @@
               </a>
             </div>
             <div class="thtrm-table-layout-cell">
-              {% for post in paginator.posts %}
+              {% for post in paginator.posts | offset:4 limit:(paginator.posts.size-4)  %}
               <a href="{{ post.url | prepend: site.baseurl }}" title="{{post.title}}">
                   <h4>{{ post.title }}</h4>
                   <p>{{ post.summary}}</p>
               </a>
               {% endfor %}
+              {% include pagination.html %}
             </div>
           </div>
         </div>
