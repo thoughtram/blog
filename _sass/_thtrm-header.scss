@@ -1,0 +1,204 @@
+.thtrm-header {
+  display: block;
+  background-color: transparent;
+}
+
+.thtrm-header-bar {
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  z-index: 100;
+
+  &:after {
+    content: '';
+    clear: both;
+    display: table;
+  }
+
+  @include tablet {
+    height: initial;
+    padding-bottom: 25px;
+  }
+
+  > a {
+    float: left;
+
+    @include tablet {
+      float: none;
+    }
+  }
+}
+
+.thtrm-header-logo {
+  font: 0/0 a;
+  color: transparent;
+  background-image: url('/images/thoughtram-logo-mobile_white.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 70px;
+  width: 70px;
+
+  @include tablet {
+    width: 260px;
+    height: 61px;
+    background-image: url('/images/thoughtram-logo-desktop_white.png');
+    background-size: 260px auto;
+    margin-top: 30px;
+    margin-left: 40px;
+  }
+
+  @include desktop {
+    margin-left: 60px;
+  }
+
+}
+
+.thtrm-header-menu-wrapper {
+  float: right;
+  margin-left: auto;
+
+  @include tablet {
+    float: none;
+    position: absolute;
+    right: 0;
+    top: 10px;
+  }
+
+  &:focus,
+  &:hover,
+  &.is-active {
+    outline: 0;
+
+    .thtrm-header-menu {
+      display: block;
+    }
+
+    .thtrm-header-menu-label {
+      background-color: rgb(29, 46, 53);
+    }
+  }
+
+
+  @include tablet {
+    margin-right: 20px;
+  }
+
+  @include desktop {
+    margin-right: 40px;
+  }
+}
+
+.thtrm-header-menu-label {
+  background: transparent;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 16px;
+  padding: 20px 14px;
+  line-height: 30px;
+  display: block;
+  color: #fff;
+
+  &:hover {
+    cursor: pointer;
+    background-color: rgb(29, 46, 53);
+
+    +.thtrm-header-menu {
+      display: block;
+    }
+  }
+
+
+  @include tablet {
+    padding-top: 40px;
+    display: none;
+
+    &:hover,
+    &:focus {
+      outline: 1;
+    }
+  }
+}
+
+.thtrm-header-menu-avatar {
+  border-radius: 50%;
+  padding: 0;
+  height: 40px;
+  margin-top: 10px;
+
+  @include tablet {
+    height: 60px;
+    margin-top: 20px;
+  }
+}
+
+.thtrm-header-menu {
+  position: absolute;
+  width: 100%;
+  right: 0;
+  left: 0;
+  top: 70px;
+  padding: 0;
+  margin: 0;
+  display: none;
+  list-style: none;
+  background-color: rgb(29, 46, 53);
+
+  @include tablet {
+    position: static;
+    display: inline-block;
+    align-items: stretch;
+    display: flex;
+    margin-top: 25px;
+    background-color: transparent;
+
+    li {
+      display: inline-block;
+      display: flex;
+      margin-left: 1em;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+
+    .thtrm-header-menu-wrapper:hover &,
+    .thtrm-header-menu-wrapper:focus & {
+      display: flex;
+    }
+  }
+}
+
+.thtrm-header-menu-item {
+  text-align: center;
+  text-decoration: none;
+  padding: 0.8em;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #fff;
+  display: block;
+  border: 2px solid transparent;
+
+  &:hover,
+  &:focus,
+  &.active {
+    background-color: #123742;
+    color: #fff;
+  }
+
+  @include tablet {
+    font-size: 22px;
+    line-height: 32px;
+    width: initial;
+
+    &:hover,
+    &:focus,
+    &.active {
+      background: transparent;
+      border: 2px solid #fff;
+    }
+  }
+}
+

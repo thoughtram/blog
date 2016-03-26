@@ -34,7 +34,6 @@
     <meta property="twitter:title" content="Articles by thoughtram">
     <meta property="twitter:site" content="thoughtram">
 
-    <link rel="stylesheet" href="http://thoughtram.io/styles/main.css">
     <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}" type="text/css">
   </head>
   <body>
@@ -88,27 +87,32 @@
           </div>
         </div>
 
-        <div class="thtrm-table-layout" style="margin-top: 2em;">
+        <div class="thtrm-table-layout" style="margin-top: 4em;">
           <div class="thtrm-table-layout-row thtrm-table-layout-row--with-two-columns">
             <div class="thtrm-table-layout-cell">
-              <a href="{{ site.posts[3].url | prepend: site.baseurl }}" title="{{site.posts[3].title}}">
+              <a class="thtrm-article" href="{{ site.posts[3].url | prepend: site.baseurl }}" title="{{site.posts[3].title}}">
                 <img src="{{ site.posts[3].imageUrl }}" style="max-width: 100%;">
                   <h4>{{ site.posts[3].title }}</h4>
+                  <span>{{ site.posts[2].date | date: "%b %-d, %Y" }}</span>
                   <p>{{ site.posts[3].summary}}</p>
               </a>
             </div>
             <div class="thtrm-table-layout-cell">
+              <ul class="thtrm-article-list">
               {% for post in paginator.posts | offset:4 limit:(paginator.posts.size-4)  %}
-              <a href="{{ post.url | prepend: site.baseurl }}" title="{{post.title}}">
+              <li>
+                <a class="thtrm-article" href="{{ post.url | prepend: site.baseurl }}" title="{{post.title}}">
                   <h4>{{ post.title }}</h4>
+                  <span>{{ site.posts[2].date | date: "%b %-d, %Y" }}</span>
                   <p>{{ post.summary}}</p>
-              </a>
+                </a>
+              </li>
               {% endfor %}
-              {% include pagination.html %}
+              </ul>
+              <!-- {% include pagination.html %} -->
             </div>
           </div>
         </div>
-
       </div>
     </main>
     {% include footer.html %}

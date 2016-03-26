@@ -4,7 +4,7 @@ title:      "Template-driven Forms in Angular 2"
 
 date: 2016-03-21
 update_date: 2016-03-21
-
+imageUrl: "/images/template-driven-forms.png"
 relatedLinks:
   -
     title: "Custom Validators in Angular 2"
