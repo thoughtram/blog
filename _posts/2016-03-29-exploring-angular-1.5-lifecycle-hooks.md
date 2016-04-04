@@ -36,6 +36,8 @@ Lifecycle hooks in Angular landed first in the Angular 2 alpha release and they 
 
 However, this article is on Angular 1.5. Since Angular 1 is evolving in a way to keep the gap to Angular 2 as small as possible, some lifecycle callbacks have been backported to the current "best Angular yet". Let's take a look at them one by one.
 
+**Note: The Angular lifecycle-hooks were introduced in version 1.5.3.**
+
 ## `$onInit()`
 
 This lifecycle hook will be executed when all controllers on an element have been constructed and after their bindings are initialized. This hook is meant to be used for any kind of initialization work of a controller. To get a better idea of how this behaves, let's take a look at some code.
