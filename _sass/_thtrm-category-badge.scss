@@ -1,0 +1,18 @@
+.thtrm-category-badge {
+  color: #fff;
+  padding: 0.2em 0.4em;
+  display: inline-block;
+  border-radius: 0.1em;
+
+  &--angular2 {
+    background: #549BCA;
+  }
+
+  &--git {
+    background: #1F9A86;
+  }
+
+  &--rust {
+    background: #943030;
+  }
+}

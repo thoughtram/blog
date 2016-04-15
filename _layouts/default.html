@@ -34,6 +34,7 @@
     <meta property="twitter:title" content="Articles by thoughtram">
     <meta property="twitter:site" content="thoughtram">
 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}" type="text/css">
   </head>
   <body>
@@ -45,14 +46,16 @@
 
     <header class="thtrm-header" role="banner">
       <div class="thtrm-header-bar">
-        <a href="/" title="thoughtram.io Start Page"><h1 class="thtrm-header-logo">thoughtram</h1></a>
-        <div class="thtrm-header-menu-wrapper">
-          <span role="button" tabindex="0" class="thtrm-header-menu-label">Menu</span>
-          <ul class="thtrm-header-menu">
-            <li><a title="Training" class="thtrm-header-menu-item" href="/training.html">Training</a></li>
-            <li><a title="Code Review" class="thtrm-header-menu-item" href="/code-review.html">Code Review</a></li>
-            <li><a title="Blog" class="thtrm-header-menu-item active" href="http://blog.thoughtram.io">Blog</a></li>
-          </ul>
+        <div class="thtrm-constraint">
+          <a href="/" class="thtrm-header-logo-link" title="thoughtram.io Start Page"><h1 class="thtrm-header-logo">thoughtram</h1></a>
+          <div class="thtrm-header-menu-wrapper">
+            <span role="button" tabindex="0" class="thtrm-header-menu-label">Menu</span>
+            <ul class="thtrm-header-menu">
+              <li><a title="Training" class="thtrm-header-menu-item" href="/training.html">Training</a></li>
+              <li><a title="Code Review" class="thtrm-header-menu-item" href="/code-review.html">Code Review</a></li>
+              <li><a title="Blog" class="thtrm-header-menu-item active" href="http://blog.thoughtram.io">Blog</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </header>
@@ -60,42 +63,114 @@
     <main role="main" class="thtrm-main">
       <div class="thtrm-constraint">
 
+        <h2 class="thtrm-section-headline thtrm-section-headline--white">Popular <a title="RSS Feed" href="http://feeds.feedburner.com/thoughtram">RSS Feed</a></h2>
+
         <div class="thtrm-table-layout">
           <div class="thtrm-table-layout-row thtrm-table-layout-row--with-two-columns thtrm-table-layout-row--2-3">
             <div class="thtrm-table-layout-cell">
-              <a title="{{site.posts[0].title}}" style="background-image: url('{{ site.posts[0].imageUrl}}');" href="{{site.posts[0].url | prepend: site.baseurl}}" class="thtrm-promo-post">
-                <div class="thtrm-promo-post-info">
+
+              <a title="{{site.posts[0].title}}" style="background-image: url('{{ site.posts[0].imageUrl}}');" href="{{site.posts[0].url | prepend: site.baseurl}}" class="thtrm-promo-item">
+                <div class="thtrm-promo-item-info">
+
+                  {% if site.posts[0].tags contains 'angular2' %}
+                  <span class="thtrm-category-badge thtrm-category-badge--angular2">Angular 2</span>
+                  {% endif %}
+
+                  {% if site.posts[0].tags contains 'git' %}
+                  <span class="thtrm-category-badge thtrm-category-badge--git">Git</span>
+                  {% endif %}
+
+                  {% if site.posts[0].tags contains 'rust' %}
+                  <span class="thtrm-category-badge thtrm-category-badge--rust">Rust</span>
+                  {% endif %}
+
                   <h2>{{ site.posts[0].title }}</h2>
-                  <span>{{ site.posts[0].date | date: "%b %-d, %Y" }}</span>
+                  <span><i class="material-icons">schedule</i> {{ site.posts[0].date | date: "%b %-d, %Y" }}</span>
+                    
+                  <span class="thtrm-promo-item-info-author">
+                    <i class="material-icons">create</i>
+                    {% if site.posts[0].author == 'pascal_precht' %}
+                      Pascal Precht 
+                    {% else if site.posts[0].author == 'christoph_burgdorf' %}
+                      Christoph Burgdorf
+                    {% endif%}
+                  </span>
                 </div>
               </a>
+
             </div>
             <div class="thtrm-table-layout-cell">
-              <a title="{{site.posts[1].title}}" style="background-image: url('{{ site.posts[1].imageUrl}}');" href="{{site.posts[1].url | prepend: site.baseurl}}" class="thtrm-promo-post thtrm-promo-post--sub">
-                <div class="thtrm-promo-post-info">
+              <a title="{{site.posts[1].title}}" style="background-image: url('{{ site.posts[1].imageUrl}}');" href="{{site.posts[1].url | prepend: site.baseurl}}" class="thtrm-promo-item thtrm-promo-item--sub">
+                <div class="thtrm-promo-item-info">
+
+                  {% if site.posts[1].tags contains 'angular2' %}
+                  <span class="thtrm-category-badge thtrm-category-badge--angular2">Angular 2</span>
+                  {% endif %}
+
+                  {% if site.posts[1].tags contains 'git' %}
+                  <span class="thtrm-category-badge thtrm-category-badge--git">Git</span>
+                  {% endif %}
+
+                  {% if site.posts[1].tags contains 'rust' %}
+                  <span class="thtrm-category-badge thtrm-category-badge--rust">Rust</span>
+                  {% endif %}
+
                   <h3>{{ site.posts[1].title }}</h3>
-                  <span>{{ site.posts[1].date | date: "%b %-d, %Y" }}</span>
+                  <span><i class="material-icons">schedule</i> {{ site.posts[1].date | date: "%b %-d, %Y" }}</span>
+                  
+                  <span class="thtrm-promo-item-info-author">
+                    <i class="material-icons">create</i>
+                    {% if site.posts[1].author == 'pascal_precht' %}
+                    Pascal Precht 
+                    {% else if site.posts[1].author == 'christoph_burgdorf' %}
+                    Christoph Burgdorf
+                    {% endif%}
+                  </span>
                 </div>
               </a>
-              <a title="{{site.posts[2].title}}" style="background-image: url('{{ site.posts[2].imageUrl}}');" href="{{site.posts[2].url | prepend: site.baseurl}}" class="thtrm-promo-post thtrm-promo-post--sub">
-                <div class="thtrm-promo-post-info">
+              <a title="{{site.posts[2].title}}" style="background-image: url('{{ site.posts[2].imageUrl}}');" href="{{site.posts[2].url | prepend: site.baseurl}}" class="thtrm-promo-item thtrm-promo-item--sub">
+                <div class="thtrm-promo-item-info">
+
+                  {% if site.posts[2].tags contains 'angular2' %}
+                  <span class="thtrm-category-badge thtrm-category-badge--angular2">Angular 2</span>
+                  {% endif %}
+
+                  {% if site.posts[2].tags contains 'git' %}
+                  <span class="thtrm-category-badge thtrm-category-badge--git">Git</span>
+                  {% endif %}
+
+                  {% if site.posts[2].tags contains 'rust' %}
+                  <span class="thtrm-category-badge thtrm-category-badge--rust">Rust</span>
+                  {% endif %}
+
                   <h3>{{ site.posts[2].title }}</h3>
-                  <span>{{ site.posts[2].date | date: "%b %-d, %Y" }}</span>
+                  <span><i class="material-icons">schedule</i> {{ site.posts[2].date | date: "%b %-d, %Y" }}</span>
+                  <span class="thtrm-promo-item-info-author">
+                    <i class="material-icons">create</i>
+                    {% if site.posts[2].author == 'pascal_precht' %}
+                    Pascal Precht 
+                    {% else if site.posts[2].author == 'christoph_burgdorf' %}
+                    Christoph Burgdorf
+                    {% endif%}
+                  </span>
                 </div>
               </a>
             </div>
           </div>
         </div>
 
-        <div class="thtrm-table-layout" style="margin-top: 4em;">
+        <h2 class="thtrm-section-headline">Latest</h2>
+        <div class="thtrm-table-layout">
           <div class="thtrm-table-layout-row thtrm-table-layout-row--with-two-columns">
             <div class="thtrm-table-layout-cell">
+
               <a class="thtrm-article" href="{{ site.posts[3].url | prepend: site.baseurl }}" title="{{site.posts[3].title}}">
                 <img src="{{ site.posts[3].imageUrl }}" style="max-width: 100%;">
                   <h4>{{ site.posts[3].title }}</h4>
                   <span>{{ site.posts[2].date | date: "%b %-d, %Y" }}</span>
                   <p>{{ site.posts[3].summary}}</p>
               </a>
+
             </div>
             <div class="thtrm-table-layout-cell">
               <ul class="thtrm-article-list">

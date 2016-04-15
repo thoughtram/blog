@@ -44,7 +44,7 @@ p {
   margin: 0 auto;
   padding: 0 0 0 0;
   min-height: 100%;
-  padding-top: 140px;
+  padding-top: 25px;
   padding-bottom: 100px;
 
   &:before {
@@ -58,76 +58,26 @@ p {
     left: 0;
   }
 
+  @include tablet {
+    padding-top: 125px;
+    &:before {
+      height: 350px;
+    }
+  }
+
   @include desktop {
     min-height: initial;
   }
 }
 
-.thtrm-constraint {
-  max-width: 1100px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1em;
-  padding-right: 1em;
-
-  @media all and (min-width: 1500px) {
-    max-width: 1400px;
-  }
-}
-
-.thtrm-promo-post {
-  display: block;
-  height: 600px;
-  position: relative;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-blend-mode: multiply;
-  background-color: #84B0C1;
-
-  &--sub {
-    height: 300px;
-    background-color: #364146;
-    &:first-child {
-      // background-color: #327492;
-      background-color: #364146;
-    }
-  }
-
-}
-
-.thtrm-promo-post-info {
-  position: absolute;
-  bottom: 30px;
-  left: 30px;
-  right: 30px;
-  color: #fff;
-
-  h2, h3 {
-    margin: 0;
-    padding: 0;
-    margin-bottom: 10px;
-    font-weight: 600;
-    // text-transform: uppercase;
-  }
-
-  h2 {
-    font-size: 28px;
-  }
-
-  h3 {
-    font-size: 19px;
-  }
-  
-  span {
-    font-size: 16px;
-  }
-}
-
-
-@import 'thtrm-header',
+@import 'thtrm-constraint',
+        'thtrm-header',
         'thtrm-section',
         'thtrm-article-list',
         'thtrm-table-layout',
         'thtrm-footer',
-        'solarized-dark';
+        'solarized-dark',
+
+        'thtrm-promo-item',
+        'thtrm-category-badge',
+        'custom';

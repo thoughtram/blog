@@ -1,0 +1,26 @@
+.thtrm-section-headline {
+  font-size: 24px;
+  margin-bottom: 1.5em;
+  margin-top: 3.5em;
+  position: relative;
+
+  &--white {
+    color: #fff;
+  }
+
+  a {
+    color: #fff;
+    font-size: 14px;
+    position: absolute;
+    right: 0;
+    text-decoration: none;
+    border: 2px solid #fff;
+    padding: 0.5em;
+    top: -0.2em;
+
+    &:hover {
+      background: #fff;
+      color: #384c54;
+    }
+  }
+}

@@ -20,6 +20,7 @@
   @include tablet {
     height: initial;
     padding-bottom: 25px;
+    top: 10px;
   }
 
   > a {
@@ -28,6 +29,16 @@
     @include tablet {
       float: none;
     }
+  }
+}
+
+.thtrm-header-logo-link {
+  position: absolute;
+  left: 0.5em;
+
+  @include tablet {
+    position: static;
+    display: inline-block;
   }
 }
 
@@ -46,25 +57,13 @@
     background-image: url('/images/thoughtram-logo-desktop_white.png');
     background-size: 260px auto;
     margin-top: 30px;
-    margin-left: 40px;
   }
-
-  @include desktop {
-    margin-left: 60px;
-  }
-
 }
 
 .thtrm-header-menu-wrapper {
   float: right;
   margin-left: auto;
-
-  @include tablet {
-    float: none;
-    position: absolute;
-    right: 0;
-    top: 10px;
-  }
+  margin-right: -16px;
 
   &:focus,
   &:hover,
@@ -80,13 +79,10 @@
     }
   }
 
-
   @include tablet {
-    margin-right: 20px;
-  }
-
-  @include desktop {
-    margin-right: 40px;
+    margin-right: 0;
+    float: right;
+    top: 10px;
   }
 }
 
