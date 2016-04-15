@@ -2,7 +2,7 @@
 layout:     post
 title:      "Updates and announcements"
 
-date: 2016-04-20
+date: 2016-04-15
 
 summary: "It became a little bit quite around us and you might be wondering, what thoughtram is doing these days. Today we'd like to share some updates on what we're currently working on, as well as some announcements that we think are really cool."
 
