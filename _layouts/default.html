@@ -253,11 +253,9 @@
           {% endif %}
         {% endfor %}
         </ul>
-        {% if counter == 6 %}
         <div class="thtrm-cta-bar">
           <a href="#" title="All articles" class="thtrm-cta thtrm-cta--small">All articles</a>
         </div>
-        {% endif %}
         <h2 class="thtrm-section-headline thtrm-section-headline--with-margin">Exploring Angular 1.3</h2>
         <ul class="thtrm-three-column-list">
         {% assign counter = 0 %}
@@ -290,40 +288,6 @@
         <div class="thtrm-cta-bar">
           <a href="#" title="All articles" class="thtrm-cta thtrm-cta--small">All articles</a>
         </div>
-        <h2 class="thtrm-section-headline thtrm-section-headline--with-margin">Rust</h2>
-        <ul class="thtrm-three-column-list">
-        {% assign counter = 0 %}
-        {% for post in site.posts %}
-          {% if post.categories contains 'rust' %}
-          {% assign counter = counter | plus: 1 %}
-          {% if counter <= 6 %}
-          <li>
-            <a class="thtrm-article-card thtrm-article-card--transparent" href="{{ post.url | prepend: site.baseurl }}" title="{{post.title}}">
-              <div class="thtrm-article-card-content">
-                <span><i class="material-icons">schedule</i> {{ post.date | date: "%b %-d, %Y" }}</span>
-
-                <span>
-                  <i class="material-icons">create</i>
-                  {% if post.author == 'pascal_precht' %}
-                  Pascal Precht 
-                  {% else if post.author == 'christoph_burgdorf' %}
-                  Christoph Burgdorf
-                  {% endif%}
-                </span>
-                <h3>{{ post.title | remove: 'Exploring Angular 1.3: '}}</h3>
-                <p>{{ post.summary | truncatewords: 20 }}</p>
-              </div>
-            </a>
-          </li>
-          {% endif %}
-          {% endif %}
-        {% endfor %}
-        </ul>
-        {% if counter == 6 %}
-        <div class="thtrm-cta-bar">
-          <a href="#" title="All articles" class="thtrm-cta thtrm-cta--small">All articles</a>
-        </div>
-        {% endif %}
 
         <h2 class="thtrm-section-headline thtrm-section-headline--with-margin">Authors</h2>
         <div class="thtrm-table-layout">
