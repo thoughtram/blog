@@ -1,6 +1,6 @@
 .thtrm-promo-item {
   display: block;
-  height: 350px;
+  height: 250px;
   position: relative;
   background-size: cover;
   background-position: center center;
@@ -8,17 +8,17 @@
 
   @include tablet {
     height: 500px;
-  }
 
-  &--sub {
-    height: 250px;
+    &--sub {
+      height: 250px;
+    }
   }
 }
 
 .thtrm-promo-item-info {
   position: absolute;
-  bottom: 30px;
-  left: 30px;
+  bottom: 15px;
+  left: 15px;
   right: 30px;
   color: #fff;
 
@@ -34,13 +34,24 @@
     margin-top: 10px;
   }
 
-  h2 { font-size: 28px; }
 
-  h3 { font-size: 19px; }
+  h2, h3 { font-size: 19px; }
   
   span {
     font-size: 14px;
     font-weight: bold;
+  }
+
+  @include tablet {
+    bottom: 30px;
+    left: 30px;
+
+    .thtrm-promo-item--sub & {
+      bottom: 15px;
+      left: 15px;
+    }
+
+    h2 { font-size: 28px; }
   }
 
   .material-icons {

@@ -63,7 +63,7 @@
     <main role="main" class="thtrm-main">
       <div class="thtrm-constraint">
 
-        <h2 class="thtrm-section-headline thtrm-section-headline--white">Popular <a title="RSS Feed" href="http://feeds.feedburner.com/thoughtram">RSS Feed</a></h2>
+        <h2 class="thtrm-section-headline">Popular <a title="RSS Feed" href="http://feeds.feedburner.com/thoughtram">RSS Feed</a></h2>
 
         <div class="thtrm-table-layout">
           <div class="thtrm-table-layout-row thtrm-table-layout-row--with-two-columns thtrm-table-layout-row--2-3">
@@ -161,75 +161,144 @@
 
         <h2 class="thtrm-section-headline">Latest</h2>
         <div class="thtrm-table-layout">
-          <div class="thtrm-table-layout-row thtrm-table-layout-row--with-two-columns">
+          <div class="thtrm-table-layout-row thtrm-table-layout-row--with-two-columns thtrm-table-layout-row--with-two-columns--with-padding">
             <div class="thtrm-table-layout-cell">
 
-              <a class="thtrm-article" href="{{ site.posts[3].url | prepend: site.baseurl }}" title="{{site.posts[3].title}}">
-                <img src="{{ site.posts[3].imageUrl }}" style="max-width: 100%;">
-                  <h4>{{ site.posts[3].title }}</h4>
-                  <span>{{ site.posts[2].date | date: "%b %-d, %Y" }}</span>
+              <div class="thtrm-article-card" href="{{ site.posts[3].url | prepend: site.baseurl }}" title="{{site.posts[3].title}}">
+                <div class="thtrm-article-card-image" style="background-image: url({{ site.posts[3].imageUrl }});"></div>
+                <div class="thtrm-article-card-content">
+
+                  <span class="thtrm-article-card-date"><i class="material-icons">schedule</i> {{ site.posts[2].date | date: "%b %-d, %Y" }}</span>
+
+                  <span class="thtrm-article-card-author">
+                    <i class="material-icons">create</i>
+                    {% if site.posts[2].author == 'pascal_precht' %}
+                    Pascal Precht 
+                    {% else if site.posts[2].author == 'christoph_burgdorf' %}
+                    Christoph Burgdorf
+                    {% endif%}
+                  </span>
+
+                  <h2>{{ site.posts[3].title }}</h2>
                   <p>{{ site.posts[3].summary}}</p>
-              </a>
+                  <a href="{{ site.posts[3].url | prepend: site.baseurl }}" title="{{site.posts[3].title}}" class="thtrm-cta thtrm-cta--small">Read More</a>
+                </div>
+              </div>
 
             </div>
             <div class="thtrm-table-layout-cell">
-              <ul class="thtrm-article-list">
+              <ul class="thtrm-article-card-list">
               {% for post in paginator.posts | offset:4 limit:(paginator.posts.size-4)  %}
               <li>
-                <a class="thtrm-article" href="{{ post.url | prepend: site.baseurl }}" title="{{post.title}}">
-                  <h4>{{ post.title }}</h4>
-                  <span>{{ site.posts[2].date | date: "%b %-d, %Y" }}</span>
-                  <p>{{ post.summary}}</p>
+                <a class="thtrm-article-card" href="{{ post.url | prepend: site.baseurl }}" title="{{post.title}}">
+                  <div class="thtrm-article-card-content">
+                    <span><i class="material-icons">schedule</i> {{ site.posts[2].date | date: "%b %-d, %Y" }}</span>
+
+                    <span>
+                      <i class="material-icons">create</i>
+                      {% if post.author == 'pascal_precht' %}
+                      Pascal Precht 
+                      {% else if post.author == 'christoph_burgdorf' %}
+                      Christoph Burgdorf
+                      {% endif%}
+                    </span>
+                    <h3>{{ post.title }}</h3>
+                    <p>{{ post.summary}}</p>
+                  </div>
                 </a>
               </li>
               {% endfor %}
               </ul>
-              <!-- {% include pagination.html %} -->
+              <a href="#" title="All articles" class="thtrm-cta thtrm-cta--small thtrm-align-right">All articles</a>
             </div>
           </div>
+        </div>
+
+        <h2 class="thtrm-section-headline">Git</h2>
+        <ul class="thtrm-three-column-list">
+        {% assign counter = 0 %}
+        {% for post in site.posts %}
+          {% if post.categories contains 'git' %}
+          {% assign counter = counter | plus: 1 %}
+          {% if counter <= 6 %}
+          <li>
+            <a class="thtrm-article-card thtrm-article-card--transparent" href="{{ post.url | prepend: site.baseurl }}" title="{{post.title}}">
+              <div class="thtrm-article-card-content">
+                <span><i class="material-icons">schedule</i> {{ post.date | date: "%b %-d, %Y" }}</span>
+
+                <span>
+                  <i class="material-icons">create</i>
+                  {% if post.author == 'pascal_precht' %}
+                  Pascal Precht 
+                  {% else if post.author == 'christoph_burgdorf' %}
+                  Christoph Burgdorf
+                  {% endif%}
+                </span>
+                <h3>{{ post.title | remove: 'Exploring Angular 1.3: '}}</h3>
+                <p>{{ post.summary | truncatewords: 20 }}</p>
+              </div>
+            </a>
+          </li>
+          {% endif %}
+          {% endif %}
+        {% endfor %}
+        </ul>
+        <a href="#" title="All articles" class="thtrm-cta thtrm-cta--small thtrm-align-right">All articles</a>
+        <h2 class="thtrm-section-headline">Exploring Angular 1.3</h2>
+        <ul class="thtrm-three-column-list">
+        {% assign counter = 0 %}
+        {% for post in site.posts %}
+          {% if post.isExploringAngular13Article %}
+          {% assign counter = counter | plus: 1 %}
+          {% if counter <= 6 %}
+          <li>
+            <a class="thtrm-article-card thtrm-article-card--transparent" href="{{ post.url | prepend: site.baseurl }}" title="{{post.title}}">
+              <div class="thtrm-article-card-content">
+                <span><i class="material-icons">schedule</i> {{ post.date | date: "%b %-d, %Y" }}</span>
+
+                <span>
+                  <i class="material-icons">create</i>
+                  {% if post.author == 'pascal_precht' %}
+                  Pascal Precht 
+                  {% else if post.author == 'christoph_burgdorf' %}
+                  Christoph Burgdorf
+                  {% endif%}
+                </span>
+                <h3>{{ post.title | remove: 'Exploring Angular 1.3: '}}</h3>
+                <p>{{ post.summary | truncatewords: 20 }}</p>
+              </div>
+            </a>
+          </li>
+          {% endif %}
+          {% endif %}
+        {% endfor %}
+        </ul>
+        <a href="#" title="All articles" class="thtrm-cta thtrm-cta--small thtrm-align-right">All articles</a>
+
+        <h2 class="thtrm-section-headline">Authors</h2>
+        <div class="thtrm-table-layout">
+          <div class="thtrm-table-layout-row thtrm-table-layout-row--with-two-columns thtrm-table-layout-row--with-two-columns--with-padding">
+            <div class="thtrm-table-layout-cell">
+              <div class="thtrm-instructor">
+                <div class="thtrm-instructor-content">
+                  <h4 class="thtrm-instructor-name">Christoph Burgdorf</h4>
+                  <p><a class="thtrm-instructor-cta" href="http://twitter.com/cburgdorf" title="Christoph Burgdorf on Twitter">Twitter</a> <a class="thtrm-instructor-cta" href="http://github.com/cburgdorf" title="Christoph Burgdorf on GitHub">GitHub</a></p>
+                </div>
+              </div>
+            </div>
+            <div class="thtrm-table-layout-cell">
+              <div class="thtrm-instructor">
+                <div class="thtrm-instructor-content">
+                  <h4 class="thtrm-instructor-name">Pascal Precht</h4>
+                  <p><a class="thtrm-instructor-cta" href="http://twitter.com/PascalPrecht" title="Pascal Precht on Twitter">Twitter</a> <a class="thtrm-instructor-cta" href="http://github.com/PascalPrecht" title="Pascal Precht on GitHub">GitHub</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         </div>
       </div>
     </main>
     {% include footer.html %}
-
-
-
-
-    <!-- <header role="banner" class="thtrm-l-header has-backface-visibility--hidden">
-      <div class="thtrm-l-header__bar">
-        <h1 class="thtrm-l-header__logo"><a href="/" title="thoughtram official website"  aria-hidden="true">thoughtram</a></h1>
-        <button class="thtrm-l-header__menu-btn" role="button"><img src="/images/hamburger.svg" alt="Menu"></button>
-        <section class="thtrm-l-header__bar__actions">
-          <ul class="thtrm-l-header__bar__actions__navigation clear">
-            <li><a href="http://thoughtram.io" title="Home" >Home</a></li>
-            <li><a href="http://thoughtram.io/training.html" title="Training" >Training</a></li>
-            <li><a href="/" class="active" title="Blog" >Blog</a></li>
-          </ul>
-        </section>
-      </div>
-      </header> -->
-
-    <!-- <nav role="navigation" class="thtrm-l-navdrawer has-backface-visibility--hidden">
-      <h4 class="thtrm-l-navdrawer__headline">Navigation</h4>
-      <ul class="thtrm-l-navdrawer__navigation">
-        <li><a href="http://thoughtram.io/" title="Home" >Home</a></li>
-        <li><a href="http://thoughtram.io/training.html" title="Training" >Training</a></li>
-        <li><a class="active" href="/" title="Blog" >Blog</a></li>
-      </ul>
-      </nav> -->
-
-    <!-- <main role="main" class="thtrm-l-main thtrm-l-main--blog" itemprop="mainContentOfPage">
-      <section class="thtrm-m-section thtrm-m-section--image-banner">
-        <div class="thtrm-l-constraint">
-          <div class="thtrm-m-section__content">
-            <img alt="thoughtram brian in white" class="thtrm-m-banner-logo pulse" src="/images/thoughtram-brain-white.png">
-            <h1 class="thtrm-m-section__headline">thoughtram Blog</h1>
-            <p>Experiences and thoughts, written down.</p>
-          </div>
-        </div>
-      </section>
-      {{ content }}
-    </main> -->
-
   </body>
 </html>

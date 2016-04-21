@@ -1,0 +1,34 @@
+.thtrm-cta {
+	display: inline-block;
+	color: #384c54;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: 2px solid #384c54;
+  padding: 0.5em 1em;
+  margin-top: 1em;
+  font-weight: 600;
+
+  @include tablet {
+    font-size: 20px;
+
+    &--with-bigger-margin {
+        margin-top: 2em;
+    }
+  }
+
+  i {
+    display: inline-block;
+    vertical-align: -5px;
+    font-size: 22px;
+
+    @include tablet {
+      font-size: 24px;
+    }
+  }
+
+  &:hover {
+    color: #fff;
+    background-color: #384c54;
+  }
+}
+

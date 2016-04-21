@@ -1,7 +1,7 @@
 .thtrm-section-headline {
   font-size: 24px;
   margin-bottom: 1.5em;
-  margin-top: 3.5em;
+  margin-top: 2.5em;
   position: relative;
 
   &--white {
@@ -9,18 +9,61 @@
   }
 
   a {
-    color: #fff;
+    color: #384c54;
     font-size: 14px;
     position: absolute;
     right: 0;
     text-decoration: none;
-    border: 2px solid #fff;
+    border: 2px solid #384c54;
     padding: 0.5em;
     top: -0.2em;
 
     &:hover {
-      background: #fff;
-      color: #384c54;
+      background: #384c54;
+      color: #fff;
     }
   }
+}
+
+.thtrm-cta {
+  &--small {
+    font-size: 14px;
+    margin-top: 1.5em;
+  }
+}
+
+.thtrm-table-layout-row--with-two-columns {
+
+  &--with-padding {
+    @include tablet {
+      .thtrm-table-layout-cell {
+        padding-left: 0.5em;
+
+        &:first-child {
+          padding-right: 0.5em;
+          padding-left: 0;
+        }
+      }
+    }
+  }
+}
+
+.thtrm-instructor { height: 300px; }
+.thtrm-instructor-text { font-size: 16px; line-height: 1.4; }
+.thtrm-instructor-name { font-size: 20px; }
+.thtrm-instructor-cta { font-size: 14px; }
+
+.thtrm-three-column-list {
+  margin-left: -1.4em;
+  margin-right: -1.4em;
+
+  li {
+    width: 367px;
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+
+.thtrm-align-right {
+  float: right;
 }
