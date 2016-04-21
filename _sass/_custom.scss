@@ -1,9 +1,19 @@
-.thtrm-section-headline {
+.thtrm-section {
+  margin-top: 2em;
+
+  @include tablet {
+    &--is-promo {
+      padding: 4em;
+    }
+  }
+}
+
+.thtrm-section-headline--with-margin {
   font-size: 24px;
   margin-bottom: 1.5em;
   margin-top: 2.5em;
   position: relative;
-
+  
   &--white {
     color: #fff;
   }
@@ -25,10 +35,14 @@
   }
 }
 
+.thtrm-cta-bar {
+  text-align: right;
+}
+
 .thtrm-cta {
   &--small {
     font-size: 14px;
-    margin-top: 1.5em;
+    margin-top: 2em;
   }
 }
 
@@ -37,10 +51,10 @@
   &--with-padding {
     @include tablet {
       .thtrm-table-layout-cell {
-        padding-left: 0.5em;
+        padding-left: 0.8em;
 
         &:first-child {
-          padding-right: 0.5em;
+          padding-right: 0.8em;
           padding-left: 0;
         }
       }
@@ -54,16 +68,32 @@
 .thtrm-instructor-cta { font-size: 14px; }
 
 .thtrm-three-column-list {
-  margin-left: -1.4em;
-  margin-right: -1.4em;
+
+  margin-top: -1em;
 
   li {
-    width: 367px;
-    display: inline-block;
-    vertical-align: top;
+    width: 100%;
+    display: block;
+  }
+
+  @include desktop {
+    margin-left: -1.4em;
+    margin-right: -1.4em;
+
+    li {
+      width: 367px;
+      display: inline-block;
+      vertical-align: top;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
   }
 }
 
 .thtrm-align-right {
   float: right;
 }
+
