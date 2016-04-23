@@ -1,9 +1,10 @@
 ---
 layout:     post
 title:      "Custom Validators in Angular 2"
-imageUrl:  "images/custom-validators-bg.jpeg"
+imageUrl:  "/images/custom-validators-bg.jpeg"
 
 date: 2016-03-14
+update_date: 2016-03-14
 
 relatedLinks:
   -
@@ -59,7 +60,7 @@ As mentioned earlier, validators can be applied by simply using their correspond
 
 Or, if our form is model-driven we'd either build it using `Control` and `ControlGroup` APIs:
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 @Component()
 class Cmp {
@@ -80,7 +81,7 @@ class Cmp {
 
 Or use the less verbose `FormBuilder` API that does the same work for us:
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 @Component()
 class Cmp {
@@ -118,7 +119,7 @@ It turns out there's really not such a big magic involved, so let's build our ow
 
 In it's simplest form, a validator is really just a function that takes a `Control` and returns either `null` when it's valid, or and error object if it's not. A TypeScript interface for such a validator looks something like this:
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 interface Validator<T extends Control> {
    (c:T): {[error: string]:any};
@@ -131,7 +132,7 @@ Let's implement a validator function `validateEmail` which implements that inter
 Here's what such an implementation could look like:
 
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 import {Control} from 'angular2/common';
 
@@ -151,7 +152,7 @@ Pretty straight forward right? We import `Control` from `angular2/common` to hav
 
 But how do we apply them to other form controls? Well, we've seen how `Validators.required` and the other validators are added to the `new Control()` calls. `Control()` takes an initial value, a synchronous validator and an asynchronous validator. Which means, we do exactly the same with our custom validators.
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 ngOnInit() {
   this.form = new ControlGroup({
@@ -168,7 +169,7 @@ However, what if we want to combine multiple validators on a single control? Let
 
 Here's what it looks like if we'd combine the `required` validator with our custom one:
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 ngOnInit() {
   this.form = new ControlGroup({
@@ -197,7 +198,7 @@ Now that we're able to add our custom validator to our form controls imperativel
 
 `validateEmail` is applied as an attribute to the `<input>` DOM element, which already gives us an idea what we need to do. We need to build a directive with a matching selector so it will be executed on all input controls where the directive is applied. Let's start off with that.
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 import {Directive} from 'angular2/core';
 
@@ -213,7 +214,7 @@ We import the `@Directive` decorator form `angular2/core` and use it on a new `E
 Okay, technically we could already make this directive execute in our app, all we need to do is to add it as a `directives` dependency to the component where it's used:
 
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 @Component({
   ...
@@ -235,7 +236,7 @@ Since multi providers can be extended by adding more multi providers to a token,
 
 Let's add our validator to the `NG_VALIDATORS` via our new directive:
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 import {Directive, provide} from 'angular2/core';
 import {NG_VALIDATORS} from 'angular2/common';
@@ -263,7 +264,7 @@ Sometimes, a custom validator has dependencies so we need a way to inject them. 
 
 One way to handle this is to create a factory function that returns our `validateEmail` function, which then uses an instance of `EmailBlackList` service. Here's what such a factory function could look like:
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 import {Control} from 'angular2/common';
 
@@ -285,7 +286,7 @@ function validateEmailFactory(emailBlackList: EmailBlackList) {
 
 This would allow us to register our custom validator via dependency injection like this:
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 @Directive({
   ...
@@ -313,7 +314,7 @@ Wouldn't it be nice if we could use constructor injection as we're used to it in
 
 Here's what our `EmailValidator` class would look like when we apply this pattern to it:
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 @Directive({
   ...
@@ -337,7 +338,7 @@ However, we now need to adjust the provider for `NG_VALIDATORS`, because we want
 
 However, we already added `EmailValidator` to the `directives` property of our component, which is a provider with the `useClass` recipe. We want to make sure that we get the exact same instance of `EmailValidator` on our form control, even though, we define a new provider for it. Luckily we have the `useExisting` recipe for that. `useExisting` defines an alias token for but returns the same instance as the original token:
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 @Directive({
   ...
@@ -356,7 +357,7 @@ class EmailValidator {
 
 **Yikes! This won't work** . We're referencing a token (`EmailValidator`) which is undefined at the point we're using it because the class definition itself happens later in the code. That's where `forwardRef()` comes into play.
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 import {forwardRef} from 'angular2/core';
 
@@ -379,7 +380,7 @@ If you don't know what `forwardRef()` does, you might want to read our article o
 
 Here's the full code for our custom email validator:
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 import {provide, Directive, forwardRef} from 'angular2/core';
 import {Control} from 'angular2/common';

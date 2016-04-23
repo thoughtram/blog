@@ -17,6 +17,17 @@
     }
   }
 
+  &--without-padding {
+    &:hover {
+      background: transparent;
+    }
+
+    .thtrm-article-card-content {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
   .thtrm-article-card-list & {
     border-top: 2px solid #ccc;
 
@@ -67,6 +78,10 @@
 
   @include tablet {
     height: 300px;
+  }
+
+  .thtrm-three-column-list--with-padding & {
+    height: 200px;
   }
 }
 

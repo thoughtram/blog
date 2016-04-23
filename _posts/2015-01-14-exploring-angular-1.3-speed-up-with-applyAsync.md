@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Exploring Angular 1.3: Go fast with $applyAsync"
+title:      "Go fast with $applyAsync in Angular 1.3"
 relatedLinks:
   -
     title: "Exploring Angular 1.3: One-time bindings"

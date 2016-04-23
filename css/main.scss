@@ -50,7 +50,7 @@ ul {
   margin: 0 auto;
   padding: 0 0 0 0;
   min-height: 100%;
-  padding-top: 50px;
+  padding-top: 70px;
   padding-bottom: 60px;
 
   &:before {
@@ -65,8 +65,15 @@ ul {
     left: 0;
   }
 
+  .sub-site & {
+    padding-top: 0;
+    &:before {
+      display: none;
+    }
+  }
+
   @include tablet {
-    padding-top: 125px;
+    padding-top: 145px;
     &:before {
       height: 350px;
       height: 145px;
@@ -80,8 +87,8 @@ ul {
 
 @import 'thtrm-constraint',
         'thtrm-header',
+        'thtrm-banner',
         'thtrm-section',
-        'thtrm-article-list',
         'thtrm-table-layout',
         'thtrm-instructor',
         'thtrm-cta',
@@ -91,4 +98,5 @@ ul {
         'thtrm-promo-item',
         'thtrm-category-badge',
         'thtrm-article-card',
+        'thtrm-article',
         'custom';

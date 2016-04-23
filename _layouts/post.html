@@ -1,7 +1,3 @@
----
-layout: post-layout
----
-
 {% assign minutes = content | number_of_words | divided_by: 180 %}
 {% if minutes == 0 %}
   {% assign minutes = 1 %}
@@ -9,20 +5,130 @@ layout: post-layout
 
 {% assign author = site.data.authors[page.author] %}
 {% assign ad = [1, 2, 3] %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="We write about technical things that we are working with and upcoming events that we are either running or attending to. Read about our latest thoughts.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Articles by thoughtram</title>
+    <meta name="google-site-verification" content="o9eGPEgIETEqYGombq7NiQuBIB_qa6gz1yAL7PxKyK0">
 
-<section class="thtrm-m-section">
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#4D8799">
+    <link rel="icon" sizes="192x192" href="/images/touch/chrome-touch-icon-192x192.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="thoughtram">
+    <link rel="apple-touch-icon" href="/images/touch/apple-touch-icon.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#4D8799">
+
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="We write about technical things that we are working with and upcoming events that we are either running or attending to. Read about our latest thoughts.">
+    <meta property="og:url" content="http://blog.thoughtram.io">
+    <meta property="og:site_name" content="Articles by thoughtram">
+    <meta property="og:image" content="http://blog.thoughtram.io/images/thoughtram-brain-og.png">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Articles by thoughtram">
+    <meta property="twitter:site" content="thoughtram">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}" type="text/css">
+  </head>
+  <body class="sub-site">
+    <!-- Add your site or app content here -->
+
+    <!--[if lt IE 10]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <header class="thtrm-header" role="banner">
+      <div class="thtrm-header-bar">
+        <div class="thtrm-constraint">
+          <a href="/" class="thtrm-header-logo-link" title="thoughtram.io Start Page"><h1 class="thtrm-header-logo">thoughtram</h1></a>
+          <div class="thtrm-header-menu-wrapper">
+            <span role="button" tabindex="0" class="thtrm-header-menu-label">Menu</span>
+            <ul class="thtrm-header-menu">
+              <li><a title="Training" class="thtrm-header-menu-item" href="/training.html">Training</a></li>
+              <li><a title="Code Review" class="thtrm-header-menu-item" href="/code-review.html">Code Review</a></li>
+              <li><a title="Blog" class="thtrm-header-menu-item active" href="/">Blog</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main role="main" class="thtrm-main">
+      <div class="thtrm-banner" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.01) 2%,#29383E 100%), url('{{ page.imageUrl}}');">
+        <hgroup class="thtrm-banner-container">
+          <div class="thtrm-constraint thtrm-constraint--slim">
+            <h2 class="thtrm-banner-text">{{page.title}}</h2>
+            <span>by <a href="http://twitter.com/{{author.twitter}}" title="{{author.name}} on Twitter">{{author.name}}</a> on {{page.date | date: "%b %-d, %Y" }}{% if page.update_date %} (updated on {{ page.update_date | date: "%b %-d, %Y" }}){% endif %}<br>{{ minutes }} minute read</span>
+
+          </div>
+        </hgroup>
+      </div>
+      <div class="thtrm-constraint thtrm-constraint--slim">
+        <div class="thtrm-article">
+          {{ content }}
+        </div>
+        <h3 class="thtrm-section-headline thtrm-section-headline--with-margin">Author</h3>
+        <div class="thtrm-instructor thtrm-instructor--{%if author.name == 'Pascal Precht' %}pascal{% else if author.name == 'Christoph Burgdorf' %}christoph{% endif %}">
+          <div class="thtrm-instructor-content">
+            <h4 class="thtrm-instructor-name">{{author.name}}</h4>
+            <p class="thtrm-instructor-text">{{ author.bio }}</p>
+            <p><a class="thtrm-instructor-cta" href="{{author.web}}" title="{{author.name}} on Twitter">Twitter</a> <a class="thtrm-instructor-cta" href="{{author.github}}" title="{{author.name}} on GitHub">GitHub</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="thtrm-constraint">
+        <h3 class="thtrm-section-headline thtrm-section-headline--with-margin thtrm-section-headline--centered">Related Posts</h3>
+        <ul class="thtrm-three-column-list thtrm-three-column-list--with-padding">
+        {% assign counter = 0 %}
+        {% for post in site.related_posts %}
+          {% assign counter = counter | plus: 1 %}
+          {% if counter <= 6 %}
+          <li>
+            <a class="thtrm-article-card thtrm-article-card--transparent thtrm-article-card--without-padding" href="{{ post.url | prepend: site.baseurl }}" title="{{post.title}}">
+              <div class="thtrm-article-card-image" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.01) 2%,#29383E 100%),url({{ post.imageUrl }});"></div>
+              <div class="thtrm-article-card-content ">
+                <h3>{{ post.title }}</h3>
+                <p>{{ post.summary | truncatewords: 20 }}</p>
+              </div>
+            </a>
+          </li>
+          {% endif %}
+        {% endfor %}
+        </ul>
+      </div>
+    </main>
+    {% include footer.html %}
+  </body>
+</html>
+
+
+
+<!-- <section class="thtrm-m-section">
   <div class="thtrm-l-constraint">
     <div class="thtrm-m-section__content thtrm-m-section__content--blog-post">
       <div class="thtrm-l-grid-units">
         <div class="thtrm-l-grid-u--1-1 thtrm-l-grid-u--medium-3-4">
           <article class="thtrm-m-article">
             <h1 class="thtrm-m-article__title">{{ page.title }}</h1>
-            <p class="thtrm-m-article__date">{{ page.date | date: "%b %-d, %Y" }} - {% if page.update_date %}Updated: {{ page.update_date | date: "%b %-d, %Y" }} - {% endif %}{{ minutes }} minute read</p>
+            <p class="thtrm-m-article__date">{{ page.date | date: "%b %-d, %Y" }} - {% if page.update_date %}Updated: {{ page.update_date | date: "%b %-d, %y" }} - {% endif %}{{ minutes }} minute read</p>
             {{ content }}
             <footer class="thtrm-m-article__footer">
               <p>{% include share-links.html %}</p>
               <p>We regularly write articles and offer <a href="http://thoughtram.io/git-master-class.html">Git</a> and <a href="http://thoughtram.io/angular-master-class.html">Angular</a> trainings. Subscribe here to get the latest updates about our articles and <strong>trainings in your city</strong>:</p>
-              <!-- Begin MailChimp Signup Form -->
               <link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
               <style type="text/css">
                 #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; margin-top: 1em;}
@@ -34,14 +140,12 @@ layout: post-layout
                   <div id="mc_embed_signup_scroll">
                 <label for="mce-EMAIL"></label>
                 <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Enter email here" required>
-                  <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
                   <div style="position: absolute; left: -5000px;"><input type="text" name="b_dfbb1507fbced5a20d9dc5698_731f22cdca" tabindex="-1" value=""></div>
                   <div class="clear"><input type="submit" value="Yes, I want updates!" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
                   </div>
               </form>
               </div>
 
-              <!--End mc_embed_signup-->
 
               <p>Oh, and don't forget to subscribe to our <a title="RSS Feed" href="http://feeds.feedburner.com/thoughtram"><i class="fa fa-rss"></i> RSS Feed</a>.</p>
               {% if page.relatedLinks %}
@@ -65,19 +169,19 @@ layout: post-layout
           </div>
           {% endif %}
 
-          <!-- <div class="thtrm-m-ad"> -->
-          <!--   <img class="thtrm-m-ad__image thtrm-m-ad__image--small" alt="Angular Logo" src="/images/angularconnect-shield.png"> -->
-          <!--   <h4 class="thtrm-m-ad__title">Meet us at AngularConnect</h4> -->
-          <!--   <p class="thtrm-m-ad__sub-title">We're sponsoring AngularConnect and looking forward to seeing you there!</p> -->
-          <!--   <a class="thtrm-m-ad__btn" href="http://blog.thoughtram.io/announcements/2015/05/11/sponsoring-angularconnect.html" title="AngularConnect Conference">More info</a> -->
-          <!-- </div> -->
+          <div class="thtrm-m-ad">
+            <img class="thtrm-m-ad__image thtrm-m-ad__image--small" alt="Angular Logo" src="/images/angularconnect-shield.png">
+            <h4 class="thtrm-m-ad__title">Meet us at AngularConnect</h4>
+            <p class="thtrm-m-ad__sub-title">We're sponsoring AngularConnect and looking forward to seeing you there!</p>
+            <a class="thtrm-m-ad__btn" href="http://blog.thoughtram.io/announcements/2015/05/11/sponsoring-angularconnect.html" title="AngularConnect Conference">More info</a>
+          </div>
 
-          <!-- <div class="thtrm-m-ad"> -->
-          <!--   <img class="thtrm-m-ad__image thtrm-m-ad__image--small" alt="Angular Logo" src="/images/angular2-logo.svg"> -->
-          <!--   <h4 class="thtrm-m-ad__title">Angular 2 articles</h4> -->
-          <!--   <p class="thtrm-m-ad__sub-title">Read our collection of high quality, up to date articles about Angular 2.</p> -->
-          <!--   <a class="thtrm-m-ad__btn" href="/categories/angular2" title="Angular 2 articles">Read more</a> -->
-          <!-- </div> -->
+          <div class="thtrm-m-ad">
+            <img class="thtrm-m-ad__image thtrm-m-ad__image--small" alt="Angular Logo" src="/images/angular2-logo.svg">
+            <h4 class="thtrm-m-ad__title">Angular 2 articles</h4>
+            <p class="thtrm-m-ad__sub-title">Read our collection of high quality, up to date articles about Angular 2.</p>
+            <a class="thtrm-m-ad__btn" href="/categories/angular2" title="Angular 2 articles">Read more</a>
+          </div>
 
 
           <div class="thtrm-m-ad thtrm-m-ad--visible" style="padding: 0.1em 0.5em 1.5em; background: #F7F7B6; border-radius: 0.3em;">
@@ -101,39 +205,39 @@ layout: post-layout
             <a class="thtrm-m-ad__btn" href="http://5thingsangular.github.io" title="5thingsAngular">Tell me more!</a>
           </div>
 
-          <!-- <div class="thtrm-m-ad"> -->
-          <!--   <img class="thtrm-m-ad__image thtrm-m-ad__image--small" alt="Angular Logo" src="/images/angularjs-shield.png"> -->
-          <!--   <h4 class="thtrm-m-ad__title">AngularJS articles</h4> -->
-          <!--   <p class="thtrm-m-ad__sub-title">Read our collection of high quality, up to date articles about AngularJS.</p> -->
-          <!--   <a class="thtrm-m-ad__btn" href="/categories/angular/" title="AngularJS articles">More info</a> -->
-          <!-- </div> -->
+          <div class="thtrm-m-ad">
+            <img class="thtrm-m-ad__image thtrm-m-ad__image--small" alt="Angular Logo" src="/images/angularjs-shield.png">
+            <h4 class="thtrm-m-ad__title">AngularJS articles</h4>
+            <p class="thtrm-m-ad__sub-title">Read our collection of high quality, up to date articles about AngularJS.</p>
+            <a class="thtrm-m-ad__btn" href="/categories/angular/" title="AngularJS articles">More info</a>
+          </div>
 
-          <!-- <div class="thtrm-m-ad"> -->
-          <!--   <img class="thtrm-m-ad__image" alt="Rebase book cover" src="/images/rebase-book.png"> -->
-          <!--   <h4 class="thtrm-m-ad__title">Rebase {{ ad }}</h4> -->
-          <!--   <p class="thtrm-m-ad__sub-title">The complete guide on rebasing in Git</p> -->
-          <!--   <a class="thtrm-m-ad__btn" href="https://leanpub.com/rebase-the-complete-guide-on-rebasing-in-git" title="Rebase on Leanpub">Learn More</a> -->
-          <!-- </div> -->
+          <div class="thtrm-m-ad">
+            <img class="thtrm-m-ad__image" alt="Rebase book cover" src="/images/rebase-book.png">
+            <h4 class="thtrm-m-ad__title">Rebase {{ ad }}</h4>
+            <p class="thtrm-m-ad__sub-title">The complete guide on rebasing in Git</p>
+            <a class="thtrm-m-ad__btn" href="https://leanpub.com/rebase-the-complete-guide-on-rebasing-in-git" title="Rebase on Leanpub">Learn More</a>
+          </div>
 
-          <!-- <div class="thtrm-m-ad"> -->
-          <!--   <img class="thtrm-m-ad__image thtrm-m-ad__image--small" alt="Angular Logo" src="/images/angularjs-shield.png"> -->
-          <!--   <h4 class="thtrm-m-ad__title">Angular Master Class</h4> -->
-          <!--   <p class="thtrm-m-ad__sub-title">Next public training happens in <strong>Brussels</strong>!</p> -->
-          <!--   <a class="thtrm-m-ad__btn" href="http://thoughtram.io/angular-master-class.html" title="Angular Master Class by thoughtram">More info</a> -->
-          <!-- </div> -->
+          <div class="thtrm-m-ad">
+            <img class="thtrm-m-ad__image thtrm-m-ad__image--small" alt="Angular Logo" src="/images/angularjs-shield.png">
+            <h4 class="thtrm-m-ad__title">Angular Master Class</h4>
+            <p class="thtrm-m-ad__sub-title">Next public training happens in <strong>Brussels</strong>!</p>
+            <a class="thtrm-m-ad__btn" href="http://thoughtram.io/angular-master-class.html" title="Angular Master Class by thoughtram">More info</a>
+          </div>
 
-          <!-- <div class="thtrm-m-ad"> -->
-          <!--   <img class="thtrm-m-ad__image" alt="Git Logo" src="/images/git-logo.png"> -->
-          <!--   <h4 class="thtrm-m-ad__title">Git Master Class</h4> -->
-          <!--   <p class="thtrm-m-ad__sub-title">We offer public workshops and in-house trainings on the Git version control system</p> -->
-          <!--   <a class="thtrm-m-ad__btn" href="http://thoughtram.io/git-master-class.html" title="Git Master Class at by thoughtram">More info</a> -->
-          <!-- </div> -->
+          <div class="thtrm-m-ad">
+            <img class="thtrm-m-ad__image" alt="Git Logo" src="/images/git-logo.png">
+            <h4 class="thtrm-m-ad__title">Git Master Class</h4>
+            <p class="thtrm-m-ad__sub-title">We offer public workshops and in-house trainings on the Git version control system</p>
+            <a class="thtrm-m-ad__btn" href="http://thoughtram.io/git-master-class.html" title="Git Master Class at by thoughtram">More info</a>
+          </div>
 
-          <!-- <div class="thtrm-m-ad"> -->
-          <!--   <h4 class="thtrm-m-ad__title">Meet us at upcoming events!</h4> -->
-          <!--   <p class="thtrm-m-ad__sub-title">We speak at conferences and meetups. Check out where you can find us.</p> -->
-          <!--   <a class="thtrm-m-ad__btn" href="http://thoughtram.io/events.html" title="thoughtram Events">More info</a> -->
-          <!-- </div> -->
+          <div class="thtrm-m-ad">
+            <h4 class="thtrm-m-ad__title">Meet us at upcoming events!</h4>
+            <p class="thtrm-m-ad__sub-title">We speak at conferences and meetups. Check out where you can find us.</p>
+            <a class="thtrm-m-ad__btn" href="http://thoughtram.io/events.html" title="thoughtram Events">More info</a>
+          </div>
         </aside>
       </div>
     </div>
@@ -145,4 +249,4 @@ layout: post-layout
   var num = Math.floor(Math.random() * (2 - 0));
   doc.querySelectorAll('.thtrm-m-ad')[num].classList.add('thtrm-m-ad--visible');
 }(document));
-</script>
+</script> -->

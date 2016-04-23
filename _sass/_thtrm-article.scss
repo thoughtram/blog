@@ -1,0 +1,65 @@
+.thtrm-article {
+  color: #444;
+  padding-top: 0;
+
+
+  h2, p, pre, ul, iframe {
+    margin-top: 20px;
+
+    @include tablet {
+      margin-top: 40px;
+    }
+  }
+
+  p, pre, ul {
+    font-size: 16px;
+
+    @include tablet {
+      font-size: 18px;
+    }
+  }
+
+  p, li {
+    line-height: 1.8;
+  }
+
+  code {
+    font-size: 15px;
+
+    @include tablet {
+      font-size: 17px;
+    }
+  }
+
+  a {
+    color: #384c54;
+    text-decoration: none;
+    border-bottom: 1px dotted #5C8491;
+  }
+
+  li {
+    margin-top: 10px;
+    list-style: disc;
+    margin-left: 1em;
+  }
+
+  pre {
+    padding: 0.8em;
+    line-height: 1.5;
+    overflow: auto;
+
+    code {
+      @include tablet {
+        font-size: 18px;
+      }
+    }
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  iframe {
+    width: 100%;
+  }
+}

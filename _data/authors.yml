@@ -2,10 +2,14 @@ pascal_precht:
     name: Pascal Precht
     email: pascal@thoughtram.io
     web: http://twitter.com/PascalPrecht
+    github: http://github.com/PascalPrecht
     gravatar: avatar_pascal
+    bio: "Pascal is a front-end engineer and a Angular Developer Expert nominated by Google. He created the angular-translate module, is an Angular 2 contributor and also part of the Angular 2 Docs Authoring team."
 christoph_burgdorf:
     name: Christoph Burgdorf
     email: christoph@thoughtram.io
     web: http://twitter.com/cburgdorf
+    github: http://github.com/cburgdorf
     gravatar: avatar_christoph
+    bio: "Christoph began programming at the age of 10. He is the creator of the Nickel.rs web framework and a contributor of the AngularJS project. Christoph is also part of the Angular 2 Docs Authoring team."
 

@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Exploring Angular 1.3: ES6 Style Promises"
+title:      "ES6 Style Promises in Angular 1.3"
 relatedLinks:
   -
     title: "Exploring Angular 1.3: One-time bindings"

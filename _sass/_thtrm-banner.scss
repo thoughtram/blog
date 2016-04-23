@@ -1,0 +1,158 @@
+.thtrm-banner {
+  background-image: url('/images/intro-background.jpg');
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: cover;
+  background-color: #90BAC7;
+  // background-color: #384c54;
+  background-blend-mode: multiply;
+  text-align: center;
+
+  @include phablet {
+    background-image: url('/images/intro-background-phablet.jpg');
+  }
+
+  @include tablet {
+    background-position: center;
+    background-image: url('/images/intro-background-desktop.jpg');
+  }
+
+  .sub-site & {
+    background-size: cover;
+  }
+
+  &--training {
+    background-image: url('/images/teaser-background-onsite-training.jpg');
+
+    @include desktop {
+      background-image: url('/images/teaser-background-onsite-training_desktop.jpg');
+    }
+  }
+
+  &--code-review {
+    background-image: url('/images/teaser-background-code-review.jpg');
+
+    @include phablet {
+      background-position: top center;
+      background-image: url('/images/teaser-background-code-review_phablet.jpg');
+    }
+    @include desktop {
+      background-image: url('/images/teaser-background-code-review_desktop.jpg');
+    }
+  }
+
+  &--a2mc {
+    background-position: left center;
+    background-image: url('/images/background-ng-connect.jpg');
+
+    @include tablet {
+      background-image: url('/images/background-ng-connect_desktop.jpg');
+    }
+  }
+
+  &--imprint {
+    background-image: url('/images/background-imprint.jpg');
+
+    @include tv {
+      background-image: url('/images/background-imprint_tv.jpg');
+      background-position: top center;
+    }
+  }
+
+  &--coc {
+    background-image: url('/images/thoughtram-crowd.jpg');
+    background-position: top center;
+  }
+
+  &--prepare {
+    background-image: url('/images/prerequisites-cover.jpg');
+    background-position: top center;
+  }
+}
+
+.thtrm-banner-logo {
+  text-align: center;
+  width: 180px;
+  margin-bottom: 1.5em;
+}
+
+.thtrm-banner-text {
+  color: #fff;
+  text-align: center;
+  margin: 0 auto;
+  text-transform: uppercase;
+  font-size: 38px;
+  font-weight: bold;
+  line-height: 36px;
+
+  @include phablet {
+    font-size: 44px;
+  }
+
+  @include tablet {
+    font-size: 64px;
+    line-height: 56px;
+  }
+
+  @include desktop {
+    font-size: 64px;
+    line-height: 68px;
+  }
+}
+
+.thtrm-banner-tagline {
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+  line-height: 16px;
+  margin: 0 auto;
+  margin-top: 0.5em;
+  text-transform: uppercase;
+  font-weight: 500;
+  width: 300px;
+
+  @include phablet {
+    font-size: 18px;
+    line-height: 22px;
+    width: 420px;
+  }
+
+  @include tablet {
+    font-size: 20px;
+    line-height: 32px;
+    width: 600px;
+  }
+
+  @include desktop {
+    width: 800px;
+  }
+}
+
+.thtrm-banner-container {
+  padding: 10em 0.5em;
+
+  .sub-site & {
+    padding: 8em 0.5em;
+
+    @include tablet {
+      padding-top: 16em;
+      padding-bottom: 14em;
+    }
+  }
+
+  @include tablet {
+    padding-top: 22em;
+    padding-bottom: 22em;
+  }
+
+  @include desktop {
+    padding-top: 23em;
+    padding-bottom: 21em;
+
+    .thtrm-banner--class & {
+      padding-top: 10em;
+      padding-bottom: 8em;
+    }
+  }
+}
+

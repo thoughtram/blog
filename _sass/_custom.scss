@@ -1,37 +1,65 @@
-.thtrm-section {
-  margin-top: 2em;
+.thtrm-banner-text {
+  font-size: 30px;
 
   @include tablet {
-    &--is-promo {
-      padding: 4em;
-    }
+    font-size: 40px;
+  }
+
+  @include desktop {
+    font-size: 54px;
   }
 }
 
-.thtrm-section-headline--with-margin {
-  font-size: 24px;
-  margin-bottom: 1.5em;
-  margin-top: 2.5em;
-  position: relative;
-  
-  &--white {
-    color: #fff;
+.thtrm-section {
+  margin-top: 2em;
+
+  &--is-promo {
+    img {
+      margin-bottom: 0.2em;
+    }
   }
 
-  a {
-    color: #384c54;
-    font-size: 14px;
-    position: absolute;
-    right: 0;
-    text-decoration: none;
-    border: 2px solid #384c54;
-    padding: 0.5em;
-    top: -0.2em;
+  @include tablet {
+    &--is-promo {
+      padding: 2em;
+    }
+  }
 
-    &:hover {
-      background: #384c54;
+  &--is-promo-light {
+    background: #5C8491;
+  }
+}
+
+.thtrm-section-headline {
+  &--with-margin {
+    font-size: 24px;
+    margin-bottom: 1.5em;
+    margin-top: 2.5em;
+    position: relative;
+    
+    &--white {
       color: #fff;
     }
+
+    a {
+      color: #384c54;
+      font-size: 14px;
+      position: absolute;
+      right: 0;
+      text-decoration: none;
+      border: 2px solid #384c54;
+      padding: 0.5em;
+      top: -0.2em;
+
+      &:hover {
+        background: #384c54;
+        color: #fff;
+      }
+    }
+  }
+
+  &--centered {
+    text-align: center;
   }
 }
 
@@ -62,10 +90,12 @@
   }
 }
 
-.thtrm-instructor { height: 300px; }
+.thtrm-instructor { height: 350px; }
 .thtrm-instructor-text { font-size: 16px; line-height: 1.4; }
 .thtrm-instructor-name { font-size: 20px; }
 .thtrm-instructor-cta { font-size: 14px; }
+.thtrm-instructor--pascal { background-image: url('/images/instructor-pascal.jpg'); }
+.thtrm-instructor--christoph { background-image: url('/images/instructor-christoph.jpg'); }
 
 .thtrm-three-column-list {
 
@@ -76,24 +106,79 @@
     display: block;
   }
 
+  &--with-padding {
+    li {
+      margin-top: 2em;
+    }
+  }
+
   @include desktop {
     margin-left: -1.4em;
     margin-right: -1.4em;
+
+    &--with-padding {
+      li {
+        padding: 0.8em;
+      }
+    }
 
     li {
       width: 367px;
       display: inline-block;
       vertical-align: top;
-
-      &:first-child {
-        margin-top: 0;
-      }
+      margin-top: 1em;
     }
 
   }
 }
 
-.thtrm-align-right {
-  float: right;
+.thtrm-constraint--slim {
+
+ padding-left: 2em;
+ padding-right: 2em;
+
+  @include tablet {
+    padding-left: 7em;
+    padding-right: 7em;
+  }
+
+  @include desktop {
+    padding-left: 11em;
+    padding-right: 11em;
+  }
 }
 
+.thtrm-banner {
+  // background-color: #62818F;
+  background-blend-mode: unset;
+}
+
+.sub-site .thtrm-banner-container {
+
+  padding: 8em 0.5em 4em;
+
+  span {
+    color: #fff;
+    display: block;
+    margin-top: 2em;
+    font-style: italic;
+    font-size: 14px;
+    line-height: 1.5;
+
+    a {
+      color: #fff;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    @include desktop {
+      font-size: 16px;
+      margin-top: 4em;
+    }
+  }
+
+  @include tablet {
+    padding-top: 14em;
+    padding-bottom: 6em;
+  }
+}

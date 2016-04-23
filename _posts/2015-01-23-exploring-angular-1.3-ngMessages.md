@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Exploring Angular 1.3: ngMessages"
+title:      "ngMessages in Angular 1.3"
 relatedLinks:
   -
     title: "ngMessages revisited"
