@@ -82,11 +82,15 @@
           {{ content }}
         </div>
         <h3 class="thtrm-section-headline thtrm-section-headline--with-margin">Author</h3>
-        <div class="thtrm-instructor thtrm-instructor--{%if author.name == 'Pascal Precht' %}pascal{% else if author.name == 'Christoph Burgdorf' %}christoph{% endif %}">
-          <div class="thtrm-instructor-content">
-            <h4 class="thtrm-instructor-name">{{author.name}}</h4>
-            <p class="thtrm-instructor-text">{{ author.bio }}</p>
-            <p><a class="thtrm-instructor-cta" href="{{author.web}}" title="{{author.name}} on Twitter">Twitter</a> <a class="thtrm-instructor-cta" href="{{author.github}}" title="{{author.name}} on GitHub">GitHub</a></p>
+        <div class="thtrm-article-author">
+          <span class="thtrm-article-author-avatar"><img src="https://pbs.twimg.com/profile_images/689079292282667009/mub0Mc6E.jpg" alt=""></span>
+          <div class="thtrm-article-author-matter">
+            <h4 class="thtrm-article-author-name">{{author.name}}</h4>
+            <p class="thtrm-article-author-text">{{ author.bio }}</p>
+            <p>
+              <a class="thtrm-article-author-cta thtrm-article-author-cta-twitter" href="{{author.web}}" title="{{author.name}} on Twitter">Twitter</a>
+              <a class="thtrm-article-author-cta" href="{{author.github}}" title="{{author.name}} on GitHub">GitHub</a>
+            </p>
           </div>
         </div>
       </div>
