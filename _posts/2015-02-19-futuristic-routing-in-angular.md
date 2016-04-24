@@ -15,6 +15,7 @@ categories:
 
 tags:
   - angular
+  - routing
 
 author: pascal_precht
 ---

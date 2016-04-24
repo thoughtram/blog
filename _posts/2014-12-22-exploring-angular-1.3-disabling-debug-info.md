@@ -40,6 +40,7 @@ categories:
 
 tags:
   - angular
+  - performance
 
 author: pascal_precht
 ---

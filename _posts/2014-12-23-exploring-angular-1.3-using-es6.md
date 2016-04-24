@@ -10,6 +10,7 @@ categories:
 
 tags:
   - angular
+  - es2015
 
 author: christoph_burgdorf
 ---

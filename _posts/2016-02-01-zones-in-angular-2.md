@@ -1,7 +1,6 @@
 ---
 layout:     post
 title:      "Zones in Angular 2"
-imageUrl:   "http://thoughtram.io/images/teaser-background-online-training_phablet.jpg"
 
 relatedLinks:
   -

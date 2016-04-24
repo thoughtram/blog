@@ -6,7 +6,10 @@ summary: "We are very happy to announce that, with the help of our new partner D
 
 categories: 
   - announcements
-
+tags:
+  - announcements
+  - training
+  - git
 author: christoph_burgdorf
 ---
 

@@ -5,6 +5,10 @@ date: "2014-09-18"
 summary: At thoughtram we teach people how to master Git. We also teach them how to maintain a semantic history. Introducing clog.
 
 categories: announcements tools
+tags:
+  - rust
+  - tools
+  - announcements
 author: christoph_burgdorf
 ---
 
