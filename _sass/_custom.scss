@@ -31,6 +31,13 @@
 }
 
 .thtrm-section-headline {
+
+  &--with-big-margin {
+    font-size: 24px;
+    margin-bottom: 1.5em;
+    margin-top: 4em;
+  }
+
   &--with-margin {
     font-size: 24px;
     margin-bottom: 1.5em;
@@ -98,8 +105,6 @@
 .thtrm-instructor--christoph { background-image: url('/images/instructor-christoph.jpg'); }
 
 .thtrm-three-column-list {
-
-  margin-top: -1em;
 
   li {
     width: 100%;

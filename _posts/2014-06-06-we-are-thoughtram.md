@@ -3,6 +3,7 @@ layout:     post
 title:      We are thoughtram
 date:       2014-06-06
 summary:    We enjoy learning new stuff every day and we love teaching it to others even more.
+imageUrl: "/images/we-are-thoughtram.jpg"
 
 categories: 
   - announcements
