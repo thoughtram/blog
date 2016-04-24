@@ -1,6 +1,6 @@
 ---
 layout:     post
-title: "Organizing Hannovers first rust meetup"
+title: "Organizing Hanovers first Rust meetup"
 date: "2014-06-24"
 summary: As thoughtram we are dedicated to invest into interesting new technologies that we feel are exciting and have the potential to become popular. Not for money, but for fun!
 
@@ -8,6 +8,10 @@ categories:
   - announcements 
   - rust 
   - meetups
+tags:
+  - announcements
+  - meetup
+  - rust
 author: christoph_burgdorf
 ---
 
@@ -39,8 +43,4 @@ Here are the facts:
 
 Don't worry if you don't have any prior knowledge in system programming languages like C or C++. We are all beginners. That said, if you do have knowledge in system programming languages, we definitely want you to attend, too! **Don't be late**, we might have Rust stickers for you :)
 
-We like to take the chance to thank CouchCommerce for sponsoring the venue and drinks!
-
-<div style="text-align: center;">
-<img src="http://static.squarespace.com/static/538e07d1e4b051e66d5e0949/t/53a8367ee4b0202540eee206/1412157351722/?format=400w" style="width:101px; height: 118px; display:inline"/>
-</div>
+We like to take the chance to thank [CouchCommerce](http://couchcommerce.com) for sponsoring the venue and drinks!

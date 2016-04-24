@@ -68,7 +68,7 @@
     </header>
 
     <main role="main" class="thtrm-main">
-      <div class="thtrm-banner" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.01) 2%,#29383E 100%), url('{{ page.imageUrl}}');">
+    <div class="thtrm-banner" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.01) 2%,#29383E 100%), url('{% if page.imageUrl %}{{ page.imageUrl}}{% else %}/images/banner/fallback.jpeg{% endif %}');">
         <hgroup class="thtrm-banner-container">
           <div class="thtrm-constraint thtrm-constraint--slim">
             <h2 class="thtrm-banner-text">{{page.title}}</h2>
