@@ -10,9 +10,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="We write about technical things that we are working with and upcoming events that we are either running or attending to. Read about our latest thoughts.">
+    <meta name="description" content="{{ page.summary }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Articles by thoughtram</title>
+    <meta name="author" content="{{ site.author }}">
+    <title>{{page.title}}</title>
     <meta name="google-site-verification" content="o9eGPEgIETEqYGombq7NiQuBIB_qa6gz1yAL7PxKyK0">
 
     <!-- Add to homescreen for Chrome on Android -->
@@ -31,15 +32,17 @@
     <meta name="msapplication-TileColor" content="#4D8799">
 
     <meta property="og:locale" content="en_US">
-    <meta property="og:type" content="website">
-    <meta property="og:description" content="We write about technical things that we are working with and upcoming events that we are either running or attending to. Read about our latest thoughts.">
-    <meta property="og:url" content="http://blog.thoughtram.io">
-    <meta property="og:site_name" content="Articles by thoughtram">
-    <meta property="og:image" content="http://blog.thoughtram.io/images/thoughtram-brain-og.png">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{{ page.title }}">
+    <meta property="og:description" content="{{page.summary}}">
+    <meta property="og:url" content="http://blog.thoughtram.io{{ page.url }}">
+    <meta property="og:site_name" content="{{ site.title }}">
+    <meta property="og:image" content="http://blog.thoughtram.io{{ page.imageUrl }}">
+    <meta property="og:publisher" content="http://www.facebook.com/thoughtram">
 
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Articles by thoughtram">
-    <meta property="twitter:site" content="thoughtram">
+    <meta property="twitter:card" content="summary">
+    <meta property="twitter:title" content="{{page.title}}">
+    <meta property="twitter:site" content="thoughtram Blog">
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}" type="text/css">
@@ -60,7 +63,7 @@
             <ul class="thtrm-header-menu">
               <li><a title="Training" class="thtrm-header-menu-item" href="/training.html">Training</a></li>
               <li><a title="Code Review" class="thtrm-header-menu-item" href="/code-review.html">Code Review</a></li>
-              <li><a title="Blog" class="thtrm-header-menu-item active" href="/">Blog</a></li>
+              <li><a title="Blog" class="thtrm-header-menu-item" href="/">Blog</a></li>
             </ul>
           </div>
         </div>
@@ -85,8 +88,9 @@
           <img width="100" src="/images/5-things-bw-white.png">
           <h3 class="thtrm-section-headline">5thingsAngular</h3>
           <p class="thtrm-section-text">Get weekly updates on the latest and greatest happenings in the Angular world by thoughtram!</p>
-          <a href="http://5thingsAngular.github.io" title="5thingsAngular" class="thtrm-layout-divider-cta">Subscribe</a>
+          <a href="http://5thingsAngular.github.io" title="5thingsAngular" class="thtrm-layout-divider-cta">Tell me more</a>
         </section>
+
         <h3 class="thtrm-section-headline thtrm-section-headline--with-margin">Author</h3>
         <div class="thtrm-article-author">
           <span class="thtrm-article-author-avatar"><img src="{{author.gravatar}}" alt="Picture of {{author.name}}"></span>
@@ -136,57 +140,7 @@
 </html>
 
 
-
-<!-- <section class="thtrm-m-section">
-  <div class="thtrm-l-constraint">
-    <div class="thtrm-m-section__content thtrm-m-section__content--blog-post">
-      <div class="thtrm-l-grid-units">
-        <div class="thtrm-l-grid-u--1-1 thtrm-l-grid-u--medium-3-4">
-          <article class="thtrm-m-article">
-            <h1 class="thtrm-m-article__title">{{ page.title }}</h1>
-            <p class="thtrm-m-article__date">{{ page.date | date: "%b %-d, %Y" }} - {% if page.update_date %}Updated: {{ page.update_date | date: "%b %-d, %y" }} - {% endif %}{{ minutes }} minute read</p>
-            {{ content }}
-            <footer class="thtrm-m-article__footer">
-              <p>{% include share-links.html %}</p>
-              <p>We regularly write articles and offer <a href="http://thoughtram.io/git-master-class.html">Git</a> and <a href="http://thoughtram.io/angular-master-class.html">Angular</a> trainings. Subscribe here to get the latest updates about our articles and <strong>trainings in your city</strong>:</p>
-              <link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
-              <style type="text/css">
-                #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; margin-top: 1em;}
-                /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
-                  We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
-              </style>
-              <div id="mc_embed_signup">
-              <form style="padding: 0" action="//thoughtram.us8.list-manage.com/subscribe/post?u=dfbb1507fbced5a20d9dc5698&amp;id=731f22cdca" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                  <div id="mc_embed_signup_scroll">
-                <label for="mce-EMAIL"></label>
-                <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Enter email here" required>
-                  <div style="position: absolute; left: -5000px;"><input type="text" name="b_dfbb1507fbced5a20d9dc5698_731f22cdca" tabindex="-1" value=""></div>
-                  <div class="clear"><input type="submit" value="Yes, I want updates!" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-                  </div>
-              </form>
-              </div>
-
-
-              <p>Oh, and don't forget to subscribe to our <a title="RSS Feed" href="http://feeds.feedburner.com/thoughtram"><i class="fa fa-rss"></i> RSS Feed</a>.</p>
-              {% if page.relatedLinks %}
-                <h3 style="font-weight: normal; margin-top: 1.5em; border-top: 1px solid #DDD">Related articles and links</h3>
-                <ul class="thtrm-list">
-                {% for link in page.relatedLinks %}
-                <li>
-                  <a href="{{ link.url}}" title="{{link.title}}">{{link.title}}</a>
-                </li>
-                {% endfor %}
-                <ul>
-              {% endif %}
-            </footer>
-          </article>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<script>
+<!-- <script>
 (function (doc) {
   var num = Math.floor(Math.random() * (2 - 0));
   doc.querySelectorAll('.thtrm-m-ad')[num].classList.add('thtrm-m-ad--visible');

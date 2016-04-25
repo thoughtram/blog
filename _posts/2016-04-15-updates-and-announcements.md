@@ -9,6 +9,9 @@ summary: "It became a little bit quite around us and you might be wondering, wha
 categories:
   - announcements
 
+tags:
+  - announcements
+
 author: pascal_precht
 ---
 

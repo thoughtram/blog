@@ -1,13 +1,12 @@
 ---
 layout: default
-title: AngularJS articles by thoughtram
-permalink: /categories/angular/
+title: All articles by thoughtram
+permalink: /all/
 ---
 
-<h2 class="thtrm-section-headline thtrm-section-headline--with-margin">AngularJS articles</h2>
+<h2 class="thtrm-section-headline thtrm-section-headline--with-margin">All articles</h2>
 <ul class="thtrm-three-column-list thtrm-three-column-list--with-padding">
 {% for post in site.posts %}
-  {% if post.tags contains 'angulajs' %}
   <li>
     <div class="thtrm-article-card thtrm-article-card--with-border">
       <div class="thtrm-article-card-content ">
@@ -17,6 +16,6 @@ permalink: /categories/angular/
       </div>
     </div>
   </li>
-  {% endif %}
 {% endfor %}
 </ul>
+

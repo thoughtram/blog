@@ -11,6 +11,10 @@ tags:
   - training
   - announcements
 author: christoph_burgdorf
+
+authors:
+  - christoph_burgdorf
+  - pascal_precht
 ---
 
 As announced [earlier this month](/posts/we-are-thoughtram), we were working on our website to launch it as soon as possible. The time has come!

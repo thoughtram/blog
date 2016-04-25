@@ -1,0 +1,53 @@
+.thtrm-subscriber {
+  text-align: center;
+  border: 3px solid #f2f2f2;
+  padding: 2em;
+  margin-top: 4em;
+
+  h3 {
+    font-size: 22px;
+    color: #384c54;
+    text-transform: uppercase;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+
+  p {
+    color: #AAA;
+    margin-bottom: 1.5em;
+    margin-top: 0;
+    font-size: 15px;
+  }
+
+  .thtrm-cta { margin-top: 0; }
+
+  input[type="email"] {
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 0.2em 0.5em;
+    border: none;
+    border: 2px solid #eee;
+    width: 100%;
+    display: block;
+    font-weight: 500;
+    margin-right: 0.5em;
+  }
+
+  input[type="submit"] {
+    width: 100%;
+    margin-top: 1em;
+    &:hover { cursor: pointer; }
+  }
+
+  @include phablet {
+    
+    input[type="email"] { 
+      width: 250px;
+      display: inline-block;
+    }
+    input[type="submit"] {
+      width: initial;
+      margin-top: 0;
+    }
+  }
+}

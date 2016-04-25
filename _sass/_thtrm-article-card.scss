@@ -17,6 +17,11 @@
     }
   }
 
+  &--with-border {
+    border: 3px solid #f2f2f2!important;
+    background: transparent;
+  }
+
   &--without-padding {
     &:hover {
       background: transparent;

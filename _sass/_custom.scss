@@ -27,6 +27,10 @@
 
   &--is-promo-light {
     background: #5C8491;
+
+    .thtrm-layout-divider-cta:hover {
+      color: #5C8491;
+    }
   }
 }
 
@@ -67,6 +71,11 @@
 
   &--centered {
     text-align: center;
+  }
+
+  &--with-border {
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid #f2f2f2;
   }
 }
 
