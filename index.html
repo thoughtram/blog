@@ -131,7 +131,7 @@ layout: default
   <ul class="thtrm-three-column-list">
   {% assign counter = 0 %}
   {% for post in site.posts %}
-    {% if post.categories contains 'git' %}
+    {% if post.tags contains 'git' %}
     {% assign counter = counter | plus: 1 %}
     {% if counter <= 6 %}
     <li>
