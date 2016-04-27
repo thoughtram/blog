@@ -114,40 +114,44 @@
 .thtrm-instructor--christoph { background-image: url('/images/instructor-christoph.jpg'); }
 
 .thtrm-three-column-list {
-  @include desktop {
+  @include phablet {
     display: flex;
+    margin-left: -1em;
+    margin-right: -1em;
     flex-direction: row;
     flex-wrap: wrap;
   }
-  li {
-    width: 100%;
-    display: block;
-  }
 
   &--with-padding {
+    @include desktop {
+      margin-left: -.8em;
+      margin-right: -.8em;
+    }
+
     li {
       margin-top: 2em;
-    }
-  }
-
-  @include desktop {
-    margin-left: -1.4em;
-    margin-right: -1.4em;
-
-    &--with-padding {
-      li {
+      
+      @include phablet {
         padding: 0.8em;
       }
     }
+  }
 
-    li {
-      width: 32.33%;
+  li {
+    width: 100%;
+    display: block;
+    
+    @include phablet {
       display: inline-block;
       display: flex;
-      vertical-align: top;
       margin-top: 1em;
+      vertical-align: top;
+      width: 50%;
     }
-
+    
+    @include desktop {
+      width: 33.33%;
+    }
   }
 }
 

@@ -93,25 +93,35 @@
 
 
 .thtrm-article-author {
-  display: table;
   padding: 25px;
-  width: 100%;
   border: 3px solid #f2f2f2;
   
+  @media screen and(min-width: 420px) {
+    display: table;
+    width: 100%;
+  }
+  
   &-matter {
-    display: table-cell;
-    padding-left: 30px;
-    vertical-align: top;
-    width: 74%;
+    margin-top: 15px;
     text-align: left;
+    
+    @media screen and(min-width: 420px) {
+      display: table-cell;
+      margin-top: 0;
+      padding-left: 30px;
+      vertical-align: top;
+      width: 74%;
+    }
     
     * {
       color: #333;
     }
   }
   &-avatar {
-    display: table-cell;
-    vertical-align: top;
+    @media screen and(min-width: 420px) {
+      display: table-cell;
+      vertical-align: top;
+    }
     
     img {
       max-width: 100%;
