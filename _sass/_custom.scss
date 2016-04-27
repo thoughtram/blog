@@ -114,7 +114,11 @@
 .thtrm-instructor--christoph { background-image: url('/images/instructor-christoph.jpg'); }
 
 .thtrm-three-column-list {
-
+  @include desktop {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
   li {
     width: 100%;
     display: block;
@@ -139,6 +143,7 @@
     li {
       width: 32.33%;
       display: inline-block;
+      display: flex;
       vertical-align: top;
       margin-top: 1em;
     }
