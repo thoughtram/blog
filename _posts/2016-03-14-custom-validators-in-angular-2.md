@@ -3,6 +3,20 @@ layout:     post
 title:      "Custom Validators in Angular 2"
 imageUrl:  "/images/custom-validators-bg.jpeg"
 
+toc:
+  -
+    label: "Built-in Validators"
+    anchor: "built-in-validators"
+  - 
+    label: "Building a custom validator"
+    anchor: "building-a-custom-validator"
+  -
+    label: "Building custom validator directives"
+    anchor: "building-custom-validator-directives"
+  -
+    label: "Custom Validators with dependencies"
+    anchor: "custom-validators-with-dependencies"
+
 date: 2016-03-14
 update_date: 2016-05-12
 
@@ -33,7 +47,7 @@ Forms are part of almost every web application out there. Angular strives for ma
 
 We can easily extend the browser vocabulary with additional custom validators and in this article we are going to explore how to do that.
 
-## Built-in Validators
+<h2 id="built-in-validators">Built-in Validators</h2>
 
 Angular comes with a subset of built-in validators out of the box. We can apply them either declaratively as directives on elements in our DOM, in case we're building a <strong>template-driven</strong> form, or imperatively using the `Control` and `ControlGroup` or `FormBuilder` APIs, in case we're building a <strong>model-driven</strong> form. If you don't know what it's all about with template-driven and model-driven forms, don't worry, we'll have an article to each of those soon.
 
@@ -115,7 +129,7 @@ Observing these two to three different methods of creating a form, we might wond
 
 It turns out there's really not such a big magic involved, so let's build our own custom email validator.
 
-## Building a custom validator
+<h2 id="building-a-custom-validator">Building a custom validator</h2>
 
 In it's simplest form, a validator is really just a function that takes a `Control` and returns either `null` when it's valid, or and error object if it's not. A TypeScript interface for such a validator looks something like this:
 
@@ -183,7 +197,7 @@ ngOnInit() {
 {% endraw %}
 {% endhighlight %}
 
-## Building custom validator directives
+<h2 id="building-custom-validator-directives">Building custom validator directives</h2>
 
 Now that we're able to add our custom validator to our form controls imperatively when building model-driven forms, we might also enable our validator to be used in template driven forms. In other words: We need a directive. The validator should be usable like this:
 
@@ -256,7 +270,7 @@ class EmailValidator {}
 
 Again, if you've read our article on multi providers, this should look very familiar to you. We basically add a new value to the `NG_VALIDATORS` token by taking advantage of multi providers. Angular will pick our validator up by injecting what it gets for `NG_VALIDATORS`, and performs validation on a form control. Awesome, we can now use our validator for model-driven **and** for template-driven forms!
 
-## Custom Validators with dependencies
+<h2 id="custom-validators-with-dependencies">Custom Validators with dependencies</h2>
 
 Sometimes, a custom validator has dependencies so we need a way to inject them. Let's say our email validator needs an `EmailBlackList` service, to check if the given control value is not only a valid email address but also not on our email black list (in an ideal world, we'd build a separate validator for checking against an email black list, but we use that as a motivation for now to have a dependency).
 

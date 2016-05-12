@@ -1,0 +1,56 @@
+.thtrm-toc {
+  margin-top: 50px;
+  transition: opacity ease 6000ms;
+
+  &--absolute {
+    position: absolute;
+    left: -18em;
+    width: 250px;
+    
+    &-bottom {
+      bottom: 14.5em;
+    }
+  }
+
+  &--fixed {
+    position: fixed;
+    left: 3.6em;
+    top: 2.5em;
+    width: 250px;
+  }
+
+  &--faded {
+    opacity: 0.2;
+
+    &:hover {
+      opacity: 1;
+      transition-duration: 300ms;
+      transition-target: opacity;
+    }
+  }
+
+
+  h3 {
+    border-bottom: 2px solid #f2f2f2;
+    padding-bottom: 0.5em;
+    text-transform: uppercase;
+    margin-top: 0;
+  }
+
+  li {
+    margin-top: 0.2em; 
+    font-size: 0.9em;
+    color: #ccc;
+
+    &:hover { color: #444; }
+  }
+
+  a {
+    display: block;
+    border: none;
+
+    span {
+      border-bottom: 1px dotted #5C8491;
+    }
+  }
+}
