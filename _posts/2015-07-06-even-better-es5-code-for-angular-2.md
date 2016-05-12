@@ -15,7 +15,7 @@ relatedLinks:
     title: "Dependency Injection in Angular 2"
     url: "http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html"
 date:       2015-07-06
-update_date: 2015-12-12
+update_date: 2016-05-12
 summary:    "One of the biggest things to consider when it comes to using Angular 2, is the upgrade path from Angular 1. Angular 2 is entirely written in TypeScript but browsers today only support ES5 or some features of ES6. However, nobody prevents us from writing Angular 2 code in ES5. A couple of weeks ago we wrote about exactly that. This time, we take a look at a new, much better, syntax to write Angular 2 in ES5."
 
 categories: 
@@ -153,11 +153,8 @@ That's pretty straight forward. But why do properties have to be arrays otherwis
 var HelloComponent = ng.core
   Component({
     selector: 'hello-cmp',
+    template: 'Hello World!',
     viewProviders: [Service]
-  })
-  .View({
-    template: 'Hello World!'
-  })
   .Class({
     constructor: [Service, function (service) { 
       ...

@@ -2,7 +2,7 @@
 layout:     post
 title:      "Multi Providers in Angular 2"
 date:       2015-11-23
-update_date: 2015-12-12
+update_date: 2016-05-12
 summary:    "Angular 2 has an entirely revamped dependency injection system, which turns out to be extremely flexible. While we've already covered the basics and some advanced topics regarding DI in our last articles, we haven't talked about a specific feature that we don't necessarily need in our daily basis. This feature is called multi providers and in this article we're going to detail what they are and how they enable a pluggable dependency system in the Angular 2 platform."
 
 categories:
@@ -31,7 +31,7 @@ If you've read our article on [Dependency Injection in Angular2](http://blog.tho
 
 Quick example: In an Angular 2 component we might have a `DataService` dependency, which we can ask for like this:
 
-{% highlight ts %}
+{% highlight js %}
 import {DataService} from './dataService';
 
 @Component(...)
@@ -45,7 +45,7 @@ class AppComponent {
 
 We import the **type** of the dependency we're asking for, and annotate our dependency argument with it in our component's constructor. Angular knows how to create and inject an object of type `DataService`, if we configure a provider for it. This can happen either in the bootstrapping process of our app, or in the component itself (both ways have different implications on the dependency's life cycle and availability).
 
-{% highlight ts %}
+{% highlight js %}
 // at bootstrap
 bootstrap(AppComponent, [
   provide(DataService, {useClass: DataService})
@@ -63,7 +63,7 @@ class AppComponent { }
 
 In fact, there's a shorthand syntax we can use if the instruction is `useClass` and the value of it the same as the token, which is the case in this particular provider:
 
-{% highlight ts %}
+{% highlight js %}
 // bootstrap
 bootstrap(AppComponent, [DataService]);
 
@@ -81,11 +81,11 @@ Now, whenever we ask for a dependency of type `DataService`, Angular knows how t
 
 With multi providers, we can basically provide **multiple dependencies for a single token**. Let's see what that looks like. The following code manually creates an injector with multi providers:
 
-{% highlight ts %}
+{% highlight js %}
 
 const SOME_TOKEN: OpaqueToken = new OpaqueToken('SomeToken');
 
-var injector = Injector.resolveAndCreate([
+var injector = ReflectiveInjector.resolveAndCreate([
   provide(SOME_TOKEN, {useValue: 'dependency one', multi: true}),
   provide(SOME_TOKEN, {useValue: 'dependency two', multi: true})
 ]);
@@ -107,12 +107,12 @@ Alright, fine. We can provide multiple values for a single token. But why in hel
 
 Usually, when we register multiple providers with the same token, the last one wins. For example, if we take a look at the following code, only `TurboEngine` gets injected because it's provider has been registered at last:
 
-{% highlight ts %}
+{% highlight js %}
 
 class Engine { }
 class TurboEngine { }
 
-var injector = Injector.resolveAndCreate([
+var injector = ReflectiveInjector.resolveAndCreate([
   provide(Engine, {useClass: Engine}),
   provide(Engine, {useClass: TurboEngine})
 ]);
@@ -125,14 +125,14 @@ This means, with multi providers we can basically **extend** the thing that is b
 
 In Angular 2 we always had to explicitly define directives that are used in our component's template likes this:
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 @Component({
   selector: 'app',
   directives: [NgFor], // also CORE_DIRECTIVES
   template: `
     <ul>
-      <li *ngFor="#item of items">
+      <li *ngFor="let item of items">
         {{item.name}}
       </li>
     </ul>
@@ -146,7 +146,7 @@ class App { }
 
 In other words, if we have a couple of directives that should automatically be available in our entire application without anyone having to define them in component decorations, we can do that by taking advantage of multi providers and extending what is being injected for `PLATFORM_DIRECTIVES`. All we have to do is to add multi providers for our directives like this:
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 @Directive(...)
 class Draggable { }

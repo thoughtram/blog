@@ -12,7 +12,7 @@ relatedLinks:
     title: "Creating a tabs component using @ContentChildren"
     url: "http://juristr.com/blog/2016/02/learning-ng2-creating-tab-component"
 date:       2015-04-09
-update_date: 2016-02-02
+update_date: 2016-05-12
 summary:    "In our last article we learned how to build a zippy component in Angular 2. This article details how to build another simple, but widely used type of component: tabs. Building tabs in Angular has always been the de facto example to example controllers in directives. Angular 2 makes it much easier and here's how you do it."
 
 categories:
@@ -74,7 +74,7 @@ Alright, now that we know what we want to build, let's get our hands dirty with 
 We start off by implementing a rather static version of the `<tabs>` element. If you've read our article on [building a zippy component in Angular 2](http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html),
 you know that we need the ~~`View` and~~(not needed since alpha.39) `Component` decorator to tell Angular what the selector and template for our component should be.
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 @Component({
   selector: 'tabs',
@@ -95,7 +95,7 @@ When using the `Component` decorator, we can specify the template using the `tem
 
 As you can see, the component template already comes with a static list of tabs. This list will be replaced with a dynamic directive later, for now we keep it like this so we get a better picture of the direction we're going. We also need a place where the tab contents will go. Let's add an insertion point to our template. This will project the outer light DOM into the Shadow DOM (Emulation).
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 @Component({
   selector: 'tabs',
@@ -122,7 +122,7 @@ Cool, we can already start using our `<tabs>` component and write HTML into it l
 
 Of course, we do want to use `<tab>` elements inside our `<tabs>` component, so let's build that one. It turns out that the `<tab>` element is actually quite primitive. It's basically just a container element that has an insertion point to project light DOM. We shouldn't forget the configurable `tabTitle`. Here's how we do it.
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 @Component({
   selector: 'tab',
@@ -161,7 +161,7 @@ Executing this in the browser, we notice that we still get a list with `Tab 1` a
 
 We're getting there. Let's first make our `<tabs>` component to actually use the correct titles instead of a hard-coded list. In order to generate a dynamic list, we need a collection. We can use our component's constructor to initialize a collection that holds all tabs like this:
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 export class Tabs {
 
@@ -173,7 +173,7 @@ export class Tabs {
 
 Okay cool, but how do we get our tab titles into that collection? This is where, in Angular 1, directive controllers come in. However, in Angular 2 it's much easier. First we need an interface so that the outside world can actually add items to our internal collection. Let's add a method `addTab(tab: Tab)`, that takes a `Tab` object and does exactly what we need.
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 export class Tabs {
   ...
@@ -186,7 +186,7 @@ export class Tabs {
 
 The method just simply pushes the given object into our collection and we're good. Next we update the template so that the list is generated dynamically based on our collection. In Angular 1 we have a `ngRepeat` directive that lets us iterate over a collection to repeat DOM. Angular 2 has an `ngFor` directive that pretty much solves the exact same problem. We use the directive to iterate over our tabs collection to generate a dynamic list of tab titles in the component's template.
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 @Component({
   ...
@@ -205,7 +205,7 @@ Alright, we have a collection, we have an API to extend the collection and we ha
 
 That's where the `<tab>` component comes into play (again). Inside the component we can simply ask for a **parent** `Tabs` dependency by using the new, much more powerful dependency injection system and get an instance of it. This allows us to simply use given APIs inside a child component. Let's take a look at what that looks like.
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 class Tab {
   constructor(tabs: Tabs) {
@@ -219,6 +219,7 @@ Wait, what happens here? `tabs: Tabs` is just Typescript type annotation which A
 Please check out our article where we go deeper inside [Angular 2 DI](http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.md)
 
 **tl;dr**
+
 > Angular 2 Hierarchical Injector knows, that we want first `Tabs` instance that it can get,
 when traversing upwards from current host. In our case the actual host is our  `<tab>` component.
 > Injector ask on tab for Tabs, if there is none, Injector will ask Parent Injector for `Tabs`. In our case parent Injector is on `<tabs>` component
@@ -233,7 +234,7 @@ Using the components as they are right now, we **do** get a tabs list generated 
 
 Well, first we need a property that activates or deactivates a tab and depending on that value, we either show or hide it. We can simply extend our `<tab>` template accordingly like this:
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 @Component({
   template: `
@@ -248,7 +249,7 @@ class Tab { ... }
 
 If a tab is not active, we simply hide it. We haven't specified this property anywhere, which means it's `undefined` which evaluates to `false` in that condition. So every tab is deactivated by default. In order to have at least one tab active, we can extend the `addTab()` method accordingly. The following code for instance, activates the very first tab that is added to the collection.
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 export class Tabs {
   ...
@@ -264,7 +265,7 @@ export class Tabs {
 
 Awesome! The only thing that is missing, is to activate other tabs when a user clicks on a tab. In order to make this possible, we just need a function that sets the `activate` property when a tab is clicked. Here's what such a function could look like.
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 export class Tabs {
   ...
@@ -280,14 +281,13 @@ export class Tabs {
 
 We simply iterate over all tabs we have, deactivate them, and activate the one that is passed to that function. Then we just add this function to the template, so it is executed whenever a user clicks a tab, like this.
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 @Component({
   ...
-  directives: [NgFor],
   template: `
     <ul>
-      <li *ngFor="#tab of tabs" (click)="selectTab(tab)">
+      <li *ngFor="let tab of tabs" (click)="selectTab(tab)">
         {{tab.tabTitle}}
       </li>
     </ul>
@@ -300,13 +300,13 @@ Again, if this template syntax is new to you, check out the mentioned design doc
 
 Here's the complete source in case you ran into any problems.
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 @Component({
   selector: 'tabs',
   template: `
     <ul>
-      <li *ngFor="#tab of tabs" (click)="selectTab(tab)">
+      <li *ngFor="let tab of tabs" (click)="selectTab(tab)">
         {{tab.tabTitle}}
       </li>
     </ul>
@@ -364,6 +364,6 @@ We can take a totally different approach how to implement our simple tabs ( whic
 leveraging special Angular 2 `@ContentChildren` property decorator with `QueryList` type and `AfterContentInit` life cycle interface.
 Those are more advanced concepts, which are covered in more details by [Juri Strumpflohner](https://twitter.com/juristr) in [his follow-up article](http://juristr.com/blog/2016/02/learning-ng2-creating-tab-component).
 
-If you're just curious how it looks like, you can find live demo in [this plunk](https://plnkr.co/edit/afhLA8wHw9LRnzwwTT3M?p=preview)
+If you're just curious what it looks like, you can find live demo in [this plunk](https://plnkr.co/edit/afhLA8wHw9LRnzwwTT3M?p=preview)
 
 Stay tuned!

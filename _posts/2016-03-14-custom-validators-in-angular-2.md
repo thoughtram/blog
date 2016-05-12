@@ -4,7 +4,7 @@ title:      "Custom Validators in Angular 2"
 imageUrl:  "/images/custom-validators-bg.jpeg"
 
 date: 2016-03-14
-update_date: 2016-03-14
+update_date: 2016-05-12
 
 relatedLinks:
   -
@@ -134,7 +134,7 @@ Here's what such an implementation could look like:
 
 {% highlight js %}
 {% raw %}
-import {Control} from 'angular2/common';
+import {Control} from '@angular/common';
 
 function validateEmail(c: Control) {
   let EMAIL_REGEXP = ...
@@ -148,7 +148,7 @@ function validateEmail(c: Control) {
 {% endraw %}
 {% endhighlight %}
 
-Pretty straight forward right? We import `Control` from `angular2/common` to have the type information the function's signature and simply test a regular expression with the `Control`'s value. That's it. That's a validator.
+Pretty straight forward right? We import `Control` from `@angular/common` to have the type information the function's signature and simply test a regular expression with the `Control`'s value. That's it. That's a validator.
 
 But how do we apply them to other form controls? Well, we've seen how `Validators.required` and the other validators are added to the `new Control()` calls. `Control()` takes an initial value, a synchronous validator and an asynchronous validator. Which means, we do exactly the same with our custom validators.
 
@@ -200,7 +200,7 @@ Now that we're able to add our custom validator to our form controls imperativel
 
 {% highlight js %}
 {% raw %}
-import {Directive} from 'angular2/core';
+import {Directive} from '@angular/core';
 
 @Directive({
   selector: '[validateEmail][ngControl]'
@@ -238,8 +238,8 @@ Let's add our validator to the `NG_VALIDATORS` via our new directive:
 
 {% highlight js %}
 {% raw %}
-import {Directive, provide} from 'angular2/core';
-import {NG_VALIDATORS} from 'angular2/common';
+import {Directive, provide} from '@angular/core';
+import {NG_VALIDATORS} from '@angular/common';
 
 @Directive({
   selector: '[validateEmail][ngControl]',
@@ -266,7 +266,7 @@ One way to handle this is to create a factory function that returns our `validat
 
 {% highlight js %}
 {% raw %}
-import {Control} from 'angular2/common';
+import {Control} from '@angular/common';
 
 function validateEmailFactory(emailBlackList: EmailBlackList) {
   return (c: Control) => {
@@ -359,7 +359,7 @@ class EmailValidator {
 
 {% highlight js %}
 {% raw %}
-import {forwardRef} from 'angular2/core';
+import {forwardRef} from '@angular/core';
 
 @Directive({
   ...
@@ -382,8 +382,8 @@ Here's the full code for our custom email validator:
 
 {% highlight js %}
 {% raw %}
-import {provide, Directive, forwardRef} from 'angular2/core';
-import {Control} from 'angular2/common';
+import {provide, Directive, forwardRef} from '@angular/core';
+import {Control} from '@angular/common';
 
 function validateEmailFactory(emailBlackList: EmailBlackList) {
   return (c: Control) => {

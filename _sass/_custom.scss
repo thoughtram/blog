@@ -208,3 +208,14 @@
 
 .thtrm-ad { display: none; }
 .thtrm-ad--visible { display: block; }
+
+.thtrm-alert {
+  background: #F99A9A;
+  padding: 1em;
+  margin-top: 40px;
+  border: 2px solid #F56868;
+
+  h2, h3 {
+    margin-top: 0;
+  }
+}

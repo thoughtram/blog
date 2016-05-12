@@ -12,7 +12,7 @@ relatedLinks:
     title: "Binding to directive controllers"
     url: "http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html"
 date:       2015-08-11
-update_date: 2015-12-12
+update_date: 2016-05-12
 summary:    "Angular 2 introduces it's own kind of template syntax in order to implement different binding strategies. This enables the framework to work with any element, no matter if it's a web component or a native one. However, looking at this syntax the very first time raises a lot of questions. This article discusses the template syntax in Angular 2, why it's there and how it works."
 
 categories: 
@@ -40,7 +40,7 @@ If you've read the [step-by-step guide](https://angular.io/docs/js/latest/guide/
 {% raw %}
 <p>My name: {{ myName}}</p>
 <ul>
-  <li *ngFor="#name of names">
+  <li *ngFor="let name of names">
     ...
   </li>
 </ul>
@@ -213,7 +213,7 @@ Binding to properties through HTML is already super powerful. But sometimes we n
 
 In AngularJS, we have a lot of directives that help us out notifying the framework when an event is fired. That's why we have things like `ng-click`, `ng-focus` etc. They simply notify Angular that an event has been fired and application state could have changed. Without these directives, Angular's two-way data binding wouldn't work out-of-the-box. Unfortunately, that doesn't really scale. How can our `<date-picker>` Web Component notify Angular that a change has happened? Correct, we would need to create a directive for each and every event and it's not uncommon for elements to fire more than just one event.
 
-That's why in Angular 2 we have the parethesis syntax where we can bind to **any** event like this:
+That's why in Angular 2 we have the parenthesis syntax where we can bind to **any** event like this:
 
 {% highlight html %}
 {% raw %}

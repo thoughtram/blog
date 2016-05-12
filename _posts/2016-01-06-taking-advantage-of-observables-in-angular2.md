@@ -12,7 +12,7 @@ relatedLinks:
 
 
 date:       2016-01-06
-update_date: 2015-01-06
+update_date: 2016-05-12
 summary:    "Angular 2 favors Observables over Promises when it comes to async. The rational behind this decision may not be obvious right from the start. There is definitely a learning curve to master Observables in all their beauty. In this article we like to explore some practical advantages with Observables for server communication."
 
 categories:
@@ -60,10 +60,10 @@ Let's start with a Promise-based implementation that doesn't handle any of the d
 
 This is what our `WikipediaService` looks like. Despite the fact that the Http/JsonP API still has some little unergonomic parts, there shouldn't be much of surprise here.
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
-import {Injectable} from 'angular2/core';
-import {URLSearchParams, Jsonp} from 'angular2/http';
+import {Injectable} from '@angular/core';
+import {URLSearchParams, Jsonp} from '@angular/http';
 
 @Injectable()
 export class WikipediaService {
@@ -87,7 +87,7 @@ Basically we are injecting the `Jsonp` service to make a `GET` request against t
 
 So far so good, let's take a look at the `app.ts` file that holds our `App` Component.
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 // check the plnkr for the full list of imports
 import {...} from '...';
@@ -99,7 +99,7 @@ import {...} from '...';
       <h2>Wikipedia Search</h2>
       <input #term type="text" (keyup)="search(term.value)">
       <ul>
-        <li *ngFor="#item of items">{{item}}</li>
+        <li *ngFor="let item of items">{{item}}</li>
       </ul>
     </div>
   `
@@ -136,17 +136,17 @@ Let's change our code to not hammer the endpoint with every keystroke but instea
 
 To unveil such super powers we first need to get an `Observable<string>` that carries the search term that the user types in. Instead of manually binding to the `keyup` event we use `ngFormControl` from within our template and set it to the name `"term"`.
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 <input type="text" [ngFormControl]="term"/>
 {% endraw %}
 {% endhighlight %}
 
-In our component we create an instance of `Control` from `angular2/common` and expose it as a field under the name `term` on our component.
+In our component we create an instance of `Control` from `@angular/common` and expose it as a field under the name `term` on our component.
 
 Behind the scenes `term` automatically exposes an `Observable<string>` as property `valueChanges` that we can subscribe to. Now that we have an `Observable<string>`, taming the user input is as easy as calling `debounceTime(400)` on our Observable. This will return a new `Observable<string>` that will only emit a new value when there haven't been coming new values for 400ms.
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 export class App {
   items: Array<string>;
@@ -170,7 +170,7 @@ Dealing with out of order responses can be a tricky task. Basically we need a wa
 
 This is where we want to change our `WikipediaService` to return an `Observable<Array<string>>` instead of an `Promise<Array<string>>`. That's as easy as dropping `toPromise` and using `map` instead of `then`.
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 search (term: string) {
   var search = new URLSearchParams()
@@ -186,7 +186,7 @@ search (term: string) {
 
 Now that our `WikipediaSerice` returns an Observable instead of a Promise we simply need to replace `then` with `subscribe` in our `App` component.
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 this.term.valueChanges
            .debounceTime(400)
@@ -198,7 +198,7 @@ this.term.valueChanges
 But now we have two `subscribe` calls. This is needlessly verbose and often a sign for unidiomatic usage.
 The good news is, now that `search` returns an `Observable<Array<string>>` we can simply use `flatMap` to project our `Observable<string>` into the desired `Observable<Array<string>>` by composing the Observables.
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 this.term.valueChanges
          .debounceTime(400)
@@ -224,7 +224,7 @@ What?! You may be wondering if I'm kidding you but no I am not. That's the beaut
 
 Now that we got the semantics right, there's one more little trick that we can use to save us some typing. Instead of manually subscribing to the Observable we can let Angular do the unwrapping for us right from within the template. All we have to do to accomplish that is to use the `AsyncPipe` in our template and expose the `Observable<Array<string>>` instead of `Array<string>`.
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 @Component({
   selector: 'my-app',
@@ -233,7 +233,7 @@ Now that we got the semantics right, there's one more little trick that we can u
       <h2>Wikipedia Search</h2>
       <input type="text" [ngFormControl]="term"/>
       <ul>
-        <li *ngFor="#item of items | async">{{item}}</li>
+        <li *ngFor="let item of items | async">{{item}}</li>
       </ul>
     </div>
   `

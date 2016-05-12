@@ -3,7 +3,7 @@ pascal_precht:
     email: pascal@thoughtram.io
     web: http://twitter.com/PascalPrecht
     github: http://github.com/PascalPrecht
-    gravatar: https://pbs.twimg.com/profile_images/689079292282667009/mub0Mc6E.jpg
+    gravatar: /images/author-pascal.jpg
     bio: "Pascal is a front-end engineer and a Angular Developer Expert nominated by Google. He created the angular-translate module, is an Angular 2 contributor and also part of the Angular 2 Docs Authoring team."
 christoph_burgdorf:
     name: Christoph Burgdorf

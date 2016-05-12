@@ -2,7 +2,7 @@
 layout:     post
 title:      "The difference between Annotations and Decorators"
 date:       2015-05-03
-update_date_: 2015-05-03
+update_date: 2016-05-12
 summary:    "Last year, the Angular team announced it's ECMAScript language extension AtScript, which adds types and annotations to the language in order to enable better tooling, debugging and a better overall development experience. However, just recently at ng-conf, the team announced that AtScript becomes TypeScript, because both languages seem to solve the same problems. TypeScript implements a language feature called Decorators. In this article we're going to explore what exactly the difference between annotations and decorators is."
 
 categories: 
@@ -32,9 +32,7 @@ Let's start off with annotations. As mentioned, the Angular team announced AtScr
 {% highlight javascript %}
 {% raw %}
 @Component({
-  selector: 'tabs'
-})
-@View({
+  selector: 'tabs',
   template: `
     <ul>
       <li>Tab 1</li>
@@ -48,24 +46,23 @@ export class Tabs {
 {% endraw %}
 {% endhighlight %}
 
-We have a class `Tabs` that is basically empty. The class has two annotations, `@Component` and `@View`. If we'd remove all annotations, what would be left is just an empty class that doesn't have any special meaning right? So it seems that `@Component` and `@View` add some metadata to the class in order to give it a specific meaning. This is what annotations are all about. They are a declarative way to add metadata to code.
+We have a class `Tabs` that is basically empty. The class has one annotation `@Component`. If we'd remove all annotations, what would be left is just an empty class that doesn't have any special meaning right? So it seems that `@Component` add some metadata to the class in order to give it a specific meaning. This is what annotations are all about. They are a declarative way to add metadata to code.
 
-`@Component` is an annotation that tells Angular, that the class, which the annotation is attached to, is a component. The `@View` annotation, gives Angular information about the view of the component. In this case, it's an HTML template.
+`@Component` is an annotation that tells Angular, that the class, which the annotation is attached to, is a component.
 
 Okay, even if that seems to be quite clear, there are a few questions coming up:
 
 - Where do those annotations come from? This is nothing that JavaScript gives us out of the box right?
-- Who defined that those annotations are called `@Component` and `@View`?
+- Who defined this annotations called `@Component`?
 - If this is part of AtScript, what does that translate to, so we can use it in today's browsers?
  
- Let's answer these one by one. Where do those annotations come from? To answer that question, we need to complete the code sample. `@Component` and `@View` is something we need to import from the Angular 2 framework like this:
+ Let's answer these one by one. Where do those annotations come from? To answer that question, we need to complete the code sample. `@Component` is something we need to import from the Angular 2 framework like this:
 
 {% highlight javascript %}
 {% raw %}
 import { 
   ComponentMetadata as Component,
-  ViewMetadata as View
-} from 'angular2/angular2';
+} from '@angular/core';
 {% endraw %}
 {% endhighlight %}
 
@@ -82,7 +79,7 @@ export class ComponentMetadata extends DirectiveMetadata {
 {% endraw %}
 {% endhighlight %}
 
-We can see that `ComponentMetadata` and `ViewMetadata` are in fact an implementation detail of the Angular framework. This answers our second question.
+We can see that `ComponentMetadata` is in fact an implementation detail of the Angular framework. This answers our second question.
 
 But wait. It's just yet another class? How can just a simple class change the way how other classes behave? And why are we able to use those classes as annotations by just prefixing them with an `@` sign? Well, actually we can't. Annotations are not available in browser's of today, which means we need to transpile it to something that *does* run in current browsers.
 
@@ -95,7 +92,6 @@ var Tabs = (function () {
 
   Tabs.annotations = [
     new ComponentMetadata({...}),
-    new ViewMetadata({...})
   ];
 
   return Tabs;
@@ -132,7 +128,7 @@ var MyClass = (function () {
 
 The reason why this translate to a nested array, is because a parameter can have more than one annotation.
 
-Okay, so now we know what those metadata annotations are and what they translate to, but we still don't know how something like `@Component` makes a normal class actually a component in Angular 2. It turns out that Angular itself takes care of that. Annotations are really just metadata added to code. That's why `@Component` and `@View` are a very specific implementation details of Angular 2. In fact, there are a couple of other annotations that the framework comes with. But also only the framework knows what to do with that information.
+Okay, so now we know what those metadata annotations are and what they translate to, but we still don't know how something like `@Component` makes a normal class actually a component in Angular 2. It turns out that Angular itself takes care of that. Annotations are really just metadata added to code. That's why `@Component` is a very specific implementation detail of Angular 2. In fact, there are a couple of other annotations that the framework comes with. But also only the framework knows what to do with that information.
 
 Another very interesting learning is that Angular expects the metadata on `annotations` and `parameters` properties of classes. If Traceur would not translate them to those particular properties, Angular 2 wouldn't know from where to get the metadata. Which makes **AtScript Annotations** just a very specific implementation of what annotations could actually be.
 
@@ -176,13 +172,12 @@ It turns out that it actually doesn't. TypeScript supports decorators, but doesn
 {% highlight javascript %}
 {% raw %}
 import {
-  ComponentMetadata as Component,
-  ViewMetadata as View
-} from 'angular2/angular2';
+  ComponentMetadata as Component
+} from '@angular/core';
 {% endraw %}
 {% endhighlight %}
 
-As we can see, we're actually importing the metadata rather than the decorator. This is simply just because traceur doesn't understand decorators, but does understand `@Component` and `@View` annotations. Which is why we're also importing them with these namespaces respectively.
+As we can see, we're actually importing the metadata rather than the decorator. This is simply just because traceur doesn't understand decorators, but does understand `@Component` annotations. Which is why we're also importing them with these namespaces respectively.
 
 
 ## Conclusion

@@ -15,7 +15,7 @@ relatedLinks:
     title: "The difference between Annotations and Decorators"
     url: "http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html"
 date:       2015-03-27
-update_date: 2015-12-11
+update_date: 2016-05-12
 summary:    "Even if Angular 2 is still in early development, we can already start playing with the code since it's up on GitHub and also published as npm module. We are following the development of Angular 2 since the beginning on and are also contributing to the project. Just recently we've built a simple zippy component in Angular 2 and in this article we want to show how."
 
 categories: 
@@ -88,7 +88,7 @@ Angular provides us with a couple of decorators so we can express our code in a 
 
 {% highlight javascript %}
 {% raw %}
-import {Component} from 'angular2/core';
+import {Component} from '@angular/core';
 
 export class Zippy {
 
@@ -102,7 +102,7 @@ We want our zippy component to be usable as `<zippy>` element. So all we need to
 
 {% highlight javascript %}
 {% raw %}
-import {Component} from 'angular2/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'zippy'
@@ -117,7 +117,7 @@ Next, our component needs a template. We add information about the component's v
 
 {% highlight javascript %}
 {% raw %}
-import {Component} from 'angular2/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'zippy',
@@ -150,7 +150,7 @@ Alright, believe it or not, that's basically all we need to do to get this compo
 
 {% highlight javascript %}
 {% raw %}
-import {Component} from 'angular2/core';
+import {Component} from '@angular/core';
 import {Zippy} from 'zippy';
 
 @Component({
@@ -212,9 +212,7 @@ We simply invert the value of the component's `visible` property. In order to ge
 {% raw %}
 export class Zippy {
 
-  constructor() {
-    this.visible = true;
-  }
+  visible:boolean = true;
 
   toggle() {
     this.visible = !this.visible;
@@ -263,7 +261,7 @@ In Angular 2, we don't need to specify how scope properties are bound in our com
 
 {% highlight javascript %}
 {% raw %}
-import {Component, Input} from 'angular2/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'zippy'
@@ -289,12 +287,11 @@ export class Zippy {
 {% endraw %}
 {% endhighlight %}
 
-But for simplicity's sake, we stick with the shorthand synax. There's nothing more to do to make the title configurable, let's update the template for `hello` app.
+But for simplicity's sake, we stick with the shorthand sytnax. There's nothing more to do to make the title configurable, let's update the template for `hello` app.
 
 {% highlight javascript %}
 {% raw %}
-...
-@View({
+@Component({
   template: `<zippy title="Details"></zippy>`,
   directives: [Zippy]
 })
@@ -342,7 +339,7 @@ I know, it's hard to believe, but all we need to do is adding a `<ng-content>` t
 {% endraw %}
 {% endhighlight %}
 
-Angular 2 uses Shadow DOM (Emulation) by default, so we can just take advantage of that technology. <s>It turns out that insertion points in Shadow DOM are even more powerful than transclusion in Angular.</s> Angular 1.5 introduces multiple transclusion slots, so we can explicitly "pick" which DOM is going to be projected into our directive's template. The `<ng-content>` tag lets us define **which** DOM elements are projected too. If you want to learn more about Shadow DOM, I recommend the articles on [html5rocks.com](http://www.html5rocks.com/en/tutorials/webcomponents/shadowdom/) or watch [this talk](https://www.youtube.com/watch?v=gSTNTXtQwaY) from ng-europe.
+Angular 2 uses Shadow DOM (Emulation) by default, so we can just take advantage of that technology. <s>It turns out that insertion points in Shadow DOM are even more powerful than transclusion in Angular.</s> Angular 1.5 introduces [multiple transclusion slots](http://localhost:4000/angular/2015/11/16/multiple-transclusion-and-named-slots.html), so we can explicitly "pick" which DOM is going to be projected into our directive's template. The `<ng-content>` tag lets us define **which** DOM elements are projected too. If you want to learn more about Shadow DOM, I recommend the articles on [html5rocks.com](http://www.html5rocks.com/en/tutorials/webcomponents/shadowdom/) or watch [this talk](https://www.youtube.com/watch?v=gSTNTXtQwaY) from ng-europe.
 
 ## Putting it all together
 
@@ -350,7 +347,7 @@ Yay, this is how we build a zippy component in Angular 2. Just to make sure we'r
 
 {% highlight javascript %}
 {% raw %}
-import {Component, Input} from 'angular2/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'zippy',

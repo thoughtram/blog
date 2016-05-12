@@ -24,7 +24,7 @@ relatedLinks:
     title: "Angular 2 Bits: Unified Dependency Injection"
     url: "http://victorsavkin.com/post/102965317996/angular-2-bits-unified-dependency-injection"
 date:       2015-05-18
-update_date: 2015-12-12
+update_date: 2016-05-12
 summary:    "Dependency injection has always been one of Angular's biggest features and selling points. It allows us to inject dependencies in different code components, without needing to know, how those dependencies are created. However, it turns out that the current dependency injection system in Angular 1 has some problems that need to be solved in Angular 2, in order to build the next generation framework. In this article, we're going to explore the new dependency injection system for future generations."
 
 categories: 
@@ -44,7 +44,7 @@ Before we jump right into the new stuff, lets first understand what dependency i
 
 ## Dependency Injection as a pattern
 
-[Vojta Jina](http://twitter.com/vojtajina) gave a great talk on dependency injection at [ng-conf 2014](). In this talk, he presented the story and ideas of the new DI system that will be developed for Angular 2. He also made very clear, that we can see DI as two things: As a design pattern and as a framework. Whereas the former explains the pattern that DI is all about, the latter can be a system that helps us out maintaining and assembling dependencies. I'd like to do the same in this article as it helps us understanding the concept first.
+[Vojta Jina](http://twitter.com/vojtajina) gave a great talk on dependency injection at [ng-conf 2014](https://www.youtube.com/watch?v=_OGGsf1ZXMs). In this talk, he presented the story and ideas of the new DI system that will be developed for Angular 2. He also made very clear, that we can see DI as two things: As a design pattern and as a framework. Whereas the former explains the pattern that DI is all about, the latter can be a system that helps us out maintaining and assembling dependencies. I'd like to do the same in this article as it helps us understanding the concept first.
 
 We start by taking a look at the following code and analysing the problems it introduces.
 
@@ -167,9 +167,9 @@ The DI in Angular 2 basically consists of three things:
 Okay, now that we have an idea of what the concept looks like, lets see how this is translated to code. We stick with our `Car` class and it's dependencies. Here's how we can use Angular 2's DI to get an instance of `Car`:
 
 {% highlight js %}
-import { Injector } from 'angular2/core';
+import { ReflectiveInjector } from '@angular/core';
 
-var injector = Injector.resolveAndCreate([
+var injector = ReflectiveInjector.resolveAndCreate([
   Car,
   Engine,
   Tires,
@@ -179,7 +179,7 @@ var injector = Injector.resolveAndCreate([
 var car = injector.get(Car);
 {% endhighlight %}
 
-We import `Injector` from Angular 2 which exposes some static APIs to create injectors. `resolveAndCreate()` is basically a factory function that creates an injector and takes a list of providers. We'll explore how those classes are supposed to be providers in a second, but for now we focus on `injector.get()`. See how we ask for an instance of `Car` in the last line? How does our injector know, which dependencies need to be created in order to instantiate a car? A look at our `Car` class will explain...
+We import `ReflectiveInjector` from Angular 2 which is an injector implementation that exposes some static APIs to create injectors. `resolveAndCreate()` is basically a factory function that creates an injector and takes a list of providers. We'll explore how those classes are supposed to be providers in a second, but for now we focus on `injector.get()`. See how we ask for an instance of `Car` in the last line? How does our injector know, which dependencies need to be created in order to instantiate a car? A look at our `Car` class will explain...
 
 {% highlight js %}
 import { Inject } from 'angular2/core';
@@ -210,7 +210,7 @@ class Car {
 Nice, our class declares it's own dependencies and the DI can read that information to instantiate whatever is needed to create an object of `Car`. But how does the injector know **how** to create such an object? This is where the providers come into play. Remember the `resolveAndCreate()` method in which we passed a list of classes?
 
 {% highlight js %}
-var injector = Injector.resolveAndCreate([
+var injector = ReflectiveInjector.resolveAndCreate([
   Car,
   Engine,
   Tires,
@@ -223,7 +223,7 @@ Again, you might wonder how this list of classes is supposed to be a list of pro
 {% highlight js %}
 import {provide} from 'angular2/core';
 
-var injector = Injector.resolveAndCreate([
+var injector = RelfectiveInjector.resolveAndCreate([
   provide(Car, {useClass: Car}),
   provide(Engine, {useClass: Engine}),
   provide(Tires, {useClass: Tires}),
@@ -330,7 +330,7 @@ provide(Engine, {useFactory: () => {
 We can create a **child injector** using `Injector.resolveAndCreateChild()`. A child injector introduces its own bindings and an instance of an object will be different from the parent injector's instance.
 
 {% highlight js %}
-var injector = Injector.resolveAndCreate([Engine]);
+var injector = ReflectiveInjector.resolveAndCreate([Engine]);
 var childInjector = injector.resolveAndCreateChild([Engine]);
 
 injector.get(Engine) !== childInjector.get(Engine);

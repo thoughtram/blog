@@ -19,7 +19,7 @@ relatedLinks:
     url: "http://blog.thoughtram.io/angular/2015/09/17/resolve-service-dependencies-in-angular-2.html"
 
 date:       2015-10-24
-update_date: 2015-12-12
+update_date: 2016-05-12
 summary:    "One of the hottest topics when it comes to Angular 2, is how to get our existing AngularJS applications upgrade to the next major version of the framework. The APIs of Angular 2 are stablelising and a module to help upgrading existing AngularJS apps is emerging. This module is called ngUpgrade and in this article we're going to explore what comes into play when upgrading an app and also how ngUpgrade gives us a helping hand."
 
 categories:
@@ -189,7 +189,7 @@ var app = angular.module('myApp', []);
 Plain old Angular 1 module. Usually, this module is bootstrapped using the `ng-app` attribute, but now we want to bootstrap our module using `ngUpgrade`. We do that by removing the `ng-app` attribute from the HTML, create an `ngUpgrade` adapter from the upgrade module, and call `bootstrap()` on it with `myApp` as module dependency:
 
 {% highlight js %}
-import {UpgradeAdapter} from 'angular2/upgrade';
+import {UpgradeAdapter} from '@angular/upgrade';
 
 var adapter = new UpgradeAdapter();
 var app = angular.module('myApp', []);
@@ -197,27 +197,23 @@ var app = angular.module('myApp', []);
 adapter.bootstrap(document.body, ['myApp']);
 {% endhighlight %}
 
-Cool, our app is now bootstrapped using `ngUpgrade` and we can start mixing Angular 1 components with Angular 2 components.
+Cool, our app is now bootstrapped using `ngUpgrade` and we can start mixing Angular 1 components with Angular 2 components. However, in a real world application, you want to create an instance of `UpgradeAdapter` in a separate module and import it where you need it. This leads to cleaner code when upgrading across your application.
 
 ## Downgrading Angular 2 components
 
-Let's upgrade our first component to Angular 2 and use it in our Angular 1 application. Here we have a `productDetail` directive that needs to be upgraded:
+Let's upgrade our first component to Angular 2 and use it in our Angular 1 application. Here we have a `productDetail` component that needs to be upgraded:
 
 {% highlight js %}
 {% raw %}
-app.directive('productDetail', () => {
-  return {
-    restrict: 'E',
-    scope: {},
-    bindToController: {
-      product: '='
-    },
-    controller: 'ProductDetailController as ctrl',
-    template: `
-      <h2>{{ctrl.product.name}}</h2>
-      <p>{{ctrl.product.description}}</p>
-    `
-  }
+app.component('productDetail', () => {
+  bindings: {
+    product: '='
+  },
+  controller: 'ProductDetailController',
+  template: `
+    <h2>{{$ctrl.product.name}}</h2>
+    <p>{{$ctrl.product.description}}</p>
+  `
 });
 {% endraw %}
 {% endhighlight %}
@@ -238,6 +234,7 @@ class ProductDetail {
 }
 {% endraw %}
 {% endhighlight %}
+
 **Note**: You might want to define this component in a separate file, for simplicity sake we defined it in place.
 
 Perfect! But how do we get this Angular 2 component into our Angular 1 application? The `UpgradeAdapter` we've created comes with a method `downgradeNg2Component()`, which takes an Angular 2 component and creates an Angular 1 directive from it. Let's use our Angular 2 component in Angular 1 world.
@@ -266,7 +263,7 @@ Let's say we continued upgrading our application and have a `ProductList` compon
   template: `
     <h2>Product List</h2>
     <ol>
-      <li *ngFor="#product of products">
+      <li *ngFor="let product of products">
         <product-list-item [product]="product">
         </product-list-item>
       </li>
@@ -294,7 +291,7 @@ class ProductList {
   template: `
     <h2>Product List</h2>
     <ol>
-      <li *ng-for="#product of products">
+      <li *ngFor="let product of products">
         <product-list-item [product]="product">
         </product-list-item>
       </li>

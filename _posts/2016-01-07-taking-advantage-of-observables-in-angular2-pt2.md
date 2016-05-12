@@ -10,7 +10,7 @@ relatedLinks:
     url: "http://blog.thoughtram.io/exploring-angular-2"
 
 date:       2016-01-07
-update_date: 2015-01-07
+update_date: 2016-05-12
 summary:    "This is a follow up article that demonstrates how Observables can influence our API design."
 
 categories:
@@ -27,10 +27,10 @@ In a [previous post](http://blog.thoughtram.io/angular/2016/01/06/taking-advanta
 
 As a recap, we built a simple wikipedia search demo consisting of a `WikipediaService` to query a JSONP API.
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
-import {Injectable} from 'angular2/core';
-import {URLSearchParams, Jsonp} from 'angular2/http';
+import {Injectable} from '@angular/core';
+import {URLSearchParams, Jsonp} from '@angular/http';
 
 @Injectable()
 export class WikipediaService {
@@ -51,7 +51,7 @@ export class WikipediaService {
 
 We also built an `App` component that uses this service and applies some Rx gymnastics to tame the user input, prevent duplicate requests and deal with out-of-order responses.
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 @Component({
   selector: 'my-app',
@@ -60,7 +60,7 @@ We also built an `App` component that uses this service and applies some Rx gymn
       <h2>Wikipedia Search</h2>
       <input type="text" [ngFormControl]="term"/>
       <ul>
-        <li *ngFor="#item of items | async">{{item}}</li>
+        <li *ngFor="let item of items | async">{{item}}</li>
       </ul>
     </div>
   `
@@ -96,7 +96,7 @@ With that in mind: wouldn't it be actually nice if we could save the component f
 
 To let code speak we can transform our `WikipediaService` into this.
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 @Injectable()
 export class WikipediaService {
@@ -125,7 +125,7 @@ Notice that the service still exposes the previous api as `rawSearch` and builds
 
 This dramatically simplifies our `App` component.
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 @Component({
   selector: 'my-app',
@@ -134,7 +134,7 @@ This dramatically simplifies our `App` component.
       <h2>Wikipedia Search</h2>
       <input type="text" [ngFormControl]="term"/>
       <ul>
-        <li *ngFor="#item of items | async">{{item}}</li>
+        <li *ngFor="let item of items | async">{{item}}</li>
       </ul>
     </div>
   `
