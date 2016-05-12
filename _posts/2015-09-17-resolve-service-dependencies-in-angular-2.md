@@ -19,7 +19,7 @@ relatedLinks:
     url: "http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html"
 
 date:       2015-09-17
-update_date: 2015-12-12
+updatedate: 2016-05-12
 summary: "When writing Angular 2 applications, it often happens that we build services that depend on other service instances. In our previous articles, we learned about the Dependency Injection system in Angular 2 and how it works. However, it turns out that we might run into unexpected behaviour when injecting service dependencies. This article details how to do it right."
 
 categories:
@@ -43,13 +43,13 @@ This article discusses what this unexpected problem is, why it exists and how it
 
 Let's say we have a simple Angular 2 component which has a `DataService` dependency. It could look something like this:
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 @Component({
   selector: 'my-app',
   template: `
     <ul>
-      <li *ngFor="#item of items">{{item.name}}</li>
+      <li *ngFor="let item of items">{{item.name}}</li>
     </ul>
   `
 })
@@ -64,7 +64,7 @@ class AppComponent {
 
 `DataService` on the other hand is a simple class (because that's what a service in Angular 2 is), that provides a method to return some items.
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 class DataService {
   items:Array<any>;
@@ -86,7 +86,7 @@ class DataService {
 
 Of course, in order to actually be able to ask for something of type `DataService`, we have to add a provider for our injector. We can do that by passing a provider to `bootstrap()` when bootstrapping our app.
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 bootstrap(AppComponent, [DataService]);
 {% endraw %}
@@ -96,9 +96,9 @@ Until now there's nothing new here. If this *is* new to you, you might want to r
 
 So where is the problem? Well, the problem occurs as soon as we try to inject a dependency into our service. We could for example use `Http` in our `DataService` to fetch our data from a remote server. Let's quickly do that. First, we need providers for the injector, so it knows about `Http`.
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
-import {HTTP_PROVIDERS} from 'angular2/http';
+import {HTTP_PROVIDERS} from '@angular/http';
 
 ...
 
@@ -108,9 +108,9 @@ bootstrap(AppComponent, [HTTP_PROVIDERS, DataService]);
 
 Angular's http module exposes `HTTP_PROVIDERS`, which has all the providers we need to hook up some http action in our service. Next, we need to inject an instance of `Http` in our service to actually use it.
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
-import {Http} from 'angular2/http';
+import {Http} from '@angular/http';
 
 class DataService {
   items:Array<any>;
@@ -135,7 +135,7 @@ Yea, we did. Unfortunately it turns out this is not enough. However, obviously i
 
 In our article on [the difference between decorators and annotations](http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html) we learned that decorators simply add metadata to our code. If we take our `AppComponent`, once decorated and transpiled, it looks something like this (simplified):
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 function AppComponent(myService) {
   ...
@@ -153,7 +153,7 @@ We can clearly see that `AppComponent` is decorated with `Component`, `View`, an
 
 This looks good. Let's take a look at the transpiled `DataService` and see what's going on there (also simplified).
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 DataService = (function () {
   function DataService(http) {
@@ -176,10 +176,10 @@ So how can we enforce TypeScript to emit metadata for us accordingly? One thing 
 
 We could change our `DataService` to something like this:
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
-import {Inject} from 'angular2/core';
-import {Http} from 'angular2/http';
+import {Inject} from '@angular/core';
+import {Http} from '@angular/http';
 
 class DataService {
   items:Array<any>;
@@ -194,7 +194,7 @@ class DataService {
 
 **Problem solved**. In fact, this is exactly what `@Inject` is for when not transpiling with TypeScript. If we take a look at the transpiled code now, we see that all the needed metadata is generated (yeap simplified).
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 function DataService(http) {
 }
@@ -213,10 +213,10 @@ Of course, putting just anything that is a decorator on a class doesn't sound re
 
 All we have to do is to import it and put it on our `DataService` like this:
 
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
-import {Injectable} from 'angular2/core';
-import {Http} from 'angular2/http';
+import {Injectable} from '@angular/core';
+import {Http} from '@angular/http';
 
 @Injectable()
 class DataService {

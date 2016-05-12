@@ -13,7 +13,7 @@ relatedLinks:
     url: "http://blog.thoughtram.io/angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html"
 
 date:       2015-09-03
-update_date: 2015-12-12
+update_date: 2016-05-12
 summary:    "Even though we already covered many aspects of the dependency injection system in Angular 2 there are still some features left that we haven't covered yet. Some of them more bold and some more subtile. In this article we like to explore forward references. Why they exist and how we can use them."
 
 categories:
@@ -38,8 +38,8 @@ As a small recap, here we have an `AppComponent` that relies on DI to get a `Nam
 **app.ts**
 {% highlight ts %}
 {% raw %}
-import {Component} from 'angular2/angular2';
-import {bootstrap} from 'angular2/platform/browser';
+import {Component} from '@angular/core';
+import {bootstrap} from '@angular/platform-browser-dynamic';
 import {NameService} from './nameService';
 
 @Component({
@@ -72,8 +72,8 @@ This works well, but let's see what happens when we inline the contents of `name
 
 {% highlight ts %}
 {% raw %}
-import {Component} from 'angular2/angular2';
-import {bootstrap} from 'angular2/platform/browser';
+import {Component} from '@angular/core';
+import {bootstrap} from '@angular/platform-browser-dynamic';
 
 @Component({
   selector: 'my-app',
@@ -107,8 +107,8 @@ Let's see what happens when we move `NameService` to the top so that it's declar
 
 {% highlight ts %}
 {% raw %}
-import {Component} from 'angular2/angular2';
-import {bootstrap} from 'angular2/platform/browser';
+import {Component} from '@angular/core';
+import {bootstrap} from '@angular/platform-browser-dynamic';
 
 class NameService {
   getName () {
@@ -287,8 +287,8 @@ Turns out there is a solution we can reach for. Instead of annotating our `nameS
 
 {% highlight ts %}
 {% raw %}
-import {Component, Inject, forwardRef} from 'angular2/core';
-import {bootstrap} from 'angular2/platform/browser';
+import {Component, Inject, forwardRef} from '@angular/core';
+import {bootstrap} from '@angular/platform-browser-dynamic';
 
 @Component({
   selector: 'my-app',
