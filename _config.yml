@@ -11,6 +11,6 @@ show_related_posts: false
 highlighter: rouge
 # Build settings
 markdown: kramdown
-paginate: 4
+paginate: 7
 sass:
   compressed: true

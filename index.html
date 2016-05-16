@@ -1,51 +1,93 @@
 ---
 layout: default
 ---
-<h2 class="thtrm-section-headline thtrm-section-headline--with-margin">Popular <a title="RSS Feed" href="http://feeds.feedburner.com/thoughtram">RSS Feed</a></h2>
+<h2 class="thtrm-section-headline thtrm-section-headline--with-margin">Latest <a title="RSS Feed" href="http://feeds.feedburner.com/thoughtram">RSS Feed</a></h2>
 
 <div class="thtrm-table-layout">
   <div class="thtrm-table-layout-row thtrm-table-layout-row--with-two-columns thtrm-table-layout-row--2-3">
     <div class="thtrm-table-layout-cell">
-      <a title="Custom Validators in Angular 2" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.01) 2%,#29383E 100%), url('/images/custom-validators-bg.jpeg');" href="/angular/2016/03/14/custom-validators-in-angular-2.html" class="thtrm-promo-item">
+      <a title="{{site.posts[0].title}}" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.01) 2%,#29383E 100%), url('{% if site.posts[0].imageUrl %}{{site.posts[0].imageUrl}}{% else %}images/banner/fallback.jpeg{% endif %}');" href="{{site.posts[0].url | prepend: site.baseurl }}" class="thtrm-promo-item">
         <div class="thtrm-promo-item-info">
 
-          <span class="thtrm-category-badge thtrm-category-badge--angular2">Angular 2</span>
-          <h2>Custom Validators in Angular 2</h2>
-          <span><i class="material-icons">schedule</i> Mar 21, 2016</span>
+          {% if site.posts[0].categories contains 'angular' %}
+            <span class="thtrm-category-badge thtrm-category-badge--angular2">Angular 2</span>
+          {% else if site.posts[0].categories contains 'announcements' %}
+            <span class="thtrm-category-badge thtrm-category-badge--announcements">Announcement</span>
+          {% else if site.posts[0].categories contains 'angularjs' %}
+            <span class="thtrm-category-badge thtrm-category-badge--angularjs">AngularJS</span>
+          {% else if site.posts[0].categories contains 'git' %}
+            <span class="thtrm-category-badge thtrm-category-badge--git">Git</span>
+          {% else if site.posts[0].categories contains 'rust' %}
+            <span class="thtrm-category-badge thtrm-category-badge--rust">Rust</span>
+          {% endif %}
+          <h2>{{site.posts[0].title}}</h2>
+          <span><i class="material-icons">schedule</i> {{ site.posts[0].date | date: "%b %-d, %Y" }}</span>
           <span class="thtrm-promo-item-info-author">
             <i class="material-icons">create</i>
+            {% if site.posts[0].author == 'pascal_precht' %}
             Pascal Precht 
+            {% else if site.posts[0].author == 'christoph_burgdorf' %}
+            Christoph Burgdorf
+            {% endif%}
           </span>
         </div>
       </a>
 
     </div>
     <div class="thtrm-table-layout-cell">
-      <a title="Taking advantage of Obervables in Angular 2" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.01) 2%,#29383E 100%), url('/images/banner/taking-advantage-of-observables.png');" href="/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html" class="thtrm-promo-item thtrm-promo-item--sub">
+      <a title="{{site.posts.[1].title}}" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.01) 2%,#29383E 100%), url('{% if site.posts[1].imageUrl %}{{site.posts[1].imageUrl}}{% else %}/images/banner/fallback.jpeg{% endif %}');" href="{{site.posts[1].url | prepend: site.baseurl }}" class="thtrm-promo-item thtrm-promo-item--sub">
         <div class="thtrm-promo-item-info">
 
-          <span class="thtrm-category-badge thtrm-category-badge--angular2">Angular 2</span>
+          {% if site.posts[1].categories contains 'angular' %}
+            <span class="thtrm-category-badge thtrm-category-badge--angular2">Angular 2</span>
+          {% else if site.posts[1].categories contains 'announcements' %}
+            <span class="thtrm-category-badge thtrm-category-badge--announcements">Announcement</span>
+          {% else if site.posts[1].categories contains 'angularjs' %}
+            <span class="thtrm-category-badge thtrm-category-badge--angularjs">AngularJS</span>
+          {% else if site.posts[1].categories contains 'git' %}
+            <span class="thtrm-category-badge thtrm-category-badge--git">Git</span>
+          {% else if site.posts[1].categories contains 'rust' %}
+            <span class="thtrm-category-badge thtrm-category-badge--rust">Rust</span>
+          {% endif %}
 
-          <h3>Taking advantage of Observables in Angular 2</h3>
-          <span><i class="material-icons">schedule</i> Jan 6, 2016</span>
+          <h3>{{site.posts[1].title}}</h3>
+          <span><i class="material-icons">schedule</i> {{ site.posts[0].date | date: "%b %-d, %Y" }}</span>
           
           <span class="thtrm-promo-item-info-author">
             <i class="material-icons">create</i>
+            {% if site.posts[1].author == 'pascal_precht' %}
+            Pascal Precht 
+            {% else if site.posts[1].author == 'christoph_burgdorf' %}
             Christoph Burgdorf
+            {% endif%}
           </span>
         </div>
       </a>
-      <a title="Service vs Factory - Once and for all" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.01) 2%,#29383E 100%), url('/images/banner/service-vs-factory.png');" href="/angular/2015/07/07/service-vs-factory-once-and-for-all.html" class="thtrm-promo-item thtrm-promo-item--sub">
+      <a title="{{site.posts.[2].title}}" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.01) 2%,#29383E 100%), url('{% if site.posts[2].imageUrl %}{{site.posts[2].imageUrl}}{% else %}/images/banner/fallback.jpeg{% endif %}');" href="{{site.posts[2].url | prepend: site.baseurl }}" class="thtrm-promo-item thtrm-promo-item--sub">
         <div class="thtrm-promo-item-info">
 
-          <span class="thtrm-category-badge thtrm-category-badge--angularjs">AngularJS</span>
+          {% if site.posts[2].categories contains 'angular' %}
+            <span class="thtrm-category-badge thtrm-category-badge--angular2">Angular 2</span>
+          {% else if site.posts[2].categories contains 'announcements' %}
+            <span class="thtrm-category-badge thtrm-category-badge--announcements">Announcement</span>
+          {% else if site.posts[2].categories contains 'angularjs' %}
+            <span class="thtrm-category-badge thtrm-category-badge--angularjs">AngularJS</span>
+          {% else if site.posts[2].categories contains 'git' %}
+            <span class="thtrm-category-badge thtrm-category-badge--git">Git</span>
+          {% else if site.posts[2].categories contains 'rust' %}
+            <span class="thtrm-category-badge thtrm-category-badge--rust">Rust</span>
+          {% endif %}
 
-          <h3>Service vs Factory - Once and for all</h3>
-          <span><i class="material-icons">schedule</i> Jul 7, 2015</span>
+          <h3>{{site.posts[2].title}}</h3>
+          <span><i class="material-icons">schedule</i> {{ site.posts[2].date | date: "%b %-d, %Y" }}</span>
             
           <span class="thtrm-promo-item-info-author">
             <i class="material-icons">create</i>
+            {% if site.posts[1].author == 'pascal_precht' %}
             Pascal Precht 
+            {% else if site.posts[1].author == 'christoph_burgdorf' %}
+            Christoph Burgdorf
+            {% endif%}
           </span>
         </div>
       </a>
@@ -65,36 +107,35 @@ layout: default
       <input type="submit" value="Subscribe" name="subscribe" class="thtrm-cta thtrm-cta--small">
     </form>
   </div>
-  <h2 class="thtrm-section-headline thtrm-section-headline--with-margin">Latest</h2>
+  <h2 class="thtrm-section-headline thtrm-section-headline--with-margin">More Articles</h2>
   <div class="thtrm-table-layout">
     <div class="thtrm-table-layout-row thtrm-table-layout-row--with-two-columns thtrm-table-layout-row--with-two-columns--with-padding">
       <div class="thtrm-table-layout-cell">
 
-        <div class="thtrm-article-card" href="{{ site.posts[0].url | prepend: site.baseurl }}" title="{{site.posts[0].title}}">
-          <div class="thtrm-article-card-image" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.01) 2%,#29383E 100%),url({% if site.posts[0].imageUrl %}{{ site.posts[0].imageUrl }}{% else %}/images/banner/fallback.jpeg{% endif %});"></div>
+        <a class="thtrm-article-card" href="{{ site.posts[3].url | prepend: site.baseurl }}" title="{{site.posts[3].title}}">
+          <div class="thtrm-article-card-image" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.01) 2%,#29383E 100%),url({% if site.posts[3].imageUrl %}{{ site.posts[3].imageUrl }}{% else %}/images/banner/fallback.jpeg{% endif %});"></div>
           <div class="thtrm-article-card-content">
 
-            <span class="thtrm-article-card-date"><i class="material-icons">schedule</i> {{ site.posts[0].date | date: "%b %-d, %Y" }}</span>
+            <span class="thtrm-article-card-date"><i class="material-icons">schedule</i> {{ site.posts[3].date | date: "%b %-d, %Y" }}</span>
 
             <span class="thtrm-article-card-author">
               <i class="material-icons">create</i>
-              {% if site.posts[0].author == 'pascal_precht' %}
+              {% if site.posts[3].author == 'pascal_precht' %}
               Pascal Precht 
-              {% else if site.posts[0].author == 'christoph_burgdorf' %}
+              {% else if site.posts[3].author == 'christoph_burgdorf' %}
               Christoph Burgdorf
               {% endif%}
             </span>
 
-            <h2>{{ site.posts[0].title }}</h2>
-            <p>{{ site.posts[0].summary}}</p>
-            <a href="{{ site.posts[0].url | prepend: site.baseurl }}" title="{{site.posts[0].title}}" class="thtrm-cta thtrm-cta--small">Read More</a>
+            <h2>{{ site.posts[3].title }}</h2>
+            <p>{{ site.posts[3].summary}}</p>
           </div>
-        </div>
+        </a>
 
       </div>
       <div class="thtrm-table-layout-cell">
         <ul class="thtrm-article-card-list">
-        {% for post in paginator.posts | offset:1 limit:(paginator.posts.size-4)  %} 
+        {% for post in paginator.posts | offset:4 limit:(paginator.posts.size-6)  %} 
         <li>
           <a class="thtrm-article-card" href="{{ post.url | prepend: site.baseurl }}" title="{{post.title}}">
             <div class="thtrm-article-card-content">
