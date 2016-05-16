@@ -152,6 +152,23 @@
       {% if hasSimilar.size > 0 %}
           </ul>
       {% endif %}
+
+      {% if page.relatedLinks %}
+      <h4 class="thtrm-section-headline thtrm-section-headline--with-big-margin thtrm-section-headline--centered">You might also be interested in</h4>
+      <ul class="thtrm-three-column-list thtrm-three-column-list--with-padding">
+        {% for post in page.relatedLinks %}
+        <li>
+          <div class="thtrm-article-card thtrm-article-card--with-border" title="{{post.title}}">
+            <div class="thtrm-article-card-content ">
+              <h3>{{ post.title }}</h3>
+              <a class="thtrm-cta thtrm-cta--small" href="{{ post.url | prepend: site.baseurl }}" title="{{post.title}}">Read more</a>
+            </div>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+
       </div>
     </main>
     {% include footer.html %}
