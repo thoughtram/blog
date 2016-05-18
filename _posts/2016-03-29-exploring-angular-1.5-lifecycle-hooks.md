@@ -157,7 +157,7 @@ function MyCmpController($element) {
   };
 
   this.$onInit = function () {
-    $element.on('click', clickhandler);
+    $element.on('click', clickHandler);
   };
 
   this.$onDestroy = function () {
