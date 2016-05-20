@@ -12,4 +12,12 @@ christoph_burgdorf:
     github: http://github.com/cburgdorf
     gravatar: https://pbs.twimg.com/profile_images/657317643515490304/DDwp-N7D.jpg
     bio: "Christoph began programming at the age of 10. He is the creator of the Nickel.rs web framework and a contributor of the AngularJS project. Christoph is also part of the Angular 2 Docs Authoring team."
+thomas_burleson:
+    name: Thomas Burleson
+    email: thomas@thoughtram.io
+    web: http://twitter.com/thomasburleson
+    github: http://github.com/thomasburleson
+    gravatar: /images/thomas_high_res.png
+    bio: "Thomas was a late bloomer; programming at 24. He is a autodidact technologist with a passion for Angular, UX, and great software. Thomas is the Team Lead for Angular Material. He loves teaching, mentoring, and working with Angular developers. He also has the irritating habits of daily power-naps and starts a sentence and not finishing…. as his mind races ahead!"
+
 
