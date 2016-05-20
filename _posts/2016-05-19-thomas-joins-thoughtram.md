@@ -33,7 +33,7 @@ You may know Thomas already from his work as the **Team Lead developer** on [Ang
 Today we are very happy to announce that Thomas officially joins our team to work with us.
 He will continue to lead the Angular Material v1.x team. And he will also work with us to help build our content, business and deliver thoughtram **trainings in the US and APAC regions**.
 
-## More Trainings, more articles, more fun
+## More trainings, more articles, more fun
 
 With Thomas on board you may be wondering what to expect from us in the future. Well, if you liked our work so far be sure you'll like our future work even more. Thomas already gave us a bunch of great ideas and influenced our current training experience behind the scenes.
 
