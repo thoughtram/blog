@@ -41,7 +41,9 @@ console.log(transformed);
 
 By now we may be wondering what that has to do with Observables and the `map` operator that is part of RxJS.
 
-Observables are very much like arrays in a way. Well, they are actually more like Iterators but let's not get lost in the details. The key point to understand is that both represent a sequence of values. The key difference is that with Arrays/Iterators you *pull* values out as you want to work with them whereas with Observables you get values *pushed* to you as they arrive. It's this similarity that allows us to take advantage of pretty much all operators that we know from the pull-based world and apply them to the push-based world.
+Observables are very much like arrays in a way. Well, they are actually more like Iterators but let's not get lost in the details. The key point to understand is that both represent a sequence of values. The key difference is that with Arrays/Iterators you *pull* values out as you want to work with them whereas with Observables you get values **pushed** to you as they arrive. 
+
+It's this similarity that allows us to take advantage of pretty much all operators that we know from the pull-based world and apply them to the push-based world.
 
 ## `map` and Observables
 
@@ -59,16 +61,18 @@ Then we create an Observable that emits every time that the value of our input c
 {% raw %}
 let demoInput = document.querySelector('#demo')
 let obs = Rx.Observable.fromEvent(demoInput, 'input');
-obs.subscribe(value => console.log(value));
+
+// Activate the observable and log all 'pushed' events
+obs.subscribe(event => console.log(event));
 {% endraw %}
 {% endhighlight %}
 
-The payload of the Observable is the plain old event object that is provided by the `input` event of the browser. But that may not match what we are most interested in. What if we are more interested in the current value of the input? The `map` operator lets us project the payload of the Observable into something else. All it takes to project the payload is this tiny change.
+The payload of the Observable is the plain old Event object that is provided by the `input` event of the browser. But that may not match what we are most interested in. What if we are more interested in the current value of the input? The `map` operator lets us project the payload of the Observable into something else. All it takes to project the payload is this tiny change.
 
 {% highlight js %}
 {% raw %}
 let obs = Rx.Observable.fromEvent(demoInput, 'input')
-                       .map(e => e.target.value);  
+                       .map(e => e.target.value);
 {% endraw %}
 {% endhighlight %}
 
@@ -77,6 +81,7 @@ We can go on and chain `map` calls to project the data even further. For instanc
 {% raw %}
 let obs = Rx.Observable.fromEvent(demoInput, 'input')
                        .map(e => e.target.value)
+                       .filter( value => value > 100 )
                        .map(v => {
                          return {
                            value: v,
@@ -86,11 +91,14 @@ let obs = Rx.Observable.fromEvent(demoInput, 'input')
 {% endraw %}
 {% endhighlight %}
 
-Of course we could have done the same in the first `map` call already but it's sometimes more readable to break things into multiple steps. We also often use different operators in between of two `map` calls (e.g to filter something out).
+Of course, we could have done the same in the first `map` call. But it's sometimes more readable to break things into multiple steps. Notice that often we also use different operators in between of two `map` calls (e.g to filter something out).
 
 If you like to play a bit with the operator yourself, here is a working demo.
 
 <iframe src="http://embed.plnkr.co/iWR9b2s4wd0pZSOEfHuR/"></iframe>
 
+At this point, you may think that Observables are really just a minor enhancement on the Observer or Promise patterns... better suited to handle a sequence of events rather than a single callback. And the `.map()` function certainly does not - at first glance - seem to offer any added-value. The power of Observables is revealed when you start using Rx operators to transform, combine, manipulate, and work with sequences of items emitted by Observables. 
 
-Now that we got the `map` operator out of the way, watch out for the next article of this series where we'll take a look at the related `flatMap` operator.
+These operators allow you to compose asynchronous sequences together in a declarative manner with all the efficiency benefits of callbacks but without the drawbacks of nesting callback handlers that are typically associated with asynchronous systems.
+
+We will see that in future articles. Watch out for the next article of this series where we'll build upon this lesson with `map()` and take a look at the related `flatMap` operator.
