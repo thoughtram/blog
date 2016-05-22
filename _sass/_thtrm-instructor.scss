@@ -9,11 +9,6 @@
   position: relative;
   height: 500px;
 
-  .thtrm-table-layout-cell:nth-child(2) & {
-    background-image: url('/images/instructor-pascal.jpg');
-;
-  }
-
   @include tablet {
     height: 450px;
   }

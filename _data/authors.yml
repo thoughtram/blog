@@ -10,7 +10,7 @@ christoph_burgdorf:
     email: christoph@thoughtram.io
     web: http://twitter.com/cburgdorf
     github: http://github.com/cburgdorf
-    gravatar: https://pbs.twimg.com/profile_images/657317643515490304/DDwp-N7D.jpg
+    gravatar: /images/author-christoph.jpg
     bio: "Christoph began programming at the age of 10. He is the creator of the Nickel.rs web framework and a contributor of the AngularJS project. Christoph is also part of the Angular 2 Docs Authoring team."
 thomas_burleson:
     name: Thomas Burleson

@@ -90,6 +90,17 @@
   }
 }
 
+.thtrm-table-layout-row--with-three-columns {
+
+
+  &--with-padding {
+    @include tablet {
+      .thtrm-table-layout-cell {
+        padding: 0;
+      }
+    }
+  }
+}
 .thtrm-table-layout-row--with-two-columns {
 
   &--with-padding {
@@ -110,8 +121,9 @@
 .thtrm-instructor-text { font-size: 16px; line-height: 1.4; }
 .thtrm-instructor-name { font-size: 20px; }
 .thtrm-instructor-cta { font-size: 14px; }
-.thtrm-instructor--pascal { background-image: url('/images/instructor-pascal.jpg'); }
-.thtrm-instructor--christoph { background-image: url('/images/instructor-christoph.jpg'); }
+.thtrm-instructor--pascal { background-image: url('/images/author-pascal.jpg'); }
+.thtrm-instructor--christoph { background-image: url('/images/author-christoph.jpg'); }
+.thtrm-instructor--thomas { background-image: url('/images/thomas_high_res.png'); }
 
 .thtrm-three-column-list {
   @include phablet {
