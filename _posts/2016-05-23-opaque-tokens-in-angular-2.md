@@ -21,13 +21,13 @@ author: pascal_precht
 
 If you've read our article series on everything dependency injection in Angular 2, you've probably realised that Angular is doing a pretty good job on that. We can either use string or type tokens to make dependencies available to the injector. However, when using string tokens, there's a possibility of running into naming collisions because... well, maybe someone else has used the same token for a different provider. In this article we're going to learn how so called "opaque tokens" solve this problem.
 
-Let's first recap what the differents between a string token and a type token is, before we jump into the actual problem we want to solve.
+Let's first recap what the difference between a string token and a type token is, before we jump into the actual problem we want to solve.
 
 ## String Tokens vs Type Tokens
 
-In order to associate a dependency creation with a token that we use throughout our application, we have to setup providers. A couple weeks ago we've written about how [providers can be created using Map literals](/angular/2016/05/13/angular-2-providers-using-map-literals.html), if you haven't read this one yet we recommend to check it out, as this article pretty much builds up on that one.
+In order to associate a dependency creation with a token that we use throughout our application, we have to setup providers. A couple of weeks ago we've written about how [providers can be created using Map literals](/angular/2016/05/13/angular-2-providers-using-map-literals.html), if you haven't read this one yet we recommend to check it out, as this article pretty much builds up on that one.
 
-The bottom line is that a provider token can be either a string or a type, and depending on our use case, we want to use one or the other. For example, if we have a `DataService` class, and all we want to do is injecting an instance of that class when we ask for a dependency of that type, we would use `DataService` as a provider token like this:
+The bottom line is that a provider token can be either a string or a type, and depending on our use case, we want to use one or the other. For example, if we have a `DataService` class, and all we want to do is inject an instance of that class when we ask for a dependency of that type, we would use `DataService` as a provider token like this:
 
 {% highlight js %}
 {% raw %}
@@ -58,7 +58,7 @@ That's cool, as long as we have classes (or types) to represent the things we wa
 {% raw %}
 const CONFIG = {
   apiUrl: 'http://my.api.com',
-  theme: 'suicid-squad',
+  theme: 'suicide-squad',
   title: 'My awesome app'
 };
 {% endraw %}
@@ -72,9 +72,9 @@ const FEATURE_ENABLED = true;
 {% endraw %}
 {% endhighlight %}
 
-In these cases, we can't use the `String` or `Boolean` type, as this would set a default value for place where we ask for dependencies of these types. In addition, we really don't want to introduce a new type just to represent these values.
+In these cases, we can't use the `String` or `Boolean` type, as this would set a default value for places where we ask for dependencies of these types. In addition, we really don't want to introduce a new type just to represent these values.
 
-That's where string tokens come into play. They allows us to make objects available via DI without introducing an actual type:
+That's where string tokens come into play. They allow us to make objects available via DI without introducing an actual type:
 
 {% highlight js %}
 {% raw %}
@@ -119,7 +119,7 @@ Let's say we use some sort of third-party library that comes with a set of provi
 
 {% highlight js %}
 {% raw %}
-export const THIRDPARTYLIBPROVIDERS = [
+export const THIRD_PARTY_LIB_PROVIDERS = [
   { provide: 'config', useClass: ThirdParyConfig }
 ];
 {% endraw %}
@@ -129,12 +129,12 @@ Even though, it's not a common pattern to use a string token with a class, it's 
 
 {% highlight js %}
 {% raw %}
-import THIRDPARTYLIBPROVIDERS from './third-party-lib';
+import THIRD_PARTY_LIB_PROVIDERS from './third-party-lib';
 
 ...
 providers = [
   DataService,
-  THIRDPARTYLIBPROVIDERS
+  THIRD_PARTY_LIB_PROVIDERS
 ]
 {% endraw %}
 {% endhighlight %}
@@ -146,7 +146,7 @@ Okay, so far so good. Very often, we don't really know what's defined behind oth
 ...
 providers = [
   DataService,
-  THIRDPARTYLIBPROVIDERS,
+  THIRD_PARTY_LIB_PROVIDERS,
   { provide: configToken, useValue: CONFIG }
 ]
 {% endraw %}
@@ -166,7 +166,7 @@ import { OpaqueToken } from '@angular/core';
 
 const CONFIG_TOKEN = new OpaqueToken('config');
 
-export const THIRDPARTYLIBPROVIDERS = [
+export const THIRD_PARTY_LIB_PROVIDERS = [
   { provide: CONFIG_TOKEN, useClass: ThirdPartyConfig }
 ];
 {% endraw %}
@@ -177,14 +177,14 @@ Of course, this is an implementation detail and we usually shouldn't have to car
 {% highlight js %}
 {% raw %}
 import { OpaqueToken } from '@angular/core';
-import THIRDPARTYLIBPROVIDERS from './third-party-lib';
+import THIRD_PARTY_LIB_PROVIDERS from './third-party-lib';
 
 const MY_CONFIG_TOKEN = new OpaqueToken('config');
 
 ...
 providers = [
   DataService,
-  THIRDPARTYLIBPROVIDERS,
+  THIRD_PARTY_LIB_PROVIDERS,
   { provide: MY_CONFIG_TOKEN, useValue: CONFIG }
 ]
 {% endraw %}
@@ -207,7 +207,7 @@ export class OpaqueToken {
 {% endraw %}
 {% endhighlight %}
 
-`toString()` gets called when an error is thrown in case we're asking for a dependency that doesn't have a provider. All it does is add a tiny bit more information to the rror message.
+`toString()` gets called when an error is thrown in case we're asking for a dependency that doesn't have a provider. All it does is add a tiny bit more information to the error message.
 
 However, the secret sauce is, that we're creating actual object instances of `OpaqueToken` as opposed to simple string primitives. That's why Angular's DI is able to distinguish between our opaque tokens, even though they are based on the same string, because these instances are never the same.
 
