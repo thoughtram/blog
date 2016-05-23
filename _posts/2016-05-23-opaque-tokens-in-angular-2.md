@@ -74,7 +74,7 @@ const FEATURE_ENABLED = true;
 
 In these cases, we can't use the `String` or `Boolean` type, as this would set a default value for place where we ask for dependencies of these types. In addition, we really don't want to introduce a new type just to represent these values.
 
-That's where string tokens come into play. They allows us to make objects available via DI without introduces an actual type:
+That's where string tokens come into play. They allows us to make objects available via DI without introducing an actual type:
 
 {% highlight js %}
 {% raw %}
