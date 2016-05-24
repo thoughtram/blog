@@ -25,7 +25,7 @@ Before we jump into the actual problem we want to solve, let's first recap the d
 
 ## String Tokens vs Type Tokens
 
-Angular 2 uses dependency factories to create singleton instances that will be used in the runtime DI processes. In order to associate a token with a dependency factory, we have to setup providers. A couple weeks ago we blogged how [providers can be created using Map literals](/angular/2016/05/13/angular-2-providers-using-map-literals.html), if you haven't read this one yet we recommend to check it out, as this article pretty much builds up on that one.
+Angular 2 DI injects singleton instances which are created by provider-registered factories. And it is these instances that are injected at runtime. In order to configure your application DI and associate a factory with a token, we have to setup providers. A couple weeks ago we blogged how [providers can be created using Map literals](/angular/2016/05/13/angular-2-providers-using-map-literals.html), if you haven't read this one yet we recommend to check it out, as this article pretty much builds up on that one.
 
 The bottom line is that a provider token can be either a string or a type. Depending on our use case, we want to use one or the other. For example, if we have a `DataService` class, and all we want to do is inject an instance of that class when we ask for a dependency of that type, we would use `DataService` as a provider token like this:
 
@@ -44,7 +44,7 @@ class MyComponent {
 {% endraw %}
 {% endhighlight %}
 
-Since the token matches the dependency instance-type and the provider strategy is `useClass`, we can actually also the **shorthand** version, as:
+Since the token matches the dependency instance-type and the provider strategy is `useClass`, we can also use the **shorthand** version, as:
 
 {% highlight js %}
 {% raw %}
@@ -52,7 +52,9 @@ providers: [DataService]
 {% endraw %}
 {% endhighlight %}
 
-Angular2 has many shorthand versions; and ^ is just one of those. Now this is cool, as long as we have classes (or types) to represent the things we want to work with. However, sometimes we need to create other objects that don't necessarily need to be put in a class representation. We could for example have a configuration object that we want to inject into our application. This configuration object can be a simple object literal where there is no type involved.
+Angular2 has many shorthand versions (DI, annotations, etc); and the above code is just one example of those. 
+
+Now this is cool, as long as we have classes (or types) to represent the things we want to work with. However, sometimes we need to create other objects that don't necessarily need to be put in a class representation. We could for example have a configuration object that we want to inject into our application. This configuration object can be a simple object literal where there is no type involved.
 
 {% highlight js %}
 {% raw %}
@@ -113,7 +115,7 @@ Okay awesome, we can use strings and types as tokens to inject dependencies in o
 
 ## The problem with string tokens
 
-Let's get back to our `config` string token for a second. "config" is a pretty general name, so we probably could've done better naming this thing in the first place. However, even if we come up with a more distinguishable name, there is easily possible that someone else will use the same string as a token. Providers are flattened, meaning that, if there are multiple providers with the same token, the last one wins. 
+Let's get back to our `config` string token for a second. "config" is a pretty general name, so we probably could've done better naming this thing in the first place. However, even if we come up with a more distinguishable name, it is easily possible that someone else will use the same string as a token. Providers are flattened, meaning that, if there are multiple providers with the same token, the last one wins. 
 
 And there is another concept that allows us to define multiple providers for the same token. Those are multi providers, and we've written about them [here](/angular2/2015/11/23/multi-providers-in-angular-2.html).
 
@@ -158,7 +160,7 @@ This will pretty much break our third-party library, because now, the thing that
 
 ## Opaque Tokens to the resque
 
-Luckily, Angular got us covered. It comes with a type called `OpaqueToken` that basically allows us to create string-based tokens without running into any collisions.
+uckily, Angular anticipated such scenarios. It comes with a type called `OpaqueToken` that basically allows us to create string-based tokens without running into any collisions.
 
 Creating an `OpaqueToken` is easy. All we need to do is to import and use it. Here's what the third-party providers collection looks like using `OpaqueToken`:
 
