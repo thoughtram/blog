@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Opaque Tokens in Angular 2"
+title:      "How to prevent name collisions in Angular 2 providers"
 
 date: 2016-05-23
 imageUrl: '/images/banner/opaque-tokens-in-angular-2.jpeg'
