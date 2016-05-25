@@ -160,7 +160,7 @@ This will pretty much break our third-party library, because now, the thing that
 
 ## Opaque Tokens to the resque
 
-uckily, Angular anticipated such scenarios. It comes with a type called `OpaqueToken` that basically allows us to create string-based tokens without running into any collisions.
+Luckily, Angular anticipated such scenarios. It comes with a type called `OpaqueToken` that basically allows us to create string-based tokens without running into any collisions.
 
 Creating an `OpaqueToken` is easy. All we need to do is to import and use it. Here's what the third-party providers collection looks like using `OpaqueToken`:
 
