@@ -12,6 +12,85 @@
   @include tablet {
     height: 450px;
   }
+
+  &--christoph {
+    background-image: url('/images/author-christoph-bw.jpg');
+    background-color: #90BAC7;
+  }
+
+  &--thomas {
+    background-image: url('/images/thomas_high_res.png');
+    background-color: #90BAC7;
+  }
+
+  &--almero {
+    background-image: url('/images/user-story-almero.jpg');
+    background-color: #90BAC7;
+  }
+
+  &--pascal {
+    background-image: url('/images/author-pascal-bw.jpg');
+    background-color: #90BAC7;
+  }
+
+  &.thtrm-instructor--has-overlay {
+    &:hover {
+      .thtrm-instructor-overlay {
+        transform: translateX(0%);
+      }
+
+      .thtrm-instructor-overlay-trigger {
+        opacity: 0;
+      }
+
+      .thtrm-instructor-content {
+        .thtrm-instructor-name,
+        .thtrm-instructor-text {
+          opacity: 0;
+        }
+      }
+    }
+  }
+}
+
+.thtrm-instructor-overlay-trigger {
+  color: rgba(255,255,255,0.6);
+  font-size: 58px;
+  left: 50%;
+  margin-left: -29px;
+  position: absolute;
+  top: 0.1em;
+  cursor: pointer;
+  transition: 300ms ease opacity;
+  transition-delay: 300ms;
+}
+
+
+.thtrm-instructor-overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(56,76,84,0.7);
+  padding: 4em;
+  padding-top: 5em;
+  z-index: 2;
+  position: absolute;
+  right: 0;
+  transform: translatey(-100%);
+  transition: 300ms ease transform;
+  transition-delay: 300ms;
+
+  @include phablet {
+    padding-top: 8em;
+  }
+
+  @include tablet {
+    padding: 2em;
+    padding-top: 5em;
+  }
+  @include desktop {
+    padding: 4em;
+    padding-top: 8em;
+  }
 }
 
 .thtrm-instructor-content {
@@ -38,6 +117,13 @@
 .thtrm-instructor-text {
   color: #fff;
   font-size: 18px;
+  line-height: 1.4;
+  transition: 300ms ease opacity;
+  transition-delay: 300ms;
+
+  &--small {
+    font-size: 16px;
+  }
 }
 
 .thtrm-instructor-cta {
@@ -50,7 +136,6 @@
   font-weight: 600;
   margin-top: 1em;
   margin-left: 0.5em;
-  // transition: (color .2s ease-out, background .2s ease-in);
 
   &:first-child {
     margin-left: 0;
