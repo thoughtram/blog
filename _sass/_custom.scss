@@ -121,6 +121,11 @@
 .thtrm-instructor-text { font-size: 16px; line-height: 1.4; }
 .thtrm-instructor-name { font-size: 20px; }
 .thtrm-instructor-cta { font-size: 14px; }
+.thtrm-instructor-overlay {
+  @include desktop {
+    padding: 4em;
+  }
+}
 
 .thtrm-three-column-list {
   @include phablet {
