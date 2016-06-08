@@ -20,21 +20,37 @@ topic: components
 author: thomas_burleson
 ---
 
-Easily creating components is the most-loved feature of Angular 2. By now you should be familiar with using the `@Component` decorators to create components. You are probably already familiar with the required metadata information such as `selector` and `template`; if not you might want to read our article on [building a zipping component](http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html).
+The component-based development featured in Angular 2 is its *most-loved* feature. By now you should be familiar with using the `@Component` decorators to create components. Shown below is a simple component. You should be familiar with the required metadata information such as `selector` and `template`:
 
-If you happen to be lucky, your components and their HTML/CSS load without any problems. Perhaps you have already (or soon will) encounter the dreaded, frustrating 404 component-loading errors where the template HTML or styles (CSS) cannot be found! 
+**header.component.ts**
+{% highlight js %}
+{% raw %}
+import { Component, OnInit } from '@angular/core';
 
-Let's talk about why that happens and see how we can solve that problem in a way that is flexible and portable. 
+@Component({
+  selector: 'contacts-header',
+  template: `
+    <nav class="navbar-fixed">
+      <span class="brand-logo center">Contacts</span>
+    </nav>
+  `,
+  styles: ['.navbar-fixed { position:fixed; }']
+})
+export class HeaderComponent implements OnInit {  }
+{% endraw %}
+{% endhighlight %}
 
-Before we jump, however, into the actual problem we want to solve, let's first review two (2) types of component implementations.
+> If the above component concepts are new and strange, you should first review our article on [Building a Zipping Component in Angular 2](http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html). If you are familiar with these concepts and you happen to be lucky, your components load without any problems. 
+
+Mostly likely, though, you have already encountered (or soon will) the dreaded, frustrating 404 component-loading errors: template HTML or styles (CSS) cannot be loaded! Let's talk about why that happens and see how we can solve that problem in a way that is flexible and portable. 
+
+Before we jump into the actual problem we want to solve, let's first review two (2) types of custom component implementations.
 
 ## Components with Inline Metadata
 
-For every Angular 2 component that we implement, we define not only an HTML template, but may also define the CSS styles that go with that template, specifying any selectors, rules, and media queries that we need.
+For every Angular 2 component that we implement, we define not only an HTML template, but may also define the CSS styles that go with that template, specifying any selectors, rules, and media queries that we need. 
 
-One way to do this is to set the `styles` and `template` property in the component metadata.
-
-Consider a simple *Header* component... which we actually use in our Angular 2 Master Class training.
+One way to do this is to set the `styles` and `template` property in the component metadata. Consider a simple *Header* component... which we actually use in our [Angular 2 Master Class training](http://thoughtram.io/angular2-master-class.html).
 
 **header.component.ts**
 {% highlight js %}
@@ -57,17 +73,17 @@ export class HeaderComponent implements OnInit {
 {% endraw %}
 {% endhighlight %}
 
-Using this component is super easy and since there are no external file dependencies and everything is defined inline. You should *never* see a 404 error [for this component] in the DevTools console.
+Using this component is super easy. Since there are no external file dependencies and all the HTML and CSS is defined inline, we should *never* see [in the DevTools console] a 404 loading error for this component.
 
 ## Components with External Assets
 
-Another option let's us load HTML and styles from external files by using the URLs in the metadata configuration block. This is a common practice to split a component's code, HTML, and CSS into three separate files in the same directory:
+Another feature let's us load HTML and styles from external files: using URLs in the metadata configuration block. Refactoring a component's code, HTML, and CSS into three separate files [in the same package] is a common best-practice.
 
 *  header.component.ts
 *  header.component.html
 *  header.component.css
 
-This practice of using external files is especially important when your HTML or CSS is non-trivial. Using external files keeps your *.ts logic files much cleaner and easier to maintain.
+This practice of using external files is especially important when your HTML or CSS is non-trivial. And using external files keeps your *.ts logic files much cleaner and easier to maintain.
 
 **header.component.ts**
 {% highlight js %}
@@ -104,21 +120,21 @@ export class HeaderComponent implements OnInit {
 {% endraw %}
 {% endhighlight %}
 
-Now this is where it gets tricky!
+Now this is where it gets tricky! The URL required is relative to the application root which is usually the location of the `index.html` web page that hosts the application. So the above component must be stored in the application root. 
 
-The URL required is relative to the application root which is usually the location of the `index.html` web page that hosts the application. So the above component must be stored in the application root. Wow, this does not scale well.
+Wow, this does not scale well!
 
-*  What if we have many components all at the root level ? ( OMG! )
+*  What if we have many components all at the root level ? 
 *  What if my components are organized in distinct packages ?
-*  What if we want to organize our components by feature (Angular Style Guide - Best Practice)?
+*  What if we want to organize our components by feature or context ?
+  > This is actually an Angular Style Guide - Best Practice
+
 
 To explore the issue, let's consider the scenario where our details component (and files) are in the `src/app/header` package. The urls used above would cause the loader to fail and the developer would see the following 404 error in the developers console:
 
 ![component_url_404](https://cloud.githubusercontent.com/assets/210413/15878482/eca5cba2-2ce0-11e6-8fb4-78868bec2644.png)
 
-Are you tempted to try and debug or introspect the exception stack and determine why the file was not found: good luck with that!
- 
-So if path to the component HTML or CSS file is not valid, the **EASY** workaround is to add absolute paths to the URLs... but don't do it:
+Are you tempted to try and debug or introspect the exception stack and determine why the file was not found?  If path to the component HTML or CSS file is not valid, the **EASY** workaround is to add absolute paths to the URLs. Let's briefly explore that idea:
 
 
 **header.component.ts**
@@ -136,17 +152,17 @@ export class HeaderComponent implements OnInit {
 {% endraw %}
 {% endhighlight %}
 
-This is a horrible idea and band-aid solution. 
+![no-gif](https://cloud.githubusercontent.com/assets/210413/15881568/9c552dac-2cfc-11e6-808c-f84540d2d758.gif)
 
-* What if we move our components to other packages? We will have to update the absolute paths...
+This is a horrible idea and band-aid solution. Don't do it...
+
+* What if we move our components to other packages? 
 * What if we want to reuse our components in other applications?
 * Can we not use using relative-paths in our components ?
 
 ## Components with Relative-Path URLs
 
-In fact, we can use relative paths. But not the way you may first think... and not without understanding and accepting some constraints.
-
-At first we might be tempted to try this:
+In fact, we can use relative paths. But not the way you may first think... and not without understanding and accepting some constraints. At first we might be tempted to try this:
 
 **header.component.ts**
 {% highlight js %}
@@ -163,27 +179,27 @@ export class HeaderComponent implements OnInit {
 {% endraw %}
 {% endhighlight %}
 
-We might expect that `./header.component.html` is a path relative to the `header.component.ts` file and that component-relative paths should work, right?  Instead, we get another **404 Not found Exception**.
+We might expect that `./header.component.html` is a path relative to the `header.component.ts` file and that component-relative paths should work, right?  Instead, we get another **404 - Not found - Exception**.
 
 Remember we noted that the paths are relative to the Application Root **at load time**? Since we are using the package `src/app/header/header.component.*`, then our files obviously are not at the app root. We could use a gulp or grunt task to deploy to a `dist` directory and have all our components in the dist root directory. 
 
-OMG, that is a horrible idea! Don't do it.
+Don't deploy all your component files to the app root... OMG, that is a horrible idea! Don't do it.
 
-![no-gif](https://cloud.githubusercontent.com/assets/210413/15881568/9c552dac-2cfc-11e6-808c-f84540d2d758.gif)
 
 
 ## Why Component-Relative Paths are not supported
 
-At first this limitation seems like a real screw-up in the Angular project. But the bright minds at Google know [from experience] that developers can [and will] load the files and modules using many different methods:
+At first this limitation seems like a real feature screw-up within Angular. But the bright minds at Google know [from experience] that developers can [and will] load the files and modules using many different methods:
 
-* Loading each file explicitly using `<script type="text/javascript" src="..."></script>`
+* Loading each file explicitly
+  * use `<script type="text/javascript" src="..."></script>`
 * Loading from CommonJS packages
 * Loading from SystemJS
 * Loading using JSPM
 * Loading using WebPack
 * Loading using Browserify
 
-There are so many ways developers can deploy their apps, bundled or unbundled, different module formats... It simply is not possible for Angular to absolutely know where the files reside at runtime.
+There are so many ways developers can deploy their apps: bundled or unbundled, different module formats, etc. It simply is not possible for Angular to absolutely know where the files reside at runtime.
 
 
 ## Agreeing on Constraints
@@ -224,7 +240,7 @@ export class HeaderComponent implements OnInit {
 
 *JSPM*
 
-If we decide to use **JSPM**, we use alternate format in the `config.js` file:
+If we decide to use **JSPM**, we use the `typescriptOptions` configuration format in the `config.js` file:
 
 **config.js**
 {% highlight js %}
@@ -265,7 +281,7 @@ SystemJS.config({
 
 If we decide to use **WebPack** to bundle our files, we can use `template : require('./header.component.html')` to reference component-relative paths. See [WebPack : An Introduction](https://angular.io/docs/ts/latest/guide/webpack.html) for more details.
 
-**header.component.js**
+**header.component.ts**
 {% highlight js %}
 {% raw %}
 import { Component } from '@angular/core';
@@ -282,11 +298,9 @@ export class HeaderComponent implements OnInit {
 {% endraw %}
 {% endhighlight %}
 
-*Note:* here we are not using Urls **and** we are using `template: require('...')`
+*Note:* here we are not using the url keys. Instead we are using `template: require('...')` to load the data directly.
 
 ## Conclusion
 
-So just remember that setting `moduleId :  module.id` in the `@Component` decorator is the key lesson here; otherwise Angular 2 will look for our files in paths relative to the application root.
-
-The beauty of this solution is that we can (1) easily repackage our components and (2) easily reuse components... all without changing the `@Component` metadata.
+So just remember that setting `moduleId :  module.id` in the `@Component` decorator is the key lesson here; otherwise Angular 2 will look for our files in paths relative to the application root. The beauty of this solution is that we can (1) easily repackage our components and (2) easily reuse components... all without changing the `@Component` metadata.
 
