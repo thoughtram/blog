@@ -20,7 +20,7 @@ topic: components
 author: thomas_burleson
 ---
 
-The component-based development featured in Angular 2 is its *most-loved* feature. By now you should be familiar with using the `@Component` decorators to create components. You should be familiar with the required metadata information such as `selector` and `template`. Shown below is a simple Header component: 
+The component-based development featured in Angular 2 is its *most-loved* feature. By now you should be familiar with using the `@Component` decorators to create components. You should be familiar with the required metadata information such as `selector` and `template`. 
 
 {% highlight js %}
 {% raw %}
@@ -73,13 +73,13 @@ export class HeaderComponent implements OnInit {
 {% endraw %}
 {% endhighlight %}
 
-> We actually this component in our [Angular 2 Master Class training](http://thoughtram.io/angular2-master-class.html).
+> We actually use this component in our [Angular 2 Master Class training](http://thoughtram.io/angular2-master-class.html).
 
-Using this component is super easy. Since there are no external file dependencies and all the HTML and CSS is defined inline, we should *never* see [in the DevTools console] a 404 loading error for this component.
+Using this component is super easy. There are no external file dependencies as all the HTML and CSS is defined inline. Therefore we should *never* see [in the DevTools console] a 404 loading error for this component.
 
 ## Components with External Assets
 
-Another feature let's us load HTML and styles from external files: using URLs in the metadata configuration block. Refactoring a component's code, HTML, and CSS into three separate files [in the same package] is a common best-practice.
+Another component feature allows us to load HTML and styles from external files: using URLs in the metadata configuration block. Refactoring a component's code, HTML, and CSS into three separate files [in the same package] is a common best-practice.
 
 *  header.component.ts
 *  header.component.html
@@ -122,7 +122,7 @@ export class HeaderComponent implements OnInit {
 {% endraw %}
 {% endhighlight %}
 
-The important factor to note is that the URL required above [in `header.component.ts`] is relative to the **application root** which is usually the location of the `index.html` web page that hosts the application. So the above component - without any url path information - must be stored in the application root. 
+Above we used URLs to specify external HTML and CSS resources. The important factor to note is that the URL required above [in `header.component.ts`] is not an absolute path. The path is actually relative to the **application root**: which is usually the location of the `index.html` web page that hosts the application. So the above component - without any url path information - must be stored in the application root in order to avoid 404 errors. 
 
 Wow, this does not scale well!
 
