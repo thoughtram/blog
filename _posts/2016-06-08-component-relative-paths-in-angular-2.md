@@ -5,7 +5,7 @@ title:      "Component-Relative Paths in Angular 2"
 date: 2016-06-08
 imageUrl: '/images/banner/component-relative-paths-in-angular-2.jpg'
 
-summary: "Creating components in Angular 2 is awesome in so many ways. But developers should be careful when using external HTML and CSS files. Component-relative paths are not immediately intuitive. But with a brief review of the relative issues and constraints, developers can more easily create maintainable, reusable, portable components."
+summary: "Creating components in Angular 2 is awesome in so many ways. Developers should be careful, however, when using external component HTML and CSS files. Component-relative paths are not immediately intuitive. But with a brief review of the relative issues and constraints, developers can more easily create maintainable, reusable, portable components."
 
 categories:
   - angular
@@ -20,7 +20,7 @@ topic: components
 author: thomas_burleson
 ---
 
-The component-based development featured in Angular 2 is its *most-loved* feature. By now you should be familiar with using the `@Component` decorators to create components. You should be familiar with the required metadata information such as `selector` and `template`. 
+Component-based development is Angular 2's *most-loved* feature. By now you should be familiar with using the `@Component` decorators to create components. You should be familiar with the required metadata information such as `selector` and `template`. 
 
 {% highlight js %}
 {% raw %}
