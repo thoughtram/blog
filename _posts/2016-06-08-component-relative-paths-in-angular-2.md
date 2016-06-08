@@ -163,7 +163,7 @@ export class HeaderComponent implements OnInit {
 {% endraw %}
 {% endhighlight %}
 
-You might expect that `./header.component.html` is a path relative to the `header.component.ts` file and that component-relative paths should work, right?  Nope, you get another **404 Not found Exception**.
+We might expect that `./header.component.html` is a path relative to the `header.component.ts` file and that component-relative paths should work, right?  Instead, we get another **404 Not found Exception**.
 
 Remember we noted that the paths are relative to the Application Root **at load time**? Since we are using the package `src/app/header/header.component.*`, then our files obviously are not at the app root. We could use a gulp or grunt task to deploy to a `dist` directory and have all our components in the dist root directory. 
 
