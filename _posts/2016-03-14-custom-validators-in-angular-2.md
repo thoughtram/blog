@@ -383,7 +383,7 @@ Here's the full code for our custom email validator:
 {% highlight js %}
 {% raw %}
 import {provide, Directive, forwardRef} from '@angular/core';
-import {Control} from '@angular/common';
+import {NG_VALIDATORS, Control} from '@angular/common';
 
 function validateEmailFactory(emailBlackList: EmailBlackList) {
   return (c: Control) => {
