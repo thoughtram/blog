@@ -153,9 +153,9 @@ export class HeaderComponent implements OnInit {
 {% endraw %}
 {% endhighlight %}
 
-![no-gif](https://cloud.githubusercontent.com/assets/210413/15881568/9c552dac-2cfc-11e6-808c-f84540d2d758.gif)
-
 This is a horrible idea and band-aid solution. Don't do it...
+
+![no-gif](https://cloud.githubusercontent.com/assets/210413/15881568/9c552dac-2cfc-11e6-808c-f84540d2d758.gif)
 
 * What if we move our components to other packages? 
 * What if we want to reuse our components in other applications?
