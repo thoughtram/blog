@@ -5,7 +5,7 @@ title:      "Component-Relative Paths in Angular 2"
 date: 2016-06-08
 imageUrl: '/images/banner/component-relative-paths-in-angular-2.jpg'
 
-summary: "Creating components in Angular 2 has been improved in many ways. But developers should be careful when using external HTML and CSS files. Component-relative paths are not immediatley intuitive. But with a brief review of the relative issues and constraints, developers can more easily create maintainable, reusable, portable components."
+summary: "Creating components in Angular 2 is awesome in so many ways. But developers should be careful when using external HTML and CSS files. Component-relative paths are not immediately intuitive. But with a brief review of the relative issues and constraints, developers can more easily create maintainable, reusable, portable components."
 
 categories:
   - angular
@@ -41,9 +41,11 @@ export class HeaderComponent implements OnInit {  }
 
 > If the above component syntax is new and strange, you should first review our article on [Building a Zipping Component in Angular 2](http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html). 
 
-If you are familiar with these concepts and you happen to be lucky, your components load without any problems.  Mostly likely, though, you have already encountered (or soon will) the dreaded, frustrating 404 component-loading errors: template HTML or styles (CSS) cannot be loaded! 
+If you are familiar with these concepts and you happen to be lucky, your components load without any problems.  Mostly likely, though, you have already encountered (or soon will) the dreaded, frustrating 404 component-loading errors:  
 
 ![component_url_404](https://cloud.githubusercontent.com/assets/210413/15878482/eca5cba2-2ce0-11e6-8fb4-78868bec2644.png)
+
+> These errors mean your template HTML or styles (CSS) cannot be loaded!
 
 Let's talk about why that happens and see how we can solve such problems in a way that is flexible and portable.  Before we jump into the actual problem we want to solve, let's first review two (2) types of custom component implementations.
 
