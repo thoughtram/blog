@@ -3,7 +3,7 @@ layout:     post
 title:      "Component-Relative Paths in Angular 2"
 
 date: 2016-06-08
-imageUrl: '/images/banner/opaque-tokens-in-angular-2.jpeg'
+imageUrl: '/images/banner/component-relative-paths-in-angular-2.jpg'
 
 summary: "Creating components in Angular 2 has been improved in many ways. But developers should be careful when using external HTML and CSS files. Component-relative paths are not immediatley intuitive. But with a brief review of the relative issues and constraints, developers can more easily create maintainable, reusable, portable components."
 
@@ -17,25 +17,27 @@ tags:
 
 topic: components
 
-author: thomasburleson
----
+author: thomas_burleson
+-----------------------
 
-Easily creating components is the most-loved feature of Angular 2. By now you should be familiar with using the @Component annotations to create components. And I bet you are also familiar with the required metadata information such as `selector` and `template`.
+Easily creating components is the most-loved feature of Angular 2. By now you should be familiar with using the `@Component` decorators to create components. You are probably already familiar with the required metadata information such as `selector` and `template`; if not you might want to read our article on [building a zipping component](http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html).
 
-If you happen to be lucky, your components and their HTML/CSS load without any problems. But I am willing to bet that you will or have already encountered the dreaded, frustrating 404 errors where the template HTML or styles (CSS) cannot be found! Let's talk about why that happens and see how we can solve that problem in a way that is flexible and portable. 
+If you happen to be lucky, your components and their HTML/CSS load without any problems. Perhaps you have already (or soon will) encounter the dreaded, frustrating 404 component-loading errors where the template HTML or styles (CSS) cannot be found! 
+
+Let's talk about why that happens and see how we can solve that problem in a way that is flexible and portable. 
 
 Before we jump, however, into the actual problem we want to solve, let's first review two (2) types of component implementations.
 
 ## Components with Inline Metadata
 
-For every Angular 2 component that we implement, we define not only an HTML template, but may also the define CSS styles that go with that template, specifying any selectors, rules, and media queries that we need.
+For every Angular 2 component that we implement, we define not only an HTML template, but may also define the CSS styles that go with that template, specifying any selectors, rules, and media queries that we need.
 
 One way to do this is to set the `styles` and `template` property in the component metadata.
 
 Consider a simple *Header* component... which we actually use in our Angular 2 Master Class training.
 
 **header.component.ts**
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 import { Component, OnInit } from '@angular/core';
 
@@ -51,17 +53,15 @@ import { Component, OnInit } from '@angular/core';
   styles: ['.navbar-fixed { position:fixed; }']
 })
 export class HeaderComponent implements OnInit {
-  constructor() {}
-  ngOnInit() {}
 }
 {% endraw %}
 {% endhighlight %}
 
-Using this component is super easy and since there are no external file dependencies and everything is defined inline then you should *never* see a 404 error [for this component] in the DevTools console.
+Using this component is super easy and since there are no external file dependencies and everything is defined inline. You should *never* see a 404 error [for this component] in the DevTools console.
 
 ## Components with External Assets
 
-Another options let's us load html and styles from external files by using the URLs in the metadata configuration block. This is a common practice to split a component's code, HTML, and CSS into three separate files in the same directory:
+Another option let's us load HTML and styles from external files by using the URLs in the metadata configuration block. This is a common practice to split a component's code, HTML, and CSS into three separate files in the same directory:
 
 *  header.component.ts
 *  header.component.html
@@ -70,18 +70,16 @@ Another options let's us load html and styles from external files by using the U
 This practice of using external files is especially important when your HTML or CSS is non-trivial. Using external files keeps your *.ts logic files much cleaner and easier to maintain.
 
 **header.component.ts**
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector   : 'contacts-header',
   templateUrl: 'header.component.html',
-  stylesUrl  : 'header.component.css'
+  styleUrls  : 'header.component.css'
 })
 export class HeaderComponent implements OnInit {
-  constructor() {}
-  ngOnInit() {}
 }
 {% endraw %}
 {% endhighlight %}
@@ -124,59 +122,50 @@ So if path to the component HTML or CSS file is not valid, the **EASY** workarou
 
 
 **header.component.ts**
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector   : 'contacts-header',
   templateUrl: 'src/app/header/header.component.html',
-  stylesUrl  : 'src/app/header/header.component.css'
+  styleUrls  : 'src/app/header/header.component.css'
 })
 export class HeaderComponent implements OnInit {
-  constructor() {}
-  ngOnInit() {}
 }
 {% endraw %}
 {% endhighlight %}
 
-I hope you agree that this is a horrible idea and band-aid solution. 
+This is a horrible idea and band-aid solution. 
 
-* What if I move my components to other packages? I will have to update the absolute paths...
-* What if I want to reuse my components in other applications?
-* Can I not use using relative-paths in my components ?
-
-![what](https://cloud.githubusercontent.com/assets/210413/15881627/0d0bc056-2cfd-11e6-8086-a87bfbbf91e6.gif)
-
+* What if we move our components to other packages? We will have to update the absolute paths...
+* What if we want to reuse our components in other applications?
+* Can we not use using relative-paths in our components ?
 
 ## Components with Relative-Path URLs
 
-In fact, you can use relative paths. But not the way you may first think... and not without understanding and accepting some constraints.
+In fact, we can use relative paths. But not the way you may first think... and not without understanding and accepting some constraints.
 
 At first we might be tempted to try this:
 
 **header.component.ts**
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector   : 'contacts-header',
   templateUrl: './header.component.html',
-  stylesUrl  : './header.component.css'
+  styleUrls  : './header.component.css'
 })
 export class HeaderComponent implements OnInit {
-  constructor() {}
-  ngOnInit() {}
 }
 {% endraw %}
 {% endhighlight %}
 
 You might expect that `./header.component.html` is a path relative to the `header.component.ts` file and that component-relative paths should work, right?  Nope, you get another **404 Not found Exception**.
 
-Remember we noted that the paths are relative to the Application Root **at load time**? Since we are using the package `src/app/header/header.component.*`, then our files obviously are not at the app root.
-
-We could use a gulp or grunt task to deploy to a `dist` directory and have all our components in the dist root directory. 
+Remember we noted that the paths are relative to the Application Root **at load time**? Since we are using the package `src/app/header/header.component.*`, then our files obviously are not at the app root. We could use a gulp or grunt task to deploy to a `dist` directory and have all our components in the dist root directory. 
 
 OMG, that is a horrible idea! Don't do it.
 
@@ -185,7 +174,7 @@ OMG, that is a horrible idea! Don't do it.
 
 ## Why Component-Relative Paths are not supported
 
-At first this limitation seems like a real screw-up from the Angular team. But the bright minds at Google know [from experience] that developers can [and will] load the files and modules using many different methods:
+At first this limitation seems like a real screw-up in the Angular project. But the bright minds at Google know [from experience] that developers can [and will] load the files and modules using many different methods:
 
 * Loading each file explicitly using `<script type="text/javascript" src="..."></script>`
 * Loading from CommonJS packages
@@ -204,7 +193,7 @@ If we decide on **CommonJS** formats AND we use a standard module loader, then w
 Let's see how this works in the component:
 
 **header.component.ts**
-{% highlight ts %}
+{% highlight js %}
 {% raw %}
 import { Component, OnInit } from '@angular/core';
 
@@ -215,13 +204,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  constructor() {}
-  ngOnInit() {}
 }
 {% endraw %}
 {% endhighlight %}
 
-> Note the above requires that your `tsconfig.json` file specifies *commmonjs*; since module.id is a variable available when using that module format:
+*Note:* the above requires that your `tsconfig.json` file specifies *commmonjs*; since module.id is a variable available when using that module format:
 **tsconfig.json**
 {% highlight json %}
 {% raw %}
@@ -234,7 +221,8 @@ export class HeaderComponent implements OnInit {
 {% endraw %}
 {% endhighlight %}
 
-##### JSPM
+
+*JSPM*
 
 If we decide to use **JSPM**, we use alternate format in the `config.js` file:
 
@@ -271,9 +259,9 @@ SystemJS.config({
 {% endraw %}
 {% endhighlight %}
 
-> Note: this solution requires the [SystemJS Typescript Plugin](https://github.com/frankwallis/plugin-typescript) to transcompile the typescript
+*Note:*: this solution requires the [SystemJS Typescript Plugin](https://github.com/frankwallis/plugin-typescript) to transcompile the typescript
 
-##### WebPack
+*WebPack*
 
 If we decide to use **WebPack** to bundle our files, we can use `template : require('./header.component.html')` to reference component-relative paths. See [WebPack : An Introduction](https://angular.io/docs/ts/latest/guide/webpack.html) for more details.
 
@@ -290,16 +278,15 @@ import '../../public/css/styles.css';
   styles: [require('./header.component.css')]
 })
 export class HeaderComponent implements OnInit {
-  constructor() {}
-  ngOnInit() {}
 }
 {% endraw %}
 {% endhighlight %}
 
-> Note here we are not using Urls **and** we are using `template: require('...')`
+*Note:* here we are not using Urls **and** we are using `template: require('...')`
 
 ## Conclusion
 
-So just remember that setting `moduleId :  module.id` in the @Component decorator is the key lesson here; otherwise Angular 2 will look for your files relative to the application root path.
+So just remember that setting `moduleId :  module.id` in the `@Component` decorator is the key lesson here; otherwise Angular 2 will look for our files in paths relative to the application root.
 
-Best of all, the beauty of this solution is that (1) you can easily repackage your components and (2) easily reuse components... all without change with paths in the component Url metadata.
+The beauty of this solution is that we can (1) easily repackage our components and (2) easily reuse components... all without changing the `@Component` metadata.
+
