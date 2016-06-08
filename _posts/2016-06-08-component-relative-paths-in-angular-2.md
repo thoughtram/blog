@@ -77,7 +77,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector   : 'contacts-header',
   templateUrl: 'header.component.html',
-  styleUrls  : 'header.component.css'
+  styleUrls  : ['header.component.css']
 })
 export class HeaderComponent implements OnInit {
 }
@@ -129,7 +129,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector   : 'contacts-header',
   templateUrl: 'src/app/header/header.component.html',
-  styleUrls  : 'src/app/header/header.component.css'
+  styleUrls  : ['src/app/header/header.component.css']
 })
 export class HeaderComponent implements OnInit {
 }
@@ -156,7 +156,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector   : 'contacts-header',
   templateUrl: './header.component.html',
-  styleUrls  : './header.component.css'
+  styleUrls  : ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
 }
