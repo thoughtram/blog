@@ -181,18 +181,16 @@ export class HeaderComponent implements OnInit {
 
 We might expect that `./header.component.html` is a path relative to the `header.component.ts` file and that component-relative paths should work, right?  Instead, we get another **404 - Not found - Exception**.
 
-Remember we noted that the paths are relative to the Application Root **at load time**? Since we are using the package `src/app/header/header.component.*`, then our files obviously are not at the app root. We could use a gulp or grunt task to deploy to a `dist` directory and have all our components in the dist root directory. 
+Remember we noted that the paths are relative to the Application Root **at load time**? Since we are using the package `src/app/header/header.component.*`, then our files obviously are not at the app root. 
 
-Don't deploy all your component files to the app root... OMG, that is a horrible idea! Don't do it.
-
+We could use a gulp or grunt task to deploy to a `dist` directory and have all our components in the dist root directory. Don't deploy all your component files to the app root... OMG, that is a horrible idea! Don't do it.
 
 
 ## Why Component-Relative Paths are not supported
 
 At first this limitation seems like a real feature screw-up within Angular. But the bright minds at Google know [from experience] that developers can [and will] load the files and modules using many different methods:
 
-* Loading each file explicitly
-  * use `<script type="text/javascript" src="..."></script>`
+* Loading each file explicitly with `<script>` tags
 * Loading from CommonJS packages
 * Loading from SystemJS
 * Loading using JSPM
@@ -225,6 +223,7 @@ export class HeaderComponent implements OnInit {
 {% endhighlight %}
 
 *Note:* the above requires that your `tsconfig.json` file specifies *commmonjs*; since module.id is a variable available when using that module format:
+
 **tsconfig.json**
 {% highlight json %}
 {% raw %}
@@ -281,7 +280,6 @@ SystemJS.config({
 
 If we decide to use **WebPack** to bundle our files, we can use `template : require('./header.component.html')` to reference component-relative paths. See [WebPack : An Introduction](https://angular.io/docs/ts/latest/guide/webpack.html) for more details.
 
-**header.component.ts**
 {% highlight js %}
 {% raw %}
 import { Component } from '@angular/core';
