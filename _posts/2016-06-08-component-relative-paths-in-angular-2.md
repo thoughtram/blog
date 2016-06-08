@@ -79,7 +79,7 @@ Using this component is super easy. There are no external file dependencies as a
 
 ## Components with External Assets
 
-Another component feature allows us to load HTML and styles from external files: using URLs in the metadata configuration block. Refactoring a component's code, HTML, and CSS into three separate files [in the same package] is a common best-practice.
+Another component feature allows us to load HTML and styles from external files: using URLs in the metadata configuration block. Refactoring a component's code, HTML, and CSS into three separate files [in the same package] is a common [Angular 2 Best-Practice](https://angular.io/docs/ts/latest/guide/style-guide.html#!#components).
 
 *  header.component.ts
 *  header.component.html
