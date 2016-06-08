@@ -22,7 +22,6 @@ author: thomas_burleson
 
 The component-based development featured in Angular 2 is its *most-loved* feature. By now you should be familiar with using the `@Component` decorators to create components. Shown below is a simple component. You should be familiar with the required metadata information such as `selector` and `template`:
 
-**header.component.ts**
 {% highlight js %}
 {% raw %}
 import { Component, OnInit } from '@angular/core';
@@ -40,11 +39,11 @@ export class HeaderComponent implements OnInit {  }
 {% endraw %}
 {% endhighlight %}
 
-> If the above component concepts are new and strange, you should first review our article on [Building a Zipping Component in Angular 2](http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html). If you are familiar with these concepts and you happen to be lucky, your components load without any problems. 
+> If the above component concepts are new and strange, you should first review our article on [Building a Zipping Component in Angular 2](http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html). 
 
-Mostly likely, though, you have already encountered (or soon will) the dreaded, frustrating 404 component-loading errors: template HTML or styles (CSS) cannot be loaded! Let's talk about why that happens and see how we can solve that problem in a way that is flexible and portable. 
+If you are familiar with these concepts and you happen to be lucky, your components load without any problems.  Mostly likely, though, you have already encountered (or soon will) the dreaded, frustrating 404 component-loading errors: template HTML or styles (CSS) cannot be loaded! 
 
-Before we jump into the actual problem we want to solve, let's first review two (2) types of custom component implementations.
+Let's talk about why that happens and see how we can solve that problem in a way that is flexible and portable.  Before we jump into the actual problem we want to solve, let's first review two (2) types of custom component implementations.
 
 ## Components with Inline Metadata
 
@@ -52,7 +51,6 @@ For every Angular 2 component that we implement, we define not only an HTML temp
 
 One way to do this is to set the `styles` and `template` property in the component metadata. Consider a simple *Header* component... which we actually use in our [Angular 2 Master Class training](http://thoughtram.io/angular2-master-class.html).
 
-**header.component.ts**
 {% highlight js %}
 {% raw %}
 import { Component, OnInit } from '@angular/core';
@@ -137,7 +135,6 @@ To explore the issue, let's consider the scenario where our details component (a
 Are you tempted to try and debug or introspect the exception stack and determine why the file was not found?  If path to the component HTML or CSS file is not valid, the **EASY** workaround is to add absolute paths to the URLs. Let's briefly explore that idea:
 
 
-**header.component.ts**
 {% highlight js %}
 {% raw %}
 import { Component, OnInit } from '@angular/core';
@@ -164,7 +161,6 @@ This is a horrible idea and band-aid solution. Don't do it...
 
 In fact, we can use relative paths. But not the way you may first think... and not without understanding and accepting some constraints. At first we might be tempted to try this:
 
-**header.component.ts**
 {% highlight js %}
 {% raw %}
 import { Component, OnInit } from '@angular/core';
