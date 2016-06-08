@@ -154,17 +154,19 @@ export class HeaderComponent implements OnInit {
 {% endraw %}
 {% endhighlight %}
 
-This is a horrible idea and band-aid solution. Don't do it...
-
 ![no-gif](https://cloud.githubusercontent.com/assets/210413/15881568/9c552dac-2cfc-11e6-808c-f84540d2d758.gif)
 
 * What if we move our components to other packages? 
 * What if we want to reuse our components in other applications?
 * Can we not use using relative-paths in our components ?
 
+Using absolute paths in our URLs for component HTML or CSS is a horrible idea and band-aid solution. Don't do it!
+
 ## Components with Relative-Path URLs
 
-In fact, we can use relative paths. But not the way you may first think... and not without understanding and accepting some constraints. At first we might be tempted to try this:
+In fact, we can use relative paths. But not the way you may first think... and not without understanding and accepting some constraints. 
+
+At first we might be tempted to try this:
 
 {% highlight js %}
 {% raw %}
@@ -180,11 +182,13 @@ export class HeaderComponent implements OnInit {
 {% endraw %}
 {% endhighlight %}
 
-We might expect that `./header.component.html` is a path relative to the `header.component.ts` file and that component-relative paths should work, right?  Instead, we get another **404 - Not found - Exception**.
+We might expect that `./header.component.html` is a path relative to the `header.component.ts` file and that component-relative paths should work, right?  
 
-Remember we noted that the paths are relative to the Application Root **at load time**? Since we are using the package `src/app/header/header.component.*`, then our files obviously are not at the app root. 
+Instead, we get another **404 - Not found - Exception**.
 
-We could use a gulp or grunt task to deploy to a `dist` directory and have all our components in the dist root directory. Don't deploy all your component files to the app root... OMG, that is a horrible idea! Don't do it.
+Remember we noted that the paths are relative to the **Application Root** (at load time)? Since we are using the package `src/app/header/header.component.*`, then our files obviously are not at the app root. Even worse is a scenario where the deployed files have different structures than the originating source. 
+
+We could use a gulp or grunt task to deploy to a `dist` directory and have all our components in the dist root directory. Don't deploy all your component files to the app root... OMG, that is another horrible idea! Don't do it.
 
 
 ## Why Component-Relative Paths are not supported
