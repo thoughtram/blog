@@ -122,14 +122,15 @@ export class HeaderComponent implements OnInit {
 {% endraw %}
 {% endhighlight %}
 
-Above we used URLs to specify external HTML and CSS resources. The important factor to note is that the URL required above [in `header.component.ts`] is not an absolute path. The path is actually relative to the **application root**: which is usually the location of the `index.html` web page that hosts the application. So the above component - without any url path information - must be stored in the application root in order to avoid 404 errors. 
+Above we used URLs to specify external HTML and CSS resources. The important factor to note is that the URL required above [in `header.component.ts`] is not an absolute path. The path is actually relative to the **application root**: which is usually the location of the `index.html` web page that hosts the application. 
 
-Wow, this does not scale well!
+So the above component - without any url path information - must be stored in the application root in order to avoid 404 errors.  Wow, this does not scale well!
 
 *  What if we have many components all at the root level ? 
 *  What if my components are organized in distinct packages ?
 *  What if we want to organize our components by feature or context ?
-  > This is actually an Angular Style Guide - Best Practice
+
+>  Packaging by feature is actually an [Angular 2 Style Guide - Best Practice](https://angular.io/docs/ts/latest/guide/style-guide.html#!#application-structure)
 
 
 To explore the issue, let's consider the scenario where our details component (and files) are in the `src/app/header` package. The urls used above ( `header.component.html` and `header.component.css` ) would cause the loader to fail and the developer would see the following 404 error in the developers console:
