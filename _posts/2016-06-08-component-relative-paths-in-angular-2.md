@@ -43,7 +43,9 @@ export class HeaderComponent implements OnInit {  }
 
 If you are familiar with these concepts and you happen to be lucky, your components load without any problems.  Mostly likely, though, you have already encountered (or soon will) the dreaded, frustrating 404 component-loading errors: template HTML or styles (CSS) cannot be loaded! 
 
-Let's talk about why that happens and see how we can solve that problem in a way that is flexible and portable.  Before we jump into the actual problem we want to solve, let's first review two (2) types of custom component implementations.
+![component_url_404](https://cloud.githubusercontent.com/assets/210413/15878482/eca5cba2-2ce0-11e6-8fb4-78868bec2644.png)
+
+Let's talk about why that happens and see how we can solve such problems in a way that is flexible and portable.  Before we jump into the actual problem we want to solve, let's first review two (2) types of custom component implementations.
 
 ## Components with Inline Metadata
 
