@@ -118,7 +118,9 @@ To explore the issue, let's consider the scenario where our details component (a
 
 ![component_url_404](https://cloud.githubusercontent.com/assets/210413/15878482/eca5cba2-2ce0-11e6-8fb4-78868bec2644.png)
 
-Now the **EASY** workaround is to add absolute paths to the URLs; but don't do it:
+Are you tempted to try and debug or introspect the exception stack and determine why the file was not found: good luck with that!
+ 
+So if path to the component HTML or CSS file is not valid, the **EASY** workaround is to add absolute paths to the URLs... but don't do it:
 
 **header.component.ts**
 {% highlight ts %}
@@ -137,7 +139,7 @@ export class HeaderComponent implements OnInit {
 {% endraw %}
 {% endhighlight %}
 
-For me, this is a horrible solution.
+I hope you agree that this is a horrible idea and band-aid solution. 
 
 * What if I move my components to other packages? I will have to update the absolute paths...
 * What if I want to reuse my components in other applications?
