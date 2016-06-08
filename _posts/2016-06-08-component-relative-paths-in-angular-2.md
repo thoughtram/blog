@@ -207,9 +207,9 @@ There are so many ways developers can deploy their apps: bundled or unbundled, d
 
 ## Agreeing on Constraints
 
-If we decide on **CommonJS** formats AND we use a standard module loader, then we can use the `module.id` variable which contains the absolute URL of the component class [when the module file is actually loaded]. The exact syntax is `moduleId : module.id`.
+If we decide on **CommonJS** formats AND we use a standard module loader, then we can use the `module.id` variable which contains the absolute URL of the component class [when the module file is actually loaded]. 
 
-Let's see how this works in the component:
+The exact syntax is `moduleId : module.id`. Let's see how this works in the component:
 
 **header.component.ts**
 {% highlight js %}
@@ -227,7 +227,7 @@ export class HeaderComponent implements OnInit {
 {% endraw %}
 {% endhighlight %}
 
-*Note:* the above requires that your `tsconfig.json` file specifies *commmonjs*; since module.id is a variable available when using that module format:
+> *Note:* the above requires that your `tsconfig.json` file specifies **commonjs**; since `module.id` is a variable available when using that module format:
 
 **tsconfig.json**
 {% highlight json %}
