@@ -20,15 +20,15 @@ topic: components
 author: thomasburleson
 ---
 
-Easily creating components is the #1 feature of Angular 2. And by now you should be familiar with using the @Component annotations to create components. And I bet you are also familiar with the required metadata information such as `selector` and `template`.
+Easily creating components is the most-loved feature of Angular 2. By now you should be familiar with using the @Component annotations to create components. And I bet you are also familiar with the required metadata information such as `selector` and `template`.
 
-If you happen to be lucky, your components and their HTML/CSS load. But I am willing to bet that  you have also run into the dreaded, frustrating 404 errors where the template HTML or styles (CSS) cannot be found.
+If you happen to be lucky, your components and their HTML/CSS load without any problems. But I am willing to bet that you will or have already encountered the dreaded, frustrating 404 errors where the template HTML or styles (CSS) cannot be found! Let's talk about why that happens and see how we can solve that problem in a way that is flexible and portable. 
 
-Let's talk about why that happens and see how we can solve that problem in a way that is flexible and portable. Before we jump, however, into the actual problem we want to solve, let's first review two (2) types of component implementations.
+Before we jump, however, into the actual problem we want to solve, let's first review two (2) types of component implementations.
 
 ## Components with Inline Metadata
 
-For every Angular 2 component we write, we may define not only an HTML template, but also the CSS styles that go with that template, specifying any selectors, rules, and media queries that we need.
+For every Angular 2 component that we implement, we define not only an HTML template, but may also the define CSS styles that go with that template, specifying any selectors, rules, and media queries that we need.
 
 One way to do this is to set the `styles` and `template` property in the component metadata.
 
