@@ -20,7 +20,7 @@ topic: components
 author: thomas_burleson
 ---
 
-The component-based development featured in Angular 2 is its *most-loved* feature. By now you should be familiar with using the `@Component` decorators to create components. Shown below is a simple component. You should be familiar with the required metadata information such as `selector` and `template`:
+The component-based development featured in Angular 2 is its *most-loved* feature. By now you should be familiar with using the `@Component` decorators to create components. You should be familiar with the required metadata information such as `selector` and `template`. Shown below is a simple Header component: 
 
 {% highlight js %}
 {% raw %}
@@ -39,7 +39,7 @@ export class HeaderComponent implements OnInit {  }
 {% endraw %}
 {% endhighlight %}
 
-> If the above component concepts are new and strange, you should first review our article on [Building a Zipping Component in Angular 2](http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html). 
+> If the above component syntax is new and strange, you should first review our article on [Building a Zipping Component in Angular 2](http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html). 
 
 If you are familiar with these concepts and you happen to be lucky, your components load without any problems.  Mostly likely, though, you have already encountered (or soon will) the dreaded, frustrating 404 component-loading errors: template HTML or styles (CSS) cannot be loaded! 
 
@@ -51,7 +51,7 @@ Let's talk about why that happens and see how we can solve such problems in a wa
 
 For every Angular 2 component that we implement, we define not only an HTML template, but may also define the CSS styles that go with that template, specifying any selectors, rules, and media queries that we need. 
 
-One way to do this is to set the `styles` and `template` property in the component metadata. Consider a simple *Header* component... which we actually use in our [Angular 2 Master Class training](http://thoughtram.io/angular2-master-class.html).
+One way to do this is to set the `styles` and `template` property in the component metadata. Consider a simple *Header* component:
 
 {% highlight js %}
 {% raw %}
@@ -72,6 +72,8 @@ export class HeaderComponent implements OnInit {
 }
 {% endraw %}
 {% endhighlight %}
+
+> We actually this component in our [Angular 2 Master Class training](http://thoughtram.io/angular2-master-class.html).
 
 Using this component is super easy. Since there are no external file dependencies and all the HTML and CSS is defined inline, we should *never* see [in the DevTools console] a 404 loading error for this component.
 
@@ -120,7 +122,7 @@ export class HeaderComponent implements OnInit {
 {% endraw %}
 {% endhighlight %}
 
-Now this is where it gets tricky! The URL required is relative to the application root which is usually the location of the `index.html` web page that hosts the application. So the above component must be stored in the application root. 
+The important factor to note is that the URL required above [in `header.component.ts`] is relative to the **application root** which is usually the location of the `index.html` web page that hosts the application. So the above component - without any url path information - must be stored in the application root. 
 
 Wow, this does not scale well!
 
@@ -130,11 +132,11 @@ Wow, this does not scale well!
   > This is actually an Angular Style Guide - Best Practice
 
 
-To explore the issue, let's consider the scenario where our details component (and files) are in the `src/app/header` package. The urls used above would cause the loader to fail and the developer would see the following 404 error in the developers console:
+To explore the issue, let's consider the scenario where our details component (and files) are in the `src/app/header` package. The urls used above ( `header.component.html` and `header.component.css` ) would cause the loader to fail and the developer would see the following 404 error in the developers console:
 
 ![component_url_404](https://cloud.githubusercontent.com/assets/210413/15878482/eca5cba2-2ce0-11e6-8fb4-78868bec2644.png)
 
-Are you tempted to try and debug or introspect the exception stack and determine why the file was not found?  If path to the component HTML or CSS file is not valid, the **EASY** workaround is to add absolute paths to the URLs. Let's briefly explore that idea:
+If path to the component HTML or CSS file is not valid, the **EASY** workaround is to add absolute paths to the URLs. Let's briefly explore that idea:
 
 
 {% highlight js %}
