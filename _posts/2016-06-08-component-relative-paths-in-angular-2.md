@@ -122,6 +122,7 @@ Are you tempted to try and debug or introspect the exception stack and determine
  
 So if path to the component HTML or CSS file is not valid, the **EASY** workaround is to add absolute paths to the URLs... but don't do it:
 
+
 **header.component.ts**
 {% highlight ts %}
 {% raw %}
@@ -144,6 +145,8 @@ I hope you agree that this is a horrible idea and band-aid solution.
 * What if I move my components to other packages? I will have to update the absolute paths...
 * What if I want to reuse my components in other applications?
 * Can I not use using relative-paths in my components ?
+
+![what](https://cloud.githubusercontent.com/assets/210413/15881627/0d0bc056-2cfd-11e6-8086-a87bfbbf91e6.gif)
 
 
 ## Components with Relative-Path URLs
@@ -173,7 +176,12 @@ You might expect that `./header.component.html` is a path relative to the `heade
 
 Remember we noted that the paths are relative to the Application Root **at load time**? Since we are using the package `src/app/header/header.component.*`, then our files obviously are not at the app root.
 
-We could use a gulp or grunt task to deploy to a `dist` directory and have all our components in the dist root directory. Uugh, that is a horrible idea. Don't do it!
+We could use a gulp or grunt task to deploy to a `dist` directory and have all our components in the dist root directory. 
+
+OMG, that is a horrible idea! Don't do it.
+
+![no-gif](https://cloud.githubusercontent.com/assets/210413/15881568/9c552dac-2cfc-11e6-808c-f84540d2d758.gif)
+
 
 ## Why Component-Relative Paths are not supported
 
