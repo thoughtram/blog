@@ -215,7 +215,15 @@ There are so many ways developers can deploy their apps: bundled or unbundled, d
 
 If we decide on **CommonJS** formats AND we use a standard module loader, then we can use the `module.id` variable which contains the absolute URL of the component class [when the module file is actually loaded]: the exact syntax is `moduleId : module.id`. 
 
-Let's see how this works in the component:
+> This **`moduleId`** value is used by the Angular 2 reflection processes and the `metadata_resolver` component to evaluate the fully-qualified component path before the component is constructed.
+
+Let's see how this works with the component using **CommonJS**, **SystemJS**, **JSPM**, and **WebPack**:
+
+<br/>
+
+---- 
+
+*CommonJS*
 
 **header.component.ts**
 {% highlight js %}
@@ -248,6 +256,32 @@ export class HeaderComponent implements OnInit {
 {% endhighlight %}
 
 
+<br/>
+
+---- 
+
+*SystemJS*
+
+If we decide to use SystemJS, we use **`__moduleName`** variable instead of the `module.id variable`:
+
+
+**header.component.ts**
+{% highlight js %}
+{% raw %}
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  moduleId: __moduleName,    // fully resolved filename; defined at module load time
+  selector: 'contacts-header',
+  templateUrl: 'header.component.html',
+  styleUrls: ['header.component.css']
+})
+export class HeaderComponent implements OnInit {
+}
+{% endraw %}
+{% endhighlight %}
+ 
+ 
 <br/>
 
 ---- 
@@ -289,7 +323,7 @@ SystemJS.config({
 {% endraw %}
 {% endhighlight %}
 
-*Note:* this solution requires the [SystemJS Typescript Plugin](https://github.com/frankwallis/plugin-typescript) to transcompile the typescript
+> *Note* this solution requires the [SystemJS Typescript Plugin](https://github.com/frankwallis/plugin-typescript) to transcompile the typescript
 
 <br/>
 
@@ -297,9 +331,11 @@ SystemJS.config({
 
 *WebPack*
 
-If we decide to use **WebPack** to bundle our files, we can use `require` or `import` to force Webpack to load the file contents and assign directly to the metadata property. This means that WebPack is loading the content **instead** of Angular 2. See [WebPack : An Introduction](https://angular.io/docs/ts/latest/guide/webpack.html) for more details. There are two (2) approaches to using WebPack to load the external HTML and CSS.
+If we decide to use **WebPack** to bundle our files, we can use `require` or `import` to force Webpack to load the file contents and assign directly to the metadata property. This means that WebPack is loading the content **instead** of Angular 2's runtime loader. See [WebPack : An Introduction](https://angular.io/docs/ts/latest/guide/webpack.html) for more details. 
 
-1) We can use `require('./header.component.html')` to reference component-relative paths. 
+With WebPack there are two (2) options available to load the component's external HTML and CSS.
+
+1) We can use `require( )` to reference component-relative paths. 
 
 {% highlight js %}
 {% raw %}
@@ -315,7 +351,7 @@ export class HeaderComponent implements OnInit {
 {% endraw %}
 {% endhighlight %}
 
-It is important to note that here we are not using the `templateUrl` or `styleUrls` keys. Instead we are using `template: require('...')` to load the data and assign the contents directly to the metadata object **BEFORE** the Angular 2  component initializes.
+It is important to note that here we are not using the `templateUrl` or `styleUrls` keys. Instead we are using `require('...')` to load the data and assign the file contents directly to the metadata object key `template` **BEFORE** the Angular 2  component initializes.
 
 2) As an alternative approach to `require(...)`, we can instead use `import headerTemplate from './header.component.html';`:
 
@@ -344,5 +380,7 @@ export class HeaderComponent implements OnInit {
 
 The key lesson is to set the **`moduleId :  module.id`** in the `@Component` decorator! Without the **moduleId** setting, Angular 2 will look for our files in paths relative to the application root. 
 
-And the beauty of this solution is that we can (1) easily repackage our components and (2) easily reuse components... all without changing the `@Component` metadata.
+> And don't forget the `"module": "commonjs"` in your **tsconfig.json**. 
+
+The beauty of this component-relative-path solution is that we can (1) easily repackage our components and (2) easily reuse components... all without changing the `@Component` metadata.
 
