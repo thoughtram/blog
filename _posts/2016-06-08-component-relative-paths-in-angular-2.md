@@ -132,7 +132,7 @@ So the above component - without any url path information - must be stored in th
 *  What if my components are organized in distinct packages ?
 *  What if we want to organize our components by feature or context ?
 
->  Packaging by feature is actually an [Angular 2 Style Guide - Best Practice](https://angular.io/docs/ts/latest/guide/style-guide.html#!#application-structure)
+>  'Organizing by feature' is actually an [Angular 2 Style Guide - Best Practice](https://angular.io/docs/ts/latest/guide/style-guide.html#!#application-structure)
 
 
 To explore the issue, let's consider the scenario where our details component (and files) are in the `src/app/header` package. The urls used above ( `header.component.html` and `header.component.css` ) would cause the loader to fail and the developer would see the following 404 error in the developers console:
@@ -156,13 +156,16 @@ export class HeaderComponent implements OnInit {
 {% endraw %}
 {% endhighlight %}
 
-![no-gif](https://cloud.githubusercontent.com/assets/210413/15881568/9c552dac-2cfc-11e6-808c-f84540d2d758.gif)
+This approach immediately triggers important questions and concerns:
 
 * What if we move our components to other packages? 
 * What if we want to reuse our components in other applications?
 * Can we not use using relative-paths in our components ?
 
 Using absolute paths in our URLs for component HTML or CSS is a horrible idea and band-aid solution. Don't do it!
+
+![no-gif](https://cloud.githubusercontent.com/assets/210413/15881568/9c552dac-2cfc-11e6-808c-f84540d2d758.gif)
+
 
 ## Components with Relative-Path URLs
 
@@ -192,6 +195,7 @@ Remember we noted that the paths are relative to the **Application Root** (at lo
 
 We could use a gulp or grunt task to deploy to a `dist` directory and have all our components in the dist root directory. Don't deploy all your component files to the app root... OMG, that is another horrible idea! Don't do it.
 
+![no-gif](https://cloud.githubusercontent.com/assets/210413/15881568/9c552dac-2cfc-11e6-808c-f84540d2d758.gif)
 
 ## Why Component-Relative Paths are not supported
 
@@ -209,9 +213,17 @@ There are so many ways developers can deploy their apps: bundled or unbundled, d
 
 ## Agreeing on Constraints
 
-If we decide on **CommonJS** formats AND we use a standard module loader, then we can use the `module.id` variable which contains the absolute URL of the component class [when the module file is actually loaded]. 
+If we decide on **CommonJS** formats AND we use a standard module loader, then we can use the `module.id` variable which contains the absolute URL of the component class [when the module file is actually loaded]: the exact syntax is `moduleId : module.id`. 
 
-The exact syntax is `moduleId : module.id`. Let's see how this works in the component:
+> This **`moduleId`** value is used by the Angular 2 reflection processes and the `metadata_resolver` component to evaluate the fully-qualified component path before the component is constructed.
+
+Let's see how this works with the component using **CommonJS**, **SystemJS**, **JSPM**, and **WebPack**:
+
+<br/>
+
+---- 
+
+*CommonJS*
 
 **header.component.ts**
 {% highlight js %}
@@ -243,6 +255,36 @@ export class HeaderComponent implements OnInit {
 {% endraw %}
 {% endhighlight %}
 
+
+<br/>
+
+---- 
+
+*SystemJS*
+
+If we decide to use SystemJS, we use **`__moduleName`** variable instead of the `module.id variable`:
+
+
+**header.component.ts**
+{% highlight js %}
+{% raw %}
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  moduleId: __moduleName,    // fully resolved filename; defined at module load time
+  selector: 'contacts-header',
+  templateUrl: 'header.component.html',
+  styleUrls: ['header.component.css']
+})
+export class HeaderComponent implements OnInit {
+}
+{% endraw %}
+{% endhighlight %}
+ 
+ 
+<br/>
+
+---- 
 
 *JSPM*
 
@@ -281,17 +323,23 @@ SystemJS.config({
 {% endraw %}
 {% endhighlight %}
 
-*Note:*: this solution requires the [SystemJS Typescript Plugin](https://github.com/frankwallis/plugin-typescript) to transcompile the typescript
+> *Note* this solution requires the [SystemJS Typescript Plugin](https://github.com/frankwallis/plugin-typescript) to transcompile the typescript
+
+<br/>
+
+---- 
 
 *WebPack*
 
-If we decide to use **WebPack** to bundle our files, we can use `template : require('./header.component.html')` to reference component-relative paths. See [WebPack : An Introduction](https://angular.io/docs/ts/latest/guide/webpack.html) for more details.
+If we decide to use **WebPack** to bundle our files, we can use `require` or `import` to force Webpack to load the file contents and assign directly to the metadata property. This means that WebPack is loading the content **instead** of Angular 2's runtime loader. See [WebPack : An Introduction](https://angular.io/docs/ts/latest/guide/webpack.html) for more details. 
+
+With WebPack there are two (2) options available to load the component's external HTML and CSS.
+
+1) We can use `require( )` to reference component-relative paths. 
 
 {% highlight js %}
 {% raw %}
 import { Component } from '@angular/core';
-
-import '../../public/css/styles.css';
 
 @Component({
   selector: 'my-app',
@@ -303,9 +351,36 @@ export class HeaderComponent implements OnInit {
 {% endraw %}
 {% endhighlight %}
 
-*Note:* here we are not using the url keys. Instead we are using `template: require('...')` to load the data directly.
+It is important to note that here we are not using the `templateUrl` or `styleUrls` keys. Instead we are using `require('...')` to load the data and assign the file contents directly to the metadata object key `template` **BEFORE** the Angular 2  component initializes.
+
+2) As an alternative approach to `require(...)`, we can instead use `import headerTemplate from './header.component.html';`:
+
+{% highlight js %}
+{% raw %}
+import { Component } from '@angular/core';
+
+import { Component }  from '@angular/core';
+import headerTemplate from './header.component.html';
+import headerStyle    from './header.component.css';
+
+@Component({
+  selector : 'my-app',
+  template : headerTemplate,
+  styles   : [headerStyle]
+})
+export class HeaderComponent implements OnInit {
+}
+{% endraw %}
+{% endhighlight %}
+
+> Personally, I like the `import` approach more. Thanks to Soós Gábor for his WebPack expertise and insight here. 
+
 
 ## Conclusion
 
-So just remember that setting `moduleId :  module.id` in the `@Component` decorator is the key lesson here; otherwise Angular 2 will look for our files in paths relative to the application root. The beauty of this solution is that we can (1) easily repackage our components and (2) easily reuse components... all without changing the `@Component` metadata.
+The key lesson is to set the **`moduleId :  module.id`** in the `@Component` decorator! Without the **moduleId** setting, Angular 2 will look for our files in paths relative to the application root. 
+
+> And don't forget the `"module": "commonjs"` in your **tsconfig.json**. 
+
+The beauty of this component-relative-path solution is that we can (1) easily repackage our components and (2) easily reuse components... all without changing the `@Component` metadata.
 
