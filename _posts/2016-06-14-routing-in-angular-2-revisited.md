@@ -301,4 +301,4 @@ export class ContactsDetailComponent {
 
 Isn't that great? Since `this.route.params` is an `Observable` we can simply pass it to any API that takes an observable, making this component entirely stream based!
 
-Of course, there's way more to cover when it comes to routing. We haven't talked about secondary routes or **guards** yet, but we'll do that in our upcoming articles. Hopefully this one gives you an idea of what to expect from the new router.
+Of course, there's way more to cover when it comes to routing. We haven't talked about secondary routes or **guards** yet, but we'll do that in our upcoming articles. Hopefully this one gives you an idea of what to expect from the new router. For a more in-depth article on the underlying architecture, you might want to read Victor's [awesome blog](http://victorsavkin.com/post/145672529346/angular-router)!
