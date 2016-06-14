@@ -189,42 +189,47 @@
 <script>
 (function (doc, win) {
   var num = Math.floor(Math.random() * (3 - 0));
-  var toc = doc.querySelector('.thtrm-toc');
-  var article = doc.querySelector('.thtrm-article');
-  var author = doc.querySelector('.thtrm-article-author');
-  var classList = toc.classList;
-
   doc.querySelectorAll('.thtrm-ad')[num].classList.add('thtrm-ad--visible');
 
 
-  if (win.matchMedia('(min-width: 1200px)').matches) {
+  var toc = doc.querySelector('.thtrm-toc');
 
-    classList.add('thtrm-toc--absolute');
+  if (toc) {
+    var article = doc.querySelector('.thtrm-article');
+    var author = doc.querySelector('.thtrm-article-author');
+    var classList = toc.classList;
 
-    win.addEventListener('scroll', function () {
-      var articlePositionTop = article.getBoundingClientRect().top
-      var articlePositionBottom = article.getBoundingClientRect().bottom
-      var authorPositionTop = author.getBoundingClientRect().top;
 
-      if ((articlePositionTop >= 40) || (authorPositionTop <= 875)) {
-        if (classList.contains('thtrm-toc--fixed')) {
-          classList.remove('thtrm-toc--fixed');
-          classList.remove('thtrm-toc--faded');
-          classList.add('thtrm-toc--absolute');
 
-          if (authorPositionTop <= 875) {
-            classList.add('thtrm-toc--absolute-bottom');
+    if (win.matchMedia('(min-width: 1200px)').matches) {
+
+      classList.add('thtrm-toc--absolute');
+
+      win.addEventListener('scroll', function () {
+        var articlePositionTop = article.getBoundingClientRect().top
+        var articlePositionBottom = article.getBoundingClientRect().bottom
+        var authorPositionTop = author.getBoundingClientRect().top;
+
+        if ((articlePositionTop >= 40) || (authorPositionTop <= 875)) {
+          if (classList.contains('thtrm-toc--fixed')) {
+            classList.remove('thtrm-toc--fixed');
+            classList.remove('thtrm-toc--faded');
+            classList.add('thtrm-toc--absolute');
+
+            if (authorPositionTop <= 875) {
+              classList.add('thtrm-toc--absolute-bottom');
+            }
+          }
+        } else {
+          if (!classList.contains('thtrm-toc--fixed')) {
+            classList.add('thtrm-toc--fixed');
+            classList.add('thtrm-toc--faded');
+            classList.remove('thtrm-toc--absolute');
+            classList.remove('thtrm-toc--absolute-bottom');
           }
         }
-      } else {
-        if (!classList.contains('thtrm-toc--fixed')) {
-          classList.add('thtrm-toc--fixed');
-          classList.add('thtrm-toc--faded');
-          classList.remove('thtrm-toc--absolute');
-          classList.remove('thtrm-toc--absolute-bottom');
-        }
-      }
-    });
+      });
+    }
   }
 
 }(document, window));
