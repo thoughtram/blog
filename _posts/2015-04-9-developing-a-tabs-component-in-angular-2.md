@@ -354,7 +354,7 @@ export class Tab {
 
 This is a very rudimentary implementation of a tabs component. We can use that as a starting point to make it better over time. For example, we haven't done anything in terms of accessibility. It would also be nice if the component emits some custom events when a tab is activated. We'll cover working with events in Angular 2 in another article.
 
-You can find the running code in [this plunk](http://plnkr.co/edit/1no1sjZ9Lkv4glsUFnnU?p=previews).
+You can find the running code in [this plunk](http://plnkr.co/edit/k47x1WTMxuvPA0J1hcWf?p=preview).
 
 ## Bonus
 
