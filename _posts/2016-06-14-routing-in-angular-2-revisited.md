@@ -240,7 +240,7 @@ export class ContactsListComponent {
 
 There are a couple of things to note here:
 
-- We use the bracket-syntax for `RouterLink` to make expressions work (if this doesn't make sense to you, you might want to read out article on [Angular 2's Template Syntax Demystified](http://localhost:4000/angular/2015/08/11/angular-2-template-syntax-demystified-part-1.html)
+- We use the bracket-syntax for `RouterLink` to make expressions work (if this doesn't make sense to you, you might want to read out article on [Angular 2's Template Syntax Demystified](/angular/2015/08/11/angular-2-template-syntax-demystified-part-1.html)
 - The expression takes an array where the first field is the path we want to route to and the second a hash that fills the route parameters
 - In order to use `RouterLink` in the template, we added `ROUTER_DIRECTIVES` to the component
 
