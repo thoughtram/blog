@@ -28,6 +28,8 @@ author: pascal_precht
 
 {% include deprecated.html %}
 
+**Please read our new article [Routing in Angular 2 revisited](/angular/2016/06/14/routing-in-angular-2-revisited.html)**
+
 If you're following our [articles on Angular](http://blog.thoughtram.io/categories/angular) you might know that, a couple of months ago, [we've written about the new router](http://blog.thoughtram.io/angularjs/2015/02/19/futuristic-routing-in-angular.html), how it can be used, and how it differs from the `ngRoute` standard router. Whereas we mostly touched on using the router in Angular 1 applications, this article discusses how it can be used in Angular 2 applications.
 
 We won't talk about how to get started with Angular 2. We assume that we're all familiar with the installation process and how to bootstrap a small Angular 2 application. If this is entirely new to you, I recommend checking out our articles on [developing a zippy component](http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html) or [developing a tabs component](http://blog.thoughtram.io/angular/2015/04/09/developing-a-tabs-component-in-angular-2.html) in Angular 2. Another great starting point is the [starter kit](http://github.com/angular-class/angular2-webpack-starter) by our friends over at [AngularClass](http://angularclass.com).
