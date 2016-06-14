@@ -248,7 +248,7 @@ Cool! We can now link to `ContactsDetailComponent`. However, this is only half o
 
 ## Access Route Parameters
 
-A component that we route to has access to something that Angular calls the `ActivatedRoute`. An `ActivcatedRoute` is an object that contains information about route parameters, query parameters and URL fragments. `ContactsDetailComponent` needs exactly that to get the id of a contact. We can inject the `ActivatedRoute` into `ContactsDetailComponent`, simply using Angular's DI like this:
+A component that we route to has access to something that Angular calls the `ActivatedRoute`. An `ActivatedRoute` is an object that contains information about route parameters, query parameters and URL fragments. `ContactsDetailComponent` needs exactly that to get the id of a contact. We can inject the `ActivatedRoute` into `ContactsDetailComponent`, simply using Angular's DI like this:
 
 {% highlight js %}
 {% raw %}
