@@ -90,7 +90,7 @@ interface Route {
 
 As we can see, there are actually a couple more properties than just the three we show here. We'll get to them later but this is all we need for now.
 
-Routes are best defined in a separate module to make keep our application easy to test also also make them easier to reuse. Let's define routes for our components in a new module (maybe `contacts.routes.ts`?) so we can add them to our application in the next step:
+Routes are best defined in a separate module to keep our application easy to test and also to make them easier to reuse. Let's define routes for our components in a new module (maybe `contacts.routes.ts`?) so we can add them to our application in the next step:
 
 {% highlight js %}
 {% raw %}
