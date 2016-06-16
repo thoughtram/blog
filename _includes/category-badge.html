@@ -1,0 +1,11 @@
+{% if include.categories contains 'angular' %}
+  <span class="thtrm-category-badge thtrm-category-badge--angular2">Angular 2</span>
+{% elsif include.categories contains 'announcements' %}
+  <span class="thtrm-category-badge thtrm-category-badge--announcements">Announcement</span>
+{% elsif include.categories contains 'angularjs' %}
+  <span class="thtrm-category-badge thtrm-category-badge--angularjs">AngularJS</span>
+{% elsif include.categories contains 'git' %}
+  <span class="thtrm-category-badge thtrm-category-badge--git">Git</span>
+{% elsif include.categories contains 'rust' %}
+  <span class="thtrm-category-badge thtrm-category-badge--rust">Rust</span>
+{% endif %}

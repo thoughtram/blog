@@ -9,17 +9,9 @@ layout: default
       <a title="{{site.posts[0].title}}" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.01) 2%,#29383E 100%), url('{% if site.posts[0].imageUrl %}{{site.posts[0].imageUrl}}{% else %}images/banner/fallback.jpeg{% endif %}');" href="{{site.posts[0].url | prepend: site.baseurl }}" class="thtrm-promo-item">
         <div class="thtrm-promo-item-info">
 
-          {% if site.posts[0].categories contains 'angular' %}
-            <span class="thtrm-category-badge thtrm-category-badge--angular2">Angular 2</span>
-          {% else if site.posts[0].categories contains 'announcements' %}
-            <span class="thtrm-category-badge thtrm-category-badge--announcements">Announcement</span>
-          {% else if site.posts[0].categories contains 'angularjs' %}
-            <span class="thtrm-category-badge thtrm-category-badge--angularjs">AngularJS</span>
-          {% else if site.posts[0].categories contains 'git' %}
-            <span class="thtrm-category-badge thtrm-category-badge--git">Git</span>
-          {% else if site.posts[0].categories contains 'rust' %}
-            <span class="thtrm-category-badge thtrm-category-badge--rust">Rust</span>
-          {% endif %}
+          {% assign categories = site.posts[0].categories %}
+          {% include category-badge.html categories=categories %}
+
           <h2>{{site.posts[0].title}}</h2>
           <span><i class="material-icons">schedule</i> {{ site.posts[0].date | date: "%b %-d, %Y" }}</span>
           <span class="thtrm-promo-item-info-author">
@@ -34,18 +26,8 @@ layout: default
     <div class="thtrm-table-layout-cell">
       <a title="{{site.posts.[1].title}}" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.01) 2%,#29383E 100%), url('{% if site.posts[1].imageUrl %}{{site.posts[1].imageUrl}}{% else %}/images/banner/fallback.jpeg{% endif %}');" href="{{site.posts[1].url | prepend: site.baseurl }}" class="thtrm-promo-item thtrm-promo-item--sub">
         <div class="thtrm-promo-item-info">
-
-          {% if site.posts[1].categories contains 'angular' %}
-            <span class="thtrm-category-badge thtrm-category-badge--angular2">Angular 2</span>
-          {% else if site.posts[1].categories contains 'announcements' %}
-            <span class="thtrm-category-badge thtrm-category-badge--announcements">Announcement</span>
-          {% else if site.posts[1].categories contains 'angularjs' %}
-            <span class="thtrm-category-badge thtrm-category-badge--angularjs">AngularJS</span>
-          {% else if site.posts[1].categories contains 'git' %}
-            <span class="thtrm-category-badge thtrm-category-badge--git">Git</span>
-          {% else if site.posts[1].categories contains 'rust' %}
-            <span class="thtrm-category-badge thtrm-category-badge--rust">Rust</span>
-          {% endif %}
+          {% assign categories = site.posts[1].categories %}
+          {% include category-badge.html categories=categories %}
 
           <h3>{{site.posts[1].title}}</h3>
           <span><i class="material-icons">schedule</i> {{ site.posts[0].date | date: "%b %-d, %Y" }}</span>
@@ -60,17 +42,8 @@ layout: default
       <a title="{{site.posts.[2].title}}" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.01) 2%,#29383E 100%), url('{% if site.posts[2].imageUrl %}{{site.posts[2].imageUrl}}{% else %}/images/banner/fallback.jpeg{% endif %}');" href="{{site.posts[2].url | prepend: site.baseurl }}" class="thtrm-promo-item thtrm-promo-item--sub">
         <div class="thtrm-promo-item-info">
 
-          {% if site.posts[2].categories contains 'angular' %}
-            <span class="thtrm-category-badge thtrm-category-badge--angular2">Angular 2</span>
-          {% else if site.posts[2].categories contains 'announcements' %}
-            <span class="thtrm-category-badge thtrm-category-badge--announcements">Announcement</span>
-          {% else if site.posts[2].categories contains 'angularjs' %}
-            <span class="thtrm-category-badge thtrm-category-badge--angularjs">AngularJS</span>
-          {% else if site.posts[2].categories contains 'git' %}
-            <span class="thtrm-category-badge thtrm-category-badge--git">Git</span>
-          {% else if site.posts[2].categories contains 'rust' %}
-            <span class="thtrm-category-badge thtrm-category-badge--rust">Rust</span>
-          {% endif %}
+          {% assign categories = site.posts[2].categories %}
+          {% include category-badge.html categories=categories %}
 
           <h3>{{site.posts[2].title}}</h3>
           <span><i class="material-icons">schedule</i> {{ site.posts[2].date | date: "%b %-d, %Y" }}</span>
