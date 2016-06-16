@@ -1,0 +1,13 @@
+<li>
+  <a class="thtrm-article-card thtrm-article-card--transparent" href="{{ include.post.url | prepend: site.baseurl }}" title="{{include.post.title}}">
+    <div class="thtrm-article-card-content">
+      <span><i class="material-icons">schedule</i> {{ include.post.date | date: "%b %-d, %Y" }}</span>
+      <span>
+        <i class="material-icons">create</i>
+        {% include author.html author=include.post.author  %}
+      </span>
+      <h3>{{ include.post.title }}</h3>
+      <p>{{ include.post.summary | truncatewords: 20 }}</p>
+    </div>
+  </a>
+</li>
