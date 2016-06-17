@@ -338,4 +338,16 @@ this.contacts = http.get('contacts.json')
 
 Now when we [run that code](http://plnkr.co/edit/nyatJl5qXp8KtyN1TX80?p=preview) we see our second list after 500ms but we still don't see a second request. In other words, we created an Observable that emits upon subscription with the data that was fetched with the first request.
 
+## Useful shortcut
+Since using publish and refCount together is such a useful pattern there is an operator that combines them, and it's called `.share()`
+
+{% highlight js %}
+{% raw %}
+this.contacts = http.get('contacts.json')
+  .map(response => response.json().items)
+  .share();
+{% endraw %}
+{% endhighlight %}
+
+
 Whew! We came a long way. We hope this gives you a clearer picture of what the term hot vs cold actually means when it comes to Observables.
