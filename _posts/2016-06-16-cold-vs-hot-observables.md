@@ -62,7 +62,7 @@ If we [run that code](http://jsbin.com/xosipocoza/1/edit?js,console) again we'll
 {% endraw %}
 {% endhighlight %}
 
-With this output it is clear that there must have been two calls to `observer.next(Date.now())`. In other words, the Observable *started producing* the values up on each subscription which makes it cold by definition.
+With this output it is clear that there must have been two calls to `observer.next(Date.now())`. In other words, the Observable *started producing* the values upon each subscription which makes it cold by definition.
 
 ## Making Cold Observables Hot
 
@@ -119,7 +119,8 @@ let obs = Rx.Observable
 
 obs.subscribe(v => console.log("1st subscriber:" + v));
 setTimeout(()
-  => obs.subscribe(v => console.log("2nd subscriber:" + v)), 1000);
+  // delay for a little more than a second and then add second subscriber
+  => obs.subscribe(v => console.log("2nd subscriber:" + v)), 1100);
 {% endraw %}
 {% endhighlight %}
 
@@ -133,7 +134,7 @@ The setup we use is slightly more complex from what we had before, so let's brea
 
 Let's just ignore `refCount` for now as we're going to explain it later.
 
-We see the following output as we [run the script](http://jsbin.com/laqogumozo/1/edit?js,console).
+We see the following output as we [run the script](http://jsbin.com/kosavihiru/edit?js,console).
 
 {% highlight js %}
 {% raw %}
@@ -152,7 +153,7 @@ Clearly, we can see that the second subscriber is not starting over at `0`. But 
 
 But how hot is `obs` in this scenario? Let's make it visible by defering both subscriptions by another 2 seconds. If it's really hot we shouldn't see the numbers `0` and `1` at all because they would have been emitted *before*  we start to listen, right?
 
-Let's try out and [run this code](http://jsbin.com/xasiyolopu/1/edit?js,console) instead.
+Let's try out and [run this code](http://jsbin.com/nujokuwava/edit?js,console) instead.
 
 {% highlight js %}
 {% raw %}
@@ -162,10 +163,12 @@ let obs = Rx.Observable
             .refCount();
 
 setTimeout(() => {
+  // delay both subscriptions by 2 seconds
   obs.subscribe(v => console.log("1st subscriber:" + v));
   setTimeout(
+    // delay for a little more than a second and then add second subscriber
     () => obs.subscribe(
-          v => console.log("2nd subscriber:" + v)), 1000);
+          v => console.log("2nd subscriber:" + v)), 1100);
 
 },2000);
 {% endraw %}
