@@ -80,7 +80,6 @@ Defining routes is easy. All we have to do is to create a collection of `Route` 
 {% highlight js %}
 {% raw %}
 interface Route {
-  index?: boolean;
   path?: string;
   component?: Type|string;
   ...
@@ -98,13 +97,13 @@ import { ContactsListComponent } from './contacts-list';
 import { ContactsDetailComponent } from './contacts-detail';
 
 export ContactsAppRoutes = [
-  { index: true, component: ContactsListComponent },
+  { path: '', component: ContactsListComponent },
   { path: 'contacts/:id', component: ContactsDetailComponent }
 ];
 {% endraw %}
 {% endhighlight %}
 
-Pretty straight forward right? You might notice that we use the `index` property on our first `Route` definition. This simply tells the router that this component should be loaded into the view by default (this is especially useful when dealing with child routes). The second route has a placeholder in its path called `id`. This allows us to have some dynamic value in our path which can later be accessed in the component we route to. Think of a contact id in our case, so we can fetch the contact object we want to display the details for.
+Pretty straight forward right? You might notice that the `path` property on our first `Route` definition is empty. This simply tells the router that this component should be loaded into the view by default (this is especially useful when dealing with child routes). The second route has a placeholder in its path called `id`. This allows us to have some dynamic value in our path which can later be accessed in the component we route to. Think of a contact id in our case, so we can fetch the contact object we want to display the details for.
 
 The next thing we need to do is to make these routes available to our application. Angular takes advantage of its dependency injection system to make this work. The easiest way to make our routes available via DI is to import a function called `provideRouter(routes: RouteConfig)`, which creates providers for us.
 
@@ -140,7 +139,7 @@ For that, we take a look at `ContactsAppComponent`:
   template: `
     <h1>Contacts App</h1>
 
-    <!-- here's where we want to load 
+    <!-- here's where we want to load
       the detail and the list view -->
   `
 })
@@ -259,9 +258,9 @@ import { ActivatedRoute } from '@angular/router';
   ...
 })
 export class ContactsDetailComponent {
-  
+
   constructor(private route: ActivatedRoute) {
-  
+
   }
 }
 {% endraw %}
@@ -280,14 +279,14 @@ import { ContactsService } from '../contacts.service';
   ...
 })
 export class ContactsDetailComponent {
-  
+
   contact: Contact;
 
   constructor(
     private route: ActivatedRoute,
     private contactsService: ContactsService
   ) {
-  
+
   }
 
   ngOnInit() {
