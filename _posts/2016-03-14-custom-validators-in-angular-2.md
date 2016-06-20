@@ -18,7 +18,7 @@ toc:
     anchor: "custom-validators-with-dependencies"
 
 date: 2016-03-14
-update_date: 2016-05-12
+update_date: 2016-06-20
 
 relatedLinks:
   -
@@ -49,7 +49,7 @@ We can easily extend the browser vocabulary with additional custom validators an
 
 <h2 id="built-in-validators">Built-in Validators</h2>
 
-Angular comes with a subset of built-in validators out of the box. We can apply them either declaratively as directives on elements in our DOM, in case we're building a <strong>template-driven</strong> form, or imperatively using the `Control` and `ControlGroup` or `FormBuilder` APIs, in case we're building a <strong>model-driven</strong> form. If you don't know what it's all about with template-driven and model-driven forms, don't worry, we'll have an article to each of those soon.
+Angular comes with a subset of built-in validators out of the box. We can apply them either declaratively as directives on elements in our DOM, in case we're building a <strong>template-driven</strong> form, or imperatively using the `FormControl` and `FormGroup` or `FormBuilder` APIs, in case we're building a <strong>model-driven</strong> form. If you don't know what it's all about with template-driven and model-driven forms, don't worry, we'll have an article to each of those soon.
 
 The supported built-in validators, at the time of writing this article, are:
 
@@ -64,29 +64,29 @@ As mentioned earlier, validators can be applied by simply using their correspond
 {% highlight html %}
 {% raw %}
 <form novalidate>
-  <input type="text" ngControl="name" required>
-  <input type="text" ngControl="street" minlength="3">
-  <input type="text" ngControl="city" maxlength="10">
-  <input type="text" ngControl="zip" pattern="[A-Za-z]{5}">
+  <input type="text" name="name" ngModel required>
+  <input type="text" name="street" ngModel minlength="3">
+  <input type="text" name="city" ngModel maxlength="10">
+  <input type="text" name="zip" ngModel pattern="[A-Za-z]{5}">
 </form>
 {% endraw %}
 {% endhighlight %}
 
-Or, if our form is model-driven we'd either build it using `Control` and `ControlGroup` APIs:
+Or, if our form is model-driven we'd either build it using `FormControl` and `FormGroup` APIs:
 
 {% highlight js %}
 {% raw %}
 @Component()
 class Cmp {
 
-  form: ControlGroup;
+  form: FormGroup;
 
   ngOnInit() {
-    this.form = new ControlGroup({
-      name: new Control('', Validators.required)),
-      street: new Control('', Validators.minLength(3)),
-      city: new Control('', Validators.maxLength(10)),
-      zip: new Control('', Validators.pattern('[A-Za-z]{5}'))
+    this.form = new FormGroup({
+      name: new FormControl('', Validators.required)),
+      street: new FormControl('', Validators.minLength(3)),
+      city: new FormControl('', Validators.maxLength(10)),
+      zip: new FormControl('', Validators.pattern('[A-Za-z]{5}'))
     });
   }
 }
@@ -114,12 +114,12 @@ class Cmp {
 {% endraw %}
 {% endhighlight %}
 
-We would still need to associate a form model with a form in the DOM using the `[ngFormModel]` directive likes this:
+We would still need to associate a form model with a form in the DOM using the `[formGroup]` directive likes this:
 
 
 {% highlight html %}
 {% raw %}
-<form novalidate [ngFormModel]="form">
+<form novalidate [formGroup]="form">
   ...
 </form>
 {% endraw %}
@@ -141,16 +141,16 @@ interface Validator<T extends Control> {
 {% endraw %}
 {% endhighlight %}
 
-Let's implement a validator function `validateEmail` which implements that interface. All we need to do is to define a function that takes a `Control`, checks if it's value matches the regex of an email address, and if not, returns an error object,  or `null` in case the value is valid.
+Let's implement a validator function `validateEmail` which implements that interface. All we need to do is to define a function that takes a `FormControl`, checks if it's value matches the regex of an email address, and if not, returns an error object,  or `null` in case the value is valid.
 
 Here's what such an implementation could look like:
 
 
 {% highlight js %}
 {% raw %}
-import {Control} from '@angular/common';
+import {FormControl} from '@angular/forms';
 
-function validateEmail(c: Control) {
+function validateEmail(c: FormControl) {
   let EMAIL_REGEXP = ...
 
   return EMAIL_REGEXP.test(c.value) ? null : {
@@ -162,16 +162,16 @@ function validateEmail(c: Control) {
 {% endraw %}
 {% endhighlight %}
 
-Pretty straight forward right? We import `Control` from `@angular/common` to have the type information the function's signature and simply test a regular expression with the `Control`'s value. That's it. That's a validator.
+Pretty straight forward right? We import `FormControl` from `@angular/forms` to have the type information the function's signature and simply test a regular expression with the `FormControl`'s value. That's it. That's a validator.
 
-But how do we apply them to other form controls? Well, we've seen how `Validators.required` and the other validators are added to the `new Control()` calls. `Control()` takes an initial value, a synchronous validator and an asynchronous validator. Which means, we do exactly the same with our custom validators.
+But how do we apply them to other form controls? Well, we've seen how `Validators.required` and the other validators are added to the `new FormControl()` calls. `FormControl()` takes an initial value, a synchronous validator and an asynchronous validator. Which means, we do exactly the same with our custom validators.
 
 {% highlight js %}
 {% raw %}
 ngOnInit() {
-  this.form = new ControlGroup({
+  this.form = new FormGroup({
     ...
-    email: new Control('', validateEmail)
+    email: new FormControl('', validateEmail)
   });
 }
 {% endraw %}
@@ -179,19 +179,18 @@ ngOnInit() {
 
 Don't forget to import `validateEmail` accordinlgy, if necessary. Okay cool, now we know how to add our custom validator to a form control.
 
-However, what if we want to combine multiple validators on a single control? Let's say our email field is `required` **and** needs to match the shape of an email address. Since `Control`s only take single synchronous and a single asynchronous validator, we need to use `Validators.compose([validator1, validator2])` to compose mutliple validators into one.
-
+However, what if we want to combine multiple validators on a single control? Let's say our email field is `required` **and** needs to match the shape of an email address. `FormControl`s takes a single synchronous and a single asynchronous validator, or, a collection of synchronous and asynchronous validators.
 Here's what it looks like if we'd combine the `required` validator with our custom one:
 
 {% highlight js %}
 {% raw %}
 ngOnInit() {
-  this.form = new ControlGroup({
+  this.form = new FormGroup({
     ...
-    email: new Control('', Validators.compose([
+    email: new FormControl('', [
       Validators.required,
       validateEmail
-    ]))
+    ])
   });
 }
 {% endraw %}
@@ -205,7 +204,7 @@ Now that we're able to add our custom validator to our form controls imperativel
 {% raw %}
 <form novalidate>
   ...
-  <input type="email" ngControl="email" validateEmail>
+  <input type="email" name="email" ngModel validateEmail>
 </form>
 {% endraw %}
 {% endhighlight %}
@@ -217,13 +216,13 @@ Now that we're able to add our custom validator to our form controls imperativel
 import {Directive} from '@angular/core';
 
 @Directive({
-  selector: '[validateEmail][ngControl]'
+  selector: '[validateEmail][ngModel]'
 })
 class EmailValidator {}
 {% endraw %}
 {% endhighlight %}
 
-We import the `@Directive` decorator form `angular2/core` and use it on a new `EmailValidator` class. If you're familiar with the `@Component()` decorator that this is probably not new to you. In fact, `@Directive` is a superset of `@Component` which is why most of the configuration properties are available.
+We import the `@Directive` decorator form `angular2/core` and use it on a new `EmailValidator` class. If you're familiar with the `@Component` decorator that this is probably not new to you. In fact, `@Directive` is a superset of `@Component` which is why most of the configuration properties are available.
 
 Okay, technically we could already make this directive execute in our app, all we need to do is to add it as a `directives` dependency to the component where it's used:
 
@@ -253,10 +252,10 @@ Let's add our validator to the `NG_VALIDATORS` via our new directive:
 {% highlight js %}
 {% raw %}
 import {Directive, provide} from '@angular/core';
-import {NG_VALIDATORS} from '@angular/common';
+import {NG_VALIDATORS} from '@angular/forms';
 
 @Directive({
-  selector: '[validateEmail][ngControl]',
+  selector: '[validateEmail][ngModel]',
   providers: [
     provide(NG_VALIDATORS, {
       useValue: validateEmail,
@@ -280,10 +279,10 @@ One way to handle this is to create a factory function that returns our `validat
 
 {% highlight js %}
 {% raw %}
-import {Control} from '@angular/common';
+import {FormControl} from '@angular/forms';
 
 function validateEmailFactory(emailBlackList: EmailBlackList) {
-  return (c: Control) => {
+  return (c: FormControl) => {
     let EMAIL_REGEXP = ...
 
     let isValid = /* check validation with emailBlackList */
@@ -341,7 +340,7 @@ class EmailValidator {
     this.validator = validateEmailFactory(emailBlackList);
   }
 
-  validate(c: Control) {
+  validate(c: FormControl) {
     return this.validator(c);
   }
 }
@@ -397,10 +396,10 @@ Here's the full code for our custom email validator:
 {% highlight js %}
 {% raw %}
 import {provide, Directive, forwardRef} from '@angular/core';
-import {NG_VALIDATORS, Control} from '@angular/common';
+import {NG_VALIDATORS, FormControl} from '@angular/forms';
 
 function validateEmailFactory(emailBlackList: EmailBlackList) {
-  return (c: Control) => {
+  return (c: FormControl) => {
     let EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
 
     return EMAIL_REGEXP.test(c.value) ? null : {
@@ -412,7 +411,7 @@ function validateEmailFactory(emailBlackList: EmailBlackList) {
 }
 
 @Directive({
-  selector: '[validateEmail][ngControl],[validateEmail][ngModel],[validateEmail][ngFormControl]',
+  selector: '[validateEmail][ngModel],[validateEmail][formControl]',
   providers: [
     provide(NG_VALIDATORS, {
       useExisting: forwardRef(() => EmailValidator),
@@ -428,11 +427,11 @@ export class EmailValidator {
     this.validator = validateEmailFactory(emailBlackList);
   }
 
-  validate(c: Control) {
+  validate(c: FormControl) {
     return this.validator(c);
   }
 }
 {% endraw %}
 {% endhighlight %}
 
-You might notice that we've extended the selector, so that our validator not only works with `ngControl` but also with `ngModel` and `ngFormControl` directives. If you're interested in more articles on forms in Angular 2, make sure to subscribe to our blog as we have more in the pipe which will be published soon!
+You might notice that we've extended the selector, so that our validator not only works with `ngModel` but also with `formControl` directives. If you're interested in more articles on forms in Angular 2, make sure to subscribe to our blog as we have more in the pipe which will be published soon!
