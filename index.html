@@ -1,7 +1,16 @@
 ---
 layout: default
 ---
-<h2 class="thtrm-section-headline thtrm-section-headline--with-margin">Latest <a title="RSS Feed" href="http://feeds.feedburner.com/thoughtram">RSS Feed</a></h2>
+
+    <!-- <a class="thtrm-cta thtrm-cta--small" title="RSS Feed" href="http://feeds.feedburner.com/thoughtram">RSS Feed</a> -->
+<div class="thtrm-search">
+  <form id="search-form" method="GET" action="https://www.google.com/search">
+    <input id="search-term" type="search" name="as_q" placeholder="Search...">
+    <input type="hidden" name="as_sitesearch" value="blog.thoughtram.io">
+    <button type="submit" class="thtrm-cta thtrm-cta--small">Search</button>
+  </form>
+</div>
+<h2 class="thtrm-section-headline thtrm-section-headline--with-margin">Latest</h2>
 
   <div class="thtrm-table-layout">
     <div class="thtrm-table-layout-row thtrm-table-layout-row--with-two-columns thtrm-table-layout-row--2-3">
@@ -60,6 +69,7 @@ layout: default
     </div>
   </div>
 </div>
+
 <div class="thtrm-constraint">
   <h2 class="thtrm-section-headline thtrm-section-headline--with-margin">thoughtram TV</h2>
   <iframe class="thtrm-tv" src="https://www.youtube.com/embed/videoseries?list=PLMEcDV4jlGhxRBHwNgsP2h5KaEwvSACL0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>

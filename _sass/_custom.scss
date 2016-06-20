@@ -79,6 +79,34 @@
   }
 }
 
+.thtrm-search {
+  text-align: right;
+  position: relative;
+
+  form {
+    z-index: 2;
+    position: absolute;
+    top: -0.2em;
+    right: 0;
+  }
+
+  input[type="search"] {
+    border: 2px solid #eee;
+    line-height: 1.6;
+    font-size: 16px;
+    padding: 0.2em 0.5em;
+    margin-right: 0.5em;
+  }
+
+  button {
+    margin-top: 0;
+    &:hover,
+    &:focus {
+      cursor: pointer;
+    }
+  }
+}
+
 .thtrm-cta-bar {
   text-align: right;
 }
