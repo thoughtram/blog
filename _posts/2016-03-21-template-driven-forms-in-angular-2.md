@@ -3,7 +3,7 @@ layout:     post
 title:      "Template-driven Forms in Angular 2"
 
 date: 2016-03-21
-update_date: 2016-03-21
+update_date: 2016-06-20
 imageUrl: "/images/template-driven-forms.jpeg"
 relatedLinks:
   -
@@ -22,9 +22,30 @@ topic: forms
 author: pascal_precht
 ---
 
-Angular comes with three different ways of building forms in our applications. There's the template-driven approach which allows us to build forms with very little to none application code required, then there's the model-driven approach using low level APIs, which makes our forms testable without a DOM being required, and last but not least, we can build our forms model-driven but with a higher level API called the `FormBuilder`.
+Angular comes with three different ways of building forms in our applications. There's the template-driven approach which allows us to build forms with very little to none application code required, then there's the model-driven **or reactive** approach using low level APIs, which makes our forms testable without a DOM being required, and last but not least, we can build our forms model-driven but with a higher level API called the `FormBuilder`.
 
 Hearing all these different solutions, it's kind of natural that there are also probably many different tools to reach the goal. This can be sometimes confusing and with this article we want to clarify a subset of form directives by focussing on template-driven forms in Angular 2.
+
+## Activating new Form APIs
+
+The form APIs have changed in RC2 and in order to not break all existing apps that have been built with RC1 and use forms, these **new APIs are added on top** of the existing ones. That means, we need to tell Angular explicitly which APIs we want to use (of course, this will go away in the final release).
+
+In order to activate the new APIs we need to deactivate the drepecated ones and add providers for the new ones when we bootstrap our application.
+
+Here's what that could look like:
+
+{% highlight js %}
+{% raw %}
+import {disableDeprecatedForms, provideForms} from '@angular/forms';
+
+bootstrap(AppComponent, [
+   disableDeprecatedForms(),
+   provideForms()
+]);
+{% endraw %}
+{% endhighlight %}
+
+Again, this will change as with RC3, the new APIs will be the default. `disableDeprecatedForms()` can then be removed. More on that [here](http://5thingsangular.github.io/2016/06/20/issue-8.html).
 
 ## `ngForm` Directive
 
@@ -135,11 +156,11 @@ class App {
 {% endraw %}
 {% endhighlight %}
 
-Running this code makes us realize, that the form's value is an empty object. This seems natural, because there's nothing in our component's template yet, that tells the form that the input controls are part of this form. We need a way to register them. This is where `ngControl` comes into play.
+Running this code makes us realize, that the form's value is an empty object. This seems natural, because there's nothing in our component's template yet, that tells the form that the input controls are part of this form. We need a way to register them. This is where `ngModel` comes into play.
 
-## `ngControl` Directive
+## `ngModel` Directive
 
-In order to register form controls on an `ngForm` instance, we use the `ngControl` directive. `ngControl` simply takes a name as a string and creates a form control abstraction for us behind the scenes. Every form control that is registered with `ngControl` will automatically show up in `form.value` and can then easily be used for further post processing.
+In order to register form controls on an `ngForm` instance, we use the `ngModel` directive. In combination with a `name` attribute, `ngModel` creates a form control abstraction for us behind the scenes. Every form control that is registered with `ngModel` will automatically show up in `form.value` and can then easily be used for further post processing.
 
 Let's give our form object some structure and register our form controls:
 
@@ -147,19 +168,19 @@ Let's give our form object some structure and register our form controls:
 {% raw %}
 <form #form="ngForm" (ngSubmit)="logForm(form.value)">
   <label>Firstname:</label>
-  <input type="text" ngControl="firstname">
+  <input type="text" name="firstname" ngModel>
 
   <label>Lastname:</label>
-  <input type="text" ngControl="lastname">
+  <input type="text" name="lastname" ngModel>
 
   <label>Street:</label>
-  <input type="text" ngControl="street">
+  <input type="text" name="street" ngModel>
 
   <label>Zip:</label>
-  <input type="text" ngControl="zip">
+  <input type="text" name="zip" ngModel>
 
   <label>City:</label>
-  <input type="text" ngControl="city">
+  <input type="text" name="city" ngModel>
 
   <button type="submit">Submit</button>
 </form>
@@ -180,7 +201,7 @@ Great! If we now enter some values and submit the form, we'll see that our appli
 {% endraw %}
 {% endhighlight %}
 
-Isn't that cool? We can basically take this JSON object as it is and send it straight to a remote server for what ever we want to do with it. Oh wait, what if we actually want to have some more structure and make our form object look like this?
+Isn't that cool? We can basically take this JSON object as it is and send it straight to a remote server for whatever we want to do with it. Oh wait, what if we actually want to have some more structure and make our form object look like this?
 
 {% highlight json %}
 {% raw %}
@@ -198,40 +219,40 @@ Isn't that cool? We can basically take this JSON object as it is and send it str
 {% endraw %}
 {% endhighlight %}
 
-Do we now have to wire everything together by hand when the form is submitted? Nope! Angular has us covered - introducing `ngControlGroup`.
+Do we now have to wire everything together by hand when the form is submitted? Nope! Angular has us covered - introducing `ngModelGroup`.
 
-## `ngControlGroup` Directive
+## `ngModelGroup` Directive
 
-`ngControlGroup` enables us to semantically group our form controls. In other words, there can't be a control group without controls. In addition to that, it also tracks validity state of the inner form controls. This comes in very handy if we want to check the validity state of just a sub set of the form.
+`ngModelGroup` enables us to semantically group our form controls. In other words, there can't be a control group without controls. In addition to that, it also tracks validity state of the inner form controls. This comes in very handy if we want to check the validity state of just a sub set of the form.
 
 And if you now think: "Wait, isn't a form then also just a control group", then you're right my friend. A form is also just a control group.
 
-Let's semantically group our form control values with `ngControlGroup`:
+Let's semantically group our form control values with `ngModelGroup`:
 
 {% highlight html %}
 {% raw %}
-<fieldset ngControlGroup="name">
+<fieldset ngModelGroup="name">
   <label>Firstname:</label>
-  <input type="text" ngControl="firstname">
+  <input type="text" name="firstname" ngModel>
 
   <label>Lastname:</label>
-  <input type="text" ngControl="lastname">
+  <input type="text" name="lastname" ngModel>
 </fieldset>
 
-<fieldset ngControlGroup="address">
+<fieldset ngModelGroup="address">
   <label>Street:</label>
-  <input type="text" ngControl="street">
+  <input type="text" name="street" ngModel>
 
   <label>Zip:</label>
-  <input type="text" ngControl="zip">
+  <input type="text" name="zip" ngModel>
 
   <label>City:</label>
-  <input type="text" ngControl="city">
+  <input type="text" name="city" ngModel>
 </fieldset>
 {% endraw %}
 {% endhighlight %}
 
-As you can see, all we did was wrapping form controls in `<fieldset>` elements and applied `ngControlGroup` directives to them. There's no specific reason we used `<fieldset>` elements. We could've used `<div>`s too. The point is, that there has to be an element, where we add `ngControlGroup` so it will be registered at our `ngForm` instance.
+As you can see, all we did was wrapping form controls in `<fieldset>` elements and applied `ngModelGroup` directives to them. There's no specific reason we used `<fieldset>` elements. We could've used `<div>`s too. The point is, that there has to be an element, where we add `ngModelGroup` so it will be registered at our `ngForm` instance.
 
 We can see that it worked out by submitting the form and looking at the output:
 
@@ -251,29 +272,63 @@ We can see that it worked out by submitting the form and looking at the output:
 {% endraw %}
 {% endhighlight %}
 
-Awesome! We now get the wanted object structure out of our form without writing any application code. You might wonder, what role `ngModel` plays in the world of forms in Angular 2. Good question!
+Awesome! We now get the wanted object structure out of our form without writing any application code.
 
-## What about ngModel?
+## What about ngModel with expressions?
 
-So `ngModel` is the thing in Angular 2 that implements two-way data binding. It's not the only thing that does that, but it's in most cases the directive we want to use for simple scenarios. How does `ngModel` apply to our template-driven form? Can we still use it? Of course we can!
+So `ngModel` is the thing in Angular 2 that implements two-way data binding. It's not the only thing that does that, but it's in most cases the directive we want to use for simple scenarios. So far we've used `ngModel` as attribute directive without any value, but we might want to use it with an expression to bind an existing domain model to our form. This, of course works out of the box!
 
-Whereas `ngForm`, `ngControl` and `ngControlGroup` provide us a way to structure and access the raw form data, `ngModel` can still be used as a domain model to take advantage of two-way data binding. In other words, whereas `form.value` is the thing we want to send to a remote server, `ngModel` can be the object that feeds our form control, but can be used in other places in our component at the same time.
-
-`ngControl` provides bindings for `ngModel`, so we can simply use it as expected:
+There are two ways to handle this, depending on what we want to do. One thing we can do is to apply property binding using the brackets syntax, so we can bind an existing value to a form control using one-way binding:
 
 {% highlight html %}
 {% raw %}
-<fieldset ngControlGroup="name">
+<fieldset ngModelGroup="name">
   <label>Firstname:</label>
-  <input type="text" ngControl="firstname" [(ngModel)]="firstname">
+  <input type="text" name="firstname" [ngModel]="firstname">
+
+  <label>Lastname:</label>
+  <input type="text" name="lastname" [ngModel]="lastname">
+</fieldset>
+{% endraw %}
+{% endhighlight %}
+
+Whereas the corresponding model could look something like this:
+
+{% highlight js %}
+{% raw %}
+@Component({
+  selector: 'app',
+  template: ...
+})
+class App {
+
+  firstname = 'Pascal';
+  lastname = 'Precht';
+
+  logForm(value: any) {
+    console.log(value);
+  }
+}
+{% endraw %}
+{% endhighlight %}
+
+In addition, we can of course use `ngModel` and two-way data binding, in case we want to reflect the model values somewhere else in our template:
+
+{% highlight html %}
+{% raw %}
+<fieldset ngModelGroup="name">
+  <label>Firstname:</label>
+  <input type="text" name="firstname" [(ngModel)]="firstname">
   <p>You entered {{firstname}}</p>
 
   <label>Lastname:</label>
-  <input type="text" ngControl="lastname" [(ngModel)]="lastname">
+  <input type="text" name="lastname" [(ngModel)]="lastname">
   <p>You entered {{lastname}}</p>
 </fieldset>
 {% endraw %}
 {% endhighlight %}
+
+This just simply works as expected.
 
 ## More to cover
 
