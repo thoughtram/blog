@@ -233,3 +233,12 @@
     margin-top: 0;
   }
 }
+
+.thtrm-tv {
+  width: 100%;
+  height: 200px;
+
+  @include tablet {
+    height: 500px;
+  }
+}
