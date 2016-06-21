@@ -96,7 +96,7 @@ Routes are best defined in a separate module to keep our application easy to tes
 import { ContactsListComponent } from './contacts-list';
 import { ContactsDetailComponent } from './contacts-detail';
 
-export ContactsAppRoutes = [
+export const ContactsAppRoutes = [
   { path: '', component: ContactsListComponent },
   { path: 'contacts/:id', component: ContactsDetailComponent }
 ];
@@ -223,7 +223,7 @@ Here's how we could extend `ContactsListComponent` to link to `ContactsDetailCom
     <h2>Contacts</h2>
     <ul>
       <li *ngFor="let contact of contacts | async">
-        <a [routerLink]="['/contacts', { id: contact.id }]">
+        <a [routerLink]="['/contacts', contact.id]">
           {{contact.name}}
         </a>
       </li>
@@ -240,7 +240,7 @@ export class ContactsListComponent {
 There are a couple of things to note here:
 
 - We use the bracket-syntax for `RouterLink` to make expressions work (if this doesn't make sense to you, you might want to read out article on [Angular 2's Template Syntax Demystified](/angular/2015/08/11/angular-2-template-syntax-demystified-part-1.html)
-- The expression takes an array where the first field is the path we want to route to and the second a hash that fills the route parameters
+- The expression takes an array where the first field is the segment that describes the path we want to route to and the second a the dynamic value which ends up as route parameter 
 - In order to use `RouterLink` in the template, we added `ROUTER_DIRECTIVES` to the component
 
 Cool! We can now link to `ContactsDetailComponent`. However, this is only half of the story. We still need to teach `ContactsDetailComponent` how to access the route parameters so it can use them to load a contact object.
@@ -318,6 +318,8 @@ However, sometimes we're not interested in future changes of a route parameter. 
 ...
 {% endraw %}
 {% endhighlight %}
+
+Check out the running example [right here](http://plnkr.co/edit/I9qFkO?p=preview)!
 
 
 Of course, there's way more to cover when it comes to routing. We haven't talked about secondary routes or **guards** yet, but we'll do that in our upcoming articles. Hopefully this one gives you an idea of what to expect from the new router. For a more in-depth article on the underlying architecture, you might want to read Victor's [awesome blog](http://victorsavkin.com/post/145672529346/angular-router)!
