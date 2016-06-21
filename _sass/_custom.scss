@@ -55,12 +55,12 @@
     a {
       color: #384c54;
       font-size: 14px;
-      position: absolute;
-      right: 0;
+      // position: absolute;
+      // right: 0;
       text-decoration: none;
       border: 2px solid #384c54;
       padding: 0.5em;
-      top: -0.2em;
+      // top: -0.2em;
 
       &:hover {
         background: #384c54;
@@ -95,7 +95,12 @@
     line-height: 1.6;
     font-size: 16px;
     padding: 0.2em 0.5em;
-    margin-right: 0.5em;
+    margin-right: 0.2em;
+    width: 140px;
+
+    @include tablet {
+      margin-right: 0.5em;
+    }
   }
 
   button {
