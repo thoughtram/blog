@@ -302,4 +302,22 @@ export class ContactsDetailComponent {
 {% endraw %}
 {% endhighlight %}
 
+## Using Router Snapshots
+
+However, sometimes we're not interested in future changes of a route parameter. All we need is this contact id and once we have it, we can provide the data we want to provide. In this case, an Observable can bit a bit of an overkill, which is why the router supports snapshots. A snapshot is simply a snapshot representation of the activated route. We can access the `id` parameter of the route using snapshots like this:
+
+{% highlight js %}
+{% raw %}
+...
+  ngOnInit() {
+
+    this.contactsService
+        .getContacts(this.route.snapshot.params.id)
+        .subscribe(contact => this.contact = contact);
+  }
+...
+{% endraw %}
+{% endhighlight %}
+
+
 Of course, there's way more to cover when it comes to routing. We haven't talked about secondary routes or **guards** yet, but we'll do that in our upcoming articles. Hopefully this one gives you an idea of what to expect from the new router. For a more in-depth article on the underlying architecture, you might want to read Victor's [awesome blog](http://victorsavkin.com/post/145672529346/angular-router)!
