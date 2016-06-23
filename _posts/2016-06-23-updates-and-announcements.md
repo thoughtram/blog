@@ -34,6 +34,8 @@ Many of you asked us to share more information about our process to learn and te
 
 In the first episode of thoughtram TV you'll get to see parts of an internal review call where we discuss how to improve the setup experience for the attendees of our workshops.
 
+Don't forget to subscribe to [our channel on YouTube](https://www.youtube.com/channel/UCBn1x1RwoQkLmC8UPCNty0Q)!
+
 <iframe class="thtrm-tv" src="https://www.youtube.com/embed/videoseries?list=PLMEcDV4jlGhxRBHwNgsP2h5KaEwvSACL0&amp;showinfo=0" frameborder="0" allowfullscreen=""></iframe>
 
 ## Angular 2 Master Class: Helsinki
