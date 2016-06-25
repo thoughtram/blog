@@ -250,15 +250,15 @@ We can access the validity state of a form control like this:
 {% raw %}
 <form [formGroup]="registerForm">
   <label>Firstname:</label>
-  <input type="text" formControlName="firstname" #firstname="formControl">
-  <p *ngIf="firstname.error">This field is required!</p>
+  <input type="text" formControlName="firstname">
+  <p *ngIf="registerForm.firstname.errors">This field is required!</p>
 
   ...
 </form>
 {% endraw %}
 {% endhighlight %}
 
-We get a reference to the form control instance in a local variable `#firstname` and use that as an expression to access the form control's error object. If you're interested in learning how to build a custom validator, you might want to read our article on [Custom Validators in Angular 2](/angular/2016/03/14/custom-validators-in-angular-2.html).
+We get a reference to the form control by traversing the `registerForm` instance. If you're interested in learning how to build a custom validator, you might want to read our article on [Custom Validators in Angular 2](/angular/2016/03/14/custom-validators-in-angular-2.html).
 
 ## Forms with a single control
 
