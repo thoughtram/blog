@@ -97,7 +97,7 @@ Okay, now that we've created our first form model, let's associate it to our tem
 
 Currently, there's nothing in our code that tells Angular that our form model is responsible for the form template. We need to associate the model to our form, and we can do that using the `formGroup` directive, which takes an expression that evaluates to a `FormGroup` instance.
 
-In order to use that directive we need to import `REACTIVE_FORM_DIRECTIVES` and add then to our application's providers list:
+In order to use that directive we need to import `REACTIVE_FORM_DIRECTIVES` and add then to our application's directives list:
 
 {% highlight js %}
 {% raw %}
