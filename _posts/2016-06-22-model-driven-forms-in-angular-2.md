@@ -251,7 +251,7 @@ We can access the validity state of a form control like this:
 <form [formGroup]="registerForm">
   <label>Firstname:</label>
   <input type="text" formControlName="firstname">
-  <p *ngIf="registerForm.firstname.errors">This field is required!</p>
+  <p *ngIf="registerForm.controls.firstname.errors">This field is required!</p>
 
   ...
 </form>
