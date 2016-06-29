@@ -251,16 +251,13 @@ Let's add our validator to the `NG_VALIDATORS` via our new directive:
 
 {% highlight js %}
 {% raw %}
-import {Directive, provide} from '@angular/core';
+import {Directive } from '@angular/core';
 import {NG_VALIDATORS} from '@angular/forms';
 
 @Directive({
   selector: '[validateEmail][ngModel]',
   providers: [
-    provide(NG_VALIDATORS, {
-      useValue: validateEmail,
-      multi: true
-    })
+    { provide: NG_VALIDATORS, useValue: validateEmail, multi: true }
   ]
 })
 class EmailValidator {}
@@ -304,13 +301,14 @@ This would allow us to register our custom validator via dependency injection li
 @Directive({
   ...
   providers: [
-    provide(NG_VALIDATORS, {
+    {
+      provide: NG_VALIDATORS,
       useFactory: (emailBlackList) => {
         return validateEmailFactory(emailBlackList);
       },
       deps: [EmailBlackList]
       multi: true
-    })
+    }
   ]
 })
 class EmailValidator {}
@@ -356,10 +354,7 @@ However, we already added `EmailValidator` to the `directives` property of our c
 @Directive({
   ...
   providers: [
-    provide(NG_VALIDATORS, {
-      useExisting: EmailValidator,
-      multi: true
-    })
+    { provide: NG_VALIDATORS, useExisting: EmailValidator, multi: true }
   ]
 })
 class EmailValidator {
@@ -377,10 +372,7 @@ import {forwardRef} from '@angular/core';
 @Directive({
   ...
   providers: [
-    provide(NG_VALIDATORS, {
-      useExisting: forwardRef(() => EmailValidator),
-      multi: true
-    })
+    { provide: NG_VALIDATORS, useExisting: forwardRef(() => EmailValidator), multi: true }
   ]
 })
 class EmailValidator {
@@ -395,7 +387,7 @@ Here's the full code for our custom email validator:
 
 {% highlight js %}
 {% raw %}
-import {provide, Directive, forwardRef} from '@angular/core';
+import {Directive, forwardRef} from '@angular/core';
 import {NG_VALIDATORS, FormControl} from '@angular/forms';
 
 function validateEmailFactory(emailBlackList: EmailBlackList) {
@@ -413,10 +405,7 @@ function validateEmailFactory(emailBlackList: EmailBlackList) {
 @Directive({
   selector: '[validateEmail][ngModel],[validateEmail][formControl]',
   providers: [
-    provide(NG_VALIDATORS, {
-      useExisting: forwardRef(() => EmailValidator),
-      multi: true
-    })
+    { provide: NG_VALIDATORS, useExisting: forwardRef(() => EmailValidator), multi: true }
   ]
 })
 export class EmailValidator {
