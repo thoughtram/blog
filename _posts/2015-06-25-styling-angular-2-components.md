@@ -61,7 +61,7 @@ class Zippy {
 
 This is pretty straight forward. You might wonder though, why the value of that property is a list and not just a (multi-line) string. Well, I wonder too. That's why I asked the [question](https://github.com/angular/angular/issues/2730) right away.
 
-Okay, so defining styles on the component is pretty clear, but were do those end up in the DOM? If we run this code in our browser, we see that there's something very interesting happening. It turns out that Angular takes the defined styles, and writes them into the head of the HTML document. Here's what that looks like:
+Okay, so defining styles on the component is pretty clear, but where did those end up in the DOM? If we run this code in our browser, we see that there's something very interesting happening. It turns out that Angular takes the defined styles, and writes them into the head of the HTML document. Here's what that looks like:
 
 {% highlight html %}
 <!DOCTYPE html>
