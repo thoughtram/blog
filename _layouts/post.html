@@ -93,7 +93,13 @@
           </div>
           {% endif %}
           {{ content }}
+
+          {% if page.videoUrl %}
+          <p>Watch the video to see things in action!</p>
+          <iframe style="width: 100%; margin-top: 40px;" src="{{ page.videoUrl }}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+          {% endif %}
         </div>
+
 
         <!-- <section class="thtrm-ad thtrm-section thtrm-section--is-promo thtrm-section thtrm-section--is-promo-light"> -->
         <!--   <img width="100" src="/images/5-things-bw-white.png"> -->
@@ -101,6 +107,7 @@
         <!--   <p class="thtrm-section-text">Get weekly updates on the latest and greatest happenings in the Angular world by thoughtram!</p> -->
         <!--   <a href="http://5thingsAngular.github.io" title="5thingsAngular" class="thtrm-layout-divider-cta">Tell me more</a> -->
         <!-- </section> -->
+
 
         <section class="thtrm-ad thtrm-section thtrm-section--is-promo">
           <img width="100" src="/images/angular2-shield-inverse.svg">

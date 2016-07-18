@@ -2,6 +2,7 @@
 layout:     post
 title:      "Protecting Routes using Guards in Angular 2"
 imageUrl:   "/images/banner/protecting-routes-using-guards-in-angular-2.jpg"
+videoUrl:   "https://player.vimeo.com/video/175218351"
 
 date: 2016-07-18
 
@@ -164,3 +165,4 @@ bootstrap(AppComponent, [
 ## Conclusion
 
 Guards are great. They enable us to protect certain routes or even protect the user from losing data. In addition, we can have multiple guards protecting a single route, which helps us implementing sophisticated use cases, where a chain of different checks is needed.
+
