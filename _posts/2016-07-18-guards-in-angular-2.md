@@ -3,7 +3,7 @@ layout:     post
 title:      "Protecting Routes using Guards in Angular 2"
 imageUrl:   "/images/banner/protecting-routes-using-guards-in-angular-2.jpg"
 
-date: 2016-07-15
+date: 2016-07-18
 
 summary: "When building applications, we often want to protect the users from entering or leaving certain areas. We could have an admin section that only authorized users can access. Or, we might want to ask the user to confirm to navigate away from a area. Angular's router enables that functionality using guards and in this article we're going to discuss how to implement them."
 
