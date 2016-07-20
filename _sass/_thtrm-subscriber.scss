@@ -4,6 +4,25 @@
   padding: 2em;
   margin-top: 4em;
 
+  &--no-border {
+    border-left: none;
+    border-right: none;
+    padding-top: 2.5em;
+    padding-bottom: 2.5em;
+
+    p {
+      margin-bottom: 0!important;
+      font-size: 20px!important;
+      font-style: italic;
+    }
+
+    a {
+      text-decoration: none;
+      color: #384c54;
+      font-weight: bold;
+    }
+  }
+
   h3 {
     font-size: 22px;
     color: #384c54;
