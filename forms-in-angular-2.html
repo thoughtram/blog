@@ -1,0 +1,22 @@
+---
+layout: default
+title: Forms in Angular 2
+permalink: /forms-in-angular-2/
+---
+
+<h2 class="thtrm-section-headline thtrm-section-headline--with-margin">Forms in Angular 2</h2>
+<ul class="thtrm-three-column-list thtrm-three-column-list--with-padding">
+{% for post in site.posts %}
+  {% if post.topic == 'forms' %}
+  <li>
+    <div class="thtrm-article-card thtrm-article-card--with-border">
+      <div class="thtrm-article-card-content ">
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.summary | truncatewords: 20 }}</p>
+        <a href="{{ post.url | prepend: site.baseurl }}" title="{{post.title}}" class="thtrm-cta thtrm-cta--small">Read More</a>
+      </div>
+    </div>
+  </li>
+  {% endif %}
+{% endfor %}
+</ul>
