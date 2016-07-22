@@ -135,7 +135,9 @@ And can then be used on a route:
 
 We've now seen how `CanActivate` can work in different scenarios, but as mentioned earlier, we have a few more guard interfaces we can take advantage of. `CanDeactivate` gives us a chance to decide if we really want to navigate **away** from a route. This can be very useful, if for example we want to prevent our users from losing unsaved changes when filling out a form and accidently clicking on a button to cancel the process.
 
-Implementing a `CanDeactivate` guard is very similar to implementing a `CanActivate` guard. All we have to do is to create again, either a function, or a class that implements the `CanDeactivate` interface. We can implement a super simple safety net for our users like this:
+The `CanDeactive` guard also has access to the instance of the active component. With this we can take the user experience even to a higher level. Instead of asking an (unwanted) user confirmation every time, we can do this conditionally by checking if change were made.
+
+Implementing a `CanDeactivate` guard is very similar to implementing a `CanActivate` guard. All we have to do is to create again, either a function, or a class that implements the `CanDeactivate` interface.  We can implement a super simple safety net for our users like this:
 
 {% highlight js %}
 {% raw %}
@@ -144,8 +146,11 @@ import { CanDeactivateComponent } from './app/can-deactivate';
 
 export class ConfirmDeactivateGuard implements CanDeactivate<CanDeactivateComponent> {
 
-  canDeactivate() {
-    return window.confirm('Do you really want to cancel?');
+  canDeactivate(activeComponent: CanDeactivateComponent) {
+    if(activeComponent.hasChanges()){
+        return window.confirm('Do you really want to cancel?');
+    }
+    return true;
   }
 }
 {% endraw %}
