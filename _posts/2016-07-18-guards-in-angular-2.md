@@ -146,8 +146,8 @@ import { CanDeactivateComponent } from './app/can-deactivate';
 
 export class ConfirmDeactivateGuard implements CanDeactivate<CanDeactivateComponent> {
 
-  canDeactivate(activeComponent: CanDeactivateComponent) {
-    if(activeComponent.hasChanges()){
+  canDeactivate(target: CanDeactivateComponent) {
+    if(target.hasChanges()){
         return window.confirm('Do you really want to cancel?');
     }
     return true;
