@@ -30,7 +30,7 @@ Hearing all these different solutions, it's kind of natural that there are also 
 
 The form APIs have changed in RC2 and in order to not break all existing apps that have been built with RC1 and use forms, these **new APIs are added on top** of the existing ones. That means, we need to tell Angular explicitly which APIs we want to use (of course, this will go away in the final release).
 
-In order to activate the new APIs we need to deactivate the drepecated ones and add providers for the new ones when we bootstrap our application.
+In order to activate the new APIs we need to deactivate the deprecated ones and add providers for the new ones when we bootstrap our application.
 
 Here's what that could look like:
 
@@ -45,7 +45,7 @@ bootstrap(AppComponent, [
 {% endraw %}
 {% endhighlight %}
 
-Again, this will change as with RC3, the new APIs will be the default. `disableDeprecatedForms()` can then be removed. More on that [here](http://5thingsangular.github.io/2016/06/20/issue-8.html).
+Again, this will change as with RC5. `disableDeprecatedForms()` can then be removed. More on that [here](http://5thingsangular.github.io/2016/06/20/issue-8.html).
 
 ## `ngForm` Directive
 
