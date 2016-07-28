@@ -276,7 +276,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSORS } from '@angular/forms';
   providers: [
     { 
       provide: NG_VALUE_ACCESSORS,
-      useExisting: forwardRef(() => CounterInputComponent,
+      useExisting: forwardRef(() => CounterInputComponent),
       multi: true
     }
   ]
