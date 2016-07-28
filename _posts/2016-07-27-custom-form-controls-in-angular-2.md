@@ -263,13 +263,13 @@ Implementing the interface is only half of the story. As we know, interfaces don
 
 In our article on [multi-providers in Angular 2](/angular2/2015/11/23/multi-providers-in-angular-2.html) we learned that there are some DI tokens that Angular uses to inject multiple values, to do certain things with them. For example there's the `NG_VALIDATORS` token that gives Angular all registered validators on a form control, and we can add our own validators to it.
 
-In order to get hold of a `ControlValueAccessor` for a form control, Angular internaly injects all values that are registered on the `NG_VALUE_ACCESSORS` token. So all we need to do is to extend the multi-provider for `NG_VALUE_ACCESSORS` with our own value accessor instance (which is our component).
+In order to get hold of a `ControlValueAccessor` for a form control, Angular internaly injects all values that are registered on the `NG_VALUE_ACCESSOR` token. So all we need to do is to extend the multi-provider for `NG_VALUE_ACCESSOR` with our own value accessor instance (which is our component).
 
 Let's do that right away:
 
 {% highlight js %}
 {% raw %}
-import { ControlValueAccessor, NG_VALUE_ACCESSORS } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   ...
