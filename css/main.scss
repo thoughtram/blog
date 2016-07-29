@@ -46,45 +46,6 @@ ul {
   list-style: none;
 }
 
-.thtrm-main {
-  margin: 0 auto;
-  padding: 0 0 0 0;
-  min-height: 100%;
-  padding-top: 70px;
-  padding-bottom: 60px;
-
-  &:before {
-    position: absolute;
-    z-index: -1;
-    background-color: #384c54;
-    width: 100%;
-    height: 230px;
-    height: 70px;
-    content: '';
-    top: 0;
-    left: 0;
-  }
-
-  .sub-site & {
-    padding-top: 0;
-    &:before {
-      display: none;
-    }
-  }
-
-  @include tablet {
-    padding-top: 145px;
-    &:before {
-      height: 350px;
-      height: 145px;
-    }
-  }
-
-  @include desktop {
-    min-height: initial;
-  }
-}
-
 @import 'thtrm-constraint',
         'thtrm-header',
         'thtrm-banner',
