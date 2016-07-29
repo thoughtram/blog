@@ -1,0 +1,78 @@
+---
+layout: website
+title: Thank your for your subscription!
+description: Awesome you've successfully subscribed to our newsletter! You now get all the latest and greatest news on everything we're working on
+permalink: /confirmation-thank-you/
+---
+
+<div class="thtrm-banner thtrm-banner--imprint">
+  <hgroup class="thtrm-banner-container">
+    <h2 class="thtrm-banner-text">Awesome!</h2>
+    <h3 class="thtrm-banner-tagline">Your subscription was successful</h3>
+  </hgroup>
+</div>
+<section class="thtrm-section ">
+  <h3 class="thtrm-section-headline">Here's what to expect</h3>
+  <p class="thtrm-section-text">You now get regular updates on the latest and greatest things that are happening in the thoughtram world, including blog articles, training announcements, videos and much more! <strong>To get you started, here are our latest three articles.</strong></p>
+  <div class="thtrm-constraint">
+    <div class="thtrm-table-layout" style="margin-top: 4em; text-align: left;">
+      <div class="thtrm-table-layout-row thtrm-table-layout-row--with-two-columns thtrm-table-layout-row--2-3">
+        <div class="thtrm-table-layout-cell">
+          <a title="{{site.posts[0].title}}" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.01) 2%,#29383E 100%), url('{% if site.posts[0].imageUrl %}{{site.posts[0].imageUrl}}{% else %}images/banner/fallback.jpeg{% endif %}');" href="{{site.posts[0].url | prepend: site.baseurl }}" class="thtrm-promo-item">
+            <div class="thtrm-promo-item-info">
+
+              {% assign categories = site.posts[0].categories %}
+              {% include category-badge.html categories=categories %}
+
+              <h2>{{site.posts[0].title}}</h2>
+              <span><i class="material-icons">schedule</i> {{ site.posts[0].date | date: "%b %-d, %Y" }}</span>
+              <span class="thtrm-promo-item-info-author">
+                <i class="material-icons">create</i>
+                {% assign author = site.posts[0].author %}
+                {% include author.html author=author  %}
+              </span>
+            </div>
+          </a>
+        </div>
+        <div class="thtrm-table-layout-cell">
+          <a title="{{site.posts.[1].title}}" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.01) 2%,#29383E 100%), url('{% if site.posts[1].imageUrl %}{{site.posts[1].imageUrl}}{% else %}/images/banner/fallback.jpeg{% endif %}');" href="{{site.posts[1].url | prepend: site.baseurl }}" class="thtrm-promo-item thtrm-promo-item--sub">
+            <div class="thtrm-promo-item-info">
+              {% assign categories = site.posts[1].categories %}
+              {% include category-badge.html categories=categories %}
+
+              <h3>{{site.posts[1].title}}</h3>
+              <span><i class="material-icons">schedule</i> {{ site.posts[1].date | date: "%b %-d, %Y" }}</span>
+
+              <span class="thtrm-promo-item-info-author">
+                <i class="material-icons">create</i>
+                {% assign author = site.posts[1].author %}
+                {% include author.html author=author  %}
+              </span>
+            </div>
+          </a>
+          <a title="{{site.posts.[2].title}}" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.01) 2%,#29383E 100%), url('{% if site.posts[2].imageUrl %}{{site.posts[2].imageUrl}}{% else %}/images/banner/fallback.jpeg{% endif %}');" href="{{site.posts[2].url | prepend: site.baseurl }}" class="thtrm-promo-item thtrm-promo-item--sub">
+            <div class="thtrm-promo-item-info">
+
+              {% assign categories = site.posts[2].categories %}
+              {% include category-badge.html categories=categories %}
+
+              <h3>{{site.posts[2].title}}</h3>
+              <span><i class="material-icons">schedule</i> {{ site.posts[2].date | date: "%b %-d, %Y" }}</span>
+
+              <span class="thtrm-promo-item-info-author">
+                <i class="material-icons">create</i>
+                {% assign author = site.posts[2].author %}
+                {% include author.html author=author  %}
+              </span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <a href="http://blog.thoughtram.io" title="Back to thoughtram blog" class="thtrm-cta thtrm-cta--small" style="margin-top: 4em;">
+    <i class="material-icons">keyboard_backspace</i>
+    Cool, take me back please!
+  </a>
+</section>

@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="{{ page.description || 'We write about technical things that we are working with and upcoming events that we are either running or attending to. Read about our latest thoughts.'}}">
+    <meta name="description" content="{% if page.description %}{{ page.description }}{% else if %}We write about technical things that we are working with and upcoming events that we are either running or attending to. Read about our latest thoughts.{% endif %}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ page.title || site.title }}</title>
+    <title>{% if page.title %}{{ page.title}}{% else if %}{{site.title }}{% endif %}</title>
     <meta name="google-site-verification" content="o9eGPEgIETEqYGombq7NiQuBIB_qa6gz1yAL7PxKyK0">
 
     <!-- Add to homescreen for Chrome on Android -->
@@ -25,12 +25,12 @@
 
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="website">
-    <meta property="og:description" content="{{ page.description || 'We write about technical things that we are working with and upcoming events that we are either running or attending to. Read about our latest thoughts.'}}">
+    <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else if %}We write about technical things that we are working with and upcoming events that we are either running or attending to. Read about our latest thoughts.{% endif %}">
     <meta property="og:url" content="http://blog.thoughtram.io">
     <meta property="og:image" content="http://blog.thoughtram.io/images/thoughtram-brain-og.png">
 
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="{{page.title || site.title}}">
+    <meta property="twitter:title" content="{% if page.title %}{{ page.title}}{% else if %}{{site.title }}{% endif %}">
     <meta property="twitter:site" content="thoughtram">
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
