@@ -619,6 +619,31 @@ class CounterInputComponent implements ControlValueAccessor, OnInit {
 {% endraw %}
 {% endhighlight %}
 
+This works but introduces a new problem: `validateFn` is only set in `ngOnInit()`. What if `counterRangeMax` or `counterRangeMin` change via their bindings? We need to create a new validator function based on these changes. Luckily there's the `ngOnChanges()` lifecycle hook that, allows us to do exactly that. All we have to do is to check if there are changes on one of the input properties and recreate our validator function. We can even get rid off `ngOnInit()` again, because `ngOnChanges()` is called before `ngOnInit()` anyways:
+
+
+{% highlight js %}
+{% raw %}
+import { Input, OnChanges } from '@angular/core';
+...
+
+@Component(...)
+class CounterInputComponent implements ControlValueAccessor, OnChanges {
+  ...
+
+  validateFn:Function;
+
+  ngOnChanges(changes) {
+    if (changes.counterRangeMin || changes.counterRangeMax) {
+      this.validateFn = createCounterRangeValidator(this.counterRangeMax, this.counterRangeMin);
+    }
+  }
+  ...
+}
+{% endraw %}
+{% endhighlight %}
+
+
 Last but not least, we need to update the provider for the validator, as it's now no longer just the function, but the component itself that performs validation:
 
 {% highlight js %}
