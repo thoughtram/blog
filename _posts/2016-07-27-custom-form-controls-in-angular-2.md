@@ -60,7 +60,7 @@ We start off with the raw component. All we need is a model value that can be ch
 
 {% highlight js %}
 {% raw %}
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'counter-input',
@@ -72,6 +72,7 @@ import { Component } from '@angular/core';
 })
 class CounterInputComponent {
 
+  @Input()
   counterValue = 0;
 
   increment() {
@@ -189,19 +190,19 @@ This method gets called when the form is initialized, with the form model's init
 {% endraw %}
 {% endhighlight %}
 
-This will cause our component to render an empty string. As a quick fix, we only set the value when it's truthy:
+This will cause our component to render an empty string. As a quick fix, we only set the value when it's not undefined:
 
 {% highlight js %}
 {% raw %}
 writeValue(value: any) {
-  if (value) {
+  if (value !== undefined) {
     this.counterValue = value;
   }
 }
 {% endraw %}
 {% endhighlight %}
 
-Now, it only overrides the default when there's an actual value written to the control. Next, we implement `registerOnChange()`. This method has access to a function that informs the outside world about changes and since there's no additional special work we want to do when calling this method, we can register it as it is.
+Now, it only overrides the default when there's an actual value written to the control. Next, we implement `registerOnChange()` and `registerOnTouch()`. `registerOnChange()` has access to a function that informs the outside world about changes. Here's where we can do special work, whenever we propagate the change, if we wanted to. `registerOnTouch()` registers a callback that is excuted whenever a form contorl is "touched". E.g. when an input element blurs, it fire the touch event. We don't want to do anything at this event, so we can implement the interface with an empty function.
 
 {% highlight js %}
 {% raw %}
@@ -213,22 +214,8 @@ class CounterInputComponent implements ControlValueAccessor {
   registerOnChange(fn) {
     this.propagateChange = fn;
   }
-}
-{% endraw %}
-{% endhighlight %}
 
-Last but not least, we need to implement `registerOnTouch()` for touch events. There's nothing special we want to do here either.
-
-{% highlight js %}
-{% raw %}
-@Component(...)
-class CounterInputComponent implements ControlValueAccessor {
-  ...
-  propagateTouch = (_: any) => {};
-
-  registerOnTouch(fn) {
-    this.propagateTouch = fn;
-  }
+  registerOnTouch() {}
 }
 {% endraw %}
 {% endhighlight %}
@@ -254,6 +241,38 @@ class CounterInputComponent implements ControlValueAccessor {
 }
 {% endraw %}
 {% endhighlight %}
+
+We can make this code a little better using property mutators. Both methods, `increment()` and `decrement()`, call `propagateChange()` whenever `counterValue` changes. Let's use getters and setters to get rid off the redudant code:
+
+
+{% highlight js %}
+{% raw %}
+@Component(...)
+class CounterInputComponent implements ControlValueAccessor {
+  ...
+  @Input()
+  _counterValue = 0; // notice the '_'
+
+  get counterValue() {
+    return this._counterValue;
+  }
+
+  set counterValue(val) {
+    this._counterValue = val;
+    this.propagateChange(this._counterValue);
+  }
+
+  increment() {
+    this.counterValue++;
+  }
+
+  decrement() {
+    this.counterValue--;
+  }
+}
+{% endraw %}
+{% endhighlight %}
+
 
 `CounterInputComponent` is almost ready for prime-time. Even though it implements the `ControlValueAccessor` interface, there's nothing that tells Angular that it should be considered as such. We need to register it.
 
@@ -310,7 +329,7 @@ bootstrap(AppComponent, [
 {% endraw %}
 {% endhighlight %}
 
-**Note:** In Angular 2 version >= RC5 we don't need `disabledDeprecatedForms()` anymore.
+> **Special Tip:** In Angular 2 version >= RC5 we don't need `disabledDeprecatedForms()` anymore.
 
 <h3 id="without-model-initialization">Without model initialization</h3>
 
@@ -333,7 +352,9 @@ class AppComponent {}
 {% endraw %}
 {% endhighlight %}
 
-Using the json pipe is a great trick to debug a form's value.
+> **Special Tip:** Using the json pipe is a great trick to debug a form's value.
+
+`form.value` returns the values of all form controls mapped to their names in a JSON structure. That's why `JsonPipe` will out put an object literal with a `counter` field of the value that the counter has.
 
 <h3 id="model-initialization-with-property-binding">Model initialization with property binding</h3>
 
@@ -394,7 +415,6 @@ Once we've set up a `FormGroup` that represents our form model, we can bind it t
 })
 class AppComponent implements OnInit {
 
-  outerCounterValue = 5;
   form: FormGroup;
 
   constructor(private fb: FormBuilder) {}
@@ -495,6 +515,8 @@ class CounterInputComponent implements ControlValueAccessor {
 }
 {% endraw %}
 {% endhighlight %}
+
+>> **Special Tip:** To make validator functions available to other modules when building reactive forms, it's good practice to declare them first and reference them in the provider configuration.
 
 Now, the validator can be imported and added to our form model like this:
 
