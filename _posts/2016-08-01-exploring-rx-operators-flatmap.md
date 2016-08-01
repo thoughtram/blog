@@ -1,12 +1,12 @@
 ---
 layout:     post
-title:      "Exploring Rx Operators: flatmap"
+title:      "Exploring Rx Operators: flatMap"
 imageUrl:  "/images/banner/rx-flatmap.jpeg"
 
 
 date: 2016-08-01
 
-summary: "This is another post in a series of articles to discover the magic of different Rx operators. In this article we like to learn about the very powerful flatmap operator."
+summary: "This is another post in a series of articles to discover the magic of different Rx operators. In this article we like to learn about the very powerful flatMap operator."
 
 categories:
   - rx
