@@ -167,8 +167,8 @@ But just as we used `flatMap` to get one single collection of positions of all t
 let likeCount = 0;
 tweets.flatMap(tweet => tweet.likes)
       .subscribe(like => {
-        likeCount = likes + like;
-        console.log(`Likes: ${likes}`);
+        likeCount = likeCount + like;
+        console.log(`Likes: ${likeCount}`);
       });
 {% endraw %}
 {% endhighlight %}
