@@ -223,13 +223,21 @@
       </div>
     </main>
     {% include footer.html %}
+
+    <script src="/scripts/linkjuice/dist/linkjuice.js"></script>
+    <script>
+    (function (doc, win) {
+      var num = Math.floor(Math.random() * (2 - 0));
+      doc.querySelectorAll('.thtrm-ad')[num].classList.add('thtrm-ad--visible');
+
+      linkjuice.init('.thtrm-article', {
+        selector: ['h2', 'h3'],
+        icon: '',
+        contentFn: function (node) {
+          return node.innerHTML;
+        }
+      });
+    }(document, window));
+    </script>
   </body>
 </html>
-
-
-<script>
-(function (doc, win) {
-  var num = Math.floor(Math.random() * (2 - 0));
-  doc.querySelectorAll('.thtrm-ad')[num].classList.add('thtrm-ad--visible');
-}(document, window));
-</script>

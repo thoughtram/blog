@@ -30,6 +30,19 @@
     + * {
       margin-top: 0;
     }
+
+    a {
+      border-bottom: 0;
+      position: relative;
+
+      &:hover {
+        &:before {
+          content: '#';
+          left: -1em;
+          position: absolute;
+        }
+      }
+    }
   }
 
   h2 code {
