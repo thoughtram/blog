@@ -35,6 +35,7 @@
 
     @include tablet {
       font-size: 24px;
+      vertical-align: -6px;
     }
   }
 
@@ -43,4 +44,15 @@
     background-color: #384c54;
   }
 }
+.thtrm-ctas {
+  text-align: center;
 
+  .thtrm-cta {
+    margin-left: 2em;
+    margin-top: 0;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}

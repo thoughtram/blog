@@ -1,0 +1,15 @@
+{% if include.post.video or include.post.videos or include.post.demo or include.post.demos %}
+<p style="text-align: center; margin-bottom: -1em;"><strong>Want to see things in action first?</strong></p>
+
+<p class="thtrm-ctas">
+
+  {% if include.post.demo or include.post.demos %}
+    <a href="#demos" class="thtrm-cta thtrm-cta--small"><i class="material-icons">code</i> View Demos</a>
+  {% endif %}
+
+  {% if include.post.video or include.post.videos %}
+    <a href="#videos" class="thtrm-cta thtrm-cta--small"><i class="material-icons">play_arrow</i> Play videos</a>
+  {% endif %}
+
+</p>
+{% endif %}

@@ -92,20 +92,16 @@
             </ul>
           </div>
           {% endif %}
+
           {{ content }}
 
-          {% if page.videoUrl %}
-          <p>Watch the video to see things in action!</p>
-          <iframe style="width: 100%;" src="{{ page.videoUrl }}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+          {% if page.video or page.videos %}
+          <h2 id="videos">Videos on this article</h2>
+            {% if page.video %}
+              <iframe style="width: 100%;" src="{{ page.video.url }}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            {% endif %}
           {% endif %}
         </div>
-        <!-- <section class="thtrm-ad thtrm-section thtrm-section--is-promo thtrm-section thtrm-section--is-promo-light"> -->
-        <!--   <img width="100" src="/images/5-things-bw-white.png"> -->
-        <!--   <h3 class="thtrm-section-headline">5thingsAngular</h3> -->
-        <!--   <p class="thtrm-section-text">Get weekly updates on the latest and greatest happenings in the Angular world by thoughtram!</p> -->
-        <!--   <a href="http://5thingsAngular.github.io" title="5thingsAngular" class="thtrm-layout-divider-cta">Tell me more</a> -->
-        <!-- </section> -->
-
 
         <section class="thtrm-ad thtrm-section thtrm-section--is-promo">
           <img width="100" src="/images/angular2-shield-inverse.svg">

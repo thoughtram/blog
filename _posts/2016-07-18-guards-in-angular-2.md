@@ -2,9 +2,12 @@
 layout:     post
 title:      "Protecting Routes using Guards in Angular 2"
 imageUrl:   "/images/banner/protecting-routes-using-guards-in-angular-2.jpg"
-videoUrl:   "https://player.vimeo.com/video/175218351"
+video:
+  url: "https://player.vimeo.com/video/175218351"
+  title: "Guards in Angular 2"
 
 date: 2016-07-18
+update_date: 2016-08-02
 
 summary: "When building applications, we often want to protect the users from entering or leaving certain areas. We could have an admin section that only authorized users can access. Or, we might want to ask the user to confirm to navigate away from a area. Angular's router enables that functionality using guards and in this article we're going to discuss how to implement them."
 
@@ -23,13 +26,16 @@ In our last article, [Routing in Angular 2 revisited](/angular/2016/06/14/routin
 
 Protecting routes is a very common task when building applications, as we want to prevent our users from accessing areas that they're not allowed to access, or, we might want to ask them for confirmation when leaving a certain area. Angular 2's router provides a feature called **Guards** that try to solve exactly that problem. In this article, we'd like to take a look at the different types of guards and how to implement them for actual use cases.
 
+{% include demos-and-videos-buttons.html post=page %}
+
 ## Guard Types
 
-There are three different guard types we can use to protect our routes:
+There are four different guard types we can use to protect our routes:
 
 - **CanActivate** - Decides if a route can be activated
 - **CanActivateChild** - Decides if children routes of a route can be activated
 - **CanDeactivate** - Decides if a route can be deactivated
+- **CanLoad** - Decides if a module can be loaded lazily
 
 Depending on what we want to do, we might need to implement one or the other guard. In some cases, we even need to implement all of them. Let's take a look at how to define guards.
 

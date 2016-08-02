@@ -31,6 +31,10 @@
       margin-top: 0;
     }
 
+    + iframe {
+      margin-top: 20px;
+    }
+
     a {
       border-bottom: 0;
       position: relative;
@@ -109,6 +113,11 @@
     color: #999;
     font-size: 1.2em;
     line-height: 30px;
+  }
+
+  .thtrm-cta {
+    text-decoration: none;
+    border-bottom: 2px solid #384c54;
   }
 }
 
