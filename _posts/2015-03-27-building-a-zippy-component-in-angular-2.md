@@ -15,7 +15,7 @@ relatedLinks:
     title: "The difference between Annotations and Decorators"
     url: "http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html"
 date:       2015-03-27
-update_date: 2016-05-12
+update_date: 2016-08-02
 summary:    "Even if Angular 2 is still in early development, we can already start playing with the code since it's up on GitHub and also published as npm module. We are following the development of Angular 2 since the beginning on and are also contributing to the project. Just recently we've built a simple zippy component in Angular 2 and in this article we want to show how."
 
 categories: 
@@ -56,7 +56,7 @@ $ gulp play
 
 A browser tab opens on `localhost://9000` and what we see is the text "Hello, World!". After two seconds the text changes to "Hello, NEW World!" and this is because Pawel demonstrates how we can simply use `setTimeout()` in Angular 2 without using something like `$timeout` service or manually calling `$scope.$apply()`, which is how we deal with that today in Angular 1.
 
-I don't want to go into much detail on what the existing code does, but you can go ahead and check out the `src/hello.js` file to get an idea of what's happening here. We want to focus on how to build a zippy component now.
+I don't want to go into much detail on what the existing code does, but you can go ahead and check out the `src/hello.ts` file to get an idea of what's happening here. We want to focus on how to build a zippy component now.
 
 ## Building the zippy component
 
@@ -68,11 +68,11 @@ Long story short: this, is a zippy.
 
 Also known as "accordion". You can click the summary text and the actual content toggles accordingly. If you take a look at this particular plunk, you'll see that we actually don't need to do any special implementation to get this working. We have the `<details>` element that does the job for us. But how can we implement such a thing in Angular 2?
 
-We start off by adding a new file `src/zippy.js` and creating a class in ES6 that we export, so it can be imported by other consumers of this class, by using the ES6 module system. If you're not familiar with modules in ES6 you might want to read our article on [using ES6 with Angular today](http://blog.thoughtram.io/angularjs/es6/2015/01/23/exploring-angular-1.3-using-es6.html).
+We start off by adding a new file `src/my-zippy.ts` and creating a class in ES6 that we export, so it can be imported by other consumers of this class, by using the ES2015 module system. If you're not familiar with modules in ES2015 you might want to read our article on [using ES2015 with Angular today](http://blog.thoughtram.io/angularjs/es6/2015/01/23/exploring-angular-1.3-using-es6.html).
 
 {% highlight javascript %}
 {% raw %}
-export class Zippy {
+export class ZippyComponent {
 
 }
 {% endraw %}
@@ -80,7 +80,7 @@ export class Zippy {
 
 Angular 2 doesn't come with it's own module system anymore, since ES2015 already provides a module system. That means we can just write plain ES2015 code without any Angular specific bits which makes our code more reusable.
 
-The next thing we want to do, is to make our `Zippy` class an actual component and give it a template so that we can see that it is ready to be used. In order to tell Angular that this particular class is a component, we use something called "Decorators".
+The next thing we want to do, is to make our `ZippyComponent` class an actual component and give it a template so that we can see that it is ready to be used. In order to tell Angular that this particular class is a component, we use something called "Decorators".
 
 Decorators are a way to add metadata to our existing code. Those decorators are actually not supported by ES2015 but have been developed as language extension of the TypeScript transpiler, which is used in this project. We're not required to use decorators though. As mentioned, those are just transpiled to ES5 and then simply used by the framework. However, for simplicity sake we'll use them in this article.
 
@@ -88,9 +88,9 @@ Angular provides us with a couple of decorators so we can express our code in a 
 
 {% highlight javascript %}
 {% raw %}
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
-export class Zippy {
+export class ZippyComponent {
 
 }
 {% endraw %}
@@ -98,16 +98,16 @@ export class Zippy {
 
 The `Component` decorator adds information about what our component's element name will be, which attributes are bound to which input properties and more. We can also add information about the component's view and template.
 
-We want our zippy component to be usable as `<zippy>` element. So all we need to do, is to add a `@Component()` decorator with that particular information. To specify the element name, or rather CSS selector (since we could also build decorators), we need to add a `selector` property that matches a CSS selector.
+We want our zippy component to be usable as `<my-zippy>` element. So all we need to do, is to add a `@Component()` decorator with that particular information. To specify the element name, or rather CSS selector (since we could also build decorators), we need to add a `selector` property that matches a CSS selector.
 
 {% highlight javascript %}
 {% raw %}
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'zippy'
+  selector: 'my-zippy'
 })
-export class Zippy {
+export class ZippyComponent {
 
 }
 {% endraw %}
@@ -117,13 +117,13 @@ Next, our component needs a template. We add information about the component's v
 
 {% highlight javascript %}
 {% raw %}
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'zippy',
-  templateUrl: 'zippy.html'
+  selector: 'my-zippy',
+  templateUrl: 'my-zippy.html'
 })
-export class Zippy {
+export class ZippyComponent {
 
 }
 {% endraw %}
@@ -146,17 +146,17 @@ Later at runtime, when Angular compiles this component, it'll fetch `zippy.html`
 
 CSS classes can be ignored for now. They just give us some semantics throughout our template.
 
-Alright, believe it or not, that's basically all we need to do to get this component running. Let's use our zippy component inside the hello app. In order to do that, we need to make some changes to `src/hello.js`. Here's what it should look like, after changes have been applied (I removed everything that is distracting):
+Alright, believe it or not, that's basically all we need to do to get this component running. Let's use our zippy component inside the hello app. In order to do that, we need to make some changes to `src/hello.ts`. Here's what it should look like, after changes have been applied (I removed everything that is distracting):
 
 {% highlight javascript %}
 {% raw %}
-import {Component} from '@angular/core';
-import {Zippy} from 'zippy';
+import { Component } from '@angular/core';
+import { ZippyComponent } from './my-zippy';
 
 @Component({
   selector: 'hello',
-  template: `<zippy></zippy>`,
-  directives: [Zippy]
+  template: `<my-zippy></my-zippy>`,
+  directives: [ZippyComponent]
 })
 export class Hello {
 
@@ -172,7 +172,7 @@ In order to bring this component to life, let's recap quickly what we need:
 
 - Clicking on the zippy title should toggle the content
 - The title of the should be configurable from the outside world, currently hard-coded in the template
-- DOM that is used inside the `<zippy>` element should be projected in the zippy content
+- DOM that is used inside the `<my-zippy>` element should be projected in the zippy content
 
 Let's start with the first one: when clicking on the zippy title, the content should toggle. How do we implement that in Angular 2?
 
@@ -192,13 +192,13 @@ Instead of adding an `ngClick` directive (which we don't have in Angular 2), to 
 
 If you're not familiar with this syntax I recommend you either reading this article on [integrating Web Components with Angular](http://pascalprecht.github.io/2014/10/25/integrating-web-components-with-angularjs/), or this article about [Angular 2's template syntax demystified](http://blog.thoughtram.io/angular/2015/08/11/angular-2-template-syntax-demystified-part-1.html). [Misko's keynote](https://www.youtube.com/watch?v=-dMBcqwvYA0) from this year's ng-conf is also a nice resource.
 
-Now we're basically listening on a `click` event and execute a **statement**. But where does `toggle()` come from? We can access component methods directly in our template in Angular 2. There's no `$scope` service or controller that provides those methods. Which means, `toggle()` is just a method defined in `Zippy`.
+Now we're basically listening on a `click` event and execute a **statement**. But where does `toggle()` come from? We can access component methods directly in our template in Angular 2. There's no `$scope` service or controller that provides those methods. Which means, `toggle()` is just a method defined in `ZippyComponent`.
 
 Here's what the implementation of this method could look like:
 
 {% highlight javascript %}
 {% raw %}
-export class Zippy {
+export class ZippyComponent {
   toggle() {
     this.visible = !this.visible;
   }
@@ -210,9 +210,9 @@ We simply invert the value of the component's `visible` property. In order to ge
 
 {% highlight javascript %}
 {% raw %}
-export class Zippy {
+export class ZippyComponent {
 
-  visible:boolean = true;
+  visible = true;
 
   toggle() {
     this.visible = !this.visible;
@@ -261,13 +261,13 @@ In Angular 2, we don't need to specify how scope properties are bound in our com
 
 {% highlight javascript %}
 {% raw %}
-import {Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'zippy'
+  selector: 'my-zippy'
 })
-export class Zippy {
-  @Input() title: string;
+export class ZippyComponent {
+  @Input() title;
   ...
 }
 {% endraw %}
@@ -278,10 +278,10 @@ Basically what we're doing here, is telling Angular that the value of the `title
 {% highlight javascript %}
 {% raw %}
 @Component({
-  selector: 'zippy'
+  selector: 'my-zippy'
 })
-export class Zippy {
-  @Input('zippyTitle') title: string;
+export class ZippyComponent {
+  @Input('zippyTitle') title;
   ...
 }
 {% endraw %}
@@ -292,8 +292,8 @@ But for simplicity's sake, we stick with the shorthand sytnax. There's nothing m
 {% highlight javascript %}
 {% raw %}
 @Component({
-  template: `<zippy title="Details"></zippy>`,
-  directives: [Zippy]
+  template: `<my-zippy title="Details"></zippy>`,
+  directives: [ZippyComponent]
 })
 ...
 {% endraw %}
@@ -319,9 +319,9 @@ We could for example use our component like this:
 
 {% highlight html %}
 {% raw %}
-<zippy title="Details">
+<my-zippy title="Details">
   <p>Here's some detailed content.</p>
-</zippy>
+</my-zippy>
 {% endraw %}
 {% endhighlight %}
 
@@ -347,16 +347,16 @@ Yay, this is how we build a zippy component in Angular 2. Just to make sure we'r
 
 {% highlight javascript %}
 {% raw %}
-import {Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'zippy',
-  templateUrl: 'zippy.html'
+  selector: 'my-zippy',
+  templateUrl: 'my-zippy.html'
 })
-export class Zippy {
+export class ZippyComponent {
 
-  @Input() title: string;
-  visible: boolean = true;
+  @Input() title;
+  visible = true;
 
   toggle() {
     this.visible = !this.visible;
