@@ -4,9 +4,10 @@
 .thtrm-blog {
   .thtrm-main {
     margin: 0 auto;
-    padding: 0 0 0 0;
-    min-height: 100%;
+    padding-left: 0;
+    padding-right: 0;
     padding-top: 70px;
+    min-height: 100%;
 
     &:before {
       position: absolute;
