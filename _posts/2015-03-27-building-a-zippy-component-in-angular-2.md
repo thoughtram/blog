@@ -14,6 +14,12 @@ relatedLinks:
   -
     title: "The difference between Annotations and Decorators"
     url: "http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html"
+
+demos:
+  -
+   url: "http://embed.plnkr.co/mbJOYS/"
+   title: "Angular 2 Zippy Component"
+
 date:       2015-03-27
 update_date: 2016-08-02
 summary:    "Even if Angular 2 is still in early development, we can already start playing with the code since it's up on GitHub and also published as npm module. We are following the development of Angular 2 since the beginning on and are also contributing to the project. Just recently we've built a simple zippy component in Angular 2 and in this article we want to show how."
@@ -30,6 +36,8 @@ author: pascal_precht
 ---
 
 Even if Angular 2 is still in early development, we can already start playing with the code since it's up on GitHub and also published as npm module for early adopters. We are following the development of Angular 2 since the beginning on and are also contributing to the project. Just recently we've built a simple zippy component in Angular 2 and in this article we want to show you how.
+
+{% include demos-and-videos-buttons.html post=page %}
 
 ## Getting started with Angular 2
 
@@ -382,6 +390,4 @@ And here's the template:
 
 I've set up a repository so you can play with the code [here](https://github.com/thoughtram/angular-zippy). In fact, I've also added this component to the Angular project. The pull request is <s>pending</s> merged [here](https://github.com/angular/angular/pull/729) <s>and likely to be merged the next few days</s>. At this point I'd like to say thank you to [Victor](http://twitter.com/vberchet) and [Misko](http://twitter.com/mhevery) for helping me out on getting this implemented.
 
-You might notice that it also comes with e2e tests. The component itself even emits it's own events using `EventEmitter`, which we haven't covered in this article. Those will be discussed in another article.
-
-Go and check it out!
+You might notice that it also comes with e2e tests. The component itself even emits it's own events using `EventEmitter`, which we haven't covered in this article. Check out the demos to see event emitters in action!
