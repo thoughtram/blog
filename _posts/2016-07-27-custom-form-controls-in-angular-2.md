@@ -15,12 +15,19 @@ tags:
 
 topic: forms
 
+demos:
+  -
+   url: http://embed.plnkr.co/035BWnCCvSuchgpO1b9Z/
+   title: Custom number input control
+
 author: pascal_precht
 ---
 
-There are many things that Angular helps us out with when creating forms. We've covered several topics on [Forms in Angular 2](/forms-in-angular-2), like model-driven forms and template-driven forms. If you haven't read those articles yet, we highly recommend you to do so as this one is based on them. [Almero Steyn](@kryptos_rsa), one of our training students, who later on contributed to the offical documentation as part of the Docs Authoring Team for Angular 2, has also written a very nice [introduction](http://almerosteyn.com/2016/04/linkup-custom-control-to-ngcontrol-ngmodel) to creating custom controls.
+There are many things that Angular helps us out with when creating forms. We've covered several topics on [Forms in Angular 2](/forms-in-angular-2), like model-driven forms and template-driven forms. If you haven't read those articles yet, we highly recommend you to do so as this one is based on them. [Almero Steyn](@kryptos_rsa), one of our training students, who later on contributed to the official documentation as part of the Docs Authoring Team for Angular 2, has also written a very nice [introduction](http://almerosteyn.com/2016/04/linkup-custom-control-to-ngcontrol-ngmodel) to creating custom controls.
 
 His article inspired us and we would like to take it a step further and explore how to create custom form controls that integrate nicely with Angular's form APIs.
+
+{% include demos-and-videos-buttons.html post=page %}
 
 <h2 id="things-to-consider">Custom form control considerations</h2>
 
@@ -708,5 +715,3 @@ class AppComponent implements OnInit {
 }
 {% endraw %}
 {% endhighlight %}
-
-Wow, that was a journey! Check out the full code in action in this [demo](http://plnkr.co/edit/035BWnCCvSuchgpO1b9Z?p=preview)!

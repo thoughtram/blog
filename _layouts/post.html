@@ -95,12 +95,7 @@
 
           {{ content }}
 
-          {% if page.video or page.videos %}
-          <h2 id="videos">Videos on this article</h2>
-            {% if page.video %}
-              <iframe style="width: 100%;" src="{{ page.video.url }}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-            {% endif %}
-          {% endif %}
+          {% include demos-and-videos.html post=page %}
         </div>
 
         <section class="thtrm-ad thtrm-section thtrm-section--is-promo">

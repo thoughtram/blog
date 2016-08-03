@@ -2,9 +2,6 @@
 layout:     post
 title:      "Protecting Routes using Guards in Angular 2"
 imageUrl:   "/images/banner/protecting-routes-using-guards-in-angular-2.jpg"
-video:
-  url: "https://player.vimeo.com/video/175218351"
-  title: "Guards in Angular 2"
 
 date: 2016-07-18
 update_date: 2016-08-02
@@ -16,6 +13,11 @@ categories:
 
 tags:
   - angular2
+
+videos:
+  -
+    url: "https://player.vimeo.com/video/175218351"
+    title: "Guards in Angular 2"
 
 topic: routing
 
