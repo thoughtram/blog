@@ -12,7 +12,7 @@ relatedLinks:
     title: "Creating a tabs component using @ContentChildren"
     url: "http://juristr.com/blog/2016/02/learning-ng2-creating-tab-component"
 date:       2015-04-09
-update_date: 2016-05-12
+update_date: 2016-08-04
 summary:    "In our last article we learned how to build a zippy component in Angular 2. This article details how to build another simple, but widely used type of component: tabs. Building tabs in Angular has always been the de facto example to example controllers in directives. Angular 2 makes it much easier and here's how you do it."
 
 categories:
