@@ -24,12 +24,23 @@ tags:
 topic: getting-started
 
 author: pascal_precht
+
+demos:
+  -
+    url: http://embed.plnkr.co/KU8eGM/
+    title: Tabs Component build with Angular 2
+  -
+    url: https://embed.plnkr.co/afhLA8wHw9LRnzwwTT3M/
+    title: Tabs Component using @ContentChildren
 ---
 Just recently, we wrote about how to [build a zippy component](http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html) in Angular 2. We explored how to get started with the framework and learned about some concepts that it comes with to build a very simple component. If you haven't read the article, you might want to check it out.
 
 As a follow up, we now want to build yet another component that is widely used in a lot of applications: Tabs. Building tabs has always been the de facto example when it comes to explaining directive controllers in Angular. Angular 2 does not have the concept of directive controllers, because the component itself is the execution context. It also makes it much easier to access other directives and components through dependency injection. However, you **do** want to [use directive controllers](http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html) in Angular 1 in order to make the migration process to Angular 2 easier.
 
+{% include demos-and-videos-buttons.html post=page %}
+
 Let's start right away and learn how easy it is to build a tabs component in Angular 2 without the confusing relationship between directive link functions and controllers. We'll skip the installation part, since that was explored in the other article.
+
 
 ## What it should look like
 
@@ -354,8 +365,6 @@ export class Tab {
 
 This is a very rudimentary implementation of a tabs component. We can use that as a starting point to make it better over time. For example, we haven't done anything in terms of accessibility. It would also be nice if the component emits some custom events when a tab is activated. We'll cover working with events in Angular 2 in another article.
 
-You can find the running code in [this plunk](http://plnkr.co/edit/k47x1WTMxuvPA0J1hcWf?p=preview).
-
 ## Bonus
 
 Angular 2 is so awesome that there is not just one way how to do things!
@@ -364,6 +373,4 @@ We can take a totally different approach how to implement our simple tabs ( whic
 leveraging special Angular 2 `@ContentChildren` property decorator with `QueryList` type and `AfterContentInit` life cycle interface.
 Those are more advanced concepts, which are covered in more details by [Juri Strumpflohner](https://twitter.com/juristr) in [his follow-up article](http://juristr.com/blog/2016/02/learning-ng2-creating-tab-component).
 
-If you're just curious what it looks like, you can find live demo in [this plunk](https://plnkr.co/edit/afhLA8wHw9LRnzwwTT3M?p=preview)
-
-Stay tuned!
+If you're just curious what it looks like, check out the demos below!
