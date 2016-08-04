@@ -15,7 +15,8 @@ relatedLinks:
     title: "Dependency Injection in Angular 2"
     url: "http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html"
 date:       2015-07-06
-update_date: 2016-05-12
+update_date: 2016-08-04
+
 summary:    "One of the biggest things to consider when it comes to using Angular 2, is the upgrade path from Angular 1. Angular 2 is entirely written in TypeScript but browsers today only support ES5 or some features of ES6. However, nobody prevents us from writing Angular 2 code in ES5. A couple of weeks ago we wrote about exactly that. This time, we take a look at a new, much better, syntax to write Angular 2 in ES5."
 
 categories: 
@@ -27,11 +28,18 @@ tags:
 topic: upgrade
 
 author: pascal_precht
+
+demos:
+  -
+    url: http://embed.plnkr.co/fdj1rQEnUGhpnFJY4ngY/
+    title: Hello World app in ES5 with syntactic sugar
 ---
 
 A couple of weeks ago we wrote about how to write [Angular 2 code in ES5](http://blog.thoughtram.io/angular/2015/05/09/writing-angular-2-code-in-es5.html) and took a closer look at what [annotations and decorators](http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html) translate to. While it is nice that we can all write Angular 2 applications without the hassle of setting up a development environment for TypeScript, Babel or SystemJS, it turns out that the syntax is still quite wordy. Of course, this isn't really a big problem, because it is just the syntax after all. That's why the Angular team works hard on making even the ES5 experience much better. All improvements that land in the ES5 world shrink the gap between Angular 1 and Angular 2 syntax, in fact, upgrading will be rather boring.
 
 In this article we're going to take a closer look at the ES5 syntax improvements and how they make upgrading even easier.
+
+{% include demos-and-videos-buttons.html post=page %}
 
 ## Angular 2 in ES5 before syntactical improvements
 
@@ -146,7 +154,7 @@ We can define methods on our class simply by adding a property to it that is a f
 {% endraw %}
 {% endhighlight %}
 
-That's pretty straight forward. But why do properties have to be arrays otherwise? Remember [dependency injection in Angular2](http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html)? We can inject services and factories using `@Inject` decorators, but as we know, there are no decorators nor annotations in ES5. That's where the array syntax comes in.
+That's pretty straight forward. But why do properties have to be arrays otherwise? Remember [dependency injection in Angular2](/angular/2015/05/18/dependency-injection-in-angular-2.html)? We can inject services and factories using `@Inject` decorators, but as we know, there are no decorators nor annotations in ES5. That's where the array syntax comes in.
 
 {% highlight javascript %}
 {% raw %}
@@ -162,8 +170,6 @@ var HelloComponent = ng.core
   });
 {% endraw %}
 {% endhighlight %}
-
-Click [here](http://plnkr.co/edit/WALbpvoMaFaHSZJNsHH2?p=preview) to see the new syntax in action.
 
 ## Conclusion
 
