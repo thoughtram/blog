@@ -18,7 +18,7 @@ relatedLinks:
     title: "Angular ES5 Demo"
     url: "http://plnkr.co/edit/XmZkHzl407z93R5Kf0pv?p=preview"
 date:       2015-05-09
-update_date: 2015-12-12
+update_date: 2016-08-04
 
 summary:    "Angular 2 is written in TypeScript to take advantage of language features like types and meta data annotations through decorators. While this is great for tooling, a lot of people don't like the syntax of decorators and maybe even ES6 classes. This article discusses how to write an Angular 2 application in ES5."
 
@@ -31,6 +31,14 @@ tags:
 topic: upgrade
 
 author: pascal_precht
+
+demos:
+  -
+    url: http://plnkr.co/edit/BUYnsbW7WX6FTjlK7mUh?p=preview
+    title: Hello World app in ES5
+  -
+    url: http://embed.plnkr.co/l2kmT4w0uQMzuwHk4nc6/
+    title: Hello World app with service injection
 ---
 
 It's no news anymore that Angular 2 is written in TypeScript in order to take advantage of language features like types and meta data annotations through decorators. Taking a first look at Angular 2 examples that are written in TypeScript, can feel a bit unfamiliar and unclear to developers that don't have experience with that language. Even constructs like classes that ECMAScript 6 brings to the table can be scary enough to keep developers from learning Angular 2.
@@ -38,6 +46,8 @@ It's no news anymore that Angular 2 is written in TypeScript in order to take ad
 That's why developers with more experience will tell us that we don't have to write TypeScript or just ES6 if we don't want to. We can just stick with ES5. Cool, fine. But how do we do that? In one of our last articles we've explored the [difference between annotations and decorators](http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html) and to what they translate to in ES5.
 
 In this article, we will use that information, to actually write Angular 2 code in ES5 with the latest version released at the time of writing.
+
+{% include demos-and-videos-buttons.html post=page %}
 
 ## Getting started with Angular 2 in ES5
 
@@ -154,7 +164,7 @@ To make our component explicitly ask for something that is a `GreetingService`, 
 
 {% highlight javascript %}
 {% raw %}
-HelloComponent.parameters = [new ng.core.Inject(GreetingService)];
+HelloComponent.parameters = [[new ng.core.Inject(GreetingService)]];
 {% endraw %}
 {% endhighlight %}
 
@@ -164,4 +174,5 @@ Cool, so it turns out that writing Angular 2 code is actually not weird at all. 
 
 There's even a [better syntax](http://blog.thoughtram.io/angular/2015/07/06/even-better-es5-code-for-angular-2.html), that makes writing and reading Angular 2 code a breeze.
 
-You can find a running example of that Angular 2 app in ES5 right [here](http://plnkr.co/edit/XmZkHzl407z93R5Kf0pv?p=preview).
+Check out the demos below!
+
