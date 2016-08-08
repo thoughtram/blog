@@ -9,6 +9,9 @@ summary:    "We are happy to tell you that we are coming to Bangkok again this y
 categories:
   - announcements
 
+redirect_from:
+  - /angular/2015/09/14/angular-training-day-bangkok.html
+
 author: christoph_burgdorf
 ---
 

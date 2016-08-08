@@ -9,6 +9,11 @@ tags:
   - training
   - announcements
   - git
+
+redirect_from:
+  - /posts/tickets-are-on-sale-now/
+  - /posts/der-ticketverkauf-beginnt/
+
 author: pascal_precht
 ---
 

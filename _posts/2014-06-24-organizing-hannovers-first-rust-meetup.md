@@ -4,6 +4,10 @@ title: "Organizing Hanovers first Rust meetup"
 date: "2014-06-24"
 summary: As thoughtram we are dedicated to invest into interesting new technologies that we feel are exciting and have the potential to become popular. Not for money, but for fun!
 
+redirect_from:
+  - /posts/organizing-hannovers-first-rust-meetup/
+
+
 categories: 
   - announcements 
   - rust 

@@ -5,6 +5,9 @@ date:       2014-06-06
 summary:    We enjoy learning new stuff every day and we love teaching it to others even more.
 imageUrl:   "/images/banner/we-are-thoughtram.jpg"
 
+redirect_from:
+  - /posts/we-are-thoughtram/
+
 categories: 
   - announcements
 tags:

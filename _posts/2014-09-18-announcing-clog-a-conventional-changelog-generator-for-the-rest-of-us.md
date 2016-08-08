@@ -4,6 +4,9 @@ title: "clog - A conventional changelog generator for the rest of us"
 date: "2014-09-18"
 summary: At thoughtram we teach people how to master Git. We also teach them how to maintain a semantic history. Introducing clog.
 
+redirect_from:
+  - /posts/anouncing-clog-a-conventional-changelog-generator-for-the-rest-of-us/
+
 categories: announcements tools
 tags:
   - rust

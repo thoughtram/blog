@@ -14,3 +14,7 @@ markdown: kramdown
 paginate: 7
 sass:
   compressed: true
+whitelist:
+  - jekyll-redirect-from
+gems:
+  - jekyll-redirect-from
