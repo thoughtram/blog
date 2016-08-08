@@ -43,7 +43,7 @@ Even if Angular 2 is still in early development, we can already start playing wi
 
 I think the community still tries to find out what currently the best starting point is, when it comes to Angular 2. There are several options today, for instance, we can go to [angular.io](http://angular.io) and use the [quickstart](https://angular.io/docs/js/latest/quickstart.html) guide. If this doesn't suit you, there's an article on [trying Angular 2 today](http://swirlycheetah.com/try-angular2-today/) that lists some other useful repositories to get started quickly. In this article we will use [Pawel Kozlowski's](http://twitter.com/pkozlowski_os) [ng2-play](https://github.com/pkozlowski-opensource/ng2-play) repository, but again, you can use whatever suits you (Thanks Pawel for setting this up btw).
 
-As the readme of the project says, we can simply start by cloning the repository with Git and install it's dependencies using npm. We also need to install [gulp](gulpjs.com) globally, which is what we do first.
+As the readme of the project says, we can simply start by cloning the repository with Git and install it's dependencies using npm. We also need to install [gulp](http://gulpjs.com) globally, which is what we do first.
 
 {% highlight sh %}
 {% raw %}

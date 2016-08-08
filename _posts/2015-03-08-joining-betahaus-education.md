@@ -22,7 +22,7 @@ If you are following the startup scene chances are you've heard about the [betah
 
 We're happy to announce to take part in the new [betahaus education](http://hamburg.betahaus.de/programm/education) program that aims to deliver various formats including sessions, workshops and even series around topics such as tech, startup and everything digital.
 
-On **Friday 17th of July** we'll give a one day workshop on the popular [Angular](angularjs.org) framework at the [betahaus Hamburg](http://hamburg.betahaus.de/wie-ihr-uns-findet).
+On **Friday 17th of July** we'll give a one day workshop on the popular [Angular](http://angularjs.org) framework at the [betahaus Hamburg](http://hamburg.betahaus.de/wie-ihr-uns-findet).
 
 While booking isn't yet available we recommend to already mark the date in your calendar!
 

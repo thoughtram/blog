@@ -31,7 +31,7 @@ We are super happy about this and are very much looking forward to the event!
 
 ![Bangkok](/assets/rsz_bangkok_at_night_01_mk.jpg)
 
-Roughly a week ago Pascal and I talked about "The best Angular yet" at the [ng-nl](ng-nl.org) conference in Amsterdam. We are happy to share with you that we will bring this talk to Bangkok, Thailand on April 17th. I will present "The best Angular yet" alone since Pascal will be running a workshop in Switzerland then. Did I mention that we love traveling?
+Roughly a week ago Pascal and I talked about "The best Angular yet" at the [ng-nl](http://ng-nl.org) conference in Amsterdam. We are happy to share with you that we will bring this talk to Bangkok, Thailand on April 17th. I will present "The best Angular yet" alone since Pascal will be running a workshop in Switzerland then. Did I mention that we love traveling?
 
 The talk will be given at the local Angular meetup in Bangkok. <s>We're still busy to find the perfect location for the meetup so stay tuned for updates regarding the exact location and time.</s>
 

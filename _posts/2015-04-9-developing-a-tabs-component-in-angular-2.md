@@ -227,7 +227,7 @@ class Tab {
 {% endhighlight %}
 
 Wait, what happens here? `tabs: Tabs` is just Typescript type annotation which Angular 2 uses for Dependency Injection.
-Please check out our article where we go deeper inside [Angular 2 DI](http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.md)
+Please check out our article where we go deeper inside [Angular 2 DI](http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2)
 
 **tl;dr**
 

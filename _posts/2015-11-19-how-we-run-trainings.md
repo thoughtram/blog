@@ -49,7 +49,7 @@ That's why we built [classroom](http://classroom.thoughtram.io). It's our very o
 
 When we started to use classroom for our workshops we noticed that the exercise blocks went much smoother. People had an easier time looking up things in the slides and even started sharing links to specific slides in the chatroom (which isn't part of classroom yet).
 
-Authentication for classroom is done via GitHub OAuth and for now is only accessible for people who attended one of our workshops. The project is pretty much in an alpha state but we are rolling with the vibe of *release early, release often*. The frontend is written in Angular 1 using TypeScript and a component oriented approach. You may want to checkout the [code on GitHub](https://github.com/thoughtram/classroom-app). The backend is written in [Rust](rust-lang.org) using [nickel.rs](http://nickel.rs) but is not yet publicly available.
+Authentication for classroom is done via GitHub OAuth and for now is only accessible for people who attended one of our workshops. The project is pretty much in an alpha state but we are rolling with the vibe of *release early, release often*. The frontend is written in Angular 1 using TypeScript and a component oriented approach. You may want to checkout the [code on GitHub](https://github.com/thoughtram/classroom-app). The backend is written in [Rust](http://rust-lang.org) using [nickel.rs](http://nickel.rs) but is not yet publicly available.
 
 In the future we may plan to open up classroom for a broader audience. For now we see it more as a supportive tool for our workshops rather than a polished product to share with the masses though.
 

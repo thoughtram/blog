@@ -23,7 +23,7 @@ demos:
 author: pascal_precht
 ---
 
-There are many things that Angular helps us out with when creating forms. We've covered several topics on [Forms in Angular 2](/forms-in-angular-2), like model-driven forms and template-driven forms. If you haven't read those articles yet, we highly recommend you to do so as this one is based on them. [Almero Steyn](@kryptos_rsa), one of our training students, who later on contributed to the official documentation as part of the Docs Authoring Team for Angular 2, has also written a very nice [introduction](http://almerosteyn.com/2016/04/linkup-custom-control-to-ngcontrol-ngmodel) to creating custom controls.
+There are many things that Angular helps us out with when creating forms. We've covered several topics on [Forms in Angular 2](/forms-in-angular-2), like model-driven forms and template-driven forms. If you haven't read those articles yet, we highly recommend you to do so as this one is based on them. [Almero Steyn](http://twitter.com/kryptos_rsa), one of our training students, who later on contributed to the official documentation as part of the Docs Authoring Team for Angular 2, has also written a very nice [introduction](http://almerosteyn.com/2016/04/linkup-custom-control-to-ngcontrol-ngmodel) to creating custom controls.
 
 His article inspired us and we would like to take it a step further and explore how to create custom form controls that integrate nicely with Angular's form APIs.
 
@@ -560,7 +560,7 @@ Ideally, the consumer of our custom control should be able to do something like 
 {% endraw %}
 {% endhighlight %}
 
-Thanks to Angular's dependency injection and property binding system, this is very easy to implement. Basically what we want to do is to teach our [validator to have dependencies](angular/2016/03/14/custom-validators-in-angular-2.html#custom-validators-with-dependencies).
+Thanks to Angular's dependency injection and property binding system, this is very easy to implement. Basically what we want to do is to teach our [validator to have dependencies](/angular/2016/03/14/custom-validators-in-angular-2.html#custom-validators-with-dependencies).
 
 Let's start off by adding the input properties.
 
