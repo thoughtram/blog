@@ -19,6 +19,9 @@ tags:
 
 topic: forms
 
+redirect_from:
+  - /angular/2016/03/21/template-driven-forms-in-angular-2.htmlnofollow/
+
 author: pascal_precht
 ---
 

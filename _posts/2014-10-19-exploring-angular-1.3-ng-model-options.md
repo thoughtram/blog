@@ -1,6 +1,8 @@
 ---
 layout:     post
 title:      "ng-model-options in Angular 1.3"
+redirect_from:
+  - /angularjs/2014/10/19/exploring-angular-1.3-ng-model-/
 relatedLinks:
   -
     title: "Exploring Angular 1.3: One-time bindings"

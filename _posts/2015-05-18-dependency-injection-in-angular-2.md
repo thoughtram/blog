@@ -1,6 +1,9 @@
 ---
 layout:     post
 title:      "Dependency Injection in Angular 2"
+redirect_from:
+  - /angular/2015/05/18/dependency-injection-in-/
+
 relatedLinks:
   -
     title: "Exploring Angular 2 - Article Series"

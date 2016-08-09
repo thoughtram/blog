@@ -1,6 +1,10 @@
 ---
 layout:     post
 title:      "Upgrading apps to Angular 2 using ngUpgrade"
+
+redirect_from:
+  - /angular/2015/10/24/upgrading-apps-to-angular-2-using-/
+
 relatedLinks:
   -
     title: "Exploring Angular 2 - Article Series"
