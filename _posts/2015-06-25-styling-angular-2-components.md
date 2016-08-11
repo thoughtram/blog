@@ -4,21 +4,22 @@ title:      "Styling Angular 2 components"
 relatedLinks:
   -
     title: "Exploring Angular 2 - Article Series"
-    url: "http://blog.thoughtram.io/exploring-angular-2"
+    url: "/exploring-angular-2"
   -
     title: "Futuristic Routing in Angular"
-    url: "http://blog.thoughtram.io/angularjs/2015/02/19/futuristic-routing-in-angular.html"
+    url: "/angularjs/2015/02/19/futuristic-routing-in-angular.html"
   -
     title: "Dependency Injection in Angular 2"
-    url: "http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html"
+    url: "/angular/2015/05/18/dependency-injection-in-angular-2.html"
   -
     title: "Developing a zippy component in Angular 2"
-    url: "http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html"
+    url: "/angular/2015/03/27/building-a-zippy-component-in-angular-2.html"
   -
     title: "Developing a tabs component in Angular 2"
-    url: "http://blog.thoughtram.io/angular/2015/04/09/developing-a-tabs-component-in-angular-2.html"
+    url: "/angular/2015/04/09/developing-a-tabs-component-in-angular-2.html"
+
 date:       2015-06-25
-updatedate: 2016-05-12
+update_date: 2016-08-11
 summary:    "Most of our articles on Angular 2 covered how to build simple components or detailed some certain parts of the framework in a standalone context. In this article we are going to explore the different ways of styling Angular 2 components."
 
 categories: 
@@ -32,7 +33,7 @@ topic: views
 author: pascal_precht
 ---
 
-Until now, we mostly talked about how to create simple components in Angular 2, like a [zippy](http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html) or a [tabs](http://blog.thoughtram.io/angular/2015/04/09/developing-a-tabs-component-in-angular-2.html) component, and we also covered some isolated parts of the framework like the new [dependency injection](http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html). In this article we are going to discuss another essential part when it comes to building components: **Styling**.
+Until now, we mostly talked about how to create simple components in Angular 2, like a [zippy](/angular/2015/03/27/building-a-zippy-component-in-angular-2.html) or a [tabs](/angular/2015/04/09/developing-a-tabs-component-in-angular-2.html) component, and we also covered some isolated parts of the framework like the new [dependency injection](/angular/2015/05/18/dependency-injection-in-angular-2.html). In this article we are going to discuss another essential part when it comes to building components: **Styling**.
 
 A component in Angular 2 is basically a controller class with a template. But as all of us know, a component also needs it's own styles, especially when it comes to sharing reusable components across applications, which is what we want to achieve in the modern web anyways, right?
 
@@ -46,15 +47,16 @@ The easiest way to add styles to a component is taking advantage of the `@Compon
 
 {% highlight js %}
 @Component({
-  selector: 'zippy',
-  templateUrl: 'zippy.html',
+  moduleId: module.id,
+  selector: 'my-zippy',
+  templateUrl: 'my-zippy.component.html',
   styles: [`
     .zippy {
       background: green;
     }
   `]
 })
-class Zippy {
+class ZippyComponent {
   @Input() title: string;
 }
 {% endhighlight %}
@@ -79,9 +81,9 @@ Okay, so defining styles on the component is pretty clear, but where did those e
 </html>
 {% endhighlight %}
 
-What's going on there? The reason why Angular takes our styles and puts them up there, is because of the **View Encapsulation** that we are using. Angular 2 comes with three different view encapsulation types in order to support both, browsers that don't support Shadow DOM, and also the ones that do support it. The view encapsulations <s>will be explored in another article</s> are covered in [this article](http://blog.thoughtram.io/angular/2015/06/29/shadow-dom-strategies-in-angular2.html), but we have to touch on this though in order to understand why this is happening.
+What's going on there? The reason why Angular takes our styles and puts them up there, is because of the **View Encapsulation** that we are using. Angular 2 comes with three different view encapsulation types in order to support both, browsers that don't support Shadow DOM, and also the ones that do support it. The view encapsulations <s>will be explored in another article</s> are covered in [this article](/angular/2015/06/29/shadow-dom-strategies-in-angular2.html), but we have to touch on this though in order to understand why this is happening.
 
-Angular 2 currently uses the `Emuldated View Encapsulation` by default. Which basically means, there's no usage of any Shadow DOM at all. One of the nice features of Shadow DOM is style encapsulation. It allows us to scope styles to a specific component without affecting the outer world.
+Angular 2 currently uses the `Emulated View Encapsulation` by default. Which basically means, there's no usage of any Shadow DOM at all. One of the nice features of Shadow DOM is style encapsulation. It allows us to scope styles to a specific component without affecting the outer world.
 
 To take advantage of style encapsulation, styles have to be put into the `shadowRoot` of a component. Due to the Shadow DOM strategy that is used, there is no `shadowRoot` to put our styles into. That's why Angular writes them into the head. But as mentioned, there's another article that explains all three view encapsulations.
 
@@ -93,11 +95,12 @@ In an ideal world, we don't have to mix our styles with our application code. Th
 
 {% highlight js %}
 @Component({
-  selector: 'zippy',
-  templateUrl: 'zippy.html',
-  styleUrls: ['zippy.css']
+  moduleId: module.id,
+  selector: 'my-zippy',
+  templateUrl: 'my-zippy.component.html',
+  styleUrls: ['my-zippy.component.css']
 })
-class Zippy {
+class ZippyComponent {
   @Input() title: string;
 }
 {% endhighlight %}
@@ -106,17 +109,18 @@ Where do **those** end up in the DOM? Well, for the same reason as explained ear
 
 {% highlight js %}
 @Component({
-  selector: 'zippy',
-  templateUrl: 'zippy.html',
+  moduleId: module.id,
+  selector: 'my-zippy',
+  templateUrl: 'my-zippy.component.html',
   styles: ['.zippy { background: green; }'],
-  styleUrls: ['zippy.css']
+  styleUrls: ['my-zippy.component.css']
 })
-class Zippy {
+class ZippyComponent {
   @Input() title: string;
 }
 {% endhighlight %}
 
-And the `zippy.css` content would look like this:
+And the `my-zippy.component.css` content would look like this:
 
 {% highlight js %}
 .zippy {
