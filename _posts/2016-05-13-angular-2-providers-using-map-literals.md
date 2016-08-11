@@ -3,6 +3,7 @@ layout:     post
 title:      "Angular 2 Providers using Map Literals"
 
 date: 2016-05-13
+update_date: 2016-08-11
 imageUrl: '/images/banner/angular-2-providers-using-map-literals.png'
 summary: "Defining providers in Angular 2 is pretty easy and straight forward. However, just recently there has been another, shorter syntax introduced that makes creating providers even more enjoyable. In this article we're going to take a look at how to create providers using map literals."
 
@@ -30,6 +31,7 @@ In other words, if we ask for a service dependency in one of our components like
 {% raw %}
 import { Component } from '@angular/core';
 import { MyService } from './my-service.service';
+
 @Component({
   selector: 'my-component',
   template: '{{myService.sayHello()}}'
