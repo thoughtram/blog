@@ -18,18 +18,18 @@ toc:
     anchor: "custom-validators-with-dependencies"
 
 date: 2016-03-14
-update_date: 2016-06-20
+update_date: 2016-08-11
 
 relatedLinks:
   -
     title: "Multi Providers in Angular 2"
-    url: "http://blog.thoughtram.io/angular2/2015/11/23/multi-providers-in-angular-2.html"
+    url: "/angular2/2015/11/23/multi-providers-in-angular-2.html"
   -
     title: "Forward References in Angular 2"
-    url: "http://blog.thoughtram.io/angular/2015/09/03/forward-references-in-angular-2.html"
+    url: "/angular/2015/09/03/forward-references-in-angular-2.html"
   -
     title: "Dependency Injection in Angular 2"
-    url: "http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html"
+    url: "/angular/2015/05/18/dependency-injection-in-angular-2.html"
 
 summary: "Forms are part of almost every web application out there. Angular strives for making working with forms a breeze. Often, we need to add custom validation capabilities to our application's form. In this article we're going to explore how custom validators can be implemented in Angular 2."
 
@@ -49,7 +49,7 @@ We can easily extend the browser vocabulary with additional custom validators an
 
 <h2 id="built-in-validators">Built-in Validators</h2>
 
-Angular comes with a subset of built-in validators out of the box. We can apply them either declaratively as directives on elements in our DOM, in case we're building a <strong>template-driven</strong> form, or imperatively using the `FormControl` and `FormGroup` or `FormBuilder` APIs, in case we're building a <strong>model-driven</strong> form. If you don't know what it's all about with template-driven and model-driven forms, don't worry, we'll have an article to each of those soon.
+Angular comes with a subset of built-in validators out of the box. We can apply them either declaratively as directives on elements in our DOM, in case we're building a <strong>template-driven</strong> form, or imperatively using the `FormControl` and `FormGroup` or `FormBuilder` APIs, in case we're building a <strong>reactive</strong> forms. If you don't know what it's all about with template-driven and reactive forms, don't worry, we have an articles about both topics [here](/angular/2016/03/21/template-driven-forms-in-angular-2.html) and [here](/angular/2016/06/22/model-driven-forms-in-angular-2.html).
 
 The supported built-in validators, at the time of writing this article, are:
 
@@ -58,8 +58,25 @@ The supported built-in validators, at the time of writing this article, are:
 - **maxlength** - Requires a form control to have a value of a maximum length
 - **pattern** - Requires a form control's value to match a given regex
 
-As mentioned earlier, validators can be applied by simply using their corresponding directives. The following form shows how the built-in validators are applied to dedicated form controls:
+As mentioned earlier, validators can be applied by simply using their corresponding directives. To make these directives available, we need to import Angular's `FormsModule` to our application module first:
 
+{% highlight js %}
+{% raw %}
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+
+@NgModule({
+  imports: [BrowserModule, FormsModule], // we add FormsModule here
+  declarations: [AppComponent],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}
+{% endraw %}
+{% endhighlight %}
+
+
+Once this is done, we can use all directives provided by this module in our application. The following form shows how the built-in validators are applied to dedicated form controls:
 
 {% highlight html %}
 {% raw %}
@@ -72,7 +89,21 @@ As mentioned earlier, validators can be applied by simply using their correspond
 {% endraw %}
 {% endhighlight %}
 
-Or, if our form is model-driven we'd either build it using `FormControl` and `FormGroup` APIs:
+Or, if we had a reactive form, we'd need to import the `ReactiveFormsModule` first:
+
+{% highlight js %}
+{% raw %}
+import { ReactiveFormsModule } from '@angular/forms';
+
+@NgModule({
+  imports: [BrowserModule, ReactiveFormsModule],
+  ...
+})
+export class AppModule {}
+{% endraw %}
+{% endhighlight %}
+
+And can then build our form either using `FormControl` and `FormGroup` APIs:
 
 {% highlight js %}
 {% raw %}
@@ -116,7 +147,6 @@ class Cmp {
 
 We would still need to associate a form model with a form in the DOM using the `[formGroup]` directive likes this:
 
-
 {% highlight html %}
 {% raw %}
 <form novalidate [formGroup]="form">
@@ -135,7 +165,7 @@ In it's simplest form, a validator is really just a function that takes a `Contr
 
 {% highlight js %}
 {% raw %}
-interface Validator<T extends Control> {
+interface Validator<T extends FormControl> {
    (c:T): {[error: string]:any};
 }
 {% endraw %}
@@ -148,7 +178,7 @@ Here's what such an implementation could look like:
 
 {% highlight js %}
 {% raw %}
-import {FormControl} from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 function validateEmail(c: FormControl) {
   let EMAIL_REGEXP = ...
@@ -213,35 +243,35 @@ Now that we're able to add our custom validator to our form controls imperativel
 
 {% highlight js %}
 {% raw %}
-import {Directive} from '@angular/core';
+import { Directive } from '@angular/core';
 
 @Directive({
   selector: '[validateEmail][ngModel]'
 })
-class EmailValidator {}
+export class EmailValidator {}
 {% endraw %}
 {% endhighlight %}
 
-We import the `@Directive` decorator form `angular2/core` and use it on a new `EmailValidator` class. If you're familiar with the `@Component` decorator that this is probably not new to you. In fact, `@Directive` is a superset of `@Component` which is why most of the configuration properties are available.
+We import the `@Directive` decorator form `@angular/core` and use it on a new `EmailValidator` class. If you're familiar with the `@Component` decorator that this is probably not new to you. In fact, `@Directive` is a superset of `@Component` which is why most of the configuration properties are available.
 
-Okay, technically we could already make this directive execute in our app, all we need to do is to add it as a `directives` dependency to the component where it's used:
+Okay, technically we could already make this directive execute in our app, all we need to do is to add it to our module's `declarations`:
 
 
 {% highlight js %}
 {% raw %}
-@Component({
+import { EmailValidator } from './email.validator';
+
+@NgModule({
   ...
-  directives: [EmailValidator]
+  declarations: [AppComponent, EmailValidator],
 })
-class Cmp {
-  ...
-}
+export class AppModule {}
 {% endraw %}
 {% endhighlight %}
 
 Even though this works, there's nothing our directive does at the moment. What we want to do is to make sure that our custom validator is executed when Angular compiles this directive. How do we get there?
 
-Angular has an internal mechanism to execute validators on a form control. It maintains a **multi provider** for a dependency token called `NG_VALIDATORS`. If you've read our article on [multi providers in Angular 2](http://blog.thoughtram.io/angular2/2015/11/23/multi-providers-in-angular-2.html), you know that Angular injects multiple values for a single token that is used for a multi provider. If you haven't, we highly recommend checking it out as the rest of this article is based on it.
+Angular has an internal mechanism to execute validators on a form control. It maintains a **multi provider** for a dependency token called `NG_VALIDATORS`. If you've read our article on [multi providers in Angular 2](/angular2/2015/11/23/multi-providers-in-angular-2.html), you know that Angular injects multiple values for a single token that is used for a multi provider. If you haven't, we highly recommend checking it out as the rest of this article is based on it.
 
 It turns out that **all** built-in validators are already added to the `NG_VALIDATORS` token. So whenever Angular instantiates a form control and performs validation, it basically injects the dependency for the `NG_VALIDATORS` token, which is a list of all validators, and executes them one by one on that form control.
 
@@ -251,8 +281,8 @@ Let's add our validator to the `NG_VALIDATORS` via our new directive:
 
 {% highlight js %}
 {% raw %}
-import {Directive } from '@angular/core';
-import {NG_VALIDATORS} from '@angular/forms';
+import { Directive } from '@angular/core';
+import { NG_VALIDATORS } from '@angular/forms';
 
 @Directive({
   selector: '[validateEmail][ngModel]',
@@ -264,7 +294,7 @@ class EmailValidator {}
 {% endraw %}
 {% endhighlight %}
 
-Again, if you've read our article on multi providers, this should look very familiar to you. We basically add a new value to the `NG_VALIDATORS` token by taking advantage of multi providers. Angular will pick our validator up by injecting what it gets for `NG_VALIDATORS`, and performs validation on a form control. Awesome, we can now use our validator for model-driven **and** for template-driven forms!
+Again, if you've read our article on multi providers, this should look very familiar to you. We basically add a new value to the `NG_VALIDATORS` token by taking advantage of multi providers. Angular will pick our validator up by injecting what it gets for `NG_VALIDATORS`, and performs validation on a form control. Awesome, we can now use our validator for reactive**and** for template-driven forms!
 
 <h2 id="custom-validators-with-dependencies">Custom Validators with dependencies</h2>
 
@@ -276,7 +306,7 @@ One way to handle this is to create a factory function that returns our `validat
 
 {% highlight js %}
 {% raw %}
-import {FormControl} from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 function validateEmailFactory(emailBlackList: EmailBlackList) {
   return (c: FormControl) => {
@@ -315,13 +345,13 @@ class EmailValidator {}
 {% endraw %}
 {% endhighlight %}
 
-We can't use `useValue` as provider recipe anymore, because we don't want to return the factory function, but rather what the factory function **returns**. And since our factory function has a dependency itself, we need to have access to dependency tokens, which is why we use `useFactory` and `deps`. If this is entirely new to you, you might want to read our article on [Dependency Injection in Angular 2](http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html) before we move on.
+We can't use `useValue` as provider recipe anymore, because we don't want to return the factory function, but rather what the factory function **returns**. And since our factory function has a dependency itself, we need to have access to dependency tokens, which is why we use `useFactory` and `deps`. If this is entirely new to you, you might want to read our article on [Dependency Injection in Angular 2](/angular/2015/05/18/dependency-injection-in-angular-2.html) before we move on.
 
 Even though this would work, it's quite a lot of work and also very verbose. We can do better here.
 
 **The better way**
 
-Wouldn't it be nice if we could use constructor injection as we're used to it in Angular 2? Yes, and guess what, Angular has us covered. It turns out that a validator can also be a **class** as long as it implements a `validate(c: Control)` method. Why is that nice? Well, we can inject our dependency using constructor injection and don't have to setup a provider factory as we did before.
+Wouldn't it be nice if we could use constructor injection as we're used to it in Angular 2? Yes, and guess what, Angular has us covered. It turns out that a validator can also be a **class** as long as it implements a `validate(c: FormControl)` method. Why is that nice? Well, we can inject our dependency using constructor injection and don't have to setup a provider factory as we did before.
 
 Here's what our `EmailValidator` class would look like when we apply this pattern to it:
 
@@ -367,7 +397,7 @@ class EmailValidator {
 
 {% highlight js %}
 {% raw %}
-import {forwardRef} from '@angular/core';
+import { forwardRef } from '@angular/core';
 
 @Directive({
   ...
@@ -381,14 +411,14 @@ class EmailValidator {
 {% endraw %}
 {% endhighlight %}
 
-If you don't know what `forwardRef()` does, you might want to read our article on [Forward References in Angular 2](http://blog.thoughtram.io/angular/2015/09/03/forward-references-in-angular-2.html).
+If you don't know what `forwardRef()` does, you might want to read our article on [Forward References in Angular 2](/angular/2015/09/03/forward-references-in-angular-2.html).
 
 Here's the full code for our custom email validator:
 
 {% highlight js %}
 {% raw %}
-import {Directive, forwardRef} from '@angular/core';
-import {NG_VALIDATORS, FormControl} from '@angular/forms';
+import { Directive, forwardRef } from '@angular/core';
+import { NG_VALIDATORS, FormControl } from '@angular/forms';
 
 function validateEmailFactory(emailBlackList: EmailBlackList) {
   return (c: FormControl) => {

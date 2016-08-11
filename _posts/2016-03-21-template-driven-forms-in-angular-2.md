@@ -3,12 +3,15 @@ layout:     post
 title:      "Template-driven Forms in Angular 2"
 
 date: 2016-03-21
-update_date: 2016-06-20
+update_date: 2016-08-11
 imageUrl: "/images/template-driven-forms.jpeg"
 relatedLinks:
   -
     title: "Custom Validators in Angular 2"
-    url: "http://blog.thoughtram.io/angular/2016/03/14/custom-validators-in-angular-2.html"
+    url: "/angular/2016/03/14/custom-validators-in-angular-2.html"
+  -
+    title: "Reactive Forms in Angular 2"
+    url: "/angular/2016/06/22/model-driven-forms-in-angular-2.html"
 
 summary: "Angular gives us many different tools to build forms in our applications. Sometimes it doesn't seem to be very obvious what's the right thing to use. This article discusses the template-driven approach of building forms and all the directives that come into play."
 
@@ -19,8 +22,16 @@ tags:
 
 topic: forms
 
-redirect_from:
-  - /angular/2016/03/21/template-driven-forms-in-angular-2.htmlnofollow/
+demos:
+  -
+    url: http://embed.plnkr.co/Xmgx1x/
+    title: Simple template-driven form
+  -
+    url: http://embed.plnkr.co/LLf7Il/
+    title: ngModelGroup Directive
+  -
+    url: http://embed.plnkr.co/XgRYoe/
+    title: ngModel with expressions
 
 author: pascal_precht
 ---
@@ -29,26 +40,42 @@ Angular comes with three different ways of building forms in our applications. T
 
 Hearing all these different solutions, it's kind of natural that there are also probably many different tools to reach the goal. This can be sometimes confusing and with this article we want to clarify a subset of form directives by focussing on template-driven forms in Angular 2.
 
+{% include demos-and-videos-buttons.html post=page %}
+
 ## Activating new Form APIs
 
 The form APIs have changed in RC2 and in order to not break all existing apps that have been built with RC1 and use forms, these **new APIs are added on top** of the existing ones. That means, we need to tell Angular explicitly which APIs we want to use (of course, this will go away in the final release).
 
-In order to activate the new APIs we need to deactivate the deprecated ones and add providers for the new ones when we bootstrap our application.
+In order to activate the new APIs we need to import Angular's `FormsModule` into our application module.
 
 Here's what that could look like:
 
 {% highlight js %}
 {% raw %}
-import {disableDeprecatedForms, provideForms} from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
-bootstrap(AppComponent, [
-   disableDeprecatedForms(),
-   provideForms()
-]);
+@NgModule({
+  imports: [BrowserModule, FormsModule],
+  declarations: [AppComponent],
+  bootstrap: [AppComponent]
+})
+export AppModule {}
 {% endraw %}
 {% endhighlight %}
 
-Again, this will change as with RC5. `disableDeprecatedForms()` can then be removed. More on that [here](http://5thingsangular.github.io/2016/06/20/issue-8.html).
+We then bootstrap our application module like this:
+
+{% highlight js %}
+{% raw %}
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from './app.module';
+
+platformBrowserDynamic().bootstrapModule(AppModule);
+{% endraw %}
+{% endhighlight %}
+
 
 ## `ngForm` Directive
 
@@ -120,7 +147,7 @@ You might wonder why that's interesting. Well, it turns out that `ngForm` direct
 {% endraw %}
 {% endhighlight %}
 
-**Submitting a form and Accessing its value**
+### Submitting a form and Accessing its value
 
 We can now use `form` to access the form's value and it's validity state. Let's log the value of the form when it's submitted. All we have to do is to add a handler to the form's `submit` event and pass it the form's value. In fact, there's a property on the `ngForm` instance called `value`, so this is what it'd look like:
 
@@ -335,6 +362,6 @@ This just simply works as expected.
 
 ## More to cover
 
-Of course, this is really just the tip of the ice berg when it comes to building forms. We haven't talked about validation yet and how to display error messages when the validity state of a form control or a control group changes. We will talk about these and other things in future articles. However, if you're interested in how to build a custom validator in Angular 2, checkout [this article](http://blog.thoughtram.io/angular/2016/03/14/custom-validators-in-angular-2.html).
+Of course, this is really just the tip of the ice berg when it comes to building forms. We haven't talked about validation yet and how to display error messages when the validity state of a form control or a control group changes. We will talk about these and other things in future articles. However, if you're interested in how to build a custom validator in Angular 2, checkout [this article](/angular/2016/03/14/custom-validators-in-angular-2.html).
 
 Watch out for more articles on forms in Angular 2!
