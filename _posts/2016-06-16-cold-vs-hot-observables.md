@@ -4,6 +4,7 @@ title:      "Cold vs Hot Observables"
 imageUrl:   "/images/banner/hot-vs-cold-observables.jpeg"
 
 date: 2016-06-16
+update_date: 2016-08-11
 
 summary: "One of the most exciting topics around Angular 2 is its relationship to Observables. There's one particular area that is especially hard to learn when you first enter the world of Observables. In this article we are going to demystify what the term hot vs cold means when it comes to Observables."
 
@@ -14,12 +15,28 @@ tags:
   - angular2
   - Rx
 
+demos:
+  -
+    url: http://jsbin.com/mihoyifiku/1/edit?js,console
+    title: "Creating a basic Observable"
+  -
+    url: http://jsbin.com/xosipocoza/1/edit?js,console
+    title: "Cold Observable"
+  -
+    url: http://jsbin.com/pupoledehi/1/edit?js,console
+    title: "Warm Observable"
+  -
+    url: http://jsbin.com/sokayofise/1/edit?js,console
+    title: "Hot Observable"
+
 author: christoph_burgdorf
 ---
 
 One of the most exciting topics around Angular 2 is it's relationship to Observables. It's such an essential part of the framework that we cover a fair amount of Observable knowledge in our [Angular 2 Master Class](http://thoughtram.io/angular2-master-class.html). That said, the topic is so big that one could easily run a 3-days workshop on Observables itself.
 
 There's one particular area of Observables that we don't explicitly touch on in our workshop but that keeps coming up in questions every single time that we teach them.
+
+{% include demos-and-videos-buttons.html post=page %}
 
 ## Hot vs Cold Observables
 
@@ -49,7 +66,7 @@ When we [run this code](http://jsbin.com/mihoyifiku/1/edit?js,console) we'll see
 {% endraw %}
 {% endhighlight %}
 
-Ok, cool. But the interesting question remains: is `obs` cold or hot? Let's forget for a moment that we know how `obs` was created and imagine we would have obtained a reference to `obs` by calling `getObservableFromSomewhere()` instead. If that was the case, we wouldn't be able to tell wether it's cold or hot. And that's one important thing to understand. It's not always possible from the subscriber side to know whether you are dealing with a cold or hot Observable.
+Ok, cool. But the interesting question remains: is `obs` cold or hot? Let's forget for a moment that we know how `obs` was created and imagine we would have obtained a reference to `obs` by calling `getObservableFromSomewhere()` instead. If that was the case, we wouldn't be able to tell whether it's cold or hot. And that's one important thing to understand. It's not always possible from the subscriber side to know whether you are dealing with a cold or hot Observable.
 
 If we turn back to the definition that we cited in the beginning and think about what makes an Observable cold or hot, we can read between the lines and notice that if `obs` was cold it should produce *fresh*  values upon subscription. But the pity is, with a value such as `1` we can't easily tell whether it was created freshly upon subscription or not. So let's replace `1` with `Date.now()` and see what happens.
 
