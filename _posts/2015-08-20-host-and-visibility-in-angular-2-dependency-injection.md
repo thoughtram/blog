@@ -4,21 +4,21 @@ title:      "Host and Visibility in Angular 2's Dependency Injection"
 relatedLinks:
   -
     title: "Exploring Angular 2 - Article Series"
-    url: "http://blog.thoughtram.io/exploring-angular-2"
+    url: "/exploring-angular-2"
   -
     title: "Dependency Injection in Angular 2"
-    url: "http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html"
+    url: "/angular/2015/05/18/dependency-injection-in-angular-2.html"
   -
     title: "Angular 2 Bits: Unified Dependency Injection"
     url: "http://victorsavkin.com/post/102965317996/angular-2-bits-unified-dependency-injection"
   -
     title: "The difference between Annotations and Decorators"
-    url: "http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html"
+    url: "/angular/2015/05/03/the-difference-between-annotations-and-decorators.html"
   -
     title: "View Encapsulation in Angular 2"
-    url: "http://blog.thoughtram.io/angular/2015/06/29/shadow-dom-strategies-in-angular2.html"
+    url: "/angular/2015/06/29/shadow-dom-strategies-in-angular2.html"
 date:       2015-08-20
-update_date: 2016-05-12
+update_date: 2016-08-11
 summary:    "One of our articles discussed the concepts and ideas behind the dependency injection pattern, and also, how that pattern is implemented in the Angular 2 framework. We covered what injector providers are and how those relate to actual dependency instances. Even though this article gave us a very good picture of what is going on, there's still one topic unexplored: Visibility."
 
 categories: 
@@ -32,7 +32,7 @@ topic: di
 author: pascal_precht
 ---
 
-In our article on [Dependency Injection in Angular 2](http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html) we explored what dependency injection actually is, and how it is implemented in the Angular 2 framework. If you haven't read that article yet, I highly recommend you doing so, since this article is based on it.
+In our article on [Dependency Injection in Angular 2](/angular/2015/05/18/dependency-injection-in-angular-2.html) we explored what dependency injection actually is, and how it is implemented in the Angular 2 framework. If you haven't read that article yet, I highly recommend you doing so, since this article is based on it.
 
 Even though we learned that Angular 2's new dependency injection is very flexible and solves pretty much all the problems we have with the dependency injection in AngularJS, there are still a couple of topics that we haven't discussed yet. One of them is how Angular treats the relationship between **host** and child injectors, and the other one is how the **visibility of dependencies** are handled. In this article we're going to explore exactly these two topics.
 
@@ -81,19 +81,19 @@ Of course, this code is very simplified and as we can see, there are also no pro
 {% highlight js %}
 {% raw %}
 var injector = ResolveInjector.resolveAndCreate([
-  provide(Car, {useClass: Car}),
-  provide(Engine, {useClass: Engine})
+  { provide: Car, useClass: Car },
+  { provide: Engine {useClass: Engine }
 ]);
 var childInjector = injector.resolveAndCreateChild();
 var grandChildInjector = childInjector.resolveAndCreateChild([
-  provide(Car, {useClass: Convertible})
+  { provide: Car, useClass: Convertible }
 ]);
 {% endraw %}
 {% endhighlight %}
 
-The injector tree allows us to define injector providers for a specific component and its children. With the code above, if we ask `grandChild` for a dependency of type `Car` we'll get back an instance of type `Convertible`, because it defines it's own provider for that type. However, if we ask for a dependency of type `Engine`, we simply get an instance of the class `Engine`, because `grandChild` will ask it's parent injector (recursively) until an injector has providers defined for that type. If this is entirely new to you, all this has been covered in our last [article](http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html) on DI.
+The injector tree allows us to define injector providers for a specific component and its children. With the code above, if we ask `grandChild` for a dependency of type `Car` we'll get back an instance of type `Convertible`, because it defines it's own provider for that type. However, if we ask for a dependency of type `Engine`, we simply get an instance of the class `Engine`, because `grandChild` will ask it's parent injector (recursively) until an injector has providers defined for that type. If this is entirely new to you, all this has been covered in our last [article](/angular/2015/05/18/dependency-injection-in-angular-2.html) on DI.
 
-Okay, this sounds all very powerful but where does this host thing come into play? Let's get back to the original code with our three nested components. `<component-two>` and `<component-three>` are both children of `<component-one>`. However, we don't know yet what's inside of our components themselves. In Angular 2, a component always has a view. A component's view can be in a way [encapsulated](http://blog.thoughtram.io/angular/2015/06/29/shadow-dom-strategies-in-angular2.html), this is due to the fact that Angular 2 supports Shadow DOM.
+Okay, this sounds all very powerful but where does this host thing come into play? Let's get back to the original code with our three nested components. `<component-two>` and `<component-three>` are both children of `<component-one>`. However, we don't know yet what's inside of our components themselves. In Angular 2, a component always has a view. A component's view can be in a way [encapsulated](/angular/2015/06/29/shadow-dom-strategies-in-angular2.html), this is due to the fact that Angular 2 supports Shadow DOM.
 
 For example, here's what the view of `<component-one>` could look like:
 
@@ -132,7 +132,7 @@ Our `<video-player>` component consists of a couple of other components. Let's s
 @Component({
   selector: 'video-player',
   providers: [
-    PlayerService // shorthand for provide(PlayerService, {useClass: PlayerService})
+    PlayerService // shorthand for { provide: PlayerService, useClass: PlayerService }
   ]
 })
 class VideoPlayer {
@@ -239,7 +239,7 @@ To make our code work as expected, all we have to do is to make the `VideoServic
     PlayerService
   ],
   viewProviders: [
-    provide(VideoService, {useClass: SpecificVideoService})
+    { provide: VideoService, useClass: SpecificVideoService }
   ]
 })
 class VideoPlayer {
