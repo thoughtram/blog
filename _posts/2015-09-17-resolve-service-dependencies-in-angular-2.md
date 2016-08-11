@@ -4,22 +4,22 @@ title:      "Injecting services in services in Angular 2"
 relatedLinks:
   -
     title: "Exploring Angular 2 - Article Series"
-    url: "http://blog.thoughtram.io/exploring-angular-2"
+    url: "/exploring-angular-2"
   -
     title: "Dependency Injection in Angular 2"
-    url: "http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html"
+    url: "/angular/2015/05/18/dependency-injection-in-angular-2.html"
   -
     title: "Host and Visibility in Angular 2's Dependency Injection"
-    url: "http://blog.thoughtram.io/angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html"
+    url: "/angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html"
   -
     title: "Forward References in Angular 2"
-    url: "http://blog.thoughtram.io/angular/2015/09/03/forward-references-in-angular-2.html"
+    url: "/angular/2015/09/03/forward-references-in-angular-2.html"
   -
     title: "The Difference between Decorators and Annotations"
-    url: "http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html"
+    url: "/angular/2015/05/03/the-difference-between-annotations-and-decorators.html"
 
 date:       2015-09-17
-updatedate: 2016-05-12
+update_date: 2016-08-11
 summary: "When writing Angular 2 applications, it often happens that we build services that depend on other service instances. In our previous articles, we learned about the Dependency Injection system in Angular 2 and how it works. However, it turns out that we might run into unexpected behaviour when injecting service dependencies. This article details how to do it right."
 
 categories:
@@ -33,7 +33,7 @@ topic: di
 author: pascal_precht
 ---
 
-If you're following our articles on [Dependency Injection in Angular 2](http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html), you know how the DI system in Angular works. It takes advantage of metadata on our code, added through annotations, to get all the information it needs so it can resolve dependencies for us.
+If you're following our articles on [Dependency Injection in Angular 2](/angular/2015/05/18/dependency-injection-in-angular-2.html), you know how the DI system in Angular works. It takes advantage of metadata on our code, added through annotations, to get all the information it needs so it can resolve dependencies for us.
 
 Angular 2 applications can basically be written in any language, as long as it compiles to JavaScript in some way. When writing our application in TypeScript, we use decorators to add metadata to our code. Sometimes, we can even omit some decorators and simply rely on type annotations. However, it turns out that, when it comes to DI, we might run into unexpected behaviour when injecting dependencies into services.
 
@@ -84,33 +84,47 @@ class DataService {
 {% endraw %}
 {% endhighlight %}
 
-Of course, in order to actually be able to ask for something of type `DataService`, we have to add a provider for our injector. We can do that by passing a provider to `bootstrap()` when bootstrapping our app.
+Of course, in order to actually be able to ask for something of type `DataService`, we have to add a provider for our injector. We can do that by adding a provider to  our component.
 
 {% highlight js %}
 {% raw %}
-bootstrap(AppComponent, [DataService]);
-{% endraw %}
-{% endhighlight %}
-
-Until now there's nothing new here. If this *is* new to you, you might want to read our article on [Dependency Injection in Angular 2](http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html) first.
-
-So where is the problem? Well, the problem occurs as soon as we try to inject a dependency into our service. We could for example use `Http` in our `DataService` to fetch our data from a remote server. Let's quickly do that. First, we need providers for the injector, so it knows about `Http`.
-
-{% highlight js %}
-{% raw %}
-import {HTTP_PROVIDERS} from '@angular/http';
-
+@Component({
+  selector: 'my-app',
+  template: `
+    <ul>
+      <li *ngFor="let item of items">{{item.name}}</li>
+    </ul>
+  `,
+  providers: [DataService]
+})
 ...
-
-bootstrap(AppComponent, [HTTP_PROVIDERS, DataService]);
 {% endraw %}
 {% endhighlight %}
 
-Angular's http module exposes `HTTP_PROVIDERS`, which has all the providers we need to hook up some http action in our service. Next, we need to inject an instance of `Http` in our service to actually use it.
+Until now there's nothing new here. If this *is* new to you, you might want to read our article on [Dependency Injection in Angular 2](/angular/2015/05/18/dependency-injection-in-angular-2.html) first.
+
+So where is the problem? Well, the problem occurs as soon as we try to inject a dependency into our service. We could for example use `Http` in our `DataService` to fetch our data from a remote server. Let's quickly do that. First, we need  to import Angular's `HttpModule` into our application module.
 
 {% highlight js %}
 {% raw %}
-import {Http} from '@angular/http';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
+
+@NgModule({
+  imports: [BrowserModule, HttpModule],
+  declarations: [AppComponent],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}
+{% endraw %}
+{% endhighlight %}
+
+Angular's http module comes with all the providers we need to hook up some http action in our service. Next, we need to inject an instance of `Http` in our service to actually use it.
+
+{% highlight js %}
+{% raw %}
+import { Http } from '@angular/http';
 
 class DataService {
   items:Array<any>;
@@ -133,7 +147,7 @@ It basically says that it can't resolve the `Http` dependency of `DataService` b
 
 Yea, we did. Unfortunately it turns out this is not enough. However, obviously it **does** work when we inject `DataService` in our `AppComponent`. So what's the problem here? Let's take a step back and recap real quick where the metadata, that Angular's DI need, comes from.
 
-In our article on [the difference between decorators and annotations](http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html) we learned that decorators simply add metadata to our code. If we take our `AppComponent`, once decorated and transpiled, it looks something like this (simplified):
+In our article on [the difference between decorators and annotations](/angular/2015/05/03/the-difference-between-annotations-and-decorators.html) we learned that decorators simply add metadata to our code. If we take our `AppComponent`, once decorated and transpiled, it looks something like this (simplified):
 
 {% highlight js %}
 {% raw %}
@@ -143,13 +157,12 @@ function AppComponent(myService) {
 
 AppComponent = __decorate([
   Component({...}),
-  View({...}), 
   __metadata('design:paramtypes', [DataService])
 ], AppComponent);
 {% endraw %}
 {% endhighlight %}
 
-We can clearly see that `AppComponent` is decorated with `Component`, `View`, and some additional metadata for `paramtypes`. The `paramtypes` metadata is the one that is needed by Angular's DI to figure out, for what type it has to return an instance.
+We can clearly see that `AppComponent` is decorated with `Component`, and some additional metadata for `paramtypes`. The `paramtypes` metadata is the one that is needed by Angular's DI to figure out, for what type it has to return an instance.
 
 This looks good. Let's take a look at the transpiled `DataService` and see what's going on there (also simplified).
 
@@ -178,8 +191,8 @@ We could change our `DataService` to something like this:
 
 {% highlight js %}
 {% raw %}
-import {Inject} from '@angular/core';
-import {Http} from '@angular/http';
+import { Inject } from '@angular/core';
+import { Http } from '@angular/http';
 
 class DataService {
   items:Array<any>;
@@ -215,8 +228,8 @@ All we have to do is to import it and put it on our `DataService` like this:
 
 {% highlight js %}
 {% raw %}
-import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
 
 @Injectable()
 class DataService {
