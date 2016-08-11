@@ -4,7 +4,7 @@ title:      "Protecting Routes using Guards in Angular 2"
 imageUrl:   "/images/banner/protecting-routes-using-guards-in-angular-2.jpg"
 
 date: 2016-07-18
-update_date: 2016-08-02
+update_date: 2016-08-11
 
 summary: "When building applications, we often want to protect the users from entering or leaving certain areas. We could have an admin section that only authorized users can access. Or, we might want to ask the user to confirm to navigate away from a area. Angular's router enables that functionality using guards and in this article we're going to discuss how to implement them."
 
@@ -51,20 +51,17 @@ To register a guard we need to define a token and the guard function. Here's wha
 
 {% highlight js %}
 {% raw %}
-import { bootstrap } from '@angular/core';
-import { provideRouter } from '@angular/router';
-import { AppRoutes } from './app/app.routes';
-import { AppComponent } from './app/app.component';
-
-bootstrap(AppComponent, [
-  provideRouter(AppRoutes),
-  { 
+@NgModule({
+  ...
+  providers: [
     provide: 'CanAlwaysActivateGuard',
     useValue: () => {
       return true;
     }
-  }
-]);
+  ],
+  ...
+})
+export class AppModule {}
 {% endraw %}
 {% endhighlight %}
 
@@ -116,11 +113,14 @@ Pretty straight forward. An [injectable class](/angular/2015/09/17/resolve-servi
 
 {% highlight js %}
 {% raw %}
-bootstrap(AppComponent, [
+@NgModule({
   ...
-  AuthService,
-  CanActivateViaAuthGuard
-]);
+  providers: [
+    AuthService,
+    CanActivateViaAuthGuard
+  ]
+})
+export class AppModule {}
 {% endraw %}
 {% endhighlight %}
 
@@ -168,10 +168,14 @@ Even though, this is a very trivial implementation, there's one thing that we di
 
 {% highlight js %}
 {% raw %}
-bootstrap(AppComponent, [
+@NgModule({
   ...
-  ConfirmDeactivateGuard
-]);
+  providers: [
+    ...
+    ConfirmDeactivateGuard
+  ]
+})
+export class AppModule {}
 {% endraw %}
 {% endhighlight %}
 
