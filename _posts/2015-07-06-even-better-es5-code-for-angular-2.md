@@ -4,18 +4,18 @@ title:      "Even better ES5 code for Angular 2"
 relatedLinks:
   -
     title: "Exploring Angular 2 - Article Series"
-    url: "http://blog.thoughtram.io/exploring-angular-2"
+    url: "/exploring-angular-2"
   -
     title: "Writing Angular 2 Code in ES5"
-    url: "http://blog.thoughtram.io/angular/2015/05/09/writing-angular-2-code-in-es5.html"
+    url: "/angular/2015/05/09/writing-angular-2-code-in-es5.html"
   -
     title: "The difference between annotations and decorators"
-    url: "http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html"
+    url: "/angular/2015/05/03/the-difference-between-annotations-and-decorators.html"
   -
     title: "Dependency Injection in Angular 2"
-    url: "http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html"
+    url: "/angular/2015/05/18/dependency-injection-in-angular-2.html"
 date:       2015-07-06
-update_date: 2016-08-04
+update_date: 2016-08-11
 
 summary:    "One of the biggest things to consider when it comes to using Angular 2, is the upgrade path from Angular 1. Angular 2 is entirely written in TypeScript but browsers today only support ES5 or some features of ES6. However, nobody prevents us from writing Angular 2 code in ES5. A couple of weeks ago we wrote about exactly that. This time, we take a look at a new, much better, syntax to write Angular 2 in ES5."
 
@@ -31,11 +31,11 @@ author: pascal_precht
 
 demos:
   -
-    url: http://embed.plnkr.co/fdj1rQEnUGhpnFJY4ngY/
+    url: https://embed.plnkr.co/fdj1rQEnUGhpnFJY4ngY/
     title: Hello World app in ES5 with syntactic sugar
 ---
 
-A couple of weeks ago we wrote about how to write [Angular 2 code in ES5](http://blog.thoughtram.io/angular/2015/05/09/writing-angular-2-code-in-es5.html) and took a closer look at what [annotations and decorators](http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html) translate to. While it is nice that we can all write Angular 2 applications without the hassle of setting up a development environment for TypeScript, Babel or SystemJS, it turns out that the syntax is still quite wordy. Of course, this isn't really a big problem, because it is just the syntax after all. That's why the Angular team works hard on making even the ES5 experience much better. All improvements that land in the ES5 world shrink the gap between Angular 1 and Angular 2 syntax, in fact, upgrading will be rather boring.
+A couple of weeks ago we wrote about how to write [Angular 2 code in ES5](/angular/2015/05/09/writing-angular-2-code-in-es5.html) and took a closer look at what [annotations and decorators](/angular/2015/05/03/the-difference-between-annotations-and-decorators.html) translate to. While it is nice that we can all write Angular 2 applications without the hassle of setting up a development environment for TypeScript, Babel or SystemJS, it turns out that the syntax is still quite wordy. Of course, this isn't really a big problem, because it is just the syntax after all. That's why the Angular team works hard on making even the ES5 experience much better. All improvements that land in the ES5 world shrink the gap between Angular 1 and Angular 2 syntax, in fact, upgrading will be rather boring.
 
 In this article we're going to take a closer look at the ES5 syntax improvements and how they make upgrading even easier.
 
@@ -66,7 +66,7 @@ var HelloComponent = function () {
 };
 
 HelloComponent.annotations = [
-  new ng.Component({
+  new ng.core.Component({
     selector: 'hello-cmp',
     template: 'Hello World!'
   })
