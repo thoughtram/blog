@@ -4,14 +4,19 @@ title:      "Taking advantage of Observables in Angular 2 - Part 2"
 relatedLinks:
   -
     title: "Taking advantage of Observables in Angular 2"
-    url: "http://blog.thoughtram.io/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html"
+    url: "/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html"
   -
     title: "Exploring Angular 2 - Article Series"
-    url: "http://blog.thoughtram.io/exploring-angular-2"
+    url: "/exploring-angular-2"
 
 date:       2016-01-07
-update_date: 2016-05-12
+update_date: 2016-08-11
 summary:    "This is a follow up article that demonstrates how Observables can influence our API design."
+
+demos:
+  - 
+    url: https://embed.plnkr.co/6nt5HH/
+    title: Even smarter Wikipedia Search with Angular 2
 
 categories:
   - angular
@@ -23,17 +28,20 @@ topic: http
 author: christoph_burgdorf
 ---
 
-In a [previous post](http://blog.thoughtram.io/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html) we showed how to leverage Observables, and especially their strength of composability to ease complicated async tasks.
+In a [previous post](/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html) we showed how to leverage Observables, and especially their strength of composability to ease complicated async tasks. Today we want to take it one step further.
 
-As a recap, we built a simple wikipedia search demo consisting of a `WikipediaService` to query a JSONP API.
+{% include demos-and-videos-buttons.html post=page %}
+
+As a recap, we built a simple Wikipedia search demo consisting of a `WikipediaService` to query a JSONP API.
 
 {% highlight js %}
 {% raw %}
-import {Injectable} from '@angular/core';
-import {URLSearchParams, Jsonp} from '@angular/http';
+import { Injectable } from '@angular/core';
+import { URLSearchParams, Jsonp } from '@angular/http';
 
 @Injectable()
 export class WikipediaService {
+
   constructor(private jsonp: Jsonp) {}
 
   search (term: string) {
@@ -58,17 +66,21 @@ We also built an `App` component that uses this service and applies some Rx gymn
   template: `
     <div>
       <h2>Wikipedia Search</h2>
-      <input type="text" [ngFormControl]="term"/>
+      <input type="text" [formControl]="term"/>
       <ul>
         <li *ngFor="let item of items | async">{{item}}</li>
       </ul>
     </div>
   `
 })
-export class App {
+export class App implements OnInit {
+
   items: Observable<Array<string>>;
-  term = new Control();
-  constructor(private wikipediaService: WikipediaService) {
+  term = new FormControl();
+
+  constructor(private wikipediaService: WikipediaService) {}
+
+  ngOnInit() {
     this.items = this.term.valueChanges
                  .debounceTime(400)
                  .distinctUntilChanged()
@@ -132,7 +144,7 @@ This dramatically simplifies our `App` component.
   template: `
     <div>
       <h2>Wikipedia Search</h2>
-      <input type="text" [ngFormControl]="term"/>
+      <input type="text" [formControl]="term"/>
       <ul>
         <li *ngFor="let item of items | async">{{item}}</li>
       </ul>
@@ -140,8 +152,10 @@ This dramatically simplifies our `App` component.
   `
 })
 export class App {
+
   items: Observable<Array<string>>;
-  term = new Control();
+  term = new FormControl();
+
   constructor(private wikipediaService: WikipediaService) {
     this.items = wikipediaService.search(this.term.valueChanges);
   }
@@ -151,6 +165,4 @@ export class App {
 
 See what happened? We just wire together event streams like lego blocks!
 
-You can play around with the plnkr right here. Enjoy!
-
-<iframe src="http://embed.plnkr.co/GNi2FVAofVEzSUQ8kEYY/"></iframe>
+You can play around with the demo right here. Enjoy!
