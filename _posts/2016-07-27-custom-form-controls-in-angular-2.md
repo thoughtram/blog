@@ -4,6 +4,7 @@ title:      "Custom Form Controls in Angular 2"
 imageUrl:   "/images/banner/custom-form-controls-in-angular-2.jpg"
 
 date: 2016-07-27
+update_date: 2016-08-11
 
 summary: "Angular 2 comes with great built-in support for everything related to native form controls. However, sometimes we want to create our own custom form controls with their own appearance and custom functionality. These custom controls should integrate nicely with Angular's forms APIs and in this article we explore how that works."
 
@@ -93,25 +94,37 @@ class CounterInputComponent {
 {% endraw %}
 {% endhighlight %}
 
-Nothing special going on here. `CounterInputComponent` has a model `counterValue` that is interpolated in its template and can be incremented or decremented by the `increment()` and `decrement()` methods respectively. This component works perfectly fine, we can already use it as it is by putting it into another component like this:
+Nothing special going on here. `CounterInputComponent` has a model `counterValue` that is interpolated in its template and can be incremented or decremented by the `increment()` and `decrement()` methods respectively. This component works perfectly fine, we can already use it once declared on our application module, as it is by putting it into another component like this:
+
+**app.module.ts**
 
 {% highlight js %}
 {% raw %}
+@NgModule({
+  imports: [BrowserModule],
+  declarations: [AppComponent, CounterInputComponent]
+  bootstrap: [AppComponent]
+})
+export class AppModule {}
+{% endraw %}
+{% endhighlight %}
+
+**app.component.ts**
+{% highlight js %}
+{% raw %}
 import { Component } from '@angular/core';
-import { CounterInputComponent } from './counter-input';
 
 @Component({
   selector: 'app-component',
   template: `
     <counter-input></counter-input>
   `,
-  directives: [CounterInputComponent]
 })
 class AppComponent {}
 {% endraw %}
 {% endhighlight %}
 
-Okay cool, but now we want to make it work with Angular's form APIs. Ideally, what we end up with is a custom control that works with template-driven forms and model-driven forms. For example, in the most simple scenario, we should be able to create a template-driven form like this:
+Okay cool, but now we want to make it work with Angular's form APIs. Ideally, what we end up with is a custom control that works with template-driven forms and reactive/model-driven forms. For example, in the most simple scenario, we should be able to create a template-driven form like this:
 
 {% highlight html %}
 {% raw %}
@@ -327,16 +340,15 @@ As discussed in our article on [template-driven forms in Angular 2](/angular/201
 
 {% highlight js %}
 {% raw %}
-import {disableDeprecatedForms, provideForms} from '@angular/forms';
+import { FormsModule} from '@angular/forms';
 
-bootstrap(AppComponent, [
-   disableDeprecatedForms(),
-   provideForms()
-]);
+@NgModule({
+  imports: [BrowserModule, FormsModule], // we're add FormsModule here
+  ...
+})
+export class AppModule {}
 {% endraw %}
 {% endhighlight %}
-
-> **Special Tip:** In Angular 2 version >= RC5 we don't need `disabledDeprecatedForms()` anymore.
 
 <h3 id="without-model-initialization">Without model initialization</h3>
 
@@ -352,8 +364,7 @@ That's pretty much it! Remember our `AppComponent` from ealier? Let's create a t
     </form>
 
     <pre>{{ form.value | json }}</pre>
-  `,
-  directives: [CounterInputComponent]
+  `
 })
 class AppComponent {}
 {% endraw %}
@@ -377,8 +388,7 @@ Here's another example that binds a value to the custom control using property b
     </form>
 
     <pre>{{ form.value | json }}</pre>
-  `,
-  directives: [CounterInputComponent]
+  `
 })
 class AppComponent {
   outerCounterValue = 5;  
@@ -401,7 +411,7 @@ How cool is that? Our custom form control works seamlessly with the template-dri
 
 <h2 id="using-it-inside-model-driven-forms">Using it inside model-driven forms</h2>
 
-The following examples use Angular's reactive form directives, so don't forget to add `REACTIVE_FORM_DIRECTIVES` to `AppComponent` as discussed in [this article](/angular/2016/06/22/model-driven-forms-in-angular-2.html).
+The following examples use Angular's reactive form directives, so don't forget to add `ReactiveFormsModule` to `AppModule` as discussed in [this article](/angular/2016/06/22/model-driven-forms-in-angular-2.html).
 
 <h3 id="binding-value-via-formcontrolname">Binding value via formControlName</h3>
 
@@ -417,8 +427,7 @@ Once we've set up a `FormGroup` that represents our form model, we can bind it t
     </form>
 
     <pre>{{ form.value | json }}</pre>
-  `,
-  directives: [CounterInputComponent, REACTIVE_FORM_DIRECTIVES]
+  `
 })
 class AppComponent implements OnInit {
 
@@ -476,10 +485,9 @@ We register a validator function that returns `null` if the control value is val
 {% highlight js %}
 {% raw %}
 <form [formGroup]="form">
-  <p>ngModel value: {{outerCounterValue}}</p>
   <counter-input
     formControlName="counter"
-    [(ngModel)]="outerCounterValue"></counter-input>
+    ></counter-input>
 </form>
 
 <p *ngIf="!form.valid">Counter is invalid!</p>
@@ -553,7 +561,6 @@ Ideally, the consumer of our custom control should be able to do something like 
 {% raw %}
 <counter-input
   formControlName="counter"
-  [(ngModel)]="outerCounterValue"
   counterRangeMax="10"
   counterRangeMin="0"
   ></counter-input>
@@ -678,7 +685,6 @@ Believe or not, we can now configure the max and min values for our custom form 
 {% raw %}
 <counter-input
   formControlName="counter"
-  [(ngModel)]="outerCounterValue"
   counterRangeMax="10"
   counterRangeMin="0"
   ></counter-input>
@@ -691,7 +697,6 @@ This works also with expressions:
 {% raw %}
 <counter-input
   formControlName="counter"
-  [(ngModel)]="outerCounterValue"
   [counterRangeMax]="maxValue"
   [counterRangeMin]="minValue"
   ></counter-input>
@@ -715,3 +720,5 @@ class AppComponent implements OnInit {
 }
 {% endraw %}
 {% endhighlight %}
+
+Check out the demos below!
