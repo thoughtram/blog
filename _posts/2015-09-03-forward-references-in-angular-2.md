@@ -4,16 +4,16 @@ title:      "Forward references in Angular 2"
 relatedLinks:
   -
     title: "Exploring Angular 2 - Article Series"
-    url: "http://blog.thoughtram.io/exploring-angular-2"
+    url: "/exploring-angular-2"
   -
     title: "Dependency Injection in Angular 2"
-    url: "http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html"
+    url: "/angular/2015/05/18/dependency-injection-in-angular-2.html"
   -
     title: "Host and Visibility in Angular 2's Dependency Injection"
-    url: "http://blog.thoughtram.io/angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html"
+    url: "/angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html"
 
 date:       2015-09-03
-update_date: 2016-05-12
+update_date: 2016-08-11
 summary:    "Even though we already covered many aspects of the dependency injection system in Angular 2 there are still some features left that we haven't covered yet. Some of them more bold and some more subtile. In this article we like to explore forward references. Why they exist and how we can use them."
 
 categories:
@@ -27,9 +27,9 @@ topic: di
 author: christoph_burgdorf
 ---
 
-In our article on [Dependency Injection in Angular 2](http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html) we explored what dependency injection actually is, and how it is implemented in the Angular 2 framework. If you haven't read that article yet, I highly recommend you doing so, since this article is based on it.
+In our article on [Dependency Injection in Angular 2](/angular/2015/05/18/dependency-injection-in-angular-2.html) we explored what dependency injection actually is, and how it is implemented in the Angular 2 framework. If you haven't read that article yet, I highly recommend you doing so, since this article is based on it.
 
-In a [another article](http://blog.thoughtram.io/angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html) we even learned about **host** and **visibility of dependencies** as another aspect of Angular 2's DI system. But that doesn't mean that we've already discovered all features of the machinery yet. In this article we'll take a look at **forward references**. Another tiny, yet useful feature of the DI system in Angular 2.
+In a [another article](/angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html) we even learned about **host** and **visibility of dependencies** as another aspect of Angular 2's DI system. But that doesn't mean that we've already discovered all features of the machinery yet. In this article we'll take a look at **forward references**. Another tiny, yet useful feature of the DI system in Angular 2.
 
 ## Understanding the problem
 
@@ -38,21 +38,20 @@ As a small recap, here we have an `AppComponent` that relies on DI to get a `Nam
 **app.ts**
 {% highlight ts %}
 {% raw %}
-import {Component} from '@angular/core';
-import {bootstrap} from '@angular/platform-browser-dynamic';
-import {NameService} from './nameService';
+import { Component } from '@angular/core';
+import { NameService } from './name.service';
 
 @Component({
   selector: 'my-app',
   template: '<h1>Favourite framework: {{ name }}</h1>'
 })
 class AppComponent {
-  name: String
+  name: string;
+
   constructor(nameService: NameService) {
     this.name = nameService.getName();
   }
 }
-bootstrap(AppComponent, [NameService]);
 {% endraw %}
 {% endhighlight %}
 
@@ -72,15 +71,15 @@ This works well, but let's see what happens when we inline the contents of `name
 
 {% highlight ts %}
 {% raw %}
-import {Component} from '@angular/core';
-import {bootstrap} from '@angular/platform-browser-dynamic';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'my-app',
   template: '<h1>Favourite framework: {{ name }}</h1>'
 })
 class AppComponent {
-  name: String
+  name: string;
+
   constructor(nameService: NameService) {
     this.name = nameService.getName();
   }
@@ -91,8 +90,6 @@ class NameService {
     return "Angular 2";
   }
 }
-
-bootstrap(AppComponent, [NameService]);
 {% endraw %}
 {% endhighlight %}
 
@@ -107,8 +104,7 @@ Let's see what happens when we move `NameService` to the top so that it's declar
 
 {% highlight ts %}
 {% raw %}
-import {Component} from '@angular/core';
-import {bootstrap} from '@angular/platform-browser-dynamic';
+import { Component } from '@angular/core';
 
 class NameService {
   getName () {
@@ -121,13 +117,12 @@ class NameService {
   template: '<h1>Favourite framework: {{ name }}</h1>'
 })
 class AppComponent {
-  name: String
+  name: string;
+
   constructor(nameService: NameService) {
     this.name = nameService.getName();
   }
 }
-
-bootstrap(AppComponent, [NameService]);
 {% endraw %}
 {% endhighlight %}
 
@@ -288,14 +283,14 @@ Turns out there is a solution we can reach for. Instead of annotating our `nameS
 {% highlight ts %}
 {% raw %}
 import {Component, Inject, forwardRef} from '@angular/core';
-import {bootstrap} from '@angular/platform-browser-dynamic';
 
 @Component({
   selector: 'my-app',
   template: '<h1>Favourite framework: {{ name }}</h1>'
 })
 class AppComponent {
-  name: String
+  name: string;
+
   constructor(@Inject(forwardRef(() => NameService)) nameService) {
     this.name = nameService.getName();
   }
@@ -306,7 +301,6 @@ class NameService {
     return "Angular 2";
   }
 }
-bootstrap(AppComponent, [NameService]);
 {% endraw %}
 {% endhighlight %}
 
