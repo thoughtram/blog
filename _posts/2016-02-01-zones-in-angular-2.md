@@ -13,8 +13,13 @@ relatedLinks:
     title: "Taking advantage of Observables in Angular 2"
     url: "http://blog.thoughtram.io/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html"
 
+demos:
+  -
+    url: http://embed.plnkr.co/gC7GjU/
+    title: Zones in Angular 2
+
 date: 2016-02-01
-update_date: 2016-02-01
+update_date: 2016-08-11
 
 summary: "In our last article we've talked about what Zones are and how they change the way we deal with asynchronous code. In this article we're going to discuss what role they play in the Angular 2 platform, with the Angular 2 specific NgZone."
 
@@ -30,6 +35,8 @@ author: pascal_precht
 ---
 
 In [Understanding Zones](http://blog.thoughtram.io/angular/2016/01/22/understanding-zones.html), we explored the power of Zones by building a profiling zone that profiles asynchronous operations in our code. We learned that Zones are a sort of execution context that allows us to hook into our asynchronous tasks. If you haven't read that article, we highly recommend checking it out as this one is based on it. In this article we're going to take a closer look at what role Zones play in Angular 2.
+
+{% include demos-and-videos-buttons.html post=page %}
 
 ## Zones are a perfect fit for Angular
 
@@ -204,6 +211,6 @@ processOutsideAngularZone() {
 
 `processOutsideAngularZone()` also calls `increaseProgress()` but this time using `runOutsideAngularZone()` which causes Angular not to be notified after each timeout. We access Angular's zone by injecting it into our component using the `NgZone` token.
 
-The UI is not updated as `progress` increases. However, once `increaseProgress()` is done, we run another task inside Angular's zone again using `zone.run()` which in turn causes Angular to perform change detection which will update the view. In other words, instead of seeing `progress` increasing, all we see is the final value once it's done. Check out the running code in action right [here](http://plnkr.co/edit/qic1QoPFhCSGkD9U0bAR?p=preview).
+The UI is not updated as `progress` increases. However, once `increaseProgress()` is done, we run another task inside Angular's zone again using `zone.run()` which in turn causes Angular to perform change detection which will update the view. In other words, instead of seeing `progress` increasing, all we see is the final value once it's done. Check out the running code in action below.
 
 Zones have now also been proposed as a standard at TC39, maybe another reason to take a closer look at them.
