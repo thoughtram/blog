@@ -18,10 +18,13 @@ relatedLinks:
 demos:
   -
    url: "http://embed.plnkr.co/mbJOYS/"
-   title: "Angular 2 Zippy Component"
+   title: "Angular 2 Zippy Component (RC4)"
+  -
+   url: "https://embed.plnkr.co/dkorye/"
+   title: "Angular 2 Zippy Component (RC5)"
 
 date:       2015-03-27
-update_date: 2016-08-02
+update_date: 2016-08-11
 summary:    "Even if Angular 2 is still in early development, we can already start playing with the code since it's up on GitHub and also published as npm module. We are following the development of Angular 2 since the beginning on and are also contributing to the project. Just recently we've built a simple zippy component in Angular 2 and in this article we want to show how."
 
 categories: 
@@ -41,30 +44,34 @@ Even if Angular 2 is still in early development, we can already start playing wi
 
 ## Getting started with Angular 2
 
-I think the community still tries to find out what currently the best starting point is, when it comes to Angular 2. There are several options today, for instance, we can go to [angular.io](http://angular.io) and use the [quickstart](https://angular.io/docs/js/latest/quickstart.html) guide. If this doesn't suit you, there's an article on [trying Angular 2 today](http://swirlycheetah.com/try-angular2-today/) that lists some other useful repositories to get started quickly. In this article we will use [Pawel Kozlowski's](http://twitter.com/pkozlowski_os) [ng2-play](https://github.com/pkozlowski-opensource/ng2-play) repository, but again, you can use whatever suits you (Thanks Pawel for setting this up btw).
+There are several options today to get started with Angular 2. For instance, we can go to [angular.io](http://angular.io) and use the [quickstart](https://angular.io/docs/js/latest/quickstart.html) guide. Or, we can install the [Angular CLI](http://cli.angulario), which takes care of scaffolding, building and serving Angular 2 applications. In this article we will use <s><a href="http://twitter.com/pkozlowski_os" title="Pawel Kozlowski on Twitter">Pawel Kozlowski's</a> <a href="https://github.com/pkozlowski-opensource/ng2-play" title="ng2-play on GitHub">ng2-play repository</a></s> the Angular CLI, but again, you can use whatever suits you.
 
-As the readme of the project says, we can simply start by cloning the repository with Git and install it's dependencies using npm. We also need to install [gulp](http://gulpjs.com) globally, which is what we do first.
-
-{% highlight sh %}
-{% raw %}
-$ npm install -g gulp
-$ git clone https://github.com/pkozlowski-opensource/ng2-play
-$ cd ng2-play
-$ npm install
-{% endraw %}
-{% endhighlight %}
-
-Cool, let's just run the code by executing the following command in our terminal and see what happens.
+We start by installing Angular CLI as a global command on our local machine using npm.
 
 {% highlight sh %}
 {% raw %}
-$ gulp play
+$ npm install -g angular-cli
 {% endraw %}
 {% endhighlight %}
 
-A browser tab opens on `localhost://9000` and what we see is the text "Hello, World!". After two seconds the text changes to "Hello, NEW World!" and this is because Pawel demonstrates how we can simply use `setTimeout()` in Angular 2 without using something like `$timeout` service or manually calling `$scope.$apply()`, which is how we deal with that today in Angular 1.
+Once that is done, we can scaffold a new Angular 2 project by running `ng new <PROJECT_NAME>`. Note that the project is scaffolded in the directory where we're in at this moment.
 
-I don't want to go into much detail on what the existing code does, but you can go ahead and check out the `src/hello.ts` file to get an idea of what's happening here. We want to focus on how to build a zippy component now.
+{% highlight sh %}
+{% raw %}
+$ ng new zippy-app
+{% endraw %}
+{% endhighlight %}
+
+Next, we navigate into the project and run `ng serve`, which will essentially build and serve a hello world app on `http://localhost:4200`.
+
+{% highlight sh %}
+{% raw %}
+$ cd zippy-app
+$ ng serve
+{% endraw %}
+{% endhighlight %}
+
+We open a browser tab on `localhost://4200` and what we see is the text "zippy-app works!". Cool, we're all set up to build a zippy component in Angular 2!
 
 ## Building the zippy component
 
@@ -76,7 +83,9 @@ Long story short: this, is a zippy.
 
 Also known as "accordion". You can click the summary text and the actual content toggles accordingly. If you take a look at this particular plunk, you'll see that we actually don't need to do any special implementation to get this working. We have the `<details>` element that does the job for us. But how can we implement such a thing in Angular 2?
 
-We start off by adding a new file `src/my-zippy.ts` and creating a class in ES6 that we export, so it can be imported by other consumers of this class, by using the ES2015 module system. If you're not familiar with modules in ES2015 you might want to read our article on [using ES2015 with Angular today](http://blog.thoughtram.io/angularjs/es6/2015/01/23/exploring-angular-1.3-using-es6.html).
+We start off by adding a new file `src/app/my-zippy.component.ts` and creating a class in ES2015 that we export, so it can be imported by other consumers of this class, by using the ES2015 module system. If you're not familiar with modules in ES2015 you might want to read our article on [using ES2015 with Angular today](/angularjs/es6/2015/01/23/exploring-angular-1.3-using-es6.html).
+
+>> **Special Tip**: We would normaly use Angular CLI to generate a component for us, instead of creating the files manually, but this articles focuses on understanding the building blocks of creating a custom component.
 
 {% highlight javascript %}
 {% raw %}
@@ -86,13 +95,11 @@ export class ZippyComponent {
 {% endraw %}
 {% endhighlight %}
 
-Angular 2 doesn't come with it's own module system anymore, since ES2015 already provides a module system. That means we can just write plain ES2015 code without any Angular specific bits which makes our code more reusable.
-
 The next thing we want to do, is to make our `ZippyComponent` class an actual component and give it a template so that we can see that it is ready to be used. In order to tell Angular that this particular class is a component, we use something called "Decorators".
 
 Decorators are a way to add metadata to our existing code. Those decorators are actually not supported by ES2015 but have been developed as language extension of the TypeScript transpiler, which is used in this project. We're not required to use decorators though. As mentioned, those are just transpiled to ES5 and then simply used by the framework. However, for simplicity sake we'll use them in this article.
 
-Angular provides us with a couple of decorators so we can express our code in a much more elegant way. In order to build a component, We need the `@Component()`. Decorators can be imported just like classes by using ES2015 module syntax. If you heard about **annotations in traceur** before and wonder how they relate to decorators, you might want to read our article on [the difference between annotations and decorators](http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html).
+Angular provides us with a couple of decorators so we can express our code in a much more elegant way. In order to build a component, we need the `@Component()` decorator. Decorators can be imported just like classes or other symbols, by using ES2015 module syntax. If you heard about **annotations in traceur** before and wonder how they relate to decorators, you might want to read our article on [the difference between annotations and decorators](http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html).
 
 {% highlight javascript %}
 {% raw %}
@@ -104,9 +111,9 @@ export class ZippyComponent {
 {% endraw %}
 {% endhighlight %}
 
-The `Component` decorator adds information about what our component's element name will be, which attributes are bound to which input properties and more. We can also add information about the component's view and template.
+The `Component` decorator adds information about what our component's element name will be, what  input properties it has and more. We can also add information about the component's view and template.
 
-We want our zippy component to be usable as `<my-zippy>` element. So all we need to do, is to add a `@Component()` decorator with that particular information. To specify the element name, or rather CSS selector (since we could also build decorators), we need to add a `selector` property that matches a CSS selector.
+We want our zippy component to be usable as `<my-zippy>` element. So all we need to do, is to add a `@Component()` decorator with that particular information. To specify the element name, or rather CSS selector, we need to add a `selector` property that matches a CSS selector.
 
 {% highlight javascript %}
 {% raw %}
@@ -121,15 +128,16 @@ export class ZippyComponent {
 {% endraw %}
 {% endhighlight %}
 
-Next, our component needs a template. We add information about the component's view. `templateUrl` tells Angular where to load the component template from:
+Next, our component needs a template. We add information about the component's view. `templateUrl` tells Angular where to load the component template from. To make `templateUrl` work with relative paths, we add another property `moduleId` with a value `module.id`. To get more information on `moduleId`, make sure to check out our article on [Component-Relative Paths in Angular 2](/angular/2016/06/08/component-relative-paths-in-angular-2.html)
 
 {% highlight javascript %}
 {% raw %}
 import { Component } from '@angular/core';
 
 @Component({
+  moduleId: module.id,
   selector: 'my-zippy',
-  templateUrl: 'my-zippy.html'
+  templateUrl: 'my-zippy.component.html'
 })
 export class ZippyComponent {
 
@@ -137,7 +145,7 @@ export class ZippyComponent {
 {% endraw %}
 {% endhighlight %}
 
-Later at runtime, when Angular compiles this component, it'll fetch `zippy.html` asynchronously. Let's create a file `src/zippy.html` with the following contents:
+Later at runtime, when Angular compiles this component, it'll fetch `my-zippy.component.html` asynchronously. Let's create a file `src/app/my-zippy.component.html` with the following contents:
 
 {% highlight html %}
 {% raw %}
@@ -154,25 +162,49 @@ Later at runtime, when Angular compiles this component, it'll fetch `zippy.html`
 
 CSS classes can be ignored for now. They just give us some semantics throughout our template.
 
-Alright, believe it or not, that's basically all we need to do to get this component running. Let's use our zippy component inside the hello app. In order to do that, we need to make some changes to `src/hello.ts`. Here's what it should look like, after changes have been applied (I removed everything that is distracting):
+Alright, believe it or not, that's basically all we need to do to create a component. Let's use our zippy component inside the application. In order to do that, we need to do things:
+
+- Add our new component to the application module
+- Use `ZippyComponent` in `ZippyAppComponent`'s template
+ 
+Angular comes with a module system that allows us to register directives, components, service and many other things in a single place, so we can use them throughout our application. If we take a look at the `src/app/app.module.ts` file, we see that Angular CLI already created a module for us.  To register `ZippyComponent` on `AppModule`, we import it and add it to the list `AppModule`'s declarations:
+
+{% highlight javascript %}
+{% raw %}
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { ZippyAppComponent } from './zippy-app.component';
+import { ZippyComponent } from './my-zippy.component';
+
+@NgModule({
+  imports: [BrowserModule],
+  declarations: [ZippyAppComponent, ZippyComponent], // we're adding ZippyComponent here
+  bootstrap: [ZippyAppComponent]
+})
+export class AppModule {}
+{% endraw %}
+{% endhighlight %}
+
+We don't worry too much about the `imports` for now, but we acknowledge that Angular needs `BrowserModule` to make our app run in the browser. The `declarations` property defines all directives and pipes that are used in this module and `bootstrap` tells Angular, which component should be bootstrapped to run the application. `ZippyAppComponent` is our root component and has been generated by Angular CLI as well, `ZippyComponent` is our own custom component that we've just created.
+
+Now, to actually render our zippy component in our application, we need to use it in `ZippyAppComponent`'s template. Let's do that right away:
 
 {% highlight javascript %}
 {% raw %}
 import { Component } from '@angular/core';
-import { ZippyComponent } from './my-zippy';
 
 @Component({
-  selector: 'hello',
-  template: `<my-zippy></my-zippy>`,
-  directives: [ZippyComponent]
+  moduleId: module.id,
+  selector: 'zippy-app',
+  template: '<my-zippy></my-zippy>'
 })
-export class Hello {
+export class ZippyAppComponent {
 
 }
 {% endraw %}
 {% endhighlight %}
 
-We don't go into much detail on what this all means right now since it gets clear throughout the article. Nice! Running this in the browser gives us at least something that looks like a zippy component. The next step is to bring our component to life.
+Nice! Running this in the browser gives us at least something that looks like a zippy component. The next step is to bring our component to life.
 
 ## Bringing the component to life
 
@@ -272,7 +304,9 @@ In Angular 2, we don't need to specify how scope properties are bound in our com
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'my-zippy'
+  moduleId: module.id,
+  selector: 'my-zippy',
+  templateUrl: 'my-zippy.component.html'
 })
 export class ZippyComponent {
   @Input() title;
@@ -286,7 +320,9 @@ Basically what we're doing here, is telling Angular that the value of the `title
 {% highlight javascript %}
 {% raw %}
 @Component({
-  selector: 'my-zippy'
+  moduleId: module.id,
+  selector: 'my-zippy',
+  templateUrl: 'my-zippy.component.html'
 })
 export class ZippyComponent {
   @Input('zippyTitle') title;
@@ -295,13 +331,14 @@ export class ZippyComponent {
 {% endraw %}
 {% endhighlight %}
 
-But for simplicity's sake, we stick with the shorthand sytnax. There's nothing more to do to make the title configurable, let's update the template for `hello` app.
+But for simplicity's sake, we stick with the shorthand syntax. There's nothing more to do to make the title configurable, let's update the template for `ZippyAppComponent` app.
 
 {% highlight javascript %}
 {% raw %}
 @Component({
-  template: `<my-zippy title="Details"></zippy>`,
-  directives: [ZippyComponent]
+  moduleId: module.id,
+  selector: 'zippy-app',
+  template: '<my-zippy title="Details"></zippy>',
 })
 ...
 {% endraw %}
@@ -358,8 +395,9 @@ Yay, this is how we build a zippy component in Angular 2. Just to make sure we'r
 import { Component, Input } from '@angular/core';
 
 @Component({
+  moduleId: module.id,
   selector: 'my-zippy',
-  templateUrl: 'my-zippy.html'
+  templateUrl: 'my-zippy.component.html'
 })
 export class ZippyComponent {
 
