@@ -4,15 +4,15 @@ title:      "View Encapsulation in Angular 2"
 relatedLinks:
   -
     title: "Exploring Angular 2 - Article Series"
-    url: "http://blog.thoughtram.io/exploring-angular-2"
+    url: "/exploring-angular-2"
   -
     title: "Styling Angular 2 components"
-    url: "http://blog.thoughtram.io/angular/2015/06/25/styling-angular-2-components.html"
+    url: "/angular/2015/06/25/styling-angular-2-components.html"
   -
     title: "Dependency Injection in Angular 2"
-    url: "http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html"
+    url: "/angular/2015/05/18/dependency-injection-in-angular-2.html"
 date:       2015-06-29
-update_date: 2016-05-12
+update_date: 2016-08-11
 summary:    "Angular 2 has been rewritten from scratch to take advantage of a lot of new technologies that are coming to the web. One of those technologies are Web Components. In fact, Web Components is a set of four technologies: HTML Imports, Templates, Shadow DOM and Custom Elements. Angular uses templates for structural DOM changes, and Shadow DOM for styles and DOM encapsulation. This article explores Angular 2's view encapsulation  and how we can use it."
 
 categories: 
@@ -26,7 +26,7 @@ topic: views
 author: pascal_precht
 ---
 
-In our article on [styling Angular 2 components](http://blog.thoughtram.io/angular/2015/06/25/styling-angular-2-components.html) we learned how styles are applied to our component when defining them in different ways. We mentioned that all our component styles are appended to the document head, but usually would end up in the component's template, in case we use native Shadow DOM. This article explains not only how we can tell Angular to use native Shadow DOM, but also what the other view encapsulation solutions are, that the framework comes with and why they exist.
+In our article on [styling Angular 2 components](/angular/2015/06/25/styling-angular-2-components.html) we learned how styles are applied to our component when defining them in different ways. We mentioned that all our component styles are appended to the document head, but usually would end up in the component's template, in case we use native Shadow DOM. This article explains not only how we can tell Angular to use native Shadow DOM, but also what the other view encapsulation solutions are, that the framework comes with and why they exist.
 
 ## Understanding Shadow DOM
 
@@ -58,14 +58,15 @@ You might wonder why we have three types. Why not just one for native Shadow DOM
 
 **ViewEncapsulation.None**
 
-Angular doesn't use Shadow DOM at all. Styles applied to our component are written to the document head. We talked about that in a more detail in [styling Angular 2 components](http://blog.thoughtram.io/angular/2015/06/25/styling-angular-2-components.html), but to make a quick recap, having a zippy component with styles like this (note that we set the `encapsulation` property in our `@Component` decorator):
+Angular doesn't use Shadow DOM at all. Styles applied to our component are written to the document head. We talked about that in a more detail in [styling Angular 2 components](/angular/2015/06/25/styling-angular-2-components.html), but to make a quick recap, having a zippy component with styles like this (note that we set the `encapsulation` property in our `@Component` decorator):
 
 {% highlight js %}
 import {ViewEncapsulation} from '@angular/core';
 
 @Component({
-  selector: 'zippy',
-  templateUrl: 'zippy.html',
+  moduleId: module.id,
+  selector: 'my-zippy',
+  templateUrl: 'my-zippy.component.html',
   styles: [`
     .zippy {
       background: green;
@@ -73,7 +74,7 @@ import {ViewEncapsulation} from '@angular/core';
   `],
   encapsulation: ViewEncapsulation.None
 })
-class Zippy {
+class ZippyComponent {
   @Input() title: string;
 }
 {% endhighlight %}
@@ -104,7 +105,7 @@ Will make Angular creating a DOM like this:
     </style>
   </head>
   <body>
-    <zippy title="Details">
+    <my-zippy title="Details">
       <div class="zippy">
         <div (click)="toggle()" class="zippy__title">
           ▾ Details
@@ -115,7 +116,7 @@ Will make Angular creating a DOM like this:
           <script type="ng/contentEnd"></script>
         </div>
       </div>
-    </zippy>
+    </my-zippy>
   </body>
 </html>
 {% endhighlight %}
@@ -139,7 +140,7 @@ This view encapsulation is used by default. `ViewEncapsulation.Emulated` emulate
 Looks like styles are still written to the document head. But wait, what's that? Instead of the simple `.zippy` selector that we used, Angular creates a `.zippy[_ngcontent-1]` selector. So it seems like Angular rewrote our component's styles. Let's see what the component's template looks like:
 
 {% highlight html %}
-<zippy title="Details" _ngcontent-0 _nghost-1>
+<my-zippy title="Details" _ngcontent-0 _nghost-1>
   <div class="zippy" _ngcontent-1>
     <div (click)="toggle()" class="zippy__title" _ngcontent-1>
       ▾ Details
@@ -150,7 +151,7 @@ Looks like styles are still written to the document head. But wait, what's that?
       <script type="ng/contentEnd"></script>
     </div>
   </div>
-</zippy>
+</my-zippy>
 {% endhighlight %}
 
 Ha! Angular added some attributes to our component's template as well! We see the `_ngcontent-1` attribute which is also used in our rewritten CSS, but we also have `_ngcontent-0` and `_nghost-1`. So what the hell is going on there?
@@ -168,8 +169,9 @@ Not sure what **you** think, but in my opinion, this is a very smart approach.
 Last but not least, we have the native Shadow DOM view encapsulation. This one is super simple to understand since it basically just makes Angular using native Shadow DOM. We can activate it the same way we did with the other types. Here's what that looks like:
 
 {% highlight js %}
-@Comoponent({
-  templateUrl: 'zippy.html',
+@Component({
+  moduleId: module.id,
+  templateUrl: 'my-zippy.component.html',
   styles: [`
     .zippy {
       background: green;
@@ -183,7 +185,7 @@ Last but not least, we have the native Shadow DOM view encapsulation. This one i
 Okay that was easy. If we run our code in the browser, we see that no styles are written to the document head anymore. However, styles do now end up in the component's template inside the shadow root. Here's what that looks like:
 
 {% highlight html %}
-<zippy title="Details">
+<my-zippy title="Details">
   #shadow-root
   | <style>
   |   .zippy {
@@ -199,7 +201,7 @@ Okay that was easy. If we run our code in the browser, we see that no styles are
   |   </div>
   | </div>
   "This is some content"
-</zippy>
+</my-zippy>
 {% endhighlight %}
 
 In order to get an output like this, we need to tell our browser dev tools to display Shadow DOM when inspecting element. No weird attributes anymore. Instead we get a nice shadow root and we can see very nicely how the styles are written into it. 
