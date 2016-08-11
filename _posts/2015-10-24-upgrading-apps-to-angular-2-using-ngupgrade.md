@@ -8,22 +8,22 @@ redirect_from:
 relatedLinks:
   -
     title: "Exploring Angular 2 - Article Series"
-    url: "http://blog.thoughtram.io/exploring-angular-2"
+    url: "/exploring-angular-2"
   -
     title: "Dependency Injection in Angular 2"
-    url: "http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html"
+    url: "/angular/2015/05/18/dependency-injection-in-angular-2.html"
   -
     title: "Exploring Angular 2"
-    url: "http://blog.thoughtram.io/exploring-angular-2"
+    url: "/exploring-angular-2"
   -
     title: "Writing Angular 2 code in ES5"
-    url: "http://blog.thoughtram.io/angular/2015/05/09/writing-angular-2-code-in-es5.html"
+    url: "/angular/2015/05/09/writing-angular-2-code-in-es5.html"
   -
     title: "Resolving Service Dependencies in Angular 2"
-    url: "http://blog.thoughtram.io/angular/2015/09/17/resolve-service-dependencies-in-angular-2.html"
+    url: "/angular/2015/09/17/resolve-service-dependencies-in-angular-2.html"
 
 date:       2015-10-24
-update_date: 2016-05-12
+update_date: 2016-08-11
 summary:    "One of the hottest topics when it comes to Angular 2, is how to get our existing AngularJS applications upgrade to the next major version of the framework. The APIs of Angular 2 are stablelising and a module to help upgrading existing AngularJS apps is emerging. This module is called ngUpgrade and in this article we're going to explore what comes into play when upgrading an app and also how ngUpgrade gives us a helping hand."
 
 categories:
@@ -57,7 +57,7 @@ Nonetheless there are some very strong arguments why one wants to upgrade and he
 
 - **Server-side Rendering** - The next version of Angular has been split up into two parts, an application layer and a render layer. This enables us to run Angular in other environments than the browser like Web Workers or even servers.
 
-- **More powerful Templating** - The new template syntax is statically analyzable as discussed [here](http://blog.thoughtram.io/angular/2015/08/11/angular-2-template-syntax-demystified-part-1.html), removes many directives and integrates better with Web Components and other elements.
+- **More powerful Templating** - The new template syntax is statically analyzable as discussed [here](/angular/2015/08/11/angular-2-template-syntax-demystified-part-1.html), removes many directives and integrates better with Web Components and other elements.
 
 - **Better Ecosystem** - Of course, at the time of writing this article, this is not true. But the Angular 2 ecosystem will eventually be better and more interesting to us in the future.
 
@@ -65,16 +65,16 @@ There are surely more reasons why Angular 2 is better than Angular 1, but keep i
 
 ## Changes in Angular 2
 
-In order to upgrade, we need to understand in what ways Angular 2 is different. Unfortunately, covering the bigger differences between both version of the framework is out of the scope of this article. However, if you're entirely new to Angular 2, you might want to checkout our project [Exploring Angular 2](http://blog.thoughtram.io/exploring-angular-2) and get your feet wet.
+In order to upgrade, we need to understand in what ways Angular 2 is different. Unfortunately, covering the bigger differences between both version of the framework is out of the scope of this article. However, if you're entirely new to Angular 2, you might want to checkout our project [Exploring Angular 2](/exploring-angular-2) and get your feet wet.
 
 Here's a list of changes that are crucial when thinking about upgrading:
 
 - **Components** - Components are the new building blocks when creating applications with Angular 2. Almost everything is a component, even our application itself.
-- **Inputs/Outputs** - Components communicate via inputs and outputs, if they run in the Browser, these are element properties and events. Our article on [demystifying Angular 2's Template syntax](http://blog.thoughtram.io/angular/2015/08/11/angular-2-template-syntax-demystified-part-1.html) explains how they work.
+- **Inputs/Outputs** - Components communicate via inputs and outputs, if they run in the Browser, these are element properties and events. Our article on [demystifying Angular 2's Template syntax](/angular/2015/08/11/angular-2-template-syntax-demystified-part-1.html) explains how they work.
 - **Content Projection** - Basically the new transclusion, but more aligned with the Web Components standard.
-- **Dependency Injection** - Instead of having a single injector for our entire application, in Angular 2 each component comes with its own injector. We have a dedicated [article](http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html) on that too.
+- **Dependency Injection** - Instead of having a single injector for our entire application, in Angular 2 each component comes with its own injector. We have a dedicated [article](/angular/2015/05/18/dependency-injection-in-angular-2.html) on that too.
 
-Of course, there are way more things in Angular 2 that will change or be added to the framework, such as [Routing](http://blog.thoughtram.io/angular/2015/06/16/routing-in-angular-2.html), Forms, the Http layer and more.
+Of course, there are way more things in Angular 2 that will change or be added to the framework, such as [Routing](/angular/2016/06/14/routing-in-angular-2-revisited.html), Forms, the Http layer and more.
 
 **How do we get there?**
 
@@ -117,13 +117,13 @@ This structure allows us to take e.g. `productDetail` and upgrade it to Angular 
 
 **Use .service() instead of .factory()**
 
-If we plan to not only upgrade the framework, but also the language in which we're writing our application, we should definitely consider to use `.service()` instead of `.factory()` in all the cases where a service can be potentially a class. In Angular 2, a service is also just a class, so this seems like a logical thing to do. For more information on why `.service()` might be a better fit, read [this article](http://blog.thoughtram.io/angular/2015/07/07/service-vs-factory-once-and-for-all.html).
+If we plan to not only upgrade the framework, but also the language in which we're writing our application, we should definitely consider to use `.service()` instead of `.factory()` in all the cases where a service can be potentially a class. In Angular 2, a service is also just a class, so this seems like a logical thing to do. For more information on why `.service()` might be a better fit, read [this article](/angular/2015/07/07/service-vs-factory-once-and-for-all.html).
 
 **Write new components in ES2015 or TypeScript**
 
-This is an interesting one. When we saw Angular 2 code the very first time, some of us were scared because all of a sudden there were classes and decorators. Despite the fact that we **don't** have to write our Angular 2 apps in TypeScript (as explained in [this article](http://blog.thoughtram.io/angular/2015/05/09/writing-angular-2-code-in-es5.html)), ES2015 is the next standardized version, which means we will write it sooner or later anyways.
+This is an interesting one. When we saw Angular 2 code the very first time, some of us were scared because all of a sudden there were classes and decorators. Despite the fact that we **don't** have to write our Angular 2 apps in TypeScript (as explained in [this article](/angular/2015/05/09/writing-angular-2-code-in-es5.html)), ES2015 is the next standardized version, which means we will write it sooner or later anyways.
 
-We wrote about [how to write Angular in ES2015](http://blog.thoughtram.io/angularjs/es6/2015/01/23/exploring-angular-1.3-using-es6.html) today and if we do plan to upgrade but can't do it right now, we should definitely write our **new** components in ES2015 or TypeScript.
+We wrote about [how to write Angular in ES2015](/angularjs/es6/2015/01/23/exploring-angular-1.3-using-es6.html) today and if we do plan to upgrade but can't do it right now, we should definitely write our **new** components in ES2015 or TypeScript.
 
 That being said, **it doesn't really make sense to upgrade existing code to ES2015 or TypeScript**. Even though it seems to be a logical step in preparation for upgrade, it doesn't help us in any way to take the existing and large code base and upgrade it to ES2015 or TypeScript first, before we upgrade the application to Angular 2.
 
@@ -150,7 +150,7 @@ There are basically two strategies:
 
 **Which one should we use?**
 
-This really depends! If our application is rather small a big bang rewrite is probably the easiest and fastest way to upgrade. If our application is rather large and it's deployed continuosly, we can't just upgrade the whole thing at once. We need a way to do it step by step, component by component, service by service. This is where the incremental upgrade comes into play.
+This really depends! If our application is rather small a big bang rewrite is probably the easiest and fastest way to upgrade. If our application is rather large and it's deployed continuesly, we can't just upgrade the whole thing at once. We need a way to do it step by step, component by component, service by service. This is where the incremental upgrade comes into play.
 
 In the end it's really a matter of how much time we have available to process the upgrade. We will focus on incremental upgrade, since this is what the majority of developers want to understand and see how it works.
 
@@ -193,7 +193,7 @@ var app = angular.module('myApp', []);
 Plain old Angular 1 module. Usually, this module is bootstrapped using the `ng-app` attribute, but now we want to bootstrap our module using `ngUpgrade`. We do that by removing the `ng-app` attribute from the HTML, create an `ngUpgrade` adapter from the upgrade module, and call `bootstrap()` on it with `myApp` as module dependency:
 
 {% highlight js %}
-import {UpgradeAdapter} from '@angular/upgrade';
+import { UpgradeAdapter } from '@angular/upgrade';
 
 var adapter = new UpgradeAdapter();
 var app = angular.module('myApp', []);
@@ -287,25 +287,16 @@ class ProductList {
 
 {% highlight js %}
 {% raw %}
-@Component({
-  selector: 'product-list',
-  directives: [
+@NgModule({
+  imports: [BrowserModule],
+  declarations: [
+    AppComponent,
+    ProductList,
     adapter.upgradeNg1Component('productListItem')
   ],
-  template: `
-    <h2>Product List</h2>
-    <ol>
-      <li *ngFor="let product of products">
-        <product-list-item [product]="product">
-        </product-list-item>
-      </li>
-    </ol>
-  `
-})
-class ProductList {
-  @Input() products: Product[];
   ...
-}
+})
+export class AppModule {}
 {% endraw %}
 {% endhighlight %}
 
@@ -361,7 +352,7 @@ app.service('DataService', () => {
 {% endraw %}
 {% endhighlight %}
 
-As you can see, we're using `@Inject` to specify the provider token for `DataService`, since we don't have a `DataService` type. If this is unclear, you might want to read our articles on [DI in Angular 2](http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html).
+As you can see, we're using `@Inject` to specify the provider token for `DataService`, since we don't have a `DataService` type. If this is unclear, you might want to read our articles on [DI in Angular 2](/angular/2015/05/18/dependency-injection-in-angular-2.html).
 
 However, there's no provider for `'DataService'` in Angular 2 world yet. Let's make it available using `upgradeNg1Provider()`.
 
@@ -405,7 +396,7 @@ class ProductService {
 {% endraw %}
 {% endhighlight %}
 
-**Note**: We added `@Injectable()` to our service because TypeScript needs at least one decorator to emit metadata for it. Learn more in our article on [Injecting Services in Services in Angular 2](http://blog.thoughtram.io/angular/2015/09/17/resolve-service-dependencies-in-angular-2.html).
+**Note**: We added `@Injectable()` to our service because TypeScript needs at least one decorator to emit metadata for it. Learn more in our article on [Injecting Services in Services in Angular 2](/angular/2015/09/17/resolve-service-dependencies-in-angular-2.html).
 
 ## Downgrading Angular 2 Providers
 
