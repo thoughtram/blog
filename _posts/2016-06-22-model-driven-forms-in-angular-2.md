@@ -1,16 +1,17 @@
 ---
 layout:     post
-title:      "Model-driven Forms in Angular 2"
+title:      "Reactive Forms in Angular 2"
 
 date: 2016-06-22
+update_date: 2016-08-11
 imageUrl: "/images/banner/model-driven-forms-in-angular-2.jpeg"
 relatedLinks:
   -
     title: "Custom Validators in Angular 2"
-    url: "http://blog.thoughtram.io/angular/2016/03/14/custom-validators-in-angular-2.html"
+    url: "/angular/2016/03/14/custom-validators-in-angular-2.html"
   -
     title: "Template-driven Forms in Angular 2"
-    url: "http://blog.thoughtram.io/angular/2016/03/21/template-driven-forms-in-angular-2.html"
+    url: "/angular/2016/03/21/template-driven-forms-in-angular-2.html"
 
 summary: "Earlier this year we've talked about template-driven forms in Angular 2 and how they enable us to build sophisticated forms while writing as little JavaScript or TypeScript as possible. Another way to deal with forms is the model-driven approach and in this article we're going to discuss what that looks like."
 
@@ -24,13 +25,13 @@ topic: forms
 author: pascal_precht
 ---
 
-Just a couple days ago, we've updated our article on [Template-driven Forms in Angular 2](/angular/2016/03/21/template-driven-forms-in-angular-2.html), as the APIs have changed for the better in the second release candidate. Meanwhile, RC3 is out and we think it's time to talk about **model-driven** and **reactive forms** on our blog. This article builds on top of the knowledge we've gained in our previous article, so you might want to take a look at it in case you haven't yet.
+Just a couple days ago, we've updated our article on [Template-driven Forms in Angular 2](/angular/2016/03/21/template-driven-forms-in-angular-2.html), as the APIs have changed for the better in the second release candidate. We think it's time to talk about **model-driven** and **reactive forms** on our blog. This article builds on top of the knowledge we've gained in our previous article, so you might want to take a look at it in case you haven't yet.
 
-## The goal of model-driven forms
+## The goal of reactive/model-driven forms
 
 While template-driven forms in Angular 2 give us a way to create sophisticated forms while writing as little JavaScript as possible, model-driven forms enable us to test our forms without being required to rely on end-to-end tests. That's why model-driven forms are created imperatively, so they end up as actually properties on our components, which makes them easier to test.
 
-In addition, it's important to understand that when building model-driven forms, Angular 2 doesn't magically create the templates for us. So it's not that we just create the form model and then all of a sudden we have DOM generated in our app that renders the form. Model-driven forms are more like an addition to template-driven forms, although, depending on what we're doing some things can be left out here and there (e.g. validators on DOM elements etc.).
+In addition, it's important to understand that when building reactive/model-driven forms, Angular 2 doesn't magically create the templates for us. So it's not that we just create the form model and then all of a sudden we have DOM generated in our app that renders the form. Reactive forms are more like an addition to template-driven forms, although, depending on what we're doing some things can be left out here and there (e.g. validators on DOM elements etc.).
 
 ## FormGroup and FormControl
 
@@ -72,7 +73,7 @@ import { FormGroup, FormControl } from '@angular/forms';
   selector: 'my-app',
   ...
 })
-export class MyAppComponent {
+export class AppComponent {
 
   registerForm = new FormGroup({
     firstname: new FormControl(),
@@ -97,17 +98,20 @@ Okay, now that we've created our first form model, let's associate it to our tem
 
 Currently, there's nothing in our code that tells Angular that our form model is responsible for the form template. We need to associate the model to our form, and we can do that using the `formGroup` directive, which takes an expression that evaluates to a `FormGroup` instance.
 
-In order to use that directive we need to import `REACTIVE_FORM_DIRECTIVES` and add then to our application's directives list:
+In order to use that directive we need to import the `ReactiveFormsModule` into our application module:
 
 {% highlight js %}
 {% raw %}
-import { REACTIVE_FORM_DIRECTIVES, FormGroup, FormControl } from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@anglar/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 
-@Component({
-  selector: 'my-app',
-  ...
-  directives: [REACTIVE_FORM_DIRECTIVES]
+@NgModule({
+  imports: [BrowserModule, ReactiveFormsModule],
+  declarations: [AppComponent],
+  bootstrap: [AppComponent]
 })
+export class AppModule {}
 {% endraw %}
 {% endhighlight %}
 
@@ -175,14 +179,13 @@ As mentioned earlier, the creation of our form model looks quite wordy as we hav
 
 {% highlight js %}
 {% raw %}
-import { REACTIVE_FORM_DIRECTIVES, FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'my-app',
   ...
-  directives: [REACTIVE_FORM_DIRECTIVES]
 })
-export class MyAppComponent implements OnInit {
+export class AppComponent implements OnInit {
 
   registerForm: FormGroup;
 
@@ -190,12 +193,12 @@ export class MyAppComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      firstname: [],
-      lastname: [],
+      firstname: '',
+      lastname: '',
       address: this.formBuilder.group({
-        street: [],
-        zip: [],
-        city: []
+        street: '',
+        zip: '',
+        city: ''
       })
     });
   }
@@ -206,7 +209,7 @@ export class MyAppComponent implements OnInit {
 This looks way better! Let's recap really quick what happened:
 
 - We imported `FormBuilder`
-- We injected it into `MyAppComponent`
+- We injected it into `AppComponent`
 - We created the form model using `FormBuilder.group()` in `ngOnInit()` lifecycle
 - We haven't done any changes on the template
 
@@ -219,7 +222,6 @@ Let's say we want to add a validators that makes sure that `firstname` and `last
 {% highlight js %}
 {% raw %}
 import { 
-  REACTIVE_FORM_DIRECTIVES,
   FormBuilder,
   FormGroup,
   Validators
@@ -242,7 +244,7 @@ ngOnInit() {
 {% endraw %}
 {% endhighlight %}
 
-A `FormControl` takes a value has first, a synchronous validator as second and an asynchronous validator as third parameter. We can also pass a collection of validators which causes Angular to compose them for us. And all we do here is applying a synchronous validator (`Validators.required`) to our form controls.
+A `FormControl` takes a value as first, a synchronous validator as second and an asynchronous validator as third parameter. We can also pass a collection of validators which causes Angular to compose them for us. And all we do here is applying a synchronous validator (`Validators.required`) to our form controls.
 
 We can access the validity state of a form control like this:
 
@@ -273,4 +275,22 @@ Angular comes with a directive `formControl` which doesn't have to be inside a `
 {% endraw %}
 {% endhighlight %}
 
-The cool thing about form controls in Angular is, that we can listen reactively for changes that are happening to that control. We'll talk about it in another article. Hopefully this one gave you a better idea of how model-driven and template-driven forms relate to each other.
+The cool thing about form controls in Angular is, that we can listen reactively for changes that are happening to that control. Every form controls exposes an Observable propery `valuesChanges()` that we can subscribe to. So in order to get notified about changes in the example above, all we have to do is:
+
+{% highlight js %}
+{% raw %}
+@Component()
+export class SearchComponent implements OnInit {
+
+  searchControl = new FormControl();
+
+  ngOnInit() {
+    this.searchControl.valueChanges.subscribe(value => {
+      // do something with value here
+    });
+  }
+}
+{% endraw %}
+{% endhighlight %}
+
+Hopefully this one gave you a better idea of how reactive/model-driven and template-driven forms relate to each other.
