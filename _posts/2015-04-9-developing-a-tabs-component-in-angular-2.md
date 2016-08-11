@@ -4,15 +4,15 @@ title:      "Developing a tabs component in Angular 2"
 relatedLinks:
   -
     title: "Exploring Angular 2 - Article Series"
-    url: "http://blog.thoughtram.io/exploring-angular-2"
+    url: "/exploring-angular-2"
   -
     title: "Builing a zippy component in Angular 2"
-    url: "http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html"
+    url: "/angular/2015/03/27/building-a-zippy-component-in-angular-2.html"
   -
     title: "Creating a tabs component using @ContentChildren"
     url: "http://juristr.com/blog/2016/02/learning-ng2-creating-tab-component"
 date:       2015-04-09
-update_date: 2016-08-04
+update_date: 2016-08-11
 summary:    "In our last article we learned how to build a zippy component in Angular 2. This article details how to build another simple, but widely used type of component: tabs. Building tabs in Angular has always been the de facto example to example controllers in directives. Angular 2 makes it much easier and here's how you do it."
 
 categories:
@@ -23,19 +23,22 @@ tags:
 
 topic: getting-started
 
-author: pascal_precht
+author: pascalprecht
 
 demos:
   -
     url: http://embed.plnkr.co/KU8eGM/
-    title: Tabs Component build with Angular 2
+    title: Tabs Component build with Angular 2 (RC4)
+  -
+    url: "https://plnkr.co/edit/LEpgaP?p=preview"
+    title: Tabs Component build with Angular 2 (RC5)
   -
     url: https://embed.plnkr.co/afhLA8wHw9LRnzwwTT3M/
     title: Tabs Component using @ContentChildren
 ---
-Just recently, we wrote about how to [build a zippy component](http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html) in Angular 2. We explored how to get started with the framework and learned about some concepts that it comes with to build a very simple component. If you haven't read the article, you might want to check it out.
+Just recently, we wrote about how to [build a zippy component](/angular/2015/03/27/building-a-zippy-component-in-angular-2.html) in Angular 2. We explored how to get started with the framework and learned about some concepts that it comes with to build a very simple component. If you haven't read the article, you might want to check it out.
 
-As a follow up, we now want to build yet another component that is widely used in a lot of applications: Tabs. Building tabs has always been the de facto example when it comes to explaining directive controllers in Angular. Angular 2 does not have the concept of directive controllers, because the component itself is the execution context. It also makes it much easier to access other directives and components through dependency injection. However, you **do** want to [use directive controllers](http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html) in Angular 1 in order to make the migration process to Angular 2 easier.
+As a follow up, we now want to build yet another component that is widely used in a lot of applications: Tabs. Building tabs has always been the de facto example when it comes to explaining directive controllers in Angular. Angular 2 does not have the concept of directive controllers, because the component itself is the execution context. It also makes it much easier to access other directives and components through dependency injection. However, you **do** want to [use directive controllers](/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html) in Angular 1 in order to make the migration process to Angular 2 easier.
 
 {% include demos-and-videos-buttons.html post=page %}
 
@@ -82,8 +85,8 @@ Alright, now that we know what we want to build, let's get our hands dirty with 
 
 ## Building the components
 
-We start off by implementing a rather static version of the `<tabs>` element. If you've read our article on [building a zippy component in Angular 2](http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html),
-you know that we need the ~~`View` and~~(not needed since alpha.39) `Component` decorator to tell Angular what the selector and template for our component should be.
+We start off by implementing a rather static version of the `<tabs>` element. If you've read our article on [building a zippy component in Angular 2](/angular/2015/03/27/building-a-zippy-component-in-angular-2.html),
+you know that we need the `@Component()` decorator to tell Angular what the selector and template for our component should be.
 
 {% highlight js %}
 {% raw %}
@@ -203,7 +206,7 @@ The method just simply pushes the given object into our collection and we're goo
   ...
   template: `
     <ul>
-      <li *ngFor="#tab of tabs">{{ tab.tabTitle }}</li>
+      <li *ngFor="let tab of tabs">{{ tab.tabTitle }}</li>
     </ul>
   `
 })
@@ -227,7 +230,7 @@ class Tab {
 {% endhighlight %}
 
 Wait, what happens here? `tabs: Tabs` is just Typescript type annotation which Angular 2 uses for Dependency Injection.
-Please check out our article where we go deeper inside [Angular 2 DI](http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2)
+Please check out our article where we go deeper inside [Angular 2 DI](/angular/2015/05/18/dependency-injection-in-angular-2)
 
 **tl;dr**
 
@@ -360,6 +363,20 @@ export class Tab {
 }
 {% endraw %}
 {% endhighlight %}
+
+And we shouldn't forget that these components need to be declared on our application module:
+
+{% highlight js %}
+{% raw %}
+@NgModule({
+  imports: [BrowserModule],
+  declarations: [Tab, Tabs, AppComponent],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}
+{% endraw %}
+{% endhighlight %}
+
 
 ## Where to go from here
 
