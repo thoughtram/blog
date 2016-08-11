@@ -27,7 +27,7 @@ relatedLinks:
     title: "Angular 2 Bits: Unified Dependency Injection"
     url: "http://victorsavkin.com/post/102965317996/angular-2-bits-unified-dependency-injection"
 date:       2015-05-18
-update_date: 2016-05-12
+update_date: 2016-08-11
 summary:    "Dependency injection has always been one of Angular's biggest features and selling points. It allows us to inject dependencies in different code components, without needing to know, how those dependencies are created. However, it turns out that the current dependency injection system in Angular 1 has some problems that need to be solved in Angular 2, in order to build the next generation framework. In this article, we're going to explore the new dependency injection system for future generations."
 
 categories: 
@@ -38,10 +38,17 @@ tags:
 
 topic: di
 
+demos:
+  -
+   url: http://embed.plnkr.co/EiGotX/
+   title: Dependency Injection in Angular 2
+
 author: pascal_precht
 ---
 
 Dependency injection has always been one of Angular's biggest features and selling points. It allows us to inject dependencies in different components across our applications, without needing to know, how those dependencies are created, or what dependencies they need themselves. However, it turns out that the current dependency injection system in Angular 1 has some problems that need to be solved in Angular 2, in order to build the next generation framework. In this article, we're going to explore the new dependency injection system for future generations.
+
+{% include demos-and-videos-buttons.html post=page %}
 
 Before we jump right into the new stuff, lets first understand what dependency injection is, and what the problems with the DI in Angular 1 are.
 
@@ -224,22 +231,20 @@ var injector = ReflectiveInjector.resolveAndCreate([
 Again, you might wonder how this list of classes is supposed to be a list of providers. Well, it turns out that this is actually a shorthand syntax. If we translate this to the longer, more verbose, syntax, things might become a bit more clear.
 
 {% highlight js %}
-import {provide} from 'angular2/core';
-
 var injector = RelfectiveInjector.resolveAndCreate([
-  provide(Car, {useClass: Car}),
-  provide(Engine, {useClass: Engine}),
-  provide(Tires, {useClass: Tires}),
-  provide(Doors {useClass: Doors})
+  { provide: Car, useClass: Car },
+  { provide: Engine, useClass: Engine },
+  { provide: Tires, useClass: Tires },
+  { provide: Doors, useClass: Doors }
 ]);
 {% endhighlight %}
 
-We have a function `provide()` that maps a **token** to a configuration object. The token can either be a type or a string. If you read those providers now, it's much easier to understand what's happening. We provide an instance of type `Car` via the class `Car`,  type `Engine` via the class `Engine` and so on and so forth. This is the recipe mechanism we were talking about earlier. So with the providers we not only let the injector know which dependencies are used across the application, we also configure how objects of these dependencies are created.
+We have an object with a `provide` property, that maps a **token** to a configuration object. The token can either be a type or a string. If you read those providers now, it's much easier to understand what's happening. We provide an instance of type `Car` via the class `Car`,  type `Engine` via the class `Engine` and so on and so forth. This is the recipe mechanism we were talking about earlier. So with the providers we not only let the injector know which dependencies are used across the application, we also configure how objects of these dependencies are created.
 
-Now the next question comes up: When do we want to use the longer instead of the shorthand syntax? There's no reason to write `provide(Foo, {useClass: Foo})` if we could just stick with `Foo`, right? Yes, that's correct. That's why we started with the shorthand syntax in the first place. However, the longer syntax enables us to do something very very powerful. Take a look at the next code snippet.
+Now the next question comes up: When do we want to use the longer instead of the shorthand syntax? There's no reason to write `{ provide: Foo, useClass: Foo}` if we could just stick with `Foo`, right? Yes, that's correct. That's why we started with the shorthand syntax in the first place. However, the longer syntax enables us to do something very very powerful. Take a look at the next code snippet.
 
 {% highlight js %}
-provide(Engine, {useClass: OtherEngine})
+{ provide: Engine, useClass: OtherEngine }
 {% endhighlight %}
 
 Right. We can map a token to pretty much what ever we want. Here we're mapping the token `Engine` to the class `OtherEngine`. Which means, when we now ask for an object of type `Engine`, we get an instance of class `OtherEngine`.
@@ -254,10 +259,10 @@ Sometimes, we don't want to get an instance of a class, but rather just a single
 
 **Providing values**
 
-We can provide a simple value using `{useValue: value}`
+We can provide a simple value using `useValue: value`
 
 {% highlight js %}
-provide(String, {useValue: 'Hello World'})
+{ provide: 'some value', useValue: 'Hello World' }
 {% endhighlight %}
 
 This comes in handy when we want to provide simple configuration values.
@@ -267,8 +272,8 @@ This comes in handy when we want to provide simple configuration values.
 We can map an alias token to another token like this:
 
 {% highlight js %}
-provide(Engine, {useClass: Engine})
-provide(V8, {useExisting: Engine})
+{ provide: Engine, useClass: Engine }
+{ provide: V8, useExisting: Engine }
 {% endhighlight %}
 
 **Providing factories**
@@ -276,26 +281,30 @@ provide(V8, {useExisting: Engine})
 Yes, our beloved factories.
 
 {% highlight js %}
-provide(Engine, {useFactory: () => {
-  return function () {
-    if (IS_V8) {
-      return new V8Engine();
-    } else {
-      return new V6Engine();
+{ 
+  provide: Engine,
+  useFactory: () => {
+    return function () {
+      if (IS_V8) {
+        return new V8Engine();
+      } else {
+        return new V6Engine();
+      }
     }
   }
-}})
+}
 {% endhighlight %}
 
 Of course, a factory might have its own dependencies. Passing dependencies to factories is as easy as adding a list of tokens to the factory:
 
 {% highlight js %}
-provide(Engine, {
+{
+  provide: Engine,
   useFactory: (car, engine) => {
 
   },
   deps: [Car, Engine]
-})
+}
 {% endhighlight %}
 
 
@@ -323,11 +332,14 @@ If we need a transient dependency, something that we want a new instance every t
 **Factories** can return instances of classes. Those won't be singletons. Note that in the following code we're **creating** a factory.
 
 {% highlight js %}
-provide(Engine, {useFactory: () => {
-  return () => {
-    return new Engine();
+{ 
+  provide: Engine,
+  useFactory: () => {
+    return () => {
+      return new Engine();
+    }
   }
-}})
+}
 {% endhighlight %}
 
 We can create a **child injector** using `Injector.resolveAndCreateChild()`. A child injector introduces its own bindings and an instance of an object will be different from the parent injector's instance.
@@ -345,7 +357,7 @@ Child injectors are even more interesting. It turns out that a child injector wi
 
 The graphic shows three injectors where two of them are child injectors. Each injector gets its own configuration of providers. Now, if we ask the second child injector for an instance of type `Car`, the car object will be created by that child injector. However, the engine will be created by the first child injector and the tires and doors will be created by the outer most parent injector. It kind of works like a prototype chain.
 
-We can even configure the **visibility** of dependencies, and also until where a child injector should look things up. However, this will be covered in another [article](http://blog.thoughtram.io/angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html).
+We can even configure the **visibility** of dependencies, and also until where a child injector should look things up. However, this will be covered in another [article](/angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html).
 
 ## How is it used in Angular 2 then?
 
@@ -359,21 +371,15 @@ Lets take a look at the following simple Angular 2 component.
   template: '<h1>Hello {{name}}!</h1>'
 })
 class App {
-  constructor() {
-    this.name = 'World';
-  }
+  name = 'World';
 }
-          
-bootstrap(App);
 {% endhighlight %}
 
-Nothing special here. If this is entirely new to you, you might want to read our article on [building a zippy](http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html) component in Angular 2. Lets say we want to extend this component by using a `NameService` that is used in the component's constructor. Such a service could look something like this:
+Nothing special here. If this is entirely new to you, you might want to read our article on [building a zippy](/angular/2015/03/27/building-a-zippy-component-in-angular-2.html) component in Angular 2. Lets say we want to extend this component by using a `NameService` that is used in the component's constructor. Such a service could look something like this:
 
 {% highlight js %}
 class NameService {
-  constructor() {
-    this.name = 'Pascal';
-  }
+  name = 'Pascal';;
 
   getName() {
     return this.name;
@@ -383,10 +389,16 @@ class NameService {
 
 Again, nothing special here. We just create a class. Now, to make it available in our application as an injectable, we need to pass some provider configurations to our application's injector. But how do we do that? We haven't even created one.
 
-`bootstrap()` takes care of creating a root injector for our application when it's bootstrapped. It takes a list of providers as second argument which will be passed straight to the injector when it is created. In other words, here's what we need to to:
+To boostrap an application, we define an `NgModule`. The `@NgModule()` decorator creates metadata that can include providers, just like this:
 
 {% highlight js %}
-bootstrap(App, [NameService]);
+@NgModule({
+  imports: [BrowserModule],
+  providers: [NameService],
+  declarations: [App],
+  bootstrap: [App]
+})
+export class AppModule {}
 {% endhighlight %}
 
 That's it. Now, to actually inject it, we just use the tools we've already learned about - `@Inject` decorators.
@@ -411,23 +423,29 @@ class App {
 
 Awesome! All of a sudden, we don't have any Angular machinery at all anymore. But there's one last thing: What if we want a different binding configuration in a specific component?
 
-Lets say we have `NameService` as application wide injectable for the type `NameService`, but one particular component should get a different one? This is where the `@Component` annotations' `providers` property comes in. It allows us to add providers to a specific component (and its child components).
+Lets say we have `NameService` as application wide injectable for the type `NameService`, but one particular component should get a different one? This is where the `@Component` decorators' `providers` property comes in. It allows us to add providers to a specific component (and its child components).
 
 {% highlight js %}
+{% raw %}
 @Component({
   selector: 'app',
-  providers: [NameService],
+  providers: [
+    {provide: NameService, useValue: 'Thomas' }
+  ],
   template: '<h1>Hello {{name}}!</h1>'
 })
 class App {
   ...
 }
+{% endraw %}
 {% endhighlight %}
 
-To make things clear: `providers` doesn't configure the instances that will be injected. It configures a child injector that is created for that component. As mentioned earlier, we can also configure the visibility of our bindings, to be even more specific which component can inject what. E.g. the `viewProviders` property allows to make dependencies only available to a component's view, but not its children. <s>We're going to cover that in another article.</s> Dependency injection host and visibility are covered in [this article](http://blog.thoughtram.io/angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html).
+To make things clear: `providers` doesn't configure the instances that will be injected. It configures a child injector that is created for that component. As mentioned earlier, we can also configure the visibility of our bindings, to be even more specific which component can inject what. E.g. the `viewProviders` property allows to make dependencies only available to a component's view, but not its children. <s>We're going to cover that in another article.</s> Dependency injection host and visibility are covered in [this article](/angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html).
 
 ## Conclusion
 
 The new dependency injection system in Angular solves all the problems that we have with the current DI in Angular 1. No name collisions anymore. It's an isolated component of the framework that can be used as standalone system, without Angular 2 itself.
 
 I gave a talk about that topic at [JSConf Budapest 2015](http://jsconfbp.com), <s>you can find the slides <a href="http://pascalprecht.github.io/slides/dependency-injection-for-future-generations/">here</a></s>. An updated version of the slide deck is [here](http://pascalprecht.github.io/slides/di-in-angular-2/#/). I would like to thank [Merrick](http://twitter.com/iammerrick) for letting me use some ideas of his talk at ng-vegas, and [Vojta](http://twitter.com/vojtajina) who built the original version of the new dependency injection system for Angular 2.
+
+Check out the demos below!
