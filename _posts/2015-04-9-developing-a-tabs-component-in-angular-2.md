@@ -23,7 +23,7 @@ tags:
 
 topic: getting-started
 
-author: pascalprecht
+author: pascal_precht
 
 demos:
   -

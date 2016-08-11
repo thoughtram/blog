@@ -4,21 +4,21 @@ title:      "Writing Angular 2 code in ES5"
 relatedLinks:
   -
     title: "Exploring Angular 2 - Article Series"
-    url: "http://blog.thoughtram.io/exploring-angular-2"
+    url: "/exploring-angular-2"
   -
     title: "The difference between decorators and annotations"
-    url: "http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html"
+    url: "/angular/2015/05/03/the-difference-between-annotations-and-decorators.html"
   -
     title: "Builing a zippy component in Angular 2"
-    url: "http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html"
+    url: "/angular/2015/03/27/building-a-zippy-component-in-angular-2.html"
   -
     title: "Even better ES5 code for Angular 2"
-    url: "http://blog.thoughtram.io/angular/2015/07/06/even-better-es5-code-for-angular-2.html"
+    url: "/angular/2015/07/06/even-better-es5-code-for-angular-2.html"
   -
     title: "Angular ES5 Demo"
     url: "http://plnkr.co/edit/XmZkHzl407z93R5Kf0pv?p=preview"
 date:       2015-05-09
-update_date: 2016-08-04
+update_date: 2016-08-11
 
 summary:    "Angular 2 is written in TypeScript to take advantage of language features like types and meta data annotations through decorators. While this is great for tooling, a lot of people don't like the syntax of decorators and maybe even ES6 classes. This article discusses how to write an Angular 2 application in ES5."
 
@@ -37,13 +37,13 @@ demos:
     url: http://plnkr.co/edit/BUYnsbW7WX6FTjlK7mUh?p=preview
     title: Hello World app in ES5
   -
-    url: http://embed.plnkr.co/l2kmT4w0uQMzuwHk4nc6/
+    url: https://plnkr.co/edit/l2kmT4w0uQMzuwHk4nc6?p=preview
     title: Hello World app with service injection
 ---
 
 It's no news anymore that Angular 2 is written in TypeScript in order to take advantage of language features like types and meta data annotations through decorators. Taking a first look at Angular 2 examples that are written in TypeScript, can feel a bit unfamiliar and unclear to developers that don't have experience with that language. Even constructs like classes that ECMAScript 6 brings to the table can be scary enough to keep developers from learning Angular 2.
 
-That's why developers with more experience will tell us that we don't have to write TypeScript or just ES6 if we don't want to. We can just stick with ES5. Cool, fine. But how do we do that? In one of our last articles we've explored the [difference between annotations and decorators](http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html) and to what they translate to in ES5.
+That's why developers with more experience will tell us that we don't have to write TypeScript or just ES6 if we don't want to. We can just stick with ES5. Cool, fine. But how do we do that? In one of our last articles we've explored the [difference between annotations and decorators](/angular/2015/05/03/the-difference-between-annotations-and-decorators.html) and to what they translate to in ES5.
 
 In this article, we will use that information, to actually write Angular 2 code in ES5 with the latest version released at the time of writing.
 
@@ -51,21 +51,27 @@ In this article, we will use that information, to actually write Angular 2 code 
 
 ## Getting started with Angular 2 in ES5
 
-If you've read our article on [building a zippy component](http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html) in Angular 2, you might know that nowadays, there's quite a bit of work to do, in order to get started if you want to write your application in ES6/TypeScript and take advantage of it's module system.
+If you've read our article on [building a zippy component](/angular/2015/03/27/building-a-zippy-component-in-angular-2.html) in Angular 2, you might know that nowadays, there's quite a bit of work to do, in order to get started if you want to write your application in ES6/TypeScript and take advantage of it's module system.
 
-In ES5 we don't have a module system yet. So ideally, we should be able to just take a JavaScript file from somewhere, that has all the Angular 2 code in it, so we can embed it in our website. **Luckily exactly that is possible since alpha.22**. We don't have to care about transpiling, concatenating, deciding on a module system (AMD, Common, System, ...), or anything else. We can just fetch a bundled file from `code.angularjs.org` that comes with the ready-to-use code.
+In ES5 we don't have a module system yet. So ideally, we should be able to just take a JavaScript file from somewhere, that has all the Angular 2 code in it, so we can embed it in our website. We don't have to care about transpiling, concatenating, deciding on a module system (AMD, Common, System, ...), or anything else. We can just fetch a bundled file that comes with the ready-to-use code.
+
+The easiest way to get hold of Angular 2 ES5 bundles is npmcdn. Here's what we need to embed to get started with ES5 and Angular 2:
 
 {% highlight html %}
 {% raw %}
-<script src="http://code.angularjs.org/2.0.0-alpha.22/angular2.sfx.dev.js"></script>
+<script src="https://npmcdn.com/@angular/core@2.0.0-rc.5/bundles/core.umd.js"></script>
+<script src="https://npmcdn.com/@angular/common@2.0.0-rc.5/bundles/common.umd.js"></script>
+<script src="https://npmcdn.com/@angular/compiler@2.0.0-rc.5/bundles/compiler.umd.js"></script>
+<script src="https://npmcdn.com/@angular/platform-browser@2.0.0-rc.5/bundles/platform-browser.umd.js"></script>
+<script src="https://npmcdn.com/@angular/platform-browser-dynamic@2.0.0-rc.5/bundles/platform-browser-dynamic.umd.js"></script>
 {% endraw %}
 {% endhighlight %}
 
-Boom. That's it.
+Whereas `@2.0.0-rc.5` is the version number we specify. So that part might change depending on what we want to do.
 
-Now the next question comes up: How can we access and use given annotations and/or decorators? Usually, in ES6, we would import them from the framework but now there's no way for us to import them.
+Now the next question comes up: How can we access and use given annotations and/or decorators? Usually, in ES2015, we would import them from the framework but now there's no way for us to import them.
 
-Well, it turns out that the bundled version exposes an `angular` object on the current global scope or reuses an existing one, which has all annotations added to it. In our [last article](http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html) we've learned that annotations are just classes, which in the end are just functions. And those functions are called as constructor functions to add meta data to our components. That means, all we have to do is to call those annotation constructors manually and assign them to our component's `annotations` property.
+Well, it turns out that the bundled version exposes an `ng.core` object on the current global scope or reuses an existing one, which has all annotations added to it. In our [last article](http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html) we've learned that annotations are just classes, which in the end are just functions. And those functions are called as constructor functions to add meta data to our components. That means, all we have to do is to call those annotation constructors manually and assign them to our component's `annotations` property.
 
 Let's start off with a simple component that has a template:
 
@@ -76,7 +82,7 @@ var HelloComponent = function () {
 };
 
 HelloComponent.annotations = [
-  new ng.Component({
+  new ng.core.Component({
     selector: 'hello-cmp',
     template: 'Hello World!'
   })
@@ -100,12 +106,41 @@ class HelloComponent {
 
 ## Bootstrapping an Angular 2 app in ES5
 
-When we come to the point that we want to bootstrap our application, we need to define a single entry component and call it with the `bootstrap()` function from the framework. This function is also exposed on the `angular` object in the ES5 bundle, so we can call it directly from there. If we put our application script in the `<head>` of our document, we need to make sure that all of the DOM is loaded before we bootstrap our component. Adding an event listener for the `DOMContentLoaded` event and call `bootstrap` once triggered, will help here.
+When we come to the point that we want to bootstrap our application, we need to define an `NgModule` that has everything attached to it that is needed to make our app run, and bootstrap it on a dedicated platform (e.g. browser, webworker or server).
+
+Let's go ahead and create such a module first. `ng.core.NgModule` can be used to create the needed metadata on a constructor function. Just like with our `HelloComponent`, we create an `AppModule` function like this:
+
+{% highlight javascript %}
+{% raw %}
+var AppModule = function () {
+
+};
+{% endraw %}
+{% endhighlight %}
+
+Next, we add `NgModule` annotations to it:
+
+{% highlight javascript %}
+{% raw %}
+AppModule.annotations = [
+  new ng.core.NgModule({
+    imports: [ng.platformBrowser.BrowserModule],
+    declarations: [HelloComponent],
+    bootstrap: [HelloComponent]
+  })
+];
+{% endraw %}
+{% endhighlight %}
+
+Similar to TypeScript world, we have to import the `BrowserModule` from the `ng.platformBrowser` package, so we can bootstrap our module in the browser environment. Next, we declare all directives and components that are used inside this module, which in our case, is only the `HelloComponent`. Last but not least, we tell Angular which component to bootstrap when the module is bootstrapped.
+
+We need to make sure that all of the DOM is loaded before we bootstrap our module. Adding an event listener for the `DOMContentLoaded` event and call `bootstrap` once triggered, will help here. When the event is fired, we can call `platformBrowserDynamic().bootstrapModule(AppModule)` to bootstrap our app:
 
 {% highlight javascript %}
 {% raw %}
 document.addEventListener('DOMContentLoaded', function () {
-  angular.bootstrap(HelloComponent);
+  ng.platformBrowserDynamic
+    .platformBrowserDynamic().bootstrapModule(AppModule);
 });
 {% endraw %}
 {% endhighlight %}
@@ -143,7 +178,7 @@ Next we tell our component about it's injectable types:
 HelloComponent.annotations = [
   new ng.Component({
     selector: 'hello-cmp',
-    viewProviders: [GreetingService]
+    providers: [GreetingService]
   }),
   ...
 ];
