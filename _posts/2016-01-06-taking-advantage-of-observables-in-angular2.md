@@ -17,14 +17,21 @@ toc:
 relatedLinks:
   -
     title: "Taking advantage of Observables in Angular 2 - Part 2"
-    url: "http://blog.thoughtram.io/angular/2016/01/07/taking-advantage-of-observables-in-angular2-pt2.html"
+    url: "/angular/2016/01/07/taking-advantage-of-observables-in-angular2-pt2.html"
   -
     title: "Exploring Angular 2 - Article Series"
-    url: "http://blog.thoughtram.io/exploring-angular-2"
+    url: "/exploring-angular-2"
 
+demos:
+  -
+    url: http://plnkr.co/edit/8ap1Lm?p=preview
+    title: Basic Wikipedia search using Angular 2
+  -
+    url: http://embed.plnkr.co/SIltBL/
+    title: Smart Wikipedia search using Angular 2
 
 date:       2016-01-06
-update_date: 2016-05-12
+update_date: 2016-08-11
 summary:    "Angular 2 favors Observables over Promises when it comes to async. The rational behind this decision may not be obvious right from the start. There is definitely a learning curve to master Observables in all their beauty. In this article we like to explore some practical advantages with Observables for server communication."
 
 categories:
@@ -40,6 +47,8 @@ author: christoph_burgdorf
 Some people seem to be confused why Angular 2 seems to favor the Observable abstraction over the Promise abstraction when it comes to dealing with async behavior.
 
 There are pretty good resources about the difference between Observables and Promises already out there. I especially like to highlight this free [7 minutes video](https://egghead.io/lessons/rxjs-rxjs-observables-vs-promises) by [Ben Lesh](https://twitter.com/benlesh) on egghead.io. Technically there are a couple of obvious differences like the *disposability* and *lazyness* of Observables. In this article we like to focus on some practical advantages that Observables introduce for server communication.
+
+{% include demos-and-videos-buttons.html post=page %}
 
 <h2 id="the-scenario">The scenario</h2>
 
@@ -74,8 +83,8 @@ This is what our `WikipediaService` looks like. Despite the fact that the Http/J
 
 {% highlight js %}
 {% raw %}
-import {Injectable} from '@angular/core';
-import {URLSearchParams, Jsonp} from '@angular/http';
+import { Injectable } from '@angular/core';
+import { URLSearchParams, Jsonp } from '@angular/http';
 
 @Injectable()
 export class WikipediaService {
@@ -116,19 +125,16 @@ import {...} from '...';
     </div>
   `
 })
-export class App {
+export class AppComponent {
   items: Array<string>;
-  constructor(private wikipediaService: WikipediaService) {
-  }
 
-  search (term) {
+  constructor(private wikipediaService: WikipediaService) {}
+
+  search(term) {
     this.wikipediaService.search(term)
                          .then(items => this.items = items);
   }
 }
-
-bootstrap(App, [WikipediaService, JSONP_PROVIDERS])
-    .catch(err => console.error(err));
 {% endraw %}
 {% endhighlight %}
 
@@ -146,15 +152,33 @@ Unfortunately this implementation doesn't address any of the described edge case
 
 Let's change our code to not hammer the endpoint with every keystroke but instead only send a request when the user stopped typing for 400 ms. This is where Observables really shine. The Reactive Extensions (Rx) offer a broad range of operators that let us alter the behavior of Observables and create new Observables with the desired semantics.
 
-To unveil such super powers we first need to get an `Observable<string>` that carries the search term that the user types in. Instead of manually binding to the `keyup` event we use `ngFormControl` from within our template and set it to the name `"term"`.
+To unveil such super powers we first need to get an `Observable<string>` that carries the search term that the user types in. Instead of manually binding to the `keyup` event, we can take advantage of Angular's `formControl` directive. To use this directive, we first need to import the `ReactiveFormsModule` into our application module.
 
 {% highlight js %}
 {% raw %}
-<input type="text" [ngFormControl]="term"/>
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { JsonpModule } from '@angular/http';
+import { ReactiveFormsModule } from '@angular/forms';
+
+@NgModule({
+  imports: [BrowserModule, JsonpModule, ReactiveFormsModule]
+  declarations: [AppComponent],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}
 {% endraw %}
 {% endhighlight %}
 
-In our component we create an instance of `Control` from `@angular/common` and expose it as a field under the name `term` on our component.
+Once imported, we can use `formControl` from within our template and set it to the name `"term"`.
+
+{% highlight js %}
+{% raw %}
+<input type="text" [formControl]="term"/>
+{% endraw %}
+{% endhighlight %}
+
+In our component we create an instance of `FormControl` from `@angular/form` and expose it as a field under the name `term` on our component.
 
 Behind the scenes `term` automatically exposes an `Observable<string>` as property `valueChanges` that we can subscribe to. Now that we have an `Observable<string>`, taming the user input is as easy as calling `debounceTime(400)` on our Observable. This will return a new `Observable<string>` that will only emit a new value when there haven't been coming new values for 400ms.
 
@@ -162,7 +186,7 @@ Behind the scenes `term` automatically exposes an `Observable<string>` as proper
 {% raw %}
 export class App {
   items: Array<string>;
-  term = new Control();
+  term = new FormControl();
   constructor(private wikipediaService: WikipediaService) {
     this.term.valueChanges
              .debounceTime(400)
@@ -243,7 +267,7 @@ Now that we got the semantics right, there's one more little trick that we can u
   template: `
     <div>
       <h2>Wikipedia Search</h2>
-      <input type="text" [ngFormControl]="term"/>
+      <input type="text" [formControl]="term"/>
       <ul>
         <li *ngFor="let item of items | async">{{item}}</li>
       </ul>
@@ -251,8 +275,10 @@ Now that we got the semantics right, there's one more little trick that we can u
   `
 })
 export class App {
+
   items: Observable<Array<string>>;
-  term = new Control();
+  term = new FormControl();
+
   constructor(private wikipediaService: WikipediaService) {
     this.items = this.term.valueChanges
                  .debounceTime(400)
@@ -263,6 +289,4 @@ export class App {
 {% endraw %}
 {% endhighlight %}
 
-And voilà, here is our final version in a plnkr.
-
-<iframe src="http://embed.plnkr.co/m1m0P5Vbb4fIPmrDeOV8/"></iframe>
+And voilà, we're done. Check out the demos below!
