@@ -679,12 +679,13 @@ class CounterInputComponent implements ControlValueAccessor, OnInit {
 {% endraw %}
 {% endhighlight %}
 
-Believe or not, we can now configure the max and min values for our custom form control! If we're building template-driven forms, it simply looks like this:
+Believe it or not, we can now configure the max and min values for our custom form control! If we're building template-driven forms, it simply looks like this:
 
 {% highlight html %}
 {% raw %}
 <counter-input
-  formControlName="counter"
+  ngModel
+  name="counter"
   counterRangeMax="10"
   counterRangeMin="0"
   ></counter-input>
@@ -696,7 +697,8 @@ This works also with expressions:
 {% highlight html %}
 {% raw %}
 <counter-input
-  formControlName="counter"
+  ngModel
+  name="counter"
   [counterRangeMax]="maxValue"
   [counterRangeMin]="minValue"
   ></counter-input>
