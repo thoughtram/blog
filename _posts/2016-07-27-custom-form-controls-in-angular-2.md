@@ -102,7 +102,7 @@ Nothing special going on here. `CounterInputComponent` has a model `counterValue
 {% raw %}
 @NgModule({
   imports: [BrowserModule],
-  declarations: [AppComponent, CounterInputComponent]
+  declarations: [AppComponent, CounterInputComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
