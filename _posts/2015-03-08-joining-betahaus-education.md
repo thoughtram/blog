@@ -30,4 +30,4 @@ While booking isn't yet available we recommend to already mark the date in your 
 
 ## Other events
 
-If you're interested in where else you can find us, head over to our [events](http://thoughtram.io/events.html) page to get an overview of upcoming events we're speaking at.
+If you're interested in where else you can find us, head over to our [events](http://thoughtram-events.eventbrite.com/) page to get an overview of upcoming events we're speaking at.

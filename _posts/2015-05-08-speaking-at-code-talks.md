@@ -44,4 +44,4 @@ Make sure to find us at the conference to talk all things Angular and Rust!
 
 We have a couple of coupon codes to give a way that will get you the conference ticket for half the price. But that's not happening without a little fun so make sure to follow us on [twitter](http://twitter.com/thoughtram) and [facebook](https://www.facebook.com/thoughtram) to watch out for a little raffle.
 
-Also make sure to checkout our [events](http://thoughtram.io/events.html) website for other interesting events to meet us.
+Also make sure to checkout our [events](http://thoughtram-events.eventbrite.com/) website for other interesting events to meet us.
