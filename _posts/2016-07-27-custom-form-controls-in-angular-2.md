@@ -308,6 +308,7 @@ Let's do that right away:
 
 {% highlight js %}
 {% raw %}
+import { Component, Input, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
