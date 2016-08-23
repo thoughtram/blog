@@ -22,9 +22,18 @@ related_posts:
 
 ---
 
+
 This is another post in a series of articles to discover the magic of different Rx operators. In our last article, [Exploring Rx Operators: map](/angular/2016/05/16/exploring-rx-operators-map.html) we learned how we can map the notifications of Observables to create other more meaningful Observables.
 
 Today we like to move our attention to another very important and also related operator, namely `flatMap`. In the same way that the `map` operator is closely related to the `map` function that we know from Arrays, `flatMap` should sound familiar to many people who worked with collections in a functional programming kind of way. In fact, the similarity is so strong that it makes sense to first move our attention to a collection based example.
+
+<div id="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
+
 
 
 ## Understanding `flatMap` for collections
