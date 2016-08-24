@@ -13,7 +13,7 @@ relatedLinks:
     url: "/angular/2015/05/18/dependency-injection-in-angular-2.html"
 date:       2015-06-29
 update_date: 2016-08-11
-summary:    "Angular 2 has been rewritten from scratch to take advantage of a lot of new technologies that are coming to the web. One of those technologies are Web Components. In fact, Web Components is a set of four technologies: HTML Imports, Templates, Shadow DOM and Custom Elements. Angular uses templates for structural DOM changes, and Shadow DOM for styles and DOM encapsulation. This article explores Angular 2's view encapsulation  and how we can use it."
+summary:    "Angular Shadow DOM for styles and DOM encapsulation. This article explores Angular 2's view encapsulation and how we can use it."
 
 categories: 
   - angular

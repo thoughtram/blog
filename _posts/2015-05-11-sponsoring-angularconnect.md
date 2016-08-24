@@ -2,7 +2,7 @@
 layout:     post
 title:      "Sponsoring AngularConnect"
 date:       2015-05-11
-summary:    "Today we are very happy to announce that we're going to sponsor AngularConnect, the official Angular conference in Europe, taking place in London this year. Not only that you can find us during the conference, we're  also going to run a workshop the day before to help you getting started with Angular."
+summary:    "Today we are very happy to announce that we're going to sponsor AngularConnect, the official Angular conference in Europe."
 
 categories: 
 - announcements

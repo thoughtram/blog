@@ -30,8 +30,8 @@ relatedLinks:
     title: "Exploring Angular 1.3: ngMessages"
     url: "http://blog.thoughtram.io/angularjs/2015/01/23/exploring-angular-1.3-ngMessages.html"
 date:       2014-11-06
-update_date: 2015-08-13
-summary:    In this article we are talking about the very useful angular-hint module which makes our lifes easier by informing us about common mistakes when developing angular applications and telling us about best practices which leads to better code.
+updatedate: 2015-08-13
+summary:    In this article we are talking about the angular-hint module which makes our lifes easier when developing angular apps.
 isExploringAngular13Article: true
 
 categories: 

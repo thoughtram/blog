@@ -2,7 +2,7 @@
 layout:     post
 title: "Going back in time to split older commits"
 date: "2014-08-18"
-summary: Imagine you are working on that radical new feature. It's going to be brilliant but it takes a while. You've been working on that for a couple of days now, maybe weeks.
+summary: Rebasing in Git allows you to go back in time to split older commits. In this article we'll explore how to do exactly that!
 
 redirect_from:
   - /posts/going-back-in-time-to-split-older-commits/

@@ -20,7 +20,7 @@ relatedLinks:
 date:       2015-05-09
 update_date: 2016-08-11
 
-summary:    "Angular 2 is written in TypeScript to take advantage of language features like types and meta data annotations through decorators. While this is great for tooling, a lot of people don't like the syntax of decorators and maybe even ES6 classes. This article discusses how to write an Angular 2 application in ES5."
+summary:    "Ever wondered what it's like to write Angular 2 in ES5? Check out this article!"
 
 categories: 
 - angular

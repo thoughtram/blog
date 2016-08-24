@@ -19,7 +19,7 @@ relatedLinks:
     url: "/angular/2015/06/29/shadow-dom-strategies-in-angular2.html"
 date:       2015-08-20
 update_date: 2016-08-11
-summary:    "One of our articles discussed the concepts and ideas behind the dependency injection pattern, and also, how that pattern is implemented in the Angular 2 framework. We covered what injector providers are and how those relate to actual dependency instances. Even though this article gave us a very good picture of what is going on, there's still one topic unexplored: Visibility."
+summary:    "Angular 2's DI allows us to configure the visbility of what gets injected from where. Learn about @Host in this article!"
 
 categories: 
   - angular

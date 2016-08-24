@@ -22,8 +22,7 @@ relatedLinks:
 
 date:       2016-01-22
 update_date: 2016-01-22
-summary:    "At NG-Conf 2014, Brian gave an excellent talk on zones and how they can change the way we deal with asynchronous code. If you haven't watched this talk yet, give it a shot, it's just ~15 minutes long. APIs might be different nowadays, but the semantics and underlying concepts are the same. In this article we'd like to dive a bit deeper into how zones work.
-"
+summary:    "Angular 2 takes advantage of a feature called Zones. Learn here what they are and how they work."
 
 categories:
   - angular

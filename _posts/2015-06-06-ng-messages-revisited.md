@@ -7,7 +7,7 @@ relatedLinks:
     url: "http://blog.thoughtram.io/angularjs/2015/01/23/exploring-angular-1.3-ngMessages.html"
 date:       2015-06-06
 update_date: 2015-06-16
-summary:    "In one of our articles on exploring Angular 1.3, we discovered a new module that has been introduced - ngMessages. This extension allows us to easily define and display templates for error messages in our applications when it comes to forms. With the release of Angular 1.4, a few changes landed that affect that module. This article discusses what changed."
+summary:    "With the release of Angular 1.4, a few changes landed that affect the ngMessages module. This article discusses what has changed."
 
 tags:
   - angular

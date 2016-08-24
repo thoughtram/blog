@@ -31,7 +31,7 @@ relatedLinks:
     url: "http://blog.thoughtram.io/angularjs/2015/01/23/exploring-angular-1.3-ngMessages.html"
 date:       2015-01-02
 update_date: 2015-08-13
-summary:    "When Angular introduced the controllerAs syntax, it became a best practice to use it in order to prevent nested scope properties to be shadowed in templates and also to avoid using the scopes $parent property, since relying on DOM structure makes our code less maintainable. However, using controllerAs in directives with isolated scope turned out to be a bit cumbersome and in this article we are going to take a look why and how the 1.3 release fixes that."
+summary:    "In this article we are going to take a look how to bind values to directive controllers to make them more reusable."
 
 isExploringAngular13Article: true
 

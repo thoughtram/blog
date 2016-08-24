@@ -23,7 +23,7 @@ relatedLinks:
 
 date: 2016-02-22
 
-summary: "At NG-NL 2016 I gave a talk about Angular 2's Change Detection and how it makes our apps fast and responsive. This article is a write-up of that talk and discusses how change detection works and how we can configure it to be even faster."
+summary: "Wonder how change detection in Angular 2 works?  This article is a write-up of that talk and discusses change detection and tricks to make is super fast."
 
 categories:
   - angular

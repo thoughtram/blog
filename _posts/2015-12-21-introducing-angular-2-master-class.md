@@ -3,8 +3,8 @@ layout:     post
 title:      "Angular 2 Master Class: Jump Start"
 
 date:       2015-12-21
-update_date: 2015-12-21
-summary: "Angular 2 beta has been released and the year 2016 is right around the corner. We've been following the development of Angular 2 since the early days to stay on top of what's happening in the framework. In fact, we've contributed to it a couple of times and we still do. Today we'd like to share some very exciting news with you that probably have a lot been waiting for."
+updatedate: 2015-12-21
+summary: "Angular 2 beta has been released and the year 2016 is right around the corner. We'd like to share some very exciting news that many have  been waiting for."
 
 categories:
   - announcements

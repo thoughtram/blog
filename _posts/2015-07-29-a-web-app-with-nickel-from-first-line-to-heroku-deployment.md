@@ -2,13 +2,13 @@
 layout:     post
 title:      "A web app with Nickel: From first line to Heroku deployment"
 date:       2015-07-29
-update_date: 2015-07-29
+update_date: 2016-08-23
 relatedLinks:
   -
     title: "Rust's Ownership model for JavaScript developers"
     url: "http://blog.thoughtram.io/rust/2015/05/11/rusts-ownership-model-for-javascript-developers.html"
 
-summary:    "In this article we will walk through the whole process of writing a simple simple web application with Nickel, the web application server for the Rust language. It also covers all necessary steps to host the application on Heroku."
+summary:    "Learn how to build and deploy a simple web application with Nickel, the web application server for the Rust language."
 
 categories:
 - rust

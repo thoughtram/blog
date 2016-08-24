@@ -31,7 +31,7 @@ relatedLinks:
     title: "Dependency Injection in Angular 2"
     url: "/angular/2015/05/18/dependency-injection-in-angular-2.html"
 
-summary: "Forms are part of almost every web application out there. Angular strives for making working with forms a breeze. Often, we need to add custom validation capabilities to our application's form. In this article we're going to explore how custom validators can be implemented in Angular 2."
+summary: "Often, we need to add custom validation capabilities to our application's form. In this article we're going to explore how to implement custom validators."
 
 categories:
   - angular

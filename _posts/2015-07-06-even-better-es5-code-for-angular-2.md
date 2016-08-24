@@ -17,7 +17,7 @@ relatedLinks:
 date:       2015-07-06
 update_date: 2016-08-11
 
-summary:    "One of the biggest things to consider when it comes to using Angular 2, is the upgrade path from Angular 1. Angular 2 is entirely written in TypeScript but browsers today only support ES5 or some features of ES6. However, nobody prevents us from writing Angular 2 code in ES5. A couple of weeks ago we wrote about exactly that. This time, we take a look at a new, much better, syntax to write Angular 2 in ES5."
+summary:    "Nobody prevents us from writing Angular 2 code in ES5. In this article we take a look at a new, much better, syntax to write Angular 2 in ES5."
 
 categories: 
   - angular

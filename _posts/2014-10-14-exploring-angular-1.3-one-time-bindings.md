@@ -30,8 +30,8 @@ relatedLinks:
     title: "Exploring Angular 1.3: ngMessages"
     url: "http://blog.thoughtram.io/angularjs/2015/01/23/exploring-angular-1.3-ngMessages.html"
 date:       2014-10-14
-update_date: 2015-08-13
-summary:    Angular 1.3 is finally out and it comes with tons of new features, bug fixes, improvements but also breaking changes. This is the first article of "Exploring Angular 1.3".
+update_date: 2016-08-23
+summary:    This article will be presenting Angular 1.3's new one-time binding feature for better performance and memory pressure. Read on for more info!
 isExploringAngular13Article: true
 
 categories: 

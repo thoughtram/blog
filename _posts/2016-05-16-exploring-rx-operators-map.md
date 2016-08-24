@@ -6,7 +6,7 @@ imageUrl:  "/images/banner/rx-map.jpg"
 
 date: 2016-05-16
 
-summary: "In two of our previous articles we already highlighted the importance of Observables in Angular 2. This is the first article that is part of a new series where we take a look at different operators of the Reactive Extensions for JavaScript."
+summary: "This is the first article that is part of a new series where we take a look at different operators of the Reactive Extensions for JavaScript."
 
 categories:
   - angular

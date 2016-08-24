@@ -6,7 +6,7 @@ imageUrl:   "/images/banner/hot-vs-cold-observables.jpeg"
 date: 2016-06-16
 update_date: 2016-08-11
 
-summary: "One of the most exciting topics around Angular 2 is its relationship to Observables. There's one particular area that is especially hard to learn when you first enter the world of Observables. In this article we are going to demystify what the term hot vs cold means when it comes to Observables."
+summary: "In this article we are going to demystify what the term hot vs cold means when it comes to Observables."
 
 categories:
   - angular

@@ -31,7 +31,7 @@ relatedLinks:
     url: "http://blog.thoughtram.io/angularjs/2015/01/23/exploring-angular-1.3-ngMessages.html"
 date:       2015-01-11
 update_date: 2015-08-13
-summary:    "Angular makes working with forms in applications a breeze. Not only that it extends a form's capabilities, it makes it possible to handle them in a different way due to its scope model nature. In this article we discuss a newly introduced feature called custom validators. We usually made custom validations in with parsers and formatters. But the validators pipeline makes validating forms even better."
+summary:    "In this article we discuss a newly introduced feature called custom validators, so we don't have to hijack parsers and formatters anymore."
 
 isExploringAngular13Article: true
 

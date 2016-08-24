@@ -2,7 +2,7 @@
 layout:     post
 title:      "Rust's Ownership model for JavaScript developers"
 date:       2015-05-11
-summary:    "Rust is an exciting new system programming language by Mozilla. In this post we explore Rust's concept of ownership that enables the language to achieve 100 % memory safety without garbage collection. We start with a simple JavaScript code and port it to Rust step by step."
+summary:    "In this post we explore Rust's concept of ownership that enables the language to achieve 100 % memory safety without garbage collection."
 
 categories:
 - rust

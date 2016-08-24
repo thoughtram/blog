@@ -2,7 +2,7 @@
 layout:     post
 title:      "Around the globe"
 date:       2015-02-21
-summary:    "If you've been following us for a while, you've probably noticed by now that we <3 to travel. Especially to run workshops and speak at tech events around the globe. Today we are excited to share two exciting events that we will speak at."
+summary:    "We love to travel, run workshops and speak at tech events around the globe. We are excited to share two exciting events that we will speak at."
 
 isExploringAngular13Article: false
 

@@ -6,7 +6,7 @@ imageUrl:   "/images/banner/custom-form-controls-in-angular-2.jpg"
 date: 2016-07-27
 update_date: 2016-08-11
 
-summary: "Angular 2 comes with great built-in support for everything related to native form controls. However, sometimes we want to create our own custom form controls with their own appearance and custom functionality. These custom controls should integrate nicely with Angular's forms APIs and in this article we explore how that works."
+summary: "Angular makes it very easy to create custom form controls. Read on to learn how to do it!"
 
 categories:
   - angular

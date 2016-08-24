@@ -4,7 +4,7 @@ title:      "How we run trainings"
 
 date:       2015-11-19
 update_date: 2015-11-19
-summary:    "We've been to many places to run our workshops and it turns out people love the way we teach technology to them. In this post we like to shed some light on how we actually run our trainings."
+summary:    "People love the way we teach technology to them. In this post we like to shed some light on how we actually run our trainings."
 
 categories:
   - announcements

@@ -6,8 +6,8 @@ relatedLinks:
     title: "We are thoughtram"
     url: "http://blog.thoughtram.io/announcements/2014/06/06/we-are-thoughtram.html"
 date:       2015-08-31
-update_date: 2015-08-31
-summary:    "Time is rushing by and it's already been more than a year ago that we annouced thoughtram as project to create high quality trainings. Lots of things happened in between and we are happy to officially announce our full-time commitment to thoughtram. "
+updatedate: 2015-08-31
+summary:    "Lots of things happened the past year and we are happy to officially announce our full-time commitment to thoughtram."
 
 categories:
   - announcements

@@ -30,8 +30,8 @@ relatedLinks:
     title: "Exploring Angular 1.3: ngMessages"
     url: "http://blog.thoughtram.io/angularjs/2015/01/23/exploring-angular-1.3-ngMessages.html"
 date:       2014-12-18
-update_date: 2015-08-13
-summary:    With the release of version 1.3, Angular starts streamlining  its promise APIs with the ECMAScript 6 standard to use $q as a promise constructor. This article details what these additions mean to us.
+update_date: 2016-08-24
+summary:    Angular 1.3 starts streamlining its promise APIs with the ES2015 standard. This article details what these additions mean to us.
 
 isExploringAngular13Article: true
 

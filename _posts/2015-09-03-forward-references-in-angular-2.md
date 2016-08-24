@@ -14,7 +14,7 @@ relatedLinks:
 
 date:       2015-09-03
 update_date: 2016-08-11
-summary:    "Even though we already covered many aspects of the dependency injection system in Angular 2 there are still some features left that we haven't covered yet. Some of them more bold and some more subtile. In this article we like to explore forward references. Why they exist and how we can use them."
+summary:    "In this article we like to explore forward references. Why they exist and how we can use them."
 
 categories:
   - angular

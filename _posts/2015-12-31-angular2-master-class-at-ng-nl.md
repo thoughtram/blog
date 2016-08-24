@@ -3,9 +3,9 @@ layout:     post
 title:      "Angular 2 Jump Start at NG-NL 2016"
 
 date:       2015-12-31
-update_date: 2015-12-31
+updatedate: 2015-12-31
 
-summary: "Next year the second edition of NG-NL, the Angular conference in Amsterdam, will happen again and while we've been happy to be part of it as speakers this year, we're even more excited to announce that we'll join the conference again in 2016!"
+summary: "Next year the second edition of NG-NL, will happen again and we're even excited to announce that we'll join the conference as speakers!"
 
 categories:
   - announcements

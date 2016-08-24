@@ -5,7 +5,7 @@ title:      "How to prevent name collisions in Angular 2 providers"
 date: 2016-05-23
 imageUrl: '/images/banner/opaque-tokens-in-angular-2.jpeg'
 
-summary: "Angular 2's dependency injection improved in many ways. It not only is more flexible when it comes to assembling dependencies from different parts of our app, it also provides a mechanism to avoid name collisions entirely. In this article we're going to explore how opaque tokens make this possible."
+summary: "Angular provides a mechanism to avoid name collisions in provider tokens. In this article we're going to explore how opaque tokens make this possible."
 
 categories:
   - angular

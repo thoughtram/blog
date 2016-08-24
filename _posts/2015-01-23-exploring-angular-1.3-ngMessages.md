@@ -34,7 +34,7 @@ relatedLinks:
     url: "http://blog.thoughtram.io/angularjs/2015/01/14/exploring-angular-1.3-speed-up-with-applyAsync.html"
 date:       2015-01-23
 update_date: 2015-08-13
-summary:    "Our blog series on Angular 1.3 already covers tons of information about the latest bigger release of the framework. Some of the articles cover form related improvements in features like the newly introduced validators pipeline. However, there's another bigger feature that the 1.3 release brings to the table, which is the ngMessages module. In this article we're going to discuss what it does and how it improves the way we handle validation messages when dealing with forms."
+summary:    "In this article we're going to how the ngMessages module  improves the way we handle validation messages when dealing with forms in Angular apps."
 
 isExploringAngular13Article: true
 

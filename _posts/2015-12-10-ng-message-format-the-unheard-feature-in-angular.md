@@ -7,7 +7,7 @@ relatedLinks:
     url: "http://blog.thoughtram.io/angular/2015/03/21/angular-and-i18n-the-new-world.html"
 date:       2015-12-10
 update_date_: 2015-12-10
-summary:    "Angular 1.5 is pretty much around the corner. More and more beta releases are going down the road and plenty new features and improvements are landing. While this is cool, because new things are awesome, it turns out that there's a feature that already landed in Angular 1.4, that no one really noticed. Curious?"
+summary:    "Angular 1.5 is pretty much around the corner. It turns out that there's a feature that already landed in Angular 1.4, that no one really noticed. Curious?"
 
 categories:
   - angular

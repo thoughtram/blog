@@ -19,9 +19,9 @@ demos:
     title: Zones in Angular 2
 
 date: 2016-02-01
-update_date: 2016-08-11
+update_date: 2016-08-23
 
-summary: "In our last article we've talked about what Zones are and how they change the way we deal with asynchronous code. In this article we're going to discuss what role they play in the Angular 2 platform, with the Angular 2 specific NgZone."
+summary: "In this article we're going to discuss what role Zones play in the Angular 2 platform, with the Angular 2 specific NgZone."
 
 categories:
   - angular

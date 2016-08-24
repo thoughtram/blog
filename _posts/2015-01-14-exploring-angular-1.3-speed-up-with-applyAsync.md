@@ -31,7 +31,7 @@ relatedLinks:
     url: "http://blog.thoughtram.io/angularjs/2015/01/23/exploring-angular-1.3-ngMessages.html"
 date:       2015-01-14
 update_date: 2015-08-13
-summary:    "In order to make data binding magically possible, Angular comes with something called $digest cycle. This cycle is kicked whenever a user interaction happens that Angular is aware of, or other asynchronous operations like XHR calls and timeouts return from their execution. Angular 1.3 comes with a nice little feature to share a running $digest cycle across multiple XHR calls. This articles details how to do that and how to gain a nice performance boost."
+summary:    "Angular 1.3 comes with a feature to share a running $digest cycle across multiple XHR calls. This articles details how to gain a nice performance boost."
 
 isExploringAngular13Article: true
 

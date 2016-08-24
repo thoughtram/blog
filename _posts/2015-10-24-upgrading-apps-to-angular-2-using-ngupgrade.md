@@ -24,7 +24,7 @@ relatedLinks:
 
 date:       2015-10-24
 update_date: 2016-08-11
-summary:    "One of the hottest topics when it comes to Angular 2, is how to get our existing AngularJS applications upgrade to the next major version of the framework. The APIs of Angular 2 are stablelising and a module to help upgrading existing AngularJS apps is emerging. This module is called ngUpgrade and in this article we're going to explore what comes into play when upgrading an app and also how ngUpgrade gives us a helping hand."
+summary:    "In this article you'll learn how to upgrade your Angular 1 applications to Angular 2 using ngUpgrade."
 
 categories:
   - angular

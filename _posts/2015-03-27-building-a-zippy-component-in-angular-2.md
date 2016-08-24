@@ -25,7 +25,7 @@ demos:
 
 date:       2015-03-27
 update_date: 2016-08-11
-summary:    "Even if Angular 2 is still in early development, we can already start playing with the code since it's up on GitHub and also published as npm module. We are following the development of Angular 2 since the beginning on and are also contributing to the project. Just recently we've built a simple zippy component in Angular 2 and in this article we want to show how."
+summary:    "Just recently we've built a simple zippy component in Angular 2 and in this article we want to show how. Read on to build your first component."
 
 categories: 
 - angular

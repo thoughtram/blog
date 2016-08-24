@@ -30,8 +30,8 @@ relatedLinks:
     title: "Exploring Angular 1.3: ngMessages"
     url: "http://blog.thoughtram.io/angularjs/2015/01/23/exploring-angular-1.3-ngMessages.html"
 date:       2014-11-19
-update_date: 2015-08-13
-summary:    Even if we suppose the 1.3 release to be a feature release, it turns out it comes with a possible breaking change. It makes all filters stateless by default. In this article we're going to take a look what that means.
+update_date: 2016-08-23
+summary:    Angular 1.3 makes all filters stateless by default. In this article we're going to take a look what that means.
 
 isExploringAngular13Article: true
 

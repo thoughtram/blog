@@ -2,7 +2,7 @@
 layout: post
 title: "Git Ninja Class comes to Istanbul"
 date: "2014-07-05"
-summary: Today we are happy to announce that our Git Ninja Class is coming to Istanbul!
+summary: Today we are happy to announce that our Git Master Class is coming to Istanbul! Read everything about this event in this announcement.
 
 redirect_from:
   - posts/git-ninya-class-comes-to-istanbul/

@@ -3,8 +3,8 @@ layout:     post
 title:      "Angular Training Day Bangkok"
 
 date:       2015-09-14
-update_date: 2015-09-14
-summary:    "We are happy to tell you that we are coming to Bangkok again this year! This time we'll come to run a free Angular Training Day in the brand new rooms of the Growth cafe & co. co-working space. We are excited to meet you there!"
+updatedate: 2015-09-14
+summary:    "We are coming to Bangkok this year! This time we'll come to run a free Angular Training Day in the brand new rooms of the Growth cafe co-working space."
 
 categories:
   - announcements

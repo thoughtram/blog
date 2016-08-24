@@ -13,7 +13,7 @@ relatedLinks:
     title: "Reactive Forms in Angular 2"
     url: "/angular/2016/06/22/model-driven-forms-in-angular-2.html"
 
-summary: "Angular gives us many different tools to build forms in our applications. Sometimes it doesn't seem to be very obvious what's the right thing to use. This article discusses the template-driven approach of building forms and all the directives that come into play."
+summary: "In this article we discuss the template-driven forms in Angular 2 and all the directives that come into play."
 
 categories:
   - angular

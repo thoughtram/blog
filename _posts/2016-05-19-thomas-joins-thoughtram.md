@@ -6,7 +6,7 @@ date: 2016-05-19
 imageUrl:  "/images/thomas_high_res.png"
 
 
-summary: "Nearly two years passed since we announced thoughtram on this blog. It's been an amazing journey for us. Today we are happy to announce a big step forward for us as a company."
+summary: "Today we are happy to announce a big step forward for us as a company. Thomas Burleson joins our Team!"
 
 categories:
   - announcements

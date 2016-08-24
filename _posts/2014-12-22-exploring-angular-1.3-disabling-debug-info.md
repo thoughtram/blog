@@ -31,7 +31,7 @@ relatedLinks:
     url: "http://blog.thoughtram.io/angularjs/2015/01/23/exploring-angular-1.3-ngMessages.html"
 date:       2014-12-22
 update_date: 2015-08-13
-summary:    "Shadowed by all the bigger features that version 1.3 comes with, smaller features like disabling debug info for production code, do not really get the attention they deserve. This article details how to give your app a performance boost in production environments with just a single line of code."
+summary:    "This article details how to give your app a performance boost in production environments with just a single line of code."
 
 isExploringAngular13Article: true
 

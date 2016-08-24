@@ -3,7 +3,7 @@ layout:     post
 title:      "Multi Providers in Angular 2"
 date:       2015-11-23
 update_date: 2016-08-11
-summary:    "Angular 2 has an entirely revamped dependency injection system, which turns out to be extremely flexible. While we've already covered the basics and some advanced topics regarding DI in our last articles, we haven't talked about a specific feature that we don't necessarily need in our daily basis. This feature is called multi providers and in this article we're going to detail what they are and how they enable a pluggable dependency system in the Angular 2 platform."
+summary:    "Multi-providers allow us to extend existing dependencies in Angular 2. Read on to learn when this is useful!"
 
 categories:
   - angular2

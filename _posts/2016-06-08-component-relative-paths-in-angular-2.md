@@ -5,7 +5,7 @@ title:      "Component-Relative Paths in Angular 2"
 date: 2016-06-08
 imageUrl: '/images/banner/component-relative-paths-in-angular-2.jpg'
 
-summary: "Creating components in Angular 2 is awesome in so many ways. Developers should be careful, however, when using external component HTML and CSS files. Component-relative paths are not immediately intuitive. But with a brief review of the relative issues and constraints, developers can more easily create maintainable, reusable, portable components."
+summary: "Component-relative enable developers to more easily create maintainable, reusable, portable components in Angular 2. Here's how!"
 
 categories:
   - angular

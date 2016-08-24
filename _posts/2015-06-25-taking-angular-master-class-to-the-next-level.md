@@ -3,7 +3,7 @@ layout:     post
 title:      "Taking Angular Master Class to the next level"
 date:       2015-06-25
 update_date: 2015-06-25
-summary:    "We've been running our Angular Master Class since a couple of months now and travelled to many different countries and cities to meet you in person and exchange our experiences. We also always collect feedback to make our material and trainings even better. We listened. Here's what we did."
+summary:    "We always collect feedback to make our material and trainings even better. We listened. Here's what we did."
 
 categories: 
   - angular

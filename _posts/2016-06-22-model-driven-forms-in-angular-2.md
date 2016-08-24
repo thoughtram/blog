@@ -13,7 +13,7 @@ relatedLinks:
     title: "Template-driven Forms in Angular 2"
     url: "/angular/2016/03/21/template-driven-forms-in-angular-2.html"
 
-summary: "Earlier this year we've talked about template-driven forms in Angular 2 and how they enable us to build sophisticated forms while writing as little JavaScript or TypeScript as possible. Another way to deal with forms is the model-driven approach and in this article we're going to discuss what that looks like."
+summary: "Angular allows us to build forms in a model-driven fashion. In this article we're going to discuss what that looks like."
 
 categories:
   - angular

@@ -2,8 +2,7 @@
 layout:     post
 title:      "Anouncing Hanover's second Rust meetup"
 date:       2015-06-17
-update_date: 2015-06-17
-summary:    "It's been roughly a year ago that we organized the very first Hanover. The meetup was quite a success and ever since then we've been asked a lot about a revival."
+summary:    "It's been roughly a year ago that we organized the very first Rust meetup Hanover. We'll run a second one, read on for more information!"
 
 categories:
   - rust

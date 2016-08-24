@@ -3,8 +3,8 @@ layout:     post
 title:      "Pascal becomes a GDE"
 
 date:       2015-10-08
-update_date: 2015-10-08
-summary:    "Today I'm happy to announce that all the effort of Pascal to push things further in the field of web technologies got acknowledged by Google by making him an official member of the Google Developer Experts program."
+update_date: 2016-08-23
+summary:    "All the effort of Pascal to push things further in the field of web technologies got acknowledged by Google. Read on to learn what happened!"
 
 categories:
   - announcements

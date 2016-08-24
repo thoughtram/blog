@@ -20,7 +20,7 @@ relatedLinks:
 
 date:       2015-09-17
 update_date: 2016-08-11
-summary: "When writing Angular 2 applications, it often happens that we build services that depend on other service instances. In our previous articles, we learned about the Dependency Injection system in Angular 2 and how it works. However, it turns out that we might run into unexpected behaviour when injecting service dependencies. This article details how to do it right."
+summary: "We might run into unexpected behaviour when injecting service dependencies. This article details how to do it right."
 
 categories:
   - angular

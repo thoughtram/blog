@@ -31,8 +31,8 @@ demos:
     title: Smart Wikipedia search using Angular 2
 
 date:       2016-01-06
-update_date: 2016-08-11
-summary:    "Angular 2 favors Observables over Promises when it comes to async. The rational behind this decision may not be obvious right from the start. There is definitely a learning curve to master Observables in all their beauty. In this article we like to explore some practical advantages with Observables for server communication."
+updatedate: 2016-08-11
+summary:    "Angular 2 favors Observables over Promises when it comes to async.  In this article we explore some practical advantages for server communication."
 
 categories:
   - angular

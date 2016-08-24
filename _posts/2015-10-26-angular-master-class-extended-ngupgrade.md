@@ -3,7 +3,7 @@ layout:     post
 title:      "Angular Master Class Extended: ngUpgrade"
 date:       2015-10-26
 update_date: 2015-10-26
-summary:    "We are constantly working on making our training experience better and better. We don't just create material and leave you to it, we're fine-tuning it from time to time. Today we're very happy to announce that our Angular Master Class received a package update with material about upgrading to Angular 2!"
+summary:    "Today we're very happy to announce that our Angular Master Class received a package update with material about upgrading to Angular 2!"
 
 categories: 
   - announcements

@@ -15,7 +15,7 @@ relatedLinks:
 date: 2016-03-29
 update_date: 2016-03-29
 
-summary: "Angular 1.5 is finally out! Many new features, fixes and improvements landed in the latest bigger release of the Angular framework and of course, we're going to cover them one by one in a new article series. This article discusses the new lifecycle hooks in Angular."
+summary: "Angular 1.5 is finally out! This article discusses the new lifecycle hooks in Angular."
 
 isExploringAngular15Article: true
 

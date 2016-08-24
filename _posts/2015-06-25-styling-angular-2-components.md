@@ -19,8 +19,8 @@ relatedLinks:
     url: "/angular/2015/04/09/developing-a-tabs-component-in-angular-2.html"
 
 date:       2015-06-25
-update_date: 2016-08-11
-summary:    "Most of our articles on Angular 2 covered how to build simple components or detailed some certain parts of the framework in a standalone context. In this article we are going to explore the different ways of styling Angular 2 components."
+update_date: 2016-08-23
+summary:    "In this article we are going to explore the different possible ways of styling Angular 2 components."
 
 categories: 
   - angular

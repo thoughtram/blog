@@ -2,7 +2,7 @@
 layout:     post
 title:      "Speaking at code.talks"
 date:       2015-05-08
-summary:    "Roughly three weeks ago we blogged about our upcoming events for workshops conferences and meetups. Today we are happy to add two more conference talks to that list. Both of us are going to speak at the code.talks conference in September this year."
+summary:    "Today we are happy to add two more conference talks to that list. Both of us are going to speak at the code.talks conference in September this year."
 
 categories:
 - announcements

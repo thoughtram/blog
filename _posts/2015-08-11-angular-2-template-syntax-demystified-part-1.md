@@ -13,7 +13,7 @@ relatedLinks:
     url: "http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html"
 date:       2015-08-11
 update_date: 2016-05-12
-summary:    "Angular 2 introduces it's own kind of template syntax in order to implement different binding strategies. This enables the framework to work with any element, no matter if it's a web component or a native one. However, looking at this syntax the very first time raises a lot of questions. This article discusses the template syntax in Angular 2, why it's there and how it works."
+summary:    "Angular 2 introduces it's own kind of template syntax in order to implement different binding strategies. Learn why it's there and how it works."
 
 categories: 
   - angular

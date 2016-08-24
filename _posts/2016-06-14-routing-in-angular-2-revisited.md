@@ -6,7 +6,7 @@ imageUrl:   "/images/banner/routing-in-angular-2-revisited.jpeg"
 date: 2016-06-14
 update_date: 2016-08-11
 
-summary: "Routing is hard. If you've followed the development of Angular 2 the last couple of months, especially the router, you've probably noticed that there were many different attempts to get it right. We now have a version 3 of the new component router and in this article we're going to explore its API."
+summary: "Learn how to implement basic routing in your Angular 2 application using the latest and greatest APIs!"
 
 categories:
   - angular
