@@ -9,7 +9,7 @@ permalink: /categories/angular/
 <h2 class="thtrm-section-headline thtrm-section-headline--with-margin">AngularJS articles</h2>
 <ul class="thtrm-three-column-list thtrm-three-column-list--with-padding">
 {% for post in site.posts %}
-  {% if post.tags contains 'angularjs' %}
+  {% if post.tags contains 'angularjs' or post.tags contains 'angular' %}
   <li>
     <div class="thtrm-article-card thtrm-article-card--with-border">
       <div class="thtrm-article-card-content ">
