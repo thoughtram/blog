@@ -595,7 +595,7 @@ Next, we somehow have to pass these values to our `validateCounterRange(c: FormC
 {% highlight js %}
 {% raw %}
 export function createCounterRangeValidator(maxValue, minValue) {
-  return function validateCounterRange(c: FormControl) => {
+  return function validateCounterRange(c: FormControl) {
     let err = {
       rangeError: {
         given: c.value,
