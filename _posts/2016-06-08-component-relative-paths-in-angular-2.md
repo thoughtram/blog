@@ -333,7 +333,7 @@ SystemJS.config({
 
 If we decide to use **WebPack** to bundle our files, we can use `require` or `import` to force Webpack to load the file contents and assign directly to the metadata property. This means that WebPack is loading the content **instead** of Angular 2's runtime loader. See [WebPack : An Introduction](https://angular.io/docs/ts/latest/guide/webpack.html) for more details. 
 
-With WebPack there are two (2) options available to load the component's external HTML and CSS.
+With WebPack there are three (3) options available to load the component's external HTML and CSS.
 
 1) We can use `require( )` to reference component-relative paths. 
 
@@ -373,7 +373,27 @@ export class HeaderComponent implements OnInit {
 {% endraw %}
 {% endhighlight %}
 
-> Personally, I like the `import` approach more. Thanks to Soós Gábor for his WebPack expertise and insight here. 
+3) Finally, WebPack developers can load templates and styles at runtime by adding `./` at the beginning of the template,
+styles, and styleUrls properties that reference *component-relative URLS.
+
+
+{% highlight js %}
+{% raw %}
+import { Component } from '@angular/core';
+
+@Component({
+  selector : 'my-app',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css']
+})
+export class HeaderComponent implements OnInit { }
+{% endraw %}
+{% endhighlight %}
+
+> Behind the scenese, Webpack will actually still do a `require` to load the templates and styles. 
+But our markup remains clean and uncluttered.
+
+Personally, I like (3) approach used with the `moduleId` property (as a backup). Thanks to Soós Gábor for his WebPack expertise and insight here. 
 
 
 ## Conclusion
@@ -383,4 +403,7 @@ The key lesson is to set the **`moduleId :  module.id`** in the `@Component` dec
 > And don't forget the `"module": "commonjs"` in your **tsconfig.json**. 
 
 The beauty of this component-relative-path solution is that we can (1) easily repackage our components and (2) easily reuse components... all without changing the `@Component` metadata.
+
+> The [Angular Cli WebPack preview](https://github.com/angular/angular-cli/blob/master/WEBPACK_UPDATE.md) now uses use webpack instead of Broccoli. 
+And with WebPack, the Angular Cli defaults to using the component-relative path approach described here. #ftw 
 
