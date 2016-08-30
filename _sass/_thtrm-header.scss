@@ -46,17 +46,20 @@
   font: 0/0 a;
   color: transparent;
   background-image: url('/images/thoughtram-logo-mobile_white.png');
-  background-size: cover;
   background-repeat: no-repeat;
+  background-size: 57px;
+  background-position-y: 17px;
+  background-position-x: 7px;
   height: 70px;
   width: 70px;
 
   @include tablet {
     width: 260px;
-    height: 61px;
+    height: 67px;
     background-image: url('/images/thoughtram-logo-desktop_white.png');
     background-size: 260px auto;
-    margin-top: 30px;
+    margin-top: 25px;
+    background-position: initial;
   }
 }
 
