@@ -5,7 +5,7 @@ imageUrl:   "/images/banner/announcing-angular-2-master-class-in-nyc.jpg"
 
 date: 2016-08-30
 
-summary: "Today we're super exciting to announce, that we'll bring our Angular 2 Master Class experience to New York City! Read on for more information."
+summary: "Today we're super exciting to announce that we'll bring our Angular 2 Master Class experience to New York City! Read on for more information."
 
 categories:
 - announcements
