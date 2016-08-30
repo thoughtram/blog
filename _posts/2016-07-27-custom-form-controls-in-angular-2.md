@@ -222,7 +222,7 @@ writeValue(value: any) {
 {% endraw %}
 {% endhighlight %}
 
-Now, it only overrides the default when there's an actual value written to the control. Next, we implement `registerOnChange()` and `registerOnTouch()`. `registerOnChange()` has access to a function that informs the outside world about changes. Here's where we can do special work, whenever we propagate the change, if we wanted to. `registerOnTouch()` registers a callback that is excuted whenever a form contorl is "touched". E.g. when an input element blurs, it fire the touch event. We don't want to do anything at this event, so we can implement the interface with an empty function.
+Now, it only overrides the default when there's an actual value written to the control. Next, we implement `registerOnChange()` and `registerOnTouched()`. `registerOnChange()` has access to a function that informs the outside world about changes. Here's where we can do special work, whenever we propagate the change, if we wanted to. `registerOnTouched()` registers a callback that is excuted whenever a form control is "touched". E.g. when an input element blurs, it fire the touch event. We don't want to do anything at this event, so we can implement the interface with an empty function.
 
 {% highlight js %}
 {% raw %}
@@ -235,7 +235,7 @@ class CounterInputComponent implements ControlValueAccessor {
     this.propagateChange = fn;
   }
 
-  registerOnTouch() {}
+  registerOnTouched() {}
 }
 {% endraw %}
 {% endhighlight %}
