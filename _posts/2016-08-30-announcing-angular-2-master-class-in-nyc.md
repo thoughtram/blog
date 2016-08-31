@@ -30,7 +30,8 @@ The event takes place on the **14th to 16th November** and we'll announce the ex
 
 We have also decided to encourage and inspire the next generation of developers... we think of this as a pay-forward, investment for the future of Angular!
 
-![youngmindstraining](https://cloud.githubusercontent.com/assets/210413/18121990/ddf48150-6f2c-11e6-98af-ce562743fbd6.jpg)
+![youngmindstraining](https://cloud.githubusercontent.com/assets/210413/18122288/42063804-6f2e-11e6-9940-43b93b3362d0.jpg)
+
 
 
 We encourage young minds to continue their exploration & skills development with Web app technologies and the Angular 2 platform. 
