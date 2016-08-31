@@ -23,19 +23,20 @@ As recently [posted on Facebook](https://www.facebook.com/thoughtram/posts/70605
 
 The event takes place on the **14th to 16th November** and we'll announce the exact location very soon. Wait, 3 days? Yes! With this Angular 2 Master Class in New York City, it'll be the first time, we'll offer an optional third training day, allowing us to cover even more topics on Angular 2! In just 3 days you will get more than 22 hours of hands-on, developer training for the Angular 2 platform. It's up to you if you want to get an awesome 2-day training experience, or if you want to go one step further and gain even more knowledge with the third day. 
 
+<br/>
 ---
 
-### **"Young-Minds"** Ticket Give-Away
+### **"Young-Minds"** Free Training
 
-We have also decided to encourage and inspire the next generation of developers... we think of this as a pay-forward investment to the future of Angular!
+We have also decided to encourage and inspire the next generation of developers... we think of this as a pay-forward, investment for the future of Angular!
 
-![youngmindstraining](https://cloud.githubusercontent.com/assets/210413/18110207/2abcbfb2-6edc-11e6-8bce-39e79fe649de.jpg)
+![youngmindstraining](https://cloud.githubusercontent.com/assets/210413/18114208/08ebebf0-6efb-11e6-8075-3a3142851e27.jpg)
 
-We encourage young minds to continue their exploration & skills development with the Angular 2 platform and web app technologies. 
+We encourage young minds to continue their exploration & skills development with Web app technologies and the Angular 2 platform. 
 
 Do you know a young teenager who has impressed you with their interest and beginner-skills in Web app development? Do you want to inspire them to continue their amazing journey with software development?
 
-**For this training we will give away three (3) FREE tickets to our Angular 2 Master Class.** There simply is no better way to quickly ramp up on Angular 2. Just tweet why you think your nominee should get a ticket! Mention that person's twitter handle or email in the tweet. Include hashtag [#A2MC_YoungMinds](https://twitter.com/search?f=tweets&q=%23A2MC_YoungMinds).
+**For this training, we will give away three (3) FREE tickets to our Angular 2 Master Class.** There simply is no better way to quickly ramp up on Angular 2. Just tweet why you think your nominee should get a ticket! Mention that person's twitter handle or email in the tweet. Include hashtag [#A2MC_YoungMinds](https://twitter.com/search?f=tweets&q=%23A2MC_YoungMinds).
 
 Here's an example:
 
@@ -45,6 +46,7 @@ The nominee must be between at least 13 years old and younger than 18 years of a
 
 For each of our future public trainings, we promise to continue this sponsorship program... to promote young minds and the Angular platform.
 
+<br/>
 ---
 
 ### Tickets on sale now
