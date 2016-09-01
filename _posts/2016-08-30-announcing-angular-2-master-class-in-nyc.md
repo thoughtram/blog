@@ -30,13 +30,13 @@ The event takes place on the **14th to 16th November** and we'll announce the ex
 
 We have also decided to encourage and inspire the next generation of developers... we think of this as a pay-forward, investment for the future of Angular!
 
-![youngmindstraining](https://cloud.githubusercontent.com/assets/210413/18122288/42063804-6f2e-11e6-9940-43b93b3362d0.jpg)
+![youngmindstraining](https://cloud.githubusercontent.com/assets/210413/18170153/dde74962-7022-11e6-9dcc-f64f24f79d0d.jpg)
 
 
-
-We encourage young minds to continue their exploration & skills development with Web app technologies and the Angular 2 platform. 
 
 Do you know a young teenager who has impressed you with their interest and beginner-skills in Web app development? Do you want to inspire them to continue their amazing journey with software development?
+
+With our new A2MC Training Sponsorship, we will encourage teenagers to continue their exploration & skills development with Web app technologies and the Angular 2 platform. 
 
 **For this training, we will give away three (3) FREE tickets to our Angular 2 Master Class.** There simply is no better way to quickly ramp up on Angular 2. Just tweet why you think your nominee should get a ticket! Mention that person's twitter handle or email in the tweet. Include hashtag [#A2MC_YoungMinds](https://twitter.com/search?f=tweets&q=%23A2MC_YoungMinds).
 
