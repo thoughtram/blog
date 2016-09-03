@@ -3,17 +3,6 @@ layout:     post
 title:      "Taking advantage of Observables in Angular 2"
 imageUrl: "/images/banner/taking-advantage-of-observables.png"
 
-toc:
-  -
-    label: "The scenario"
-    anchor: "the-scenario"
-  -
-    label: "Challenge accepted"
-    anchor: "challenge-accepted"
-  -
-    label: "Putting some sugar on top"
-    anchor: "putting-some-sugar-on-top"
-
 relatedLinks:
   -
     title: "Taking advantage of Observables in Angular 2 - Part 2"
@@ -21,14 +10,6 @@ relatedLinks:
   -
     title: "Exploring Angular 2 - Article Series"
     url: "/exploring-angular-2"
-
-demos:
-  -
-    url: http://plnkr.co/edit/8ap1Lm?p=preview
-    title: Basic Wikipedia search using Angular 2
-  -
-    url: http://embed.plnkr.co/SIltBL/
-    title: Smart Wikipedia search using Angular 2
 
 date:       2016-01-06
 updatedate: 2016-08-11
@@ -41,6 +22,29 @@ tags:
   - angular2
 
 topic: http
+
+videos:
+  -
+    url: "https://player.vimeo.com/video/181311616"
+  -
+    url: "https://player.vimeo.com/video/181311614"
+  -
+    url: "https://player.vimeo.com/video/181311611"
+  -
+    url: "https://player.vimeo.com/video/181311613"
+  -
+    url: "https://player.vimeo.com/video/181311609"
+  -
+    url: "https://player.vimeo.com/video/181311615"
+
+demos:
+  -
+    url: http://plnkr.co/edit/8ap1Lm?p=preview
+    title: Basic Wikipedia search using Angular 2
+  -
+    url: http://embed.plnkr.co/SIltBL/
+    title: Smart Wikipedia search using Angular 2
+
 author: christoph_burgdorf
 ---
 

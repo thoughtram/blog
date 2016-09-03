@@ -1,3 +1,14 @@
+{% if include.post.videos %}
+  <h2 id="videos">Videos on this article</h2>
+  {% if include.post.videos.size == 1 %}
+    <iframe style="width: 100%;" src="{{ include.post.videos[0].url }}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  {% else %}
+    {% for video in include.post.videos %}
+    <iframe style="width: 100%;" src="{{ video.url }}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    {% endfor %}
+  {% endif %}
+{% endif %}
+
 {% if include.post.demos %}
   <h2 id="demos">Demos</h2>
   {% if include.post.demos.size == 1 %}
@@ -8,19 +19,6 @@
     <li><a href="{{demo.url}}" title="{{demo.title}}" target="_blank">{{demo.title}}</a></li>
     {% endfor %}
   </ul>
-  {% endif %}
-{% endif %}
-
-{% if include.post.videos %}
-  <h2 id="videos">Videos on this article</h2>
-  {% if include.post.videos.size == 1 %}
-    <iframe style="width: 100%;" src="{{ include.post.videos[0].url }}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-  {% else %}
-    <ul>
-      {% for video in include.pos.videos %}
-      <li><a href="vide.url" title="video.title">{{video.title}}</a></li>
-      {% endfor %}
-    </ul>
   {% endif %}
 {% endif %}
 

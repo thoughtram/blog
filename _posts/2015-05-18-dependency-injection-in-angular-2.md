@@ -43,6 +43,18 @@ demos:
    url: http://embed.plnkr.co/EiGotX/
    title: Dependency Injection in Angular 2
 
+videos:
+  -
+    url: "https://player.vimeo.com/video/181222346"
+  -
+    url: "https://player.vimeo.com/video/181222347"
+  -
+    url: "https://player.vimeo.com/video/181222396"
+  -
+    url: "https://player.vimeo.com/video/181222348"
+  -
+    url: "https://player.vimeo.com/video/181222349"
+
 author: pascal_precht
 ---
 

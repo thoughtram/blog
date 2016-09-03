@@ -30,6 +30,10 @@ tags:
 
 topic: di
 
+videos:
+  -
+    url: "https://player.vimeo.com/video/181222350"
+
 author: pascal_precht
 ---
 
@@ -38,6 +42,8 @@ If you're following our articles on [Dependency Injection in Angular 2](/angular
 Angular 2 applications can basically be written in any language, as long as it compiles to JavaScript in some way. When writing our application in TypeScript, we use decorators to add metadata to our code. Sometimes, we can even omit some decorators and simply rely on type annotations. However, it turns out that, when it comes to DI, we might run into unexpected behaviour when injecting dependencies into services.
 
 This article discusses what this unexpected problem is, why it exists and how it can be solved.
+
+{% include demos-and-videos-buttons.html post=page %}
 
 ## Injecting Service Dependencies
 
