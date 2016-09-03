@@ -27,7 +27,7 @@ relatedLinks:
     title: "Angular 2 Bits: Unified Dependency Injection"
     url: "http://victorsavkin.com/post/102965317996/angular-2-bits-unified-dependency-injection"
 date:       2015-05-18
-update_date: 2016-08-30
+update_date: 2016-09-03
 summary:    "Angular 2 implements a very powerful dependency injection system that makes reusing services easy and flexible. Learn how it works!"
 
 categories: 
