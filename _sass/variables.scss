@@ -32,3 +32,12 @@ $thtrmEvenDarkerBlue: "#384c54";
   }
 }
 
+@mixin hGradient($startColor, $endColor) {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#6a8389+0,4f666d+100 */
+  background: $startColor; /* Old browsers */
+  background: -moz-linear-gradient(left,  $startColor 0%, $endColor 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left,  $startColor 0%,$endColor 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right,  $startColor 0%,$endColor 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$startColor', endColorstr='$endColor',GradientType=1 ); /* IE6-9 */
+}
+

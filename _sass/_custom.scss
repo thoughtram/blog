@@ -162,6 +162,9 @@
 }
 
 .thtrm-cta {
+
+  background: transparent;
+
   &--small {
     font-size: 14px;
     margin-top: 2em;
@@ -407,3 +410,15 @@
   border-color: #c23321;
 }
 
+.thtrm-ctas {
+  text-align: center;
+
+  .thtrm-cta {
+    margin-left: 2em;
+    margin-top: 0;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}

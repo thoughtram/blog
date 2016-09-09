@@ -1,7 +1,6 @@
 .thtrm-cta {
 	display: inline-block;
 	color: #384c54;
-  background: transparent;
   text-decoration: none;
   text-transform: uppercase;
   border: 2px solid #384c54;
@@ -14,17 +13,6 @@
 
     &--with-bigger-margin {
         margin-top: 2em;
-    }
-  }
-
-  &--inverse {
-    background: #384c54;
-    color: #fff;
-
-    &:hover {
-      background: transparent;
-	    color: #384c54;
-      cursor: pointer;
     }
   }
 
@@ -42,17 +30,5 @@
   &:hover {
     color: #fff;
     background-color: #384c54;
-  }
-}
-.thtrm-ctas {
-  text-align: center;
-
-  .thtrm-cta {
-    margin-left: 2em;
-    margin-top: 0;
-
-    &:first-child {
-      margin-left: 0;
-    }
   }
 }

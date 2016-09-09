@@ -16,10 +16,6 @@
   p {
     line-height: 24px;
     color: #fff;
-
-    &:first-of-type {
-      color: #fff;
-    }
   }
 
   a {
@@ -54,7 +50,6 @@
   padding: 0.5em 1em;
   margin-top: 1em;
   font-weight: 600;
-  // transition: (color .2s ease-out, background .2s ease-out);
 
   &:hover {
     color: #fff;
@@ -65,7 +60,6 @@
     width: 170px;
     margin: 1em auto 0;
     padding: 0.4em;
-    // display: inline-block;
   }
 }
 
