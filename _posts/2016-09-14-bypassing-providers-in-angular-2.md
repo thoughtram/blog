@@ -39,7 +39,7 @@ To illustrate what that means, let's take a look at the following figure:
 
 <img src="/images/injector-tree.svg" alt="Injector Tree">
 
-What we see here is a tree of components, which is usually what an application in Angular 2 is composed of. We also see that every component comes with its own injector. This is allows us to configure how and what is going to be created when we ask for dependencies, on a component level.
+What we see here is a tree of components, which is usually what an application in Angular 2 is composed of. We also see that every component comes with its own injector. This allows us to configure how and what is going to be created when we ask for dependencies, on a component level.
 
 Let's say we have an application where we use a `DataService` to perform actions like fetching data, adding data and deleting data. To make this service injectable,  we need to create a provider for it first.
 
@@ -136,7 +136,7 @@ export class SomeComponent {
 
 Again, this is the exact same instance. Now, why is this helpful? Well... now that we have two different tokens to get the same instance, it's no longer a problem that another provider in the injector tree "shadows" the provider from our root injector. We can now ask for the dependency instance of `DataService` that is created at the very top of our tree, no matter where we are in the component tree, because the alias token still points to the original instance.
 
-One more thing we could do is to get rid off the class definition `RootDataService`. We only created it so we can use it as a token, other than that, there's no use for it. Luckily, we can also us strings to create tokens, or even better, [we use OpaqueTokens](/angular/2016/05/23/opaque-tokens-in-angular-2.html).
+One more thing we could do is to get rid off the class definition `RootDataService`. We only created it so we can use it as a token, other than that, there's no use for it. Luckily, we can also use strings to create tokens, or even better, [we use OpaqueTokens](/angular/2016/05/23/opaque-tokens-in-angular-2.html).
 
 To see things in action, check out the demos below!
 
