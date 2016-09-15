@@ -66,6 +66,7 @@ We've been writing about Angular 2 too, in fact, since over a year by now and **
 - [Taking advantage of Observables in Angular 2 - Part 2](/angular/2016/01/07/taking-advantage-of-observables-in-angular2-pt2.html)
 - [Cold vs Hot Observables](/angular/2016/06/16/cold-vs-hot-observables.html)
 - [Exploring Rx Operators: map](/angular/2016/05/16/exploring-rx-operators-map.html)
+- [Exploring Rx Operators: flatMap](/rx/2016/08/01/exploring-rx-operators-flatmap.html)
 
 ### Forms
 
