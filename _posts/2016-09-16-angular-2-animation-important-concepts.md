@@ -73,7 +73,7 @@ We want the `my-fader` component to **fade-in** or **fade-out** its text content
 <br/>
 <hr/>
 
-The essential take-away Animation concept is that **Angular 2 Animations** are triggered on component state changes.
+#### The essential take-away Animation concept is that **Angular 2 Animations** are triggered on component state changes.
 Developers should consider state changes simply as value changes in a property of the component instance.
 
 <br/>
@@ -228,7 +228,7 @@ export class FaderComponent implements OnChanges {
 <br/>
 <hr/>
 
-This template-binding solution <u>decouples</u> the animation from the component internals and
+#### This template-binding solution <u>decouples</u> the animation from the component internals and
 uses the template as the binding bridge.
 
 <br/>
