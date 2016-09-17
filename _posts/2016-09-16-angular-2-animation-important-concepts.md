@@ -27,7 +27,6 @@ Animations features often are scary goals for developers. And Angular's doctrine
 directly modify DOM elements made Animation features intimidating as hell. But Angular 2 animations are not scary!
 
 If we note that templates are closely associated with `@Components`, then we will notice that animations following a similar pattern.
-
 Let's build a component that hides and shows its contents, uses fade animation effects, and allows external components to
 easily trigger those fade effects.
 
@@ -67,8 +66,12 @@ This component simply publishes an **@Input** `isVisible` property; which allows
 
 We want the `my-fader` component to **fade-in** or **fade-out** its text content. And we want to *animate* those fades effects.
 
-> The essential take-away Animation concept is that **Angular 2 Animations** are triggered on component state changes. 
+<hr/>
+
+The essential take-away Animation concept is that **Angular 2 Animations** are triggered on component state changes.
 Developers should consider state changes simply as value changes in a property of the component instance.
+
+<hr/>
 
 To start animating, let's first add animation metadata to our component.
 
@@ -106,7 +109,7 @@ The techno-speak above is saying that when the `visibilityChanged` property chan
 then the host element opacity changes to 1. And when the value changes == ‘hidden’, the 
 host element opacity should change to 0.
 
-> Now, you might wonder where `visibilityChanged` comes from, because our component property is called just `visibility`. Hold your wild horses Mr. StageCoach, we'll clarify that soon!"
+Now, you might wonder where `visibilityChanged` comes from, because our component property is called just `visibility`. Hold your wild horses Mr. StageCoach, we'll clarify that soon!"
 
 Since we want to animate these changes instead of instantly hiding/showing the content, we need to configure a *transition*. With Angular 2 this is also suprisingly easy:
 
@@ -126,10 +129,11 @@ With the above `transition`, we added information to the animation configuration
 
 So a **fade-in** (opacity 0 -> 1, with a duration of 500 msec) will occur when the value changes from `hidden` to `shown`. 
 And likewise the **fade-out** (opacity 1 -> 0, with a duration of 500 msec) will occur when the value changes from `shown` to `hidden`.
-
 By the way, you could also have used `animate('500ms')` to indicate the millsecond duration explicitly.
 
-And what does the `transition('* => *', ...)` mean? Think of this as a transition from one state (`*` is a wildcard to mean **any**) to
+And what does the `transition('* => *', ...)` mean?
+
+Think of this as a transition from one state (`*` is a wildcard to mean **any**) to
 another state. If we wanted the fadeOut to be slower than the fadeIn, here is how we would configure the animation metadata:
 
 {% highlight js %}
@@ -145,9 +149,10 @@ animations: [
 {% endraw %}
 {% endhighlight %}
 
-See how easy this is?
+See how easy this is? This notation is so easy to understand.
 
-> This notation is so easy to understand. The intention with Angular Animations is to make it **easy** for developers, to be:
+The intention with Angular Animations is to make it **easy** for developers, to be:
+
 *  intuitive
 *  declarative and
 *  immediately associated with the component...
@@ -155,14 +160,15 @@ See how easy this is?
 
 ### Linking Animation to the Component
 
-Now, we are not done yet! While we configured the Animation metadata,  I am sure you are wondering:
+Now, we are not done yet!
+
+While we configured the Animation metadata,  I am sure you are wondering:
 
 *  How is the animation property `visibilityChanged` actually connected to the component ?
 *  How are the animations linked to the component’s properties? 
 
 Since data-binding features are already supported between the **component** and its **template**, 
 Angular 2 uses a <u>special</u> template animation syntax to support triggering the animation after data-binding changes.
-
 So in the component template, we can do this:
 
 {% highlight html %}
@@ -177,9 +183,6 @@ So in the component template, we can do this:
 Above the `@visibilityChanged` is the special template animation property and it uses databinding 
 `[@visibilityChanged]=“visibility”` to bind the component's visibility property to the animation 
 trigger property `visibilityChanged`. 
-
-> This solution of using template binding <u>decouples</u> the animation from the component internals and 
-uses the template as the binding bridge.
 
 And here is the entire component definition updated with Animation features:
 
@@ -217,10 +220,14 @@ export class FaderComponent implements OnChanges {
 {% endraw %}
 {% endhighlight %}
 
+> This template-binding solution <u>decouples</u> the animation from the component internals and
+uses the template as the binding bridge.
+
+
+
 ### Our Animation Workflow 
 
 Above we have an improvide component definition; enhanced with animation features.
-
 Here is a workflow of the [animation] process:
 
 *  the input value for `isVisible`
@@ -264,19 +271,20 @@ export class MyAppComponent {
 
 ### Summary
 
-The Angular 2 Animation engine and compiler does all the hard work of the preparing, managing, and running the animations:
+The Angular 2 Animation engine and compiler does all the hard work of the preparing, managing, and running the animations.
 
-The `@Component` metadata registers the component animation, and
-The component template is the glue that *bridges* the component instance state to the animation trigger property.
+The `@Component` metadata registers the component animation, and the component template is the glue
+that *bridges* the component instance state to the animation trigger property.
 
 <br/>
 
----- 
+----
+
 ### Thanks
 
 Kudos to [Matias Niemelä](https://twitter.com/yearofmoo) for the amazing Animation engine in Angular 2!
 
-> These core animation features (above) are available in the Angular 2.0.0 release.
+<img src="/images/matiasVikingHair.jpg">
 
-Matias and his team are working hard on more amazing, intuitive Animation features.
-So stay tuned for even MORE cool features and blogs coming soon!
+These core animation features [discussed above] are available in the Angular 2.0.0 release. And never fear,
+Matias and his team are working hard on more amazing, intuitive Animation features. So stay tuned for even MORE cool features and blogs coming soon!
