@@ -68,8 +68,6 @@ This component simply publishes an `@Input() isVisible` property; which allows o
 
 We want the `my-fader` component to **fade-in** or **fade-out** its text content. And we want to *animate* those fades effects.
 
-<br/>
-
 ----
 
 The essential take-away Animation concept is that **Angular 2 Animations** are triggered on component state changes. Developers should consider state changes simply as value changes in a property of the component instance.
@@ -166,7 +164,7 @@ The intention with Angular Animations is to make it **easy** for developers, to 
 <br/>
 We are not done yet! While we configured the Animation metadata,  I am sure you are wondering:
 
-*  How is the animation property `visibilityChanged` actually connected to the component ?
+*  How is the animation property `visibilityChanged` actually connected to the component?
 *  How are the animations linked to the component’s properties? 
 
 Since data-binding features are already supported between the **component** and its **template**, 
@@ -279,7 +277,6 @@ The `@Component` metadata registers the component animation, and the component t
 that *bridges* the component instance state to the animation trigger property.
 
 <br/>
-<br/>
 
 ### Thanks
 
@@ -289,3 +286,5 @@ Kudos to [Matias Niemelä](https://twitter.com/yearofmoo) for the amazing Animat
 
 These core animation features [discussed above] are available in the Angular 2.0.0 release. And never fear,
 Matias and his team are working hard on more amazing, intuitive Animation features. So stay tuned for even MORE cool features and blogs coming soon!
+
+<br/>
