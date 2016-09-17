@@ -244,8 +244,10 @@ Here is a workflow of the [animation] process:
 
 ### Using Components with internal Animations
 
-Parent components can simply change the `isVisible` property of child `my-fader` instances and then magically the 
+Parent components can simply change the state of the child `my-fader` instances and then magically the
 contents of the `my-fader` instance will fadeIn or fadeOut.
+
+> Recall that component state == value of `isVisible` property.
 
 {% highlight js %}
 {% raw %}
