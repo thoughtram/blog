@@ -276,7 +276,7 @@ The component template is the glue that *bridges* the component instance state t
 
 Kudos to [Matias Niemelä](https://twitter.com/yearofmoo) for the amazing Animation engine in Angular 2!
 
-> These core animation features (above) are avaialble in the Angular 2.0.0 release.
+> These core animation features (above) are available in the Angular 2.0.0 release.
 
 Matias and his team are working hard on more amazing, intuitive Animation features.
 So stay tuned for even MORE cool features and blogs coming soon!
