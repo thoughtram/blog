@@ -68,11 +68,12 @@ This component simply publishes an `@Input() isVisible` property; which allows o
 
 We want the `my-fader` component to **fade-in** or **fade-out** its text content. And we want to *animate* those fades effects.
 
+<br/>
+
 ----
 
-#### The essential take-away Animation concept is that **Angular 2 Animations** are triggered on component state changes. Developers should consider state changes simply as value changes in a property of the component instance.
+The essential take-away Animation concept is that **Angular 2 Animations** are triggered on component state changes. Developers should consider state changes simply as value changes in a property of the component instance.
 
-<br/>
 ----
 
 To start animating, let's first add animation metadata to our component.
@@ -222,9 +223,10 @@ export class FaderComponent implements OnChanges {
 {% endhighlight %}
 
 <br/>
+
 ----
 
-#### This template-binding solution <u>decouples</u> the animation from the component internals and uses the template as the binding bridge.
+This template-binding solution <u>decouples</u> the animation from the component internals and uses the template as the binding bridge.
 
 ----
 
