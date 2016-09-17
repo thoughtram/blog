@@ -30,7 +30,7 @@ Animations features often are scary goals for developers. And Angular's doctrine
 made Animation features intimidating as hell.
 
 But Angular 2 animations are not scary!
-If we note that templates are closely associated with `@Components`, then we will notice that animations following a similar pattern.
+Templates are closely associated/integrated with `@Component`. We will notice that animations following a similar pattern.
 Let's build a component that hides and shows its contents, uses fade animation effects, and allows external components to
 easily trigger those fade effects.
 
