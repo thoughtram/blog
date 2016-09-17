@@ -59,7 +59,7 @@ export class MyComponent implements OnChanges {
 {% endraw %}
 {% endhighlight %}
 
-This component simply publishes an **@Input** `isVisible` property; which allows other external components to show/hide the text content... without any animations.
+This component simply publishes an `@Input() isVisible` property; which allows other external components to show/hide the text content... without any animations.
 
 <iframe style="width: 100%; height: 600px" src="http://embed.plnkr.co/vUPTsY/" frameborder="0" allowfullscren="allowfullscren"></iframe>
 
