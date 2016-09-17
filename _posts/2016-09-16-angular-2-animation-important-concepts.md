@@ -23,9 +23,13 @@ author: thomas_burleson
 
 ## Angular 2 Animations - Foundation Concepts
 
-Animations features often are scary goals for developers. And Angular's doctrine that controllers should not
-directly modify DOM elements made Animation features intimidating as hell. But Angular 2 animations are not scary!
+Animations features often are scary goals for developers. And Angular's doctrine
 
+> "controllers should not directly modify DOM elements"
+
+made Animation features intimidating as hell.
+
+But Angular 2 animations are not scary!
 If we note that templates are closely associated with `@Components`, then we will notice that animations following a similar pattern.
 Let's build a component that hides and shows its contents, uses fade animation effects, and allows external components to
 easily trigger those fade effects.
@@ -66,6 +70,7 @@ This component simply publishes an **@Input** `isVisible` property; which allows
 
 We want the `my-fader` component to **fade-in** or **fade-out** its text content. And we want to *animate* those fades effects.
 
+<br/>
 <hr/>
 
 The essential take-away Animation concept is that **Angular 2 Animations** are triggered on component state changes.
@@ -150,7 +155,6 @@ animations: [
 {% endhighlight %}
 
 See how easy this is? This notation is so easy to understand.
-
 The intention with Angular Animations is to make it **easy** for developers, to be:
 
 *  intuitive
@@ -160,7 +164,8 @@ The intention with Angular Animations is to make it **easy** for developers, to 
 
 ### Linking Animation to the Component
 
-Now, we are not done yet!
+
+<br/>Now, we are not done yet!
 
 While we configured the Animation metadata,  I am sure you are wondering:
 
@@ -220,9 +225,10 @@ export class FaderComponent implements OnChanges {
 {% endraw %}
 {% endhighlight %}
 
-> This template-binding solution <u>decouples</u> the animation from the component internals and
+<br/><hr/>
+This template-binding solution <u>decouples</u> the animation from the component internals and
 uses the template as the binding bridge.
-
+<hr/>
 
 
 ### Our Animation Workflow 
@@ -284,7 +290,7 @@ that *bridges* the component instance state to the animation trigger property.
 
 Kudos to [Matias Niemelä](https://twitter.com/yearofmoo) for the amazing Animation engine in Angular 2!
 
-<img src="/images/matiasVikingHair.jpg">
+![matiasvikinghair](https://cloud.githubusercontent.com/assets/210413/18608523/49b8707c-7cb1-11e6-8d2c-ab43db07ca78.jpg)
 
 These core animation features [discussed above] are available in the Angular 2.0.0 release. And never fear,
 Matias and his team are working hard on more amazing, intuitive Animation features. So stay tuned for even MORE cool features and blogs coming soon!
