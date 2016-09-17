@@ -66,9 +66,7 @@ This component simply publishes an `@Input() isVisible` property; which allows o
 
 ### Configure Component Animations
 
-We want the `my-fader` component to **fade-in** or **fade-out** its text content. And we want to *animate* those fades effects.
-
-<br/>
+We want the `my-fader` component to **fade-in** or **fade-out** its text content. And we want to *animate* those fades effects.<br/>
 
 ----
 
@@ -221,7 +219,6 @@ export class FaderComponent implements OnChanges {
 }
 {% endraw %}
 {% endhighlight %}
-
 <br/>
 
 ----
