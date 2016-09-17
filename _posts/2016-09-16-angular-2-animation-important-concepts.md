@@ -25,7 +25,7 @@ author: thomas_burleson
 
 Animations features often are scary goals for developers. And Angular's doctrine
 
-> "controllers should not directly modify DOM elements"
+> "... controllers should not directly modify DOM elements!"
 
 made Animation features intimidating as hell.
 
@@ -76,6 +76,7 @@ We want the `my-fader` component to **fade-in** or **fade-out** its text content
 The essential take-away Animation concept is that **Angular 2 Animations** are triggered on component state changes.
 Developers should consider state changes simply as value changes in a property of the component instance.
 
+<br/>
 <hr/>
 
 To start animating, let's first add animation metadata to our component.
@@ -165,9 +166,8 @@ The intention with Angular Animations is to make it **easy** for developers, to 
 ### Linking Animation to the Component
 
 
-<br/>Now, we are not done yet!
-
-While we configured the Animation metadata,  I am sure you are wondering:
+<br/>
+Now, we are not done yet! While we configured the Animation metadata,  I am sure you are wondering:
 
 *  How is the animation property `visibilityChanged` actually connected to the component ?
 *  How are the animations linked to the component’s properties? 
@@ -225,11 +225,14 @@ export class FaderComponent implements OnChanges {
 {% endraw %}
 {% endhighlight %}
 
-<br/><hr/>
-This template-binding solution <u>decouples</u> the animation from the component internals and
-uses the template as the binding bridge.
+<br/>
 <hr/>
 
+This template-binding solution <u>decouples</u> the animation from the component internals and
+uses the template as the binding bridge.
+
+<br/>
+<hr/>
 
 ### Our Animation Workflow 
 
@@ -243,8 +246,6 @@ Here is a workflow of the [animation] process:
 *  the animation trigger is invoked
 *  the state value is used to determine the animation 
 *  the host opacity change animates for 500 msecs
-
-This is super cool!
 
 ![super-cool](https://media.giphy.com/media/NUC0kwRfsL0uk/giphy.gif)
 
