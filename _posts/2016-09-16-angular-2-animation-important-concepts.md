@@ -66,7 +66,9 @@ This component simply publishes an `@Input() isVisible` property; which allows o
 
 ### Configure Component Animations
 
-We want the `my-fader` component to **fade-in** or **fade-out** its text content. And we want to *animate* those fades effects.<br/>
+We want the `my-fader` component to **fade-in** or **fade-out** its text content. And we want to *animate* those fades effects.
+
+<br/>
 
 ----
 
@@ -276,8 +278,8 @@ The Angular 2 Animation engine and compiler does all the hard work of the prepar
 The `@Component` metadata registers the component animation, and the component template is the glue
 that *bridges* the component instance state to the animation trigger property.
 
-
-----
+<br/>
+<br/>
 
 ### Thanks
 
