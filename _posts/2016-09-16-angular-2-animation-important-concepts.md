@@ -108,12 +108,15 @@ The techno-speak above is saying that when the `visibilityChanged` property chan
 then the target element opacity changes to 1. And when the value changes == ‘hidden’, the
 target element opacity should change to 0.
 
-> Note: The `[@visibilityChanged]` binding is on `<div>` child content element in the <my-fader> component. It is NOT the <my-fader> element itself.
-Thus here the animation target is the `<div>` element; not the component **host** element.
+> Note: The `[@visibilityChanged]` binding is on `<div>` child content element in the <my-fader> component.
+It is NOT on the <my-fader> element itself. Thus the animation target in our example
+is the `<div>` element; not the component **host** element.
 
-Now, you might wonder where `visibilityChanged` comes from? Because our component property is called just `visibility`. Hold your wild horses Mr. StageCoach, we'll clarify that soon!"
+Now, you might also wonder where `visibilityChanged` comes from? Because our component property is just called `visibility`.
+Hold your wild horses Mr. StageCoach, we'll clarify that soon!"
 
-Since we want to animate these changes instead of instantly hiding/showing the content, we need to configure a *transition*. With Angular 2 this is also suprisingly easy:
+We want to animate these changes over a time duration instead of instantly hiding/showing the content.
+We need to configure a *transition* to specify animation durations. With Angular 2 this is also suprisingly easy:
 
 {% highlight js %}
 {% raw %}
@@ -230,7 +233,7 @@ This template-binding solution <u>decouples</u> the animation from the component
 
 ### Reducing Complexity
 
-Now what if - instead of the `visibility` property - you wanted to use the `isVisible` property directly?
+What if - instead of the using the extra `visibility` property - you just wanted to use the `isVisible` property directly?
 This would obviate `ngOnChanges()` and reduce the code complexity to:
 
  {% highlight js %}
@@ -257,7 +260,7 @@ This would obviate `ngOnChanges()` and reduce the code complexity to:
 
 But this will not work!  Why the heck not?
 
-Remember that the `@visibilityChanged` animation trigger property is toggling on values `shown` and `hidden`.
+Remember that the `@visibilityChanged` animation trigger property is watching only triggers on values: `shown` or `hidden`.
 If you use the `@Input() isVisible` property, then your animation state values must be changed to `true` and `false`:
 
 {% highlight js %}
@@ -293,8 +296,8 @@ export class FaderComponent implements OnChanges {
 
 <iframe style="width: 100%; height: 600px" src="http://embed.plnkr.co/74lprkmzUGjT7UWbiyUr/" frameborder="0" allowfullscren="allowfullscren"></iframe>
 
-> Notice that the *host* `my-fader` element has a purple background. When you hide the `my-fader` content children you will
-see the host background and quickly see the differences between the *host* and the *target* elements.
+> Extra Bonus: the *host* `my-fader` element has a purple background. When you hide the `my-fader` content children you will
+see the host background. This was added so you can quickly see the differences between the *host* and the *target* animation elements.
 
 <br/>
 The beauty of this component-template-animation solution is that the developer decides which
