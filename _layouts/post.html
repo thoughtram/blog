@@ -96,9 +96,6 @@
           {% if page.update_date %}
           <p><i>This post was originally published on {{page.date | date: "%b %-d, %Y" }} but has been updated to reflect the latest information.</i></p>
           {% endif %}
-          {{ content }}
-
-          {% include demos-and-videos.html post=page %}
         </div>
 
         <section class="thtrm-ad thtrm-section thtrm-section--is-promo thtrm-ad--visible">
@@ -108,16 +105,23 @@
           <a href="https://www.eventbrite.de/e/angular-2-master-class-new-york-city-tickets-27384912009" title="Angular 2 Master Class New York City" id="event-cta" class="thtrm-layout-divider-cta">Join now</a>
         </section>
 
-        <!-- <div class="thtrm-subscriber thtrm-ad"> -->
-        <!--   <h3>Get updates on new articles and trainings.</h3> -->
-        <!--   <p>Join over 1200 other developers who get our content first.</p> -->
-        <!--   <form action="//thoughtram.us8.list-manage.com/subscribe/post?u=dfbb1507fbced5a20d9dc5698&amp;id=731f22cdca" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate> -->
-        <!--     <label for="mce-EMAIL"></label> -->
-        <!--     <input type="email" value="" name="EMAIL" placeholder="Your email address..." required> -->
-        <!--     <div style="position: absolute; left: -5000px;"><input type="text" name="b_dfbb1507fbced5a20d9dc5698_731f22cdca" tabindex="-1" value=""></div> -->
-        <!--     <input type="submit" value="Subscribe" name="subscribe" class="thtrm-cta thtrm-cta--small"> -->
-        <!--   </form> -->
-        <!-- </div> -->
+        <div class="thtrm-article">
+
+          {{ content }}
+
+          {% include demos-and-videos.html post=page %}
+        </div>
+
+        <div class="thtrm-subscriber thtrm-ad thtrm-ad--visible">
+          <h3>Get updates on new articles and trainings.</h3>
+          <p>Join over 1200 other developers who get our content first.</p>
+          <form action="//thoughtram.us8.list-manage.com/subscribe/post?u=dfbb1507fbced5a20d9dc5698&amp;id=731f22cdca" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+            <label for="mce-EMAIL"></label>
+            <input type="email" value="" name="EMAIL" placeholder="Your email address..." required>
+            <div style="position: absolute; left: -5000px;"><input type="text" name="b_dfbb1507fbced5a20d9dc5698_731f22cdca" tabindex="-1" value=""></div>
+            <input type="submit" value="Subscribe" name="subscribe" class="thtrm-cta thtrm-cta--small">
+          </form>
+        </div>
 
         <div style="text-align: center; margin-top: 40px;">
             <!-- Sharingbutton Facebook -->
