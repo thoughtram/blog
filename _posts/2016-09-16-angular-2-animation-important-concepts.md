@@ -21,8 +21,6 @@ topic: components
 author: thomas_burleson
 ---
 
-## Angular 2 Animations - Foundation Concepts
-
 Animations features often are scary goals for developers. And Angular's doctrine
 
 > "... controllers should not directly modify DOM elements!"
@@ -288,5 +286,3 @@ Kudos to [Matias Niemelä](https://twitter.com/yearofmoo) for the amazing Animat
 
 These core animation features [discussed above] are available in the Angular 2.0.0 release. And never fear,
 Matias and his team are working hard on more amazing, intuitive Animation features. So stay tuned for even MORE cool features and blogs coming soon!
-
-<br/>
