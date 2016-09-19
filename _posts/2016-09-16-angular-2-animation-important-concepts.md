@@ -105,10 +105,13 @@ animations: [
 But what does the above mean... and why is this syntax used?
 
 The techno-speak above is saying that when the `visibilityChanged` property changes to the value == 'shown', 
-then the host element opacity changes to 1. And when the value changes == ‘hidden’, the 
-host element opacity should change to 0.
+then the target element opacity changes to 1. And when the value changes == ‘hidden’, the
+target element opacity should change to 0.
 
-Now, you might wonder where `visibilityChanged` comes from, because our component property is called just `visibility`. Hold your wild horses Mr. StageCoach, we'll clarify that soon!"
+> Note: The `[@visibilityChanged]` binding is on `<div>` child content element in the <my-fader> component. It is NOT the <my-fader> element itself.
+Thus here the animation target is the `<div>` element; not the component **host** element.
+
+Now, you might wonder where `visibilityChanged` comes from? Because our component property is called just `visibility`. Hold your wild horses Mr. StageCoach, we'll clarify that soon!"
 
 Since we want to animate these changes instead of instantly hiding/showing the content, we need to configure a *transition*. With Angular 2 this is also suprisingly easy:
 
@@ -132,8 +135,8 @@ By the way, you could also have used `animate('500ms')` to indicate the millseco
 
 And what does the `transition('* => *', ...)` mean?
 
-Think of this as a transition from one state (`*` is a wildcard to mean **any**) to
-another state. If we wanted the fadeOut to be slower than the fadeIn, here is how we would configure the animation metadata:
+Think of `* => *` as a transition from one state to another state; where `*` is a wildcard to mean **any** state value.
+If we wanted the *fade-out* to be slower than the *fade-in*, here is how we would configure the animation metadata:
 
 {% highlight js %}
 {% raw %}
@@ -225,9 +228,85 @@ This template-binding solution <u>decouples</u> the animation from the component
 
 ----
 
+### Reducing Complexity
+
+Now what if - instead of the `visibility` property - you wanted to use the `isVisible` property directly?
+This would obviate `ngOnChanges()` and reduce the code complexity to:
+
+ {% highlight js %}
+ {% raw %}
+ @Component({
+   animations: [
+     trigger('visibilityChanged', [
+       state('shown' , style({ opacity: 1 })),
+       state('hidden', style({ opacity: 0 })),
+       transition('* => *', animate('.5s'))
+     ])
+   ],
+   template: `
+   <div [@visibilityChanged]="isVisible" >
+        ...
+   </div>
+   `
+ })
+ export class FaderComponent {
+   @Input() isVisible : boolean = true;
+ }
+ {% endraw %}
+ {% endhighlight %}
+
+But this will not work!  Why the heck not?
+
+Remember that the `@visibilityChanged` animation trigger property is toggling on values `shown` and `hidden`.
+If you use the `@Input() isVisible` property, then your animation state values must be changed to `true` and `false`:
+
+{% highlight js %}
+{% raw %}
+import {
+  Component, OnChanges, Input,
+  trigger, state, animate, transition, style
+} from '@angular/core';
+
+@Component({
+  selector : 'my-fader',
+  animations: [
+    trigger('visibilityChanged', [
+      state('true' , style({ opacity: 1, transform: 'scale(1.0)' })),
+      state('false', style({ opacity: 0, transform: 'scale(0.0)'  })),
+      transition('1 => 0', animate('300ms')),
+      transition('0 => 1', animate('900ms'))
+    ])
+  ],
+  template: `
+  <div [@visibilityChanged]="isVisible" >
+    <ng-content></ng-content>
+    <p>Can you see me? I should fade in or out...</p>
+  </div>
+  `
+})
+export class FaderComponent implements OnChanges {
+  @Input() isVisible : boolean = true;
+}
+{% endraw %}
+{% endhighlight %}
+<br/>
+
+<iframe style="width: 100%; height: 600px" src="http://embed.plnkr.co/74lprkmzUGjT7UWbiyUr/" frameborder="0" allowfullscren="allowfullscren"></iframe>
+
+> Notice that the *host* `my-fader` element has a purple background. When you hide the `my-fader` content children you will
+see the host background and quickly see the differences between the *host* and the *target* elements.
+
+<br/>
+The beauty of this component-template-animation solution is that the developer decides which
+component properties should bind to which animation triggers, then simply sets the *state*
+values accordingly.
+
+This separation of concerns provides HUGE benefits to couple Angular 2 animations to custom architectures & custom implementations.
+
+
 ### Our Animation Workflow 
 
-Above we have an improvide component definition; enhanced with animation features.
+Above we have an improved the component definition; enhanced with animation features.
 Here is a workflow of the [animation] process:
 
 *  the input value for `isVisible`
@@ -236,7 +315,7 @@ Here is a workflow of the [animation] process:
 *  the template databinding updates the @visibilityChanged property value
 *  the animation trigger is invoked
 *  the state value is used to determine the animation 
-*  the host opacity change animates for 500 msecs
+*  the target element opacity change animates for 500 msecs
 
 ![super-cool](https://media.giphy.com/media/NUC0kwRfsL0uk/giphy.gif)
 
@@ -267,6 +346,7 @@ export class MyAppComponent {
 {% endhighlight %}
 
 <iframe style="width: 100%; height: 600px" src="http://embed.plnkr.co/NbWGjs/" frameborder="0" allowfullscren="allowfullscren"></iframe>
+
 
 
 ### Summary
