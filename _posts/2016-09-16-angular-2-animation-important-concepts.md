@@ -318,7 +318,10 @@ One of the design goals for Angular 2 Animations is to make it **easy** for deve
 
 The best part of Angular 2 Animation design is that the **component->template->animation** binding solution
 <u>decouples</u> the animation from the component internals and uses the template as the binding bridge. The developer
-decides which component properties should bind to which animation triggers, then simply sets the *state* values accordingly.
+decides which component properties should bind to which animation triggers, then simply uses the possible property values
+to set the *state* values accordingly.
+
+> In most cases, you will never need to write JavaScript animation logic.
 
 All the mechanics of preparing and managing the animations in hidden from the developer. This separation of concerns
 provides HUGE benefits to allow developers to easily use Angular 2 Animations with custom architectures & custom implementations.
@@ -360,8 +363,7 @@ export class MyAppComponent {
 
 ### Summary
 
-The Angular 2 Animation engine and compiler does all the hard work of the preparing, managing, and running the animations.
-
+The Angular 2 Animation engine and compiler does all the hard work preparing, managing, and running the animations.
 Developers use the `@Component` metadata to declaratively define the component styles, templates, and [now] animations.
 And it is the component **template** that serves as the *bridge* to link the component instance state to the
 animation trigger property.
