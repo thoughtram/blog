@@ -152,8 +152,8 @@ The essential take-away Animation concept is that **Angular 2 Animations** are t
 <br/>
 While we configured the Animation metadata,  I am sure you are wondering:
 
-*  How is the animation property `visibilityChanged` actually connected to the component?
-*  How are the animations linked to the component’s properties? 
+  *  How is the animation property `visibilityChanged` actually connected to the component?
+  *  How are the animations linked to the component’s properties?
 
 Since data-binding features are already supported between the **component** and its **template**,  Angular 2 uses a <u>special</u> template animation syntax to support triggering the animation after data-binding changes. So in the component template, we can do this:
 
@@ -289,9 +289,9 @@ Above we have an improved the component definition; enhanced with animation feat
 
 One of the design goals for Angular 2 Animations is to make it **easy** for developers to configure and use animations. The API and syntax is designed to be:
 
-*  intuitive
-*  declarative and
-*  immediately associated with the component using metadata
+  *  intuitive
+  *  declarative and
+  *  immediately associated with the component using metadata
 
 The best part of Angular 2 Animation design is that the **component->template->animation** binding solution <u>decouples</u> the animation from the component internals and uses the template as the binding bridge.
 
