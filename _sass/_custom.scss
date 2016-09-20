@@ -430,13 +430,13 @@
 }
 
 
-@media all and (min-width: 400px) and (max-width: 800px) {
+@media all and (min-width: 425px) and (max-width: 800px) {
   .a2mc_nyc_skyline {
     padding-top: 0.8em;
   }
 }
 
-@media all and (max-width: 399px) {
+@media all and (max-width: 424px) {
   .a2mc_nyc_skyline {
     background: url(/images/banner/nyc_skyline.jpg) center no-repeat;
     background-size: cover;
