@@ -337,15 +337,13 @@ and alter the public **state** of child components, but should never attempt to 
 In our examples (above), parent components can simply change the state of the child `my-fader` instances and then magically the
 contents of the `my-fader` instance will fadeIn or fadeOut.
 
-> Recall that component state value is based on the value of the `isVisible` property.
-
 {% highlight js %}
 {% raw %}
 @Component({
   selector : 'my-app',
   template: `
 
-  <my-fader [visibility]="showFader">
+  <my-fader [isVisible]="showFader">
     Am I visible ?
   </my-fader>
 
