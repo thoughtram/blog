@@ -425,20 +425,18 @@
 
 // NYC Training Banner with styles for mobile, tablets, and desktop
 .a2mc_nyc_skyline {
-  @include desktop {
-    background: url(/images/banner/nyc_skyline_v2.jpg) center no-repeat;
-    background-size: contain;
-    padding-top: 5px;
-  }
+  background: url(/images/banner/nyc_skyline.jpg) center no-repeat;
+  background-size: cover;
+  padding-top: 2em;
 
   @include tablet {
       padding-top: 1.1em;
   }
 
-  @include phablet {
-      background: url(/images/banner/nyc_skyline.jpg) center no-repeat;
-      background-size: cover;
-      padding-top: 2em;
+  @include desktop {
+    background: url(/images/banner/nyc_skyline_v2.jpg) center no-repeat;
+    background-size: contain;
+    padding-top: 5px;
   }
 
 }
