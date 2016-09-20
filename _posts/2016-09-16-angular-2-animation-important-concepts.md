@@ -150,14 +150,12 @@ animations: [
 
 See how easy this is? This notation is so easy to understand.
 
-<br/>
 
-----
+#### The Essential Concept
 
 The essential take-away Animation concept is that **Angular 2 Animations** are triggered on component <u>state changes</u>.
 And developers should consider <u>state changes</u> to be equivalent to <u>value changes in a property</u> of the component instance.
 
-----
 
 ### Linking Animation to the Component
 
@@ -250,10 +248,13 @@ This would obviate `ngOnChanges()` and reduce the code complexity to:
  {% endraw %}
  {% endhighlight %}
 
-But this will not work with another **important** change to the animation metadata!
+But this will not work without another **important** change to the animation metadata!
 
-Remember that the `@visibilityChanged` animation trigger property is watching only triggers on values: `shown` or `hidden`.
-If you use the `@Input() isVisible` property, then your animation state values must be changed to `true` and `false`:
+> Remember that the `@visibilityChanged` animation trigger property has defined states for the values: `shown` or `hidden`.
+
+If you use the myFader::`isVisible` boolean property, then your animation state values must be changed to `true` and `false`
+since those are the possible values of that property.
+
 
 {% highlight js %}
 {% raw %}
@@ -305,7 +306,6 @@ Here is a workflow of the [animation] process:
 *  the state value is used to determine the animation
 *  the target element opacity change animates for 500 msecs
 
-![super-cool](https://media.giphy.com/media/NUC0kwRfsL0uk/giphy.gif)
 
 ### Philosophy of Animations
 
@@ -323,6 +323,7 @@ decides which component properties should bind to which animation triggers, then
 All the mechanics of preparing and managing the animations in hidden from the developer. This separation of concerns
 provides HUGE benefits to allow developers to easily use Angular 2 Animations with custom architectures & custom implementations.
 
+![super-cool](https://media.giphy.com/media/NUC0kwRfsL0uk/giphy.gif)
 
 ### Animations with Components Hierarchies
 
