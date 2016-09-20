@@ -312,12 +312,11 @@ Here is a workflow of the [animation] process:
 ### Philosophy of Animations
 
 One of the design goals for Angular 2 Animations is to make it **easy** for developers to configure and use animations.
-The API and syntax should be:
+The API and syntax is designed to be:
 
 *  intuitive
 *  declarative and
-*  immediately associated with the component...
-  *  the `animations` configuration is right above the Class definition!
+*  immediately associated with the component using metadata
 
 The best part of Angular 2 Animation design is that the **component->template->animation** binding solution
 <u>decouples</u> the animation from the component internals and uses the template as the binding bridge. The developer
@@ -326,7 +325,7 @@ to set the animation *state* values accordingly.
 
 > In most cases, you will never need to write JavaScript animation logic.
 
-All the mechanics of preparing and managing the animations in hidden from the developer. This separation of concerns
+All the mechanics of preparing and managing the animations are hidden from the developer. This 'separation of concerns'
 provides HUGE benefits to allow developers to easily use Angular 2 Animations with custom architectures & custom implementations.
 
 ### Animations with Components Hierarchies
