@@ -430,17 +430,13 @@
   padding-top: 5px;
 
   @mixin phablet {
-    & {
       background: url(/images/banner/nyc_skyline.jpg) center no-repeat;
       background-size: cover;
       padding-top: 2em;
-    }
   }
 
   @mixin tablet {
-    & {
       padding-top: 1.1em;
-    }
   }
 }
 
