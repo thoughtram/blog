@@ -430,6 +430,7 @@
   padding-top: 2em;
 
   @include tablet {
+    background: url(/images/banner/nyc_skyline_v2.jpg) center no-repeat;
       padding-top: 1.1em;
   }
 
