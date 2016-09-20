@@ -428,3 +428,18 @@
   background-size: contain;
   padding-top: 0;
 }
+
+
+@media all and (min-width: 400px) and (max-width: 800px) {
+  .a2mc_nyc_skyline {
+    padding-top: 0.8em;
+  }
+}
+
+@media all and (max-width: 399px) {
+  .a2mc_nyc_skyline {
+    background: url(/images/banner/nyc_skyline.jpg) center no-repeat;
+    background-size: cover;
+    padding-top: 2em;
+  }
+}
