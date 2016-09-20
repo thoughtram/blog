@@ -151,10 +151,12 @@ animations: [
 See how easy this is? This notation is so easy to understand.
 
 
-#### The Essential Concept
+### The Essential Concept
 
 The essential take-away Animation concept is that **Angular 2 Animations** are triggered on component <u>state changes</u>.
 And developers should consider <u>state changes</u> to be equivalent to <u>value changes in a property</u> of the component instance.
+
+![super-cool](https://media.giphy.com/media/NUC0kwRfsL0uk/giphy.gif)
 
 
 ### Linking Animation to the Component
@@ -248,12 +250,12 @@ This would obviate `ngOnChanges()` and reduce the code complexity to:
  {% endraw %}
  {% endhighlight %}
 
-But this will not work without another **important** change to the animation metadata!
+I love the tersity of this code. But this will not work without another **important** change to the animation metadata!
 
 > Remember that the `@visibilityChanged` animation trigger property has defined states for the values: `shown` or `hidden`.
 
-If you use the myFader::`isVisible` boolean property, then your animation state values must be changed to `true` and `false`
-since those are the possible values of that property.
+If you use the `myFader::isVisible` boolean property, then your animation state values must be changed to `true` and `false`
+since those are the possible values of the `isVisible` property.
 
 
 {% highlight js %}
@@ -309,7 +311,8 @@ Here is a workflow of the [animation] process:
 
 ### Philosophy of Animations
 
-One of the design goals for Angular 2 Animations is to make it **easy** for developers. The syntax should be:
+One of the design goals for Angular 2 Animations is to make it **easy** for developers to configure and use animations.
+The API and syntax should be:
 
 *  intuitive
 *  declarative and
@@ -318,15 +321,13 @@ One of the design goals for Angular 2 Animations is to make it **easy** for deve
 
 The best part of Angular 2 Animation design is that the **component->template->animation** binding solution
 <u>decouples</u> the animation from the component internals and uses the template as the binding bridge. The developer
-decides which component properties should bind to which animation triggers, then simply uses the possible property values
-to set the *state* values accordingly.
+decides which component properties should bind to which animation triggers, then simply uses the possible component property values
+to set the animation *state* values accordingly.
 
 > In most cases, you will never need to write JavaScript animation logic.
 
 All the mechanics of preparing and managing the animations in hidden from the developer. This separation of concerns
 provides HUGE benefits to allow developers to easily use Angular 2 Animations with custom architectures & custom implementations.
-
-![super-cool](https://media.giphy.com/media/NUC0kwRfsL0uk/giphy.gif)
 
 ### Animations with Components Hierarchies
 
