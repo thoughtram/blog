@@ -1,3 +1,4 @@
+$bigPhoneViewport: "(min-width: 420px)";
 $phabletViewport: "(min-width: 640px)";
 $tabletViewport: "(min-width: 840px)";
 $desktopViewport: "(min-width: 990px)";
@@ -7,6 +8,12 @@ $thtrmBlue: "#4D8799";
 $thtrmDarkBlue: "#3E6F7E";
 $thtrmDarkerBlue: "#123742";
 $thtrmEvenDarkerBlue: "#384c54";
+
+@mixin bigPhone {
+  @media #{$bigPhoneViewport} {
+    @content;
+  }
+}
 
 @mixin phablet {
   @media #{$phabletViewport} {
