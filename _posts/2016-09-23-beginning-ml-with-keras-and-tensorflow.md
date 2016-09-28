@@ -46,7 +46,7 @@ The applications of AI seem infinite. [PRISMA](https://www.instagram.com/prisma/
 
 ## Let's get started
 
-Getting started with Machine Learning can be quite intimidating at first. There's a whole bunch of vocabulary: [neural networks](https://en.wikipedia.org/wiki/Artificial_neural_network), [perceptrons](https://en.wikipedia.org/wiki/Perceptron), neurons, activation functions and of course a lot of maths. There are plenty of [great articles](http://neuralnetworksanddeeplearning.com/chap1.html) about these kind of things so there's no need for us to scare you with yet another intimdating article.
+Getting started with Machine Learning can be quite intimidating at first. There's a whole bunch of vocabulary: [neural networks](https://en.wikipedia.org/wiki/Artificial_neural_network), [perceptrons](https://en.wikipedia.org/wiki/Perceptron), neurons, activation functions and of course a lot of maths. There are plenty of [great articles](http://neuralnetworksanddeeplearning.com/chap1.html) about these kind of things so there's no need for us to scare you with yet another intimidating article.
 
 We aren't particular good at math. I'm sure we're actually pretty bad at math. We are coders and tinkerers so that's what we're gonna do! Let's build a neural network to solve a task!
 
