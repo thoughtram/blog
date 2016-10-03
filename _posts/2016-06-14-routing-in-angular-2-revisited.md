@@ -4,7 +4,7 @@ title:      "Routing in Angular 2 revisited"
 imageUrl:   "/images/banner/routing-in-angular-2-revisited.jpeg"
 
 date: 2016-06-14
-update_date: 2016-08-11
+update_date: 2016-10-03
 
 summary: "Learn how to implement basic routing in your Angular 2 application using the latest and greatest APIs!"
 
@@ -29,19 +29,6 @@ A long time ago we've written about [routing in Angular 2](/angular/2015/06/16/r
 In this article we want to take a first look at the new and better APIs, touching on the most common scenarios when it comes to routing. We're going to explore how to define routes, linking to other routes, as well as accessing route parameters. Let's jump right into it!
 
 {% include demos-and-videos-buttons.html post=page %}
-
-## Before we start
-
-Just to make sure we don't run into weird errors and debug tons of hours just to realise we had the wrong version of the router installed: We need `@angular/router` version >= `3.0.0-rc.1`. In other words, if we play with the code on our local machine, the `package.json` dependency should look like this:
-
-{% highlight json %}
-{% raw %}
-"dependencies": {
-  ...
-  "@angular/router": "3.0.0-rc.1"
-}
-{% endraw %}
-{% endhighlight %}
 
 
 ## Defining Routes
@@ -339,7 +326,7 @@ Sometimes we're not interested in future changes of a route parameter. All we ne
   ngOnInit() {
 
     this.contactsService
-        .getContacts(this.route.snapshot.params.id)
+        .getContacts(this.route.snapshot.params['id'])
         .subscribe(contact => this.contact = contact);
   }
 ...
