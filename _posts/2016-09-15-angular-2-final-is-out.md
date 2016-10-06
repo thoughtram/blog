@@ -81,6 +81,10 @@ We've been writing about Angular 2 too, in fact, since over a year by now and **
 - [Zones in Angular 2](/angular/2016/02/01/zones-in-angular-2.html)
 - [Angular 2 Change Detection explained](/angular/2016/02/22/angular-2-change-detection-explained.html)
 
+### Animations
+
+- [Animations in Angular 2](/angular/2016/09/16/angular-2-animation-important-concepts.html)
+
 ### Styling and ViewEncapsulation
 
 - [Styling Angular 2 components](/angular/2015/06/25/styling-angular-2-components.html)
