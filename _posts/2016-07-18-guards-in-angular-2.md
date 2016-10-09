@@ -16,7 +16,7 @@ tags:
 
 videos:
   -
-    url: "https://player.vimeo.com/video/175218351"
+    url: "http://thoughtram-casts-app.herokuapp.com/embedded/175218351"
     title: "Guards in Angular 2"
 
 topic: routing
