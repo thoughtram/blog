@@ -18,9 +18,9 @@ topic: di
 
 videos:
   -
-    url: "https://player.vimeo.com/video/181222351"
+    url: "http://thoughtram-casts-app.herokuapp.com/embedded/181222351"
   -
-    url: "https://player.vimeo.com/video/181222354"
+    url: "http://thoughtram-casts-app.herokuapp.com/embedded/181222354"
 
 author: pascal_precht
 ---
