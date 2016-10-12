@@ -45,15 +45,15 @@ demos:
 
 videos:
   -
-    url: "http://thoughtram-casts-app.heroku.com/embedded/181222346"
+    url: "http://casts.thoughtram.io/embedded/181222346"
   -
-    url: "http://thoughtram-casts-app.heroku.com/embedded/181222347"
+    url: "http://casts.thoughtram.io/embedded/181222347"
   -
-    url: "http://thoughtram-casts-app.heroku.com/embedded/181222396"
+    url: "http://casts.thoughtram.io/embedded/181222396"
   -
-    url: "http://thoughtram-casts-app.heroku.com/embedded/181222348"
+    url: "http://casts.thoughtram.io/embedded/181222348"
   -
-    url: "http://thoughtram-casts-app.heroku.com/embedded/181222349"
+    url: "http://casts.thoughtram.io/embedded/181222349"
 
 author: pascal_precht
 ---

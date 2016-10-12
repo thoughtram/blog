@@ -25,17 +25,17 @@ topic: http
 
 videos:
   -
-    url: "http://thoughtram-casts-app.herokuapp.com/embedded/181311616"
+    url: "http://casts.thoughtram.io/embedded/181311616"
   -
-    url: "http://thoughtram-casts-app.herokuapp.com/embedded/181311614"
+    url: "http://casts.thoughtram.io/embedded/181311614"
   -
-    url: "http://thoughtram-casts-app.herokuapp.com/embedded/181311611"
+    url: "http://casts.thoughtram.io/embedded/181311611"
   -
-    url: "http://thoughtram-casts-app.herokuapp.com/embedded/181311613"
+    url: "http://casts.thoughtram.io/embedded/181311613"
   -
-    url: "http://thoughtram-casts-app.herokuapp.com/embedded/181311609"
+    url: "http://casts.thoughtram.io/embedded/181311609"
   -
-    url: "http://thoughtram-casts-app.herokuapp.com/embedded/181311615"
+    url: "http://casts.thoughtram.io/embedded/181311615"
 
 demos:
   -
