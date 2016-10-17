@@ -137,7 +137,7 @@ Of course, we can take our code base closer to what Angular 2 code would look li
 
 They try solve the same problem, which is adding semantically useful decorators to Angular 1. But do they really help? **I don't think so**. They might improve the developer experience because all of a sudden we can use nice decorators that generate code for us, however, they don't help when it comes to upgrading an application to Angular 2. One project, [ng-forward](https://github.com/ngUpgraders/ng-forward), tries to make the exact same Angular 2 syntax available in Angular 1.
 
-This *can* be helpful to some extend since you and your team are getting familiar with how to write apps in Angular 2 while writing Angular 1 code. On the other hand, it could also be confusing when trying to squeeze Angular 2 concepts and syntax into the Angular 1 world. We'll see how practical it is once projects are starting to use it.
+This *can* be helpful to some extent since you and your team are getting familiar with how to write apps in Angular 2 while writing Angular 1 code. On the other hand, it could also be confusing when trying to squeeze Angular 2 concepts and syntax into the Angular 1 world. We'll see how practical it is once projects are starting to use it.
 
 ## Upgrade Strategies
 
