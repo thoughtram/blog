@@ -75,28 +75,23 @@
         <hgroup class="thtrm-banner-container">
           <div class="thtrm-constraint thtrm-constraint--slim">
             <h2 class="thtrm-banner-text">{{page.title}}</h2>
-            <span>by <a href="http://twitter.com/{{author.twitter}}" title="{{author.name}} on Twitter">{{author.name}}</a> {% if page.update_date %}updated on {{ page.update_date | date: "%b %-d, %Y" }}{% else %}on {{page.date | date: "%b %-d, %Y" }}{% endif %}<br>{{ minutes }} minute read</span>
+            <span>by <a href="http://twitter.com/{{author.twitter}}" title="{{author.name}} on Twitter">{{author.name}}</a> on {% if page.update_date %}{{page.update_date | date: "%b %-d, %Y" }}{% else %}{{ page.update_date | date: "%b %-d, %Y" }}{% endif %}<br>{{ minutes }} minute read</span>
 
           </div>
         </hgroup>
       </div>
       <div class="thtrm-constraint thtrm-constraint--slim">
-        <div class="thtrm-article">
-          {% if page.toc %}
-          <div class="thtrm-toc">
-            <h3>Table of Contents</h3>
-            <ul>
-              {% for link in page.toc %}
-              <li><a title="{{link.label}}" href="#{{link.anchor}}"><span>{{link.label}}</span></a></li>
-              {% endfor %}
-            </ul>
-          </div>
-          {% endif %}
-
-          {% if page.update_date %}
-          <p><i>This post was originally published on {{page.date | date: "%b %-d, %Y" }} but has been updated to reflect the latest information.</i></p>
-          {% endif %}
-        </div>
+        <!-- <div class="thtrm-article"> -->
+        <!--   {% if page.toc %} -->
+        <!--   <div class="thtrm-toc"> -->
+        <!--     <h3>Table of Contents</h3> -->
+        <!--     <ul> -->
+        <!--       {% for link in page.toc %} -->
+        <!--       <li><a title="{{link.label}}" href="#{{link.anchor}}"><span>{{link.label}}</span></a></li> -->
+        <!--       {% endfor %} -->
+        <!--     </ul> -->
+        <!--   </div> -->
+        <!--   {% endif %} -->
 
         <section class="thtrm-ad thtrm-section thtrm-section--is-promo thtrm-ad--visible a2mc_nyc_skyline">
           <img width="100" src="/images/angular2-shield-inverse.svg">
@@ -230,10 +225,7 @@
 
       linkjuice.init('.thtrm-article', {
         selector: ['h2', 'h3'],
-        icon: '',
-        contentFn: function (node) {
-          return node.innerHTML;
-        }
+        icon: ''
       });
     }(document, window));
     </script>
