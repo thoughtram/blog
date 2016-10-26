@@ -5,7 +5,7 @@ imageUrl:   "/images/banner/resolving-route-data-in-angular-2.jpg"
 
 date: 2016-10-10
 
-summary: "We often want to make sure that some certain data is available before a component is instantiated via routing. In this article you'll learn how to resolve route data."
+summary: "We often want to make sure that certain data is available before a component is instantiated via routing. In this article you'll learn how to resolve route data."
 
 categories:
   - angular
@@ -29,7 +29,7 @@ demos:
    title: "Route resolver class"
 ---
 
-Not long ago, we've written about [Navigation Guards](/angular/2016/07/18/guards-in-angular-2.html) and how they let us control the navigation flow of our application's users. Guards like `CanActivate`, `CanDeactivate` and `CanLoad` are great when it comes to taking the decision if a user is allowed to activate a certain route, leaving a certain route, or even asynchronously loading a route.
+Not long ago, we wrote about [Navigation Guards](/angular/2016/07/18/guards-in-angular-2.html) and how they let us control the navigation flow of our application's users. Guards like `CanActivate`, `CanDeactivate` and `CanLoad` are great when it comes to taking the decision if a user is allowed to activate a certain route, leaving a certain route, or even asynchronously loading a route.
 
 However, one thing that these guards don't allow us to do, is to ensure that certain data is loaded before a route is actually activated. For example, in a contacts application where we're able to click on a contact to view a contact's details, the contact data should've been loaded before the component we're routing to is instantiated, otherwise we might end up with a UI that already renders its view and a few moments later, the actual data arrives (of course, there are many ways to get around this). **Route resolvers** allow us to do exactly that and in this article we're going to explore how they work!
 
@@ -106,7 +106,7 @@ export class ContactsDetailComponent implements OnInit {
 {% endraw %}
 {% endhighlight %}
 
-Okay, cool. So the only thing `ContactsDetailComponent` does, is it fetches a contact object by the given id and assigns that object to its local `contact` property, which then allows us to interpolate expressions like `{%raw%}{{contact.name}}{%endraw%}` in the template of the component.
+Okay, cool. So the only thing `ContactsDetailComponent` does, is to fetch a contact object by the given id and assign that object to its local `contact` property, which then allows us to interpolate expressions like `{%raw%}{{contact.name}}{%endraw%}` in the template of the component.
 
 Let's take a look at the component's template:
 
@@ -124,7 +124,7 @@ Let's take a look at the component's template:
 {% endraw %}
 {% endhighlight %}
 
-We notice that we've attached Angular's Safe Navigation Operator to all of our expressions that rely on `contact`. The reason for that is, that `contact` will be undefined at the time this component is initialized, since we're fetch the data asynchronously. The Safe Navigation Operator ensures that Angular won't throw when we're trying to read from an object that is `null` or `undefined`.
+Notice that we've attached Angular's Safe Navigation Operator to all of our expressions that rely on `contact`. The reason for that is, that `contact` will be undefined at the time this component is initialized, since we're fetching the data asynchronously. The Safe Navigation Operator ensures that Angular won't throw any errors when we're trying to read from an object that is `null` or `undefined`.
 
 In order to demonstrate this issue, let's assume `ContactsService#getContact()` takes 3 seconds until it emits a contact object. In fact, we can easily fake that delay right away like this:
 
@@ -181,7 +181,7 @@ export class AppModule {}
 {% endraw %}
 {% endhighlight %}
 
-Let's ignore for a second that we don't always want to return he same contact object when this resolver is used. The point here is that we can register a simple resolver function using Angular's dependency injection. Now, how do we attach this resolver to a route configuration? That's pretty straight forward. All we have to do is to add a `resolve` property to a route configuration, which is an object where each key points to a resolver.
+Let's ignore for a second that we don't always want to return he same contact object when this resolver is used. The point here is that we can register a simple resolver function using Angular's dependency injection. Now, how do we attach this resolver to a route configuration? That's pretty straight forward. All we have to do is add a `resolve` property to a route configuration, which is an object where each key points to a resolver.
 
 Here's how we add our resolver function to our route configuration:
 
@@ -202,7 +202,7 @@ export const AppRoutes: Routes = [
 
 That's it? Yes! `'contact'` is the provider token we refer to when attaching resolvers to route configurations. Of course, this can also be an [OpaqueToken](/angular/2016/05/23/opaque-tokens-in-angular-2.html), or a class (as discussed later).
 
-Now, the next thing we need to do is to change the way `ContactsDetailComponent` gets hold of the contact object. Everything that is resolved via route resolvers is exposed on an `ActivatedRoute`'s `data` property. In other words, for now we can get rid off the `ContactsService` dependency like this:
+Now, the next thing we need to do is to change the way `ContactsDetailComponent` gets hold of the contact object. Everything that is resolved via route resolvers is exposed on an `ActivatedRoute`'s `data` property. In other words, for now we can get rid of the `ContactsService` dependency like this:
 
 {% highlight js %}
 {% raw %}
@@ -253,9 +253,11 @@ Here's what our contact resolver could look like as a class implementation:
 
 {% highlight js %}
 {% raw %}
+import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { ContactsService } from './contacts.service';
 
+@Injectable()
 export class ContactResolve implements Resolve<Contact> {
 
   constructor(private contactsService: ContactsService) {}
