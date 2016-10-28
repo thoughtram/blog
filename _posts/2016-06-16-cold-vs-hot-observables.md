@@ -13,7 +13,7 @@ categories:
 
 tags:
   - angular2
-  - Rx
+  - rx
 
 demos:
   -

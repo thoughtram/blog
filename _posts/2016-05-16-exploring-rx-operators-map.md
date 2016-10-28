@@ -12,7 +12,7 @@ categories:
   - angular
 tags:
   - angular2
-  - Rx
+  - rx
 
 author: christoph_burgdorf
 ---
@@ -41,7 +41,7 @@ console.log(transformed);
 
 By now we may be wondering what that has to do with Observables and the `map` operator that is part of RxJS.
 
-Observables are very much like arrays in a way. Well, they are actually more like Iterators but let's not get lost in the details. The key point to understand is that both represent a sequence of values. The key difference is that with Arrays/Iterators you *pull* values out as you want to work with them whereas with Observables you get values **pushed** to you as they arrive. 
+Observables are very much like arrays in a way. Well, they are actually more like Iterators but let's not get lost in the details. The key point to understand is that both represent a sequence of values. The key difference is that with Arrays/Iterators you *pull* values out as you want to work with them whereas with Observables you get values **pushed** to you as they arrive.
 
 It's this similarity that allows us to take advantage of pretty much all operators that we know from the pull-based world and apply them to the push-based world.
 
@@ -97,7 +97,7 @@ If you like to play a bit with the operator yourself, here is a working demo.
 
 <iframe src="http://embed.plnkr.co/iWR9b2s4wd0pZSOEfHuR/"></iframe>
 
-At this point, you may think that Observables are really just a minor enhancement on the Observer or Promise patterns... better suited to handle a sequence of events rather than a single callback. And the `.map()` function certainly does not - at first glance - seem to offer any added-value. The power of Observables is revealed when you start using Rx operators to transform, combine, manipulate, and work with sequences of items emitted by Observables. 
+At this point, you may think that Observables are really just a minor enhancement on the Observer or Promise patterns... better suited to handle a sequence of events rather than a single callback. And the `.map()` function certainly does not - at first glance - seem to offer any added-value. The power of Observables is revealed when you start using Rx operators to transform, combine, manipulate, and work with sequences of items emitted by Observables.
 
 These operators allow you to compose asynchronous sequences together in a declarative manner with all the efficiency benefits of callbacks but without the drawbacks of nesting callback handlers that are typically associated with asynchronous systems.
 

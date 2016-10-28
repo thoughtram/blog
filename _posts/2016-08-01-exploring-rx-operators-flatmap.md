@@ -10,7 +10,7 @@ summary: "Another post in a series of articles to discover the magic of differen
 categories:
   - rx
 tags:
-  - Rx
+  - rx
 
 author: christoph_burgdorf
 ---
