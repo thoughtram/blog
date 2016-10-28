@@ -58,11 +58,25 @@ videos:
 author: pascal_precht
 ---
 
+
 Dependency injection has always been one of Angular's biggest features and selling points. It allows us to inject dependencies in different components across our applications, without needing to know, how those dependencies are created, or what dependencies they need themselves. However, it turns out that the current dependency injection system in Angular 1 has some problems that need to be solved in Angular 2, in order to build the next generation framework. In this article, we're going to explore the new dependency injection system for future generations.
+
 
 {% include demos-and-videos-buttons.html post=page %}
 
 Before we jump right into the new stuff, lets first understand what dependency injection is, and what the problems with the DI in Angular 1 are.
+
+<div class="thtrm-tldr" markdown="1">
+
+### TLDR;
+
+An injector creates dependencies using providers. Providers are recipes that know how to create dependencies. Type annotations in TypeScript can be used to ask for dependencies and Every component has its own injector, resulting in an injector tree. The injector tree enables transient dependencies.
+
+#### How to inject a service in Angular 2?
+
+1. Create a provider either on your `@NgModule`, `@Component`, or `@Directive` using a type or a string as provider token.
+2. Inject the service in the component's constructor where it's needed using that configured token.
+</div>
 
 ## Dependency Injection as a pattern
 
