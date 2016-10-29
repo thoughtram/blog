@@ -82,7 +82,7 @@ Of course, this code is very simplified and as we can see, there are also no pro
 {% raw %}
 var injector = ResolveInjector.resolveAndCreate([
   { provide: Car, useClass: Car },
-  { provide: Engine {useClass: Engine }
+  { provide: Engine, useClass: Engine }
 ]);
 var childInjector = injector.resolveAndCreateChild();
 var grandChildInjector = childInjector.resolveAndCreateChild([
