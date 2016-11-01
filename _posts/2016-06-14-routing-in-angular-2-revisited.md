@@ -4,7 +4,7 @@ title:      "Routing in Angular 2 revisited"
 imageUrl:   "/images/banner/routing-in-angular-2-revisited.jpeg"
 
 date: 2016-06-14
-update_date: 2016-10-03
+update_date: 2016-10-31
 
 summary: "Learn how to implement basic routing in your Angular 2 application using the latest and greatest APIs!"
 
@@ -20,6 +20,14 @@ demos:
   -
     url: http://embed.plnkr.co/I9qFkO/
     title: Simple Contacts App
+
+videos:
+  -
+   url: "http://casts.thoughtram.io/embedded/189603515"
+  -
+   url: "http://casts.thoughtram.io/embedded/189613148"
+  -
+   url: "http://casts.thoughtram.io/embedded/189618526"
 
 author: pascal_precht
 ---
