@@ -260,7 +260,7 @@ Turns out, it isn't. With this configuration our model starts making perfect pre
 
 Notice how we are able to play and figure out lots of interesting details once we start looking at the right metrics?
 
-# Solving XOR with no activation function at all.
+## Solving XOR with no activation function at all.
 
 Let's see if we can hold our claim of solving XOR without any activation function at all. We change our model to look like this.
 
@@ -298,7 +298,7 @@ Epoch 3718/20000
 {% endhighlight %}
 
 
-# Conclusion
+## Conclusion
 
 Whew! If you made it this far we'll have to say THANK YOU for bearing so long with us just for the sake of understanding a model to solve XOR. If there's just one take away we hope it's that we don't have to be a mathematician to start with machine learning.
 
