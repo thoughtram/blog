@@ -1,20 +1,25 @@
 ---
-layout:     post
-title:      "Exploring Rx Operators: map"
-imageUrl:  "/images/banner/rx-map.jpg"
-
-
-date: 2016-05-16
-
-summary: "This is the first article that is part of a new series where we take a look at different operators of the Reactive Extensions for JavaScript."
-
+layout: post
+title: 'Exploring Rx Operators: map'
+imageUrl: /images/banner/rx-map.jpg
+date: 2016-05-16T00:00:00.000Z
+summary: >-
+  This is the first article that is part of a new series where we take a look at
+  different operators of the Reactive Extensions for JavaScript.
 categories:
   - angular
 tags:
   - angular2
   - rx
-
 author: christoph_burgdorf
+related_posts:
+  - 'Exploring Rx Operators: flatMap'
+  - Cold vs Hot Observables
+  - Taking advantage of Observables in Angular 2 - Part 2
+  - Taking advantage of Observables in Angular 2
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+
 ---
 
 In [Taking advantage of Observables Part one](/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html) and [two](/angular/2016/01/07/taking-advantage-of-observables-in-angular2-pt2.html) we already highlighted the importance of Observables in Angular 2. We believe that mastering Observables can make a key difference in how we write our applications. Well, if you agree, here are some good news! This article is the first of a series of posts where we'll explore operators of the Reactive Extensions for JavaScript (RxJS) and their practical applications.

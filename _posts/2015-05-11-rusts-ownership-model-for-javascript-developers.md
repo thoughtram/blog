@@ -1,16 +1,23 @@
 ---
-layout:     post
-title:      "Rust's Ownership model for JavaScript developers"
-date:       2015-05-11
-summary:    "In this post we explore Rust's concept of ownership that enables the language to achieve 100 % memory safety without garbage collection."
-
+layout: post
+title: Rust's Ownership model for JavaScript developers
+date: 2015-05-11T00:00:00.000Z
+summary: >-
+  In this post we explore Rust's concept of ownership that enables the language
+  to achieve 100 % memory safety without garbage collection.
 categories:
-- rust
-
+  - rust
 tags:
-- rust
-
+  - rust
 author: christoph_burgdorf
+related_posts:
+  - 'A web app with Nickel: From first line to Heroku deployment'
+  - Anouncing Hanover's second Rust meetup
+  - clog - A conventional changelog generator for the rest of us
+  - Organizing Hanovers first Rust meetup
+  - Understanding XOR with Keras and TensorFlow
+  - Announcing Angular 2 Master Class in Sydney
+
 ---
 It's been roughly one year ago since we organized Hannover's first [Rust meetup](http://blog.thoughtram.io/announcements/rust/meetups/2014/06/24/organizing-hannovers-first-rust-meetup.html). Time has passed on and [nickel](http://nickel.rs/) has grown into a really nice web application framework with a very active community and 31 individual contributors as of the time of writing this.
 

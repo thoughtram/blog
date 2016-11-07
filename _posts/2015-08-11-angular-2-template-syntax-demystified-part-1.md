@@ -1,29 +1,34 @@
 ---
-layout:     post
-title:      "Angular 2 Template Syntax Demystified - Part 1"
+layout: post
+title: Angular 2 Template Syntax Demystified - Part 1
 relatedLinks:
-  -
-    title: "Exploring Angular 2 - Article Series"
-    url: "http://blog.thoughtram.io/exploring-angular-2"
-  -
-    title: "Integrating Web Components with AngularJS"
-    url: "https://pascalprecht.github.io/2014/10/25/integrating-web-components-with-angularjs/"
-  -
-    title: "Binding to directive controllers"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html"
-date:       2015-08-11
-update_date: 2016-05-12
-summary:    "Angular 2 introduces it's own kind of template syntax in order to implement different binding strategies. Learn why it's there and how it works."
-
-categories: 
+  - title: Exploring Angular 2 - Article Series
+    url: 'http://blog.thoughtram.io/exploring-angular-2'
+  - title: Integrating Web Components with AngularJS
+    url: >-
+      https://pascalprecht.github.io/2014/10/25/integrating-web-components-with-angularjs/
+  - title: Binding to directive controllers
+    url: >-
+      http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html
+date: 2015-08-11T00:00:00.000Z
+update_date: 2016-05-12T00:00:00.000Z
+summary: >-
+  Angular 2 introduces it's own kind of template syntax in order to implement
+  different binding strategies. Learn why it's there and how it works.
+categories:
   - angular
-
 tags:
   - angular2
-
 topic: views
-
 author: pascal_precht
+related_posts:
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Angular 2 Animations - Foundation Concepts
+  - Angular 2 is out - Get started here
+  - Bypassing Providers in Angular 2
+  - Custom Form Controls in Angular 2
+
 ---
 
 I think we've been all through this. We see Angular 2 template code the very first time and all of a sudden we have these weird brackets and parentheses spread all over our HTML. Around a year ago I've written an article about how to [integrate Web Components with AngularJS](https://pascalprecht.github.io/2014/10/25/integrating-web-components-with-angularjs/), which explains how we can use, or not use, Web Components in AngularJS applications today. If you haven't read it yet, I highly recommend you doing so. It's old but the content is still true.

@@ -1,22 +1,29 @@
 ---
-layout:     post
-title:      "Service vs Factory - Once and for all"
-imageUrl: "/images/banner/service-vs-factory.png"
+layout: post
+title: Service vs Factory - Once and for all
+imageUrl: /images/banner/service-vs-factory.png
 relatedLinks:
-  -
-    title: "Using ES6 with Angular today"
-    url: "http://blog.thoughtram.io/angularjs/es6/2015/01/23/exploring-angular-1.3-using-es6.html"
-date:       2015-07-07
-update_date: 2015-07-07
-summary:    "This is yet another article on services vs factories in AngularJS. It explains once and for all, why we mostly want to use service."
-
-categories: 
+  - title: Using ES6 with Angular today
+    url: >-
+      http://blog.thoughtram.io/angularjs/es6/2015/01/23/exploring-angular-1.3-using-es6.html
+date: 2015-07-07T00:00:00.000Z
+update_date: 2015-07-07T00:00:00.000Z
+summary: >-
+  This is yet another article on services vs factories in AngularJS. It explains
+  once and for all, why we mostly want to use service.
+categories:
   - angular
-
 tags:
   - angular
-
 author: pascal_precht
+related_posts:
+  - 'Exploring Angular 1.5: Lifecycle Hooks'
+  - Sponsoring AngularConnect. Again.
+  - ngMessageFormat - Angular's unheard feature
+  - Multiple Transclusion and named Slots
+  - Taking Angular Master Class to the next level
+  - ngMessages revisited
+
 ---
 
 Wait, what? Yet another article that answers the big question: Service vs Factory, what should I use? Yes, it seems that this is not needed anymore, since there are a ton of resources in the internet that discuss that topic. It turns out that this question still pops up every week or so on different channels, and even after reading the top ten answers on StackOverflow, it's still not very clear. Despite that, it also appears that the current resources on the web don't really promote the actual best practice, especially if we consider the recent movements of the web platform. ES6 I'm looking at you!

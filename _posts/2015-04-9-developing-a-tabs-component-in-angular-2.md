@@ -1,40 +1,39 @@
 ---
-layout:     post
-title:      "Developing a tabs component in Angular 2"
+layout: post
+title: Developing a tabs component in Angular 2
 relatedLinks:
-  -
-    title: "Exploring Angular 2 - Article Series"
-    url: "/exploring-angular-2"
-  -
-    title: "Builing a zippy component in Angular 2"
-    url: "/angular/2015/03/27/building-a-zippy-component-in-angular-2.html"
-  -
-    title: "Creating a tabs component using @ContentChildren"
-    url: "http://juristr.com/blog/2016/02/learning-ng2-creating-tab-component"
-date:       2015-04-09
-update_date: 2016-08-11
-summary:    "This article details how to build another simple, but widely used type of component: tabs."
-
+  - title: Exploring Angular 2 - Article Series
+    url: /exploring-angular-2
+  - title: Builing a zippy component in Angular 2
+    url: /angular/2015/03/27/building-a-zippy-component-in-angular-2.html
+  - title: Creating a tabs component using @ContentChildren
+    url: 'http://juristr.com/blog/2016/02/learning-ng2-creating-tab-component'
+date: 2015-04-09T00:00:00.000Z
+update_date: 2016-08-11T00:00:00.000Z
+summary: >-
+  This article details how to build another simple, but widely used type of
+  component: tabs.
 categories:
-- angular
-
+  - angular
 tags:
-- angular2
-
+  - angular2
 topic: getting-started
-
 author: pascal_precht
-
 demos:
-  -
-    url: http://embed.plnkr.co/KU8eGM/
+  - url: 'http://embed.plnkr.co/KU8eGM/'
     title: Tabs Component build with Angular 2 (RC4)
-  -
-    url: "https://plnkr.co/edit/LEpgaP?p=preview"
+  - url: 'https://plnkr.co/edit/LEpgaP?p=preview'
     title: Tabs Component build with Angular 2 (RC5)
-  -
-    url: https://embed.plnkr.co/afhLA8wHw9LRnzwwTT3M/
+  - url: 'https://embed.plnkr.co/afhLA8wHw9LRnzwwTT3M/'
     title: Tabs Component using @ContentChildren
+related_posts:
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Angular 2 Animations - Foundation Concepts
+  - Angular 2 is out - Get started here
+  - Bypassing Providers in Angular 2
+  - Custom Form Controls in Angular 2
+
 ---
 Just recently, we wrote about how to [build a zippy component](/angular/2015/03/27/building-a-zippy-component-in-angular-2.html) in Angular 2. We explored how to get started with the framework and learned about some concepts that it comes with to build a very simple component. If you haven't read the article, you might want to check it out.
 

@@ -1,35 +1,35 @@
 ---
-layout:     post
-title:      "Cold vs Hot Observables"
-imageUrl:   "/images/banner/hot-vs-cold-observables.jpeg"
-
-date: 2016-06-16
-update_date: 2016-08-11
-
-summary: "In this article we are going to demystify what the term hot vs cold means when it comes to Observables."
-
+layout: post
+title: Cold vs Hot Observables
+imageUrl: /images/banner/hot-vs-cold-observables.jpeg
+date: 2016-06-16T00:00:00.000Z
+update_date: 2016-08-11T00:00:00.000Z
+summary: >-
+  In this article we are going to demystify what the term hot vs cold means when
+  it comes to Observables.
 categories:
   - angular
-
 tags:
   - angular2
   - rx
-
 demos:
-  -
-    url: http://jsbin.com/mihoyifiku/1/edit?js,console
-    title: "Creating a basic Observable"
-  -
-    url: http://jsbin.com/xosipocoza/1/edit?js,console
-    title: "Cold Observable"
-  -
-    url: http://jsbin.com/pupoledehi/1/edit?js,console
-    title: "Warm Observable"
-  -
-    url: http://jsbin.com/sokayofise/1/edit?js,console
-    title: "Hot Observable"
-
+  - url: 'http://jsbin.com/mihoyifiku/1/edit?js,console'
+    title: Creating a basic Observable
+  - url: 'http://jsbin.com/xosipocoza/1/edit?js,console'
+    title: Cold Observable
+  - url: 'http://jsbin.com/pupoledehi/1/edit?js,console'
+    title: Warm Observable
+  - url: 'http://jsbin.com/sokayofise/1/edit?js,console'
+    title: Hot Observable
 author: christoph_burgdorf
+related_posts:
+  - 'Exploring Rx Operators: flatMap'
+  - 'Exploring Rx Operators: map'
+  - Taking advantage of Observables in Angular 2 - Part 2
+  - Taking advantage of Observables in Angular 2
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+
 ---
 
 One of the most exciting topics around Angular 2 is it's relationship to Observables. It's such an essential part of the framework that we cover a fair amount of Observable knowledge in our [Angular 2 Master Class](http://thoughtram.io/angular2-master-class.html). That said, the topic is so big that one could easily run a 3-days workshop on Observables itself.

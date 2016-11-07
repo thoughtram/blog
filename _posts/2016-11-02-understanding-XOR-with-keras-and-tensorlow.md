@@ -1,20 +1,25 @@
 ---
-layout:     post
-title:      "Understanding XOR with Keras and TensorFlow"
-
-date: 2016-11-02
-imageUrl:  "/images/banner/understanding-xor-with-keras-and-tensorflow.jpeg"
-
-
-summary: "In this article we'll take a closer look at a simple model for a neural net to solve an XOR gate. Even with such a basic task, we can figure out quite a bunch of interesting things."
-
+layout: post
+title: Understanding XOR with Keras and TensorFlow
+date: 2016-11-02T00:00:00.000Z
+imageUrl: /images/banner/understanding-xor-with-keras-and-tensorflow.jpeg
+summary: >-
+  In this article we'll take a closer look at a simple model for a neural net to
+  solve an XOR gate. Even with such a basic task, we can figure out quite a
+  bunch of interesting things.
 categories:
   - machine-learning
-
 tags:
   - machine-learning
-
 author: christoph_burgdorf
+related_posts:
+  - Beginning Machine Learning with Keras and TensorFlow
+  - Announcing Angular 2 Master Class in Sydney
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Angular 2 Animations - Foundation Concepts
+  - Angular 2 is out - Get started here
+
 ---
 
 In our [recent article](/machine-learning/2016/09/23/beginning-ml-with-keras-and-tensorflow.html) on machine learning we've shown how to get started with machine learning without assuming any prior knowledge. We ended up running our very first neural network to implement an [XOR gate](https://en.wikipedia.org/wiki/XOR_gate).

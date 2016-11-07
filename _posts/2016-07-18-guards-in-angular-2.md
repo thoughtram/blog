@@ -1,28 +1,30 @@
 ---
-layout:     post
-title:      "Protecting Routes using Guards in Angular 2"
-imageUrl:   "/images/banner/protecting-routes-using-guards-in-angular-2.jpg"
-
-date: 2016-07-18
-update_date: 2016-08-11
-
-summary: "Angular's router enables protecting routes using guards and in this article we're going to discuss how to implement them."
-
+layout: post
+title: Protecting Routes using Guards in Angular 2
+imageUrl: /images/banner/protecting-routes-using-guards-in-angular-2.jpg
+date: 2016-07-18T00:00:00.000Z
+update_date: 2016-08-11T00:00:00.000Z
+summary: >-
+  Angular's router enables protecting routes using guards and in this article
+  we're going to discuss how to implement them.
 categories:
   - angular
-
 tags:
   - angular2
   - routing
-
 videos:
-  -
-    url: "http://casts.thoughtram.io/embedded/175218351"
-    title: "Guards in Angular 2"
-
+  - url: 'http://casts.thoughtram.io/embedded/175218351'
+    title: Guards in Angular 2
 topic: routing
-
 author: pascal_precht
+related_posts:
+  - Futuristic Routing in Angular
+  - Resolving route data in Angular 2
+  - Routing in Angular 2 revisited
+  - Routing in Angular 2
+  - Two-way Data Binding in Angular 2
+  - Angular 2 Animations - Foundation Concepts
+
 ---
 
 In our last article, [Routing in Angular 2 revisited](/angular/2016/06/14/routing-in-angular-2-revisited.html), we talked about the latest changes in the router APIs. While we covered how to set up basic routes, access parameters and link to other components, we haven't really talked about more sophisticated use cases like protecting routes.

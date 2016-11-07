@@ -1,48 +1,55 @@
 ---
-layout:     post
-title:      "Go fast with $applyAsync in Angular 1.3"
+layout: post
+title: Go fast with $applyAsync in Angular 1.3
 relatedLinks:
-  -
-    title: "Exploring Angular 1.3: One-time bindings"
-    url: "http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html"
-  -
-    title: "Exploring Angular 1.3: ng-model-options"
-    url: "http://blog.thoughtram.io/angularjs/2014/10/19/exploring-angular-1.3-ng-model-options.html"
-  -
-    title: "Exploring Angular 1.3: Angular-hint"
-    url: "http://blog.thoughtram.io/angularjs/2014/11/06/exploring-angular-1.3-angular-hint.html"
-  -
-    title: "Exploring Angular 1.3: Stateful Filters"
-    url: "http://blog.thoughtram.io/angularjs/2014/11/19/exploring-angular-1.3-stateful-filters.html"
-  -
-    title: "Exploring Angular 1.3: ES6 Style Promises"
-    url: "http://blog.thoughtram.io/angularjs/2014/12/18/exploring-angular-1.3-es6-style-promises.html"
-  -
-    title: "Exploring Angular 1.3: Disabling Debug Info"
-    url: "http://blog.thoughtram.io/angularjs/2014/12/22/exploring-angular-1.3-disabling-debug-info.html"
-  -
-    title: "Exploring Angular 1.3: Binding to Directive Controllers"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html"
-  -
-    title: "Exploring Angular 1.3: Validators Pipeline"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/11/exploring-angular-1.3-validators-pipeline.html"
-  -
-    title: "Exploring Angular 1.3: ngMessages"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/23/exploring-angular-1.3-ngMessages.html"
-date:       2015-01-14
-update_date: 2015-08-13
-summary:    "Angular 1.3 comes with a feature to share a running $digest cycle across multiple XHR calls. This articles details how to gain a nice performance boost."
-
+  - title: 'Exploring Angular 1.3: One-time bindings'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html
+  - title: 'Exploring Angular 1.3: ng-model-options'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/10/19/exploring-angular-1.3-ng-model-options.html
+  - title: 'Exploring Angular 1.3: Angular-hint'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/11/06/exploring-angular-1.3-angular-hint.html
+  - title: 'Exploring Angular 1.3: Stateful Filters'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/11/19/exploring-angular-1.3-stateful-filters.html
+  - title: 'Exploring Angular 1.3: ES6 Style Promises'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/12/18/exploring-angular-1.3-es6-style-promises.html
+  - title: 'Exploring Angular 1.3: Disabling Debug Info'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/12/22/exploring-angular-1.3-disabling-debug-info.html
+  - title: 'Exploring Angular 1.3: Binding to Directive Controllers'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html
+  - title: 'Exploring Angular 1.3: Validators Pipeline'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2015/01/11/exploring-angular-1.3-validators-pipeline.html
+  - title: 'Exploring Angular 1.3: ngMessages'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2015/01/23/exploring-angular-1.3-ngMessages.html
+date: 2015-01-14T00:00:00.000Z
+update_date: 2015-08-13T00:00:00.000Z
+summary: >-
+  Angular 1.3 comes with a feature to share a running $digest cycle across
+  multiple XHR calls. This articles details how to gain a nice performance
+  boost.
 isExploringAngular13Article: true
-
-categories: 
-- angularjs
-
+categories:
+  - angularjs
 tags:
   - angular
   - performance
-
 author: pascal_precht
+related_posts:
+  - Disabling Debug Info in Angular 1.3
+  - 'Exploring Angular 1.5: Lifecycle Hooks'
+  - Sponsoring AngularConnect. Again.
+  - ngMessageFormat - Angular's unheard feature
+  - Multiple Transclusion and named Slots
+  - Service vs Factory - Once and for all
+
 ---
 
 As already mentioned in our articles on [one-time bindings](http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html) and [disabling debug info](http://blog.thoughtram.io/angularjs/2014/12/22/exploring-angular-1.3-disabling-debug-info.html), one of the biggest goals of the 1.3 release was to improve Angular's overall performance. 

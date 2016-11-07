@@ -1,21 +1,25 @@
 ---
-layout:     post
-title:      "Thomas joins thoughtram"
-
-date: 2016-05-19
-imageUrl:  "/images/thomas_high_res.png"
-
-
-summary: "Today we are happy to announce a big step forward for us as a company. Thomas Burleson joins our Team!"
-
+layout: post
+title: Thomas joins thoughtram
+date: 2016-05-19T00:00:00.000Z
+imageUrl: /images/thomas_high_res.png
+summary: >-
+  Today we are happy to announce a big step forward for us as a company. Thomas
+  Burleson joins our Team!
 categories:
   - announcements
-
 tags:
   - announcements
   - company
-
 author: christoph_burgdorf
+related_posts:
+  - Upcoming events in 2015
+  - Around the globe
+  - We are thoughtram
+  - Announcing Angular 2 Master Class in Sydney
+  - Announcing Angular 2 Master Class in NYC
+  - Updates and announcements
+
 ---
 
 Nearly two years passed since we [announced thoughtram](/announcements/2014/06/06/we-are-thoughtram.html) on this blog. It's been an amazing journey for us. We ran a lot of trainings [all over the globe](/angularjs/2015/02/21/around-the-globe.html), we contributed to exciting projects and we met many people. Some of them even turned into close friends.

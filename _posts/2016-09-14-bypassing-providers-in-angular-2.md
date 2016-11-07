@@ -1,26 +1,28 @@
 ---
-layout:     post
-title:      "Bypassing Providers in Angular 2"
-imageUrl:   "/images/banner/bypassing-providers-in-angular-2.jpg"
-
-date: 2016-09-14
-
-summary: "Dependencies are provided from the nearest ancestor provider in the injector tree. This article shows how to bypass it."
-
+layout: post
+title: Bypassing Providers in Angular 2
+imageUrl: /images/banner/bypassing-providers-in-angular-2.jpg
+date: 2016-09-14T00:00:00.000Z
+summary: >-
+  Dependencies are provided from the nearest ancestor provider in the injector
+  tree. This article shows how to bypass it.
 categories:
   - angular
-
 tags:
   - angular2
-
 topic: di
-
 demos:
-  -
-   url: "http://embed.plnkr.co/k7FGlm/"
-   title: "Bypassing Providers"
-
+  - url: 'http://embed.plnkr.co/k7FGlm/'
+    title: Bypassing Providers
 author: pascal_precht
+related_posts:
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Angular 2 Animations - Foundation Concepts
+  - Angular 2 is out - Get started here
+  - Custom Form Controls in Angular 2
+  - Protecting Routes using Guards in Angular 2
+
 ---
 
 We covered a lot of different things everything dependency injection in Angular 2. However, at our latest training, one of our students came up with a very interesting question: 

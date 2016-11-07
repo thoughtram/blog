@@ -1,37 +1,36 @@
 ---
-layout:     post
-title:      "Understanding Zones"
-
+layout: post
+title: Understanding Zones
 relatedLinks:
-  -
-    title: "Exploring Angular 2 - Article Series"
-    url: "http://blog.thoughtram.io/exploring-angular-2"
-  -
-    title: "Brian's talk on Zones at NG-Conf 2014"
-    url: "https://www.youtube.com/watch?v=3IqtmUscE_U"
-  -
-    title: "Zones in Dart"
-    url: "https://www.dartlang.org/articles/zones/"
-  -
-    title: "The Event Loop and Dart"
-    url: "https://www.dartlang.org/articles/event-loop/"
-  -
-    title: "Talk: What the heck is the event loop anyway?"
-    url: "https://www.youtube.com/watch?v=8aGhZQkoFbQ"
-
-
-date:       2016-01-22
-update_date: 2016-01-22
-summary:    "Angular 2 takes advantage of a feature called Zones. Learn here what they are and how they work."
-
+  - title: Exploring Angular 2 - Article Series
+    url: 'http://blog.thoughtram.io/exploring-angular-2'
+  - title: Brian's talk on Zones at NG-Conf 2014
+    url: 'https://www.youtube.com/watch?v=3IqtmUscE_U'
+  - title: Zones in Dart
+    url: 'https://www.dartlang.org/articles/zones/'
+  - title: The Event Loop and Dart
+    url: 'https://www.dartlang.org/articles/event-loop/'
+  - title: 'Talk: What the heck is the event loop anyway?'
+    url: 'https://www.youtube.com/watch?v=8aGhZQkoFbQ'
+date: 2016-01-22T00:00:00.000Z
+update_date: 2016-01-22T00:00:00.000Z
+summary: >-
+  Angular 2 takes advantage of a feature called Zones. Learn here what they are
+  and how they work.
 categories:
   - angular
-
 tags:
   - angular2
-
 topic: changedetection
 author: pascal_precht
+related_posts:
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Angular 2 Animations - Foundation Concepts
+  - Angular 2 is out - Get started here
+  - Bypassing Providers in Angular 2
+  - Custom Form Controls in Angular 2
+
 ---
 
 At NG-Conf 2014, [Brian](http://twitter.com/briantford) gave an excellent [talk on zones](https://www.youtube.com/watch?v=3IqtmUscE_U) and how they can change the way we deal with asynchronous code. If you haven't watched this talk yet, give it a shot, it's just ~15 minutes long. APIs might be different nowadays, but the semantics and underlying concepts are the same. In this article we'd like to dive a bit deeper into how zones work.

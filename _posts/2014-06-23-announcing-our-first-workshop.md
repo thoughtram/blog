@@ -1,24 +1,31 @@
 ---
-layout:     post
-title: "Announcing our first workshop"
-date: "2014-06-23"
-summary: As announced earlier this month, we were working on our website to launch it as soon as possible. The time has come!
-imageUrl: "/images/banner/announcing-our-first-workshop.jpeg"
-
+layout: post
+title: Announcing our first workshop
+date: '2014-06-23'
+summary: >-
+  As announced earlier this month, we were working on our website to launch it
+  as soon as possible. The time has come!
+imageUrl: /images/banner/announcing-our-first-workshop.jpeg
 redirect_from:
   - /posts/announcing-our-first-workshop/
-
-categories: 
+categories:
   - announcements
 tags:
   - git
   - training
   - announcements
 author: christoph_burgdorf
-
 authors:
   - christoph_burgdorf
   - pascal_precht
+related_posts:
+  - Git Ninja Class comes to Istanbul
+  - Tickets are on sale now!
+  - Joining betahaus education
+  - Understanding branches in Git
+  - The anatomy of a Git commit
+  - Going back in time to split older commits
+
 ---
 
 As announced [earlier this month](/posts/we-are-thoughtram), we were working on our website to launch it as soon as possible. The time has come!

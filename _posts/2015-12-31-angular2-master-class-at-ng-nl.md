@@ -1,16 +1,22 @@
 ---
-layout:     post
-title:      "Angular 2 Jump Start at NG-NL 2016"
-
-date:       2015-12-31
-updatedate: 2015-12-31
-
-summary: "Next year the second edition of NG-NL, will happen again and we're even excited to announce that we'll join the conference as speakers!"
-
+layout: post
+title: Angular 2 Jump Start at NG-NL 2016
+date: 2015-12-31T00:00:00.000Z
+updatedate: 2015-12-31T00:00:00.000Z
+summary: >-
+  Next year the second edition of NG-NL, will happen again and we're even
+  excited to announce that we'll join the conference as speakers!
 categories:
   - announcements
-
 author: pascal_precht
+related_posts:
+  - Understanding XOR with Keras and TensorFlow
+  - Announcing Angular 2 Master Class in Sydney
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Beginning Machine Learning with Keras and TensorFlow
+  - Angular 2 Animations - Foundation Concepts
+
 ---
 
 This year, the very first Angular conference in Amsterdam took place and it was a huge success. The conference aims to be mainly driven by the community and focusses not only on technical, but also inspiring talks. Christoph and I have been part of it as speakers and we talked about [the best Angular yet](http://thoughtram.io/the-best-angular-yet/#/) which was really fun!

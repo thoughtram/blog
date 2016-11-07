@@ -1,17 +1,24 @@
 ---
-layout:     post
-title:      "Multiple Transclusion and named Slots"
-date:       2015-11-16
-update_date: 2015-12-10
-summary:    "One of those bigger features in the 1.5 release is multiple transclusion via named slots. In this article we're going to discuss what it's all about."
-
+layout: post
+title: Multiple Transclusion and named Slots
+date: 2015-11-16T00:00:00.000Z
+update_date: 2015-12-10T00:00:00.000Z
+summary: >-
+  One of those bigger features in the 1.5 release is multiple transclusion via
+  named slots. In this article we're going to discuss what it's all about.
 categories:
   - angular
-
 tags:
   - angular
-
 author: pascal_precht
+related_posts:
+  - 'Exploring Angular 1.5: Lifecycle Hooks'
+  - Sponsoring AngularConnect. Again.
+  - ngMessageFormat - Angular's unheard feature
+  - Service vs Factory - Once and for all
+  - Taking Angular Master Class to the next level
+  - ngMessages revisited
+
 ---
 
 With the upcoming final 1.5 release of the AngularJS framework, tons of new features, improvements and bug fixes are right around the corner. One of those features is **multiple transclusion via named slots**. While transclusion is already a very nice and powerful feature, with the 1.5 release it's going to be taken to the next level. In this article we're going to discuss what multiple transclusion is all about and how it helps the framework to align more with the web components technologies.

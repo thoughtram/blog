@@ -1,28 +1,30 @@
 ---
-layout:     post
-title:      "Custom Form Controls in Angular 2"
-imageUrl:   "/images/banner/custom-form-controls-in-angular-2.jpg"
-
-date: 2016-07-27
-update_date: 2016-08-11
-
-summary: "Angular makes it very easy to create custom form controls. Read on to learn how to do it!"
-
+layout: post
+title: Custom Form Controls in Angular 2
+imageUrl: /images/banner/custom-form-controls-in-angular-2.jpg
+date: 2016-07-27T00:00:00.000Z
+update_date: 2016-08-11T00:00:00.000Z
+summary: >-
+  Angular makes it very easy to create custom form controls. Read on to learn
+  how to do it!
 categories:
   - angular
-
 tags:
   - angular2
   - forms
-
 topic: forms
-
 demos:
-  -
-   url: http://embed.plnkr.co/035BWnCCvSuchgpO1b9Z/
-   title: Custom number input control
-
+  - url: 'http://embed.plnkr.co/035BWnCCvSuchgpO1b9Z/'
+    title: Custom number input control
 author: pascal_precht
+related_posts:
+  - Two-way Data Binding in Angular 2
+  - Reactive Forms in Angular 2
+  - Template-driven Forms in Angular 2
+  - Custom Validators in Angular 2
+  - Resolving route data in Angular 2
+  - Angular 2 Animations - Foundation Concepts
+
 ---
 
 There are many things that Angular helps us out with when creating forms. We've covered several topics on [Forms in Angular 2](/forms-in-angular-2), like model-driven forms and template-driven forms. If you haven't read those articles yet, we highly recommend you to do so as this one is based on them. [Almero Steyn](http://twitter.com/kryptos_rsa), one of our training students, who later on contributed to the official documentation as part of the Docs Authoring Team for Angular 2, has also written a very nice [introduction](http://almerosteyn.com/2016/04/linkup-custom-control-to-ngcontrol-ngmodel) to creating custom controls.

@@ -1,46 +1,53 @@
 ---
-layout:     post
-title:      "Angular-hint in Angular 1.3"
+layout: post
+title: Angular-hint in Angular 1.3
 relatedLinks:
-  -
-    title: "Exploring Angular 1.3: One-time bindings"
-    url: "http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html"
-  -
-    title: "Exploring Angular 1.3: ng-model-options"
-    url: "http://blog.thoughtram.io/angularjs/2014/10/19/exploring-angular-1.3-ng-model-options.html"
-  -
-    title: "Exploring Angular 1.3: Stateful Filters"
-    url: "http://blog.thoughtram.io/angularjs/2014/11/19/exploring-angular-1.3-stateful-filters.html"
-  -
-    title: "Exploring Angular 1.3: ES6 Style Promises"
-    url: "http://blog.thoughtram.io/angularjs/2014/12/18/exploring-angular-1.3-es6-style-promises.html"
-  -
-    title: "Exploring Angular 1.3: Disabling Debug Info"
-    url: "http://blog.thoughtram.io/angularjs/2014/12/22/exploring-angular-1.3-disabling-debug-info.html"
-  -
-    title: "Exploring Angular 1.3: Binding to Directive Controllers"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html"
-  -
-    title: "Exploring Angular 1.3: Validators Pipeline"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/11/exploring-angular-1.3-validators-pipeline.html"
-  -
-    title: "Exploring Angular 1.3: Go fast with $applyAsync"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/14/exploring-angular-1.3-speed-up-with-applyAsync.html"
-  -
-    title: "Exploring Angular 1.3: ngMessages"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/23/exploring-angular-1.3-ngMessages.html"
-date:       2014-11-06
-updatedate: 2015-08-13
-summary:    In this article we are talking about the angular-hint module which makes our lifes easier when developing angular apps.
+  - title: 'Exploring Angular 1.3: One-time bindings'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html
+  - title: 'Exploring Angular 1.3: ng-model-options'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/10/19/exploring-angular-1.3-ng-model-options.html
+  - title: 'Exploring Angular 1.3: Stateful Filters'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/11/19/exploring-angular-1.3-stateful-filters.html
+  - title: 'Exploring Angular 1.3: ES6 Style Promises'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/12/18/exploring-angular-1.3-es6-style-promises.html
+  - title: 'Exploring Angular 1.3: Disabling Debug Info'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/12/22/exploring-angular-1.3-disabling-debug-info.html
+  - title: 'Exploring Angular 1.3: Binding to Directive Controllers'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html
+  - title: 'Exploring Angular 1.3: Validators Pipeline'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2015/01/11/exploring-angular-1.3-validators-pipeline.html
+  - title: 'Exploring Angular 1.3: Go fast with $applyAsync'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2015/01/14/exploring-angular-1.3-speed-up-with-applyAsync.html
+  - title: 'Exploring Angular 1.3: ngMessages'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2015/01/23/exploring-angular-1.3-ngMessages.html
+date: 2014-11-06T00:00:00.000Z
+updatedate: 2015-08-13T00:00:00.000Z
+summary: >-
+  In this article we are talking about the angular-hint module which makes our
+  lifes easier when developing angular apps.
 isExploringAngular13Article: true
-
-categories: 
+categories:
   - angularjs
-
 tags:
   - angular
-
 author: pascal_precht
+related_posts:
+  - 'Exploring Angular 1.5: Lifecycle Hooks'
+  - Sponsoring AngularConnect. Again.
+  - ngMessageFormat - Angular's unheard feature
+  - Multiple Transclusion and named Slots
+  - Service vs Factory - Once and for all
+  - Taking Angular Master Class to the next level
+
 ---
 
 With the release of version 1.3, the Angular project comes with a new module called [angular-hint](http://github.com/angular/angular-hint), that makes debugging and finding mistakes in the code base easier. It also gives us hints about best practices, so that our code is more maintainable and easier to read. In this article we'll take a brief look at this module and explore how we can actually use it and what great features it provides. As a side note, this is the third article of our "*Exploring Angular 1.3*" series, so you might want to check out our articles about [ngModelOptions](http://blog.thoughtram.io/angularjs/2014/10/19/exploring-angular-1.3-ng-model-options.html) and [one-time bindings](http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html) too. Okay, let's dive into the actual topic.

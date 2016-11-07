@@ -1,31 +1,32 @@
 ---
-layout:     post
-title:      "Exploring Angular 1.5: Lifecycle Hooks"
+layout: post
+title: 'Exploring Angular 1.5: Lifecycle Hooks'
 relatedLinks:
-  -
-    title: "Exploring Angular 1.3"
-    url: "http://blog.thoughtram.io/exploring-angular-1.3"
-  -
-    title: "Angular 1.5 components"
-    url: "https://docs.angularjs.org/guide/component"
-  -
-    title: "Angualr 2 Lifecycle Hooks"
-    url: "https://angular.io/docs/ts/latest/guide/lifecycle-hooks.html"
-
-date: 2016-03-29
-update_date: 2016-03-29
-
-summary: "Angular 1.5 is finally out! This article discusses the new lifecycle hooks in Angular."
-
+  - title: Exploring Angular 1.3
+    url: 'http://blog.thoughtram.io/exploring-angular-1.3'
+  - title: Angular 1.5 components
+    url: 'https://docs.angularjs.org/guide/component'
+  - title: Angualr 2 Lifecycle Hooks
+    url: 'https://angular.io/docs/ts/latest/guide/lifecycle-hooks.html'
+date: 2016-03-29T00:00:00.000Z
+update_date: 2016-03-29T00:00:00.000Z
+summary: >-
+  Angular 1.5 is finally out! This article discusses the new lifecycle hooks in
+  Angular.
 isExploringAngular15Article: true
-
 categories:
   - angularjs
-
 tags:
   - angular
-
 author: pascal_precht
+related_posts:
+  - Sponsoring AngularConnect. Again.
+  - ngMessageFormat - Angular's unheard feature
+  - Multiple Transclusion and named Slots
+  - Service vs Factory - Once and for all
+  - Taking Angular Master Class to the next level
+  - ngMessages revisited
+
 ---
 
 Angular 1.5 has been finally released and it's more powerful than ever before! Many new features have been added and tons of fixes landed in the latest bigger release. If you're following our articles, you know that we love to give an overview of the latest and greatest in the Angular world. Last year we blogged about the 1.3 release in our article series [Exploring Angular 1.3](http://blog.thoughtram.io/exploring-angular-1.3). With this article we're going to start a new series called, guess what, "Exploring Angular 1.5", and the first topic we're going to explore is the new feature of **Lifecycle Hooks**. Let's get started right away!

@@ -1,18 +1,24 @@
 ---
-layout:     post
-title:      "Announcing Angular 2 Master Class in Sydney"
-imageUrl:   "/images/banner/announcing-a2mc-sydney.jpg"
-
-date: 2016-10-30
-
-summary: "We are thrilled to share exciting news with you today. We'll bring our Angular 2 Master Class experience to Sydney! Read on for more information."
-
+layout: post
+title: Announcing Angular 2 Master Class in Sydney
+imageUrl: /images/banner/announcing-a2mc-sydney.jpg
+date: 2016-10-30T00:00:00.000Z
+summary: >-
+  We are thrilled to share exciting news with you today. We'll bring our Angular
+  2 Master Class experience to Sydney! Read on for more information.
 categories:
-- announcements
+  - announcements
 tags:
-- announcements
-
+  - announcements
 author: christoph_burgdorf
+related_posts:
+  - Announcing Angular 2 Master Class in NYC
+  - Updates and announcements
+  - Thomas joins thoughtram
+  - Updates and announcements
+  - Speaking at code.talks
+  - Upcoming events in 2015
+
 ---
 
 Just a couple of weeks ago we [announced](/announcements/2016/08/30/announcing-angular-2-master-class-in-nyc.html) to bring our Angular 2 Master Class to New York City. And now in fact it's happening in just about two weeks with only very few [tickets](https://www.eventbrite.de/e/angular-2-master-class-new-york-city-tickets-27384912009) left.

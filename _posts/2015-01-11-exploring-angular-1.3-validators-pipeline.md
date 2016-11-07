@@ -1,47 +1,53 @@
 ---
-layout:     post
-title:      "Validators Pipeline in Angular 1.3"
+layout: post
+title: Validators Pipeline in Angular 1.3
 relatedLinks:
-  -
-    title: "Exploring Angular 1.3: One-time bindings"
-    url: "http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html"
-  -
-    title: "Exploring Angular 1.3: ng-model-options"
-    url: "http://blog.thoughtram.io/angularjs/2014/10/19/exploring-angular-1.3-ng-model-options.html"
-  -
-    title: "Exploring Angular 1.3: Angular-hint"
-    url: "http://blog.thoughtram.io/angularjs/2014/11/06/exploring-angular-1.3-angular-hint.html"
-  -
-    title: "Exploring Angular 1.3: Stateful Filters"
-    url: "http://blog.thoughtram.io/angularjs/2014/11/19/exploring-angular-1.3-stateful-filters.html"
-  -
-    title: "Exploring Angular 1.3: ES6 Style Promises"
-    url: "http://blog.thoughtram.io/angularjs/2014/12/18/exploring-angular-1.3-es6-style-promises.html"
-  -
-    title: "Exploring Angular 1.3: Disabling Debug Info"
-    url: "http://blog.thoughtram.io/angularjs/2014/12/22/exploring-angular-1.3-disabling-debug-info.html"
-  -
-    title: "Exploring Angular 1.3: Binding to Directive Controllers"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html"
-  -
-    title: "Exploring Angular 1.3: Go fast with $applyAsync"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/14/exploring-angular-1.3-speed-up-with-applyAsync.html"
-  -
-    title: "Exploring Angular 1.3: ngMessages"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/23/exploring-angular-1.3-ngMessages.html"
-date:       2015-01-11
-update_date: 2015-08-13
-summary:    "In this article we discuss a newly introduced feature called custom validators, so we don't have to hijack parsers and formatters anymore."
-
+  - title: 'Exploring Angular 1.3: One-time bindings'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html
+  - title: 'Exploring Angular 1.3: ng-model-options'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/10/19/exploring-angular-1.3-ng-model-options.html
+  - title: 'Exploring Angular 1.3: Angular-hint'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/11/06/exploring-angular-1.3-angular-hint.html
+  - title: 'Exploring Angular 1.3: Stateful Filters'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/11/19/exploring-angular-1.3-stateful-filters.html
+  - title: 'Exploring Angular 1.3: ES6 Style Promises'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/12/18/exploring-angular-1.3-es6-style-promises.html
+  - title: 'Exploring Angular 1.3: Disabling Debug Info'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/12/22/exploring-angular-1.3-disabling-debug-info.html
+  - title: 'Exploring Angular 1.3: Binding to Directive Controllers'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html
+  - title: 'Exploring Angular 1.3: Go fast with $applyAsync'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2015/01/14/exploring-angular-1.3-speed-up-with-applyAsync.html
+  - title: 'Exploring Angular 1.3: ngMessages'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2015/01/23/exploring-angular-1.3-ngMessages.html
+date: 2015-01-11T00:00:00.000Z
+update_date: 2015-08-13T00:00:00.000Z
+summary: >-
+  In this article we discuss a newly introduced feature called custom
+  validators, so we don't have to hijack parsers and formatters anymore.
 isExploringAngular13Article: true
-
-categories: 
-- angularjs
-
+categories:
+  - angularjs
 tags:
   - angular
-
 author: pascal_precht
+related_posts:
+  - 'Exploring Angular 1.5: Lifecycle Hooks'
+  - Sponsoring AngularConnect. Again.
+  - ngMessageFormat - Angular's unheard feature
+  - Multiple Transclusion and named Slots
+  - Service vs Factory - Once and for all
+  - Taking Angular Master Class to the next level
+
 ---
 
 We know that working with forms in Angular is just great. Due to its scope model nature, we always have a reference to the actual form state in its corresponding scope, which makes it easy to access particular field values or represent the form state in our views. 

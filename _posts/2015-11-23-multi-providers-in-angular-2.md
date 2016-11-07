@@ -1,24 +1,28 @@
 ---
-layout:     post
-title:      "Multi Providers in Angular 2"
-date:       2015-11-23
-update_date: 2016-08-11
-summary:    "Multi-providers allow us to extend existing dependencies in Angular 2. Read on to learn when this is useful!"
-
+layout: post
+title: Multi Providers in Angular 2
+date: 2015-11-23T00:00:00.000Z
+update_date: 2016-08-11T00:00:00.000Z
+summary: >-
+  Multi-providers allow us to extend existing dependencies in Angular 2. Read on
+  to learn when this is useful!
 categories:
   - angular2
-
 tags:
   - angular2
-
 topic: di
-
 author: pascal_precht
-
 relatedLinks:
-  -
-    title: "Exploring Angular 2 - Article Series"
-    url: "/exploring-angular-2"
+  - title: Exploring Angular 2 - Article Series
+    url: /exploring-angular-2
+related_posts:
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Angular 2 Animations - Foundation Concepts
+  - Angular 2 is out - Get started here
+  - Bypassing Providers in Angular 2
+  - Custom Form Controls in Angular 2
+
 ---
 
 The new dependency injection system in Angular 2 comes with a feature called "Multi Providers" that basically enable us, the consumer of the platform, to hook into certain operations and plug in custom functionality we might need in our application use case. We're going to discuss what they look like, how they work and how Angular itself takes advantage of them to keep the platform flexible and extendible.

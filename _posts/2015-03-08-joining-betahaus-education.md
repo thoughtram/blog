@@ -1,18 +1,26 @@
 ---
-layout:     post
-title:      "Joining betahaus education"
-date:       2015-03-08
-summary:    "We're happy to announce to take part in the new betahaus education program that aims to deliver various formats including sessions and workshops."
-
+layout: post
+title: Joining betahaus education
+date: 2015-03-08T00:00:00.000Z
+summary: >-
+  We're happy to announce to take part in the new betahaus education program
+  that aims to deliver various formats including sessions and workshops.
 isExploringAngular13Article: false
-
-categories: 
-- angularjs
+categories:
+  - angularjs
 tags:
   - angular
   - training
   - announcements
 author: christoph_burgdorf
+related_posts:
+  - Git Ninja Class comes to Istanbul
+  - Tickets are on sale now!
+  - Announcing our first workshop
+  - Git Ninja Class in Amsterdam
+  - Announcing Angular 2 Master Class in Sydney
+  - Announcing Angular 2 Master Class in NYC
+
 ---
 
 If you are following the startup scene chances are you've heard about the [betahaus](http://betahaus.com) before. It's a popular co-working space with branches in Berlin, Hamburg, Barcelona and Sofia.

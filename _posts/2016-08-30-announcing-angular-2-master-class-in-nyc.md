@@ -1,18 +1,24 @@
 ---
-layout:     post
-title:      "Announcing Angular 2 Master Class in NYC"
-imageUrl:   "/images/banner/announcing-angular-2-master-class-in-nyc.jpg"
-
-date: 2016-08-30
-
-summary: "Today we're super exciting to announce that we'll bring our Angular 2 Master Class experience to New York City! Read on for more information."
-
+layout: post
+title: Announcing Angular 2 Master Class in NYC
+imageUrl: /images/banner/announcing-angular-2-master-class-in-nyc.jpg
+date: 2016-08-30T00:00:00.000Z
+summary: >-
+  Today we're super exciting to announce that we'll bring our Angular 2 Master
+  Class experience to New York City! Read on for more information.
 categories:
-- announcements
+  - announcements
 tags:
-- announcements
-
+  - announcements
 author: pascal_precht
+related_posts:
+  - Announcing Angular 2 Master Class in Sydney
+  - Updates and announcements
+  - Thomas joins thoughtram
+  - Updates and announcements
+  - Speaking at code.talks
+  - Upcoming events in 2015
+
 ---
 
 As recently [posted on Facebook](https://www.facebook.com/thoughtram/posts/706056426199788), we have some very exciting news to share with you today:

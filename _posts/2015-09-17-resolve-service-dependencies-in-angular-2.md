@@ -1,40 +1,39 @@
 ---
-layout:     post
-title:      "Injecting services in services in Angular 2"
+layout: post
+title: Injecting services in services in Angular 2
 relatedLinks:
-  -
-    title: "Exploring Angular 2 - Article Series"
-    url: "/exploring-angular-2"
-  -
-    title: "Dependency Injection in Angular 2"
-    url: "/angular/2015/05/18/dependency-injection-in-angular-2.html"
-  -
-    title: "Host and Visibility in Angular 2's Dependency Injection"
-    url: "/angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html"
-  -
-    title: "Forward References in Angular 2"
-    url: "/angular/2015/09/03/forward-references-in-angular-2.html"
-  -
-    title: "The Difference between Decorators and Annotations"
-    url: "/angular/2015/05/03/the-difference-between-annotations-and-decorators.html"
-
-date:       2015-09-17
-update_date: 2016-08-11
-summary: "We might run into unexpected behaviour when injecting service dependencies. This article details how to do it right."
-
+  - title: Exploring Angular 2 - Article Series
+    url: /exploring-angular-2
+  - title: Dependency Injection in Angular 2
+    url: /angular/2015/05/18/dependency-injection-in-angular-2.html
+  - title: Host and Visibility in Angular 2's Dependency Injection
+    url: >-
+      /angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html
+  - title: Forward References in Angular 2
+    url: /angular/2015/09/03/forward-references-in-angular-2.html
+  - title: The Difference between Decorators and Annotations
+    url: /angular/2015/05/03/the-difference-between-annotations-and-decorators.html
+date: 2015-09-17T00:00:00.000Z
+update_date: 2016-08-11T00:00:00.000Z
+summary: >-
+  We might run into unexpected behaviour when injecting service dependencies.
+  This article details how to do it right.
 categories:
   - angular
-
 tags:
   - angular2
-
 topic: di
-
 videos:
-  -
-    url: "https://player.vimeo.com/video/181222350"
-
+  - url: 'https://player.vimeo.com/video/181222350'
 author: pascal_precht
+related_posts:
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Angular 2 Animations - Foundation Concepts
+  - Angular 2 is out - Get started here
+  - Bypassing Providers in Angular 2
+  - Custom Form Controls in Angular 2
+
 ---
 
 If you're following our articles on [Dependency Injection in Angular 2](/angular/2015/05/18/dependency-injection-in-angular-2.html), you know how the DI system in Angular works. It takes advantage of metadata on our code, added through annotations, to get all the information it needs so it can resolve dependencies for us.

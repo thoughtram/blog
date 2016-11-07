@@ -1,18 +1,25 @@
 ---
-layout:     post
-title:      "Exploring Rx Operators: flatMap"
-imageUrl:  "/images/banner/rx-flatmap.jpeg"
-
-date: 2016-08-01
-
-summary: "Another post in a series of articles to discover the magic of different Rx operators. In this article we like to learn about the very powerful flatMap operator."
-
+layout: post
+title: 'Exploring Rx Operators: flatMap'
+imageUrl: /images/banner/rx-flatmap.jpeg
+date: 2016-08-01T00:00:00.000Z
+summary: >-
+  Another post in a series of articles to discover the magic of different Rx
+  operators. In this article we like to learn about the very powerful flatMap
+  operator.
 categories:
   - rx
 tags:
   - rx
-
 author: christoph_burgdorf
+related_posts:
+  - Cold vs Hot Observables
+  - 'Exploring Rx Operators: map'
+  - Taking advantage of Observables in Angular 2 - Part 2
+  - Taking advantage of Observables in Angular 2
+  - Understanding XOR with Keras and TensorFlow
+  - Announcing Angular 2 Master Class in Sydney
+
 ---
 
 This is another post in a series of articles to discover the magic of different Rx operators. In our last article, [Exploring Rx Operators: map](/angular/2016/05/16/exploring-rx-operators-map.html) we learned how we can map the notifications of Observables to create other more meaningful Observables.

@@ -1,26 +1,30 @@
 ---
-layout:     post
-title:      "Futuristic Routing in Angular"
+layout: post
+title: Futuristic Routing in Angular
 relatedLinks:
-  -
-    title: "Routing in Angular 2"
-    url: "http://blog.thoughtram.io/angular/2015/06/16/routing-in-angular-2.html"
-date:       2015-02-19
-summary:    "An this article we discuss the new router APIs and how it's going to change the way we implement component based routing in our Angular applications."
-
+  - title: Routing in Angular 2
+    url: 'http://blog.thoughtram.io/angular/2015/06/16/routing-in-angular-2.html'
+date: 2015-02-19T00:00:00.000Z
+summary: >-
+  An this article we discuss the new router APIs and how it's going to change
+  the way we implement component based routing in our Angular applications.
 redirect_from:
   - /angularjs/2015/02/19/futuristic%20-routing-en-angular.html
-
 isExploringAngular13Article: false
-
-categories: 
-- angularjs
-
+categories:
+  - angularjs
 tags:
   - angular
   - routing
-
 author: pascal_precht
+related_posts:
+  - Resolving route data in Angular 2
+  - Protecting Routes using Guards in Angular 2
+  - Routing in Angular 2 revisited
+  - Routing in Angular 2
+  - 'Exploring Angular 1.5: Lifecycle Hooks'
+  - Sponsoring AngularConnect. Again.
+
 ---
 
 One of the latest announcements that counts as the most exciting ones, is that the Angular team implements a completely new router for the 2.0 release that is much more flexible and powerful than the original one. Especially, when it comes to more complex application structures. [Rob Eisenberg](http://twitter.com/EisenbergEffect), creator of the recently announced [aurelia](http://aurelia.io) framework, gave an introduction talk on the new router at last years [ngEurope](http://ng-europe.org) conference and showed us the main concepts that make this router so much better.

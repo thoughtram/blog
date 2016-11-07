@@ -1,16 +1,23 @@
 ---
-layout:     post
-title:      "Sponsoring AngularConnect"
-date:       2015-05-11
-summary:    "Today we are very happy to announce that we're going to sponsor AngularConnect, the official Angular conference in Europe."
-
-categories: 
-- announcements
-
+layout: post
+title: Sponsoring AngularConnect
+date: 2015-05-11T00:00:00.000Z
+summary: >-
+  Today we are very happy to announce that we're going to sponsor
+  AngularConnect, the official Angular conference in Europe.
+categories:
+  - announcements
 tags:
-- angular
-
+  - angular
 author: pascal_precht
+related_posts:
+  - 'Exploring Angular 1.5: Lifecycle Hooks'
+  - Sponsoring AngularConnect. Again.
+  - ngMessageFormat - Angular's unheard feature
+  - Multiple Transclusion and named Slots
+  - Service vs Factory - Once and for all
+  - Taking Angular Master Class to the next level
+
 ---
 
 Today we are very happy to announce that we're going to sponsor [AngularConnect](http://angularconnect.com), the official Angular conference in Europe, taking place on the 20th and 21st October in London this year. Not only that you can find us during the conference, **we're  also going to run a workshop the day before** to help you getting started with Angular and being perfectly prepared for the event.

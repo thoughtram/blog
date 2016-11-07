@@ -1,23 +1,27 @@
 ---
-layout:     post
-title:      "Component-Relative Paths in Angular 2"
-
-date: 2016-06-08
-imageUrl: '/images/banner/component-relative-paths-in-angular-2.jpg'
-
-summary: "Component-relative enable developers to more easily create maintainable, reusable, portable components in Angular 2. Here's how!"
-
+layout: post
+title: Component-Relative Paths in Angular 2
+date: 2016-06-08T00:00:00.000Z
+imageUrl: /images/banner/component-relative-paths-in-angular-2.jpg
+summary: >-
+  Component-relative enable developers to more easily create maintainable,
+  reusable, portable components in Angular 2. Here's how!
 categories:
   - angular
-
 tags:
   - angular2
   - components
   - relative paths
-
 topic: components
-
 author: thomas_burleson
+related_posts:
+  - Angular 2 Animations - Foundation Concepts
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Angular 2 is out - Get started here
+  - Bypassing Providers in Angular 2
+  - Custom Form Controls in Angular 2
+
 ---
 
 Component-based development is Angular 2's *most-loved* feature. By now you should be familiar with using the `@Component` decorators to create components. You should be familiar with the required metadata information such as `selector` and `template`. 

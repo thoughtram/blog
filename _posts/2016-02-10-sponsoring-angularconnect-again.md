@@ -1,17 +1,24 @@
 ---
-layout:     post
-title:      "Sponsoring AngularConnect. Again."
-date:       2016-02-10
-update_date:       2016-02-10
-summary:    "Today we are very happy to announce that we're going to sponsor AngularConnect - again!  We're also going to run an Angular 2 training the day before!"
-
-categories: 
-- announcements
-
+layout: post
+title: Sponsoring AngularConnect. Again.
+date: 2016-02-10T00:00:00.000Z
+update_date: 2016-02-10T00:00:00.000Z
+summary: >-
+  Today we are very happy to announce that we're going to sponsor AngularConnect
+  - again!  We're also going to run an Angular 2 training the day before!
+categories:
+  - announcements
 tags:
-- angular
-
+  - angular
 author: pascal_precht
+related_posts:
+  - 'Exploring Angular 1.5: Lifecycle Hooks'
+  - ngMessageFormat - Angular's unheard feature
+  - Multiple Transclusion and named Slots
+  - Service vs Factory - Once and for all
+  - Taking Angular Master Class to the next level
+  - ngMessages revisited
+
 ---
 
 [AngularConnect](http://angularconnect.com) has been an awesome conference with many people of the Angular community, coming from all over the world to get together, listen to excellent talks and make new friends. Last year we [sponsored](http://blog.thoughtram.io/announcements/2015/05/11/sponsoring-angularconnect.html) the conference as we believe in the spirit of the Angular world and we always try the best we can do to push and support the community.

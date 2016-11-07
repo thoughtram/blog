@@ -1,47 +1,53 @@
 ---
-layout:     post
-title:      "ES6 Style Promises in Angular 1.3"
+layout: post
+title: ES6 Style Promises in Angular 1.3
 relatedLinks:
-  -
-    title: "Exploring Angular 1.3: One-time bindings"
-    url: "http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html"
-  -
-    title: "Exploring Angular 1.3: ng-model-options"
-    url: "http://blog.thoughtram.io/angularjs/2014/10/19/exploring-angular-1.3-ng-model-options.html"
-  -
-    title: "Exploring Angular 1.3: Angular-hint"
-    url: "http://blog.thoughtram.io/angularjs/2014/11/06/exploring-angular-1.3-angular-hint.html"
-  -
-    title: "Exploring Angular 1.3: Stateful Filters"
-    url: "http://blog.thoughtram.io/angularjs/2014/11/19/exploring-angular-1.3-stateful-filters.html"
-  -
-    title: "Exploring Angular 1.3: Disabling Debug Info"
-    url: "http://blog.thoughtram.io/angularjs/2014/12/22/exploring-angular-1.3-disabling-debug-info.html"
-  -
-    title: "Exploring Angular 1.3: Binding to Directive Controllers"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html"
-  -
-    title: "Exploring Angular 1.3: Validators Pipeline"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/11/exploring-angular-1.3-validators-pipeline.html"
-  -
-    title: "Exploring Angular 1.3: Go fast with $applyAsync"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/14/exploring-angular-1.3-speed-up-with-applyAsync.html"
-  -
-    title: "Exploring Angular 1.3: ngMessages"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/23/exploring-angular-1.3-ngMessages.html"
-date:       2014-12-18
-update_date: 2016-08-24
-summary:    Angular 1.3 starts streamlining its promise APIs with the ES2015 standard. This article details what these additions mean to us.
-
+  - title: 'Exploring Angular 1.3: One-time bindings'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html
+  - title: 'Exploring Angular 1.3: ng-model-options'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/10/19/exploring-angular-1.3-ng-model-options.html
+  - title: 'Exploring Angular 1.3: Angular-hint'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/11/06/exploring-angular-1.3-angular-hint.html
+  - title: 'Exploring Angular 1.3: Stateful Filters'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/11/19/exploring-angular-1.3-stateful-filters.html
+  - title: 'Exploring Angular 1.3: Disabling Debug Info'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/12/22/exploring-angular-1.3-disabling-debug-info.html
+  - title: 'Exploring Angular 1.3: Binding to Directive Controllers'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html
+  - title: 'Exploring Angular 1.3: Validators Pipeline'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2015/01/11/exploring-angular-1.3-validators-pipeline.html
+  - title: 'Exploring Angular 1.3: Go fast with $applyAsync'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2015/01/14/exploring-angular-1.3-speed-up-with-applyAsync.html
+  - title: 'Exploring Angular 1.3: ngMessages'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2015/01/23/exploring-angular-1.3-ngMessages.html
+date: 2014-12-18T00:00:00.000Z
+update_date: 2016-08-24T00:00:00.000Z
+summary: >-
+  Angular 1.3 starts streamlining its promise APIs with the ES2015 standard.
+  This article details what these additions mean to us.
 isExploringAngular13Article: true
-
-categories: 
+categories:
   - angularjs
-
 tags:
   - angular
-
 author: pascal_precht
+related_posts:
+  - 'Exploring Angular 1.5: Lifecycle Hooks'
+  - Sponsoring AngularConnect. Again.
+  - ngMessageFormat - Angular's unheard feature
+  - Multiple Transclusion and named Slots
+  - Service vs Factory - Once and for all
+  - Taking Angular Master Class to the next level
+
 ---
 
 We mainly took a look at completely new features that come with the Angular 1.3 release until now. Things like [ngModelOptions](http://blog.thoughtram.io/angularjs/2014/10/19/exploring-angular-1.3-ng-model-options.html), [Angular-hint](http://blog.thoughtram.io/angularjs/2014/11/06/exploring-angular-1.3-angular-hint.html) or [One-time Bindings](http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html) are not just minor improvements, but rather real extensions to the framework. However, there have not only been significant new features added to the release, but also a ton of bug fixes and nice little additions that we might have overlooked. One of them is the ES6 streamlined promise API and today we gonna take a look what it brings to the table.

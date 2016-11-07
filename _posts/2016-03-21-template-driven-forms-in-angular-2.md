@@ -1,40 +1,39 @@
 ---
-layout:     post
-title:      "Template-driven Forms in Angular 2"
-
-date: 2016-03-21
-update_date: 2016-08-11
-imageUrl: "/images/template-driven-forms.jpeg"
+layout: post
+title: Template-driven Forms in Angular 2
+date: 2016-03-21T00:00:00.000Z
+update_date: 2016-08-11T00:00:00.000Z
+imageUrl: /images/template-driven-forms.jpeg
 relatedLinks:
-  -
-    title: "Custom Validators in Angular 2"
-    url: "/angular/2016/03/14/custom-validators-in-angular-2.html"
-  -
-    title: "Reactive Forms in Angular 2"
-    url: "/angular/2016/06/22/model-driven-forms-in-angular-2.html"
-
-summary: "In this article we discuss the template-driven forms in Angular 2 and all the directives that come into play."
-
+  - title: Custom Validators in Angular 2
+    url: /angular/2016/03/14/custom-validators-in-angular-2.html
+  - title: Reactive Forms in Angular 2
+    url: /angular/2016/06/22/model-driven-forms-in-angular-2.html
+summary: >-
+  In this article we discuss the template-driven forms in Angular 2 and all the
+  directives that come into play.
 categories:
   - angular
 tags:
   - angular2
   - forms
-
 topic: forms
-
 demos:
-  -
-    url: http://embed.plnkr.co/Xmgx1x/
+  - url: 'http://embed.plnkr.co/Xmgx1x/'
     title: Simple template-driven form
-  -
-    url: http://embed.plnkr.co/LLf7Il/
+  - url: 'http://embed.plnkr.co/LLf7Il/'
     title: ngModelGroup Directive
-  -
-    url: http://embed.plnkr.co/XgRYoe/
+  - url: 'http://embed.plnkr.co/XgRYoe/'
     title: ngModel with expressions
-
 author: pascal_precht
+related_posts:
+  - Two-way Data Binding in Angular 2
+  - Custom Form Controls in Angular 2
+  - Reactive Forms in Angular 2
+  - Custom Validators in Angular 2
+  - Resolving route data in Angular 2
+  - Angular 2 Animations - Foundation Concepts
+
 ---
 
 Angular comes with three different ways of building forms in our applications. There's the template-driven approach which allows us to build forms with very little to none application code required, then there's the model-driven **or reactive** approach using low level APIs, which makes our forms testable without a DOM being required, and last but not least, we can build our forms model-driven but with a higher level API called the `FormBuilder`.

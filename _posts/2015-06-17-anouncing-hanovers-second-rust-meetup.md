@@ -1,16 +1,23 @@
 ---
-layout:     post
-title:      "Anouncing Hanover's second Rust meetup"
-date:       2015-06-17
-summary:    "It's been roughly a year ago that we organized the very first Rust meetup Hanover. We'll run a second one, read on for more information!"
-
+layout: post
+title: Anouncing Hanover's second Rust meetup
+date: 2015-06-17T00:00:00.000Z
+summary: >-
+  It's been roughly a year ago that we organized the very first Rust meetup
+  Hanover. We'll run a second one, read on for more information!
 categories:
   - rust
-
 tags:
   - rust
-
 author: christoph_burgdorf
+related_posts:
+  - 'A web app with Nickel: From first line to Heroku deployment'
+  - Rust's Ownership model for JavaScript developers
+  - clog - A conventional changelog generator for the rest of us
+  - Organizing Hanovers first Rust meetup
+  - Understanding XOR with Keras and TensorFlow
+  - Announcing Angular 2 Master Class in Sydney
+
 ---
 
 It's been roughly a year ago that we organized the very first [Rust meetup in Hanover](http://blog.thoughtram.io/announcements/rust/meetups/2014/06/24/organizing-hannovers-first-rust-meetup.html). The meetup was quite a success and ever since then we've been asked a lot about a revival.

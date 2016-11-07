@@ -1,40 +1,38 @@
 ---
-layout:     post
-title:      "Upgrading apps to Angular 2 using ngUpgrade"
-
+layout: post
+title: Upgrading apps to Angular 2 using ngUpgrade
 redirect_from:
   - /angular/2015/10/24/upgrading-apps-to-angular-2-using-/
-
 relatedLinks:
-  -
-    title: "Exploring Angular 2 - Article Series"
-    url: "/exploring-angular-2"
-  -
-    title: "Dependency Injection in Angular 2"
-    url: "/angular/2015/05/18/dependency-injection-in-angular-2.html"
-  -
-    title: "Exploring Angular 2"
-    url: "/exploring-angular-2"
-  -
-    title: "Writing Angular 2 code in ES5"
-    url: "/angular/2015/05/09/writing-angular-2-code-in-es5.html"
-  -
-    title: "Resolving Service Dependencies in Angular 2"
-    url: "/angular/2015/09/17/resolve-service-dependencies-in-angular-2.html"
-
-date:       2015-10-24
-update_date: 2016-08-11
-summary:    "In this article you'll learn how to upgrade your Angular 1 applications to Angular 2 using ngUpgrade."
-
+  - title: Exploring Angular 2 - Article Series
+    url: /exploring-angular-2
+  - title: Dependency Injection in Angular 2
+    url: /angular/2015/05/18/dependency-injection-in-angular-2.html
+  - title: Exploring Angular 2
+    url: /exploring-angular-2
+  - title: Writing Angular 2 code in ES5
+    url: /angular/2015/05/09/writing-angular-2-code-in-es5.html
+  - title: Resolving Service Dependencies in Angular 2
+    url: /angular/2015/09/17/resolve-service-dependencies-in-angular-2.html
+date: 2015-10-24T00:00:00.000Z
+update_date: 2016-08-11T00:00:00.000Z
+summary: >-
+  In this article you'll learn how to upgrade your Angular 1 applications to
+  Angular 2 using ngUpgrade.
 categories:
   - angular
-
 tags:
   - angular2
-
 topic: upgrade
-
 author: pascal_precht
+related_posts:
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Angular 2 Animations - Foundation Concepts
+  - Angular 2 is out - Get started here
+  - Bypassing Providers in Angular 2
+  - Custom Form Controls in Angular 2
+
 ---
 
 Upgrading an existing AngularJS application to Angular 2 is surely one of the most interesting topics when it comes to Angular 2. A long time it has been unclear what a dedicated upgrade path will actually look like, since Angular 2 is still in alpha state and APIs aren't stable yet, which makes it hard to "assume" where things will go and what's the best way to get there.

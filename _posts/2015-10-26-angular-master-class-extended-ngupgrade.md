@@ -1,14 +1,22 @@
 ---
-layout:     post
-title:      "Angular Master Class Extended: ngUpgrade"
-date:       2015-10-26
-update_date: 2015-10-26
-summary:    "Today we're very happy to announce that our Angular Master Class received a package update with material about upgrading to Angular 2!"
-
-categories: 
+layout: post
+title: 'Angular Master Class Extended: ngUpgrade'
+date: 2015-10-26T00:00:00.000Z
+update_date: 2015-10-26T00:00:00.000Z
+summary: >-
+  Today we're very happy to announce that our Angular Master Class received a
+  package update with material about upgrading to Angular 2!
+categories:
   - announcements
-
 author: pascal_precht
+related_posts:
+  - Understanding XOR with Keras and TensorFlow
+  - Announcing Angular 2 Master Class in Sydney
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Beginning Machine Learning with Keras and TensorFlow
+  - Angular 2 Animations - Foundation Concepts
+
 ---
 
 At thoughtram, we are constantly working on making our training experience better and better. Our primary goal is to have fun with our training participants and that everyone is happy and satisfied with what they get when we work together. We're constantly receiving great feedback. Some participants even say that with us, they've got the best training they've ever experienced, which makes us very happy. And even though, this is already great, we think we can take it even further.

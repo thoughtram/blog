@@ -1,47 +1,44 @@
 ---
-layout:     post
-title:      "Custom Validators in Angular 2"
-imageUrl:  "/images/custom-validators-bg.jpeg"
-
+layout: post
+title: Custom Validators in Angular 2
+imageUrl: /images/custom-validators-bg.jpeg
 toc:
-  -
-    label: "Built-in Validators"
-    anchor: "built-in-validators"
-  - 
-    label: "Building a custom validator"
-    anchor: "building-a-custom-validator"
-  -
-    label: "Building custom validator directives"
-    anchor: "building-custom-validator-directives"
-  -
-    label: "Custom Validators with dependencies"
-    anchor: "custom-validators-with-dependencies"
-
-date: 2016-03-14
-update_date: 2016-08-11
-
+  - label: Built-in Validators
+    anchor: built-in-validators
+  - label: Building a custom validator
+    anchor: building-a-custom-validator
+  - label: Building custom validator directives
+    anchor: building-custom-validator-directives
+  - label: Custom Validators with dependencies
+    anchor: custom-validators-with-dependencies
+date: 2016-03-14T00:00:00.000Z
+update_date: 2016-08-11T00:00:00.000Z
 relatedLinks:
-  -
-    title: "Multi Providers in Angular 2"
-    url: "/angular2/2015/11/23/multi-providers-in-angular-2.html"
-  -
-    title: "Forward References in Angular 2"
-    url: "/angular/2015/09/03/forward-references-in-angular-2.html"
-  -
-    title: "Dependency Injection in Angular 2"
-    url: "/angular/2015/05/18/dependency-injection-in-angular-2.html"
-
-summary: "Often, we need to add custom validation capabilities to our application's form. In this article we're going to explore how to implement custom validators."
-
+  - title: Multi Providers in Angular 2
+    url: /angular2/2015/11/23/multi-providers-in-angular-2.html
+  - title: Forward References in Angular 2
+    url: /angular/2015/09/03/forward-references-in-angular-2.html
+  - title: Dependency Injection in Angular 2
+    url: /angular/2015/05/18/dependency-injection-in-angular-2.html
+summary: >-
+  Often, we need to add custom validation capabilities to our application's
+  form. In this article we're going to explore how to implement custom
+  validators.
 categories:
   - angular
 tags:
   - angular2
   - forms
-
 topic: forms
-
 author: pascal_precht
+related_posts:
+  - Two-way Data Binding in Angular 2
+  - Custom Form Controls in Angular 2
+  - Reactive Forms in Angular 2
+  - Template-driven Forms in Angular 2
+  - Resolving route data in Angular 2
+  - Angular 2 Animations - Foundation Concepts
+
 ---
 
 Forms are part of almost every web application out there. Angular strives for making working with forms a breeze. While there are a couple of built-in validators provided by the framework, we often need to add some custom validation capabilities to our application's form, in order to fulfill our needs.

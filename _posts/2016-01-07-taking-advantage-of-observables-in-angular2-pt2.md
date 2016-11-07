@@ -1,33 +1,35 @@
 ---
-layout:     post
-title:      "Taking advantage of Observables in Angular 2 - Part 2"
+layout: post
+title: Taking advantage of Observables in Angular 2 - Part 2
 relatedLinks:
-  -
-    title: "Taking advantage of Observables in Angular 2"
-    url: "/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html"
-  -
-    title: "Exploring Angular 2 - Article Series"
-    url: "/exploring-angular-2"
-
-date:       2016-01-07
-update_date: 2016-08-11
-summary:    "This is a follow up article that demonstrates how Observables can influence our API design."
-
+  - title: Taking advantage of Observables in Angular 2
+    url: /angular/2016/01/06/taking-advantage-of-observables-in-angular2.html
+  - title: Exploring Angular 2 - Article Series
+    url: /exploring-angular-2
+date: 2016-01-07T00:00:00.000Z
+update_date: 2016-08-11T00:00:00.000Z
+summary: >-
+  This is a follow up article that demonstrates how Observables can influence
+  our API design.
 demos:
-  -
-    url: https://embed.plnkr.co/6nt5HH/
+  - url: 'https://embed.plnkr.co/6nt5HH/'
     title: Even smarter Wikipedia Search with Angular 2
-
 categories:
   - angular
-
 tags:
   - angular2
   - rx
   - observables
-
 topic: http
 author: christoph_burgdorf
+related_posts:
+  - 'Exploring Rx Operators: flatMap'
+  - Taking advantage of Observables in Angular 2
+  - Cold vs Hot Observables
+  - 'Exploring Rx Operators: map'
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+
 ---
 
 In a [previous post](/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html) we showed how to leverage Observables, and especially their strength of composability to ease complicated async tasks. Today we want to take it one step further.

@@ -1,20 +1,25 @@
 ---
-layout:     post
-title:      "Beginning Machine Learning with Keras and TensorFlow"
-
-date: 2016-09-23
-imageUrl:  "/images/banner/intro_in_ml.jpeg"
-
-
-summary: "With all the latest accomplishments in the field of artificial intelligence it's really hard not to get excited about AI. In this article we'll build our very first neural network."
-
+layout: post
+title: Beginning Machine Learning with Keras and TensorFlow
+date: 2016-09-23T00:00:00.000Z
+imageUrl: /images/banner/intro_in_ml.jpeg
+summary: >-
+  With all the latest accomplishments in the field of artificial intelligence
+  it's really hard not to get excited about AI. In this article we'll build our
+  very first neural network.
 categories:
   - machine-learning
-
 tags:
   - machine-learning
-
 author: christoph_burgdorf
+related_posts:
+  - Understanding XOR with Keras and TensorFlow
+  - Announcing Angular 2 Master Class in Sydney
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Angular 2 Animations - Foundation Concepts
+  - Angular 2 is out - Get started here
+
 ---
 
 This isn't our typical kind of blog post. In fact this one is very special. It's the beginning of our journey with a new shiny toy.

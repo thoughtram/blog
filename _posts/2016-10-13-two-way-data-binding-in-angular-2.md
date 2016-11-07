@@ -1,22 +1,26 @@
 ---
-layout:     post
-title:      "Two-way Data Binding in Angular 2"
-imageUrl:   "/images/banner/two-way-data-binding-in-angular-2.jpg"
-
-date: 2016-10-13
-
-summary: "Two-way data binding was one of the main selling points of Angular. In Angular 2, we can build directives that implement two-way data binding. This article explains how!"
-
+layout: post
+title: Two-way Data Binding in Angular 2
+imageUrl: /images/banner/two-way-data-binding-in-angular-2.jpg
+date: 2016-10-13T00:00:00.000Z
+summary: >-
+  Two-way data binding was one of the main selling points of Angular. In Angular
+  2, we can build directives that implement two-way data binding. This article
+  explains how!
 categories:
   - angular
-
 tags:
   - angular2
   - forms
-
 author: pascal_precht
-
 topic: forms
+related_posts:
+  - Custom Form Controls in Angular 2
+  - Reactive Forms in Angular 2
+  - Template-driven Forms in Angular 2
+  - Custom Validators in Angular 2
+  - Resolving route data in Angular 2
+  - Angular 2 Animations - Foundation Concepts
 
 ---
 

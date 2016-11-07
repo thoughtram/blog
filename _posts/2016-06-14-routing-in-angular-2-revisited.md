@@ -1,36 +1,34 @@
 ---
-layout:     post
-title:      "Routing in Angular 2 revisited"
-imageUrl:   "/images/banner/routing-in-angular-2-revisited.jpeg"
-
-date: 2016-06-14
-update_date: 2016-10-31
-
-summary: "Learn how to implement basic routing in your Angular 2 application using the latest and greatest APIs!"
-
+layout: post
+title: Routing in Angular 2 revisited
+imageUrl: /images/banner/routing-in-angular-2-revisited.jpeg
+date: 2016-06-14T00:00:00.000Z
+update_date: 2016-10-31T00:00:00.000Z
+summary: >-
+  Learn how to implement basic routing in your Angular 2 application using the
+  latest and greatest APIs!
 categories:
   - angular
-
 tags:
   - angular2
   - routing
-
 topic: routing
-
 demos:
-  -
-    url: http://embed.plnkr.co/I9qFkO/
+  - url: 'http://embed.plnkr.co/I9qFkO/'
     title: Simple Contacts App
-
 videos:
-  -
-   url: "http://casts.thoughtram.io/embedded/189603515"
-  -
-   url: "http://casts.thoughtram.io/embedded/189613148"
-  -
-   url: "http://casts.thoughtram.io/embedded/189618526"
-
+  - url: 'http://casts.thoughtram.io/embedded/189603515'
+  - url: 'http://casts.thoughtram.io/embedded/189613148'
+  - url: 'http://casts.thoughtram.io/embedded/189618526'
 author: pascal_precht
+related_posts:
+  - Futuristic Routing in Angular
+  - Resolving route data in Angular 2
+  - Protecting Routes using Guards in Angular 2
+  - Routing in Angular 2
+  - Two-way Data Binding in Angular 2
+  - Angular 2 Animations - Foundation Concepts
+
 ---
 
 A long time ago we've written about [routing in Angular 2](/angular/2015/06/16/routing-in-angular-2.html) and you've probably noticed that this article is deprecated due to many changes and rewrites that happened in the router module of Angular 2. Just recently, the Angular team announced yet another version of the new router, in which they considered all the gathered feedback from the community to make it finally sophisticated enough, so it'll fulfill our needs when we build applications with Angular 2.

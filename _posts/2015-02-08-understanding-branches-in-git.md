@@ -1,17 +1,24 @@
 ---
-layout:     post
-title:      "Understanding branches in Git"
-date:       2015-02-10
-summary:    "In this article we will take a deep dive into Git branches. We'll see how simple yet powerful the concept of branching in Git is."
-
-categories: 
-- git
-- rebase-book
-
+layout: post
+title: Understanding branches in Git
+date: 2015-02-10T00:00:00.000Z
+summary: >-
+  In this article we will take a deep dive into Git branches. We'll see how
+  simple yet powerful the concept of branching in Git is.
+categories:
+  - git
+  - rebase-book
 tags:
   - git
-
 author: christoph_burgdorf
+related_posts:
+  - The anatomy of a Git commit
+  - Git Ninja Class in Amsterdam
+  - Going back in time to split older commits
+  - Git Ninja Class comes to Istanbul
+  - Tickets are on sale now!
+  - Announcing our first workshop
+
 ---
 
 In this article we will take a deep dive into Git branches. We'll see how simple yet powerful the concept of branching in Git is. This article is part of a series of articles that will also be part of our book [Rebase](https://leanpub.com/rebase-the-complete-guide-on-rebasing-in-git) which you can and should follow it's progress on Leanpup.

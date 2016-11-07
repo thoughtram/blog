@@ -1,36 +1,36 @@
 ---
-layout:     post
-title:      "Styling Angular 2 components"
+layout: post
+title: Styling Angular 2 components
 relatedLinks:
-  -
-    title: "Exploring Angular 2 - Article Series"
-    url: "/exploring-angular-2"
-  -
-    title: "Futuristic Routing in Angular"
-    url: "/angularjs/2015/02/19/futuristic-routing-in-angular.html"
-  -
-    title: "Dependency Injection in Angular 2"
-    url: "/angular/2015/05/18/dependency-injection-in-angular-2.html"
-  -
-    title: "Developing a zippy component in Angular 2"
-    url: "/angular/2015/03/27/building-a-zippy-component-in-angular-2.html"
-  -
-    title: "Developing a tabs component in Angular 2"
-    url: "/angular/2015/04/09/developing-a-tabs-component-in-angular-2.html"
-
-date:       2015-06-25
-update_date: 2016-08-23
-summary:    "In this article we are going to explore the different possible ways of styling Angular 2 components."
-
-categories: 
+  - title: Exploring Angular 2 - Article Series
+    url: /exploring-angular-2
+  - title: Futuristic Routing in Angular
+    url: /angularjs/2015/02/19/futuristic-routing-in-angular.html
+  - title: Dependency Injection in Angular 2
+    url: /angular/2015/05/18/dependency-injection-in-angular-2.html
+  - title: Developing a zippy component in Angular 2
+    url: /angular/2015/03/27/building-a-zippy-component-in-angular-2.html
+  - title: Developing a tabs component in Angular 2
+    url: /angular/2015/04/09/developing-a-tabs-component-in-angular-2.html
+date: 2015-06-25T00:00:00.000Z
+update_date: 2016-08-23T00:00:00.000Z
+summary: >-
+  In this article we are going to explore the different possible ways of styling
+  Angular 2 components.
+categories:
   - angular
-
 tags:
   - angular2
-
 topic: views
-
 author: pascal_precht
+related_posts:
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Angular 2 Animations - Foundation Concepts
+  - Angular 2 is out - Get started here
+  - Bypassing Providers in Angular 2
+  - Custom Form Controls in Angular 2
+
 ---
 
 Until now, we mostly talked about how to create simple components in Angular 2, like a [zippy](/angular/2015/03/27/building-a-zippy-component-in-angular-2.html) or a [tabs](/angular/2015/04/09/developing-a-tabs-component-in-angular-2.html) component, and we also covered some isolated parts of the framework like the new [dependency injection](/angular/2015/05/18/dependency-injection-in-angular-2.html). In this article we are going to discuss another essential part when it comes to building components: **Styling**.

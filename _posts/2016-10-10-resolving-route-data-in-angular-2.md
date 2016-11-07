@@ -1,33 +1,34 @@
 ---
-layout:     post
-title:      "Resolving route data in Angular 2"
-imageUrl:   "/images/banner/resolving-route-data-in-angular-2.jpg"
-
-date: 2016-10-10
-
-summary: "We often want to make sure that certain data is available before a component is instantiated via routing. In this article you'll learn how to resolve route data."
-
+layout: post
+title: Resolving route data in Angular 2
+imageUrl: /images/banner/resolving-route-data-in-angular-2.jpg
+date: 2016-10-10T00:00:00.000Z
+summary: >-
+  We often want to make sure that certain data is available before a component
+  is instantiated via routing. In this article you'll learn how to resolve route
+  data.
 categories:
   - angular
-
 tags:
   - angular2
   - routing
-
 topic: routing
-
 author: pascal_precht
-
 demos:
-  -
-   url: "http://embed.plnkr.co/QRoowb/"
-   title: "Retreiving delayed route data"
-  -
-   url: "http://embed.plnkr.co/Od0Bv2/"
-   title: "Route resolver function"
-  -
-   url: "http://embed.plnkr.co/u2qR9J/"
-   title: "Route resolver class"
+  - url: 'http://embed.plnkr.co/QRoowb/'
+    title: Retreiving delayed route data
+  - url: 'http://embed.plnkr.co/Od0Bv2/'
+    title: Route resolver function
+  - url: 'http://embed.plnkr.co/u2qR9J/'
+    title: Route resolver class
+related_posts:
+  - Futuristic Routing in Angular
+  - Protecting Routes using Guards in Angular 2
+  - Routing in Angular 2 revisited
+  - Routing in Angular 2
+  - Two-way Data Binding in Angular 2
+  - Angular 2 Animations - Foundation Concepts
+
 ---
 
 Not long ago, we wrote about [Navigation Guards](/angular/2016/07/18/guards-in-angular-2.html) and how they let us control the navigation flow of our application's users. Guards like `CanActivate`, `CanDeactivate` and `CanLoad` are great when it comes to taking the decision if a user is allowed to activate a certain route, leaving a certain route, or even asynchronously loading a route.

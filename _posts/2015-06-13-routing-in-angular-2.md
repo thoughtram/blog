@@ -1,30 +1,35 @@
 ---
-layout:     post
-title:      "Routing in Angular 2"
+layout: post
+title: Routing in Angular 2
 relatedLinks:
-  -
-    title: "Exploring Angular 2 - Article Series"
-    url: "http://blog.thoughtram.io/exploring-angular-2"
-  -
-    title: "Futuristic Routing in Angular"
-    url: "http://blog.thoughtram.io/angularjs/2015/02/19/futuristic-routing-in-angular.html"
-  -
-    title: "Dependency Injection in Angular 2"
-    url: "http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html"
-date:       2015-06-16
-update_date: 2016-05-12
-summary:    "Learn how to route between components. In this article we explore how to use the new router in Angular 2."
-
+  - title: Exploring Angular 2 - Article Series
+    url: 'http://blog.thoughtram.io/exploring-angular-2'
+  - title: Futuristic Routing in Angular
+    url: >-
+      http://blog.thoughtram.io/angularjs/2015/02/19/futuristic-routing-in-angular.html
+  - title: Dependency Injection in Angular 2
+    url: >-
+      http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html
+date: 2015-06-16T00:00:00.000Z
+update_date: 2016-05-12T00:00:00.000Z
+summary: >-
+  Learn how to route between components. In this article we explore how to use
+  the new router in Angular 2.
 categories:
   - angular
-
 tags:
   - angular2
   - routing
-
 topic: routing
-
 author: pascal_precht
+related_posts:
+  - Futuristic Routing in Angular
+  - Resolving route data in Angular 2
+  - Protecting Routes using Guards in Angular 2
+  - Routing in Angular 2 revisited
+  - Two-way Data Binding in Angular 2
+  - Angular 2 Animations - Foundation Concepts
+
 ---
 
 {% include deprecated.html %}

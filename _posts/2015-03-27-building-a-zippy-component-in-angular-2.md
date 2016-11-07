@@ -1,41 +1,42 @@
 ---
-layout:     post
-title:      "Developing a zippy component in Angular 2"
+layout: post
+title: Developing a zippy component in Angular 2
 relatedLinks:
-  -
-    title: "Exploring Angular 2 - Article Series"
-    url: "http://blog.thoughtram.io/exploring-angular-2"
-  -
-    title: "Using ES6 with Angular today"
-    url: "http://blog.thoughtram.io/angularjs/es6/2015/01/23/exploring-angular-1.3-using-es6.html"
-  -
-    title: "Integrating Web Components with AngularJS"
-    url: "http://pascalprecht.github.io/2014/10/25/integrating-web-components-with-angularjs/"
-  -
-    title: "The difference between Annotations and Decorators"
-    url: "http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html"
-
+  - title: Exploring Angular 2 - Article Series
+    url: 'http://blog.thoughtram.io/exploring-angular-2'
+  - title: Using ES6 with Angular today
+    url: >-
+      http://blog.thoughtram.io/angularjs/es6/2015/01/23/exploring-angular-1.3-using-es6.html
+  - title: Integrating Web Components with AngularJS
+    url: >-
+      http://pascalprecht.github.io/2014/10/25/integrating-web-components-with-angularjs/
+  - title: The difference between Annotations and Decorators
+    url: >-
+      http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html
 demos:
-  -
-   url: "http://embed.plnkr.co/mbJOYS/"
-   title: "Angular 2 Zippy Component (RC4)"
-  -
-   url: "https://embed.plnkr.co/dkorye/"
-   title: "Angular 2 Zippy Component (RC5)"
-
-date:       2015-03-27
-update_date: 2016-08-11
-summary:    "Just recently we've built a simple zippy component in Angular 2 and in this article we want to show how. Read on to build your first component."
-
-categories: 
-- angular
-
+  - url: 'http://embed.plnkr.co/mbJOYS/'
+    title: Angular 2 Zippy Component (RC4)
+  - url: 'https://embed.plnkr.co/dkorye/'
+    title: Angular 2 Zippy Component (RC5)
+date: 2015-03-27T00:00:00.000Z
+update_date: 2016-08-11T00:00:00.000Z
+summary: >-
+  Just recently we've built a simple zippy component in Angular 2 and in this
+  article we want to show how. Read on to build your first component.
+categories:
+  - angular
 tags:
-- angular2
-
+  - angular2
 topic: getting-started
-
 author: pascal_precht
+related_posts:
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Angular 2 Animations - Foundation Concepts
+  - Angular 2 is out - Get started here
+  - Bypassing Providers in Angular 2
+  - Custom Form Controls in Angular 2
+
 ---
 
 Even if Angular 2 is still in early development, we can already start playing with the code since it's up on GitHub and also published as npm module for early adopters. We are following the development of Angular 2 since the beginning on and are also contributing to the project. Just recently we've built a simple zippy component in Angular 2 and in this article we want to show you how.

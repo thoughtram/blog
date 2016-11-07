@@ -1,38 +1,37 @@
 ---
-layout:     post
-title:      "Even better ES5 code for Angular 2"
+layout: post
+title: Even better ES5 code for Angular 2
 relatedLinks:
-  -
-    title: "Exploring Angular 2 - Article Series"
-    url: "/exploring-angular-2"
-  -
-    title: "Writing Angular 2 Code in ES5"
-    url: "/angular/2015/05/09/writing-angular-2-code-in-es5.html"
-  -
-    title: "The difference between annotations and decorators"
-    url: "/angular/2015/05/03/the-difference-between-annotations-and-decorators.html"
-  -
-    title: "Dependency Injection in Angular 2"
-    url: "/angular/2015/05/18/dependency-injection-in-angular-2.html"
-date:       2015-07-06
-update_date: 2016-08-11
-
-summary:    "Nobody prevents us from writing Angular 2 code in ES5. In this article we take a look at a new, much better, syntax to write Angular 2 in ES5."
-
-categories: 
+  - title: Exploring Angular 2 - Article Series
+    url: /exploring-angular-2
+  - title: Writing Angular 2 Code in ES5
+    url: /angular/2015/05/09/writing-angular-2-code-in-es5.html
+  - title: The difference between annotations and decorators
+    url: /angular/2015/05/03/the-difference-between-annotations-and-decorators.html
+  - title: Dependency Injection in Angular 2
+    url: /angular/2015/05/18/dependency-injection-in-angular-2.html
+date: 2015-07-06T00:00:00.000Z
+update_date: 2016-08-11T00:00:00.000Z
+summary: >-
+  Nobody prevents us from writing Angular 2 code in ES5. In this article we take
+  a look at a new, much better, syntax to write Angular 2 in ES5.
+categories:
   - angular
-
 tags:
   - angular2
-
 topic: upgrade
-
 author: pascal_precht
-
 demos:
-  -
-    url: https://embed.plnkr.co/fdj1rQEnUGhpnFJY4ngY/
+  - url: 'https://embed.plnkr.co/fdj1rQEnUGhpnFJY4ngY/'
     title: Hello World app in ES5 with syntactic sugar
+related_posts:
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Angular 2 Animations - Foundation Concepts
+  - Angular 2 is out - Get started here
+  - Bypassing Providers in Angular 2
+  - Custom Form Controls in Angular 2
+
 ---
 
 A couple of weeks ago we wrote about how to write [Angular 2 code in ES5](/angular/2015/05/09/writing-angular-2-code-in-es5.html) and took a closer look at what [annotations and decorators](/angular/2015/05/03/the-difference-between-annotations-and-decorators.html) translate to. While it is nice that we can all write Angular 2 applications without the hassle of setting up a development environment for TypeScript, Babel or SystemJS, it turns out that the syntax is still quite wordy. Of course, this isn't really a big problem, because it is just the syntax after all. That's why the Angular team works hard on making even the ES5 experience much better. All improvements that land in the ES5 world shrink the gap between Angular 1 and Angular 2 syntax, in fact, upgrading will be rather boring.

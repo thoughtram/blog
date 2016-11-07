@@ -1,53 +1,45 @@
 ---
-layout:     post
-title:      "Taking advantage of Observables in Angular 2"
-imageUrl: "/images/banner/taking-advantage-of-observables.png"
-
+layout: post
+title: Taking advantage of Observables in Angular 2
+imageUrl: /images/banner/taking-advantage-of-observables.png
 relatedLinks:
-  -
-    title: "Taking advantage of Observables in Angular 2 - Part 2"
-    url: "/angular/2016/01/07/taking-advantage-of-observables-in-angular2-pt2.html"
-  -
-    title: "Exploring Angular 2 - Article Series"
-    url: "/exploring-angular-2"
-
-date:       2016-01-06
-updatedate: 2016-08-11
-summary:    "Angular 2 favors Observables over Promises when it comes to async.  In this article we explore some practical advantages for server communication."
-
+  - title: Taking advantage of Observables in Angular 2 - Part 2
+    url: /angular/2016/01/07/taking-advantage-of-observables-in-angular2-pt2.html
+  - title: Exploring Angular 2 - Article Series
+    url: /exploring-angular-2
+date: 2016-01-06T00:00:00.000Z
+updatedate: 2016-08-11T00:00:00.000Z
+summary: >-
+  Angular 2 favors Observables over Promises when it comes to async.  In this
+  article we explore some practical advantages for server communication.
 categories:
   - angular
-
 tags:
   - angular2
   - rx
   - observables
-
 topic: http
-
 videos:
-  -
-    url: "http://casts.thoughtram.io/embedded/181311616"
-  -
-    url: "http://casts.thoughtram.io/embedded/181311614"
-  -
-    url: "http://casts.thoughtram.io/embedded/181311611"
-  -
-    url: "http://casts.thoughtram.io/embedded/181311613"
-  -
-    url: "http://casts.thoughtram.io/embedded/181311609"
-  -
-    url: "http://casts.thoughtram.io/embedded/181311615"
-
+  - url: 'http://casts.thoughtram.io/embedded/181311616'
+  - url: 'http://casts.thoughtram.io/embedded/181311614'
+  - url: 'http://casts.thoughtram.io/embedded/181311611'
+  - url: 'http://casts.thoughtram.io/embedded/181311613'
+  - url: 'http://casts.thoughtram.io/embedded/181311609'
+  - url: 'http://casts.thoughtram.io/embedded/181311615'
 demos:
-  -
-    url: http://plnkr.co/edit/8ap1Lm?p=preview
+  - url: 'http://plnkr.co/edit/8ap1Lm?p=preview'
     title: Basic Wikipedia search using Angular 2
-  -
-    url: http://embed.plnkr.co/SIltBL/
+  - url: 'http://embed.plnkr.co/SIltBL/'
     title: Smart Wikipedia search using Angular 2
-
 author: christoph_burgdorf
+related_posts:
+  - 'Exploring Rx Operators: flatMap'
+  - Taking advantage of Observables in Angular 2 - Part 2
+  - Cold vs Hot Observables
+  - 'Exploring Rx Operators: map'
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+
 ---
 
 Some people seem to be confused why Angular 2 seems to favor the Observable abstraction over the Promise abstraction when it comes to dealing with async behavior.

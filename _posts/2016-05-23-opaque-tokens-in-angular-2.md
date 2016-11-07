@@ -1,28 +1,29 @@
 ---
-layout:     post
-title:      "How to prevent name collisions in Angular 2 providers"
-
-date: 2016-05-23
-imageUrl: '/images/banner/opaque-tokens-in-angular-2.jpeg'
-
-summary: "Angular provides a mechanism to avoid name collisions in provider tokens. In this article we're going to explore how opaque tokens make this possible."
-
+layout: post
+title: How to prevent name collisions in Angular 2 providers
+date: 2016-05-23T00:00:00.000Z
+imageUrl: /images/banner/opaque-tokens-in-angular-2.jpeg
+summary: >-
+  Angular provides a mechanism to avoid name collisions in provider tokens. In
+  this article we're going to explore how opaque tokens make this possible.
 categories:
   - angular
-
 tags:
   - angular2
   - di
-
 topic: di
-
 videos:
-  -
-    url: "http://casts.thoughtram.io/embedded/181222351"
-  -
-    url: "http://casts.thoughtram.io/embedded/181222354"
-
+  - url: 'http://casts.thoughtram.io/embedded/181222351'
+  - url: 'http://casts.thoughtram.io/embedded/181222354'
 author: pascal_precht
+related_posts:
+  - Angular 2 Providers using Map Literals
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Angular 2 Animations - Foundation Concepts
+  - Angular 2 is out - Get started here
+  - Bypassing Providers in Angular 2
+
 ---
 
 If you've read our article series on everything dependency injection in Angular 2, you've probably realised that Angular is doing a pretty good job on that. We can either use string or type tokens to make dependencies available to the injector. However, when using string tokens, there's a possibility of running into naming collisions because... well, maybe someone else has used the same token for a different provider. In this article we're going to learn how so called "opaque tokens" solve this problem.

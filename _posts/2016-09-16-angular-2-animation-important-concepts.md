@@ -1,24 +1,28 @@
 ---
-layout:     post
-title:      "Angular 2 Animations - Foundation Concepts"
-
-date: 2016-09-16
-imageUrl: '/images/banner/angular-2-component-animations.jpg'
-
-summary: "Animation in Angular 2 is now easy and more intuitive... Learn foundational animation concepts and start animating your Angular 2 components!"
-
+layout: post
+title: Angular 2 Animations - Foundation Concepts
+date: 2016-09-16T00:00:00.000Z
+imageUrl: /images/banner/angular-2-component-animations.jpg
+summary: >-
+  Animation in Angular 2 is now easy and more intuitive... Learn foundational
+  animation concepts and start animating your Angular 2 components!
 categories:
   - angular
-
 tags:
   - angular2
   - animation
   - components
   - relative paths
-
 topic: components
-
 author: thomas_burleson
+related_posts:
+  - Component-Relative Paths in Angular 2
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Angular 2 is out - Get started here
+  - Bypassing Providers in Angular 2
+  - Custom Form Controls in Angular 2
+
 ---
 
 Animations features often are scary goals for developers. And Angular's doctrine

@@ -1,35 +1,37 @@
 ---
-layout:     post
-title:      "Host and Visibility in Angular 2's Dependency Injection"
+layout: post
+title: Host and Visibility in Angular 2's Dependency Injection
 relatedLinks:
-  -
-    title: "Exploring Angular 2 - Article Series"
-    url: "/exploring-angular-2"
-  -
-    title: "Dependency Injection in Angular 2"
-    url: "/angular/2015/05/18/dependency-injection-in-angular-2.html"
-  -
-    title: "Angular 2 Bits: Unified Dependency Injection"
-    url: "http://victorsavkin.com/post/102965317996/angular-2-bits-unified-dependency-injection"
-  -
-    title: "The difference between Annotations and Decorators"
-    url: "/angular/2015/05/03/the-difference-between-annotations-and-decorators.html"
-  -
-    title: "View Encapsulation in Angular 2"
-    url: "/angular/2015/06/29/shadow-dom-strategies-in-angular2.html"
-date:       2015-08-20
-update_date: 2016-08-11
-summary:    "Angular 2's DI allows us to configure the visbility of what gets injected from where. Learn about @Host in this article!"
-
-categories: 
+  - title: Exploring Angular 2 - Article Series
+    url: /exploring-angular-2
+  - title: Dependency Injection in Angular 2
+    url: /angular/2015/05/18/dependency-injection-in-angular-2.html
+  - title: 'Angular 2 Bits: Unified Dependency Injection'
+    url: >-
+      http://victorsavkin.com/post/102965317996/angular-2-bits-unified-dependency-injection
+  - title: The difference between Annotations and Decorators
+    url: /angular/2015/05/03/the-difference-between-annotations-and-decorators.html
+  - title: View Encapsulation in Angular 2
+    url: /angular/2015/06/29/shadow-dom-strategies-in-angular2.html
+date: 2015-08-20T00:00:00.000Z
+update_date: 2016-08-11T00:00:00.000Z
+summary: >-
+  Angular 2's DI allows us to configure the visbility of what gets injected from
+  where. Learn about @Host in this article!
+categories:
   - angular
-
 tags:
   - angular2
-
 topic: di
-
 author: pascal_precht
+related_posts:
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Angular 2 Animations - Foundation Concepts
+  - Angular 2 is out - Get started here
+  - Bypassing Providers in Angular 2
+  - Custom Form Controls in Angular 2
+
 ---
 
 In our article on [Dependency Injection in Angular 2](/angular/2015/05/18/dependency-injection-in-angular-2.html) we explored what dependency injection actually is, and how it is implemented in the Angular 2 framework. If you haven't read that article yet, I highly recommend you doing so, since this article is based on it.

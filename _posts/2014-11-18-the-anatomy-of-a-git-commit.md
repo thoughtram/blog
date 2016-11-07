@@ -1,15 +1,22 @@
 ---
 layout: post
-title: "The anatomy of a Git commit"
-date: "2014-11-18"
-summary: In this article we explore what a Git commit looks like internally and how Git uses cryptographic tooling to enforce integrity.
-
+title: The anatomy of a Git commit
+date: '2014-11-18'
+summary: >-
+  In this article we explore what a Git commit looks like internally and how Git
+  uses cryptographic tooling to enforce integrity.
 categories: Git
-
 tags:
   - git
-
 author: christoph_burgdorf
+related_posts:
+  - Understanding branches in Git
+  - Git Ninja Class in Amsterdam
+  - Going back in time to split older commits
+  - Git Ninja Class comes to Istanbul
+  - Tickets are on sale now!
+  - Announcing our first workshop
+
 ---
 
 Ever wondered what a Git commit looks like internally? Why it has those long revision identifiers? If they are unique or not? We are going to look at exactly that!
