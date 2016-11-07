@@ -15,11 +15,12 @@ date:       2015-06-16
 update_date: 2016-05-12
 summary:    "Learn how to route between components. In this article we explore how to use the new router in Angular 2."
 
-categories: 
+categories:
   - angular
 
 tags:
   - angular2
+  - routing
 
 topic: routing
 

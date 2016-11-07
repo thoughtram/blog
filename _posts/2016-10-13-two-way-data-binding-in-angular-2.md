@@ -12,6 +12,7 @@ categories:
 
 tags:
   - angular2
+  - forms
 
 author: pascal_precht
 

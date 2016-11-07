@@ -14,7 +14,7 @@ update_date: 2016-08-11
 summary:    "This is a follow up article that demonstrates how Observables can influence our API design."
 
 demos:
-  - 
+  -
     url: https://embed.plnkr.co/6nt5HH/
     title: Even smarter Wikipedia Search with Angular 2
 
@@ -23,6 +23,8 @@ categories:
 
 tags:
   - angular2
+  - rx
+  - observables
 
 topic: http
 author: christoph_burgdorf

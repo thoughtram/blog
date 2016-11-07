@@ -13,6 +13,7 @@ categories:
 
 tags:
   - angular2
+  - forms
 
 topic: forms
 

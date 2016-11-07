@@ -12,6 +12,7 @@ categories:
 
 tags:
   - angular2
+  - routing
 
 topic: routing
 

@@ -20,6 +20,8 @@ categories:
 
 tags:
   - angular2
+  - rx
+  - observables
 
 topic: http
 
