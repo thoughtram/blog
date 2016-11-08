@@ -6,7 +6,7 @@ let spawnIt = (cmd) => {
     spawnSync(cmd, spawnOptions);
   }
   catch (e) {
-    //Doesn't feel write to swallow the exceptions but there doesn't September
+    //Doesn't feel write to swallow the exceptions but there doesn't seem
     //to be a built in way to supress exceptions if git add and git push fail
   }
 }
