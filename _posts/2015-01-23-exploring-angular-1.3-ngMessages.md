@@ -11,6 +11,7 @@ categories:
   - angularjs
 tags:
   - angular
+  - angular1-3
 author: pascal_precht
 related_posts:
   - 'Exploring Angular 1.5: Lifecycle Hooks'
@@ -150,7 +151,7 @@ I think we get the idea. Now imagine instead of just two different validations, 
 {% highlight html %}
 {% raw %}
 <label>Password:</label>
-<input 
+<input
   name="password"
   ng-model="password"
   type="password"
@@ -289,4 +290,3 @@ If the template is *not* present in the document, Angular performs a `$templateR
 Now we've learned that how we can define templates in order to reuse messages at different places in our application. You might think that this is a scenario where [HTML Templates](http://webcomponents.org/articles/introduction-to-template-element/) would be a better fit, instead of doing script overloading. I agree on that, since this is what the `<template>` element has been designed for. Unfortunately, at the time of writing this article, this was not supported, which is why I've created a corresponding issue [here](https://github.com/angular/angular.js/issues/10846).
 
 There's a lot more to cover and I recommend heading over to the official [docs](https://docs.angularjs.org/api/ngMessages) to learn everything you need to know. This module is not only a time-saver but also adds some very powerful features to our declarative world.
-

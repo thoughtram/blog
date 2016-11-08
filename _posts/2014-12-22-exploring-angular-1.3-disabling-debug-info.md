@@ -39,6 +39,7 @@ categories:
   - angularjs
 tags:
   - angular
+  - angular1-3
   - performance
 author: pascal_precht
 related_posts:
@@ -53,7 +54,7 @@ related_posts:
 
 Angular has some cool new features that improve our production code. And since these are a bit shadowed by all the other bigger features that come with 1.3, we're going to take a look at one of them: **Disabling Debug Info**.
 
-Sure, disabling debug info doesn't really sound super special and in fact, it really isn't. However, it turns out that it can have a huge impact on our applications performance, so it's definitely worth a mention in our blog series on exploring Angular 1.3. 
+Sure, disabling debug info doesn't really sound super special and in fact, it really isn't. However, it turns out that it can have a huge impact on our applications performance, so it's definitely worth a mention in our blog series on exploring Angular 1.3.
 
 So, what is the debug info we're talking about anyway?
 
@@ -85,7 +86,7 @@ What we get, once compiled, is this:
 {% endraw %}
 {% endhighlight %}
 
-The same happens when using `ng-bind` or `ng-bind-html` directives. The former is an equivalent to the interpolation directive, in form of an attribute to prevent flash of uncompiled content flickering. The latter lets us evaluate expressions that have HTML code as value while the HTML itself is interpreted by the browser (use of `$sce.trustAsHtml()` required here). 
+The same happens when using `ng-bind` or `ng-bind-html` directives. The former is an equivalent to the interpolation directive, in form of an attribute to prevent flash of uncompiled content flickering. The latter lets us evaluate expressions that have HTML code as value while the HTML itself is interpreted by the browser (use of `$sce.trustAsHtml()` required here).
 
 To make things a bit more clear, here's our example as `ng-bind` version:
 

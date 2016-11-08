@@ -39,6 +39,7 @@ categories:
   - angularjs
 tags:
   - angular
+  - angular1-3
 author: pascal_precht
 related_posts:
   - 'Exploring Angular 1.5: Lifecycle Hooks'
@@ -100,7 +101,7 @@ Here's a running example of the code described above:
 
 ## The problem with too many watchers
 
-Now that we have a picture of how the databinding mechanism in Angular actually works, we might wonder why there is a feature for one-time binding. 
+Now that we have a picture of how the databinding mechanism in Angular actually works, we might wonder why there is a feature for one-time binding.
 
 Due to Angulars nature of using watchers for databinding, we might get some problems in terms of performance when having too many of them. As we learned, *watch expressions* are registered on the scope together with their callback listeners so Angular can process them during `$digest` cycles in order to update the view accordingly. That simply means, the more watchers are registered, the more Angular has to process.
 

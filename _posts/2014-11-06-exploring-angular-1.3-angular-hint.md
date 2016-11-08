@@ -39,6 +39,7 @@ categories:
   - angularjs
 tags:
   - angular
+  - angular1-3
 author: pascal_precht
 related_posts:
   - 'Exploring Angular 1.5: Lifecycle Hooks'
@@ -61,7 +62,7 @@ With the release of version 1.3, the Angular project comes with a new module cal
 
 As already mentioned, `angular-hint` helps us writing better Angular code and makes finding very common mistakes in our code base easier. For example, did it ever happen to you, that you developed your Angular app, you grabbed a module from somewhere, then you started using the directives that the module comes with, and no matter how much you followed the usage instructions, it simply didn't work. And after one hour of debugging you found out that you forgot to add the module dependency to your application. Yikes!
 
-But let me tell you something. With `angular-hint`, these times are over. And that's just one use case where `angular-hint` helps out. In fact, `angular-hint` comes with a couple of other sub modules for particular use cases. 
+But let me tell you something. With `angular-hint`, these times are over. And that's just one use case where `angular-hint` helps out. In fact, `angular-hint` comes with a couple of other sub modules for particular use cases.
 
 These modules are:
 
@@ -183,7 +184,7 @@ However, when `angular-hint` is activated, we get the following very useful warn
 
 {% highlight sh %}
 Angular Hint: Directives
-  There was an AngularJS error in LI element. 
+  There was an AngularJS error in LI element.
   Found incorrect attribute "ng-repaet" try "ng-repeat"
 {% endhighlight %}
 

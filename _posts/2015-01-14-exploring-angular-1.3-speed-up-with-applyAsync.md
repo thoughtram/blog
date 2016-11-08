@@ -40,6 +40,7 @@ categories:
   - angularjs
 tags:
   - angular
+  - angular1-3
   - performance
 author: pascal_precht
 related_posts:
@@ -52,7 +53,7 @@ related_posts:
 
 ---
 
-As already mentioned in our articles on [one-time bindings](http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html) and [disabling debug info](http://blog.thoughtram.io/angularjs/2014/12/22/exploring-angular-1.3-disabling-debug-info.html), one of the biggest goals of the 1.3 release was to improve Angular's overall performance. 
+As already mentioned in our articles on [one-time bindings](http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html) and [disabling debug info](http://blog.thoughtram.io/angularjs/2014/12/22/exploring-angular-1.3-disabling-debug-info.html), one of the biggest goals of the 1.3 release was to improve Angular's overall performance.
 
 This article details yet another nice feature that makes your Angular applications in particular cases potentially faster: It lets you resolve multiple `$http` responses, that are received around the same time, in one `$digest` cycle with a new API added to the `$rootScope` called `$applyAsync`.
 
@@ -72,9 +73,9 @@ There are basically three possible cases when the state of an application can ch
 - **XMLHttpRequests** - Also known as AJAX. Something in our app requests some data from a server and update model data accordingly.
 - **Timeouts** - Asynchronous operations cause through timers that can possibly change the state of our application
 
-Whenever one of the above things happens, Angular knows it needs to trigger a `$digest`. You might still wonder how that works, since you don't have to inform Angular about these interactions explicitly. This is because Angular intercepts all of these interactions already for you. 
+Whenever one of the above things happens, Angular knows it needs to trigger a `$digest`. You might still wonder how that works, since you don't have to inform Angular about these interactions explicitly. This is because Angular intercepts all of these interactions already for you.
 
-That's why we have all these predefined directives like `ng-click` or even directives that override existing tags like `<input>`. The `$http` service that Angular brings to the table also makes sure that a `$digest` is triggered once a request returns. 
+That's why we have all these predefined directives like `ng-click` or even directives that override existing tags like `<input>`. The `$http` service that Angular brings to the table also makes sure that a `$digest` is triggered once a request returns.
 
 In addtion, this explains why you need to call `$scope.$apply()`, which in turn triggers a `$digest` internally, when you have third-party code that changes your application's state from the outside world.
 
@@ -88,7 +89,7 @@ We mentioned that one of the cases where a `$digest` is triggered, is when an XH
 
 {% highlight js %}
 app.controller('Ctrl', function ($http) {
-  
+
   // Make XHR and update model accordingly
   $http.get('fetch/some/json/').then(function (response) {
     this.myModel = response.data;

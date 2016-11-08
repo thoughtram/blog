@@ -11,6 +11,7 @@ categories:
   - angularjs
 tags:
   - angular
+  - angular1-3
 author: pascal_precht
 related_posts:
   - 'Exploring Angular 1.5: Lifecycle Hooks'
@@ -67,7 +68,7 @@ And a DOM structure like this:
 {% endraw %}
 {% endhighlight %}
 
-The {% raw %} `{{foo}}` {% endraw %} expression in `ControllerTwo` scope will shadow the {% raw %} `{{foo}}` {% endraw %} expression in `ControllerOne` scope, which results in string `Christoph` being displayed in the inner scope and `Pascal` being displayed in the outer scope. 
+The {% raw %} `{{foo}}` {% endraw %} expression in `ControllerTwo` scope will shadow the {% raw %} `{{foo}}` {% endraw %} expression in `ControllerOne` scope, which results in string `Christoph` being displayed in the inner scope and `Pascal` being displayed in the outer scope.
 
 We could always get around this problem by using a scope's `$parent` property to reference its parent scope when accessing scope properties like this:
 
@@ -175,7 +176,7 @@ Great. Now we know what the `controllerAs` syntax it is all about, but we haven'
 
 ## The problem with `controllerAs` in Directives
 
-We said that, when using `controllerAs`, the controllers' scope is bound to the controllers' `this` object, so in other words - `this` represents our scope. But how does that work when building a directive with isolated scope? 
+We said that, when using `controllerAs`, the controllers' scope is bound to the controllers' `this` object, so in other words - `this` represents our scope. But how does that work when building a directive with isolated scope?
 
 We know we can create an isolated scope by adding an object literal to our directive definition object that defines how each scope property is bound to our directive. To refresh our memory, here's what we can do:
 
@@ -245,7 +246,7 @@ app.directive('someDirective', function () {
 {% endraw %}
 {% endhighlight %}
 
-Here we go... the `$scope` service we initially got rid off is now back. If you now think this is crazy, especially when considering that this is just one scope property and in a real world directive you usually have more than one, then my friend, I agree with you. 
+Here we go... the `$scope` service we initially got rid off is now back. If you now think this is crazy, especially when considering that this is just one scope property and in a real world directive you usually have more than one, then my friend, I agree with you.
 
 Luckily, this is no longer a problem in Angular 1.3!
 

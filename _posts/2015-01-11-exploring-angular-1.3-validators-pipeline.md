@@ -11,6 +11,8 @@ categories:
   - angularjs
 tags:
   - angular
+  - angular1-3
+  - forms
 author: pascal_precht
 related_posts:
   - 'Exploring Angular 1.5: Lifecycle Hooks'
@@ -22,7 +24,7 @@ related_posts:
 
 ---
 
-We know that working with forms in Angular is just great. Due to its scope model nature, we always have a reference to the actual form state in its corresponding scope, which makes it easy to access particular field values or represent the form state in our views. 
+We know that working with forms in Angular is just great. Due to its scope model nature, we always have a reference to the actual form state in its corresponding scope, which makes it easy to access particular field values or represent the form state in our views.
 
 If there's one thing that takes probably most of the work when building forms, it's their validation. We know that validation on the server-side is always required in order to process given user data that could break our app. But we also want to provide a great user experience, which is where validation on the client-side comes into play. We already learned about [ngModelOptions](http://blog.thoughtram.io/angularjs/2014/10/19/exploring-angular-1.3-ng-model-options.html). In this article we are going to discuss the ways we've been able to validate data in our Angular forms in 1.2 and detail how version 1.3 makes it even easier with the validators pipeline.
 
@@ -117,7 +119,7 @@ app.directive('validateInteger', function () {
 
       ctrl.$parsers.unshift(function (viewValue) {
 
-        if (REGEX.test(viewValue)) { 
+        if (REGEX.test(viewValue)) {
           ctrl.$setValidity('integer', true);
           return viewValue;
         } else {
@@ -134,7 +136,7 @@ app.directive('validateInteger', function () {
 
 {% endhighlight %}
 
-We check if the new values matches against our regular expression. If it matches we set the validity of `integer` to `true` and return `viewValue`, so it can be passed to further parser functions. 
+We check if the new values matches against our regular expression. If it matches we set the validity of `integer` to `true` and return `viewValue`, so it can be passed to further parser functions.
 
 In case it doesn't match, we set it's validity to `false`, which also exposes an `integer` member on the `FormController`'s `$error` object, so we can display error messages accordingly. We also return `undefined` explicitly, in order to stop processing of the pipe.
 
@@ -147,7 +149,7 @@ We can then use it like every other directive:
 </form>
 {% endhighlight %}
 
-As you can see, there's a lot to take care of when writing custom validations. We need to know about the `$parsers` and `$formatters` pipeline. We also need to set a value's validity state explicitly with `$setValidity()`. 
+As you can see, there's a lot to take care of when writing custom validations. We need to know about the `$parsers` and `$formatters` pipeline. We also need to set a value's validity state explicitly with `$setValidity()`.
 
 In addition to that, it turns out that due to the nature of HTML5 form validation, some input types may not expose the input value until the valid value is entered.
 

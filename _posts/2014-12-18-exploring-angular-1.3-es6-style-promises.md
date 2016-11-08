@@ -39,6 +39,7 @@ categories:
   - angularjs
 tags:
   - angular
+  - angular1-3
 author: pascal_precht
 related_posts:
   - 'Exploring Angular 1.5: Lifecycle Hooks'

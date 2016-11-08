@@ -39,6 +39,7 @@ categories:
   - angularjs
 tags:
   - angular
+  - angular1-3
 author: pascal_precht
 related_posts:
   - 'Exploring Angular 1.5: Lifecycle Hooks'
@@ -92,7 +93,7 @@ angular.module('myApp', [])
 .filter('customFilter', ['someService', function (someService) {
   return function customFilter(input) {
     // manipulate input with someService
-    input += someService.getData(); 
+    input += someService.getData();
     return input;
   };
 }]);
@@ -114,7 +115,7 @@ However, there's a reason why [Igor Minar](http://twitter.com/IgorMinar) said th
 
 In version 1.3, filters are much smarter. By default, they cache the evaluated value so they don't have to be re-evaluated all the time. Getting back to our simple `{% raw %}{{ jsonExpression | json}}{% endraw %}` example, the expression only gets re-evaluated when `jsonExpression` changes, which makes our code execution much faster.
 
-To make it work like this, Angular assumes that, as long as the passed expression doesn't change, the result of the expression doesn't change either. It's **stateless**. And this is where our code might break. Think about what that means in cases where your filter depends on other services, like our `customFilter`. 
+To make it work like this, Angular assumes that, as long as the passed expression doesn't change, the result of the expression doesn't change either. It's **stateless**. And this is where our code might break. Think about what that means in cases where your filter depends on other services, like our `customFilter`.
 
 But to get a better picture, let's take a look at the `translate` filter that comes with the [angular-translate](http://angular-translate.github.io) module. It consumes translation ids to look them up in a registered translation table, using the `$translate` service and returns the dedicated translation. **It is stateful**.
 
@@ -136,7 +137,7 @@ angular.module('myApp', [])
 .filter('customFilter', ['someService', function (someService) {
   function customFilter(input) {
     // manipulate input with someService
-    input += someService.getData(); 
+    input += someService.getData();
     return input;
   }
 

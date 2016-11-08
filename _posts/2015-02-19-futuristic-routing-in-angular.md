@@ -13,6 +13,7 @@ categories:
   - angularjs
 tags:
   - angular
+  - angular1-3
   - routing
 author: pascal_precht
 related_posts:

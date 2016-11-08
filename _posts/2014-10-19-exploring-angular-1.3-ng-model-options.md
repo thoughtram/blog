@@ -13,6 +13,7 @@ categories:
   - angularjs
 tags:
   - angular
+  - angular1-3
 author: pascal_precht
 related_posts:
   - 'Exploring Angular 1.5: Lifecycle Hooks'
@@ -66,9 +67,9 @@ Yes, and we can do so thanks to Angular 1.3 and the `ngModelOptions` directive.
 
 {% highlight html %}
 {% raw %}
-<input 
-  type="text" 
-  ng-model="name" 
+<input
+  type="text"
+  ng-model="name"
   ng-model-options="{ updateOn: 'blur' }">
 <p>Hello {{name}}!</p>
 {% endraw %}
@@ -82,9 +83,9 @@ If we do want to update the model with the default events that belong to that co
 
 {% highlight html %}
 {% raw %}
-<input 
-  type="text" 
-  ng-model="name" 
+<input
+  type="text"
+  ng-model="name"
   ng-model-options="{ updateOn: 'default blur' }">
 <p>Hello {{name}}!</p>
 {% endraw %}
@@ -102,9 +103,9 @@ Just imagine an `input[type="search"]` element, where every time a user types in
 
 {% highlight html %}
 {% raw %}
-<input 
-  type="search" 
-  ng-model="searchQuery" 
+<input
+  type="search"
+  ng-model="searchQuery"
   ng-model-options="{ debounce: 300 }">
 <p>Search results for: {{searchQuery}}</p>
 {% endraw %}
@@ -120,9 +121,9 @@ The following code generates a model update delay of 300 milliseconds when the u
 
 {% highlight html %}
 {% raw %}
-<input 
-  type="search" 
-  ng-model="searchQuery" 
+<input
+  type="search"
+  ng-model="searchQuery"
   ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 300, 'blur': 0 } }">
 <p>Search results for: {{searchQuery}}</p>
 {% endraw %}
