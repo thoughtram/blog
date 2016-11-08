@@ -2,7 +2,7 @@
 layout: post
 title: Beginning Machine Learning with Keras and TensorFlow
 date: 2016-09-23T00:00:00.000Z
-date: 2016-11-08T00:00:00.000Z
+update_date: 2016-11-08T00:00:00.000Z
 imageUrl: /images/banner/intro_in_ml.jpeg
 summary: >-
   With all the latest accomplishments in the field of artificial intelligence
