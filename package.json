@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/thoughtram/blog#readme",
   "dependencies": {
-    "jekyll-related-posts": "git+https://github.com/thoughtram/jekyll-related-posts.git#941d384"
+    "jekyll-related-posts": "git+https://github.com/thoughtram/jekyll-related-posts.git#c966089"
   }
 }
