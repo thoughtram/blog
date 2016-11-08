@@ -1,11 +1,6 @@
-let exec = require('child_process').exec;
-//TODO Clean up
-let cmd = `$(npm bin)/jrp ${__dirname}/_posts && git add -A . && git commit -m "Adding meta data for related posts" && git push origin gh-pages`;
-
-exec(cmd, (error, stdout, stderr) => {
-  console.log(stdout);
-  console.log(stderr);
-  if (error !== null) {
-      console.log(error);
-  }
-});
+let spawnSync = require('child_process').execSync;
+let spawnOptions = { stdio: 'inherit' };
+console.log('foo');
+spawnSync(`$(npm bin)/jrp ${__dirname}/_posts`, spawnOptions);
+spawnSync(`git add -A .`, spawnOptions);
+spawnSync(`git commit -m "Adding meta data for related posts"`, spawnOptions);
