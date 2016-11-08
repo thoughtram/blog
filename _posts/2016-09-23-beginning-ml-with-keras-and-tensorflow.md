@@ -2,6 +2,7 @@
 layout: post
 title: Beginning Machine Learning with Keras and TensorFlow
 date: 2016-09-23T00:00:00.000Z
+date: 2016-11-08T00:00:00.000Z
 imageUrl: /images/banner/intro_in_ml.jpeg
 summary: >-
   With all the latest accomplishments in the field of artificial intelligence
@@ -29,6 +30,13 @@ Every now and then there comes a field of technology that strikes us as being es
 Companies such as Google, NVIDIA or [Comma.ai](http://comma.ai/) are using neural networks to train cars that know how to drive themselves. Apps such as [PRISMA](http://prisma-ai.com/) are using AI to create artwork from photography that is inspired by real artists.
 
 We are happy to jump on this exciting journey and we are even happier to share our findings with you.
+
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
 
 
 ## What's all the buzz about AI and Machine Learning

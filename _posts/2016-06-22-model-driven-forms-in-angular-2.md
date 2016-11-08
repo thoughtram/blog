@@ -2,13 +2,8 @@
 layout: post
 title: Reactive Forms in Angular 2
 date: 2016-06-22T00:00:00.000Z
-update_date: 2016-08-11T00:00:00.000Z
+update_date: 2016-11-08T00:00:00.000Z
 imageUrl: /images/banner/model-driven-forms-in-angular-2.jpeg
-relatedLinks:
-  - title: Custom Validators in Angular 2
-    url: /angular/2016/03/14/custom-validators-in-angular-2.html
-  - title: Template-driven Forms in Angular 2
-    url: /angular/2016/03/21/template-driven-forms-in-angular-2.html
 summary: >-
   Angular allows us to build forms in a model-driven fashion. In this article
   we're going to discuss what that looks like.
@@ -30,6 +25,13 @@ related_posts:
 ---
 
 Just a couple days ago, we've updated our article on [Template-driven Forms in Angular 2](/angular/2016/03/21/template-driven-forms-in-angular-2.html), as the APIs have changed for the better in the second release candidate. We think it's time to talk about **model-driven** and **reactive forms** on our blog. This article builds on top of the knowledge we've gained in our previous article, so you might want to take a look at it in case you haven't yet.
+
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
 
 ## The goal of reactive/model-driven forms
 

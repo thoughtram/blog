@@ -3,19 +3,8 @@ layout: post
 title: Upgrading apps to Angular 2 using ngUpgrade
 redirect_from:
   - /angular/2015/10/24/upgrading-apps-to-angular-2-using-/
-relatedLinks:
-  - title: Exploring Angular 2 - Article Series
-    url: /exploring-angular-2
-  - title: Dependency Injection in Angular 2
-    url: /angular/2015/05/18/dependency-injection-in-angular-2.html
-  - title: Exploring Angular 2
-    url: /exploring-angular-2
-  - title: Writing Angular 2 code in ES5
-    url: /angular/2015/05/09/writing-angular-2-code-in-es5.html
-  - title: Resolving Service Dependencies in Angular 2
-    url: /angular/2015/09/17/resolve-service-dependencies-in-angular-2.html
 date: 2015-10-24T00:00:00.000Z
-update_date: 2016-08-11T00:00:00.000Z
+update_date: 2016-11-08T00:00:00.000Z
 summary: >-
   In this article you'll learn how to upgrade your Angular 1 applications to
   Angular 2 using ngUpgrade.
@@ -40,6 +29,13 @@ Upgrading an existing AngularJS application to Angular 2 is surely one of the mo
 Earlier this year however, the Angular team has made an [official announcement](http://angularjs.blogspot.de/2015/08/angular-1-and-angular-2-coexistence.html) in which they talk about what are the available upgrade strategies and what things of both frameworks have to interoperate in order to run them side-by-side on the same website. While the blog post is rather a kind of birds-eye view where no code is shown, a dedicated [design document](https://docs.google.com/document/d/1xvBZoFuNq9hsgRhPPZOJC-Z48AHEbIBPlOCBTSD8m0Y) has been created that gives a more concrete idea on what the APIs will look like.
 
 Meanwhile, first implementations of `ngUpgrade` have landed in the code base and it's time to start digging into it. In this article we're going to explore what we can do to prepare for an upgrade, and of course how we eventually use `ngUpgrade` to upgrade our application to Angular 2.
+
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
 
 ## Why upgrade?
 

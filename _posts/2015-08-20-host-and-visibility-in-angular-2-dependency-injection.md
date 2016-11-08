@@ -1,20 +1,8 @@
 ---
 layout: post
 title: Host and Visibility in Angular 2's Dependency Injection
-relatedLinks:
-  - title: Exploring Angular 2 - Article Series
-    url: /exploring-angular-2
-  - title: Dependency Injection in Angular 2
-    url: /angular/2015/05/18/dependency-injection-in-angular-2.html
-  - title: 'Angular 2 Bits: Unified Dependency Injection'
-    url: >-
-      http://victorsavkin.com/post/102965317996/angular-2-bits-unified-dependency-injection
-  - title: The difference between Annotations and Decorators
-    url: /angular/2015/05/03/the-difference-between-annotations-and-decorators.html
-  - title: View Encapsulation in Angular 2
-    url: /angular/2015/06/29/shadow-dom-strategies-in-angular2.html
 date: 2015-08-20T00:00:00.000Z
-update_date: 2016-08-11T00:00:00.000Z
+update_date: 2016-11-08T00:00:00.000Z
 summary: >-
   Angular 2's DI allows us to configure the visbility of what gets injected from
   where. Learn about @Host in this article!
@@ -37,6 +25,13 @@ related_posts:
 In our article on [Dependency Injection in Angular 2](/angular/2015/05/18/dependency-injection-in-angular-2.html) we explored what dependency injection actually is, and how it is implemented in the Angular 2 framework. If you haven't read that article yet, I highly recommend you doing so, since this article is based on it.
 
 Even though we learned that Angular 2's new dependency injection is very flexible and solves pretty much all the problems we have with the dependency injection in AngularJS, there are still a couple of topics that we haven't discussed yet. One of them is how Angular treats the relationship between **host** and child injectors, and the other one is how the **visibility of dependencies** are handled. In this article we're going to explore exactly these two topics.
+
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
 
 ## Understanding host relationships
 

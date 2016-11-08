@@ -3,28 +3,8 @@ layout: post
 title: Dependency Injection in Angular 2
 redirect_from:
   - /angular/2015/05/18/dependency-injection-in-/
-relatedLinks:
-  - title: Exploring Angular 2 - Article Series
-    url: 'http://blog.thoughtram.io/exploring-angular-2'
-  - title: 'Talk: Dependency Injection for Future Generations'
-    url: 'https://www.youtube.com/watch?v=8c-qv9TisVE'
-  - title: Host and Visibility in Angular 2's Dependency Injection
-    url: >-
-      http://blog.thoughtram.io/angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html
-  - title: Forward References in Angular 2
-    url: >-
-      http://blog.thoughtram.io/angular/2015/09/03/forward-references-in-angular-2.html
-  - title: The difference between decorators and annotations
-    url: >-
-      http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html
-  - title: Builing a zippy component in Angular 2
-    url: >-
-      http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html
-  - title: 'Angular 2 Bits: Unified Dependency Injection'
-    url: >-
-      http://victorsavkin.com/post/102965317996/angular-2-bits-unified-dependency-injection
 date: 2015-05-18T00:00:00.000Z
-update_date: 2016-09-03T00:00:00.000Z
+update_date: 2016-11-08T00:00:00.000Z
 summary: >-
   Angular 2 implements a very powerful dependency injection system that makes
   reusing services easy and flexible. Learn how it works!
@@ -71,6 +51,13 @@ An injector creates dependencies using providers. Providers are recipes that kno
 
 1. Create a provider either on your `@NgModule`, `@Component`, or `@Directive` using a type or a string as provider token.
 2. Inject the service in the component's constructor where it's needed using that configured token.
+</div>
+
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
 </div>
 
 ## Dependency Injection as a pattern

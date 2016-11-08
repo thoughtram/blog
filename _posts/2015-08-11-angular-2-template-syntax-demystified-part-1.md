@@ -1,17 +1,8 @@
 ---
 layout: post
 title: Angular 2 Template Syntax Demystified - Part 1
-relatedLinks:
-  - title: Exploring Angular 2 - Article Series
-    url: 'http://blog.thoughtram.io/exploring-angular-2'
-  - title: Integrating Web Components with AngularJS
-    url: >-
-      https://pascalprecht.github.io/2014/10/25/integrating-web-components-with-angularjs/
-  - title: Binding to directive controllers
-    url: >-
-      http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html
 date: 2015-08-11T00:00:00.000Z
-update_date: 2016-05-12T00:00:00.000Z
+update_date: 2016-11-08T00:00:00.000Z
 summary: >-
   Angular 2 introduces it's own kind of template syntax in order to implement
   different binding strategies. Learn why it's there and how it works.
@@ -34,6 +25,13 @@ related_posts:
 I think we've been all through this. We see Angular 2 template code the very first time and all of a sudden we have these weird brackets and parentheses spread all over our HTML. Around a year ago I've written an article about how to [integrate Web Components with AngularJS](https://pascalprecht.github.io/2014/10/25/integrating-web-components-with-angularjs/), which explains how we can use, or not use, Web Components in AngularJS applications today. If you haven't read it yet, I highly recommend you doing so. It's old but the content is still true.
 
 It also touches on the new template syntax in Angular 2 and how it tends to solve the existing issues. However, it still seems a mystery for a lot of people and that's why we're going to explore the Angular 2's template syntax in this article. **Please note** that this is the first part of "Angular 2 Template Syntax Demystified". There's going to be another article soon.
+
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
 
 ## What it looks like
 

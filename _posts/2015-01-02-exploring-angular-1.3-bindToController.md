@@ -1,37 +1,9 @@
 ---
 layout: post
 title: Binding to Directive Controllers in Angular 1.3
-relatedLinks:
-  - title: 'Exploring Angular 1.3: One-time bindings'
-    url: >-
-      http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html
-  - title: 'Exploring Angular 1.3: ng-model-options'
-    url: >-
-      http://blog.thoughtram.io/angularjs/2014/10/19/exploring-angular-1.3-ng-model-options.html
-  - title: 'Exploring Angular 1.3: Angular-hint'
-    url: >-
-      http://blog.thoughtram.io/angularjs/2014/11/06/exploring-angular-1.3-angular-hint.html
-  - title: 'Exploring Angular 1.3: Stateful Filters'
-    url: >-
-      http://blog.thoughtram.io/angularjs/2014/11/19/exploring-angular-1.3-stateful-filters.html
-  - title: 'Exploring Angular 1.3: ES6 Style Promises'
-    url: >-
-      http://blog.thoughtram.io/angularjs/2014/12/18/exploring-angular-1.3-es6-style-promises.html
-  - title: 'Exploring Angular 1.3: Disabling Debug Info'
-    url: >-
-      http://blog.thoughtram.io/angularjs/2014/12/22/exploring-angular-1.3-disabling-debug-info.html
-  - title: 'Exploring Angular 1.3: Validators Pipeline'
-    url: >-
-      http://blog.thoughtram.io/angularjs/2015/01/11/exploring-angular-1.3-validators-pipeline.html
-  - title: 'Exploring Angular 1.3: Go fast with $applyAsync'
-    url: >-
-      http://blog.thoughtram.io/angularjs/2015/01/14/exploring-angular-1.3-speed-up-with-applyAsync.html
-  - title: 'Exploring Angular 1.3: ngMessages'
-    url: >-
-      http://blog.thoughtram.io/angularjs/2015/01/23/exploring-angular-1.3-ngMessages.html
 date: 2015-01-02T00:00:00.000Z
-update_date: 2015-08-13T00:00:00.000Z
-summary: >-
+update_date: 2016-11-08T00:00:00.000Z
+summary:
   In this article we are going to take a look how to bind values to directive
   controllers to make them more reusable.
 isExploringAngular13Article: true
@@ -53,6 +25,13 @@ related_posts:
 In version 1.2, Angular introduced a new `controllerAs` syntax that made scoping clearer and controllers smarter. In fact, it's a best practice to use `controllerAs` throughout our Angular apps in order to prevent some common problems that developers run into fairly often.
 
 Even if it's nice that we are able to use that syntax in pretty much every case where a controller comes into play, it turned out that in version 1.2, there's a little quirk when using it with directives that have an isolated scope. But before we get to the actual problem, let's recap `controllerAs` in general first, to get an idea of what problems it solves and how to use it, so that we are all on the same page.
+
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
 
 ## `controllerAs` as Namespace
 

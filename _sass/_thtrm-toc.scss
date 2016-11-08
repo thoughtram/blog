@@ -39,15 +39,21 @@
 
   li {
     margin-top: 0.2em; 
-    font-size: 0.9em;
+    margin-left: 1em;
     color: #ccc;
 
-    &:hover { color: #444; }
+    &:hover { color: #384c54; }
+
+    ul, ol {
+      margin-top: 0;
+    }
   }
 
   a {
     display: block;
     border: none;
+
+    &:hover { color: #384c54; }
 
     span {
       border-bottom: 1px dotted #5C8491;

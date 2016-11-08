@@ -2,9 +2,11 @@
 layout: post
 title: Rust's Ownership model for JavaScript developers
 date: 2015-05-11T00:00:00.000Z
+update_date: 2016-11-08T00:00:00.000Z
 summary: >-
   In this post we explore Rust's concept of ownership that enables the language
   to achieve 100 % memory safety without garbage collection.
+layout:     post
 categories:
   - rust
 tags:
@@ -28,6 +30,13 @@ I like to point out that both projects wouldn't have been where they are today w
 While we wrote a lot about Angular and Git in this blog already, we didn't actually took the time to explore Rust.
 
 Let's change that and start with baby steps. Many readers of this blog are familiar with JavaScript so let's explore a core concept of Rust from the perspective of a JavaScript developer.
+
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
 
 ##Memory management
 

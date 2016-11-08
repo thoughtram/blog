@@ -52,6 +52,13 @@ related_posts:
 
 We mainly took a look at completely new features that come with the Angular 1.3 release until now. Things like [ngModelOptions](http://blog.thoughtram.io/angularjs/2014/10/19/exploring-angular-1.3-ng-model-options.html), [Angular-hint](http://blog.thoughtram.io/angularjs/2014/11/06/exploring-angular-1.3-angular-hint.html) or [One-time Bindings](http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html) are not just minor improvements, but rather real extensions to the framework. However, there have not only been significant new features added to the release, but also a ton of bug fixes and nice little additions that we might have overlooked. One of them is the ES6 streamlined promise API and today we gonna take a look what it brings to the table.
 
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
+
 ## Asynchronous worlds with Promises
 
 In order to understand what the new streamlined addition to the existing promise API means, we first have to make sure we're all on the same page and know what promises are and how they've been implemented in Angular before. We don't want to go in too much detail here though, since there are a ton of resources in the interwebs, but let's take a very quick look at promises and move on then.

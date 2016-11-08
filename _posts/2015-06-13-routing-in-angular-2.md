@@ -1,17 +1,8 @@
 ---
 layout: post
 title: Routing in Angular 2
-relatedLinks:
-  - title: Exploring Angular 2 - Article Series
-    url: 'http://blog.thoughtram.io/exploring-angular-2'
-  - title: Futuristic Routing in Angular
-    url: >-
-      http://blog.thoughtram.io/angularjs/2015/02/19/futuristic-routing-in-angular.html
-  - title: Dependency Injection in Angular 2
-    url: >-
-      http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html
 date: 2015-06-16T00:00:00.000Z
-update_date: 2016-05-12T00:00:00.000Z
+update_date: 2016-11-08T00:00:00.000Z
 summary: >-
   Learn how to route between components. In this article we explore how to use
   the new router in Angular 2.
@@ -39,6 +30,13 @@ related_posts:
 If you're following our [articles on Angular](http://blog.thoughtram.io/categories/angular) you might know that, a couple of months ago, [we've written about the new router](http://blog.thoughtram.io/angularjs/2015/02/19/futuristic-routing-in-angular.html), how it can be used, and how it differs from the `ngRoute` standard router. Whereas we mostly touched on using the router in Angular 1 applications, this article discusses how it can be used in Angular 2 applications.
 
 We won't talk about how to get started with Angular 2. We assume that we're all familiar with the installation process and how to bootstrap a small Angular 2 application. If this is entirely new to you, I recommend checking out our articles on [developing a zippy component](http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html) or [developing a tabs component](http://blog.thoughtram.io/angular/2015/04/09/developing-a-tabs-component-in-angular-2.html) in Angular 2. Another great starting point is the [starter kit](http://github.com/angular-class/angular2-webpack-starter) by our friends over at [AngularClass](http://angularclass.com).
+
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
 
 ## Bootstrapping the router
 

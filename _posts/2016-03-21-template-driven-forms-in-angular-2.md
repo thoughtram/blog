@@ -2,13 +2,8 @@
 layout: post
 title: Template-driven Forms in Angular 2
 date: 2016-03-21T00:00:00.000Z
-update_date: 2016-08-11T00:00:00.000Z
+update_date: 2016-11-08T00:00:00.000Z
 imageUrl: /images/template-driven-forms.jpeg
-relatedLinks:
-  - title: Custom Validators in Angular 2
-    url: /angular/2016/03/14/custom-validators-in-angular-2.html
-  - title: Reactive Forms in Angular 2
-    url: /angular/2016/06/22/model-driven-forms-in-angular-2.html
 summary: >-
   In this article we discuss the template-driven forms in Angular 2 and all the
   directives that come into play.
@@ -41,6 +36,13 @@ Angular comes with three different ways of building forms in our applications. T
 Hearing all these different solutions, it's kind of natural that there are also probably many different tools to reach the goal. This can be sometimes confusing and with this article we want to clarify a subset of form directives by focussing on template-driven forms in Angular 2.
 
 {% include demos-and-videos-buttons.html post=page %}
+
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
 
 ## Activating new Form APIs
 

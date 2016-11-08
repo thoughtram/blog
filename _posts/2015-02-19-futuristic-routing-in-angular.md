@@ -1,10 +1,8 @@
 ---
 layout: post
 title: Futuristic Routing in Angular
-relatedLinks:
-  - title: Routing in Angular 2
-    url: 'http://blog.thoughtram.io/angular/2015/06/16/routing-in-angular-2.html'
 date: 2015-02-19T00:00:00.000Z
+update_date: 2016-11-08T00:00:00.000Z
 summary: >-
   An this article we discuss the new router APIs and how it's going to change
   the way we implement component based routing in our Angular applications.
@@ -32,6 +30,13 @@ One of the latest announcements that counts as the most exciting ones, is that t
 It got even better, when the team announced that they plan to back port the new router to the 1.x branch of the Angular framework and having it ready in time for the 1.3 release. Unfortunately it turned out, that it took a bit more effort to make the new router available for both projects, especially considering that both should share as much code as possible. <s>That's why the back port has been postponed to the next bigger 1.4 release, which is targeted to be ready in March, this year (yay!)</s> The router also didn't make it into the 1.4 release.
 
 That's right, at the time of writing this article, the new router hasn't been released yet. However, since we're following the latest developments of all Angular 2.0 related projects actively on GitHub, we can't wait to share our thoughts on the new router with you. In this article we explore the new router and discuss it's concepts and features that we've all been waiting for!
+
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
 
 ## The Routing we know
 

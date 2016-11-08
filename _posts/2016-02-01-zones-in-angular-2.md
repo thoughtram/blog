@@ -1,14 +1,6 @@
 ---
 layout: post
 title: Zones in Angular 2
-relatedLinks:
-  - title: Exploring Angular 2 - Article Series
-    url: 'http://blog.thoughtram.io/exploring-angular-2'
-  - title: Understanding Zones
-    url: 'http://blog.thoughtram.io/angular/2016/01/22/understanding-zones.html'
-  - title: Taking advantage of Observables in Angular 2
-    url: >-
-      http://blog.thoughtram.io/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html
 demos:
   - url: 'http://embed.plnkr.co/gC7GjU/'
     title: Zones in Angular 2
@@ -33,9 +25,16 @@ related_posts:
 
 ---
 
-In [Understanding Zones](http://blog.thoughtram.io/angular/2016/01/22/understanding-zones.html), we explored the power of Zones by building a profiling zone that profiles asynchronous operations in our code. We learned that Zones are a sort of execution context that allows us to hook into our asynchronous tasks. If you haven't read that article, we highly recommend checking it out as this one is based on it. In this article we're going to take a closer look at what role Zones play in Angular 2.
+In [Understanding Zones](/angular/2016/01/22/understanding-zones.html), we explored the power of Zones by building a profiling zone that profiles asynchronous operations in our code. We learned that Zones are a sort of execution context that allows us to hook into our asynchronous tasks. If you haven't read that article, we highly recommend checking it out as this one is based on it. In this article we're going to take a closer look at what role Zones play in Angular 2.
 
 {% include demos-and-videos-buttons.html post=page %}
+
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
 
 ## Zones are a perfect fit for Angular
 

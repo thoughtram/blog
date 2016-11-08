@@ -2,12 +2,8 @@
 layout: post
 title: Service vs Factory - Once and for all
 imageUrl: /images/banner/service-vs-factory.png
-relatedLinks:
-  - title: Using ES6 with Angular today
-    url: >-
-      http://blog.thoughtram.io/angularjs/es6/2015/01/23/exploring-angular-1.3-using-es6.html
 date: 2015-07-07T00:00:00.000Z
-update_date: 2015-07-07T00:00:00.000Z
+update_date: 2016-11-08T00:00:00.000Z
 summary: >-
   This is yet another article on services vs factories in AngularJS. It explains
   once and for all, why we mostly want to use service.
@@ -30,6 +26,13 @@ Wait, what? Yet another article that answers the big question: Service vs Factor
 
 This article explains once and for all the difference between services and factories and why **we want to prefer services over factories**.
 
+
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
 
 ## The difference between services and factories
 

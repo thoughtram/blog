@@ -3,36 +3,8 @@ layout: post
 title: ng-model-options in Angular 1.3
 redirect_from:
   - /angularjs/2014/10/19/exploring-angular-1.3-ng-model-/
-relatedLinks:
-  - title: 'Exploring Angular 1.3: One-time bindings'
-    url: >-
-      http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html
-  - title: 'Exploring Angular 1.3: Angular-hint'
-    url: >-
-      http://blog.thoughtram.io/angularjs/2014/11/06/exploring-angular-1.3-angular-hint.html
-  - title: 'Exploring Angular 1.3: Stateful Filters'
-    url: >-
-      http://blog.thoughtram.io/angularjs/2014/11/19/exploring-angular-1.3-stateful-filters.html
-  - title: 'Exploring Angular 1.3: ES6 Style Promises'
-    url: >-
-      http://blog.thoughtram.io/angularjs/2014/12/18/exploring-angular-1.3-es6-style-promises.html
-  - title: 'Exploring Angular 1.3: Disabling Debug Info'
-    url: >-
-      http://blog.thoughtram.io/angularjs/2014/12/22/exploring-angular-1.3-disabling-debug-info.html
-  - title: 'Exploring Angular 1.3: Binding to Directive Controllers'
-    url: >-
-      http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html
-  - title: 'Exploring Angular 1.3: Validators Pipeline'
-    url: >-
-      http://blog.thoughtram.io/angularjs/2015/01/11/exploring-angular-1.3-validators-pipeline.html
-  - title: 'Exploring Angular 1.3: Go fast with $applyAsync'
-    url: >-
-      http://blog.thoughtram.io/angularjs/2015/01/14/exploring-angular-1.3-speed-up-with-applyAsync.html
-  - title: 'Exploring Angular 1.3: ngMessages'
-    url: >-
-      http://blog.thoughtram.io/angularjs/2015/01/23/exploring-angular-1.3-ngMessages.html
 date: 2014-10-19T00:00:00.000Z
-update_date: 2015-08-13T00:00:00.000Z
+update_date: 2016-11-08T00:00:00.000Z
 summary: >-
   In this article we explore the brand new ngModelOptions directive that allows
   us to control how ngModel updates are done in our Angular applications.
@@ -58,6 +30,13 @@ We've written a few other articles on 1.3 already. Here's a list:
 - [Exploring Angular 1.3 - One-time bindings](http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html)
 - [Exploring Angular 1.3 - Angular-hint](http://blog.thoughtram.io/angularjs/2014/11/06/exploring-angular-1.3-angular-hint.html)
 
+
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
 
 
 `ngModelOptions` allows us to control how `ngModel` updates are done. This includes things like updating the model only after certain events are triggered or a debouncing delay, so that the view value is reflected back to the model only after a timer expires. To get an idea of what that actually means, let's start with the probably simplest use case that sets up a two-way binding using an `input` element that has a `ngModel` directive applied:

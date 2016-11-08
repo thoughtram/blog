@@ -1,19 +1,8 @@
 ---
 layout: post
 title: Understanding Zones
-relatedLinks:
-  - title: Exploring Angular 2 - Article Series
-    url: 'http://blog.thoughtram.io/exploring-angular-2'
-  - title: Brian's talk on Zones at NG-Conf 2014
-    url: 'https://www.youtube.com/watch?v=3IqtmUscE_U'
-  - title: Zones in Dart
-    url: 'https://www.dartlang.org/articles/zones/'
-  - title: The Event Loop and Dart
-    url: 'https://www.dartlang.org/articles/event-loop/'
-  - title: 'Talk: What the heck is the event loop anyway?'
-    url: 'https://www.youtube.com/watch?v=8aGhZQkoFbQ'
 date: 2016-01-22T00:00:00.000Z
-update_date: 2016-01-22T00:00:00.000Z
+update_date: 2016-11-08T00:00:00.000Z
 summary: >-
   Angular 2 takes advantage of a feature called Zones. Learn here what they are
   and how they work.
@@ -34,6 +23,13 @@ related_posts:
 ---
 
 At NG-Conf 2014, [Brian](http://twitter.com/briantford) gave an excellent [talk on zones](https://www.youtube.com/watch?v=3IqtmUscE_U) and how they can change the way we deal with asynchronous code. If you haven't watched this talk yet, give it a shot, it's just ~15 minutes long. APIs might be different nowadays, but the semantics and underlying concepts are the same. In this article we'd like to dive a bit deeper into how zones work.
+
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
 
 ## The problem to be solved
 

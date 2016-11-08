@@ -2,6 +2,7 @@
 layout: post
 title: Understanding XOR with Keras and TensorFlow
 date: 2016-11-02T00:00:00.000Z
+update_date: 2016-11-08T00:00:00.000Z
 imageUrl: /images/banner/understanding-xor-with-keras-and-tensorflow.jpeg
 summary: >-
   In this article we'll take a closer look at a simple model for a neural net to
@@ -27,6 +28,13 @@ In our [recent article](/machine-learning/2016/09/23/beginning-ml-with-keras-and
 Of course solving XOR is a toy task. Why would you use a neural network to solve a trivial task that a hash map could solve much faster? The answer is simple: When we learn something new, we want to start with bite-sized tasks and take away as much of the complexity as possible. Once we grokked the basics, we can work our way up to the more advanced stuff.
 
 As an absolute machine learning beginner you're probably still wondering what the code means and how you could have come up with it by yourself. What are all these numbers and what role do they play in solving the XOR problem? If these are youre questions, read on!
+
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
 
 ## Understanding the model of our neural net
 

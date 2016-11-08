@@ -2,6 +2,7 @@
 layout: post
 title: How to prevent name collisions in Angular 2 providers
 date: 2016-05-23T00:00:00.000Z
+date: 2016-11-08T00:00:00.000Z
 imageUrl: /images/banner/opaque-tokens-in-angular-2.jpeg
 summary: >-
   Angular provides a mechanism to avoid name collisions in provider tokens. In
@@ -30,7 +31,15 @@ If you've read our article series on everything dependency injection in Angular 
 
 {% include demos-and-videos-buttons.html post=page %}
 
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
+
 Before we jump into the actual problem we want to solve, let's first recap the differences between a string token and a type token.
+
 
 ## String Tokens vs Type Tokens
 

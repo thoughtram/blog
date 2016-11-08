@@ -1,10 +1,8 @@
 ---
 layout: post
 title: Angular and i18n - The new world
-relatedLinks:
-  - title: 'Talk: Better i18n for your Angular apps'
-    url: 'https://www.youtube.com/watch?v=iBBkCA1M-mc'
 date: 2015-03-21T00:00:00.000Z
+update_date: 2016-11-08T00:00:00.000Z
 summary: >-
   Want to internationalize your Angular 2 app? This articles explains the plans
   for i18n in Angular 2!
@@ -27,6 +25,13 @@ related_posts:
 We all know that internationalization is important when it comes to bigger apps, or just the ones that are simply used across countries. Angular itself comes with very poor i18n support, which is why the community has built their own solutions to extend the framework's functionalities to their needs. However, there's finally a first-class solution evolving that will be baked right into the core.
 
 In fact, I was honoured to give a talk on that topic at this year's [ng-conf](http://ng-conf.org) with [Chirayu Krishnappa](http://twitter.com/chirayuk) and you can watch the recording of it right [here](https://www.youtube.com/watch?v=iBBkCA1M-mc). This article is a detailed write-up based on the talk and I hope it will answer all the questions it raised.
+
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
 
 ## Understanding the process of i18n
 

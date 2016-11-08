@@ -27,13 +27,21 @@ related_posts:
 
 ---
 
+
 There are many things that Angular helps us out with when creating forms. We've covered several topics on [Forms in Angular 2](/forms-in-angular-2), like model-driven forms and template-driven forms. If you haven't read those articles yet, we highly recommend you to do so as this one is based on them. [Almero Steyn](http://twitter.com/kryptos_rsa), one of our training students, who later on contributed to the official documentation as part of the Docs Authoring Team for Angular 2, has also written a very nice [introduction](http://almerosteyn.com/2016/04/linkup-custom-control-to-ngcontrol-ngmodel) to creating custom controls.
 
 His article inspired us and we would like to take it a step further and explore how to create custom form controls that integrate nicely with Angular's form APIs.
 
 {% include demos-and-videos-buttons.html post=page %}
 
-<h2 id="things-to-consider">Custom form control considerations</h2>
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
+
+## Custom form control considerations
 
 Before we get started and build our own custom form control, we want to make sure that we have an idea of the things come into play when creating custom form controls. 
 
@@ -61,7 +69,7 @@ There are probably more things to consider, but these are the most important one
 
 We will discuss different scenarios through out this article to demonstrate how these things can be implemented. **We will not cover accessibility in this article** though, as there'll be follow-up articles to talk about that in-depth.
 
-<h2 id="creating-a-custom-counter">Creating a custom counter</h2>
+## Creating a custom counter
 
 Let's start off with a rather simple counter component. The idea is to have a component that lets us increment and decrement a model value. And yes, if we think about the [things to consider](#things-to-consider), we probably realise that an `<input type="number">` would do the trick.
 
@@ -141,7 +149,7 @@ Okay cool, but now we want to make it work with Angular's form APIs. Ideally, wh
 
 If that syntax is new to you, check out our article on [Template-Driven forms in Angular 2](/angular/2016/03/21/template-driven-forms-in-angular-2.html). Okay but how do we get there? We need to learn what a `ControlValueAccessor` is, because that's the thing that Angular uses to build a bridge between a form model and a DOM element.
 
-<h2 id="understanding-control-value-accessors">Understanding ControlValueAccessor</h2>
+## Understanding ControlValueAccessor
 
 While our counter component works, there's currently no way we can connect it to an outer form. In fact, if we try to bind any kind of form model to our custom control, we'll get an error that there's a missing `ControlValueAccessor`. And that's exactly what we need to enable proper integration with forms in Angular.
 
@@ -158,7 +166,7 @@ There's the `DefaultValueAccessor` that takes care of text inputs and textareas,
 
 Our counter component needs a `ControlValueAccessor` that knows how to update the `counterValue` model and inform the outside world about changes too. As soon as we implement that interface, it'll be able to talk to Angular forms.
 
-<h2 id="implementing-control-value-accessor">Implementing ControlValueAccessor</h2>
+## Implementing ControlValueAccessor
 
 The `ControlValueAccessor` interface looks like this:
 
@@ -299,7 +307,7 @@ class CounterInputComponent implements ControlValueAccessor {
 
 `CounterInputComponent` is almost ready for prime-time. Even though it implements the `ControlValueAccessor` interface, there's nothing that tells Angular that it should be considered as such. We need to register it.
 
-<h2 id="registering-the-control-value-accessor">Registering the ControlValueAccessor</h2>
+## Registering the ControlValueAccessor
 
 Implementing the interface is only half of the story. As we know, interfaces don't exist in ES5, which means once the code is transpiled, that information is gone. So after all, it happens that our component implements the interface, but we still need to make Angular pick it up as such.
 
@@ -334,7 +342,7 @@ If this code doesn't make any sense to you, you should definitely check out our 
 
 Awesome, our custom form control is now ready to be used!
 
-<h2 id="using-it-insde-template-driven-forms">Using it inside template-driven forms</h2>
+## Using it inside template-driven forms
 
 We've already seen that the counter component works as intended, but now we want to put it inside an actual form and make sure it works in all common scenarios.
 
@@ -413,7 +421,7 @@ And of course, we can take advantage of `ngModel`'s two-way data binding impleme
 
 How cool is that? Our custom form control works seamlessly with the template-driven forms APIs! Let's see what that looks like when using model-driven forms.
 
-<h2 id="using-it-inside-model-driven-forms">Using it inside model-driven forms</h2>
+## Using it inside model-driven forms
 
 The following examples use Angular's reactive form directives, so don't forget to add `ReactiveFormsModule` to `AppModule` as discussed in [this article](/angular/2016/06/22/model-driven-forms-in-angular-2.html).
 
@@ -448,7 +456,7 @@ class AppComponent implements OnInit {
 {% endraw %}
 {% endhighlight %}
 
-<h2 id="adding-custom-validation">Adding custom validation</h2>
+## Adding custom validation 
 
 One last thing we want to take a look at is how we can add validation to our custom control. In fact, we've already written an article on [custom validators in Angular 2](/angular/2016/03/14/custom-validators-in-angular-2.html) and everything we need to know is written down there. However, to make things more clear we'll add a custom validator to our custom form control by example.
 
@@ -499,7 +507,7 @@ We register a validator function that returns `null` if the control value is val
 {% endraw %}
 {% endhighlight %}
 
-<h2 id="making-the-validator-testable">Making the validator testable</h2>
+## Making the validator testable
 
 We can do a little bit better though. When using model-driven forms, we might want to test the component that has the form without the DOM. In that case, the validator wouldn't exist, as it's provided by the counter input component. This can be easily fixed by extracting the validator function into its own declaration and exporting it, so other modules can import it when needed.
 
@@ -557,7 +565,7 @@ class AppComponent implements OnInit {
 
 This custom control is getting better and better, but wouldn't it be **really** cool if the validator was configurable, so that the consumer of the custom form control can decide what the max and min range values are?
 
-<h2 id="making-the-validation-configurable">Making the validation configurable</h2>
+## Making the validation configurable
 
 Ideally, the consumer of our custom control should be able to do something like this:
 

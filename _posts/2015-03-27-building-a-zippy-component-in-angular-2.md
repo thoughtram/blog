@@ -43,6 +43,14 @@ Even if Angular 2 is still in early development, we can already start playing wi
 
 {% include demos-and-videos-buttons.html post=page %}
 
+
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
+
 ## Getting started with Angular 2
 
 There are several options today to get started with Angular 2. For instance, we can go to [angular.io](http://angular.io) and use the [quickstart](https://angular.io/docs/js/latest/quickstart.html) guide. Or, we can install the [Angular CLI](http://cli.angulario), which takes care of scaffolding, building and serving Angular 2 applications. In this article we will use <s><a href="http://twitter.com/pkozlowski_os" title="Pawel Kozlowski on Twitter">Pawel Kozlowski's</a> <a href="https://github.com/pkozlowski-opensource/ng2-play" title="ng2-play on GitHub">ng2-play repository</a></s> the Angular CLI, but again, you can use whatever suits you.

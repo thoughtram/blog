@@ -2,13 +2,8 @@
 layout: post
 title: Taking advantage of Observables in Angular 2
 imageUrl: /images/banner/taking-advantage-of-observables.png
-relatedLinks:
-  - title: Taking advantage of Observables in Angular 2 - Part 2
-    url: /angular/2016/01/07/taking-advantage-of-observables-in-angular2-pt2.html
-  - title: Exploring Angular 2 - Article Series
-    url: /exploring-angular-2
 date: 2016-01-06T00:00:00.000Z
-updatedate: 2016-08-11T00:00:00.000Z
+update_date: 2016-11-08T00:00:00.000Z
 summary: >-
   Angular 2 favors Observables over Promises when it comes to async.  In this
   article we explore some practical advantages for server communication.
@@ -48,7 +43,14 @@ There are pretty good resources about the difference between Observables and Pro
 
 {% include demos-and-videos-buttons.html post=page %}
 
-<h2 id="the-scenario">The scenario</h2>
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
+
+## The scenario
 
 Consider you are building a search input mask that should instantly show you results as you type.
 
@@ -69,7 +71,7 @@ When we have multiple requests in-flight at the same time we must account for ca
 *computer*, stop, a request goes out, we type *car*, stop, a request goes out. Now we have two requests in-flight. Unfortunately the request that carries the results for *computer* comes back
 after the request that carries the results for *car*. This may happen because they are served by different servers. If we don't deal with such cases properly we may end up showing results for *computer* whereas the search box reads *car*.
 
-<h2 id="challenge-accepted">Challenge accepted</h2>
+## Challenge accepted
 
 We will use the free and open wikipedia API to write a little demo.
 
@@ -254,7 +256,7 @@ So does this solve our out-of-order response issues? Unfortunately not. So, why 
 
 What?! You may be wondering if I'm kidding you but no I am not. That's the beautify of Rx with all it's useful operators. The `switchMap` operator is comparable to `flatMap` in a way. Both operators automatically subscribe to the Observable that the function produces and flatten the result for us. The difference is that the `switchMap` operator automatically unsubscribes from previous subscriptions as soon as the outer Observable emits new values.
 
-<h2 id="putting-some-sugar-on-top">Putting some sugar on top</h2>
+## Putting some sugar on top
 
 Now that we got the semantics right, there's one more little trick that we can use to save us some typing. Instead of manually subscribing to the Observable we can let Angular do the unwrapping for us right from within the template. All we have to do to accomplish that is to use the `AsyncPipe` in our template and expose the `Observable<Array<string>>` instead of `Array<string>`.
 

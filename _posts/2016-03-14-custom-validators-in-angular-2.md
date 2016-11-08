@@ -2,24 +2,8 @@
 layout: post
 title: Custom Validators in Angular 2
 imageUrl: /images/custom-validators-bg.jpeg
-toc:
-  - label: Built-in Validators
-    anchor: built-in-validators
-  - label: Building a custom validator
-    anchor: building-a-custom-validator
-  - label: Building custom validator directives
-    anchor: building-custom-validator-directives
-  - label: Custom Validators with dependencies
-    anchor: custom-validators-with-dependencies
 date: 2016-03-14T00:00:00.000Z
-update_date: 2016-08-11T00:00:00.000Z
-relatedLinks:
-  - title: Multi Providers in Angular 2
-    url: /angular2/2015/11/23/multi-providers-in-angular-2.html
-  - title: Forward References in Angular 2
-    url: /angular/2015/09/03/forward-references-in-angular-2.html
-  - title: Dependency Injection in Angular 2
-    url: /angular/2015/05/18/dependency-injection-in-angular-2.html
+update_date: 2016-11-08T00:00:00.000Z
 summary: >-
   Often, we need to add custom validation capabilities to our application's
   form. In this article we're going to explore how to implement custom
@@ -45,7 +29,14 @@ Forms are part of almost every web application out there. Angular strives for ma
 
 We can easily extend the browser vocabulary with additional custom validators and in this article we are going to explore how to do that.
 
-<h2 id="built-in-validators">Built-in Validators</h2>
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
+
+## Built-in Validators
 
 Angular comes with a subset of built-in validators out of the box. We can apply them either declaratively as directives on elements in our DOM, in case we're building a <strong>template-driven</strong> form, or imperatively using the `FormControl` and `FormGroup` or `FormBuilder` APIs, in case we're building a <strong>reactive</strong> forms. If you don't know what it's all about with template-driven and reactive forms, don't worry, we have an articles about both topics [here](/angular/2016/03/21/template-driven-forms-in-angular-2.html) and [here](/angular/2016/06/22/model-driven-forms-in-angular-2.html).
 
@@ -157,7 +148,7 @@ Observing these two to three different methods of creating a form, we might wond
 
 It turns out there's really not such a big magic involved, so let's build our own custom email validator.
 
-<h2 id="building-a-custom-validator">Building a custom validator</h2>
+## Building a custom validator
 
 In it's simplest form, a validator is really just a function that takes a `Control` and returns either `null` when it's valid, or and error object if it's not. A TypeScript interface for such a validator looks something like this:
 
@@ -224,7 +215,7 @@ ngOnInit() {
 {% endraw %}
 {% endhighlight %}
 
-<h2 id="building-custom-validator-directives">Building custom validator directives</h2>
+## Building custom validator directives
 
 Now that we're able to add our custom validator to our form controls imperatively when building model-driven forms, we might also enable our validator to be used in template driven forms. In other words: We need a directive. The validator should be usable like this:
 
@@ -294,7 +285,7 @@ class EmailValidator {}
 
 Again, if you've read our article on multi providers, this should look very familiar to you. We basically add a new value to the `NG_VALIDATORS` token by taking advantage of multi providers. Angular will pick our validator up by injecting what it gets for `NG_VALIDATORS`, and performs validation on a form control. Awesome, we can now use our validator for reactive**and** for template-driven forms!
 
-<h2 id="custom-validators-with-dependencies">Custom Validators with dependencies</h2>
+## Custom Validators with dependencies
 
 Sometimes, a custom validator has dependencies so we need a way to inject them. Let's say our email validator needs an `EmailBlackList` service, to check if the given control value is not only a valid email address but also not on our email black list (in an ideal world, we'd build a separate validator for checking against an email black list, but we use that as a motivation for now to have a dependency).
 

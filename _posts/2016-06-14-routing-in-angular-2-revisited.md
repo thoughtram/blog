@@ -3,7 +3,7 @@ layout: post
 title: Routing in Angular 2 revisited
 imageUrl: /images/banner/routing-in-angular-2-revisited.jpeg
 date: 2016-06-14T00:00:00.000Z
-update_date: 2016-10-31T00:00:00.000Z
+update_date: 2016-11-08T00:00:00.000Z
 summary: >-
   Learn how to implement basic routing in your Angular 2 application using the
   latest and greatest APIs!
@@ -36,6 +36,13 @@ A long time ago we've written about [routing in Angular 2](/angular/2015/06/16/r
 In this article we want to take a first look at the new and better APIs, touching on the most common scenarios when it comes to routing. We're going to explore how to define routes, linking to other routes, as well as accessing route parameters. Let's jump right into it!
 
 {% include demos-and-videos-buttons.html post=page %}
+
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
 
 
 ## Defining Routes

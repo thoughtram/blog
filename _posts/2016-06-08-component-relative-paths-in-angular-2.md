@@ -2,6 +2,7 @@
 layout: post
 title: Component-Relative Paths in Angular 2
 date: 2016-06-08T00:00:00.000Z
+date: 2016-11-08T00:00:00.000Z
 imageUrl: /images/banner/component-relative-paths-in-angular-2.jpg
 summary: >-
   Component-relative enable developers to more easily create maintainable,
@@ -23,6 +24,13 @@ related_posts:
   - Custom Form Controls in Angular 2
 
 ---
+
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
 
 Component-based development is Angular 2's *most-loved* feature. By now you should be familiar with using the `@Component` decorators to create components. You should be familiar with the required metadata information such as `selector` and `template`. 
 

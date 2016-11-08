@@ -1,20 +1,8 @@
 ---
 layout: post
-title: Injecting services in services in Angular 2
-relatedLinks:
-  - title: Exploring Angular 2 - Article Series
-    url: /exploring-angular-2
-  - title: Dependency Injection in Angular 2
-    url: /angular/2015/05/18/dependency-injection-in-angular-2.html
-  - title: Host and Visibility in Angular 2's Dependency Injection
-    url: >-
-      /angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html
-  - title: Forward References in Angular 2
-    url: /angular/2015/09/03/forward-references-in-angular-2.html
-  - title: The Difference between Decorators and Annotations
-    url: /angular/2015/05/03/the-difference-between-annotations-and-decorators.html
+title:  "Understanding @Injectable in Angular 2"
 date: 2015-09-17T00:00:00.000Z
-update_date: 2016-08-11T00:00:00.000Z
+update_date: 2016-11-08T00:00:00.000Z
 summary: >-
   We might run into unexpected behaviour when injecting service dependencies.
   This article details how to do it right.
@@ -43,6 +31,13 @@ Angular 2 applications can basically be written in any language, as long as it c
 This article discusses what this unexpected problem is, why it exists and how it can be solved.
 
 {% include demos-and-videos-buttons.html post=page %}
+
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
 
 ## Injecting Service Dependencies
 
