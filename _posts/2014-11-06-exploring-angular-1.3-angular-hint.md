@@ -42,12 +42,12 @@ tags:
   - angular1-3
 author: pascal_precht
 related_posts:
-  - 'Exploring Angular 1.5: Lifecycle Hooks'
-  - Sponsoring AngularConnect. Again.
-  - ngMessageFormat - Angular's unheard feature
-  - Multiple Transclusion and named Slots
-  - Service vs Factory - Once and for all
-  - Taking Angular Master Class to the next level
+  - Futuristic Routing in Angular
+  - ngMessages in Angular 1.3
+  - Go fast with $applyAsync in Angular 1.3
+  - Validators Pipeline in Angular 1.3
+  - Binding to Directive Controllers in Angular 1.3
+  - Disabling Debug Info in Angular 1.3
 
 ---
 

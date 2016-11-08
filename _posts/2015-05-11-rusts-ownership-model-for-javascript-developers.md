@@ -6,7 +6,6 @@ update_date: 2016-11-08T00:00:00.000Z
 summary: >-
   In this post we explore Rust's concept of ownership that enables the language
   to achieve 100 % memory safety without garbage collection.
-layout:     post
 categories:
   - rust
 tags:
@@ -101,7 +100,7 @@ basketService.addProduct(product);
 {% endraw %}
 {% endhighlight %}
 
-It's a simple e-commerce example with four different classes working hand in hand. We have a `Product` class without any functionality because it's sole purpose is to represent a product in this demo context. Then there's a `Config` class which may contain a bunch of configurations such as API endpoints or simply a `debugMode` flag as in our simple example. And last but not least do we have a `ProductService` to retrieve products from and a `BasketService` to put products into a shopping basket. 
+It's a simple e-commerce example with four different classes working hand in hand. We have a `Product` class without any functionality because it's sole purpose is to represent a product in this demo context. Then there's a `Config` class which may contain a bunch of configurations such as API endpoints or simply a `debugMode` flag as in our simple example. And last but not least do we have a `ProductService` to retrieve products from and a `BasketService` to put products into a shopping basket.
 
 Let's fokus on what follows after the definition of those classes.
 
@@ -164,7 +163,7 @@ fn main() {
 {% endraw %}
 {% endhighlight %}
 
-The first thing to notice here is that Rust has no classes but instead has structs. It's out of the scope of this article to discuss the differences though. The second thing to notice is that methods aren't written in the struct definition but are attached to a struct through an `impl` block instead. 
+The first thing to notice here is that Rust has no classes but instead has structs. It's out of the scope of this article to discuss the differences though. The second thing to notice is that methods aren't written in the struct definition but are attached to a struct through an `impl` block instead.
 
 Also does Rust not know any `constructor` concept. Instances of structs can simply be made by writing out the structs name followed by curly braces and a body that initializes all of the structs fields. However it's a common pattern to add a "static" `new` method to the struct that wraps the initialization code. This `new` method is quite compareable to the `constructor` in our ES6 classes.
 
@@ -216,7 +215,7 @@ fn main() {
 {% endraw %}
 {% endhighlight %}
 
-You may be wondering why we can't just continue to use `config` without being the owner. The point is that since the `new` method is now the new owner it may just decide to free up the memory. Keep in mind that the owner has the right to destroy the thing that it owns (either explicitly or implicity when it goes out of scope). 
+You may be wondering why we can't just continue to use `config` without being the owner. The point is that since the `new` method is now the new owner it may just decide to free up the memory. Keep in mind that the owner has the right to destroy the thing that it owns (either explicitly or implicity when it goes out of scope).
 
 If we were allowed to use `config` in the last line the memory may already be freed and hell breaks loose. The rust compiler prevents us from a potential runtime crash here.
 
@@ -430,11 +429,11 @@ fn main() {
 {% endraw %}
 {% endhighlight %}
 
-Whew, that's a lot of new syntax that we haven't seen yet. 
+Whew, that's a lot of new syntax that we haven't seen yet.
 
 Basically what the `'a` lifetime annotation says is that the `ProductService` can't live longer than the reference to the `Config` that it contains. Rust doesn't infer that constrain for structs by itself so it needs us to bring clarity. The same helds true for the `BasketService` as it also keeps a reference to the `Config`.
 
-The `'a` is really only a name that we get to choose, we could have picked `'config` but short single letter names are mostly used among the Rust community. 
+The `'a` is really only a name that we get to choose, we could have picked `'config` but short single letter names are mostly used among the Rust community.
 
 We need to use the life time annotation in the `impl` blocks as well as those are written for the `ProductService` and `BasketService` which introduce those lifetimes. Please note that the `'a` of the `ProductService` is independend of the `'a` of the `BasketService` we could have picked different names for both.
 

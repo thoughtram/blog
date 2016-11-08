@@ -45,11 +45,11 @@ tags:
 author: pascal_precht
 related_posts:
   - Disabling Debug Info in Angular 1.3
-  - 'Exploring Angular 1.5: Lifecycle Hooks'
-  - Sponsoring AngularConnect. Again.
-  - ngMessageFormat - Angular's unheard feature
-  - Multiple Transclusion and named Slots
-  - Service vs Factory - Once and for all
+  - Futuristic Routing in Angular
+  - ngMessages in Angular 1.3
+  - Validators Pipeline in Angular 1.3
+  - Binding to Directive Controllers in Angular 1.3
+  - ES6 Style Promises in Angular 1.3
 
 ---
 

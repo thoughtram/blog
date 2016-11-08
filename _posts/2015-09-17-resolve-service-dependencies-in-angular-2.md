@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Understanding @Injectable in Angular 2"
+title: Understanding @Injectable in Angular 2
 date: 2015-09-17T00:00:00.000Z
 update_date: 2016-11-08T00:00:00.000Z
 summary: >-

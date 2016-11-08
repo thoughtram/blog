@@ -15,12 +15,12 @@ tags:
   - forms
 author: pascal_precht
 related_posts:
-  - 'Exploring Angular 1.5: Lifecycle Hooks'
-  - Sponsoring AngularConnect. Again.
-  - ngMessageFormat - Angular's unheard feature
-  - Multiple Transclusion and named Slots
-  - Service vs Factory - Once and for all
-  - Taking Angular Master Class to the next level
+  - Two-way Data Binding in Angular 2
+  - Custom Form Controls in Angular 2
+  - Reactive Forms in Angular 2
+  - Template-driven Forms in Angular 2
+  - Custom Validators in Angular 2
+  - Futuristic Routing in Angular
 
 ---
 

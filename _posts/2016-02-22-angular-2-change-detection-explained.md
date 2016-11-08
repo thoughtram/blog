@@ -3,7 +3,7 @@ layout: post
 title: Angular 2 Change Detection Explained
 imageUrl: /images/change-detection-explained-bg.jpeg
 date: 2016-02-22T00:00:00.000Z
-date: 2016-11-08T00:00:00.000Z
+update_date: 2016-11-08T00:00:00.000Z
 summary: >-
   Wonder how change detection in Angular 2 works?  This article is a write-up of
   that talk and discusses change detection and tricks to make is super fast.
@@ -229,7 +229,7 @@ vData === vData2 // false
 {% endraw %}
 {% endhighlight %}
 
-`someAPIForImmutables` can be any API we want to use for immutable data structures. However, as we can see, we can't simply change the `name` property. We'll get a new object with that particular change and this object has a new reference. 
+`someAPIForImmutables` can be any API we want to use for immutable data structures. However, as we can see, we can't simply change the `name` property. We'll get a new object with that particular change and this object has a new reference.
 Or in short: **If there's a change, we get a new reference**.
 
 ## Reducing the number of checks
@@ -305,7 +305,7 @@ class CartBadgeCmp {
 
 Let's say we build an e-commerce application with a shopping cart. Whenever a user puts a product into the shopping cart, we want a little counter to show up in our UI, so the user can see the amount of products in the cart.
 
-`CartBadgeCmp` does exactly that. It has a `counter` and an input property `addItemStream`, which is a stream of events that gets fired, whenever a product is added to the shopping cart. 
+`CartBadgeCmp` does exactly that. It has a `counter` and an input property `addItemStream`, which is a stream of events that gets fired, whenever a product is added to the shopping cart.
 
 We won't go into much detail on how observables work in this article. If you want to learn more about observables, make sure to read our article on [taking advantage of Observables in Angular 2](http://blog.thoughtram.io/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html).
 

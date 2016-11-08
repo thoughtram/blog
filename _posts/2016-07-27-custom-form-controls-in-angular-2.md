@@ -18,12 +18,12 @@ demos:
     title: Custom number input control
 author: pascal_precht
 related_posts:
+  - Validators Pipeline in Angular 1.3
   - Two-way Data Binding in Angular 2
   - Reactive Forms in Angular 2
   - Template-driven Forms in Angular 2
   - Custom Validators in Angular 2
   - Resolving route data in Angular 2
-  - Angular 2 Animations - Foundation Concepts
 
 ---
 

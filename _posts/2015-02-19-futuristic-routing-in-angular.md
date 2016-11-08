@@ -21,8 +21,8 @@ related_posts:
   - Protecting Routes using Guards in Angular 2
   - Routing in Angular 2 revisited
   - Routing in Angular 2
-  - 'Exploring Angular 1.5: Lifecycle Hooks'
-  - Sponsoring AngularConnect. Again.
+  - ngMessages in Angular 1.3
+  - Go fast with $applyAsync in Angular 1.3
 
 ---
 
