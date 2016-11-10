@@ -75,7 +75,7 @@
         <hgroup class="thtrm-banner-container">
           <div class="thtrm-constraint thtrm-constraint--slim">
             <h2 class="thtrm-banner-text">{{page.title}}</h2>
-            <span>by <a href="http://twitter.com/{{author.twitter}}" title="{{author.name}} on Twitter">{{author.name}}</a> on {% if page.update_date %}{{page.update_date | date: "%b %-d, %Y" }}{% else %}{{ page.update_date | date: "%b %-d, %Y" }}{% endif %}<br>{{ minutes }} minute read</span>
+            <span>by <a href="http://twitter.com/{{author.twitter}}" title="{{author.name}} on Twitter">{{author.name}}</a> on {{ page.date | date: "%b %-d, %Y" }}{% if page.update_date %}, last updated on {{page.update_date | date: "%b %-d, %Y" }}{% endif %}<br>{{ minutes }} minute read</span>
 
           </div>
         </hgroup>
