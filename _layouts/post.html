@@ -210,6 +210,7 @@
     </main>
     {% include footer.html %}
 
+    <script src="/scripts/stickyfill.js"></script>
     <script src="/scripts/linkjuice/dist/linkjuice.js"></script>
     <script>
     (function (doc, win) {
@@ -220,6 +221,16 @@
         selector: ['h2', 'h3'],
         icon: ''
       });
+
+      if (win.matchMedia && win.matchMedia('(min-width: 1200px)').matches) {
+        var stickyElements = doc.querySelectorAll('.thtrm-toc');
+
+        for (var i = stickyElements.length - 1; i >= 0; i--) {
+            stickyElements[i].classList.add('thtrm-toc--sticky');
+            Stickyfill.add(stickyElements[i]);
+            stickyElements[i].classList.add('thtrm-toc--faded');
+        }
+      }
     }(document, window));
     </script>
   </body>
