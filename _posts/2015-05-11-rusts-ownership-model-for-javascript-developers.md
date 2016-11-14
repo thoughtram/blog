@@ -2,7 +2,7 @@
 layout: post
 title: Rust's Ownership model for JavaScript developers
 date: 2015-05-11T00:00:00.000Z
-update_date: 2016-11-08T00:00:00.000Z
+update_date: 2016-11-14T00:00:00.000Z
 summary: >-
   In this post we explore Rust's concept of ownership that enables the language
   to achieve 100 % memory safety without garbage collection.
@@ -37,7 +37,7 @@ Let's change that and start with baby steps. Many readers of this blog are famil
 {:toc}
 </div>
 
-##Memory management
+## Memory management
 
 Most languages (JavaScript included) use a garbage collector to ensure memory safety.
 
@@ -47,7 +47,7 @@ Well then, what's the job of a garbage collector anyway? Basically it frees up m
 - trying to free memory that has already been freed (double free)
 - not freeing memory at all that rather should have been freed (memory leak)
 
-##The concept of ownership in Rust
+## The concept of ownership in Rust
 
 Rust doesn't use a garbage collector while still being 100 % memory safe. So how does that work and how does it affect the way we write our code?
 
