@@ -62,7 +62,7 @@ export class MyComponent implements OnChanges {
 
 This component simply publishes an `@Input() isVisible` property; which allows other external components to show/hide the text content... without any animations.
 
-<iframe style="width: 100%; height: 600px" src="http://embed.plnkr.co/vUPTsY/" frameborder="0" allowfullscren="allowfullscren"></iframe>
+{% include plunk.html url="http://embed.plnkr.co/vUPTsY/" %}
 
 
 ### Configure Component Animations
@@ -274,7 +274,7 @@ export class FaderComponent implements OnChanges {
 {% endhighlight %}
 <br/>
 
-<iframe style="width: 100%; height: 600px" src="http://embed.plnkr.co/74lprkmzUGjT7UWbiyUr/" frameborder="0" allowfullscren="allowfullscren"></iframe>
+{% include plunk.html url="http://embed.plnkr.co/74lprkmzUGjT7UWbiyUr/" %}
 
 > Extra Bonus: The demo has some extra features. The *host* `my-fader` element now has a purple background; when you hide the `my-fader` content children you will see the host background. This change was added so you can visually see the differences between the *host* and the *target* animation elements.
 
@@ -330,8 +330,7 @@ export class MyAppComponent {
 {% endraw %}
 {% endhighlight %}
 
-<iframe style="width: 100%; height: 600px" src="http://embed.plnkr.co/NbWGjs/" frameborder="0" allowfullscren="allowfullscren"></iframe>
-
+{% include plunk.html url="http://embed.plnkr.co/NbWGjs/" %}
 
 
 ### Summary

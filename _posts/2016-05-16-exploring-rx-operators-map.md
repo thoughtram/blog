@@ -100,7 +100,7 @@ Of course, we could have done the same in the first `map` call. But it's sometim
 
 If you like to play a bit with the operator yourself, here is a working demo.
 
-<iframe src="http://embed.plnkr.co/iWR9b2s4wd0pZSOEfHuR/"></iframe>
+{% include plunk.html url="http://embed.plnkr.co/iWR9b2s4wd0pZSOEfHuR/" %}
 
 At this point, you may think that Observables are really just a minor enhancement on the Observer or Promise patterns... better suited to handle a sequence of events rather than a single callback. And the `.map()` function certainly does not - at first glance - seem to offer any added-value. The power of Observables is revealed when you start using Rx operators to transform, combine, manipulate, and work with sequences of items emitted by Observables.
 

@@ -12,7 +12,8 @@
 {% if include.post.demos %}
   <h2 id="demos">Demos</h2>
   {% if include.post.demos.size == 1 %}
-  <iframe src="{{include.post.demos[0].url}}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    {% assign url = include.post.demos[0].url %}
+    {% include plunk.html url=url %}
   {% else %}
   <ul>
     {% for demo in include.post.demos %}

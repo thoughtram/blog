@@ -158,7 +158,7 @@ export class ContactsService {
 
 Take a look at the demo and notice how the UI flickers until the data arrives.
 
-<iframe src="http://embed.plnkr.co/QRoowb/"></iframe>
+{% include plunk.html url="http://embed.plnkr.co/QRoowb/" %}
 
 Depending on our template, adding Safe Navigation Operators everywhere can be quite tiring as well. In addition to that, some constructs don't support that operator, like `NgModel` and `RouterLink` directives. Let's take a look at how we can solve this using route resolvers.
 
@@ -232,7 +232,7 @@ export class ContactsDetailComponent implements OnInit {
 
 Here's the code in action:
 
-<iframe src="http://embed.plnkr.co/Od0Bv2/"></iframe>
+{% include plunk.html url="http://embed.plnkr.co/Od0Bv2/" %}
 
 In fact, when defining a resolver as a function, we get access to the `ActivatedRouteSnapshot`, as well as the `RouterStateSnapshot` like this:
 
@@ -313,6 +313,6 @@ export const AppRoutes: Routes = [
 
 Angular is smart enough to detect if a resolver is a function, or a class and if it's a class, it'll call `resolve()` on it. Check out the demo below to see this code in action and note how Angular delays the component instantiation until the data has arrived.
 
-<iframe src="http://embed.plnkr.co/u2qR9J/"></iframe>
+{% include plunk.html url="http://embed.plnkr.co/u2qR9J/" %}
 
 Hopefully this gave you a better idea of how route resolvers in Angular 2 work!

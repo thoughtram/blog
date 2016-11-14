@@ -97,7 +97,7 @@ This happens because when a `$digest` cycle is triggered, Angular processes all 
 
 Here's a running example of the code described above:
 
-<iframe src="http://embed.plnkr.co/MGz5NrK1HKOy62fyVtmU/preview"></iframe>
+{% include plunk.html url="http://embed.plnkr.co/MGz5NrK1HKOy62fyVtmU/preview" %}
 
 ## The problem with too many watchers
 
@@ -142,6 +142,6 @@ This works for all kind of typical Angular expressions you're used to use throug
 
 Okay, let's see it in action. We already updated the `name` to `::name` to ensure the one-time binding. The rest of the code just stays as it is to demonstrate that our one-time binding works. Remember the button we added to update the `name` to `Christoph`? Well, try it again:
 
-<iframe src="http://embed.plnkr.co/WHHnp4KWKmd3O5twbzKV/preview"></iframe>
+{% include plunk.html url="http://embed.plnkr.co/WHHnp4KWKmd3O5twbzKV/preview" %}
 
 Perfect. `name` won't ever change again. `Pascal` is a much better name anyway, right?

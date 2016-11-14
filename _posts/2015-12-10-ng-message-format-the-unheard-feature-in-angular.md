@@ -147,7 +147,7 @@ Gender selection uses the exact same syntax. All we have to do is to change the 
 
 Here's `ngMessageFormat` in action:
 
-<iframe src="http://embed.plnkr.co/UYyBFyafomFllh5ZcP0s/"></iframe>
+{% include plunk.html url="http://embed.plnkr.co/UYyBFyafomFllh5ZcP0s/" %}
 
 ## Conclusion
 

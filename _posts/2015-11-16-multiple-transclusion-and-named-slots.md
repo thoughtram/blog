@@ -173,7 +173,7 @@ The original `ng-transclude` stays as is, since it simply takes the rest to be t
 
 Isn't that cool? Here's the code in action:
 
-<iframe src="http://embed.plnkr.co/R6s7EYUOJ1NlsDqpt0gP/"></iframe>
+{% include plunk.html url="http://embed.plnkr.co/R6s7EYUOJ1NlsDqpt0gP/" %}
 
 We can even make transclusion slots optional by prefixing the element tag name with a `?` like this:
 

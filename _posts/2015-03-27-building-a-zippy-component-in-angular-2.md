@@ -88,7 +88,7 @@ Before we start building the zippy component with Angular 2, we need to clarify 
 
 Long story short: this, is a zippy.
 
-<iframe src="http://embed.plnkr.co/1djdpE5uFLfYpYO8qBnm/preview"></iframe>
+{% include plunk.html url="http://embed.plnkr.co/1djdpE5uFLfYpYO8qBnm/preview" %}
 
 Also known as "accordion". You can click the summary text and the actual content toggles accordingly. If you take a look at this particular plunk, you'll see that we actually don't need to do any special implementation to get this working. We have the `<details>` element that does the job for us. But how can we implement such a thing in Angular 2?
 

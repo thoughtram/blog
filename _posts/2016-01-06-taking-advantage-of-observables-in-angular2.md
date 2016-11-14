@@ -144,7 +144,7 @@ We unwrap the result of the `Promise` that the `search` method of the `Wikipedia
 
 You can play with the demo and fiddle with the code through this plnkr.
 
-<iframe src="http://embed.plnkr.co/Vp5ZmAAT68FqeKlBCp0Y/"></iframe>
+{% include plunk.html url="http://embed.plnkr.co/Vp5ZmAAT68FqeKlBCp0Y/" %}
 
 Unfortunately this implementation doesn't address any of the described edge cases that we would like to deal with. Let's refactor our code to make it match the expected behavior.
 
