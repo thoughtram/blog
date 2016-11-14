@@ -12,7 +12,7 @@ tags:
   - angular2
 topic: di
 videos:
-  - url: 'https://player.vimeo.com/video/181222350'
+  - url: 'http://casts.thoughtram.io/embedded/181222350'
 author: pascal_precht
 related_posts:
   - Two-way Data Binding in Angular 2
