@@ -17,8 +17,8 @@ related_posts:
   - 'Exploring Rx Operators: map'
   - Taking advantage of Observables in Angular 2 - Part 2
   - Taking advantage of Observables in Angular 2
+  - Testing Services with Http in Angular 2
   - Understanding XOR with Keras and TensorFlow
-  - Announcing Angular 2 Master Class in Sydney
 
 ---
 

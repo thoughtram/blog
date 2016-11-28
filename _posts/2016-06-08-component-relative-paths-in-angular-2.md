@@ -17,11 +17,11 @@ topic: components
 author: thomas_burleson
 related_posts:
   - Angular 2 Animations - Foundation Concepts
+  - Testing Services with Http in Angular 2
   - Two-way Data Binding in Angular 2
   - Resolving route data in Angular 2
   - Angular 2 is out - Get started here
   - Bypassing Providers in Angular 2
-  - Custom Form Controls in Angular 2
 
 ---
 

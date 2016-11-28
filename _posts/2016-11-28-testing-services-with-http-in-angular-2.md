@@ -14,6 +14,14 @@ tags:
   - http
   - testing
 author: pascal_precht
+related_posts:
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Angular 2 Animations - Foundation Concepts
+  - Angular 2 is out - Get started here
+  - Bypassing Providers in Angular 2
+  - Custom Form Controls in Angular 2
+
 ---
 
 Testing is important. That's why Angular comes with a testing story out-of-the-box. Due to its dependency injection system, it's fairly easy to mock dependencies, swap out Angular modules, or even create so called "shallow" tests, which enable us to test Angular components, without actually depending on their views (DOM). In this article we're going to take a look at how to unit test a service that performs http calls, since there's a little bit more knowledge required to make this work.

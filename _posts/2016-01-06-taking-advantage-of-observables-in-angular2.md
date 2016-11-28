@@ -32,8 +32,8 @@ related_posts:
   - Taking advantage of Observables in Angular 2 - Part 2
   - Cold vs Hot Observables
   - 'Exploring Rx Operators: map'
+  - Testing Services with Http in Angular 2
   - Two-way Data Binding in Angular 2
-  - Resolving route data in Angular 2
 
 ---
 

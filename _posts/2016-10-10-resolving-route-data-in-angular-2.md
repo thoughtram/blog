@@ -27,8 +27,8 @@ related_posts:
   - Protecting Routes using Guards in Angular 2
   - Routing in Angular 2 revisited
   - Routing in Angular 2
+  - Testing Services with Http in Angular 2
   - Two-way Data Binding in Angular 2
-  - Angular 2 Animations - Foundation Concepts
 
 ---
 

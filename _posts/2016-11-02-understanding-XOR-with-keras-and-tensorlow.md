@@ -15,11 +15,11 @@ tags:
 author: christoph_burgdorf
 related_posts:
   - Beginning Machine Learning with Keras and TensorFlow
+  - Testing Services with Http in Angular 2
   - Announcing Angular 2 Master Class in Sydney
   - Two-way Data Binding in Angular 2
   - Resolving route data in Angular 2
   - Angular 2 Animations - Foundation Concepts
-  - Angular 2 is out - Get started here
 
 ---
 

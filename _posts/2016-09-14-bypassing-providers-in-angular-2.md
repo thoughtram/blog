@@ -16,12 +16,12 @@ demos:
     title: Bypassing Providers
 author: pascal_precht
 related_posts:
+  - Testing Services with Http in Angular 2
   - Two-way Data Binding in Angular 2
   - Resolving route data in Angular 2
   - Angular 2 Animations - Foundation Concepts
   - Angular 2 is out - Get started here
   - Custom Form Controls in Angular 2
-  - Protecting Routes using Guards in Angular 2
 
 ---
 

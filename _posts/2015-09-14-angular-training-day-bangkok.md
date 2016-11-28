@@ -12,12 +12,12 @@ redirect_from:
   - /angular/2015/09/14/angular-training-day-bangkok.html
 author: christoph_burgdorf
 related_posts:
+  - Testing Services with Http in Angular 2
   - Understanding XOR with Keras and TensorFlow
   - Announcing Angular 2 Master Class in Sydney
   - Two-way Data Binding in Angular 2
   - Resolving route data in Angular 2
   - Beginning Machine Learning with Keras and TensorFlow
-  - Angular 2 Animations - Foundation Concepts
 
 ---
 

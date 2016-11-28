@@ -16,8 +16,8 @@ related_posts:
   - Rust's Ownership model for JavaScript developers
   - clog - A conventional changelog generator for the rest of us
   - Organizing Hanovers first Rust meetup
+  - Testing Services with Http in Angular 2
   - Understanding XOR with Keras and TensorFlow
-  - Announcing Angular 2 Master Class in Sydney
 
 ---
 
