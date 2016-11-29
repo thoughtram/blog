@@ -23,6 +23,13 @@ related_posts:
   - Multiple Transclusion and named Slots
   - Service vs Factory - Once and for all
   - Taking Angular Master Class to the next level
+related_videos:
+  - '189792758'
+  - '189613148'
+  - '181311611'
+  - '181311609'
+  - '181311614'
+  - '181311615'
 
 ---
 

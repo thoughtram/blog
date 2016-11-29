@@ -22,6 +22,13 @@ related_posts:
   - Reactive Forms in Angular 2
   - Template-driven Forms in Angular 2
   - Testing Services with Http in Angular 2
+related_videos:
+  - '189785428'
+  - '189792758'
+  - '181311616'
+  - '181311613'
+  - '181311611'
+  - '181311615'
 
 ---
 

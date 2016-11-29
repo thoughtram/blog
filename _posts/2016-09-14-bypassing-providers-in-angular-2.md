@@ -22,6 +22,13 @@ related_posts:
   - Angular 2 Animations - Foundation Concepts
   - Angular 2 is out - Get started here
   - Custom Form Controls in Angular 2
+related_videos:
+  - '181311615'
+  - '189785428'
+  - '181311613'
+  - '181311609'
+  - '181311614'
+  - '181311616'
 
 ---
 

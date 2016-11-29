@@ -24,6 +24,13 @@ related_posts:
   - Resolving route data in Angular 2
   - Angular 2 Animations - Foundation Concepts
   - Angular 2 is out - Get started here
+related_videos:
+  - '189792758'
+  - '189618526'
+  - '181311616'
+  - '181311613'
+  - '181311611'
+  - '181311615'
 
 ---
 

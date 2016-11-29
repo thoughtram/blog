@@ -18,6 +18,13 @@ related_posts:
   - Angular 2 Animations - Foundation Concepts
   - Bypassing Providers in Angular 2
   - Custom Form Controls in Angular 2
+related_videos:
+  - '181311611'
+  - '181311615'
+  - '181311613'
+  - '181311609'
+  - '181311614'
+  - '181311616'
 
 ---
 

@@ -28,6 +28,13 @@ related_posts:
   - Reactive Forms in Angular 2
   - Custom Validators in Angular 2
   - Testing Services with Http in Angular 2
+related_videos:
+  - '189792758'
+  - '189785428'
+  - '181311615'
+  - '181311609'
+  - '181311613'
+  - '181311614'
 
 ---
 

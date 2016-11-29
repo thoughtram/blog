@@ -16,6 +16,13 @@ related_posts:
   - Two-way Data Binding in Angular 2
   - Resolving route data in Angular 2
   - Beginning Machine Learning with Keras and TensorFlow
+related_videos:
+  - '175218351'
+  - '181311609'
+  - '189613148'
+  - '189618526'
+  - '189785428'
+  - '181311615'
 
 ---
 

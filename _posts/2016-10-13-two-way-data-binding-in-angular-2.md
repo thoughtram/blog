@@ -21,6 +21,13 @@ related_posts:
   - Template-driven Forms in Angular 2
   - Custom Validators in Angular 2
   - Testing Services with Http in Angular 2
+related_videos:
+  - '189792758'
+  - '189785428'
+  - '181311613'
+  - '189613148'
+  - '181311611'
+  - '181311609'
 
 ---
 

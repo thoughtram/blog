@@ -22,6 +22,13 @@ related_posts:
   - Resolving route data in Angular 2
   - Angular 2 is out - Get started here
   - Bypassing Providers in Angular 2
+related_videos:
+  - '189613148'
+  - '181311611'
+  - '181311616'
+  - '181311614'
+  - '181311613'
+  - '181311609'
 
 ---
 

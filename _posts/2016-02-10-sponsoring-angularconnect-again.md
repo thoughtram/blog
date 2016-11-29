@@ -18,6 +18,13 @@ related_posts:
   - Service vs Factory - Once and for all
   - Taking Angular Master Class to the next level
   - ngMessages revisited
+related_videos:
+  - '189618526'
+  - '181311616'
+  - '181311609'
+  - '181311613'
+  - '181311611'
+  - '181311615'
 
 ---
 

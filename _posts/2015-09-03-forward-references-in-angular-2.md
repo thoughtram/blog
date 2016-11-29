@@ -27,6 +27,13 @@ related_posts:
   - Angular 2 Animations - Foundation Concepts
   - Angular 2 is out - Get started here
   - Bypassing Providers in Angular 2
+related_videos:
+  - '175218351'
+  - '181311609'
+  - '189613148'
+  - '189618526'
+  - '189785428'
+  - '181311615'
 
 ---
 

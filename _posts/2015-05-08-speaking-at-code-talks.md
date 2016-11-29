@@ -17,6 +17,13 @@ related_posts:
   - Thomas joins thoughtram
   - Updates and announcements
   - Upcoming events in 2015
+related_videos:
+  - '181311609'
+  - '189603515'
+  - '189613148'
+  - '189618526'
+  - '189785428'
+  - '181311615'
 
 ---
 Roughly three weeks ago we blogged about our [upcoming events](http://blog.thoughtram.io/announcements/2015/04/19/upcoming-events-in-2015.html) for workshops, conferences and meetups. Today we are happy to add two more conference talks to that list. Both of us are going to speak at the [code.talks](http://www.codetalks.de/) conference in September this year and we are very happy to join an already great lineup of speakers.

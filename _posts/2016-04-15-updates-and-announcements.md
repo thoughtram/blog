@@ -17,6 +17,13 @@ related_posts:
   - Thomas joins thoughtram
   - Speaking at code.talks
   - Upcoming events in 2015
+related_videos:
+  - '189618526'
+  - '189785428'
+  - '181311616'
+  - '181311613'
+  - '181311611'
+  - '181311615'
 
 ---
 

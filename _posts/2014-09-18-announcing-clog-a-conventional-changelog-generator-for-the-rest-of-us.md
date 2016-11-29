@@ -20,6 +20,13 @@ related_posts:
   - Organizing Hanovers first Rust meetup
   - Announcing Angular 2 Master Class in Sydney
   - Announcing Angular 2 Master Class in NYC
+related_videos:
+  - '175218351'
+  - '189792758'
+  - '189613148'
+  - '189603515'
+  - '181311616'
+  - '181311614'
 
 ---
 

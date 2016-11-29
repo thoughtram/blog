@@ -24,6 +24,13 @@ related_posts:
   - Announcing Angular 2 Master Class in Sydney
   - Announcing Angular 2 Master Class in NYC
   - Updates and announcements
+related_videos:
+  - '189613148'
+  - '189785428'
+  - '181311611'
+  - '181311609'
+  - '181311614'
+  - '181311615'
 
 ---
 

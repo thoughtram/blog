@@ -28,6 +28,13 @@ related_posts:
   - Routing in Angular 2
   - Testing Services with Http in Angular 2
   - Two-way Data Binding in Angular 2
+related_videos:
+  - '189618526'
+  - '189613148'
+  - '175218351'
+  - '189603515'
+  - '181311611'
+  - '181311615'
 
 ---
 

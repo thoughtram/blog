@@ -22,6 +22,13 @@ related_posts:
   - Validators Pipeline in Angular 1.3
   - Binding to Directive Controllers in Angular 1.3
   - Disabling Debug Info in Angular 1.3
+related_videos:
+  - '189618526'
+  - '175218351'
+  - '189613148'
+  - '189603515'
+  - '181311616'
+  - '181311614'
 
 ---
 

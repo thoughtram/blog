@@ -29,6 +29,13 @@ related_posts:
   - Taking advantage of Observables in Angular 2
   - Testing Services with Http in Angular 2
   - Two-way Data Binding in Angular 2
+related_videos:
+  - '181311611'
+  - '181311615'
+  - '181311616'
+  - '181311614'
+  - '181311613'
+  - '181311609'
 
 ---
 

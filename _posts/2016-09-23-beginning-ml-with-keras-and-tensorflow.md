@@ -20,6 +20,13 @@ related_posts:
   - Two-way Data Binding in Angular 2
   - Resolving route data in Angular 2
   - Angular 2 Animations - Foundation Concepts
+related_videos:
+  - '181311615'
+  - '189613148'
+  - '181311616'
+  - '181311614'
+  - '181311613'
+  - '181311609'
 
 ---
 

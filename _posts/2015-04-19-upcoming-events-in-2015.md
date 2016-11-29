@@ -18,6 +18,13 @@ related_posts:
   - Announcing Angular 2 Master Class in Sydney
   - Announcing Angular 2 Master Class in NYC
   - Updates and announcements
+related_videos:
+  - '189618526'
+  - '189792758'
+  - '189613148'
+  - '189603515'
+  - '181311616'
+  - '181311614'
 
 ---
 Just recently, we wrote about how much we love to travel and making friends [around the globe](http://blog.thoughtram.io/angularjs/2015/02/21/around-the-globe.html). That's why we're making this part of our mission. In fact, I'm writing this post while I'm sitting in a hotel in Lugano, Switzerland. Today we'd like to give you information about the next upcoming events that we'll be running or attending to.

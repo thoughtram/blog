@@ -18,6 +18,13 @@ related_posts:
   - Organizing Hanovers first Rust meetup
   - Testing Services with Http in Angular 2
   - Understanding XOR with Keras and TensorFlow
+related_videos:
+  - '175218351'
+  - '181311609'
+  - '189613148'
+  - '189618526'
+  - '189785428'
+  - '181311615'
 
 ---
 It's been roughly one year ago since we organized Hannover's first [Rust meetup](http://blog.thoughtram.io/announcements/rust/meetups/2014/06/24/organizing-hannovers-first-rust-meetup.html). Time has passed on and [nickel](http://nickel.rs/) has grown into a really nice web application framework with a very active community and 31 individual contributors as of the time of writing this.

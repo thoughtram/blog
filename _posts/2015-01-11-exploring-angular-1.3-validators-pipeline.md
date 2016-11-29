@@ -21,6 +21,13 @@ related_posts:
   - Template-driven Forms in Angular 2
   - Custom Validators in Angular 2
   - Futuristic Routing in Angular
+related_videos:
+  - '189792758'
+  - '189785428'
+  - '189613148'
+  - '189603515'
+  - '181311616'
+  - '181311614'
 
 ---
 

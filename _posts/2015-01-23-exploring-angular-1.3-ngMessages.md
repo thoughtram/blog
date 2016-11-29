@@ -20,6 +20,13 @@ related_posts:
   - Binding to Directive Controllers in Angular 1.3
   - Disabling Debug Info in Angular 1.3
   - ES6 Style Promises in Angular 1.3
+related_videos:
+  - '189613148'
+  - '189785428'
+  - '181311611'
+  - '181311609'
+  - '181311614'
+  - '181311615'
 
 ---
 
