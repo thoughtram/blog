@@ -13,6 +13,6 @@ let spawnIt = (cmd) => {
 
 console.log('Getting ready for deployment...hold on!');
 spawnIt(`$(npm bin)/jrp ${__dirname}/_posts`);
-spawnIt(`git add -A . && git commit -m "Adding meta data for related posts"`);
+spawnIt(`git add -A . && git commit -m "chore: adds meta data for related posts and videos"`);
 spawnIt(`git push origin gh-pages`)
 console.log('Everything should be live at http://blog.thoughtram.io');
