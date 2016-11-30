@@ -17,6 +17,13 @@ related_posts:
   - Organizing Hanovers first Rust meetup
   - Testing Services with Http in Angular 2
   - Understanding XOR with Keras and TensorFlow
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
 
 ---
 

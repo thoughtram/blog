@@ -18,6 +18,13 @@ related_posts:
   - Updates and announcements
   - Speaking at code.talks
   - Upcoming events in 2015
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
 
 ---
 

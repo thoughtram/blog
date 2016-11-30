@@ -23,6 +23,13 @@ related_posts:
   - Routing in Angular 2
   - ngMessages in Angular 1.3
   - Go fast with $applyAsync in Angular 1.3
+related_videos:
+  - '175218351'
+  - '189618526'
+  - '189613148'
+  - '189603515'
+  - '189792758'
+  - '189785428'
 
 ---
 

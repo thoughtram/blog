@@ -18,6 +18,13 @@ related_posts:
   - Git Ninja Class comes to Istanbul
   - Tickets are on sale now!
   - Announcing our first workshop
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
 
 ---
 

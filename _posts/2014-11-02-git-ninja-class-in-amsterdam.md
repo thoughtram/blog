@@ -19,6 +19,13 @@ related_posts:
   - Announcing our first workshop
   - Understanding branches in Git
   - The anatomy of a Git commit
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
 
 ---
 

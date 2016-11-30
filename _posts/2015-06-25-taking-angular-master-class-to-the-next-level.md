@@ -18,6 +18,13 @@ related_posts:
   - Multiple Transclusion and named Slots
   - Service vs Factory - Once and for all
   - ngMessages revisited
+related_videos:
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+  - '189613148'
+  - '189603515'
 
 ---
 

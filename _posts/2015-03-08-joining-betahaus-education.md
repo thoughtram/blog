@@ -20,6 +20,13 @@ related_posts:
   - Git Ninja Class in Amsterdam
   - Announcing Angular 2 Master Class in Sydney
   - Announcing Angular 2 Master Class in NYC
+related_videos:
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+  - '189613148'
+  - '189603515'
 
 ---
 

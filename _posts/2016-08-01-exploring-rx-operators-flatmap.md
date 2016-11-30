@@ -19,6 +19,13 @@ related_posts:
   - Taking advantage of Observables in Angular 2
   - Testing Services with Http in Angular 2
   - Understanding XOR with Keras and TensorFlow
+related_videos:
+  - '181311615'
+  - '181311609'
+  - '181311613'
+  - '181311611'
+  - '181311614'
+  - '181311616'
 
 ---
 

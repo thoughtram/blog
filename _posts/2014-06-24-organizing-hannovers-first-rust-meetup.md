@@ -23,6 +23,13 @@ related_posts:
   - Rust's Ownership model for JavaScript developers
   - Announcing Angular 2 Master Class in Sydney
   - Announcing Angular 2 Master Class in NYC
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
 
 ---
 

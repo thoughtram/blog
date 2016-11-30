@@ -21,6 +21,13 @@ related_posts:
   - Angular 2 is out - Get started here
   - Bypassing Providers in Angular 2
   - Custom Form Controls in Angular 2
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
 
 ---
 

@@ -21,6 +21,13 @@ related_posts:
   - Understanding branches in Git
   - The anatomy of a Git commit
   - Going back in time to split older commits
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
 
 ---
 
