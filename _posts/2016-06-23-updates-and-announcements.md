@@ -1,19 +1,31 @@
 ---
-layout:     post
-title:      "Updates and announcements"
-imageUrl:   "/images/suomenlinna.jpg"
-
-date: 2016-06-23
-
-summary: "Today we like to bring you up to date with all the exciting things that we were working on over the last couple of weeks."
-
+layout: post
+title: Updates and announcements
+imageUrl: /images/suomenlinna.jpg
+date: 2016-06-23T00:00:00.000Z
+summary: >-
+  Today we like to bring you up to date with all the exciting things that we
+  were working on over the last couple of weeks.
 categories:
-- announcements
-
+  - announcements
 tags:
-- announcements
-
+  - announcements
 author: christoph_burgdorf
+related_posts:
+  - Announcing Angular 2 Master Class in Sydney
+  - Announcing Angular 2 Master Class in NYC
+  - Thomas joins thoughtram
+  - Updates and announcements
+  - Speaking at code.talks
+  - Upcoming events in 2015
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+
 ---
 
 Today we like to bring you up to date with all the exciting things that we were working on over the last couple of weeks.

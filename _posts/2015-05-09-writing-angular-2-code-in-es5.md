@@ -1,44 +1,48 @@
 ---
-layout:     post
-title:      "Writing Angular 2 code in ES5"
+layout: post
+title: Writing Angular 2 code in ES5
 relatedLinks:
-  -
-    title: "Exploring Angular 2 - Article Series"
-    url: "/exploring-angular-2"
-  -
-    title: "The difference between decorators and annotations"
-    url: "/angular/2015/05/03/the-difference-between-annotations-and-decorators.html"
-  -
-    title: "Builing a zippy component in Angular 2"
-    url: "/angular/2015/03/27/building-a-zippy-component-in-angular-2.html"
-  -
-    title: "Even better ES5 code for Angular 2"
-    url: "/angular/2015/07/06/even-better-es5-code-for-angular-2.html"
-  -
-    title: "Angular ES5 Demo"
-    url: "http://plnkr.co/edit/XmZkHzl407z93R5Kf0pv?p=preview"
-date:       2015-05-09
-update_date: 2016-08-11
-
-summary:    "Ever wondered what it's like to write Angular 2 in ES5? Check out this article!"
-
-categories: 
-- angular
-
+  - title: Exploring Angular 2 - Article Series
+    url: /exploring-angular-2
+  - title: The difference between decorators and annotations
+    url: /angular/2015/05/03/the-difference-between-annotations-and-decorators.html
+  - title: Builing a zippy component in Angular 2
+    url: /angular/2015/03/27/building-a-zippy-component-in-angular-2.html
+  - title: Even better ES5 code for Angular 2
+    url: /angular/2015/07/06/even-better-es5-code-for-angular-2.html
+  - title: Angular ES5 Demo
+    url: 'http://plnkr.co/edit/XmZkHzl407z93R5Kf0pv?p=preview'
+date: 2015-05-09T00:00:00.000Z
+update_date: 2016-08-11T00:00:00.000Z
+summary: >-
+  Ever wondered what it's like to write Angular 2 in ES5? Check out this
+  article!
+categories:
+  - angular
 tags:
-- angular2
-
+  - angular2
 topic: upgrade
-
 author: pascal_precht
-
 demos:
-  -
-    url: http://plnkr.co/edit/BUYnsbW7WX6FTjlK7mUh?p=preview
+  - url: 'http://plnkr.co/edit/BUYnsbW7WX6FTjlK7mUh?p=preview'
     title: Hello World app in ES5
-  -
-    url: https://plnkr.co/edit/l2kmT4w0uQMzuwHk4nc6?p=preview
+  - url: 'https://plnkr.co/edit/l2kmT4w0uQMzuwHk4nc6?p=preview'
     title: Hello World app with service injection
+related_posts:
+  - Testing Services with Http in Angular 2
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Angular 2 Animations - Foundation Concepts
+  - Angular 2 is out - Get started here
+  - Bypassing Providers in Angular 2
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+
 ---
 
 It's no news anymore that Angular 2 is written in TypeScript in order to take advantage of language features like types and meta data annotations through decorators. Taking a first look at Angular 2 examples that are written in TypeScript, can feel a bit unfamiliar and unclear to developers that don't have experience with that language. Even constructs like classes that ECMAScript 6 brings to the table can be scary enough to keep developers from learning Angular 2.

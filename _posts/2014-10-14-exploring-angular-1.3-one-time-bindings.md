@@ -1,46 +1,61 @@
 ---
-layout:     post
-title:      "One-time bindings in Angular 1.3"
+layout: post
+title: One-time bindings in Angular 1.3
 relatedLinks:
-  -
-    title: "Exploring Angular 1.3: ng-model-options"
-    url: "http://blog.thoughtram.io/angularjs/2014/10/19/exploring-angular-1.3-ng-model-options.html"
-  -
-    title: "Exploring Angular 1.3: Angular-hint"
-    url: "http://blog.thoughtram.io/angularjs/2014/11/06/exploring-angular-1.3-angular-hint.html"
-  -
-    title: "Exploring Angular 1.3: Stateful Filters"
-    url: "http://blog.thoughtram.io/angularjs/2014/11/19/exploring-angular-1.3-stateful-filters.html"
-  -
-    title: "Exploring Angular 1.3: ES6 Style Promises"
-    url: "http://blog.thoughtram.io/angularjs/2014/12/18/exploring-angular-1.3-es6-style-promises.html"
-  -
-    title: "Exploring Angular 1.3: Disabling Debug Info"
-    url: "http://blog.thoughtram.io/angularjs/2014/12/22/exploring-angular-1.3-disabling-debug-info.html"
-  -
-    title: "Exploring Angular 1.3: Binding to Directive Controllers"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html"
-  -
-    title: "Exploring Angular 1.3: Validators Pipeline"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/11/exploring-angular-1.3-validators-pipeline.html"
-  -
-    title: "Exploring Angular 1.3: Go fast with $applyAsync"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/14/exploring-angular-1.3-speed-up-with-applyAsync.html"
-  -
-    title: "Exploring Angular 1.3: ngMessages"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/23/exploring-angular-1.3-ngMessages.html"
-date:       2014-10-14
-update_date: 2016-08-23
-summary:    This article will be presenting Angular 1.3's new one-time binding feature for better performance and memory pressure. Read on for more info!
+  - title: 'Exploring Angular 1.3: ng-model-options'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/10/19/exploring-angular-1.3-ng-model-options.html
+  - title: 'Exploring Angular 1.3: Angular-hint'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/11/06/exploring-angular-1.3-angular-hint.html
+  - title: 'Exploring Angular 1.3: Stateful Filters'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/11/19/exploring-angular-1.3-stateful-filters.html
+  - title: 'Exploring Angular 1.3: ES6 Style Promises'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/12/18/exploring-angular-1.3-es6-style-promises.html
+  - title: 'Exploring Angular 1.3: Disabling Debug Info'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/12/22/exploring-angular-1.3-disabling-debug-info.html
+  - title: 'Exploring Angular 1.3: Binding to Directive Controllers'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html
+  - title: 'Exploring Angular 1.3: Validators Pipeline'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2015/01/11/exploring-angular-1.3-validators-pipeline.html
+  - title: 'Exploring Angular 1.3: Go fast with $applyAsync'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2015/01/14/exploring-angular-1.3-speed-up-with-applyAsync.html
+  - title: 'Exploring Angular 1.3: ngMessages'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2015/01/23/exploring-angular-1.3-ngMessages.html
+date: 2014-10-14T00:00:00.000Z
+update_date: 2016-08-23T00:00:00.000Z
+summary: >-
+  This article will be presenting Angular 1.3's new one-time binding feature for
+  better performance and memory pressure. Read on for more info!
 isExploringAngular13Article: true
-
-categories: 
+categories:
   - angularjs
-
 tags:
   - angular
-
+  - angular1-3
 author: pascal_precht
+related_posts:
+  - Futuristic Routing in Angular
+  - ngMessages in Angular 1.3
+  - Go fast with $applyAsync in Angular 1.3
+  - Validators Pipeline in Angular 1.3
+  - Binding to Directive Controllers in Angular 1.3
+  - Disabling Debug Info in Angular 1.3
+related_videos:
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+  - '189613148'
+  - '189603515'
+
 ---
 
 The time has come. [Angular 1.3](http://angularjs.blogspot.de/2014/10/angularjs-130-superluminal-nudge.html) is finally out and it comes with tons of new features, bug fixes, improvements but also breaking changes. And because of all this new stuff happening there, we thought it would make sense to help making the adaption of this release easier for all of us, by exploring its main features and improvements and make a blog series out of it. This is the first post of "Exploring Angular 1.3" and it covers one of the most important features ever: **one-time binding**.
@@ -89,11 +104,11 @@ This happens because when a `$digest` cycle is triggered, Angular processes all 
 
 Here's a running example of the code described above:
 
-<iframe src="http://embed.plnkr.co/MGz5NrK1HKOy62fyVtmU/preview"></iframe>
+{% include plunk.html url="http://embed.plnkr.co/MGz5NrK1HKOy62fyVtmU/preview" %}
 
 ## The problem with too many watchers
 
-Now that we have a picture of how the databinding mechanism in Angular actually works, we might wonder why there is a feature for one-time binding. 
+Now that we have a picture of how the databinding mechanism in Angular actually works, we might wonder why there is a feature for one-time binding.
 
 Due to Angulars nature of using watchers for databinding, we might get some problems in terms of performance when having too many of them. As we learned, *watch expressions* are registered on the scope together with their callback listeners so Angular can process them during `$digest` cycles in order to update the view accordingly. That simply means, the more watchers are registered, the more Angular has to process.
 
@@ -134,6 +149,6 @@ This works for all kind of typical Angular expressions you're used to use throug
 
 Okay, let's see it in action. We already updated the `name` to `::name` to ensure the one-time binding. The rest of the code just stays as it is to demonstrate that our one-time binding works. Remember the button we added to update the `name` to `Christoph`? Well, try it again:
 
-<iframe src="http://embed.plnkr.co/WHHnp4KWKmd3O5twbzKV/preview"></iframe>
+{% include plunk.html url="http://embed.plnkr.co/WHHnp4KWKmd3O5twbzKV/preview" %}
 
 Perfect. `name` won't ever change again. `Pascal` is a much better name anyway, right?

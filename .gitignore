@@ -6,3 +6,5 @@ _site
 _config.gh-pages.yml
 
 .idea/
+
+node_modules

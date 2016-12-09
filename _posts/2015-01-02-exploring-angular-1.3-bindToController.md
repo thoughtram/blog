@@ -1,52 +1,45 @@
 ---
-layout:     post
-title:      "Binding to Directive Controllers in Angular 1.3"
-relatedLinks:
-  -
-    title: "Exploring Angular 1.3: One-time bindings"
-    url: "http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html"
-  -
-    title: "Exploring Angular 1.3: ng-model-options"
-    url: "http://blog.thoughtram.io/angularjs/2014/10/19/exploring-angular-1.3-ng-model-options.html"
-  -
-    title: "Exploring Angular 1.3: Angular-hint"
-    url: "http://blog.thoughtram.io/angularjs/2014/11/06/exploring-angular-1.3-angular-hint.html"
-  -
-    title: "Exploring Angular 1.3: Stateful Filters"
-    url: "http://blog.thoughtram.io/angularjs/2014/11/19/exploring-angular-1.3-stateful-filters.html"
-  -
-    title: "Exploring Angular 1.3: ES6 Style Promises"
-    url: "http://blog.thoughtram.io/angularjs/2014/12/18/exploring-angular-1.3-es6-style-promises.html"
-  -
-    title: "Exploring Angular 1.3: Disabling Debug Info"
-    url: "http://blog.thoughtram.io/angularjs/2014/12/22/exploring-angular-1.3-disabling-debug-info.html"
-  -
-    title: "Exploring Angular 1.3: Validators Pipeline"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/11/exploring-angular-1.3-validators-pipeline.html"
-  -
-    title: "Exploring Angular 1.3: Go fast with $applyAsync"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/14/exploring-angular-1.3-speed-up-with-applyAsync.html"
-  -
-    title: "Exploring Angular 1.3: ngMessages"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/23/exploring-angular-1.3-ngMessages.html"
-date:       2015-01-02
-update_date: 2015-08-13
-summary:    "In this article we are going to take a look how to bind values to directive controllers to make them more reusable."
-
+layout: post
+title: Binding to Directive Controllers in Angular 1.3
+date: 2015-01-02T00:00:00.000Z
+update_date: 2016-11-08T00:00:00.000Z
+summary: >-
+  In this article we are going to take a look how to bind values to directive
+  controllers to make them more reusable.
 isExploringAngular13Article: true
-
-categories: 
-- angularjs
-
+categories:
+  - angularjs
 tags:
   - angular
-
+  - angular1-3
 author: pascal_precht
+related_posts:
+  - Futuristic Routing in Angular
+  - ngMessages in Angular 1.3
+  - Go fast with $applyAsync in Angular 1.3
+  - Validators Pipeline in Angular 1.3
+  - Disabling Debug Info in Angular 1.3
+  - ES6 Style Promises in Angular 1.3
+related_videos:
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+  - '189613148'
+  - '189603515'
+
 ---
 
 In version 1.2, Angular introduced a new `controllerAs` syntax that made scoping clearer and controllers smarter. In fact, it's a best practice to use `controllerAs` throughout our Angular apps in order to prevent some common problems that developers run into fairly often.
 
 Even if it's nice that we are able to use that syntax in pretty much every case where a controller comes into play, it turned out that in version 1.2, there's a little quirk when using it with directives that have an isolated scope. But before we get to the actual problem, let's recap `controllerAs` in general first, to get an idea of what problems it solves and how to use it, so that we are all on the same page.
+
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
 
 ## `controllerAs` as Namespace
 
@@ -82,7 +75,7 @@ And a DOM structure like this:
 {% endraw %}
 {% endhighlight %}
 
-The {% raw %} `{{foo}}` {% endraw %} expression in `ControllerTwo` scope will shadow the {% raw %} `{{foo}}` {% endraw %} expression in `ControllerOne` scope, which results in string `Christoph` being displayed in the inner scope and `Pascal` being displayed in the outer scope. 
+The {% raw %} `{{foo}}` {% endraw %} expression in `ControllerTwo` scope will shadow the {% raw %} `{{foo}}` {% endraw %} expression in `ControllerOne` scope, which results in string `Christoph` being displayed in the inner scope and `Pascal` being displayed in the outer scope.
 
 We could always get around this problem by using a scope's `$parent` property to reference its parent scope when accessing scope properties like this:
 
@@ -190,7 +183,7 @@ Great. Now we know what the `controllerAs` syntax it is all about, but we haven'
 
 ## The problem with `controllerAs` in Directives
 
-We said that, when using `controllerAs`, the controllers' scope is bound to the controllers' `this` object, so in other words - `this` represents our scope. But how does that work when building a directive with isolated scope? 
+We said that, when using `controllerAs`, the controllers' scope is bound to the controllers' `this` object, so in other words - `this` represents our scope. But how does that work when building a directive with isolated scope?
 
 We know we can create an isolated scope by adding an object literal to our directive definition object that defines how each scope property is bound to our directive. To refresh our memory, here's what we can do:
 
@@ -260,7 +253,7 @@ app.directive('someDirective', function () {
 {% endraw %}
 {% endhighlight %}
 
-Here we go... the `$scope` service we initially got rid off is now back. If you now think this is crazy, especially when considering that this is just one scope property and in a real world directive you usually have more than one, then my friend, I agree with you. 
+Here we go... the `$scope` service we initially got rid off is now back. If you now think this is crazy, especially when considering that this is just one scope property and in a real world directive you usually have more than one, then my friend, I agree with you.
 
 Luckily, this is no longer a problem in Angular 1.3!
 

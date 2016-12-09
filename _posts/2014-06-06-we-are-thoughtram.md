@@ -1,24 +1,37 @@
 ---
-layout:     post
-title:      We are thoughtram
-date:       2014-06-06
-summary:    We enjoy learning new stuff every day and we love teaching it to others even more.
-imageUrl:   "/images/banner/we-are-thoughtram.jpg"
-
+layout: post
+title: We are thoughtram
+date: 2014-06-06T00:00:00.000Z
+summary: >-
+  We enjoy learning new stuff every day and we love teaching it to others even
+  more.
+imageUrl: /images/banner/we-are-thoughtram.jpg
 redirect_from:
   - /posts/we-are-thoughtram/
-
-categories: 
+categories:
   - announcements
 tags:
   - announcements
   - company
-
 author: pascal_precht
-
 authors:
   - pascal_precht
   - christoph_burgdorf
+related_posts:
+  - Thomas joins thoughtram
+  - Upcoming events in 2015
+  - Around the globe
+  - Announcing Angular 2 Master Class in Sydney
+  - Announcing Angular 2 Master Class in NYC
+  - Updates and announcements
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+
 ---
 
 Hey there,

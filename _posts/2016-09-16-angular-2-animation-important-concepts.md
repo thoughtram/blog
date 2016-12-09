@@ -1,24 +1,35 @@
 ---
-layout:     post
-title:      "Angular 2 Animations - Foundation Concepts"
-
-date: 2016-09-16
-imageUrl: '/images/banner/angular-2-component-animations.jpg'
-
-summary: "Animation in Angular 2 is now easy and more intuitive... Learn foundational animation concepts and start animating your Angular 2 components!"
-
+layout: post
+title: Angular 2 Animations - Foundation Concepts
+date: 2016-09-16T00:00:00.000Z
+imageUrl: /images/banner/angular-2-component-animations.jpg
+summary: >-
+  Animation in Angular 2 is now easy and more intuitive... Learn foundational
+  animation concepts and start animating your Angular 2 components!
 categories:
   - angular
-
 tags:
   - angular2
   - animation
   - components
   - relative paths
-
 topic: components
-
 author: thomas_burleson
+related_posts:
+  - Component-Relative Paths in Angular 2
+  - Testing Services with Http in Angular 2
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Angular 2 is out - Get started here
+  - Bypassing Providers in Angular 2
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+
 ---
 
 Animations features often are scary goals for developers. And Angular's doctrine
@@ -58,7 +69,7 @@ export class MyComponent implements OnChanges {
 
 This component simply publishes an `@Input() isVisible` property; which allows other external components to show/hide the text content... without any animations.
 
-<iframe style="width: 100%; height: 600px" src="http://embed.plnkr.co/vUPTsY/" frameborder="0" allowfullscren="allowfullscren"></iframe>
+{% include plunk.html url="http://embed.plnkr.co/vUPTsY/" %}
 
 
 ### Configure Component Animations
@@ -270,7 +281,7 @@ export class FaderComponent implements OnChanges {
 {% endhighlight %}
 <br/>
 
-<iframe style="width: 100%; height: 600px" src="http://embed.plnkr.co/74lprkmzUGjT7UWbiyUr/" frameborder="0" allowfullscren="allowfullscren"></iframe>
+{% include plunk.html url="http://embed.plnkr.co/74lprkmzUGjT7UWbiyUr/" %}
 
 > Extra Bonus: The demo has some extra features. The *host* `my-fader` element now has a purple background; when you hide the `my-fader` content children you will see the host background. This change was added so you can visually see the differences between the *host* and the *target* animation elements.
 
@@ -326,8 +337,7 @@ export class MyAppComponent {
 {% endraw %}
 {% endhighlight %}
 
-<iframe style="width: 100%; height: 600px" src="http://embed.plnkr.co/NbWGjs/" frameborder="0" allowfullscren="allowfullscren"></iframe>
-
+{% include plunk.html url="http://embed.plnkr.co/NbWGjs/" %}
 
 
 ### Summary

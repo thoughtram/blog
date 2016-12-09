@@ -1,22 +1,36 @@
 ---
-layout:     post
-title: "Organizing Hanovers first Rust meetup"
-date: "2014-06-24"
-summary: We are excited to announce that we'll run a Rust meetup in Hanover - read on for more info!
-
+layout: post
+title: Organizing Hanovers first Rust meetup
+date: '2014-06-24'
+summary: >-
+  We are excited to announce that we'll run a Rust meetup in Hanover - read on
+  for more info!
 redirect_from:
   - /posts/organizing-hannovers-first-rust-meetup/
-
-
-categories: 
-  - announcements 
-  - rust 
+categories:
+  - announcements
+  - rust
   - meetups
 tags:
   - announcements
   - meetup
   - rust
 author: christoph_burgdorf
+related_posts:
+  - clog - A conventional changelog generator for the rest of us
+  - 'A web app with Nickel: From first line to Heroku deployment'
+  - Anouncing Hanover's second Rust meetup
+  - Rust's Ownership model for JavaScript developers
+  - Announcing Angular 2 Master Class in Sydney
+  - Announcing Angular 2 Master Class in NYC
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+
 ---
 
 As thoughtram we are dedicated to invest into interesting new technologies that we feel are exciting and have the potential to become popular. Not for money, but for fun!

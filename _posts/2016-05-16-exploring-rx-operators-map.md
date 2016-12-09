@@ -1,20 +1,32 @@
 ---
-layout:     post
-title:      "Exploring Rx Operators: map"
-imageUrl:  "/images/banner/rx-map.jpg"
-
-
-date: 2016-05-16
-
-summary: "This is the first article that is part of a new series where we take a look at different operators of the Reactive Extensions for JavaScript."
-
+layout: post
+title: 'Exploring Rx Operators: map'
+imageUrl: /images/banner/rx-map.jpg
+date: 2016-05-16T00:00:00.000Z
+summary: >-
+  This is the first article that is part of a new series where we take a look at
+  different operators of the Reactive Extensions for JavaScript.
 categories:
   - angular
 tags:
   - angular2
-  - Rx
-
+  - rx
 author: christoph_burgdorf
+related_posts:
+  - 'Exploring Rx Operators: flatMap'
+  - Cold vs Hot Observables
+  - Taking advantage of Observables in Angular 2 - Part 2
+  - Taking advantage of Observables in Angular 2
+  - Testing Services with Http in Angular 2
+  - Two-way Data Binding in Angular 2
+related_videos:
+  - '181311615'
+  - '181311609'
+  - '181311613'
+  - '181311611'
+  - '181311614'
+  - '181311616'
+
 ---
 
 In [Taking advantage of Observables Part one](/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html) and [two](/angular/2016/01/07/taking-advantage-of-observables-in-angular2-pt2.html) we already highlighted the importance of Observables in Angular 2. We believe that mastering Observables can make a key difference in how we write our applications. Well, if you agree, here are some good news! This article is the first of a series of posts where we'll explore operators of the Reactive Extensions for JavaScript (RxJS) and their practical applications.
@@ -41,7 +53,7 @@ console.log(transformed);
 
 By now we may be wondering what that has to do with Observables and the `map` operator that is part of RxJS.
 
-Observables are very much like arrays in a way. Well, they are actually more like Iterators but let's not get lost in the details. The key point to understand is that both represent a sequence of values. The key difference is that with Arrays/Iterators you *pull* values out as you want to work with them whereas with Observables you get values **pushed** to you as they arrive. 
+Observables are very much like arrays in a way. Well, they are actually more like Iterators but let's not get lost in the details. The key point to understand is that both represent a sequence of values. The key difference is that with Arrays/Iterators you *pull* values out as you want to work with them whereas with Observables you get values **pushed** to you as they arrive.
 
 It's this similarity that allows us to take advantage of pretty much all operators that we know from the pull-based world and apply them to the push-based world.
 
@@ -95,9 +107,9 @@ Of course, we could have done the same in the first `map` call. But it's sometim
 
 If you like to play a bit with the operator yourself, here is a working demo.
 
-<iframe src="http://embed.plnkr.co/iWR9b2s4wd0pZSOEfHuR/"></iframe>
+{% include plunk.html url="http://embed.plnkr.co/iWR9b2s4wd0pZSOEfHuR/" %}
 
-At this point, you may think that Observables are really just a minor enhancement on the Observer or Promise patterns... better suited to handle a sequence of events rather than a single callback. And the `.map()` function certainly does not - at first glance - seem to offer any added-value. The power of Observables is revealed when you start using Rx operators to transform, combine, manipulate, and work with sequences of items emitted by Observables. 
+At this point, you may think that Observables are really just a minor enhancement on the Observer or Promise patterns... better suited to handle a sequence of events rather than a single callback. And the `.map()` function certainly does not - at first glance - seem to offer any added-value. The power of Observables is revealed when you start using Rx operators to transform, combine, manipulate, and work with sequences of items emitted by Observables.
 
 These operators allow you to compose asynchronous sequences together in a declarative manner with all the efficiency benefits of callbacks but without the drawbacks of nesting callback handlers that are typically associated with asynchronous systems.
 

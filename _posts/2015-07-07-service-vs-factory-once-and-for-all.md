@@ -1,28 +1,45 @@
 ---
-layout:     post
-title:      "Service vs Factory - Once and for all"
-imageUrl: "/images/banner/service-vs-factory.png"
-relatedLinks:
-  -
-    title: "Using ES6 with Angular today"
-    url: "http://blog.thoughtram.io/angularjs/es6/2015/01/23/exploring-angular-1.3-using-es6.html"
-date:       2015-07-07
-update_date: 2015-07-07
-summary:    "This is yet another article on services vs factories in AngularJS. It explains once and for all, why we mostly want to use service."
-
-categories: 
+layout: post
+title: Service vs Factory - Once and for all
+imageUrl: /images/banner/service-vs-factory.png
+date: 2015-07-07T00:00:00.000Z
+update_date: 2016-11-08T00:00:00.000Z
+summary: >-
+  This is yet another article on services vs factories in AngularJS. It explains
+  once and for all, why we mostly want to use service.
+categories:
   - angular
-
 tags:
   - angular
-
 author: pascal_precht
+related_posts:
+  - 'Exploring Angular 1.5: Lifecycle Hooks'
+  - Sponsoring AngularConnect. Again.
+  - ngMessageFormat - Angular's unheard feature
+  - Multiple Transclusion and named Slots
+  - Taking Angular Master Class to the next level
+  - ngMessages revisited
+related_videos:
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+  - '189613148'
+  - '189603515'
+
 ---
 
 Wait, what? Yet another article that answers the big question: Service vs Factory, what should I use? Yes, it seems that this is not needed anymore, since there are a ton of resources in the internet that discuss that topic. It turns out that this question still pops up every week or so on different channels, and even after reading the top ten answers on StackOverflow, it's still not very clear. Despite that, it also appears that the current resources on the web don't really promote the actual best practice, especially if we consider the recent movements of the web platform. ES6 I'm looking at you!
 
 This article explains once and for all the difference between services and factories and why **we want to prefer services over factories**.
 
+
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
 
 ## The difference between services and factories
 

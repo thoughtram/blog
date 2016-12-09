@@ -1,18 +1,31 @@
 ---
-layout:     post
-title:      "Angular Training Day Bangkok"
-
-date:       2015-09-14
-updatedate: 2015-09-14
-summary:    "We are coming to Bangkok this year! This time we'll come to run a free Angular Training Day in the brand new rooms of the Growth cafe co-working space."
-
+layout: post
+title: Angular Training Day Bangkok
+date: 2015-09-14T00:00:00.000Z
+updatedate: 2015-09-14T00:00:00.000Z
+summary: >-
+  We are coming to Bangkok this year! This time we'll come to run a free Angular
+  Training Day in the brand new rooms of the Growth cafe co-working space.
 categories:
   - announcements
-
 redirect_from:
   - /angular/2015/09/14/angular-training-day-bangkok.html
-
 author: christoph_burgdorf
+related_posts:
+  - Testing Services with Http in Angular 2
+  - Understanding XOR with Keras and TensorFlow
+  - Announcing Angular 2 Master Class in Sydney
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Beginning Machine Learning with Keras and TensorFlow
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+
 ---
 
 Today we are happy to announce that we will run a free Angular Training Day in Bangkok on the 29th of October.

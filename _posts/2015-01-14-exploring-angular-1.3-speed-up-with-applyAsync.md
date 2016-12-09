@@ -1,51 +1,66 @@
 ---
-layout:     post
-title:      "Go fast with $applyAsync in Angular 1.3"
+layout: post
+title: Go fast with $applyAsync in Angular 1.3
 relatedLinks:
-  -
-    title: "Exploring Angular 1.3: One-time bindings"
-    url: "http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html"
-  -
-    title: "Exploring Angular 1.3: ng-model-options"
-    url: "http://blog.thoughtram.io/angularjs/2014/10/19/exploring-angular-1.3-ng-model-options.html"
-  -
-    title: "Exploring Angular 1.3: Angular-hint"
-    url: "http://blog.thoughtram.io/angularjs/2014/11/06/exploring-angular-1.3-angular-hint.html"
-  -
-    title: "Exploring Angular 1.3: Stateful Filters"
-    url: "http://blog.thoughtram.io/angularjs/2014/11/19/exploring-angular-1.3-stateful-filters.html"
-  -
-    title: "Exploring Angular 1.3: ES6 Style Promises"
-    url: "http://blog.thoughtram.io/angularjs/2014/12/18/exploring-angular-1.3-es6-style-promises.html"
-  -
-    title: "Exploring Angular 1.3: Disabling Debug Info"
-    url: "http://blog.thoughtram.io/angularjs/2014/12/22/exploring-angular-1.3-disabling-debug-info.html"
-  -
-    title: "Exploring Angular 1.3: Binding to Directive Controllers"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html"
-  -
-    title: "Exploring Angular 1.3: Validators Pipeline"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/11/exploring-angular-1.3-validators-pipeline.html"
-  -
-    title: "Exploring Angular 1.3: ngMessages"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/23/exploring-angular-1.3-ngMessages.html"
-date:       2015-01-14
-update_date: 2015-08-13
-summary:    "Angular 1.3 comes with a feature to share a running $digest cycle across multiple XHR calls. This articles details how to gain a nice performance boost."
-
+  - title: 'Exploring Angular 1.3: One-time bindings'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html
+  - title: 'Exploring Angular 1.3: ng-model-options'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/10/19/exploring-angular-1.3-ng-model-options.html
+  - title: 'Exploring Angular 1.3: Angular-hint'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/11/06/exploring-angular-1.3-angular-hint.html
+  - title: 'Exploring Angular 1.3: Stateful Filters'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/11/19/exploring-angular-1.3-stateful-filters.html
+  - title: 'Exploring Angular 1.3: ES6 Style Promises'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/12/18/exploring-angular-1.3-es6-style-promises.html
+  - title: 'Exploring Angular 1.3: Disabling Debug Info'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/12/22/exploring-angular-1.3-disabling-debug-info.html
+  - title: 'Exploring Angular 1.3: Binding to Directive Controllers'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html
+  - title: 'Exploring Angular 1.3: Validators Pipeline'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2015/01/11/exploring-angular-1.3-validators-pipeline.html
+  - title: 'Exploring Angular 1.3: ngMessages'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2015/01/23/exploring-angular-1.3-ngMessages.html
+date: 2015-01-14T00:00:00.000Z
+update_date: 2015-08-13T00:00:00.000Z
+summary: >-
+  Angular 1.3 comes with a feature to share a running $digest cycle across
+  multiple XHR calls. This articles details how to gain a nice performance
+  boost.
 isExploringAngular13Article: true
-
-categories: 
-- angularjs
-
+categories:
+  - angularjs
 tags:
   - angular
+  - angular1-3
   - performance
-
 author: pascal_precht
+related_posts:
+  - Disabling Debug Info in Angular 1.3
+  - Futuristic Routing in Angular
+  - ngMessages in Angular 1.3
+  - Validators Pipeline in Angular 1.3
+  - Binding to Directive Controllers in Angular 1.3
+  - ES6 Style Promises in Angular 1.3
+related_videos:
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+  - '189613148'
+  - '189603515'
+
 ---
 
-As already mentioned in our articles on [one-time bindings](http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html) and [disabling debug info](http://blog.thoughtram.io/angularjs/2014/12/22/exploring-angular-1.3-disabling-debug-info.html), one of the biggest goals of the 1.3 release was to improve Angular's overall performance. 
+As already mentioned in our articles on [one-time bindings](http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html) and [disabling debug info](http://blog.thoughtram.io/angularjs/2014/12/22/exploring-angular-1.3-disabling-debug-info.html), one of the biggest goals of the 1.3 release was to improve Angular's overall performance.
 
 This article details yet another nice feature that makes your Angular applications in particular cases potentially faster: It lets you resolve multiple `$http` responses, that are received around the same time, in one `$digest` cycle with a new API added to the `$rootScope` called `$applyAsync`.
 
@@ -65,9 +80,9 @@ There are basically three possible cases when the state of an application can ch
 - **XMLHttpRequests** - Also known as AJAX. Something in our app requests some data from a server and update model data accordingly.
 - **Timeouts** - Asynchronous operations cause through timers that can possibly change the state of our application
 
-Whenever one of the above things happens, Angular knows it needs to trigger a `$digest`. You might still wonder how that works, since you don't have to inform Angular about these interactions explicitly. This is because Angular intercepts all of these interactions already for you. 
+Whenever one of the above things happens, Angular knows it needs to trigger a `$digest`. You might still wonder how that works, since you don't have to inform Angular about these interactions explicitly. This is because Angular intercepts all of these interactions already for you.
 
-That's why we have all these predefined directives like `ng-click` or even directives that override existing tags like `<input>`. The `$http` service that Angular brings to the table also makes sure that a `$digest` is triggered once a request returns. 
+That's why we have all these predefined directives like `ng-click` or even directives that override existing tags like `<input>`. The `$http` service that Angular brings to the table also makes sure that a `$digest` is triggered once a request returns.
 
 In addtion, this explains why you need to call `$scope.$apply()`, which in turn triggers a `$digest` internally, when you have third-party code that changes your application's state from the outside world.
 
@@ -81,7 +96,7 @@ We mentioned that one of the cases where a `$digest` is triggered, is when an XH
 
 {% highlight js %}
 app.controller('Ctrl', function ($http) {
-  
+
   // Make XHR and update model accordingly
   $http.get('fetch/some/json/').then(function (response) {
     this.myModel = response.data;

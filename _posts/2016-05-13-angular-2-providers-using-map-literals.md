@@ -1,22 +1,34 @@
 ---
-layout:     post
-title:      "Angular 2 Providers using Map Literals"
-
-date: 2016-05-13
-update_date: 2016-08-11
-imageUrl: '/images/banner/angular-2-providers-using-map-literals.png'
-summary: "Angular has a shorter syntax for creating providers. In this article we're going to take a look at how to create them using map literals."
-
+layout: post
+title: Angular 2 Providers using Map Literals
+date: 2016-05-13T00:00:00.000Z
+update_date: 2016-08-11T00:00:00.000Z
+imageUrl: /images/banner/angular-2-providers-using-map-literals.png
+summary: >-
+  Angular has a shorter syntax for creating providers. In this article we're
+  going to take a look at how to create them using map literals.
 categories:
   - angular
-
 tags:
   - angular2
   - di
-
 topic: di
-
 author: pascal_precht
+related_posts:
+  - How to prevent name collisions in Angular 2 providers
+  - Testing Services with Http in Angular 2
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Angular 2 Animations - Foundation Concepts
+  - Angular 2 is out - Get started here
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+
 ---
 
 ng-conf happened just one week ago and there were many announcements about all things Angular. While this is good, sometimes these big announcements cause smaller features to remain unseen, because nobody really talks about them. That's why we want to discuss providers using Map literals in this article, which is basically a new way of defining providers that landed just recently in the code base.

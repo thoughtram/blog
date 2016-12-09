@@ -1,20 +1,34 @@
 ---
-layout:     post
-title:      "Tickets are on sale now!"
-date:       "2014-07-04"
-summary:    It's on! You can now buy the first bunch of tickets for our Git Ninja Class workshop in Hannover, Germany!
-
+layout: post
+title: Tickets are on sale now!
+date: '2014-07-04'
+summary: >-
+  It's on! You can now buy the first bunch of tickets for our Git Ninja Class
+  workshop in Hannover, Germany!
 categories: announcements
 tags:
   - training
   - announcements
   - git
-
 redirect_from:
   - /posts/tickets-are-on-sale-now/
   - /posts/der-ticketverkauf-beginnt/
-
 author: pascal_precht
+related_posts:
+  - Git Ninja Class comes to Istanbul
+  - Joining betahaus education
+  - Announcing our first workshop
+  - Understanding branches in Git
+  - The anatomy of a Git commit
+  - Going back in time to split older commits
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+
 ---
 
 It's on! You can now buy the first bunch of tickets for our Git Ninja Class workshop happening on the **6th + 7th of September** in Hannover, Germany!

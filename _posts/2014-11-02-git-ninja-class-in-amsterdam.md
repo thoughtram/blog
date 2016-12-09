@@ -1,16 +1,32 @@
 ---
 layout: post
-title: "Git Ninja Class in Amsterdam"
-date: "2014-11-02"
-summary: "We are very happy to announce that, with the help of our new partner De Voorhoede, we'll bring our Git Ninja Class to Amsterdam in January 2015!"
-
-categories: 
+title: Git Ninja Class in Amsterdam
+date: '2014-11-02'
+summary: >-
+  We are very happy to announce that, with the help of our new partner De
+  Voorhoede, we'll bring our Git Ninja Class to Amsterdam in January 2015!
+categories:
   - announcements
 tags:
   - announcements
   - training
   - git
 author: christoph_burgdorf
+related_posts:
+  - Git Ninja Class comes to Istanbul
+  - Tickets are on sale now!
+  - Joining betahaus education
+  - Announcing our first workshop
+  - Understanding branches in Git
+  - The anatomy of a Git commit
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+
 ---
 
 Today we are very happy to announce that **we will bring our Git Ninja Class to Amsterdam** in the Netherlands! Join us for another exciting two-day workshop experience about the true power of the Git version control system.

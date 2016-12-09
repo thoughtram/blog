@@ -1,47 +1,61 @@
 ---
-layout:     post
-title:      "Stateful filters in Angular 1.3"
+layout: post
+title: Stateful filters in Angular 1.3
 relatedLinks:
-  -
-    title: "Exploring Angular 1.3: One-time bindings"
-    url: "http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html"
-  -
-    title: "Exploring Angular 1.3: ng-model-options"
-    url: "http://blog.thoughtram.io/angularjs/2014/10/19/exploring-angular-1.3-ng-model-options.html"
-  -
-    title: "Exploring Angular 1.3: Angular-hint"
-    url: "http://blog.thoughtram.io/angularjs/2014/11/06/exploring-angular-1.3-angular-hint.html"
-  -
-    title: "Exploring Angular 1.3: ES6 Style Promises"
-    url: "http://blog.thoughtram.io/angularjs/2014/12/18/exploring-angular-1.3-es6-style-promises.html"
-  -
-    title: "Exploring Angular 1.3: Disabling Debug Info"
-    url: "http://blog.thoughtram.io/angularjs/2014/12/22/exploring-angular-1.3-disabling-debug-info.html"
-  -
-    title: "Exploring Angular 1.3: Binding to Directive Controllers"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html"
-  -
-    title: "Exploring Angular 1.3: Validators Pipeline"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/11/exploring-angular-1.3-validators-pipeline.html"
-  -
-    title: "Exploring Angular 1.3: Go fast with $applyAsync"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/14/exploring-angular-1.3-speed-up-with-applyAsync.html"
-  -
-    title: "Exploring Angular 1.3: ngMessages"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/23/exploring-angular-1.3-ngMessages.html"
-date:       2014-11-19
-update_date: 2016-08-23
-summary:    Angular 1.3 makes all filters stateless by default. In this article we're going to take a look what that means.
-
+  - title: 'Exploring Angular 1.3: One-time bindings'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html
+  - title: 'Exploring Angular 1.3: ng-model-options'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/10/19/exploring-angular-1.3-ng-model-options.html
+  - title: 'Exploring Angular 1.3: Angular-hint'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/11/06/exploring-angular-1.3-angular-hint.html
+  - title: 'Exploring Angular 1.3: ES6 Style Promises'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/12/18/exploring-angular-1.3-es6-style-promises.html
+  - title: 'Exploring Angular 1.3: Disabling Debug Info'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/12/22/exploring-angular-1.3-disabling-debug-info.html
+  - title: 'Exploring Angular 1.3: Binding to Directive Controllers'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html
+  - title: 'Exploring Angular 1.3: Validators Pipeline'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2015/01/11/exploring-angular-1.3-validators-pipeline.html
+  - title: 'Exploring Angular 1.3: Go fast with $applyAsync'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2015/01/14/exploring-angular-1.3-speed-up-with-applyAsync.html
+  - title: 'Exploring Angular 1.3: ngMessages'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2015/01/23/exploring-angular-1.3-ngMessages.html
+date: 2014-11-19T00:00:00.000Z
+update_date: 2016-08-23T00:00:00.000Z
+summary: >-
+  Angular 1.3 makes all filters stateless by default. In this article we're
+  going to take a look what that means.
 isExploringAngular13Article: true
-
-categories: 
+categories:
   - angularjs
-
 tags:
   - angular
-
+  - angular1-3
 author: pascal_precht
+related_posts:
+  - Futuristic Routing in Angular
+  - ngMessages in Angular 1.3
+  - Go fast with $applyAsync in Angular 1.3
+  - Validators Pipeline in Angular 1.3
+  - Binding to Directive Controllers in Angular 1.3
+  - Disabling Debug Info in Angular 1.3
+related_videos:
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+  - '189613148'
+  - '189603515'
+
 ---
 
 Angular 1.3 comes with a lot of cool features and improvements. We already covered a couple of them. You can for example read about [one-time bindings](http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html), [ngModelOptions](http://blog.thoughtram.io/angularjs/2014/10/19/exploring-angular-1.3-ng-model-options.html) or the newly introduced [Angular-hint](http://blog.thoughtram.io/angularjs/2014/11/06/exploring-angular-1.3-angular-hint.html) module that helps you out writing better Angular code.
@@ -86,7 +100,7 @@ angular.module('myApp', [])
 .filter('customFilter', ['someService', function (someService) {
   return function customFilter(input) {
     // manipulate input with someService
-    input += someService.getData(); 
+    input += someService.getData();
     return input;
   };
 }]);
@@ -108,7 +122,7 @@ However, there's a reason why [Igor Minar](http://twitter.com/IgorMinar) said th
 
 In version 1.3, filters are much smarter. By default, they cache the evaluated value so they don't have to be re-evaluated all the time. Getting back to our simple `{% raw %}{{ jsonExpression | json}}{% endraw %}` example, the expression only gets re-evaluated when `jsonExpression` changes, which makes our code execution much faster.
 
-To make it work like this, Angular assumes that, as long as the passed expression doesn't change, the result of the expression doesn't change either. It's **stateless**. And this is where our code might break. Think about what that means in cases where your filter depends on other services, like our `customFilter`. 
+To make it work like this, Angular assumes that, as long as the passed expression doesn't change, the result of the expression doesn't change either. It's **stateless**. And this is where our code might break. Think about what that means in cases where your filter depends on other services, like our `customFilter`.
 
 But to get a better picture, let's take a look at the `translate` filter that comes with the [angular-translate](http://angular-translate.github.io) module. It consumes translation ids to look them up in a registered translation table, using the `$translate` service and returns the dedicated translation. **It is stateful**.
 
@@ -130,7 +144,7 @@ angular.module('myApp', [])
 .filter('customFilter', ['someService', function (someService) {
   function customFilter(input) {
     // manipulate input with someService
-    input += someService.getData(); 
+    input += someService.getData();
     return input;
   }
 

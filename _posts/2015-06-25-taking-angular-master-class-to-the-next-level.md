@@ -1,17 +1,31 @@
 ---
-layout:     post
-title:      "Taking Angular Master Class to the next level"
-date:       2015-06-25
-update_date: 2015-06-25
-summary:    "We always collect feedback to make our material and trainings even better. We listened. Here's what we did."
-
-categories: 
+layout: post
+title: Taking Angular Master Class to the next level
+date: 2015-06-25T00:00:00.000Z
+update_date: 2015-06-25T00:00:00.000Z
+summary: >-
+  We always collect feedback to make our material and trainings even better. We
+  listened. Here's what we did.
+categories:
   - angular
-
 tags:
   - angular
-
 author: pascal_precht
+related_posts:
+  - 'Exploring Angular 1.5: Lifecycle Hooks'
+  - Sponsoring AngularConnect. Again.
+  - ngMessageFormat - Angular's unheard feature
+  - Multiple Transclusion and named Slots
+  - Service vs Factory - Once and for all
+  - ngMessages revisited
+related_videos:
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+  - '189613148'
+  - '189603515'
+
 ---
 
 We've been running our [Angular Master Class](http://thoughtram.io/angular-master-class.html) since a couple of months now and travelled to many different countries and cities to meet you in person and exchange our experience. If you've attended one of our workshops, you know that we always ask for feedback so we can improve our material and of course, also your experience as an attendee.

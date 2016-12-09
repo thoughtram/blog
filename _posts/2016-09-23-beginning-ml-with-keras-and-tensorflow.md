@@ -1,20 +1,33 @@
 ---
-layout:     post
-title:      "Beginning Machine Learning with Keras and TensorFlow"
-
-date: 2016-09-23
-imageUrl:  "/images/banner/intro_in_ml.jpeg"
-
-
-summary: "With all the latest accomplishments in the field of artificial intelligence it's really hard not to get excited about AI. In this article we'll build our very first neural network."
-
+layout: post
+title: Beginning Machine Learning with Keras and TensorFlow
+date: 2016-09-23T00:00:00.000Z
+update_date: 2016-11-08T00:00:00.000Z
+imageUrl: /images/banner/intro_in_ml.jpeg
+summary: >-
+  With all the latest accomplishments in the field of artificial intelligence
+  it's really hard not to get excited about AI. In this article we'll build our
+  very first neural network.
 categories:
   - machine-learning
-
 tags:
   - machine-learning
-
 author: christoph_burgdorf
+related_posts:
+  - Understanding XOR with Keras and TensorFlow
+  - Testing Services with Http in Angular 2
+  - Announcing Angular 2 Master Class in Sydney
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Angular 2 Animations - Foundation Concepts
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+
 ---
 
 This isn't our typical kind of blog post. In fact this one is very special. It's the beginning of our journey with a new shiny toy.
@@ -24,6 +37,13 @@ Every now and then there comes a field of technology that strikes us as being es
 Companies such as Google, NVIDIA or [Comma.ai](http://comma.ai/) are using neural networks to train cars that know how to drive themselves. Apps such as [PRISMA](http://prisma-ai.com/) are using AI to create artwork from photography that is inspired by real artists.
 
 We are happy to jump on this exciting journey and we are even happier to share our findings with you.
+
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
 
 
 ## What's all the buzz about AI and Machine Learning

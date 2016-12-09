@@ -1,18 +1,33 @@
 ---
-layout:     post
-title:      "ngMessages revisited"
+layout: post
+title: ngMessages revisited
 relatedLinks:
-  -
-    title: "Exploring Angular 1.3 - ngMessages"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/23/exploring-angular-1.3-ngMessages.html"
-date:       2015-06-06
-update_date: 2015-06-16
-summary:    "With the release of Angular 1.4, a few changes landed that affect the ngMessages module. This article discusses what has changed."
-
+  - title: Exploring Angular 1.3 - ngMessages
+    url: >-
+      http://blog.thoughtram.io/angularjs/2015/01/23/exploring-angular-1.3-ngMessages.html
+date: 2015-06-06T00:00:00.000Z
+update_date: 2015-06-16T00:00:00.000Z
+summary: >-
+  With the release of Angular 1.4, a few changes landed that affect the
+  ngMessages module. This article discusses what has changed.
 tags:
   - angular
-
 author: pascal_precht
+related_posts:
+  - 'Exploring Angular 1.5: Lifecycle Hooks'
+  - Sponsoring AngularConnect. Again.
+  - ngMessageFormat - Angular's unheard feature
+  - Multiple Transclusion and named Slots
+  - Service vs Factory - Once and for all
+  - Taking Angular Master Class to the next level
+related_videos:
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+  - '189613148'
+  - '189603515'
+
 ---
 
 If you've followed our series on [Exploring Angular 1.3](http://blog.thoughtram.io/exploring-angular-1.3), you know that we've written an [article](http://blog.thoughtram.io/angularjs/2015/01/23/exploring-angular-1.3-ngMessages.html) about a new module that has been introduced then, called ngMessages. If you haven't read that article we highly recommend checking it out, since this article builds on top of that.

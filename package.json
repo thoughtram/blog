@@ -1,0 +1,23 @@
+{
+  "name": "thoughtram-blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "node deploy.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thoughtram/blog.git"
+  },
+  "author": "Christoph Burgdorf <christoph.burgdorf@bvsn.org> (http://cburgdorf.wordpress.com/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thoughtram/blog/issues"
+  },
+  "homepage": "https://github.com/thoughtram/blog#readme",
+  "dependencies": {
+    "jekyll-related-posts": "git+https://github.com/thoughtram/jekyll-related-posts.git#1cd3f55"
+  }
+}

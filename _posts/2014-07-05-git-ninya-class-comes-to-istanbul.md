@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "Git Ninja Class comes to Istanbul"
-date: "2014-07-05"
-summary: Today we are happy to announce that our Git Master Class is coming to Istanbul! Read everything about this event in this announcement.
-
+title: Git Ninja Class comes to Istanbul
+date: '2014-07-05'
+summary: >-
+  Today we are happy to announce that our Git Master Class is coming to
+  Istanbul! Read everything about this event in this announcement.
 redirect_from:
   - posts/git-ninya-class-comes-to-istanbul/
-
 categories:
   - announcements
 tags:
@@ -14,6 +14,21 @@ tags:
   - announcements
   - git
 author: pascal_precht
+related_posts:
+  - Tickets are on sale now!
+  - Joining betahaus education
+  - Announcing our first workshop
+  - Understanding branches in Git
+  - The anatomy of a Git commit
+  - Going back in time to split older commits
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+
 ---
 
 Today we are happy to announce that our **Git Ninja Class** is coming to Istanbul!

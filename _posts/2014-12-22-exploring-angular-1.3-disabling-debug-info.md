@@ -1,53 +1,67 @@
 ---
-layout:     post
-title:      "Disabling Debug Info in Angular 1.3"
+layout: post
+title: Disabling Debug Info in Angular 1.3
 relatedLinks:
-  -
-    title: "Exploring Angular 1.3: One-time bindings"
-    url: "http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html"
-  -
-    title: "Exploring Angular 1.3: ng-model-options"
-    url: "http://blog.thoughtram.io/angularjs/2014/10/19/exploring-angular-1.3-ng-model-options.html"
-  -
-    title: "Exploring Angular 1.3: Angular-hint"
-    url: "http://blog.thoughtram.io/angularjs/2014/11/06/exploring-angular-1.3-angular-hint.html"
-  -
-    title: "Exploring Angular 1.3: Stateful Filters"
-    url: "http://blog.thoughtram.io/angularjs/2014/11/19/exploring-angular-1.3-stateful-filters.html"
-  -
-    title: "Exploring Angular 1.3: ES6 Style Promises"
-    url: "http://blog.thoughtram.io/angularjs/2014/12/18/exploring-angular-1.3-es6-style-promises.html"
-  -
-    title: "Exploring Angular 1.3: Binding to Directive Controllers"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html"
-  -
-    title: "Exploring Angular 1.3: Validators Pipeline"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/11/exploring-angular-1.3-validators-pipeline.html"
-  -
-    title: "Exploring Angular 1.3: Go fast with $applyAsync"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/14/exploring-angular-1.3-speed-up-with-applyAsync.html"
-  -
-    title: "Exploring Angular 1.3: ngMessages"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/23/exploring-angular-1.3-ngMessages.html"
-date:       2014-12-22
-update_date: 2015-08-13
-summary:    "This article details how to give your app a performance boost in production environments with just a single line of code."
-
+  - title: 'Exploring Angular 1.3: One-time bindings'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html
+  - title: 'Exploring Angular 1.3: ng-model-options'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/10/19/exploring-angular-1.3-ng-model-options.html
+  - title: 'Exploring Angular 1.3: Angular-hint'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/11/06/exploring-angular-1.3-angular-hint.html
+  - title: 'Exploring Angular 1.3: Stateful Filters'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/11/19/exploring-angular-1.3-stateful-filters.html
+  - title: 'Exploring Angular 1.3: ES6 Style Promises'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/12/18/exploring-angular-1.3-es6-style-promises.html
+  - title: 'Exploring Angular 1.3: Binding to Directive Controllers'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html
+  - title: 'Exploring Angular 1.3: Validators Pipeline'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2015/01/11/exploring-angular-1.3-validators-pipeline.html
+  - title: 'Exploring Angular 1.3: Go fast with $applyAsync'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2015/01/14/exploring-angular-1.3-speed-up-with-applyAsync.html
+  - title: 'Exploring Angular 1.3: ngMessages'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2015/01/23/exploring-angular-1.3-ngMessages.html
+date: 2014-12-22T00:00:00.000Z
+update_date: 2015-08-13T00:00:00.000Z
+summary: >-
+  This article details how to give your app a performance boost in production
+  environments with just a single line of code.
 isExploringAngular13Article: true
-
-categories: 
+categories:
   - angularjs
-
 tags:
   - angular
+  - angular1-3
   - performance
-
 author: pascal_precht
+related_posts:
+  - Go fast with $applyAsync in Angular 1.3
+  - Futuristic Routing in Angular
+  - ngMessages in Angular 1.3
+  - Validators Pipeline in Angular 1.3
+  - Binding to Directive Controllers in Angular 1.3
+  - ES6 Style Promises in Angular 1.3
+related_videos:
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+  - '189613148'
+  - '189603515'
+
 ---
 
 Angular has some cool new features that improve our production code. And since these are a bit shadowed by all the other bigger features that come with 1.3, we're going to take a look at one of them: **Disabling Debug Info**.
 
-Sure, disabling debug info doesn't really sound super special and in fact, it really isn't. However, it turns out that it can have a huge impact on our applications performance, so it's definitely worth a mention in our blog series on exploring Angular 1.3. 
+Sure, disabling debug info doesn't really sound super special and in fact, it really isn't. However, it turns out that it can have a huge impact on our applications performance, so it's definitely worth a mention in our blog series on exploring Angular 1.3.
 
 So, what is the debug info we're talking about anyway?
 
@@ -79,7 +93,7 @@ What we get, once compiled, is this:
 {% endraw %}
 {% endhighlight %}
 
-The same happens when using `ng-bind` or `ng-bind-html` directives. The former is an equivalent to the interpolation directive, in form of an attribute to prevent flash of uncompiled content flickering. The latter lets us evaluate expressions that have HTML code as value while the HTML itself is interpreted by the browser (use of `$sce.trustAsHtml()` required here). 
+The same happens when using `ng-bind` or `ng-bind-html` directives. The former is an equivalent to the interpolation directive, in form of an attribute to prevent flash of uncompiled content flickering. The latter lets us evaluate expressions that have HTML code as value while the HTML itself is interpreted by the browser (use of `$sce.trustAsHtml()` required here).
 
 To make things a bit more clear, here's our example as `ng-bind` version:
 

@@ -1,17 +1,31 @@
 ---
-layout:     post
-title:      "Upcoming events in 2015"
-date:       2015-04-19
-summary:    "Today we'd like to give you information about the next upcoming events that we'll be running or attending to."
-
-categories: 
-- announcements
-
+layout: post
+title: Upcoming events in 2015
+date: 2015-04-19T00:00:00.000Z
+summary: >-
+  Today we'd like to give you information about the next upcoming events that
+  we'll be running or attending to.
+categories:
+  - announcements
 tags:
-- announcements
-- company
-
+  - announcements
+  - company
 author: pascal_precht
+related_posts:
+  - Thomas joins thoughtram
+  - Around the globe
+  - We are thoughtram
+  - Announcing Angular 2 Master Class in Sydney
+  - Announcing Angular 2 Master Class in NYC
+  - Updates and announcements
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+
 ---
 Just recently, we wrote about how much we love to travel and making friends [around the globe](http://blog.thoughtram.io/angularjs/2015/02/21/around-the-globe.html). That's why we're making this part of our mission. In fact, I'm writing this post while I'm sitting in a hotel in Lugano, Switzerland. Today we'd like to give you information about the next upcoming events that we'll be running or attending to.
 

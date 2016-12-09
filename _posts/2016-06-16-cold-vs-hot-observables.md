@@ -1,35 +1,42 @@
 ---
-layout:     post
-title:      "Cold vs Hot Observables"
-imageUrl:   "/images/banner/hot-vs-cold-observables.jpeg"
-
-date: 2016-06-16
-update_date: 2016-08-11
-
-summary: "In this article we are going to demystify what the term hot vs cold means when it comes to Observables."
-
+layout: post
+title: Cold vs Hot Observables
+imageUrl: /images/banner/hot-vs-cold-observables.jpeg
+date: 2016-06-16T00:00:00.000Z
+update_date: 2016-11-08T00:00:00.000Z
+summary: >-
+  In this article we are going to demystify what the term hot vs cold means when
+  it comes to Observables.
 categories:
   - angular
-
 tags:
   - angular2
-  - Rx
-
+  - rx
 demos:
-  -
-    url: http://jsbin.com/mihoyifiku/1/edit?js,console
-    title: "Creating a basic Observable"
-  -
-    url: http://jsbin.com/xosipocoza/1/edit?js,console
-    title: "Cold Observable"
-  -
-    url: http://jsbin.com/pupoledehi/1/edit?js,console
-    title: "Warm Observable"
-  -
-    url: http://jsbin.com/sokayofise/1/edit?js,console
-    title: "Hot Observable"
-
+  - url: 'http://jsbin.com/mihoyifiku/1/edit?js,console'
+    title: Creating a basic Observable
+  - url: 'http://jsbin.com/xosipocoza/1/edit?js,console'
+    title: Cold Observable
+  - url: 'http://jsbin.com/pupoledehi/1/edit?js,console'
+    title: Warm Observable
+  - url: 'http://jsbin.com/sokayofise/1/edit?js,console'
+    title: Hot Observable
 author: christoph_burgdorf
+related_posts:
+  - 'Exploring Rx Operators: flatMap'
+  - 'Exploring Rx Operators: map'
+  - Taking advantage of Observables in Angular 2 - Part 2
+  - Taking advantage of Observables in Angular 2
+  - Testing Services with Http in Angular 2
+  - Two-way Data Binding in Angular 2
+related_videos:
+  - '181311615'
+  - '181311609'
+  - '181311613'
+  - '181311611'
+  - '181311614'
+  - '181311616'
+
 ---
 
 One of the most exciting topics around Angular 2 is it's relationship to Observables. It's such an essential part of the framework that we cover a fair amount of Observable knowledge in our [Angular 2 Master Class](http://thoughtram.io/angular2-master-class.html). That said, the topic is so big that one could easily run a 3-days workshop on Observables itself.
@@ -37,6 +44,13 @@ One of the most exciting topics around Angular 2 is it's relationship to Observa
 There's one particular area of Observables that we don't explicitly touch on in our workshop but that keeps coming up in questions every single time that we teach them.
 
 {% include demos-and-videos-buttons.html post=page %}
+
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
 
 ## Hot vs Cold Observables
 

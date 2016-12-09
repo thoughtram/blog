@@ -1,26 +1,42 @@
 ---
-layout:     post
-title:      "A web app with Nickel: From first line to Heroku deployment"
-date:       2015-07-29
-update_date: 2016-08-23
-relatedLinks:
-  -
-    title: "Rust's Ownership model for JavaScript developers"
-    url: "http://blog.thoughtram.io/rust/2015/05/11/rusts-ownership-model-for-javascript-developers.html"
-
-summary:    "Learn how to build and deploy a simple web application with Nickel, the web application server for the Rust language."
-
+layout: post
+title: 'A web app with Nickel: From first line to Heroku deployment'
+date: 2015-07-29T00:00:00.000Z
+update_date: 2016-11-08T00:00:00.000Z
+summary: >-
+  Learn how to build and deploy a simple web application with Nickel, the web
+  application server for the Rust language.
 categories:
-- rust
-
+  - rust
 tags:
-- rust
-
+  - rust
 author: christoph_burgdorf
+related_posts:
+  - Anouncing Hanover's second Rust meetup
+  - Rust's Ownership model for JavaScript developers
+  - clog - A conventional changelog generator for the rest of us
+  - Organizing Hanovers first Rust meetup
+  - Testing Services with Http in Angular 2
+  - Understanding XOR with Keras and TensorFlow
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+
 ---
 
 
 Occasionally people ask about [Nickel](http://nickel.rs) projects that they can dig into to get a feel of some real world Nickel code. In case you never heard of Nickel, it's a web application server written in Rust. We thought it'd be nice to write a simple web application with Nickel, deploy it to Heroku and blog about it.
+
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
 
 ##Defining the scope of the application
 

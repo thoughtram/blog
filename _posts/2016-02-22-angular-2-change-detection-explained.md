@@ -1,43 +1,45 @@
 ---
-layout:     post
-title:      "Angular 2 Change Detection Explained"
-imageUrl:   "/images/change-detection-explained-bg.jpeg"
-relatedLinks:
-  - title: "Angular 2 Change Detection Explained - Talk"
-    url: https://www.youtube.com/watch?v=CUxD91DWkGM
-  -
-    title: "Angular 2 Change Detection Explained - Slides"
-    url: "http://pascalprecht.github.io/slides/angular-2-change-detection-explained/#/"
-  -
-    title: "Change Detection in Angular 2"
-    url: "http://victorsavkin.com/post/110170125256/change-detection-in-angular-2"
-  -
-    title: "Angular, Immutability and Encapsulation"
-    url: "http://victorsavkin.com/post/133936129316/angular-immutability-and-encapsulation"
-  -
-    title: "Change and its Detection in JavaScript frameworks"
-    url: "http://teropa.info/blog/2015/03/02/change-and-its-detection-in-javascript-frameworks.html"
-  -
-    title: "Taking advantage of Observables in Angular 2"
-    url: "http://blog.thoughtram.io/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html"
-
-date: 2016-02-22
-
-summary: "Wonder how change detection in Angular 2 works?  This article is a write-up of that talk and discusses change detection and tricks to make is super fast."
-
+layout: post
+title: Angular 2 Change Detection Explained
+imageUrl: /images/change-detection-explained-bg.jpeg
+date: 2016-02-22T00:00:00.000Z
+update_date: 2016-11-08T00:00:00.000Z
+summary: >-
+  Wonder how change detection in Angular 2 works?  This article is a write-up of
+  that talk and discusses change detection and tricks to make is super fast.
 categories:
   - angular
 tags:
   - angular2
-
 topic: changedetection
-
 author: pascal_precht
+related_posts:
+  - Testing Services with Http in Angular 2
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Angular 2 Animations - Foundation Concepts
+  - Angular 2 is out - Get started here
+  - Bypassing Providers in Angular 2
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+
 ---
 
 [NG-NL](http://ng-nl.org) has happened and it was awesome! I had the honour of giving a talk about change detection in Angular 2 and it seemed to be a huge success as attendees liked it a lot. With this article, we'd like to transform the talk into a written version, so everyone can read about how Angular's change detection works and how to make it faster for our use cases. If you're interested in the talk, you can view the [slides here](http://pascalprecht.github.io/slides/angular-2-change-detection-explained/#/) and <s>as soon as the talk recording is up, you'll find it here as well</s> [watch the recording](https://www.youtube.com/watch?v=CUxD91DWkGM) on Youtube.
 
 Now let's take a look at this beast.
+
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
 
 ## What's Change Detection anyways?
 
@@ -234,7 +236,7 @@ vData === vData2 // false
 {% endraw %}
 {% endhighlight %}
 
-`someAPIForImmutables` can be any API we want to use for immutable data structures. However, as we can see, we can't simply change the `name` property. We'll get a new object with that particular change and this object has a new reference. 
+`someAPIForImmutables` can be any API we want to use for immutable data structures. However, as we can see, we can't simply change the `name` property. We'll get a new object with that particular change and this object has a new reference.
 Or in short: **If there's a change, we get a new reference**.
 
 ## Reducing the number of checks
@@ -310,7 +312,7 @@ class CartBadgeCmp {
 
 Let's say we build an e-commerce application with a shopping cart. Whenever a user puts a product into the shopping cart, we want a little counter to show up in our UI, so the user can see the amount of products in the cart.
 
-`CartBadgeCmp` does exactly that. It has a `counter` and an input property `addItemStream`, which is a stream of events that gets fired, whenever a product is added to the shopping cart. 
+`CartBadgeCmp` does exactly that. It has a `counter` and an input property `addItemStream`, which is a stream of events that gets fired, whenever a product is added to the shopping cart.
 
 We won't go into much detail on how observables work in this article. If you want to learn more about observables, make sure to read our article on [taking advantage of Observables in Angular 2](http://blog.thoughtram.io/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html).
 

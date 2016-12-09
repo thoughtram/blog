@@ -1,40 +1,39 @@
 ---
-layout:     post
-title:      "Developing a tabs component in Angular 2"
-relatedLinks:
-  -
-    title: "Exploring Angular 2 - Article Series"
-    url: "/exploring-angular-2"
-  -
-    title: "Builing a zippy component in Angular 2"
-    url: "/angular/2015/03/27/building-a-zippy-component-in-angular-2.html"
-  -
-    title: "Creating a tabs component using @ContentChildren"
-    url: "http://juristr.com/blog/2016/02/learning-ng2-creating-tab-component"
-date:       2015-04-09
-update_date: 2016-08-11
-summary:    "This article details how to build another simple, but widely used type of component: tabs."
-
+layout: post
+title: Developing a tabs component in Angular 2
+date: 2015-04-09T00:00:00.000Z
+update_date: 2016-11-08T00:00:00.000Z
+summary: >-
+  This article details how to build another simple, but widely used type of
+  component: tabs.
 categories:
-- angular
-
+  - angular
 tags:
-- angular2
-
+  - angular2
 topic: getting-started
-
 author: pascal_precht
-
 demos:
-  -
-    url: http://embed.plnkr.co/KU8eGM/
+  - url: 'http://embed.plnkr.co/KU8eGM/'
     title: Tabs Component build with Angular 2 (RC4)
-  -
-    url: "https://plnkr.co/edit/LEpgaP?p=preview"
+  - url: 'https://plnkr.co/edit/LEpgaP?p=preview'
     title: Tabs Component build with Angular 2 (RC5)
-  -
-    url: https://embed.plnkr.co/afhLA8wHw9LRnzwwTT3M/
+  - url: 'https://embed.plnkr.co/afhLA8wHw9LRnzwwTT3M/'
     title: Tabs Component using @ContentChildren
+related_posts:
+  - Testing Services with Http in Angular 2
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Angular 2 Animations - Foundation Concepts
+  - Angular 2 is out - Get started here
+  - Bypassing Providers in Angular 2
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+
 ---
 Just recently, we wrote about how to [build a zippy component](/angular/2015/03/27/building-a-zippy-component-in-angular-2.html) in Angular 2. We explored how to get started with the framework and learned about some concepts that it comes with to build a very simple component. If you haven't read the article, you might want to check it out.
 
@@ -44,6 +43,13 @@ As a follow up, we now want to build yet another component that is widely used i
 
 Let's start right away and learn how easy it is to build a tabs component in Angular 2 without the confusing relationship between directive link functions and controllers. We'll skip the installation part, since that was explored in the other article.
 
+
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
 
 ## What it should look like
 

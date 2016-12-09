@@ -1,26 +1,45 @@
 ---
-layout:     post
-title:      "Component-Relative Paths in Angular 2"
-
-date: 2016-06-08
-imageUrl: '/images/banner/component-relative-paths-in-angular-2.jpg'
-
-summary: "Component-relative enable developers to more easily create maintainable, reusable, portable components in Angular 2. Here's how!"
-
+layout: post
+title: Component-Relative Paths in Angular 2
+date: 2016-06-08T00:00:00.000Z
+update_date: 2016-11-08T00:00:00.000Z
+imageUrl: /images/banner/component-relative-paths-in-angular-2.jpg
+summary: >-
+  Component-relative enable developers to more easily create maintainable,
+  reusable, portable components in Angular 2. Here's how!
 categories:
   - angular
-
 tags:
   - angular2
   - components
   - relative paths
-
 topic: components
-
 author: thomas_burleson
+related_posts:
+  - Angular 2 Animations - Foundation Concepts
+  - Testing Services with Http in Angular 2
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Angular 2 is out - Get started here
+  - Bypassing Providers in Angular 2
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+
 ---
 
-Component-based development is Angular 2's *most-loved* feature. By now you should be familiar with using the `@Component` decorators to create components. You should be familiar with the required metadata information such as `selector` and `template`. 
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
+
+Component-based development is Angular 2's *most-loved* feature. By now you should be familiar with using the `@Component` decorators to create components. You should be familiar with the required metadata information such as `selector` and `template`.
 
 {% highlight js %}
 {% raw %}
@@ -39,7 +58,7 @@ export class HeaderComponent implements OnInit {  }
 {% endraw %}
 {% endhighlight %}
 
-> If the above component syntax is new and strange, you should first review our article on [Building a Zipping Component in Angular 2](http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html). 
+> If the above component syntax is new and strange, you should first review our article on [Building a Zipping Component in Angular 2](http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html).
 
 If you are familiar with these concepts and you happen to be lucky, your components load without any problems.  Mostly likely, though, you have already encountered (or soon will) the dreaded, frustrating 404 component-loading errors:  
 
@@ -51,7 +70,7 @@ Let's talk about why that happens and see how we can solve such problems in a wa
 
 ## Components with Inline Metadata
 
-For every Angular 2 component that we implement, we define not only an HTML template, but may also define the CSS styles that go with that template, specifying any selectors, rules, and media queries that we need. 
+For every Angular 2 component that we implement, we define not only an HTML template, but may also define the CSS styles that go with that template, specifying any selectors, rules, and media queries that we need.
 
 One way to do this is to set the `styles` and `template` property in the component metadata. Consider a simple *Header* component:
 
@@ -124,11 +143,11 @@ export class HeaderComponent implements OnInit {
 {% endraw %}
 {% endhighlight %}
 
-Above we used URLs to specify external HTML and CSS resources. The important factor to note is that the URL required above [in `header.component.ts`] is not an absolute path. The path is actually relative to the **application root**: which is usually the location of the `index.html` web page that hosts the application. 
+Above we used URLs to specify external HTML and CSS resources. The important factor to note is that the URL required above [in `header.component.ts`] is not an absolute path. The path is actually relative to the **application root**: which is usually the location of the `index.html` web page that hosts the application.
 
 So the above component - without any url path information - must be stored in the application root in order to avoid 404 errors.  Wow, this does not scale well!
 
-*  What if we have many components all at the root level ? 
+*  What if we have many components all at the root level ?
 *  What if my components are organized in distinct packages ?
 *  What if we want to organize our components by feature or context ?
 
@@ -158,7 +177,7 @@ export class HeaderComponent implements OnInit {
 
 This approach immediately triggers important questions and concerns:
 
-* What if we move our components to other packages? 
+* What if we move our components to other packages?
 * What if we want to reuse our components in other applications?
 * Can we not use using relative-paths in our components ?
 
@@ -169,7 +188,7 @@ Using absolute paths in our URLs for component HTML or CSS is a horrible idea an
 
 ## Components with Relative-Path URLs
 
-In fact, we can use relative paths. But not the way you may first think... and not without understanding and accepting some constraints. 
+In fact, we can use relative paths. But not the way you may first think... and not without understanding and accepting some constraints.
 
 At first we might be tempted to try this:
 
@@ -191,7 +210,7 @@ We might expect that `./header.component.html` is a path relative to the `header
 
 Instead, we get another **404 - Not found - Exception**.
 
-Remember we noted that the paths are relative to the **Application Root** (at load time)? Since we are using the package `src/app/header/header.component.*`, then our files obviously are not at the app root. Even worse is a scenario where the deployed files have different structures than the originating source. 
+Remember we noted that the paths are relative to the **Application Root** (at load time)? Since we are using the package `src/app/header/header.component.*`, then our files obviously are not at the app root. Even worse is a scenario where the deployed files have different structures than the originating source.
 
 We could use a gulp or grunt task to deploy to a `dist` directory and have all our components in the dist root directory. Don't deploy all your component files to the app root... OMG, that is another horrible idea! Don't do it.
 
@@ -213,7 +232,7 @@ There are so many ways developers can deploy their apps: bundled or unbundled, d
 
 ## Agreeing on Constraints
 
-If we decide on **CommonJS** formats AND we use a standard module loader, then we can use the `module.id` variable which contains the absolute URL of the component class [when the module file is actually loaded]: the exact syntax is `moduleId : module.id`. 
+If we decide on **CommonJS** formats AND we use a standard module loader, then we can use the `module.id` variable which contains the absolute URL of the component class [when the module file is actually loaded]: the exact syntax is `moduleId : module.id`.
 
 > This **`moduleId`** value is used by the Angular 2 reflection processes and the `metadata_resolver` component to evaluate the fully-qualified component path before the component is constructed.
 
@@ -221,7 +240,7 @@ Let's see how this works with the component using **CommonJS**, **SystemJS**, **
 
 <br/>
 
----- 
+----
 
 *CommonJS*
 
@@ -258,7 +277,7 @@ export class HeaderComponent implements OnInit {
 
 <br/>
 
----- 
+----
 
 *SystemJS*
 
@@ -280,11 +299,11 @@ export class HeaderComponent implements OnInit {
 }
 {% endraw %}
 {% endhighlight %}
- 
- 
+
+
 <br/>
 
----- 
+----
 
 *JSPM*
 
@@ -327,15 +346,15 @@ SystemJS.config({
 
 <br/>
 
----- 
+----
 
 *WebPack*
 
-If we decide to use **WebPack** to bundle our files, we can use `require` or `import` to force Webpack to load the file contents and assign directly to the metadata property. This means that WebPack is loading the content **instead** of Angular 2's runtime loader. See [WebPack : An Introduction](https://angular.io/docs/ts/latest/guide/webpack.html) for more details. 
+If we decide to use **WebPack** to bundle our files, we can use `require` or `import` to force Webpack to load the file contents and assign directly to the metadata property. This means that WebPack is loading the content **instead** of Angular 2's runtime loader. See [WebPack : An Introduction](https://angular.io/docs/ts/latest/guide/webpack.html) for more details.
 
 With WebPack there are three (3) options available to load the component's external HTML and CSS.
 
-1) We can use `require( )` to reference component-relative paths. 
+1) We can use `require( )` to reference component-relative paths.
 
 {% highlight js %}
 {% raw %}
@@ -390,20 +409,19 @@ export class HeaderComponent implements OnInit { }
 {% endraw %}
 {% endhighlight %}
 
-> Behind the scenese, Webpack will actually still do a `require` to load the templates and styles. 
+> Behind the scenese, Webpack will actually still do a `require` to load the templates and styles.
 But our markup remains clean and uncluttered.
 
-Personally, I like (3) approach used with the `moduleId` property (as a backup). Thanks to Soós Gábor for his WebPack expertise and insight here. 
+Personally, I like (3) approach used with the `moduleId` property (as a backup). Thanks to Soós Gábor for his WebPack expertise and insight here.
 
 
 ## Conclusion
 
-The key lesson is to set the **`moduleId :  module.id`** in the `@Component` decorator! Without the **moduleId** setting, Angular 2 will look for our files in paths relative to the application root. 
+The key lesson is to set the **`moduleId :  module.id`** in the `@Component` decorator! Without the **moduleId** setting, Angular 2 will look for our files in paths relative to the application root.
 
-> And don't forget the `"module": "commonjs"` in your **tsconfig.json**. 
+> And don't forget the `"module": "commonjs"` in your **tsconfig.json**.
 
 The beauty of this component-relative-path solution is that we can (1) easily repackage our components and (2) easily reuse components... all without changing the `@Component` metadata.
 
-> The [Angular Cli WebPack preview](https://github.com/angular/angular-cli/blob/master/WEBPACK_UPDATE.md) now uses use webpack instead of Broccoli. 
-And with WebPack, the Angular Cli defaults to using the component-relative path approach described here. #ftw 
-
+> The [Angular Cli WebPack preview](https://github.com/angular/angular-cli/blob/master/WEBPACK_UPDATE.md) now uses use webpack instead of Broccoli.
+And with WebPack, the Angular Cli defaults to using the component-relative path approach described here. #ftw

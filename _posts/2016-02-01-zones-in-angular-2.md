@@ -1,42 +1,47 @@
 ---
-layout:     post
-title:      "Zones in Angular 2"
-
-relatedLinks:
-  -
-    title: "Exploring Angular 2 - Article Series"
-    url: "http://blog.thoughtram.io/exploring-angular-2"
-  -
-    title: "Understanding Zones"
-    url: "http://blog.thoughtram.io/angular/2016/01/22/understanding-zones.html"
-  -
-    title: "Taking advantage of Observables in Angular 2"
-    url: "http://blog.thoughtram.io/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html"
-
+layout: post
+title: Zones in Angular 2
 demos:
-  -
-    url: http://embed.plnkr.co/gC7GjU/
+  - url: 'http://embed.plnkr.co/gC7GjU/'
     title: Zones in Angular 2
-
-date: 2016-02-01
-update_date: 2016-08-23
-
-summary: "In this article we're going to discuss what role Zones play in the Angular 2 platform, with the Angular 2 specific NgZone."
-
+date: 2016-02-01T00:00:00.000Z
+update_date: 2016-08-23T00:00:00.000Z
+summary: >-
+  In this article we're going to discuss what role Zones play in the Angular 2
+  platform, with the Angular 2 specific NgZone.
 categories:
   - angular
-
 tags:
   - angular2
-
 topic: changedetection
-
 author: pascal_precht
+related_posts:
+  - Testing Services with Http in Angular 2
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Angular 2 Animations - Foundation Concepts
+  - Angular 2 is out - Get started here
+  - Bypassing Providers in Angular 2
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+
 ---
 
-In [Understanding Zones](http://blog.thoughtram.io/angular/2016/01/22/understanding-zones.html), we explored the power of Zones by building a profiling zone that profiles asynchronous operations in our code. We learned that Zones are a sort of execution context that allows us to hook into our asynchronous tasks. If you haven't read that article, we highly recommend checking it out as this one is based on it. In this article we're going to take a closer look at what role Zones play in Angular 2.
+In [Understanding Zones](/angular/2016/01/22/understanding-zones.html), we explored the power of Zones by building a profiling zone that profiles asynchronous operations in our code. We learned that Zones are a sort of execution context that allows us to hook into our asynchronous tasks. If you haven't read that article, we highly recommend checking it out as this one is based on it. In this article we're going to take a closer look at what role Zones play in Angular 2.
 
 {% include demos-and-videos-buttons.html post=page %}
+
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
 
 ## Zones are a perfect fit for Angular
 

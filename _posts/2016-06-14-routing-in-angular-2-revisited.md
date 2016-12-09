@@ -1,27 +1,41 @@
 ---
-layout:     post
-title:      "Routing in Angular 2 revisited"
-imageUrl:   "/images/banner/routing-in-angular-2-revisited.jpeg"
-
-date: 2016-06-14
-update_date: 2016-08-11
-
-summary: "Learn how to implement basic routing in your Angular 2 application using the latest and greatest APIs!"
-
+layout: post
+title: Routing in Angular 2 revisited
+imageUrl: /images/banner/routing-in-angular-2-revisited.jpeg
+date: 2016-06-14T00:00:00.000Z
+update_date: 2016-11-08T00:00:00.000Z
+summary: >-
+  Learn how to implement basic routing in your Angular 2 application using the
+  latest and greatest APIs!
 categories:
   - angular
-
 tags:
   - angular2
-
+  - routing
 topic: routing
-
 demos:
-  -
-    url: http://embed.plnkr.co/I9qFkO/
+  - url: 'http://embed.plnkr.co/I9qFkO/'
     title: Simple Contacts App
-
+videos:
+  - url: 'http://casts.thoughtram.io/embedded/189603515'
+  - url: 'http://casts.thoughtram.io/embedded/189613148'
+  - url: 'http://casts.thoughtram.io/embedded/189618526'
 author: pascal_precht
+related_posts:
+  - Futuristic Routing in Angular
+  - Resolving route data in Angular 2
+  - Protecting Routes using Guards in Angular 2
+  - Routing in Angular 2
+  - Testing Services with Http in Angular 2
+  - Two-way Data Binding in Angular 2
+related_videos:
+  - '175218351'
+  - '189618526'
+  - '189613148'
+  - '189603515'
+  - '175255006'
+  - '193524896'
+
 ---
 
 A long time ago we've written about [routing in Angular 2](/angular/2015/06/16/routing-in-angular-2.html) and you've probably noticed that this article is deprecated due to many changes and rewrites that happened in the router module of Angular 2. Just recently, the Angular team announced yet another version of the new router, in which they considered all the gathered feedback from the community to make it finally sophisticated enough, so it'll fulfill our needs when we build applications with Angular 2.
@@ -30,18 +44,12 @@ In this article we want to take a first look at the new and better APIs, touchin
 
 {% include demos-and-videos-buttons.html post=page %}
 
-## Before we start
-
-Just to make sure we don't run into weird errors and debug tons of hours just to realise we had the wrong version of the router installed: We need `@angular/router` version >= `3.0.0-rc.1`. In other words, if we play with the code on our local machine, the `package.json` dependency should look like this:
-
-{% highlight json %}
-{% raw %}
-"dependencies": {
-  ...
-  "@angular/router": "3.0.0-rc.1"
-}
-{% endraw %}
-{% endhighlight %}
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
 
 
 ## Defining Routes
@@ -339,7 +347,7 @@ Sometimes we're not interested in future changes of a route parameter. All we ne
   ngOnInit() {
 
     this.contactsService
-        .getContacts(this.route.snapshot.params.id)
+        .getContacts(this.route.snapshot.params['id'])
         .subscribe(contact => this.contact = contact);
   }
 ...

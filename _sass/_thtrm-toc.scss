@@ -2,25 +2,15 @@
   margin-top: 50px;
   transition: opacity ease 6000ms;
 
-  &--absolute {
+  &--sticky {
+    top: 50px;
     position: absolute;
     left: -18em;
-    width: 250px;
-    
-    &-bottom {
-      bottom: 14.5em;
-    }
-  }
-
-  &--fixed {
-    position: fixed;
-    left: 3.6em;
-    top: 2.5em;
     width: 250px;
   }
 
   &--faded {
-    opacity: 0.2;
+    opacity: 0.4;
 
     &:hover {
       opacity: 1;
@@ -38,16 +28,24 @@
   }
 
   li {
-    margin-top: 0.2em; 
-    font-size: 0.9em;
+    margin-top: 0.6em; 
+    margin-left: 1em;
     color: #ccc;
+    font-size: 16px;
+    line-height: 1.4;
 
-    &:hover { color: #444; }
+    &:hover { color: #384c54; }
+
+    ul, ol {
+      margin-top: 0;
+    }
   }
 
   a {
     display: block;
     border: none;
+
+    &:hover { color: #384c54; }
 
     span {
       border-bottom: 1px dotted #5C8491;

@@ -442,5 +442,34 @@
 
 }
 
+.thtrm-tldr {
+  padding: 1.5em;
+  background: #ceebf9;
+  margin-top: 40px;
 
+  h3 {
+    margin-top: 0;
+  }
+
+  h4 {
+    margin-top: 40px;
+  }
+
+  ul, ol, p {
+    font-size: 17px;
+    margin-bottom: 0;
+    line-height: 1.6;
+  }
+
+  ul, ol {
+    margin-top: 20px;
+    li {
+      line-height: 1.6;
+    }
+  }
+
+  ol {
+    padding-left: 0;
+  }
+}
 

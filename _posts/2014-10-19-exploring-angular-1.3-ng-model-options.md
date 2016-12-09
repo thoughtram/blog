@@ -1,49 +1,35 @@
 ---
-layout:     post
-title:      "ng-model-options in Angular 1.3"
+layout: post
+title: ng-model-options in Angular 1.3
 redirect_from:
   - /angularjs/2014/10/19/exploring-angular-1.3-ng-model-/
-relatedLinks:
-  -
-    title: "Exploring Angular 1.3: One-time bindings"
-    url: "http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html"
-  -
-    title: "Exploring Angular 1.3: Angular-hint"
-    url: "http://blog.thoughtram.io/angularjs/2014/11/06/exploring-angular-1.3-angular-hint.html"
-  -
-    title: "Exploring Angular 1.3: Stateful Filters"
-    url: "http://blog.thoughtram.io/angularjs/2014/11/19/exploring-angular-1.3-stateful-filters.html"
-  -
-    title: "Exploring Angular 1.3: ES6 Style Promises"
-    url: "http://blog.thoughtram.io/angularjs/2014/12/18/exploring-angular-1.3-es6-style-promises.html"
-  -
-    title: "Exploring Angular 1.3: Disabling Debug Info"
-    url: "http://blog.thoughtram.io/angularjs/2014/12/22/exploring-angular-1.3-disabling-debug-info.html"
-  -
-    title: "Exploring Angular 1.3: Binding to Directive Controllers"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html"
-  -
-    title: "Exploring Angular 1.3: Validators Pipeline"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/11/exploring-angular-1.3-validators-pipeline.html"
-  -
-    title: "Exploring Angular 1.3: Go fast with $applyAsync"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/14/exploring-angular-1.3-speed-up-with-applyAsync.html"
-  -
-    title: "Exploring Angular 1.3: ngMessages"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/23/exploring-angular-1.3-ngMessages.html"
-date:       2014-10-19
-update_date: 2015-08-13
-summary:    In this article we explore the brand new ngModelOptions directive that allows us to control how ngModel updates are done in our Angular applications.
-
+date: 2014-10-19T00:00:00.000Z
+update_date: 2016-11-08T00:00:00.000Z
+summary: >-
+  In this article we explore the brand new ngModelOptions directive that allows
+  us to control how ngModel updates are done in our Angular applications.
 isExploringAngular13Article: true
-
-categories: 
+categories:
   - angularjs
-
 tags:
   - angular
-
+  - angular1-3
 author: pascal_precht
+related_posts:
+  - Futuristic Routing in Angular
+  - ngMessages in Angular 1.3
+  - Go fast with $applyAsync in Angular 1.3
+  - Validators Pipeline in Angular 1.3
+  - Binding to Directive Controllers in Angular 1.3
+  - Disabling Debug Info in Angular 1.3
+related_videos:
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+  - '189613148'
+  - '189603515'
+
 ---
 
 Hi again. This is the second article of "Exploring Angular 1.3". If you haven't read the [first one](/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html) you might want to check out that too. In this article, we cover another feature that turns out to be very useful in our daily development of Angular applications. Introducing the `ngModelOptions` directive.
@@ -52,6 +38,13 @@ We've written a few other articles on 1.3 already. Here's a list:
 - [Exploring Angular 1.3 - One-time bindings](http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html)
 - [Exploring Angular 1.3 - Angular-hint](http://blog.thoughtram.io/angularjs/2014/11/06/exploring-angular-1.3-angular-hint.html)
 
+
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
 
 
 `ngModelOptions` allows us to control how `ngModel` updates are done. This includes things like updating the model only after certain events are triggered or a debouncing delay, so that the view value is reflected back to the model only after a timer expires. To get an idea of what that actually means, let's start with the probably simplest use case that sets up a two-way binding using an `input` element that has a `ngModel` directive applied:
@@ -65,7 +58,7 @@ We've written a few other articles on 1.3 already. Here's a list:
 
 Now, when typing something into the `input` element, the model gets updated accordingly and then reflected back to the view, which displays the value in our `p` element. Try it out yourself real quick.
 
-<iframe src="http://embed.plnkr.co/dB0p5wysKLvjK7oKAA3b/preview"></iframe>
+{% include plunk.html url="http://embed.plnkr.co/dB0p5wysKLvjK7oKAA3b/preview" %}
 
 [Magic](http://weknowgifs.com/wp-content/uploads/2013/03/its-magic-shia-labeouf-gif.gif). If you're not familiar with what's going on here, I recommend heading over to the official docs and reading the chapter about the [concepts of Angular](https://docs.angularjs.org/guide/concepts).
 
@@ -81,9 +74,9 @@ Yes, and we can do so thanks to Angular 1.3 and the `ngModelOptions` directive.
 
 {% highlight html %}
 {% raw %}
-<input 
-  type="text" 
-  ng-model="name" 
+<input
+  type="text"
+  ng-model="name"
   ng-model-options="{ updateOn: 'blur' }">
 <p>Hello {{name}}!</p>
 {% endraw %}
@@ -91,15 +84,15 @@ Yes, and we can do so thanks to Angular 1.3 and the `ngModelOptions` directive.
 
 This tells Angular that instead of updating the model immediately after each keystroke, it should only update when the `input` fires an `onBlur` event. Here's an example to show what it looks like in action.
 
-<iframe src="http://embed.plnkr.co/F5IGCe/preview"></iframe>
+{% include plunk.html url="http://embed.plnkr.co/F5IGCe/preview" %}
 
 If we do want to update the model with the default events that belong to that control and add other events on top of that, we can use a special event called `default`. Adding more then just one event can be done with a space delimited list. The following code updates the model whenever a user types into the input, or removes the focus of it.
 
 {% highlight html %}
 {% raw %}
-<input 
-  type="text" 
-  ng-model="name" 
+<input
+  type="text"
+  ng-model="name"
   ng-model-options="{ updateOn: 'default blur' }">
 <p>Hello {{name}}!</p>
 {% endraw %}
@@ -117,9 +110,9 @@ Just imagine an `input[type="search"]` element, where every time a user types in
 
 {% highlight html %}
 {% raw %}
-<input 
-  type="search" 
-  ng-model="searchQuery" 
+<input
+  type="search"
+  ng-model="searchQuery"
   ng-model-options="{ debounce: 300 }">
 <p>Search results for: {{searchQuery}}</p>
 {% endraw %}
@@ -127,7 +120,7 @@ Just imagine an `input[type="search"]` element, where every time a user types in
 
 Now, when typing into the `input` field, there's a slight delay until the model updates. You can try it out right here:
 
-<iframe src="http://embed.plnkr.co/PNxIXX/preview"></iframe>
+{% include plunk.html url="http://embed.plnkr.co/PNxIXX/preview" %}
 
 We can go even further and configure how the update delay should be done for certain events. Controlling the debounce delay for specific events can be done by defining an object literal instead of a primitive integer value, where keys represent the event name and values the debounce delay. A delay of `0` triggers an immediate model update.
 
@@ -135,9 +128,9 @@ The following code generates a model update delay of 300 milliseconds when the u
 
 {% highlight html %}
 {% raw %}
-<input 
-  type="search" 
-  ng-model="searchQuery" 
+<input
+  type="search"
+  ng-model="searchQuery"
   ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 300, 'blur': 0 } }">
 <p>Search results for: {{searchQuery}}</p>
 {% endraw %}
@@ -153,6 +146,6 @@ There might be situations, where you want to roll the view value back to what it
 
 To demonstrate this use case, we can setup a `form` that has an `input` element that updates the model when the user removes the focus. As long as the user didn't remove the focus of the `input` element, he can hit the `Esc` key to discard his changes and get the value of the model back. Try it out yourself:
 
-<iframe src="http://embed.plnkr.co/KQbeSE/preview"></iframe>
+{% include plunk.html url="http://embed.plnkr.co/KQbeSE/preview" %}
 
 So it turns out that `ngModelOptions` is a super powerful directive that helps us making our apps more intuitive. Go and check out the [docs](https://code.angularjs.org/1.3.0/docs/api/ng/directive/ngModelOptions) about the `allowInvalid` and `getterSetter` options, to see what else is possible!

@@ -1,53 +1,75 @@
 ---
-layout:     post
-title:      "Angular-hint in Angular 1.3"
+layout: post
+title: Angular-hint in Angular 1.3
 relatedLinks:
-  -
-    title: "Exploring Angular 1.3: One-time bindings"
-    url: "http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html"
-  -
-    title: "Exploring Angular 1.3: ng-model-options"
-    url: "http://blog.thoughtram.io/angularjs/2014/10/19/exploring-angular-1.3-ng-model-options.html"
-  -
-    title: "Exploring Angular 1.3: Stateful Filters"
-    url: "http://blog.thoughtram.io/angularjs/2014/11/19/exploring-angular-1.3-stateful-filters.html"
-  -
-    title: "Exploring Angular 1.3: ES6 Style Promises"
-    url: "http://blog.thoughtram.io/angularjs/2014/12/18/exploring-angular-1.3-es6-style-promises.html"
-  -
-    title: "Exploring Angular 1.3: Disabling Debug Info"
-    url: "http://blog.thoughtram.io/angularjs/2014/12/22/exploring-angular-1.3-disabling-debug-info.html"
-  -
-    title: "Exploring Angular 1.3: Binding to Directive Controllers"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html"
-  -
-    title: "Exploring Angular 1.3: Validators Pipeline"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/11/exploring-angular-1.3-validators-pipeline.html"
-  -
-    title: "Exploring Angular 1.3: Go fast with $applyAsync"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/14/exploring-angular-1.3-speed-up-with-applyAsync.html"
-  -
-    title: "Exploring Angular 1.3: ngMessages"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/23/exploring-angular-1.3-ngMessages.html"
-date:       2014-11-06
-updatedate: 2015-08-13
-summary:    In this article we are talking about the angular-hint module which makes our lifes easier when developing angular apps.
+  - title: 'Exploring Angular 1.3: One-time bindings'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html
+  - title: 'Exploring Angular 1.3: ng-model-options'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/10/19/exploring-angular-1.3-ng-model-options.html
+  - title: 'Exploring Angular 1.3: Stateful Filters'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/11/19/exploring-angular-1.3-stateful-filters.html
+  - title: 'Exploring Angular 1.3: ES6 Style Promises'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/12/18/exploring-angular-1.3-es6-style-promises.html
+  - title: 'Exploring Angular 1.3: Disabling Debug Info'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2014/12/22/exploring-angular-1.3-disabling-debug-info.html
+  - title: 'Exploring Angular 1.3: Binding to Directive Controllers'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html
+  - title: 'Exploring Angular 1.3: Validators Pipeline'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2015/01/11/exploring-angular-1.3-validators-pipeline.html
+  - title: 'Exploring Angular 1.3: Go fast with $applyAsync'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2015/01/14/exploring-angular-1.3-speed-up-with-applyAsync.html
+  - title: 'Exploring Angular 1.3: ngMessages'
+    url: >-
+      http://blog.thoughtram.io/angularjs/2015/01/23/exploring-angular-1.3-ngMessages.html
+date: 2014-11-06T00:00:00.000Z
+updatedate: 2015-08-13T00:00:00.000Z
+summary: >-
+  In this article we are talking about the angular-hint module which makes our
+  lifes easier when developing angular apps.
 isExploringAngular13Article: true
-
-categories: 
+categories:
   - angularjs
-
 tags:
   - angular
-
+  - angular1-3
 author: pascal_precht
+related_posts:
+  - Futuristic Routing in Angular
+  - ngMessages in Angular 1.3
+  - Go fast with $applyAsync in Angular 1.3
+  - Validators Pipeline in Angular 1.3
+  - Binding to Directive Controllers in Angular 1.3
+  - Disabling Debug Info in Angular 1.3
+related_videos:
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+  - '189613148'
+  - '189603515'
+
 ---
 
 With the release of version 1.3, the Angular project comes with a new module called [angular-hint](http://github.com/angular/angular-hint), that makes debugging and finding mistakes in the code base easier. It also gives us hints about best practices, so that our code is more maintainable and easier to read. In this article we'll take a brief look at this module and explore how we can actually use it and what great features it provides. As a side note, this is the third article of our "*Exploring Angular 1.3*" series, so you might want to check out our articles about [ngModelOptions](http://blog.thoughtram.io/angularjs/2014/10/19/exploring-angular-1.3-ng-model-options.html) and [one-time bindings](http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html) too. Okay, let's dive into the actual topic.
 
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
+
 As already mentioned, `angular-hint` helps us writing better Angular code and makes finding very common mistakes in our code base easier. For example, did it ever happen to you, that you developed your Angular app, you grabbed a module from somewhere, then you started using the directives that the module comes with, and no matter how much you followed the usage instructions, it simply didn't work. And after one hour of debugging you found out that you forgot to add the module dependency to your application. Yikes!
 
-But let me tell you something. With `angular-hint`, these times are over. And that's just one use case where `angular-hint` helps out. In fact, `angular-hint` comes with a couple of other sub modules for particular use cases. 
+But let me tell you something. With `angular-hint`, these times are over. And that's just one use case where `angular-hint` helps out. In fact, `angular-hint` comes with a couple of other sub modules for particular use cases.
 
 These modules are:
 
@@ -169,7 +191,7 @@ However, when `angular-hint` is activated, we get the following very useful warn
 
 {% highlight sh %}
 Angular Hint: Directives
-  There was an AngularJS error in LI element. 
+  There was an AngularJS error in LI element.
   Found incorrect attribute "ng-repaet" try "ng-repeat"
 {% endhighlight %}
 

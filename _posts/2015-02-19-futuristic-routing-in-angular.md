@@ -1,26 +1,36 @@
 ---
-layout:     post
-title:      "Futuristic Routing in Angular"
-relatedLinks:
-  -
-    title: "Routing in Angular 2"
-    url: "http://blog.thoughtram.io/angular/2015/06/16/routing-in-angular-2.html"
-date:       2015-02-19
-summary:    "An this article we discuss the new router APIs and how it's going to change the way we implement component based routing in our Angular applications."
-
+layout: post
+title: Futuristic Routing in Angular
+date: 2015-02-19T00:00:00.000Z
+update_date: 2016-11-08T00:00:00.000Z
+summary: >-
+  An this article we discuss the new router APIs and how it's going to change
+  the way we implement component based routing in our Angular applications.
 redirect_from:
   - /angularjs/2015/02/19/futuristic%20-routing-en-angular.html
-
 isExploringAngular13Article: false
-
-categories: 
-- angularjs
-
+categories:
+  - angularjs
 tags:
   - angular
+  - angular1-3
   - routing
-
 author: pascal_precht
+related_posts:
+  - Resolving route data in Angular 2
+  - Protecting Routes using Guards in Angular 2
+  - Routing in Angular 2 revisited
+  - Routing in Angular 2
+  - ngMessages in Angular 1.3
+  - Go fast with $applyAsync in Angular 1.3
+related_videos:
+  - '175218351'
+  - '189618526'
+  - '189613148'
+  - '189603515'
+  - '189792758'
+  - '189785428'
+
 ---
 
 One of the latest announcements that counts as the most exciting ones, is that the Angular team implements a completely new router for the 2.0 release that is much more flexible and powerful than the original one. Especially, when it comes to more complex application structures. [Rob Eisenberg](http://twitter.com/EisenbergEffect), creator of the recently announced [aurelia](http://aurelia.io) framework, gave an introduction talk on the new router at last years [ngEurope](http://ng-europe.org) conference and showed us the main concepts that make this router so much better.
@@ -28,6 +38,13 @@ One of the latest announcements that counts as the most exciting ones, is that t
 It got even better, when the team announced that they plan to back port the new router to the 1.x branch of the Angular framework and having it ready in time for the 1.3 release. Unfortunately it turned out, that it took a bit more effort to make the new router available for both projects, especially considering that both should share as much code as possible. <s>That's why the back port has been postponed to the next bigger 1.4 release, which is targeted to be ready in March, this year (yay!)</s> The router also didn't make it into the 1.4 release.
 
 That's right, at the time of writing this article, the new router hasn't been released yet. However, since we're following the latest developments of all Angular 2.0 related projects actively on GitHub, we can't wait to share our thoughts on the new router with you. In this article we explore the new router and discuss it's concepts and features that we've all been waiting for!
+
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
 
 ## The Routing we know
 
@@ -180,7 +197,7 @@ And here the corresponding template `welcome.html`:
 
 The component is now ready to be loaded and instantiated. Let's see the code in action:
 
-<iframe src="http://embed.plnkr.co/uc2RuLRa1aYmRI2THRcO/preview"></iframe>
+{% include plunk.html url="http://embed.plnkr.co/uc2RuLRa1aYmRI2THRcO/preview" %}
 
 ## Adding behaviour to components
 
@@ -212,7 +229,7 @@ In our component template, we can access the controller properties via the `welc
 
 If you're not familiar with the `controller as` syntax. you might want to check out our article on [Binding to Directive Controllers](http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html). Here's our updated example as runnable app:
 
-<iframe src="http://embed.plnkr.co/ie9d2F/preview"></iframe>
+{% include plunk.html url="http://embed.plnkr.co/ie9d2F/preview" %}
 
 ## Linking to other components
 
@@ -262,7 +279,7 @@ Now, in order to get there from our `welcome` component, all we have to do is to
 
 As you can see, we don't have to set an `href` attribute, since `routerLink` takes care of that. The directive itself takes a component name to navigate to once the link is clicked, which in our case is `user`. Again, here the running code:
 
-<iframe src="http://embed.plnkr.co/dds8KE/preview"></iframe>
+{% include plunk.html url="http://embed.plnkr.co/dds8KE/preview" %}
 
 ## Linking with dynamic parameters
 
@@ -308,7 +325,7 @@ Okay cool. But how do we **link** to a component that takes parameters? We've le
 
 You can see it in action right here:
 
-<iframe src="http://embed.plnkr.co/2C40t4/preview"></iframe>
+{% include plunk.html url="http://embed.plnkr.co/2C40t4/preview" %}
 
 ## Sibling Components
 

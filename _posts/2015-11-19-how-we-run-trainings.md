@@ -1,15 +1,29 @@
 ---
-layout:     post
-title:      "How we run trainings"
-
-date:       2015-11-19
-update_date: 2015-11-19
-summary:    "People love the way we teach technology to them. In this post we like to shed some light on how we actually run our trainings."
-
+layout: post
+title: How we run trainings
+date: 2015-11-19T00:00:00.000Z
+update_date: 2015-11-19T00:00:00.000Z
+summary: >-
+  People love the way we teach technology to them. In this post we like to shed
+  some light on how we actually run our trainings.
 categories:
   - announcements
-
 author: christoph_burgdorf
+related_posts:
+  - Testing Services with Http in Angular 2
+  - Understanding XOR with Keras and TensorFlow
+  - Announcing Angular 2 Master Class in Sydney
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Beginning Machine Learning with Keras and TensorFlow
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+
 ---
 
 Since we started with thoughtram we have ran plenty of trainings in many different cities and countries. After each workshop we sat down to reflect and discuss the feedback we got. We fine tuned our setup and material again and again over the last couple of months.

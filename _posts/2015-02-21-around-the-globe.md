@@ -1,17 +1,32 @@
 ---
-layout:     post
-title:      "Around the globe"
-date:       2015-02-21
-summary:    "We love to travel, run workshops and speak at tech events around the globe. We are excited to share two exciting events that we will speak at."
-
+layout: post
+title: Around the globe
+date: 2015-02-21T00:00:00.000Z
+summary: >-
+  We love to travel, run workshops and speak at tech events around the globe. We
+  are excited to share two exciting events that we will speak at.
 isExploringAngular13Article: false
-
-categories: 
-- angularjs
+categories:
+  - angularjs
 tags:
   - announcements
   - company
 author: christoph_burgdorf
+related_posts:
+  - Thomas joins thoughtram
+  - Upcoming events in 2015
+  - We are thoughtram
+  - Announcing Angular 2 Master Class in Sydney
+  - Announcing Angular 2 Master Class in NYC
+  - Updates and announcements
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+
 ---
 
 If you've been following us for a while, you've probably noticed by now that we <3 to travel. Especially to run workshops and speak at tech events around the globe.

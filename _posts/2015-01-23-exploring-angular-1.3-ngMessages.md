@@ -1,50 +1,33 @@
 ---
-layout:     post
-title:      "ngMessages in Angular 1.3"
-relatedLinks:
-  -
-    title: "ngMessages revisited"
-    url: "http://blog.thoughtram.io/2015/06/06/ng-messages-revisited.html"
-  -
-    title: "Exploring Angular 1.3: One-time bindings"
-    url: "http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html"
-  -
-    title: "Exploring Angular 1.3: ng-model-options"
-    url: "http://blog.thoughtram.io/angularjs/2014/10/19/exploring-angular-1.3-ng-model-options.html"
-  -
-    title: "Exploring Angular 1.3: Angular-hint"
-    url: "http://blog.thoughtram.io/angularjs/2014/11/06/exploring-angular-1.3-angular-hint.html"
-  -
-    title: "Exploring Angular 1.3: Stateful Filters"
-    url: "http://blog.thoughtram.io/angularjs/2014/11/19/exploring-angular-1.3-stateful-filters.html"
-  -
-    title: "Exploring Angular 1.3: ES6 Style Promises"
-    url: "http://blog.thoughtram.io/angularjs/2014/12/18/exploring-angular-1.3-es6-style-promises.html"
-  -
-    title: "Exploring Angular 1.3: Disabling Debug Info"
-    url: "http://blog.thoughtram.io/angularjs/2014/12/22/exploring-angular-1.3-disabling-debug-info.html"
-  -
-    title: "Exploring Angular 1.3: Binding to Directive Controllers"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html"
-  -
-    title: "Exploring Angular 1.3: Validators Pipeline"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/11/exploring-angular-1.3-validators-pipeline.html"
-  -
-    title: "Exploring Angular 1.3: Go fast with $applyAsync"
-    url: "http://blog.thoughtram.io/angularjs/2015/01/14/exploring-angular-1.3-speed-up-with-applyAsync.html"
-date:       2015-01-23
-update_date: 2015-08-13
-summary:    "In this article we're going to how the ngMessages module  improves the way we handle validation messages when dealing with forms in Angular apps."
-
+layout: post
+title: ngMessages in Angular 1.3
+date: 2015-01-23T00:00:00.000Z
+update_date: 2016-11-08T00:00:00.000Z
+summary: >-
+  In this article we're going to how the ngMessages module  improves the way we
+  handle validation messages when dealing with forms in Angular apps.
 isExploringAngular13Article: true
-
-categories: 
-- angularjs
-
+categories:
+  - angularjs
 tags:
   - angular
-
+  - angular1-3
 author: pascal_precht
+related_posts:
+  - Futuristic Routing in Angular
+  - Go fast with $applyAsync in Angular 1.3
+  - Validators Pipeline in Angular 1.3
+  - Binding to Directive Controllers in Angular 1.3
+  - Disabling Debug Info in Angular 1.3
+  - ES6 Style Promises in Angular 1.3
+related_videos:
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+  - '189613148'
+  - '189603515'
+
 ---
 
 In one of our articles of our blog series on exploring Angular 1.3, we've covered a very nice feature that makes validating forms in Angular a breeze. Right, I'm talking about the [validators pipeline](http://blog.thoughtram.io/angularjs/2015/01/11/exploring-angular-1.3-validators-pipeline.html).
@@ -52,6 +35,13 @@ In one of our articles of our blog series on exploring Angular 1.3, we've covere
 While the validators pipeline seems to make our life a lot easier and we as developers think it can't get any better, it turns out there's another bigger feature that adds even more awesomeness to the world of forms when building Angular applications: **ngMessages**.
 
 [ngMessages](https://docs.angularjs.org/api/ngMessages) is an entire new module that comes with a couple of directives to enhance the support for displaying messages within templates. Which means, even if in this article we're using it just for forms, we're not restricted to do so. But let's start right away and take a look at a scenario that `ngMessages` tries to solve.
+
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
 
 ## Displaying messages in forms - The old way
 
@@ -168,7 +158,7 @@ I think we get the idea. Now imagine instead of just two different validations, 
 {% highlight html %}
 {% raw %}
 <label>Password:</label>
-<input 
+<input
   name="password"
   ng-model="password"
   type="password"
@@ -307,4 +297,3 @@ If the template is *not* present in the document, Angular performs a `$templateR
 Now we've learned that how we can define templates in order to reuse messages at different places in our application. You might think that this is a scenario where [HTML Templates](http://webcomponents.org/articles/introduction-to-template-element/) would be a better fit, instead of doing script overloading. I agree on that, since this is what the `<template>` element has been designed for. Unfortunately, at the time of writing this article, this was not supported, which is why I've created a corresponding issue [here](https://github.com/angular/angular.js/issues/10846).
 
 There's a lot more to cover and I recommend heading over to the official [docs](https://docs.angularjs.org/api/ngMessages) to learn everything you need to know. This module is not only a time-saver but also adds some very powerful features to our declarative world.
-

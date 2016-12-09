@@ -1,18 +1,33 @@
 ---
 layout: post
-title: "clog - A conventional changelog generator for the rest of us"
-date: "2014-09-18"
-summary: At thoughtram we teach people how to master Git. We also teach them how to maintain a semantic history. Introducing clog.
-
+title: clog - A conventional changelog generator for the rest of us
+date: '2014-09-18'
+summary: >-
+  At thoughtram we teach people how to master Git. We also teach them how to
+  maintain a semantic history. Introducing clog.
 redirect_from:
   - /posts/anouncing-clog-a-conventional-changelog-generator-for-the-rest-of-us/
-
 categories: announcements tools
 tags:
   - rust
   - tools
   - announcements
 author: christoph_burgdorf
+related_posts:
+  - 'A web app with Nickel: From first line to Heroku deployment'
+  - Anouncing Hanover's second Rust meetup
+  - Rust's Ownership model for JavaScript developers
+  - Organizing Hanovers first Rust meetup
+  - Announcing Angular 2 Master Class in Sydney
+  - Announcing Angular 2 Master Class in NYC
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+
 ---
 
 At thoughtram we teach people how to master Git. We also teach them how to maintain a semantic history. That's a history where each commit groups a logical code change. Like a feature or a bugfix. You can go even further and follow a commit message convention to wrap up valuable meta data in the commit message. Once you follow a commit message convention, you can easily generate a nice changelog without any manual work.

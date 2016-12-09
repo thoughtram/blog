@@ -1,27 +1,37 @@
 ---
-layout:     post
-title:      "Protecting Routes using Guards in Angular 2"
-imageUrl:   "/images/banner/protecting-routes-using-guards-in-angular-2.jpg"
-
-date: 2016-07-18
-update_date: 2016-08-11
-
-summary: "Angular's router enables protecting routes using guards and in this article we're going to discuss how to implement them."
-
+layout: post
+title: Protecting Routes using Guards in Angular 2
+imageUrl: /images/banner/protecting-routes-using-guards-in-angular-2.jpg
+date: 2016-07-18T00:00:00.000Z
+update_date: 2016-08-11T00:00:00.000Z
+summary: >-
+  Angular's router enables protecting routes using guards and in this article
+  we're going to discuss how to implement them.
 categories:
   - angular
-
 tags:
   - angular2
-
+  - routing
 videos:
-  -
-    url: "https://player.vimeo.com/video/175218351"
-    title: "Guards in Angular 2"
-
+  - url: 'http://casts.thoughtram.io/embedded/175218351'
+    title: Guards in Angular 2
 topic: routing
-
 author: pascal_precht
+related_posts:
+  - Futuristic Routing in Angular
+  - Resolving route data in Angular 2
+  - Routing in Angular 2 revisited
+  - Routing in Angular 2
+  - Testing Services with Http in Angular 2
+  - Two-way Data Binding in Angular 2
+related_videos:
+  - '175218351'
+  - '189618526'
+  - '189613148'
+  - '189603515'
+  - '175255006'
+  - '193524896'
+
 ---
 
 In our last article, [Routing in Angular 2 revisited](/angular/2016/06/14/routing-in-angular-2-revisited.html), we talked about the latest changes in the router APIs. While we covered how to set up basic routes, access parameters and link to other components, we haven't really talked about more sophisticated use cases like protecting routes.
@@ -143,7 +153,7 @@ And can then be used on a route:
 
 We've now seen how `CanActivate` can work in different scenarios, but as mentioned earlier, we have a few more guard interfaces we can take advantage of. `CanDeactivate` gives us a chance to decide if we really want to navigate **away** from a route. This can be very useful, if for example we want to prevent our users from losing unsaved changes when filling out a form and accidently clicking on a button to cancel the process.
 
-The `CanDeactive` guard also has access to the instance of the active component. With this we can take the user experience even to a higher level. Instead of asking an (unwanted) user confirmation every time, we can do this conditionally by checking if change were made. In the sample below the `CanDeactivateComponent` implements a methods `hasChanges()`. This returns a boolean value indicating if the components has detected any changes. This can be done by checking the dirty state of the form, keeping track of the previous model and compare it with the current one, ... What every fits your needs. 
+The `CanDeactivate` guard also has access to the instance of the active component. With this we can take the user experience even to a higher level. Instead of asking an (unwanted) user confirmation every time, we can do this conditionally by checking if change were made. In the sample below the `CanDeactivateComponent` implements a methods `hasChanges()`. This returns a boolean value indicating if the components has detected any changes. This can be done by checking the dirty state of the form, keeping track of the previous model and compare it with the current one, ... What ever fits your needs. 
 
 Implementing a `CanDeactivate` guard is very similar to implementing a `CanActivate` guard. All we have to do is to create again, either a function, or a class that implements the `CanDeactivate` interface.  We can implement a super simple safety net for our users like this:
 

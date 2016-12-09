@@ -1,15 +1,29 @@
 ---
-layout:     post
-title:      "Pascal becomes a GDE"
-
-date:       2015-10-08
-update_date: 2016-08-23
-summary:    "All the effort of Pascal to push things further in the field of web technologies got acknowledged by Google. Read on to learn what happened!"
-
+layout: post
+title: Pascal becomes a GDE
+date: 2015-10-08T00:00:00.000Z
+update_date: 2016-08-23T00:00:00.000Z
+summary: >-
+  All the effort of Pascal to push things further in the field of web
+  technologies got acknowledged by Google. Read on to learn what happened!
 categories:
   - announcements
-
 author: christoph_burgdorf
+related_posts:
+  - Testing Services with Http in Angular 2
+  - Understanding XOR with Keras and TensorFlow
+  - Announcing Angular 2 Master Class in Sydney
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Beginning Machine Learning with Keras and TensorFlow
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+
 ---
 
 As I'm writing this I'm sitting in the train from Berlin to Hanover after returning from the [AngularJS Days](http://angularjs-days.de/2015fall/). We've been at the event to run a workshop about Angular 2. The workshop had about roughly 80 attendees and we've been overwhelmed by all the positive feedback afterwards.

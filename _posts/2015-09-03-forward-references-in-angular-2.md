@@ -1,35 +1,52 @@
 ---
-layout:     post
-title:      "Forward references in Angular 2"
+layout: post
+title: Forward references in Angular 2
 relatedLinks:
-  -
-    title: "Exploring Angular 2 - Article Series"
-    url: "/exploring-angular-2"
-  -
-    title: "Dependency Injection in Angular 2"
-    url: "/angular/2015/05/18/dependency-injection-in-angular-2.html"
-  -
-    title: "Host and Visibility in Angular 2's Dependency Injection"
-    url: "/angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html"
-
-date:       2015-09-03
-update_date: 2016-08-11
-summary:    "In this article we like to explore forward references. Why they exist and how we can use them."
-
+  - title: Exploring Angular 2 - Article Series
+    url: /exploring-angular-2
+  - title: Dependency Injection in Angular 2
+    url: /angular/2015/05/18/dependency-injection-in-angular-2.html
+  - title: Host and Visibility in Angular 2's Dependency Injection
+    url: >-
+      /angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html
+date: 2015-09-03T00:00:00.000Z
+update_date: 2016-08-11T00:00:00.000Z
+summary: >-
+  In this article we like to explore forward references. Why they exist and how
+  we can use them.
 categories:
   - angular
-
 tags:
   - angular2
-
 topic: di
-
 author: christoph_burgdorf
+related_posts:
+  - Testing Services with Http in Angular 2
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Angular 2 Animations - Foundation Concepts
+  - Angular 2 is out - Get started here
+  - Bypassing Providers in Angular 2
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+
 ---
 
 In our article on [Dependency Injection in Angular 2](/angular/2015/05/18/dependency-injection-in-angular-2.html) we explored what dependency injection actually is, and how it is implemented in the Angular 2 framework. If you haven't read that article yet, I highly recommend you doing so, since this article is based on it.
 
 In a [another article](/angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html) we even learned about **host** and **visibility of dependencies** as another aspect of Angular 2's DI system. But that doesn't mean that we've already discovered all features of the machinery yet. In this article we'll take a look at **forward references**. Another tiny, yet useful feature of the DI system in Angular 2.
+
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
 
 ## Understanding the problem
 

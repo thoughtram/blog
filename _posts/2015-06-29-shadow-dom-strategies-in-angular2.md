@@ -1,32 +1,42 @@
 ---
-layout:     post
-title:      "View Encapsulation in Angular 2"
-relatedLinks:
-  -
-    title: "Exploring Angular 2 - Article Series"
-    url: "/exploring-angular-2"
-  -
-    title: "Styling Angular 2 components"
-    url: "/angular/2015/06/25/styling-angular-2-components.html"
-  -
-    title: "Dependency Injection in Angular 2"
-    url: "/angular/2015/05/18/dependency-injection-in-angular-2.html"
-date:       2015-06-29
-update_date: 2016-08-11
-summary:    "Angular Shadow DOM for styles and DOM encapsulation. This article explores Angular 2's view encapsulation and how we can use it."
-
-categories: 
+layout: post
+title: View Encapsulation in Angular 2
+date: 2015-06-29T00:00:00.000Z
+update_date: 2016-11-08T00:00:00.000Z
+summary: >-
+  Angular Shadow DOM for styles and DOM encapsulation. This article explores
+  Angular 2's view encapsulation and how we can use it.
+categories:
   - angular
-
 tags:
   - angular2
-
 topic: views
-
 author: pascal_precht
+related_posts:
+  - Testing Services with Http in Angular 2
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Angular 2 Animations - Foundation Concepts
+  - Angular 2 is out - Get started here
+  - Bypassing Providers in Angular 2
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+
 ---
 
 In our article on [styling Angular 2 components](/angular/2015/06/25/styling-angular-2-components.html) we learned how styles are applied to our component when defining them in different ways. We mentioned that all our component styles are appended to the document head, but usually would end up in the component's template, in case we use native Shadow DOM. This article explains not only how we can tell Angular to use native Shadow DOM, but also what the other view encapsulation solutions are, that the framework comes with and why they exist.
+
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
 
 ## Understanding Shadow DOM
 

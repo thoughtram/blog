@@ -1,23 +1,46 @@
 ---
-layout:     post
-title:      "Exploring Rx Operators: flatMap"
-imageUrl:  "/images/banner/rx-flatmap.jpeg"
-
-date: 2016-08-01
-
-summary: "Another post in a series of articles to discover the magic of different Rx operators. In this article we like to learn about the very powerful flatMap operator."
-
+layout: post
+title: 'Exploring Rx Operators: flatMap'
+imageUrl: /images/banner/rx-flatmap.jpeg
+date: 2016-08-01T00:00:00.000Z
+summary: >-
+  Another post in a series of articles to discover the magic of different Rx
+  operators. In this article we like to learn about the very powerful flatMap
+  operator.
 categories:
   - rx
 tags:
-  - Rx
-
+  - rx
 author: christoph_burgdorf
+related_posts:
+  - Cold vs Hot Observables
+  - 'Exploring Rx Operators: map'
+  - Taking advantage of Observables in Angular 2 - Part 2
+  - Taking advantage of Observables in Angular 2
+  - Testing Services with Http in Angular 2
+  - Understanding XOR with Keras and TensorFlow
+related_videos:
+  - '181311615'
+  - '181311609'
+  - '181311613'
+  - '181311611'
+  - '181311614'
+  - '181311616'
+
 ---
+
 
 This is another post in a series of articles to discover the magic of different Rx operators. In our last article, [Exploring Rx Operators: map](/angular/2016/05/16/exploring-rx-operators-map.html) we learned how we can map the notifications of Observables to create other more meaningful Observables.
 
 Today we like to move our attention to another very important and also related operator, namely `flatMap`. In the same way that the `map` operator is closely related to the `map` function that we know from Arrays, `flatMap` should sound familiar to many people who worked with collections in a functional programming kind of way. In fact, the similarity is so strong that it makes sense to first move our attention to a collection based example.
+
+<div id="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
+
 
 
 ## Understanding `flatMap` for collections

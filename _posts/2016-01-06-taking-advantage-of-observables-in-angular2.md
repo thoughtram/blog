@@ -1,51 +1,47 @@
 ---
-layout:     post
-title:      "Taking advantage of Observables in Angular 2"
-imageUrl: "/images/banner/taking-advantage-of-observables.png"
-
-relatedLinks:
-  -
-    title: "Taking advantage of Observables in Angular 2 - Part 2"
-    url: "/angular/2016/01/07/taking-advantage-of-observables-in-angular2-pt2.html"
-  -
-    title: "Exploring Angular 2 - Article Series"
-    url: "/exploring-angular-2"
-
-date:       2016-01-06
-updatedate: 2016-08-11
-summary:    "Angular 2 favors Observables over Promises when it comes to async.  In this article we explore some practical advantages for server communication."
-
+layout: post
+title: Taking advantage of Observables in Angular 2
+imageUrl: /images/banner/taking-advantage-of-observables.png
+date: 2016-01-06T00:00:00.000Z
+update_date: 2016-11-08T00:00:00.000Z
+summary: >-
+  Angular 2 favors Observables over Promises when it comes to async.  In this
+  article we explore some practical advantages for server communication.
 categories:
   - angular
-
 tags:
   - angular2
-
+  - rx
+  - observables
 topic: http
-
 videos:
-  -
-    url: "https://player.vimeo.com/video/181311616"
-  -
-    url: "https://player.vimeo.com/video/181311614"
-  -
-    url: "https://player.vimeo.com/video/181311611"
-  -
-    url: "https://player.vimeo.com/video/181311613"
-  -
-    url: "https://player.vimeo.com/video/181311609"
-  -
-    url: "https://player.vimeo.com/video/181311615"
-
+  - url: 'http://casts.thoughtram.io/embedded/181311616'
+  - url: 'http://casts.thoughtram.io/embedded/181311614'
+  - url: 'http://casts.thoughtram.io/embedded/181311611'
+  - url: 'http://casts.thoughtram.io/embedded/181311613'
+  - url: 'http://casts.thoughtram.io/embedded/181311609'
+  - url: 'http://casts.thoughtram.io/embedded/181311615'
 demos:
-  -
-    url: http://plnkr.co/edit/8ap1Lm?p=preview
+  - url: 'http://plnkr.co/edit/8ap1Lm?p=preview'
     title: Basic Wikipedia search using Angular 2
-  -
-    url: http://embed.plnkr.co/SIltBL/
+  - url: 'http://embed.plnkr.co/SIltBL/'
     title: Smart Wikipedia search using Angular 2
-
 author: christoph_burgdorf
+related_posts:
+  - 'Exploring Rx Operators: flatMap'
+  - Taking advantage of Observables in Angular 2 - Part 2
+  - Cold vs Hot Observables
+  - 'Exploring Rx Operators: map'
+  - Testing Services with Http in Angular 2
+  - Two-way Data Binding in Angular 2
+related_videos:
+  - '181311615'
+  - '181311609'
+  - '181311613'
+  - '181311611'
+  - '181311614'
+  - '181311616'
+
 ---
 
 Some people seem to be confused why Angular 2 seems to favor the Observable abstraction over the Promise abstraction when it comes to dealing with async behavior.
@@ -54,7 +50,14 @@ There are pretty good resources about the difference between Observables and Pro
 
 {% include demos-and-videos-buttons.html post=page %}
 
-<h2 id="the-scenario">The scenario</h2>
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
+
+## The scenario
 
 Consider you are building a search input mask that should instantly show you results as you type.
 
@@ -75,7 +78,7 @@ When we have multiple requests in-flight at the same time we must account for ca
 *computer*, stop, a request goes out, we type *car*, stop, a request goes out. Now we have two requests in-flight. Unfortunately the request that carries the results for *computer* comes back
 after the request that carries the results for *car*. This may happen because they are served by different servers. If we don't deal with such cases properly we may end up showing results for *computer* whereas the search box reads *car*.
 
-<h2 id="challenge-accepted">Challenge accepted</h2>
+## Challenge accepted
 
 We will use the free and open wikipedia API to write a little demo.
 
@@ -148,7 +151,7 @@ We unwrap the result of the `Promise` that the `search` method of the `Wikipedia
 
 You can play with the demo and fiddle with the code through this plnkr.
 
-<iframe src="http://embed.plnkr.co/Vp5ZmAAT68FqeKlBCp0Y/"></iframe>
+{% include plunk.html url="http://embed.plnkr.co/Vp5ZmAAT68FqeKlBCp0Y/" %}
 
 Unfortunately this implementation doesn't address any of the described edge cases that we would like to deal with. Let's refactor our code to make it match the expected behavior.
 
@@ -260,7 +263,7 @@ So does this solve our out-of-order response issues? Unfortunately not. So, why 
 
 What?! You may be wondering if I'm kidding you but no I am not. That's the beautify of Rx with all it's useful operators. The `switchMap` operator is comparable to `flatMap` in a way. Both operators automatically subscribe to the Observable that the function produces and flatten the result for us. The difference is that the `switchMap` operator automatically unsubscribes from previous subscriptions as soon as the outer Observable emits new values.
 
-<h2 id="putting-some-sugar-on-top">Putting some sugar on top</h2>
+## Putting some sugar on top
 
 Now that we got the semantics right, there's one more little trick that we can use to save us some typing. Instead of manually subscribing to the Observable we can let Angular do the unwrapping for us right from within the template. All we have to do to accomplish that is to use the `AsyncPipe` in our template and expose the `Observable<Array<string>>` instead of `Array<string>`.
 

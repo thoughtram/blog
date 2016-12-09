@@ -1,24 +1,35 @@
 ---
-layout:     post
-title:      "The difference between Annotations and Decorators"
-date:       2015-05-03
-update_date: 2016-05-12
-summary:    "Learn how AtScript annotations differ from TypeScript decorators in this article."
-
-categories: 
-- angular
-
+layout: post
+title: The difference between Annotations and Decorators
+date: 2015-05-03T00:00:00.000Z
+update_date: 2016-05-12T00:00:00.000Z
+summary: >-
+  Learn how AtScript annotations differ from TypeScript decorators in this
+  article.
+categories:
+  - angular
 tags:
-- angular2
-
+  - angular2
 topic: others
-
 author: pascal_precht
-
 relatedLinks:
-  -
-    title: "Exploring Angular 2 - Article Series"
-    url: "http://blog.thoughtram.io/exploring-angular-2"
+  - title: Exploring Angular 2 - Article Series
+    url: 'http://blog.thoughtram.io/exploring-angular-2'
+related_posts:
+  - Testing Services with Http in Angular 2
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Angular 2 Animations - Foundation Concepts
+  - Angular 2 is out - Get started here
+  - Bypassing Providers in Angular 2
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+
 ---
 
 Last year, the Angular team announced it's ECMAScript language extension AtScript, which adds types and annotations to the language in order to enable better tooling, debugging and overall development experience. Half a year later at ng-conf, the team announced that AtScript becomes TypeScript, which supports annotations and another feature called "decorators".

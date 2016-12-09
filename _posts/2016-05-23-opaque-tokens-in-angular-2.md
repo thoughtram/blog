@@ -1,35 +1,52 @@
 ---
-layout:     post
-title:      "How to prevent name collisions in Angular 2 providers"
-
-date: 2016-05-23
-imageUrl: '/images/banner/opaque-tokens-in-angular-2.jpeg'
-
-summary: "Angular provides a mechanism to avoid name collisions in provider tokens. In this article we're going to explore how opaque tokens make this possible."
-
+layout: post
+title: How to prevent name collisions in Angular 2 providers
+date: 2016-05-23T00:00:00.000Z
+update_date: 2016-11-08T00:00:00.000Z
+imageUrl: /images/banner/opaque-tokens-in-angular-2.jpeg
+summary: >-
+  Angular provides a mechanism to avoid name collisions in provider tokens. In
+  this article we're going to explore how opaque tokens make this possible.
 categories:
   - angular
-
 tags:
   - angular2
   - di
-
 topic: di
-
 videos:
-  -
-    url: "https://player.vimeo.com/video/181222351"
-  -
-    url: "https://player.vimeo.com/video/181222354"
-
+  - url: 'http://casts.thoughtram.io/embedded/181222351'
+  - url: 'http://casts.thoughtram.io/embedded/181222354'
 author: pascal_precht
+related_posts:
+  - Angular 2 Providers using Map Literals
+  - Testing Services with Http in Angular 2
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Angular 2 Animations - Foundation Concepts
+  - Angular 2 is out - Get started here
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+
 ---
 
 If you've read our article series on everything dependency injection in Angular 2, you've probably realised that Angular is doing a pretty good job on that. We can either use string or type tokens to make dependencies available to the injector. However, when using string tokens, there's a possibility of running into naming collisions because... well, maybe someone else has used the same token for a different provider. In this article we're going to learn how so called "opaque tokens" solve this problem.
 
 {% include demos-and-videos-buttons.html post=page %}
 
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
+
 Before we jump into the actual problem we want to solve, let's first recap the differences between a string token and a type token.
+
 
 ## String Tokens vs Type Tokens
 

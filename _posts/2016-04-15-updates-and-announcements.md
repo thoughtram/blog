@@ -1,18 +1,30 @@
 ---
-layout:     post
-title:      "Updates and announcements"
-
-date: 2016-04-15
-
-summary: "We'd like to share some updates on what we're currently working on, as well as some announcements that we think are really cool."
-
+layout: post
+title: Updates and announcements
+date: 2016-04-15T00:00:00.000Z
+summary: >-
+  We'd like to share some updates on what we're currently working on, as well as
+  some announcements that we think are really cool.
 categories:
   - announcements
-
 tags:
   - announcements
-
 author: pascal_precht
+related_posts:
+  - Announcing Angular 2 Master Class in Sydney
+  - Announcing Angular 2 Master Class in NYC
+  - Updates and announcements
+  - Thomas joins thoughtram
+  - Speaking at code.talks
+  - Upcoming events in 2015
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+
 ---
 
 It became a little bit quite around us and you might be wondering what thoughtram is doing these days. In fact, we're pushing hard on different projects, improving our material, working on open source and today we'd like to share some updates with you, as well as some very cool announcements.

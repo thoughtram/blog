@@ -1,18 +1,32 @@
 ---
-layout:     post
-title:      "Going full-time"
+layout: post
+title: Going full-time
 relatedLinks:
-  -
-    title: "We are thoughtram"
-    url: "http://blog.thoughtram.io/announcements/2014/06/06/we-are-thoughtram.html"
-date:       2015-08-31
-updatedate: 2015-08-31
-summary:    "Lots of things happened the past year and we are happy to officially announce our full-time commitment to thoughtram."
-
+  - title: We are thoughtram
+    url: 'http://blog.thoughtram.io/announcements/2014/06/06/we-are-thoughtram.html'
+date: 2015-08-31T00:00:00.000Z
+updatedate: 2015-08-31T00:00:00.000Z
+summary: >-
+  Lots of things happened the past year and we are happy to officially announce
+  our full-time commitment to thoughtram.
 categories:
   - announcements
-
 author: christoph_burgdorf
+related_posts:
+  - Testing Services with Http in Angular 2
+  - Understanding XOR with Keras and TensorFlow
+  - Announcing Angular 2 Master Class in Sydney
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Beginning Machine Learning with Keras and TensorFlow
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+
 ---
 
 Time is a weird thing. When you are doing something you love, it just seems to rush by. Over one year has passed since we officially [announced](http://blog.thoughtram.io/announcements/2014/06/23/announcing-our-first-workshop.html) thoughtram, a project to create high quality training.

@@ -1,40 +1,34 @@
 ---
-layout:     post
-title:      "Upgrading apps to Angular 2 using ngUpgrade"
-
+layout: post
+title: Upgrading apps to Angular 2 using ngUpgrade
 redirect_from:
   - /angular/2015/10/24/upgrading-apps-to-angular-2-using-/
-
-relatedLinks:
-  -
-    title: "Exploring Angular 2 - Article Series"
-    url: "/exploring-angular-2"
-  -
-    title: "Dependency Injection in Angular 2"
-    url: "/angular/2015/05/18/dependency-injection-in-angular-2.html"
-  -
-    title: "Exploring Angular 2"
-    url: "/exploring-angular-2"
-  -
-    title: "Writing Angular 2 code in ES5"
-    url: "/angular/2015/05/09/writing-angular-2-code-in-es5.html"
-  -
-    title: "Resolving Service Dependencies in Angular 2"
-    url: "/angular/2015/09/17/resolve-service-dependencies-in-angular-2.html"
-
-date:       2015-10-24
-update_date: 2016-08-11
-summary:    "In this article you'll learn how to upgrade your Angular 1 applications to Angular 2 using ngUpgrade."
-
+date: 2015-10-24T00:00:00.000Z
+update_date: 2016-11-08T00:00:00.000Z
+summary: >-
+  In this article you'll learn how to upgrade your Angular 1 applications to
+  Angular 2 using ngUpgrade.
 categories:
   - angular
-
 tags:
   - angular2
-
 topic: upgrade
-
 author: pascal_precht
+related_posts:
+  - Testing Services with Http in Angular 2
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Angular 2 Animations - Foundation Concepts
+  - Angular 2 is out - Get started here
+  - Bypassing Providers in Angular 2
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+
 ---
 
 Upgrading an existing AngularJS application to Angular 2 is surely one of the most interesting topics when it comes to Angular 2. A long time it has been unclear what a dedicated upgrade path will actually look like, since Angular 2 is still in alpha state and APIs aren't stable yet, which makes it hard to "assume" where things will go and what's the best way to get there.
@@ -42,6 +36,13 @@ Upgrading an existing AngularJS application to Angular 2 is surely one of the mo
 Earlier this year however, the Angular team has made an [official announcement](http://angularjs.blogspot.de/2015/08/angular-1-and-angular-2-coexistence.html) in which they talk about what are the available upgrade strategies and what things of both frameworks have to interoperate in order to run them side-by-side on the same website. While the blog post is rather a kind of birds-eye view where no code is shown, a dedicated [design document](https://docs.google.com/document/d/1xvBZoFuNq9hsgRhPPZOJC-Z48AHEbIBPlOCBTSD8m0Y) has been created that gives a more concrete idea on what the APIs will look like.
 
 Meanwhile, first implementations of `ngUpgrade` have landed in the code base and it's time to start digging into it. In this article we're going to explore what we can do to prepare for an upgrade, and of course how we eventually use `ngUpgrade` to upgrade our application to Angular 2.
+
+<div class="thtrm-toc" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
 
 ## Why upgrade?
 
@@ -137,7 +138,7 @@ Of course, we can take our code base closer to what Angular 2 code would look li
 
 They try solve the same problem, which is adding semantically useful decorators to Angular 1. But do they really help? **I don't think so**. They might improve the developer experience because all of a sudden we can use nice decorators that generate code for us, however, they don't help when it comes to upgrading an application to Angular 2. One project, [ng-forward](https://github.com/ngUpgraders/ng-forward), tries to make the exact same Angular 2 syntax available in Angular 1.
 
-This *can* be helpful to some extend since you and your team are getting familiar with how to write apps in Angular 2 while writing Angular 1 code. On the other hand, it could also be confusing when trying to squeeze Angular 2 concepts and syntax into the Angular 1 world. We'll see how practical it is once projects are starting to use it.
+This *can* be helpful to some extent since you and your team are getting familiar with how to write apps in Angular 2 while writing Angular 1 code. On the other hand, it could also be confusing when trying to squeeze Angular 2 concepts and syntax into the Angular 1 world. We'll see how practical it is once projects are starting to use it.
 
 ## Upgrade Strategies
 

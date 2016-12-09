@@ -1,21 +1,36 @@
 ---
-layout:     post
-title:      "ngMessageFormat - Angular's unheard feature"
+layout: post
+title: ngMessageFormat - Angular's unheard feature
 relatedLinks:
-  -
-    title: "Angular and i18n - A new world"
-    url: "http://blog.thoughtram.io/angular/2015/03/21/angular-and-i18n-the-new-world.html"
-date:       2015-12-10
-update_date_: 2015-12-10
-summary:    "Angular 1.5 is pretty much around the corner. It turns out that there's a feature that already landed in Angular 1.4, that no one really noticed. Curious?"
-
+  - title: Angular and i18n - A new world
+    url: >-
+      http://blog.thoughtram.io/angular/2015/03/21/angular-and-i18n-the-new-world.html
+date: 2015-12-10T00:00:00.000Z
+update_date_: 2015-12-10T00:00:00.000Z
+summary: >-
+  Angular 1.5 is pretty much around the corner. It turns out that there's a
+  feature that already landed in Angular 1.4, that no one really noticed.
+  Curious?
 categories:
   - angular
-
 tags:
   - angular
-
 author: pascal_precht
+related_posts:
+  - 'Exploring Angular 1.5: Lifecycle Hooks'
+  - Sponsoring AngularConnect. Again.
+  - Multiple Transclusion and named Slots
+  - Service vs Factory - Once and for all
+  - Taking Angular Master Class to the next level
+  - ngMessages revisited
+related_videos:
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+  - '189613148'
+  - '189603515'
+
 ---
 
 Angular 1.5 is pretty much around the corner and with a new release, new fixes, improvements and features are added to the framework. While this is awesome and we're all excited about it, it seems like we're forgetting about all the nice things we already have.
@@ -139,7 +154,7 @@ Gender selection uses the exact same syntax. All we have to do is to change the 
 
 Here's `ngMessageFormat` in action:
 
-<iframe src="http://embed.plnkr.co/UYyBFyafomFllh5ZcP0s/"></iframe>
+{% include plunk.html url="http://embed.plnkr.co/UYyBFyafomFllh5ZcP0s/" %}
 
 ## Conclusion
 

@@ -1,19 +1,31 @@
 ---
-layout:     post
-title:      "Angular 2 is out - Get started here"
-imageUrl:   "/images/banner/angular-2-final-is-out.jpg"
-
-date: 2016-09-15
-
-summary: "Yes. The day has come. Angular 2 is finally released and here's how to get started."
-
+layout: post
+title: Angular 2 is out - Get started here
+imageUrl: /images/banner/angular-2-final-is-out.jpg
+date: 2016-09-15T00:00:00.000Z
+summary: >-
+  Yes. The day has come. Angular 2 is finally released and here's how to get
+  started.
 categories:
   - angular
-
 tags:
   - angular2
-
 author: pascal_precht
+related_posts:
+  - Testing Services with Http in Angular 2
+  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular 2
+  - Angular 2 Animations - Foundation Concepts
+  - Bypassing Providers in Angular 2
+  - Custom Form Controls in Angular 2
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+
 ---
 
 Last night, one of the biggest announcement in the Angular history has happened. Brad Green announced that **Angular 2 Final is out**!
@@ -80,6 +92,10 @@ We've been writing about Angular 2 too, in fact, since over a year by now and **
 - [Understanding Zones](/angular/2016/01/22/understanding-zones.html)
 - [Zones in Angular 2](/angular/2016/02/01/zones-in-angular-2.html)
 - [Angular 2 Change Detection explained](/angular/2016/02/22/angular-2-change-detection-explained.html)
+
+### Animations
+
+- [Animations in Angular 2](/angular/2016/09/16/angular-2-animation-important-concepts.html)
 
 ### Styling and ViewEncapsulation
 
