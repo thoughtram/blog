@@ -61,7 +61,7 @@ We import the **type** of the dependency we're asking for, and annotate our depe
 @NgModule({
   ...
   providers: [
-    { provide: DataService, useClass DataService }
+    { provide: DataService, useClass: DataService }
   ]
 })
 ...
