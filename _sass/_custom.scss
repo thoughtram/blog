@@ -302,6 +302,23 @@
 }
 
 .thtrm-ad {
+  &.thtrm-section--is-promo {
+    padding: 1.5em;
+
+    .thtrm-layout-divider-cta {
+      border: 2px solid #fff;
+    }
+  }
+
+  .thtrm-section-headline {
+    margin-top: 0;
+    font-size: 20px;
+  }
+
+  .thtrm-section-text {
+    font-size: 16px;
+  }
+
   &--sticky {
     position: absolute;
     top: 50px;
@@ -309,22 +326,6 @@
     left: inherit;
     width: 250px;
 
-    &.thtrm-section--is-promo {
-      padding: 1.5em;
-
-      .thtrm-layout-divider-cta {
-        border: 2px solid #fff;
-      }
-    }
-
-    .thtrm-section-headline {
-      margin-top: 0;
-      font-size: 20px;
-    }
-
-    .thtrm-section-text {
-      font-size: 16px;
-    }
   }
 }
 
