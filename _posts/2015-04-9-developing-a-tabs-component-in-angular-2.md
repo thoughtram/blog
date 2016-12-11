@@ -44,7 +44,7 @@ As a follow up, we now want to build yet another component that is widely used i
 Let's start right away and learn how easy it is to build a tabs component in Angular 2 without the confusing relationship between directive link functions and controllers. We'll skip the installation part, since that was explored in the other article.
 
 
-<div class="thtrm-toc" markdown="1">
+<div class="thtrm-toc is-sticky" markdown="1">
 ### TABLE OF CONTENTS
 {:.no_toc}
 * TOC

@@ -36,7 +36,7 @@ Forms are part of almost every web application out there. Angular strives for ma
 
 We can easily extend the browser vocabulary with additional custom validators and in this article we are going to explore how to do that.
 
-<div class="thtrm-toc" markdown="1">
+<div class="thtrm-toc is-sticky" markdown="1">
 ### TABLE OF CONTENTS
 {:.no_toc}
 * TOC

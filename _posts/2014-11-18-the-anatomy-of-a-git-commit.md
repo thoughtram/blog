@@ -28,7 +28,7 @@ related_videos:
 
 Ever wondered what a Git commit looks like internally? Why it has those long revision identifiers? If they are unique or not? We are going to look at exactly that!
 
-<div class="thtrm-toc" markdown="1">
+<div class="thtrm-toc is-sticky" markdown="1">
 ### TABLE OF CONTENTS
 {:.no_toc}
 * TOC

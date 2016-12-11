@@ -50,7 +50,7 @@ There are pretty good resources about the difference between Observables and Pro
 
 {% include demos-and-videos-buttons.html post=page %}
 
-<div class="thtrm-toc" markdown="1">
+<div class="thtrm-toc is-sticky" markdown="1">
 ### TABLE OF CONTENTS
 {:.no_toc}
 * TOC

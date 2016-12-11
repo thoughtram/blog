@@ -36,7 +36,7 @@ Of course solving XOR is a toy task. Why would you use a neural network to solve
 
 As an absolute machine learning beginner you're probably still wondering what the code means and how you could have come up with it by yourself. What are all these numbers and what role do they play in solving the XOR problem? If these are youre questions, read on!
 
-<div class="thtrm-toc" markdown="1">
+<div class="thtrm-toc is-sticky" markdown="1">
 ### TABLE OF CONTENTS
 {:.no_toc}
 * TOC

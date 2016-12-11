@@ -39,7 +39,7 @@ We've written a few other articles on 1.3 already. Here's a list:
 - [Exploring Angular 1.3 - Angular-hint](http://blog.thoughtram.io/angularjs/2014/11/06/exploring-angular-1.3-angular-hint.html)
 
 
-<div class="thtrm-toc" markdown="1">
+<div class="thtrm-toc is-sticky" markdown="1">
 ### TABLE OF CONTENTS
 {:.no_toc}
 * TOC

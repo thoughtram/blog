@@ -34,7 +34,7 @@ Wait, what? Yet another article that answers the big question: Service vs Factor
 This article explains once and for all the difference between services and factories and why **we want to prefer services over factories**.
 
 
-<div class="thtrm-toc" markdown="1">
+<div class="thtrm-toc is-sticky" markdown="1">
 ### TABLE OF CONTENTS
 {:.no_toc}
 * TOC

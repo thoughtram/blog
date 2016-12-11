@@ -33,7 +33,7 @@ We all know that internationalization is important when it comes to bigger apps,
 
 In fact, I was honoured to give a talk on that topic at this year's [ng-conf](http://ng-conf.org) with [Chirayu Krishnappa](http://twitter.com/chirayuk) and you can watch the recording of it right [here](https://www.youtube.com/watch?v=iBBkCA1M-mc). This article is a detailed write-up based on the talk and I hope it will answer all the questions it raised.
 
-<div class="thtrm-toc" markdown="1">
+<div class="thtrm-toc is-sticky" markdown="1">
 ### TABLE OF CONTENTS
 {:.no_toc}
 * TOC

@@ -30,7 +30,7 @@ related_videos:
 
 With the upcoming final 1.5 release of the AngularJS framework, tons of new features, improvements and bug fixes are right around the corner. One of those features is **multiple transclusion via named slots**. While transclusion is already a very nice and powerful feature, with the 1.5 release it's going to be taken to the next level. In this article we're going to discuss what multiple transclusion is all about and how it helps the framework to align more with the web components technologies.
 
-<div class="thtrm-toc" markdown="1">
+<div class="thtrm-toc is-sticky" markdown="1">
 ### TABLE OF CONTENTS
 {:.no_toc}
 * TOC

@@ -31,7 +31,7 @@ related_videos:
 
 Occasionally people ask about [Nickel](http://nickel.rs) projects that they can dig into to get a feel of some real world Nickel code. In case you never heard of Nickel, it's a web application server written in Rust. We thought it'd be nice to write a simple web application with Nickel, deploy it to Heroku and blog about it.
 
-<div class="thtrm-toc" markdown="1">
+<div class="thtrm-toc is-sticky" markdown="1">
 ### TABLE OF CONTENTS
 {:.no_toc}
 * TOC

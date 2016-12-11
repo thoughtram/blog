@@ -60,7 +60,7 @@ An injector creates dependencies using providers. Providers are recipes that kno
 2. Inject the service in the component's constructor where it's needed using that configured token.
 </div>
 
-<div class="thtrm-toc" markdown="1">
+<div class="thtrm-toc is-sticky" markdown="1">
 ### TABLE OF CONTENTS
 {:.no_toc}
 * TOC

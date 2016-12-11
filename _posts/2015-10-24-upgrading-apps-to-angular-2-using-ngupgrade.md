@@ -37,7 +37,7 @@ Earlier this year however, the Angular team has made an [official announcement](
 
 Meanwhile, first implementations of `ngUpgrade` have landed in the code base and it's time to start digging into it. In this article we're going to explore what we can do to prepare for an upgrade, and of course how we eventually use `ngUpgrade` to upgrade our application to Angular 2.
 
-<div class="thtrm-toc" markdown="1">
+<div class="thtrm-toc is-sticky" markdown="1">
 ### TABLE OF CONTENTS
 {:.no_toc}
 * TOC

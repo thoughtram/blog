@@ -37,7 +37,7 @@ If there was one feature in Angular that made us go "Wow", then it was probably 
 
 **Angular 2 doesn't come with such a (built-in) two-way data binding anymore.** However, this doesn't mean we can't create directives that support two-way data binding. In this article we're going to explore how two-way data binding in Angular 2 is implemented and how we can implement it in our own directives.
 
-<div id="thtrm-toc" markdown="1">
+<div id="thtrm-toc is-sticky" markdown="1">
 ### TABLE OF CONTENTS
 {:.no_toc}
 * TOC

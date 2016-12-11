@@ -38,7 +38,7 @@ Companies such as Google, NVIDIA or [Comma.ai](http://comma.ai/) are using neura
 
 We are happy to jump on this exciting journey and we are even happier to share our findings with you.
 
-<div class="thtrm-toc" markdown="1">
+<div class="thtrm-toc is-sticky" markdown="1">
 ### TABLE OF CONTENTS
 {:.no_toc}
 * TOC

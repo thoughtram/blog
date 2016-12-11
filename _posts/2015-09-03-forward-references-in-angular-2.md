@@ -41,7 +41,7 @@ In our article on [Dependency Injection in Angular 2](/angular/2015/05/18/depend
 
 In a [another article](/angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html) we even learned about **host** and **visibility of dependencies** as another aspect of Angular 2's DI system. But that doesn't mean that we've already discovered all features of the machinery yet. In this article we'll take a look at **forward references**. Another tiny, yet useful feature of the DI system in Angular 2.
 
-<div class="thtrm-toc" markdown="1">
+<div class="thtrm-toc is-sticky" markdown="1">
 ### TABLE OF CONTENTS
 {:.no_toc}
 * TOC

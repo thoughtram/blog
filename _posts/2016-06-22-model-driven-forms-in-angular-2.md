@@ -33,7 +33,7 @@ related_videos:
 
 Just a couple days ago, we've updated our article on [Template-driven Forms in Angular 2](/angular/2016/03/21/template-driven-forms-in-angular-2.html), as the APIs have changed for the better in the second release candidate. We think it's time to talk about **model-driven** and **reactive forms** on our blog. This article builds on top of the knowledge we've gained in our previous article, so you might want to take a look at it in case you haven't yet.
 
-<div class="thtrm-toc" markdown="1">
+<div class="thtrm-toc is-sticky" markdown="1">
 ### TABLE OF CONTENTS
 {:.no_toc}
 * TOC

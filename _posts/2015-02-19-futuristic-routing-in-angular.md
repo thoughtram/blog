@@ -39,7 +39,7 @@ It got even better, when the team announced that they plan to back port the new 
 
 That's right, at the time of writing this article, the new router hasn't been released yet. However, since we're following the latest developments of all Angular 2.0 related projects actively on GitHub, we can't wait to share our thoughts on the new router with you. In this article we explore the new router and discuss it's concepts and features that we've all been waiting for!
 
-<div class="thtrm-toc" markdown="1">
+<div class="thtrm-toc is-sticky" markdown="1">
 ### TABLE OF CONTENTS
 {:.no_toc}
 * TOC

@@ -38,7 +38,7 @@ If you're following our [articles on Angular](http://blog.thoughtram.io/categori
 
 We won't talk about how to get started with Angular 2. We assume that we're all familiar with the installation process and how to bootstrap a small Angular 2 application. If this is entirely new to you, I recommend checking out our articles on [developing a zippy component](http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html) or [developing a tabs component](http://blog.thoughtram.io/angular/2015/04/09/developing-a-tabs-component-in-angular-2.html) in Angular 2. Another great starting point is the [starter kit](http://github.com/angular-class/angular2-webpack-starter) by our friends over at [AngularClass](http://angularclass.com).
 
-<div class="thtrm-toc" markdown="1">
+<div class="thtrm-toc is-sticky" markdown="1">
 ### TABLE OF CONTENTS
 {:.no_toc}
 * TOC

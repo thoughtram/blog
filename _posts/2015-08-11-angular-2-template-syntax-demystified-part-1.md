@@ -33,7 +33,7 @@ I think we've been all through this. We see Angular 2 template code the very fir
 
 It also touches on the new template syntax in Angular 2 and how it tends to solve the existing issues. However, it still seems a mystery for a lot of people and that's why we're going to explore the Angular 2's template syntax in this article. **Please note** that this is the first part of "Angular 2 Template Syntax Demystified". There's going to be another article soon.
 
-<div class="thtrm-toc" markdown="1">
+<div class="thtrm-toc is-sticky" markdown="1">
 ### TABLE OF CONTENTS
 {:.no_toc}
 * TOC

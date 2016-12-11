@@ -60,7 +60,7 @@ related_videos:
 
 With the release of version 1.3, the Angular project comes with a new module called [angular-hint](http://github.com/angular/angular-hint), that makes debugging and finding mistakes in the code base easier. It also gives us hints about best practices, so that our code is more maintainable and easier to read. In this article we'll take a brief look at this module and explore how we can actually use it and what great features it provides. As a side note, this is the third article of our "*Exploring Angular 1.3*" series, so you might want to check out our articles about [ngModelOptions](http://blog.thoughtram.io/angularjs/2014/10/19/exploring-angular-1.3-ng-model-options.html) and [one-time bindings](http://blog.thoughtram.io/angularjs/2014/10/14/exploring-angular-1.3-one-time-bindings.html) too. Okay, let's dive into the actual topic.
 
-<div class="thtrm-toc" markdown="1">
+<div class="thtrm-toc is-sticky" markdown="1">
 ### TABLE OF CONTENTS
 {:.no_toc}
 * TOC

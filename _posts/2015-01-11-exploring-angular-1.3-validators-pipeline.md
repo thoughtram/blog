@@ -35,7 +35,7 @@ We know that working with forms in Angular is just great. Due to its scope model
 
 If there's one thing that takes probably most of the work when building forms, it's their validation. We know that validation on the server-side is always required in order to process given user data that could break our app. But we also want to provide a great user experience, which is where validation on the client-side comes into play. We already learned about [ngModelOptions](http://blog.thoughtram.io/angularjs/2014/10/19/exploring-angular-1.3-ng-model-options.html). In this article we are going to discuss the ways we've been able to validate data in our Angular forms in 1.2 and detail how version 1.3 makes it even easier with the validators pipeline.
 
-<div class="thtrm-toc" markdown="1">
+<div class="thtrm-toc is-sticky" markdown="1">
 ### TABLE OF CONTENTS
 {:.no_toc}
 * TOC

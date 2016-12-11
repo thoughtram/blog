@@ -39,7 +39,7 @@ This article discusses what this unexpected problem is, why it exists and how it
 
 {% include demos-and-videos-buttons.html post=page %}
 
-<div class="thtrm-toc" markdown="1">
+<div class="thtrm-toc is-sticky" markdown="1">
 ### TABLE OF CONTENTS
 {:.no_toc}
 * TOC
