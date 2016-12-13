@@ -325,7 +325,10 @@
     right: -18em;
     left: inherit;
     width: 250px;
+  }
 
+  &--without-description {
+    .thtrm-section-text { display: none; }
   }
 }
 
