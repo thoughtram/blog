@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Styling Angular 2 components
+title: Styling Angular components
 relatedLinks:
   - title: Exploring Angular 2 - Article Series
     url: /exploring-angular-2
@@ -24,12 +24,12 @@ tags:
 topic: views
 author: pascal_precht
 related_posts:
-  - Testing Services with Http in Angular 2
-  - Two-way Data Binding in Angular 2
-  - Resolving route data in Angular 2
-  - Angular 2 Animations - Foundation Concepts
+  - Testing Services with Http in Angular
+  - Two-way Data Binding in Angular
+  - Resolving route data in Angular
+  - Angular Animations - Foundation Concepts
   - Angular 2 is out - Get started here
-  - Bypassing Providers in Angular 2
+  - Bypassing Providers in Angular
 related_videos:
   - '175255006'
   - '193524896'
@@ -40,13 +40,13 @@ related_videos:
 
 ---
 
-Until now, we mostly talked about how to create simple components in Angular 2, like a [zippy](/angular/2015/03/27/building-a-zippy-component-in-angular-2.html) or a [tabs](/angular/2015/04/09/developing-a-tabs-component-in-angular-2.html) component, and we also covered some isolated parts of the framework like the new [dependency injection](/angular/2015/05/18/dependency-injection-in-angular-2.html). In this article we are going to discuss another essential part when it comes to building components: **Styling**.
+Until now, we mostly talked about how to create simple components in Angular, like a [zippy](/angular/2015/03/27/building-a-zippy-component-in-angular-2.html) or a [tabs](/angular/2015/04/09/developing-a-tabs-component-in-angular-2.html) component, and we also covered some isolated parts of the framework like the new [dependency injection](/angular/2015/05/18/dependency-injection-in-angular-2.html). In this article we are going to discuss another essential part when it comes to building components: **Styling**.
 
-A component in Angular 2 is basically a controller class with a template. But as all of us know, a component also needs it's own styles, especially when it comes to sharing reusable components across applications, which is what we want to achieve in the modern web anyways, right?
+A component in Angular is basically a controller class with a template. But as all of us know, a component also needs it's own styles, especially when it comes to sharing reusable components across applications, which is what we want to achieve in the modern web anyways, right?
 
 We can always write our CSS code in a way, that it is modular and easily extensible at the same time. However, if we don't rely on technologies like Web Components, our styles all end up concatenated and minified in the head of our HTML document, without our components actually knowing that they exist. This is actually good when we think in separation of concerns, on the other hand, if we build a component and want to share it, it should come packaged with all the needed styles, scoped to that component.
 
-Angular 2 components are designed with exactly that in mind. A component comes with HTML, JavaScript but also has it's own styles that belong to it. All we need to do is to define the styles in our component, or at least declare, where to get those from. In fact, there are three ways to associate CSS styles to a component in Angular 2: **Component inline styles**, **style urls** and **template inline styles**. Let's explore them one by one.
+Angular components are designed with exactly that in mind. A component comes with HTML, JavaScript but also has it's own styles that belong to it. All we need to do is to define the styles in our component, or at least declare, where to get those from. In fact, there are three ways to associate CSS styles to a component in Angular: **Component inline styles**, **style urls** and **template inline styles**. Let's explore them one by one.
 
 ## Component inline styles
 
@@ -88,9 +88,9 @@ Okay, so defining styles on the component is pretty clear, but where did those e
 </html>
 {% endhighlight %}
 
-What's going on there? The reason why Angular takes our styles and puts them up there, is because of the **View Encapsulation** that we are using. Angular 2 comes with three different view encapsulation types in order to support both, browsers that don't support Shadow DOM, and also the ones that do support it. The view encapsulations <s>will be explored in another article</s> are covered in [this article](/angular/2015/06/29/shadow-dom-strategies-in-angular2.html), but we have to touch on this though in order to understand why this is happening.
+What's going on there? The reason why Angular takes our styles and puts them up there, is because of the **View Encapsulation** that we are using. Since Angular 2.x, it comes with three different view encapsulation types in order to support both, browsers that don't support Shadow DOM, and also the ones that do support it. The view encapsulations <s>will be explored in another article</s> are covered in [this article](/angular/2015/06/29/shadow-dom-strategies-in-angular2.html), but we have to touch on this though in order to understand why this is happening.
 
-Angular 2 currently uses the `Emulated View Encapsulation` by default. Which basically means, there's no usage of any Shadow DOM at all. One of the nice features of Shadow DOM is style encapsulation. It allows us to scope styles to a specific component without affecting the outer world.
+Angular currently uses the `Emulated View Encapsulation` by default. Which basically means, there's no usage of any Shadow DOM at all. One of the nice features of Shadow DOM is style encapsulation. It allows us to scope styles to a specific component without affecting the outer world.
 
 To take advantage of style encapsulation, styles have to be put into the `shadowRoot` of a component. Due to the Shadow DOM strategy that is used, there is no `shadowRoot` to put our styles into. That's why Angular writes them into the head. But as mentioned, there's another article that explains all three view encapsulations.
 
@@ -98,7 +98,7 @@ Let's take a look at another way of adding styles to our component.
 
 ## Styles urls
 
-In an ideal world, we don't have to mix our styles with our application code. That's why we have the `<link>` tag, that allows us to fetch and embed a stylesheet from a server. Angular 2 components allow us to define `styleUrls`, so that styles don't have to be written into the component. Pretty straight forward, here's an example:
+In an ideal world, we don't have to mix our styles with our application code. That's why we have the `<link>` tag, that allows us to fetch and embed a stylesheet from a server. Angular components allow us to define `styleUrls`, so that styles don't have to be written into the component. Pretty straight forward, here's an example:
 
 {% highlight js %}
 @Component({

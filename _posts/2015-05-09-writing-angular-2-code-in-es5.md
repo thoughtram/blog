@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Writing Angular 2 code in ES5
+title: Writing Angular code in ES5
 relatedLinks:
   - title: Exploring Angular 2 - Article Series
     url: /exploring-angular-2
@@ -13,7 +13,7 @@ relatedLinks:
   - title: Angular ES5 Demo
     url: 'http://plnkr.co/edit/XmZkHzl407z93R5Kf0pv?p=preview'
 date: 2015-05-09T00:00:00.000Z
-update_date: 2016-08-11T00:00:00.000Z
+update_date: 2016-12-16T00:00:00.000Z
 summary: >-
   Ever wondered what it's like to write Angular 2 in ES5? Check out this
   article!
@@ -29,12 +29,12 @@ demos:
   - url: 'https://plnkr.co/edit/l2kmT4w0uQMzuwHk4nc6?p=preview'
     title: Hello World app with service injection
 related_posts:
-  - Testing Services with Http in Angular 2
-  - Two-way Data Binding in Angular 2
-  - Resolving route data in Angular 2
-  - Angular 2 Animations - Foundation Concepts
+  - Testing Services with Http in Angular
+  - Two-way Data Binding in Angular
+  - Resolving route data in Angular
+  - Angular Animations - Foundation Concepts
   - Angular 2 is out - Get started here
-  - Bypassing Providers in Angular 2
+  - Bypassing Providers in Angular
 related_videos:
   - '175255006'
   - '193524896'
@@ -45,21 +45,21 @@ related_videos:
 
 ---
 
-It's no news anymore that Angular 2 is written in TypeScript in order to take advantage of language features like types and meta data annotations through decorators. Taking a first look at Angular 2 examples that are written in TypeScript, can feel a bit unfamiliar and unclear to developers that don't have experience with that language. Even constructs like classes that ECMAScript 6 brings to the table can be scary enough to keep developers from learning Angular 2.
+It's no news anymore that Angular 2.x was written in TypeScript in order to take advantage of language features like types and meta data annotations through decorators. Taking a first look at Angular examples that are written in TypeScript, can feel a bit unfamiliar and unclear to developers that don't have experience with that language. Even constructs like classes that ECMAScript 2015 brings to the table can be scary enough to keep developers from learning Angular.
 
 That's why developers with more experience will tell us that we don't have to write TypeScript or just ES6 if we don't want to. We can just stick with ES5. Cool, fine. But how do we do that? In one of our last articles we've explored the [difference between annotations and decorators](/angular/2015/05/03/the-difference-between-annotations-and-decorators.html) and to what they translate to in ES5.
 
-In this article, we will use that information, to actually write Angular 2 code in ES5 with the latest version released at the time of writing.
+In this article, we will use that information, to actually write Angular code in ES5 with the latest version released at the time of writing (2.x).
 
 {% include demos-and-videos-buttons.html post=page %}
 
-## Getting started with Angular 2 in ES5
+## Getting started with Angular in ES5
 
-If you've read our article on [building a zippy component](/angular/2015/03/27/building-a-zippy-component-in-angular-2.html) in Angular 2, you might know that nowadays, there's quite a bit of work to do, in order to get started if you want to write your application in ES6/TypeScript and take advantage of it's module system.
+If you've read our article on [building a zippy component](/angular/2015/03/27/building-a-zippy-component-in-angular-2.html) in Angular, you might know that nowadays, there's quite a bit of work to do, in order to get started if you want to write your application in ES6/TypeScript and take advantage of it's module system.
 
-In ES5 we don't have a module system yet. So ideally, we should be able to just take a JavaScript file from somewhere, that has all the Angular 2 code in it, so we can embed it in our website. We don't have to care about transpiling, concatenating, deciding on a module system (AMD, Common, System, ...), or anything else. We can just fetch a bundled file that comes with the ready-to-use code.
+In ES5 we don't have a module system yet. So ideally, we should be able to just take a JavaScript file from somewhere, that has all the Angular code in it, so we can embed it in our website. We don't have to care about transpiling, concatenating, deciding on a module system (AMD, Common, System, ...), or anything else. We can just fetch a bundled file that comes with the ready-to-use code.
 
-The easiest way to get hold of Angular 2 ES5 bundles is npmcdn. Here's what we need to embed to get started with ES5 and Angular 2:
+The easiest way to get hold of Angular ES5 bundles is npmcdn. Here's what we need to embed to get started with ES5 and Angular:
 
 {% highlight html %}
 {% raw %}
@@ -108,7 +108,7 @@ class HelloComponent {
 {% endraw %}
 {% endhighlight %}
 
-## Bootstrapping an Angular 2 app in ES5
+## Bootstrapping an Angular app in ES5
 
 When we come to the point that we want to bootstrap our application, we need to define an `NgModule` that has everything attached to it that is needed to make our app run, and bootstrap it on a dedicated platform (e.g. browser, webworker or server).
 
@@ -159,11 +159,11 @@ And of course, the corresponding application template looks like this:
 {% endraw %}
 {% endhighlight %}
 
-Great we've just bootstrapped our Angular 2 application written in ES5! Was it that hard?
+Great we've just bootstrapped our Angular application written in ES5! Was it that hard?
 
 ## Injecting services in ES5
 
-Let's say we want to add a `GreetingService` to our component. The `@Component` annotation takes a property `viewProviders` to define injectable types for this particular component. This is easy to add. First we build the service. A service in Angular 2 is just a class, which translates to just a function, which is also just an object in JavaScript.
+Let's say we want to add a `GreetingService` to our component. The `@Component` annotation takes a property `viewProviders` to define injectable types for this particular component. This is easy to add. First we build the service. A service in Angular can be just a class, which translates to just a function, which is also just an object in JavaScript.
 
 {% highlight javascript %}
 {% raw %}
@@ -209,9 +209,9 @@ HelloComponent.parameters = [[new ng.core.Inject(GreetingService)]];
 
 If you wonder why we define a nested array, this is because one constructor parameter can have more than one associated annotation.
 
-Cool, so it turns out that writing Angular 2 code is actually not weird at all. In addition to that, it kind of gets clear that writing Angular code in ES5 requires more typing. But again, in the end it's up to the application author which language or transpiler to use.
+Cool, so it turns out that writing Angular code is actually not weird at all. In addition to that, it kind of gets clear that writing Angular code in ES5 requires more typing. But again, in the end it's up to the application author which language or transpiler to use.
 
-There's even a [better syntax](http://blog.thoughtram.io/angular/2015/07/06/even-better-es5-code-for-angular-2.html), that makes writing and reading Angular 2 code a breeze.
+There's even a [better syntax](http://blog.thoughtram.io/angular/2015/07/06/even-better-es5-code-for-angular-2.html), that makes writing and reading Angular code a breeze.
 
 Check out the demos below!
 

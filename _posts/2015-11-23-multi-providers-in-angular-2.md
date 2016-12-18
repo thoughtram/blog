@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Multi Providers in Angular 2
+title: Multi Providers in Angular
 date: 2015-11-23T00:00:00.000Z
-update_date: 2016-08-11T00:00:00.000Z
+update_date: 2016-12-18T00:00:00.000Z
 summary: >-
-  Multi-providers allow us to extend existing dependencies in Angular 2. Read on
+  Multi-providers allow us to extend existing dependencies in Angular. Read on
   to learn when this is useful!
 categories:
   - angular2
@@ -16,12 +16,12 @@ relatedLinks:
   - title: Exploring Angular 2 - Article Series
     url: /exploring-angular-2
 related_posts:
-  - Testing Services with Http in Angular 2
-  - Two-way Data Binding in Angular 2
-  - Resolving route data in Angular 2
-  - Angular 2 Animations - Foundation Concepts
+  - Testing Services with Http in Angular
+  - Two-way Data Binding in Angular
+  - Resolving route data in Angular
+  - Angular Animations - Foundation Concepts
   - Angular 2 is out - Get started here
-  - Bypassing Providers in Angular 2
+  - Bypassing Providers in Angular
 related_videos:
   - '175255006'
   - '193524896'
@@ -32,7 +32,7 @@ related_videos:
 
 ---
 
-The new dependency injection system in Angular 2 comes with a feature called "Multi Providers" that basically enable us, the consumer of the platform, to hook into certain operations and plug in custom functionality we might need in our application use case. We're going to discuss what they look like, how they work and how Angular itself takes advantage of them to keep the platform flexible and extendible.
+The new dependency injection system in Angular comes with a feature called "Multi Providers" that basically enable us, the consumer of the platform, to hook into certain operations and plug in custom functionality we might need in our application use case. We're going to discuss what they look like, how they work and how Angular itself takes advantage of them to keep the platform flexible and extendible.
 
 ## Recap: What is a provider?
 
@@ -40,7 +40,7 @@ If you've read our article on [Dependency Injection in Angular2](/angular/2015/0
 
 **A provider is an instruction that describes how an object for a certain token is created.**
 
-Quick example: In an Angular 2 component we might have a `DataService` dependency, which we can ask for like this:
+Quick example: In an Angular component we might have a `DataService` dependency, which we can ask for like this:
 
 {% highlight js %}
 import { DataService } from './data.service';
@@ -113,7 +113,7 @@ var dependencies = injector.get(SOME_TOKEN);
 
 {% endhighlight %}
 
-**Note**: We usually don't create injectors manually when building Angular 2 applications since the platform takes care of that for us. This is really just for demonstration purposes.
+**Note**: We usually don't create injectors manually when building Angular applications since the platform takes care of that for us. This is really just for demonstration purposes.
 
 A token can be either a string or a type. We use a string, because we don't want to create classes to represent a string value in DI. However, to provide better error messages in case something goes wrong, we can create our string token using `OpaqueToken`. We don't have to worry about this too much now. The interesting part is where we're registering our providers using the `multi: true` option.
 

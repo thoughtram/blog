@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Custom Validators in Angular 2
+title: Custom Validators in Angular
 imageUrl: /images/custom-validators-bg.jpeg
 date: 2016-03-14T00:00:00.000Z
-update_date: 2016-11-08T00:00:00.000Z
+update_date: 2016-12-18T00:00:00.000Z
 summary: >-
   Often, we need to add custom validation capabilities to our application's
   form. In this article we're going to explore how to implement custom
@@ -17,11 +17,11 @@ topic: forms
 author: pascal_precht
 related_posts:
   - Validators Pipeline in Angular 1.3
-  - Two-way Data Binding in Angular 2
-  - Custom Form Controls in Angular 2
-  - Reactive Forms in Angular 2
-  - Template-driven Forms in Angular 2
-  - Testing Services with Http in Angular 2
+  - Two-way Data Binding in Angular
+  - Custom Form Controls in Angular
+  - Reactive Forms in Angular
+  - Template-driven Forms in Angular
+  - Testing Services with Http in Angular
 related_videos:
   - '189792758'
   - '189785428'
@@ -267,7 +267,7 @@ export class AppModule {}
 
 Even though this works, there's nothing our directive does at the moment. What we want to do is to make sure that our custom validator is executed when Angular compiles this directive. How do we get there?
 
-Angular has an internal mechanism to execute validators on a form control. It maintains a **multi provider** for a dependency token called `NG_VALIDATORS`. If you've read our article on [multi providers in Angular 2](/angular2/2015/11/23/multi-providers-in-angular-2.html), you know that Angular injects multiple values for a single token that is used for a multi provider. If you haven't, we highly recommend checking it out as the rest of this article is based on it.
+Angular has an internal mechanism to execute validators on a form control. It maintains a **multi provider** for a dependency token called `NG_VALIDATORS`. If you've read our article on [multi providers in Angular](/angular2/2015/11/23/multi-providers-in-angular-2.html), you know that Angular injects multiple values for a single token that is used for a multi provider. If you haven't, we highly recommend checking it out as the rest of this article is based on it.
 
 It turns out that **all** built-in validators are already added to the `NG_VALIDATORS` token. So whenever Angular instantiates a form control and performs validation, it basically injects the dependency for the `NG_VALIDATORS` token, which is a list of all validators, and executes them one by one on that form control.
 
@@ -341,13 +341,13 @@ class EmailValidator {}
 {% endraw %}
 {% endhighlight %}
 
-We can't use `useValue` as provider recipe anymore, because we don't want to return the factory function, but rather what the factory function **returns**. And since our factory function has a dependency itself, we need to have access to dependency tokens, which is why we use `useFactory` and `deps`. If this is entirely new to you, you might want to read our article on [Dependency Injection in Angular 2](/angular/2015/05/18/dependency-injection-in-angular-2.html) before we move on.
+We can't use `useValue` as provider recipe anymore, because we don't want to return the factory function, but rather what the factory function **returns**. And since our factory function has a dependency itself, we need to have access to dependency tokens, which is why we use `useFactory` and `deps`. If this is entirely new to you, you might want to read our article on [Dependency Injection in Angular](/angular/2015/05/18/dependency-injection-in-angular-2.html) before we move on.
 
 Even though this would work, it's quite a lot of work and also very verbose. We can do better here.
 
 **The better way**
 
-Wouldn't it be nice if we could use constructor injection as we're used to it in Angular 2? Yes, and guess what, Angular has us covered. It turns out that a validator can also be a **class** as long as it implements a `validate(c: FormControl)` method. Why is that nice? Well, we can inject our dependency using constructor injection and don't have to setup a provider factory as we did before.
+Wouldn't it be nice if we could use constructor injection as we're used to it in Angular? Yes, and guess what, Angular has us covered. It turns out that a validator can also be a **class** as long as it implements a `validate(c: FormControl)` method. Why is that nice? Well, we can inject our dependency using constructor injection and don't have to setup a provider factory as we did before.
 
 Here's what our `EmailValidator` class would look like when we apply this pattern to it:
 
@@ -407,7 +407,7 @@ class EmailValidator {
 {% endraw %}
 {% endhighlight %}
 
-If you don't know what `forwardRef()` does, you might want to read our article on [Forward References in Angular 2](/angular/2015/09/03/forward-references-in-angular-2.html).
+If you don't know what `forwardRef()` does, you might want to read our article on [Forward References in Angular](/angular/2015/09/03/forward-references-in-angular-2.html).
 
 Here's the full code for our custom email validator:
 
@@ -449,4 +449,4 @@ export class EmailValidator {
 {% endraw %}
 {% endhighlight %}
 
-You might notice that we've extended the selector, so that our validator not only works with `ngModel` but also with `formControl` directives. If you're interested in more articles on forms in Angular 2, make sure to subscribe to our blog as we have more in the pipe which will be published soon!
+You might notice that we've extended the selector, so that our validator not only works with `ngModel` but also with `formControl` directives. If you're interested in more articles on forms in Angular, we've written a couple about [template-driven forms](/angular/2016/03/21/template-driven-forms-in-angular-2.html) and [reactive forms](http://blog.thoughtram.io/angular/2016/06/22/model-driven-forms-in-angular-2.html).

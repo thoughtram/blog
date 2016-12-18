@@ -319,10 +319,14 @@
 
   &--sticky {
     position: absolute;
-    top: 105px;
+    top: 95px;
     right: -18em;
     left: inherit;
     width: 250px;
+
+    .thtrm-section-text {
+      font-size: 16px;
+    }
   }
 
   &--without-description {

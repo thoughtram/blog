@@ -16,9 +16,9 @@ related_posts:
   - 'Exploring Rx Operators: flatMap'
   - Cold vs Hot Observables
   - Taking advantage of Observables in Angular 2 - Part 2
-  - Taking advantage of Observables in Angular 2
-  - Testing Services with Http in Angular 2
-  - Two-way Data Binding in Angular 2
+  - Taking advantage of Observables in Angular
+  - Testing Services with Http in Angular
+  - Two-way Data Binding in Angular
 related_videos:
   - '181311615'
   - '181311609'
@@ -29,7 +29,7 @@ related_videos:
 
 ---
 
-In [Taking advantage of Observables Part one](/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html) and [two](/angular/2016/01/07/taking-advantage-of-observables-in-angular2-pt2.html) we already highlighted the importance of Observables in Angular 2. We believe that mastering Observables can make a key difference in how we write our applications. Well, if you agree, here are some good news! This article is the first of a series of posts where we'll explore operators of the Reactive Extensions for JavaScript (RxJS) and their practical applications.
+In [Taking advantage of Observables Part one](/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html) and [two](/angular/2016/01/07/taking-advantage-of-observables-in-angular2-pt2.html) we already highlighted the importance of Observables in Angular. We believe that mastering Observables can make a key difference in how we write our applications. Well, if you agree, here are some good news! This article is the first of a series of posts where we'll explore operators of the Reactive Extensions for JavaScript (RxJS) and their practical applications.
 
 The first operator we want to explore is the most commonly used one: `map`.
 

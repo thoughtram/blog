@@ -1,11 +1,11 @@
 ---
 layout: post
-title: Angular 2 Change Detection Explained
+title: Angular Change Detection Explained
 imageUrl: /images/change-detection-explained-bg.jpeg
 date: 2016-02-22T00:00:00.000Z
-update_date: 2016-11-08T00:00:00.000Z
+update_date: 2016-12-18T00:00:00.000Z
 summary: >-
-  Wonder how change detection in Angular 2 works?  This article is a write-up of
+  Wonder how change detection in Angular works?  This article is a write-up of
   that talk and discusses change detection and tricks to make is super fast.
 categories:
   - angular
@@ -14,12 +14,12 @@ tags:
 topic: changedetection
 author: pascal_precht
 related_posts:
-  - Testing Services with Http in Angular 2
-  - Two-way Data Binding in Angular 2
-  - Resolving route data in Angular 2
-  - Angular 2 Animations - Foundation Concepts
+  - Testing Services with Http in Angular
+  - Two-way Data Binding in Angular
+  - Resolving route data in Angular
+  - Angular Animations - Foundation Concepts
   - Angular 2 is out - Get started here
-  - Bypassing Providers in Angular 2
+  - Bypassing Providers in Angular
 related_videos:
   - '175255006'
   - '193524896'
@@ -30,7 +30,7 @@ related_videos:
 
 ---
 
-[NG-NL](http://ng-nl.org) has happened and it was awesome! I had the honour of giving a talk about change detection in Angular 2 and it seemed to be a huge success as attendees liked it a lot. With this article, we'd like to transform the talk into a written version, so everyone can read about how Angular's change detection works and how to make it faster for our use cases. If you're interested in the talk, you can view the [slides here](http://pascalprecht.github.io/slides/angular-2-change-detection-explained/#/) and <s>as soon as the talk recording is up, you'll find it here as well</s> [watch the recording](https://www.youtube.com/watch?v=CUxD91DWkGM) on Youtube.
+[NG-NL](http://ng-nl.org) has happened and it was awesome! I had the honour of giving a talk about change detection in Angular and it seemed to be a huge success as attendees liked it a lot. With this article, we'd like to transform the talk into a written version, so everyone can read about how Angular's change detection works and how to make it faster for our use cases. If you're interested in the talk, you can view the [slides here](http://pascalprecht.github.io/slides/angular-2-change-detection-explained/#/) and <s>as soon as the talk recording is up, you'll find it here as well</s> [watch the recording](https://www.youtube.com/watch?v=CUxD91DWkGM) on Youtube.
 
 Now let's take a look at this beast.
 
@@ -53,7 +53,7 @@ However, it gets trickier when a change happens at runtime. Some time later when
 
 This can be tackled in many different ways. One way, for instance, is simply making a http request and re-rendering the whole page. Another approach is the concept of diffing the DOM of the new state with the previous state and only render the difference, which is what ReactJS is doing with **Virtual DOM**.
 
-[Tero](http://twitter.com/teropa) has written an awesome article on [Change and its detection in JavaScript frameworks](http://teropa.info/blog/2015/03/02/change-and-its-detection-in-javascript-frameworks.html), we recommend checking it out if you're more interested in how different frameworks solve this issue. In this article we're going to focus on Angular 2.
+[Tero](http://twitter.com/teropa) has written an awesome article on [Change and its detection in JavaScript frameworks](http://teropa.info/blog/2015/03/02/change-and-its-detection-in-javascript-frameworks.html), we recommend checking it out if you're more interested in how different frameworks solve this issue. In this article we're going to focus on Angular version >= 2.x.
 
 So basically the goal of change detection is always projecting data and its change.
 
@@ -82,7 +82,7 @@ class MyApp {
 {% endraw %}
 {% endhighlight %}
 
-If this is the first time you're seeing an Angular 2 component, you might want to read our article on [building a tabs component](http://blog.thoughtram.io/angular/2015/04/09/developing-a-tabs-component-in-angular-2.html).
+If this is the first time you're seeing an Angular component, you might want to read our article on [building a tabs component](/angular/2015/04/09/developing-a-tabs-component-in-angular-2.html).
 
 The component above simply displays two properties and provides a method to change them when the button in the template is clicked. The moment this particular button is clicked is the moment when application state has changed, because it changes the properties of the component. That's the moment we want to update the view.
 
@@ -122,7 +122,7 @@ Alright, we now know what causes application state change. But what is it that t
 
 Angular allows us to use native APIs directly. There are no interceptor methods we have to call so Angular gets notified to update the DOM. Is that pure magic?
 
-If you've followed our latest articles, you know that [Zones](http://blog.thoughtram.io/angular/2016/01/22/understanding-zones.html) take care of this. In fact, Angular comes with its own zone called `NgZone`, which we've written about in our article [Zones in Angular 2](http://blog.thoughtram.io/angular/2016/02/01/zones-in-angular-2.html). You might want to read that, too.
+If you've followed our latest articles, you know that [Zones](/angular/2016/01/22/understanding-zones.html) take care of this. In fact, Angular comes with its own zone called `NgZone`, which we've written about in our article [Zones in Angular](/angular/2016/02/01/zones-in-angular-2.html). You might want to read that, too.
 
 The short version is, that somewhere in Angular's source code, there's this thing called `ApplicationRef`, which listens to `NgZones` `onTurnDone` event. Whenever this event is fired, it executes a `tick()` function which essentially performs change detection.
 
@@ -148,7 +148,7 @@ class ApplicationRef {
 
 ## Change Detection
 
-Okay cool, we now know when change detection is triggered, but how is it performed? Well, the first thing we need to notice is that, in Angular 2, **each component has its own change detector**.
+Okay cool, we now know when change detection is triggered, but how is it performed? Well, the first thing we need to notice is that, in Angular, **each component has its own change detector**.
 
 <img style="background: #0c4eb2; padding: 0 1em;" src="/images/cd-tree-2.svg">
 
@@ -280,7 +280,7 @@ That's it! Now imagine a bigger component tree. We can skip entire subtrees when
 
 <img style="background: #0c4eb2; padding: 0 1em;" src="/images/cd-tree-8.svg">
 
-[Jurgen Van De Moere](http://twitter.com/jvandemo) has written an [in-depth article](http://www.jvandemo.com/how-i-optimized-minesweeper-using-angular-2-and-immutable-js-to-make-it-insanely-fast/) on how he made a minesweeper game built with Angular 2 and Immutable.js blazingly fast. Make sure to check that one out.
+[Jurgen Van De Moere](http://twitter.com/jvandemo) has written an [in-depth article](http://www.jvandemo.com/how-i-optimized-minesweeper-using-angular-2-and-immutable-js-to-make-it-insanely-fast/) on how he made a minesweeper game built with Angular and Immutable.js blazingly fast. Make sure to check that one out.
 
 ## Observables
 
@@ -314,7 +314,7 @@ Let's say we build an e-commerce application with a shopping cart. Whenever a us
 
 `CartBadgeCmp` does exactly that. It has a `counter` and an input property `addItemStream`, which is a stream of events that gets fired, whenever a product is added to the shopping cart.
 
-We won't go into much detail on how observables work in this article. If you want to learn more about observables, make sure to read our article on [taking advantage of Observables in Angular 2](http://blog.thoughtram.io/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html).
+We won't go into much detail on how observables work in this article. If you want to learn more about observables, make sure to read our article on [taking advantage of Observables in Angular](http://blog.thoughtram.io/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html).
 
 In addition, we set the change detection strategy to `OnPush`, so change detection isn't performed all the time, only when the component's input properties change.
 
@@ -374,4 +374,4 @@ Hopefully this made it a little bit more clear how using immutable data structur
 
 I'd like to thank [Jurgen Van De Moere](http://twitter.com/jvandemo) for being a **huge** help and support when I was preparing this talk. He spent a lot of time with me discussing my understandings and raised a lot of good questions that helped me put this content together. He also made sure that the demos look as nice as they do. His CSS skills are amazing - Jurgen, thank you so so much for being such a supportive and nice person.
 
-I'd also like to thank [Victor Savkin](http://twitter.com/victorsavkin) for answering a lot of my questions regarding change detection in Angular 2, plus all the very informative articles that he's written - Thanks Victor!
+I'd also like to thank [Victor Savkin](http://twitter.com/victorsavkin) for answering a lot of my questions regarding change detection in Angular, plus all the very informative articles that he's written - Thanks Victor!

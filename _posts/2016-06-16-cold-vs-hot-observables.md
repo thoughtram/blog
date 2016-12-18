@@ -3,7 +3,7 @@ layout: post
 title: Cold vs Hot Observables
 imageUrl: /images/banner/hot-vs-cold-observables.jpeg
 date: 2016-06-16T00:00:00.000Z
-update_date: 2016-11-08T00:00:00.000Z
+update_date: 2016-12-18T00:00:00.000Z
 summary: >-
   In this article we are going to demystify what the term hot vs cold means when
   it comes to Observables.
@@ -26,9 +26,9 @@ related_posts:
   - 'Exploring Rx Operators: flatMap'
   - 'Exploring Rx Operators: map'
   - Taking advantage of Observables in Angular 2 - Part 2
-  - Taking advantage of Observables in Angular 2
-  - Testing Services with Http in Angular 2
-  - Two-way Data Binding in Angular 2
+  - Taking advantage of Observables in Angular
+  - Testing Services with Http in Angular
+  - Two-way Data Binding in Angular
 related_videos:
   - '181311615'
   - '181311609'
@@ -39,7 +39,7 @@ related_videos:
 
 ---
 
-One of the most exciting topics around Angular 2 is it's relationship to Observables. It's such an essential part of the framework that we cover a fair amount of Observable knowledge in our [Angular 2 Master Class](http://thoughtram.io/angular2-master-class.html). That said, the topic is so big that one could easily run a 3-days workshop on Observables itself.
+One of the most exciting topics around Angular is it's relationship to Observables. It's such an essential part of the framework that we cover a fair amount of Observable knowledge in our [Angular Master Class](http://thoughtram.io/angular2-master-class.html). That said, the topic is so big that one could easily run a 3-days workshop on Observables itself.
 
 There's one particular area of Observables that we don't explicitly touch on in our workshop but that keeps coming up in questions every single time that we teach them.
 
@@ -253,7 +253,7 @@ As a rule of thumb, when you have a cold Observable and you want multiple subscr
 
 ## Caveat: Http with Observables
 
-The `Http` service in Angular 2 returns cold Observables and the implications may surprise us.
+The `Http` service in Angular >= 2.x returns cold Observables and the implications may surprise us.
 
 Consider this [simple component](http://plnkr.co/edit/Vq9fHqfTIo6OU746LW1c?p=preview) that requests a `contacts.json` file from a server and renders the contacts as a list in the template.
 

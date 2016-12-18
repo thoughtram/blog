@@ -2,19 +2,20 @@
 layout: post
 title: 'Angular 2 Master Class: Jump Start'
 date: 2015-12-21T00:00:00.000Z
-updatedate: 2015-12-21T00:00:00.000Z
+updatedate: 2016-12-21T00:00:00.000Z
 summary: >-
-  Angular 2 beta has been released and the year 2016 is right around the corner.
-  We'd like to share some very exciting news that many have  been waiting for.
+  Angular 2.x beta has been released and the year 2016 is right around the
+  corner. We'd like to share some very exciting news that many have  been
+  waiting for.
 categories:
   - announcements
 author: pascal_precht
 related_posts:
-  - Testing Services with Http in Angular 2
+  - Testing Services with Http in Angular
   - Understanding XOR with Keras and TensorFlow
   - Announcing Angular 2 Master Class in Sydney
-  - Two-way Data Binding in Angular 2
-  - Resolving route data in Angular 2
+  - Two-way Data Binding in Angular
+  - Resolving route data in Angular
   - Beginning Machine Learning with Keras and TensorFlow
 related_videos:
   - '175255006'

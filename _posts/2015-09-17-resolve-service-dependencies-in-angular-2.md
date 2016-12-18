@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Understanding @Injectable in Angular 2
+title: Understanding @Injectable in Angular
 date: 2015-09-17T00:00:00.000Z
 update_date: 2016-11-08T00:00:00.000Z
 summary: >-
@@ -15,12 +15,12 @@ videos:
   - url: 'http://casts.thoughtram.io/embedded/181222350'
 author: pascal_precht
 related_posts:
-  - Testing Services with Http in Angular 2
-  - Two-way Data Binding in Angular 2
-  - Resolving route data in Angular 2
-  - Angular 2 Animations - Foundation Concepts
+  - Testing Services with Http in Angular
+  - Two-way Data Binding in Angular
+  - Resolving route data in Angular
+  - Angular Animations - Foundation Concepts
   - Angular 2 is out - Get started here
-  - Bypassing Providers in Angular 2
+  - Bypassing Providers in Angular
 related_videos:
   - '175255006'
   - '193524896'
@@ -31,9 +31,9 @@ related_videos:
 
 ---
 
-If you're following our articles on [Dependency Injection in Angular 2](/angular/2015/05/18/dependency-injection-in-angular-2.html), you know how the DI system in Angular works. It takes advantage of metadata on our code, added through annotations, to get all the information it needs so it can resolve dependencies for us.
+If you're following our articles on [Dependency Injection in Angular](/angular/2015/05/18/dependency-injection-in-angular-2.html), you know how the DI system in Angular works. It takes advantage of metadata on our code, added through annotations, to get all the information it needs so it can resolve dependencies for us.
 
-Angular 2 applications can basically be written in any language, as long as it compiles to JavaScript in some way. When writing our application in TypeScript, we use decorators to add metadata to our code. Sometimes, we can even omit some decorators and simply rely on type annotations. However, it turns out that, when it comes to DI, we might run into unexpected behaviour when injecting dependencies into services.
+Angular applications can basically be written in any language, as long as it compiles to JavaScript in some way. When writing our application in TypeScript, we use decorators to add metadata to our code. Sometimes, we can even omit some decorators and simply rely on type annotations. However, it turns out that, when it comes to DI, we might run into unexpected behaviour when injecting dependencies into services.
 
 This article discusses what this unexpected problem is, why it exists and how it can be solved.
 
@@ -48,7 +48,7 @@ This article discusses what this unexpected problem is, why it exists and how it
 
 ## Injecting Service Dependencies
 
-Let's say we have a simple Angular 2 component which has a `DataService` dependency. It could look something like this:
+Let's say we have a simple Angular component which has a `DataService` dependency. It could look something like this:
 
 {% highlight js %}
 {% raw %}
@@ -69,7 +69,7 @@ class AppComponent {
 {% endraw %}
 {% endhighlight %}
 
-`DataService` on the other hand is a simple class (because that's what a service in Angular 2 is), that provides a method to return some items.
+`DataService` on the other hand is a simple class (because that's what a service in Angular is), that provides a method to return some items.
 
 {% highlight js %}
 {% raw %}
@@ -108,7 +108,7 @@ Of course, in order to actually be able to ask for something of type `DataServic
 {% endraw %}
 {% endhighlight %}
 
-Until now there's nothing new here. If this *is* new to you, you might want to read our article on [Dependency Injection in Angular 2](/angular/2015/05/18/dependency-injection-in-angular-2.html) first.
+Until now there's nothing new here. If this *is* new to you, you might want to read our article on [Dependency Injection in Angular](/angular/2015/05/18/dependency-injection-in-angular-2.html) first.
 
 So where is the problem? Well, the problem occurs as soon as we try to inject a dependency into our service. We could for example use `Http` in our `DataService` to fetch our data from a remote server. Let's quickly do that. First, we need  to import Angular's `HttpModule` into our application module.
 

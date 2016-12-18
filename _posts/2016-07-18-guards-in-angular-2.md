@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Protecting Routes using Guards in Angular 2
+title: Protecting Routes using Guards in Angular
 imageUrl: /images/banner/protecting-routes-using-guards-in-angular-2.jpg
 date: 2016-07-18T00:00:00.000Z
-update_date: 2016-08-11T00:00:00.000Z
+update_date: 2016-12-18T00:00:00.000Z
 summary: >-
   Angular's router enables protecting routes using guards and in this article
   we're going to discuss how to implement them.
@@ -19,11 +19,11 @@ topic: routing
 author: pascal_precht
 related_posts:
   - Futuristic Routing in Angular
-  - Resolving route data in Angular 2
-  - Routing in Angular 2 revisited
-  - Routing in Angular 2
-  - Testing Services with Http in Angular 2
-  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular
+  - Routing in Angular revisited
+  - Routing in Angular
+  - Testing Services with Http in Angular
+  - Two-way Data Binding in Angular
 related_videos:
   - '175218351'
   - '189618526'
@@ -34,9 +34,9 @@ related_videos:
 
 ---
 
-In our last article, [Routing in Angular 2 revisited](/angular/2016/06/14/routing-in-angular-2-revisited.html), we talked about the latest changes in the router APIs. While we covered how to set up basic routes, access parameters and link to other components, we haven't really talked about more sophisticated use cases like protecting routes.
+In our last article, [Routing in Angular revisited](/angular/2016/06/14/routing-in-angular-2-revisited.html), we talked about the latest changes in the router APIs. While we covered how to set up basic routes, access parameters and link to other components, we haven't really talked about more sophisticated use cases like protecting routes.
 
-Protecting routes is a very common task when building applications, as we want to prevent our users from accessing areas that they're not allowed to access, or, we might want to ask them for confirmation when leaving a certain area. Angular 2's router provides a feature called **Guards** that try to solve exactly that problem. In this article, we'd like to take a look at the different types of guards and how to implement them for actual use cases.
+Protecting routes is a very common task when building applications, as we want to prevent our users from accessing areas that they're not allowed to access, or, we might want to ask them for confirmation when leaving a certain area. Angular's router provides a feature called **Navigation Guards** that try to solve exactly that problem. In this article, we'd like to take a look at the different types of guards and how to implement them for actual use cases.
 
 {% include demos-and-videos-buttons.html post=page %}
 
@@ -75,7 +75,7 @@ export class AppModule {}
 {% endraw %}
 {% endhighlight %}
 
-As we can see, it's really just a provider with some made up token that resolves to a guard function that returns `true` (if `provider` doesn't mean anything to you, go and check out our article on [Dependency Injection in Angular 2](/angular/2015/05/18/dependency-injection-in-angular-2.html)). Since it's always returning `true`, this guard is not protecting anything, as it will always activate the route that uses it. However, this is really just to demonstrate a guard implementation. We also notice that we're using a string token, which works fine but what we really want is an [`OpaqueToken`](/angular/2016/05/23/opaque-tokens-in-angular-2.html) to not run into name collisions.
+As we can see, it's really just a provider with some made up token that resolves to a guard function that returns `true` (if `provider` doesn't mean anything to you, go and check out our article on [Dependency Injection in Angular](/angular/2015/05/18/dependency-injection-in-angular-2.html)). Since it's always returning `true`, this guard is not protecting anything, as it will always activate the route that uses it. However, this is really just to demonstrate a guard implementation. We also notice that we're using a string token, which works fine but what we really want is an [`OpaqueToken`](/angular/2016/05/23/opaque-tokens-in-angular-2.html) to not run into name collisions.
 
 Once a guard is registered with a token, we can use it in our route configuration. The following route configuration has the `CanAlwaysActivateGuard` attached, which gets executed when routing to that specific route.
 

@@ -40,7 +40,7 @@ Guess what, we listened! Today we are very happy to announce that we've extended
 
 <img src="/images/angular-master-class-extended.png">
 
-Next to our existing material, we now offer enough slides and exercises for everything about Forms, the UI-Router and server communication. We also talk about **migration** and how you can prepare your applications for Angular 2 today. You can find more information at our [dedicated website](http://thoughtram.io/angular-master-class.html).
+Next to our existing material, we now offer enough slides and exercises for everything about Forms, the UI-Router and server communication. We also talk about **migration** and how you can prepare your applications for Angular 2.x today. You can find more information at our [dedicated website](http://thoughtram.io/angular-master-class.html).
 
 And of course, that's not enough. We've been frequently asked about a training on everything about testing your Angular applications. **It's on the way, so stay tuned!**
 
@@ -52,9 +52,9 @@ Next to our public events we also do in-house trainings at companies that want t
 
 If your company has very specific needs, don't hesitate to ask!
 
-## I want Angular 2!
+## I want Angular 2.x!
 
-We too! Since a lot of people ask us if we also do workshops on Angular 2, **the answer is yes**! Angular 2 is not really around the corner, but actively developed so it can be shipped as soon as possible. We're following the development every day, contribute to the framework and [write](http://blog.thoughtram.io/categories/angular) about isolated parts of it so you can already start learning. 
+We too! Since a lot of people ask us if we also do workshops on Angular 2.x, **the answer is yes**! Angular 2.x is not really around the corner, but actively developed so it can be shipped as soon as possible. We're following the development every day, contribute to the framework and [write](http://blog.thoughtram.io/categories/angular) about isolated parts of it so you can already start learning. 
 
-We also want to be able to offer you a very good training experience on Angular 2 as soon as it is stable, that's why we are already working on material. If this is interesting to you, make sure to follow us on [twitter](http://twitter.com/thoughtram) where we regularly post updates on our trainings.
+We also want to be able to offer you a very good training experience on Angular 2.x as soon as it is stable, that's why we are already working on material. If this is interesting to you, make sure to follow us on [twitter](http://twitter.com/thoughtram) where we regularly post updates on our trainings.
 

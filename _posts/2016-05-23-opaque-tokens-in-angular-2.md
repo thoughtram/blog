@@ -1,8 +1,8 @@
 ---
 layout: post
-title: How to prevent name collisions in Angular 2 providers
+title: How to prevent name collisions in Angular providers
 date: 2016-05-23T00:00:00.000Z
-update_date: 2016-11-08T00:00:00.000Z
+update_date: 2016-12-18T00:00:00.000Z
 imageUrl: /images/banner/opaque-tokens-in-angular-2.jpeg
 summary: >-
   Angular provides a mechanism to avoid name collisions in provider tokens. In
@@ -18,11 +18,11 @@ videos:
   - url: 'http://casts.thoughtram.io/embedded/181222354'
 author: pascal_precht
 related_posts:
-  - Angular 2 Providers using Map Literals
-  - Testing Services with Http in Angular 2
-  - Two-way Data Binding in Angular 2
-  - Resolving route data in Angular 2
-  - Angular 2 Animations - Foundation Concepts
+  - Angular Providers using Map Literals
+  - Testing Services with Http in Angular
+  - Two-way Data Binding in Angular
+  - Resolving route data in Angular
+  - Angular Animations - Foundation Concepts
   - Angular 2 is out - Get started here
 related_videos:
   - '175255006'
@@ -34,7 +34,7 @@ related_videos:
 
 ---
 
-If you've read our article series on everything dependency injection in Angular 2, you've probably realised that Angular is doing a pretty good job on that. We can either use string or type tokens to make dependencies available to the injector. However, when using string tokens, there's a possibility of running into naming collisions because... well, maybe someone else has used the same token for a different provider. In this article we're going to learn how so called "opaque tokens" solve this problem.
+If you've read our article series on everything dependency injection in Angular, you've probably realised that Angular is doing a pretty good job on that. We can either use string or type tokens to make dependencies available to the injector. However, when using string tokens, there's a possibility of running into naming collisions because... well, maybe someone else has used the same token for a different provider. In this article we're going to learn how so called "opaque tokens" solve this problem.
 
 {% include demos-and-videos-buttons.html post=page %}
 
@@ -50,7 +50,7 @@ Before we jump into the actual problem we want to solve, let's first recap the d
 
 ## String Tokens vs Type Tokens
 
-Angular 2 DI injects singleton instances which are created by provider-registered factories. And it is these instances that are injected at runtime. In order to configure your application DI and associate a factory with a token, we have to setup providers. A couple weeks ago we blogged how [providers can be created using Map literals](/angular/2016/05/13/angular-2-providers-using-map-literals.html), if you haven't read this one yet we recommend to check it out, as this article pretty much builds up on that one.
+Angular DI injects singleton instances which are created by provider-registered factories. And it is these instances that are injected at runtime. In order to configure your application DI and associate a factory with a token, we have to setup providers. A couple weeks ago we blogged how [providers can be created using Map literals](/angular/2016/05/13/angular-2-providers-using-map-literals.html), if you haven't read this one yet we recommend to check it out, as this article pretty much builds up on that one.
 
 The bottom line is that a provider token can be either a string or a type. Depending on our use case, we want to use one or the other. For example, if we have a `DataService` class, and all we want to do is inject an instance of that class when we ask for a dependency of that type, we would use `DataService` as a provider token like this:
 

@@ -16,8 +16,8 @@ related_posts:
   - Cold vs Hot Observables
   - 'Exploring Rx Operators: map'
   - Taking advantage of Observables in Angular 2 - Part 2
-  - Taking advantage of Observables in Angular 2
-  - Testing Services with Http in Angular 2
+  - Taking advantage of Observables in Angular
+  - Testing Services with Http in Angular
   - Understanding XOR with Keras and TensorFlow
 related_videos:
   - '181311615'

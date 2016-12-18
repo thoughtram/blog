@@ -24,11 +24,11 @@ topic: http
 author: christoph_burgdorf
 related_posts:
   - 'Exploring Rx Operators: flatMap'
-  - Taking advantage of Observables in Angular 2
+  - Taking advantage of Observables in Angular
   - Cold vs Hot Observables
   - 'Exploring Rx Operators: map'
-  - Testing Services with Http in Angular 2
-  - Two-way Data Binding in Angular 2
+  - Testing Services with Http in Angular
+  - Two-way Data Binding in Angular
 related_videos:
   - '181311615'
   - '181311609'

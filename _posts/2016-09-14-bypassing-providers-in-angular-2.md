@@ -1,8 +1,9 @@
 ---
 layout: post
-title: Bypassing Providers in Angular 2
+title: Bypassing Providers in Angular
 imageUrl: /images/banner/bypassing-providers-in-angular-2.jpg
 date: 2016-09-14T00:00:00.000Z
+update_date: 2016-12-18T00:00:00.000Z
 summary: >-
   Dependencies are provided from the nearest ancestor provider in the injector
   tree. This article shows how to bypass it.
@@ -16,12 +17,12 @@ demos:
     title: Bypassing Providers
 author: pascal_precht
 related_posts:
-  - Testing Services with Http in Angular 2
-  - Two-way Data Binding in Angular 2
-  - Resolving route data in Angular 2
-  - Angular 2 Animations - Foundation Concepts
+  - Testing Services with Http in Angular
+  - Two-way Data Binding in Angular
+  - Resolving route data in Angular
+  - Angular Animations - Foundation Concepts
   - Angular 2 is out - Get started here
-  - Custom Form Controls in Angular 2
+  - Custom Form Controls in Angular
 related_videos:
   - '175255006'
   - '193524896'
@@ -32,7 +33,7 @@ related_videos:
 
 ---
 
-We covered a lot of different things everything dependency injection in Angular 2. However, at our latest training, one of our students came up with a very interesting question: 
+We covered a lot of different things everything dependency injection in Angular. However, at our latest training, one of our students came up with a very interesting question: 
 
 >> "Can I bypass a provider to get a dependency from another ancestor provider?"
 
@@ -42,13 +43,13 @@ This was then followed by a very interesting, collaborative discussion with the 
 
 ## Understanding the Problem
 
-As discussed in other [articles](/angular/2015/05/18/dependency-injection-in-angular-2.html), dependencies in Angular 2 are singletons inside their injector containers they belong to. If we need multiple dependency instances, we can take advantage of the injector tree, and provide different instances via different providers.
+As discussed in other [articles](/angular/2015/05/18/dependency-injection-in-angular-2.html), dependencies in Angular are singletons inside their injector containers they belong to. If we need multiple dependency instances, we can take advantage of the injector tree, and provide different instances via different providers.
 
 To illustrate what that means, let's take a look at the following figure:
 
 <img src="/images/injector-tree.svg" alt="Injector Tree">
 
-What we see here is a tree of components, which is usually what an application in Angular 2 is composed of. We also see that every component comes with its own injector. This allows us to configure how and what is going to be created when we ask for dependencies, on a component level.
+What we see here is a tree of components, which is usually what an application in Angular is composed of. We also see that every component comes with its own injector. This allows us to configure how and what is going to be created when we ask for dependencies, on a component level.
 
 Let's say we have an application where we use a `DataService` to perform actions like fetching data, adding data and deleting data. To make this service injectable,  we need to create a provider for it first.
 
@@ -96,7 +97,7 @@ This will affect the dependency lookup in the sense that all children components
 
 <img src="/images/injector-tree-3.svg" alt="Injector Tree with multiple Providers">
 
-As we can see, all components in the left part of the tree get their dependency instance from a different provider than the components in the right part of the tree. Okay cool, nothing new here, this has all been discussed in our guide on [DI in Angular 2](/angular/2015/05/18/dependency-injection-in-angular-2.html).
+As we can see, all components in the left part of the tree get their dependency instance from a different provider than the components in the right part of the tree. Okay cool, nothing new here, this has all been discussed in our guide on [DI in Angular](/angular/2015/05/18/dependency-injection-in-angular-2.html).
 
 However, now we have a problem. What if we **want** to get a dependency instance of the root provider (or just another ancestor), essentially bypassing the nearest provider, even though our component is in the left part of the tree? To illustrate the problem, here another figure:
 

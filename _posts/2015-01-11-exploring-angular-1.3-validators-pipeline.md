@@ -15,11 +15,11 @@ tags:
   - forms
 author: pascal_precht
 related_posts:
-  - Two-way Data Binding in Angular 2
-  - Custom Form Controls in Angular 2
-  - Reactive Forms in Angular 2
-  - Template-driven Forms in Angular 2
-  - Custom Validators in Angular 2
+  - Two-way Data Binding in Angular
+  - Custom Form Controls in Angular
+  - Reactive Forms in Angular
+  - Template-driven Forms in Angular
+  - Custom Validators in Angular
   - Futuristic Routing in Angular
 related_videos:
   - '189792758'

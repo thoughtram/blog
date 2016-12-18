@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Custom Form Controls in Angular 2
+title: Custom Form Controls in Angular
 imageUrl: /images/banner/custom-form-controls-in-angular-2.jpg
 date: 2016-07-27T00:00:00.000Z
-update_date: 2016-08-11T00:00:00.000Z
+update_date: 2016-12-18T00:00:00.000Z
 summary: >-
   Angular makes it very easy to create custom form controls. Read on to learn
   how to do it!
@@ -19,11 +19,11 @@ demos:
 author: pascal_precht
 related_posts:
   - Validators Pipeline in Angular 1.3
-  - Two-way Data Binding in Angular 2
-  - Reactive Forms in Angular 2
-  - Template-driven Forms in Angular 2
-  - Custom Validators in Angular 2
-  - Testing Services with Http in Angular 2
+  - Two-way Data Binding in Angular
+  - Reactive Forms in Angular
+  - Template-driven Forms in Angular
+  - Custom Validators in Angular
+  - Testing Services with Http in Angular
 related_videos:
   - '189792758'
   - '189785428'
@@ -35,7 +35,7 @@ related_videos:
 ---
 
 
-There are many things that Angular helps us out with when creating forms. We've covered several topics on [Forms in Angular 2](/forms-in-angular-2), like model-driven forms and template-driven forms. If you haven't read those articles yet, we highly recommend you to do so as this one is based on them. [Almero Steyn](http://twitter.com/kryptos_rsa), one of our training students, who later on contributed to the official documentation as part of the Docs Authoring Team for Angular 2, has also written a very nice [introduction](http://almerosteyn.com/2016/04/linkup-custom-control-to-ngcontrol-ngmodel) to creating custom controls.
+There are many things that Angular helps us out with when creating forms. We've covered several topics on [Forms in Angular](/forms-in-angular-2), like model-driven forms and template-driven forms. If you haven't read those articles yet, we highly recommend you to do so as this one is based on them. [Almero Steyn](http://twitter.com/kryptos_rsa), one of our training students, who later on contributed to the official documentation as part of the Docs Authoring Team for Angular, has also written a very nice [introduction](http://almerosteyn.com/2016/04/linkup-custom-control-to-ngcontrol-ngmodel) to creating custom controls.
 
 His article inspired us and we would like to take it a step further and explore how to create custom form controls that integrate nicely with Angular's form APIs.
 
@@ -63,7 +63,7 @@ So whenever we think of creating a custom form control we should ask ourselves:
 - Does it behave differently on different platforms?
 - How does it validate?
 
-There are probably more things to consider, but these are the most important ones. If we do decide to create a custom form control (in Angular 2), we should make sure that:
+There are probably more things to consider, but these are the most important ones. If we do decide to create a custom form control (in Angular), we should make sure that:
 
 - It properly propagates changes to the DOM/View
 - It properly propagates changes to the Model
@@ -154,7 +154,7 @@ Okay cool, but now we want to make it work with Angular's form APIs. Ideally, wh
 {% endraw %}
 {% endhighlight %}
 
-If that syntax is new to you, check out our article on [Template-Driven forms in Angular 2](/angular/2016/03/21/template-driven-forms-in-angular-2.html). Okay but how do we get there? We need to learn what a `ControlValueAccessor` is, because that's the thing that Angular uses to build a bridge between a form model and a DOM element.
+If that syntax is new to you, check out our article on [Template-Driven forms in Angular](/angular/2016/03/21/template-driven-forms-in-angular-2.html). Okay but how do we get there? We need to learn what a `ControlValueAccessor` is, because that's the thing that Angular uses to build a bridge between a form model and a DOM element.
 
 ## Understanding ControlValueAccessor
 
@@ -318,7 +318,7 @@ class CounterInputComponent implements ControlValueAccessor {
 
 Implementing the interface is only half of the story. As we know, interfaces don't exist in ES5, which means once the code is transpiled, that information is gone. So after all, it happens that our component implements the interface, but we still need to make Angular pick it up as such.
 
-In our article on [multi-providers in Angular 2](/angular2/2015/11/23/multi-providers-in-angular-2.html) we learned that there are some DI tokens that Angular uses to inject multiple values, to do certain things with them. For example there's the `NG_VALIDATORS` token that gives Angular all registered validators on a form control, and we can add our own validators to it.
+In our article on [multi-providers in Angular](/angular2/2015/11/23/multi-providers-in-angular-2.html) we learned that there are some DI tokens that Angular uses to inject multiple values, to do certain things with them. For example there's the `NG_VALIDATORS` token that gives Angular all registered validators on a form control, and we can add our own validators to it.
 
 In order to get hold of a `ControlValueAccessor` for a form control, Angular internaly injects all values that are registered on the `NG_VALUE_ACCESSOR` token. So all we need to do is to extend the multi-provider for `NG_VALUE_ACCESSOR` with our own value accessor instance (which is our component).
 
@@ -345,7 +345,7 @@ class CounterInputComponent {
 {% endraw %}
 {% endhighlight %}
 
-If this code doesn't make any sense to you, you should definitely check out our article on [multi-providers in Angular 2](/angular2/2015/11/23/multi-providers-in-angular-2.html), but the bottom line is, that we're adding our custom value accessor to the DI system so Angular can get an instance of it. We also have to use `useExisting` because `CounterInputComponent` will be already created as a directive dependency in the component that uses it. If we don't do that, we get a new instance as this is how DI in Angular works. The `forwardRef()` call is explained in [this article](/angular/2015/09/03/forward-references-in-angular-2.html).
+If this code doesn't make any sense to you, you should definitely check out our article on [multi-providers in Angular](/angular2/2015/11/23/multi-providers-in-angular-2.html), but the bottom line is, that we're adding our custom value accessor to the DI system so Angular can get an instance of it. We also have to use `useExisting` because `CounterInputComponent` will be already created as a directive dependency in the component that uses it. If we don't do that, we get a new instance as this is how DI in Angular works. The `forwardRef()` call is explained in [this article](/angular/2015/09/03/forward-references-in-angular-2.html).
 
 Awesome, our custom form control is now ready to be used!
 
@@ -355,7 +355,7 @@ We've already seen that the counter component works as intended, but now we want
 
 <h3 id="activating-form-apis">Activating form APIs</h3>
 
-As discussed in our article on [template-driven forms in Angular 2](/angular/2016/03/21/template-driven-forms-in-angular-2.html#activating-new-form-apis), we need to activate the form APIs like this:
+As discussed in our article on [template-driven forms in Angular](/angular/2016/03/21/template-driven-forms-in-angular-2.html#activating-new-form-apis), we need to activate the form APIs like this:
 
 {% highlight js %}
 {% raw %}
@@ -465,7 +465,7 @@ class AppComponent implements OnInit {
 
 ## Adding custom validation 
 
-One last thing we want to take a look at is how we can add validation to our custom control. In fact, we've already written an article on [custom validators in Angular 2](/angular/2016/03/14/custom-validators-in-angular-2.html) and everything we need to know is written down there. However, to make things more clear we'll add a custom validator to our custom form control by example.
+One last thing we want to take a look at is how we can add validation to our custom control. In fact, we've already written an article on [custom validators in Angular](/angular/2016/03/14/custom-validators-in-angular-2.html) and everything we need to know is written down there. However, to make things more clear we'll add a custom validator to our custom form control by example.
 
 Let's say we want to teach our control to become invalid when its `counterValue` is greater than `10` or smaller than `0`. Here's what it could look like:
 

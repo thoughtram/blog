@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Dependency Injection in Angular 2
+title: Dependency Injection in Angular
 redirect_from:
   - /angular/2015/05/18/dependency-injection-in-/
 date: 2015-05-18T00:00:00.000Z
-update_date: 2016-11-08T00:00:00.000Z
+update_date: 2016-12-16T00:00:00.000Z
 summary: >-
-  Angular 2 implements a very powerful dependency injection system that makes
+  Angular implements a very powerful dependency injection system that makes
   reusing services easy and flexible. Learn how it works!
 categories:
   - angular
@@ -24,12 +24,12 @@ videos:
   - url: 'http://casts.thoughtram.io/embedded/181222349'
 author: pascal_precht
 related_posts:
-  - Testing Services with Http in Angular 2
-  - Two-way Data Binding in Angular 2
-  - Resolving route data in Angular 2
-  - Angular 2 Animations - Foundation Concepts
+  - Testing Services with Http in Angular
+  - Two-way Data Binding in Angular
+  - Resolving route data in Angular
+  - Angular Animations - Foundation Concepts
   - Angular 2 is out - Get started here
-  - Bypassing Providers in Angular 2
+  - Bypassing Providers in Angular
 related_videos:
   - '175255006'
   - '193524896'
@@ -41,7 +41,7 @@ related_videos:
 ---
 
 
-Dependency injection has always been one of Angular's biggest features and selling points. It allows us to inject dependencies in different components across our applications, without needing to know, how those dependencies are created, or what dependencies they need themselves. However, it turns out that the current dependency injection system in Angular 1 has some problems that need to be solved in Angular 2, in order to build the next generation framework. In this article, we're going to explore the new dependency injection system for future generations.
+Dependency injection has always been one of Angular's biggest features and selling points. It allows us to inject dependencies in different components across our applications, without needing to know, how those dependencies are created, or what dependencies they need themselves. However, it turns out that the current dependency injection system in Angular 1.x has some problems that need to be solved in Angular 2.x, in order to build the next generation framework. In this article, we're going to explore the new dependency injection system for future generations.
 
 
 {% include demos-and-videos-buttons.html post=page %}
@@ -54,7 +54,7 @@ Before we jump right into the new stuff, lets first understand what dependency i
 
 An injector creates dependencies using providers. Providers are recipes that know how to create dependencies. Type annotations in TypeScript can be used to ask for dependencies and Every component has its own injector, resulting in an injector tree. The injector tree enables transient dependencies.
 
-#### How to inject a service in Angular 2?
+#### How to inject a service in Angular?
 
 1. Create a provider either on your `@NgModule`, `@Component`, or `@Directive` using a type or a string as provider token.
 2. Inject the service in the component's constructor where it's needed using that configured token.
@@ -69,7 +69,7 @@ An injector creates dependencies using providers. Providers are recipes that kno
 
 ## Dependency Injection as a pattern
 
-[Vojta Jina](http://twitter.com/vojtajina) gave a great talk on dependency injection at [ng-conf 2014](https://www.youtube.com/watch?v=_OGGsf1ZXMs). In this talk, he presented the story and ideas of the new DI system that will be developed for Angular 2. He also made very clear, that we can see DI as two things: As a design pattern and as a framework. Whereas the former explains the pattern that DI is all about, the latter can be a system that helps us out maintaining and assembling dependencies. I'd like to do the same in this article as it helps us understanding the concept first.
+[Vojta Jina](http://twitter.com/vojtajina) gave a great talk on dependency injection at [ng-conf 2014](https://www.youtube.com/watch?v=_OGGsf1ZXMs). In this talk, he presented the story and ideas of the new DI system that will be developed for Angular. He also made very clear, that we can see DI as two things: As a design pattern and as a framework. Whereas the former explains the pattern that DI is all about, the latter can be a system that helps us out maintaining and assembling dependencies. I'd like to do the same in this article as it helps us understanding the concept first.
 
 We start by taking a look at the following code and analysing the problems it introduces.
 
@@ -177,19 +177,19 @@ This is all cool but it turns out, that the existing DI has some problem though:
 
 These problems need to be solved in order to take the DI of Angular to the next level.
 
-## Dependency Injection in Angular 2
+## Dependency Injection in Angular
 
-Before we take a look at actual code, let's first understand the concept behind the new DI in Angular 2. The following graphic illustrates required components in the new DI system:
+Before we take a look at actual code, let's first understand the concept behind the new DI in Angular. The following graphic illustrates required components in the new DI system:
 
-<img alt="DI in Angular 2" src="/images/di-in-angular2-5.svg" style="margin-top: 3em;">
+<img alt="DI in Angular" src="/images/di-in-angular2-5.svg" style="margin-top: 3em;">
 
-The DI in Angular 2 basically consists of three things:
+The DI in Angular basically consists of three things:
 
 - **Injector** - The injector object that exposes APIs to us to create instances of dependencies.
 - **Provider** - A provider is like a recipe that tells the injector **how** to create an instance of a dependency. A provider takes a token and maps that to a factory function that creates an object.
 - **Dependency** - A dependency is the **type** of which an object should be created.
 
-Okay, now that we have an idea of what the concept looks like, lets see how this is translated to code. We stick with our `Car` class and it's dependencies. Here's how we can use Angular 2's DI to get an instance of `Car`:
+Okay, now that we have an idea of what the concept looks like, lets see how this is translated to code. We stick with our `Car` class and it's dependencies. Here's how we can use Angular's DI to get an instance of `Car`:
 
 {% highlight js %}
 import { ReflectiveInjector } from '@angular/core';
@@ -204,7 +204,7 @@ var injector = ReflectiveInjector.resolveAndCreate([
 var car = injector.get(Car);
 {% endhighlight %}
 
-We import `ReflectiveInjector` from Angular 2 which is an injector implementation that exposes some static APIs to create injectors. `resolveAndCreate()` is basically a factory function that creates an injector and takes a list of providers. We'll explore how those classes are supposed to be providers in a second, but for now we focus on `injector.get()`. See how we ask for an instance of `Car` in the last line? How does our injector know, which dependencies need to be created in order to instantiate a car? A look at our `Car` class will explain...
+We import `ReflectiveInjector` from Angular which is an injector implementation that exposes some static APIs to create injectors. `resolveAndCreate()` is basically a factory function that creates an injector and takes a list of providers. We'll explore how those classes are supposed to be providers in a second, but for now we focus on `injector.get()`. See how we ask for an instance of `Car` in the last line? How does our injector know, which dependencies need to be created in order to instantiate a car? A look at our `Car` class will explain...
 
 {% highlight js %}
 import { Inject } from 'angular2/core';
@@ -220,7 +220,7 @@ class Car {
 }
 {% endhighlight %}
 
-We import something called `Inject` from the framework and apply it as decorator to our constructor parameters. If you don't know what decorators are, you might want to read our articles on [the difference between decorators and annotations](http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html) and how to [write Angular 2 code in ES5](http://blog.thoughtram.io/angular/2015/05/09/writing-angular-2-code-in-es5.html).
+We import something called `Inject` from the framework and apply it as decorator to our constructor parameters. If you don't know what decorators are, you might want to read our articles on [the difference between decorators and annotations](http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html) and how to [write Angular code in ES5](http://blog.thoughtram.io/angular/2015/05/09/writing-angular-2-code-in-es5.html).
 
 The `Inject` decorator attaches meta data to our `Car` class, that is then consumed by the DI system afterwards. So basically what we're doing here, is that we tell the DI that the first constructor parameter should be an instance of type `Engine`, the second of type `Tires` and the third of type `Doors`. We can rewrite this code to TypeScript, which feels a bit more natural:
 
@@ -266,11 +266,11 @@ Right. We can map a token to pretty much what ever we want. Here we're mapping t
 
 This is super powerful, because this allows us not only to prevent name collisions, we can also create a type as interface and bind it to a concrete implementation. In addition to that, we can swap out the actual dependency for a token in a single place without touching any other code.
 
-Angular 2's DI introduces a couple of other provider recipes which we explore in the next section.
+Angular's DI introduces a couple of other provider recipes which we explore in the next section.
 
 ## Other provider configurations
 
-Sometimes, we don't want to get an instance of a class, but rather just a single value of something or a factory function where more configuration is needed. That's why the provider mechanism of Angular 2's DI comes with more than just one recipe. Lets take a quick look at them.
+Sometimes, we don't want to get an instance of a class, but rather just a single value of something or a factory function where more configuration is needed. That's why the provider mechanism of Angular's DI comes with more than just one recipe. Lets take a quick look at them.
 
 **Providing values**
 
@@ -336,7 +336,7 @@ class Car {
 }
 {% endhighlight %}
 
-As you can see, Angular 2's DI solves pretty much all issues we have with Angular 1's DI. But there's still one thing we haven't talked about yet. Does the new DI still create singletons? The answer is yes.
+As you can see, Angular's DI solves pretty much all issues we have with Angular 1's DI. But there's still one thing we haven't talked about yet. Does the new DI still create singletons? The answer is yes.
 
 ## Transient Dependencies and Child Injectors
 
@@ -372,11 +372,11 @@ The graphic shows three injectors where two of them are child injectors. Each in
 
 We can even configure the **visibility** of dependencies, and also until where a child injector should look things up. However, this will be covered in another [article](/angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html).
 
-## How is it used in Angular 2 then?
+## How is it used in Angular then?
 
-Now that we've learned how the DI in Angular 2 works, you might wonder how it is used in the framework itself. Do we have to create injectors manually when we build Angular 2 components? Luckily, the Angular team spent a lot of energy and time to find a nice API that hides all the injector machinery when building components in Angular 2.
+Now that we've learned how the DI in Angular works, you might wonder how it is used in the framework itself. Do we have to create injectors manually when we build Angular components? Luckily, the Angular team spent a lot of energy and time to find a nice API that hides all the injector machinery when building components in Angular.
 
-Lets take a look at the following simple Angular 2 component.
+Lets take a look at the following simple Angular component.
 
 {% highlight js %}
 @Component({
@@ -388,7 +388,7 @@ class App {
 }
 {% endhighlight %}
 
-Nothing special here. If this is entirely new to you, you might want to read our article on [building a zippy](/angular/2015/03/27/building-a-zippy-component-in-angular-2.html) component in Angular 2. Lets say we want to extend this component by using a `NameService` that is used in the component's constructor. Such a service could look something like this:
+Nothing special here. If this is entirely new to you, you might want to read our article on [building a zippy](/angular/2015/03/27/building-a-zippy-component-in-angular-2.html) component in Angular. Lets say we want to extend this component by using a `NameService` that is used in the component's constructor. Such a service could look something like this:
 
 {% highlight js %}
 class NameService {
@@ -457,8 +457,8 @@ To make things clear: `providers` doesn't configure the instances that will be i
 
 ## Conclusion
 
-The new dependency injection system in Angular solves all the problems that we have with the current DI in Angular 1. No name collisions anymore. It's an isolated component of the framework that can be used as standalone system, without Angular 2 itself.
+The new dependency injection system in Angular solves all the problems that we have with the current DI in Angular 1. No name collisions anymore. It's an isolated component of the framework that can be used as standalone system, without Angular itself.
 
-I gave a talk about that topic at [JSConf Budapest 2015](http://jsconfbp.com), <s>you can find the slides <a href="http://pascalprecht.github.io/slides/dependency-injection-for-future-generations/">here</a></s>. An updated version of the slide deck is [here](http://pascalprecht.github.io/slides/di-in-angular-2/#/). I would like to thank [Merrick](http://twitter.com/iammerrick) for letting me use some ideas of his talk at ng-vegas, and [Vojta](http://twitter.com/vojtajina) who built the original version of the new dependency injection system for Angular 2.
+I gave a talk about that topic at [JSConf Budapest 2015](http://jsconfbp.com), <s>you can find the slides <a href="http://pascalprecht.github.io/slides/dependency-injection-for-future-generations/">here</a></s>. An updated version of the slide deck is [here](http://pascalprecht.github.io/slides/di-in-angular-2/#/). I would like to thank [Merrick](http://twitter.com/iammerrick) for letting me use some ideas of his talk at ng-vegas, and [Vojta](http://twitter.com/vojtajina) who built the original version of the new dependency injection system for Angular.
 
 Check out the demos below!

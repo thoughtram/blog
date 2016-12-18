@@ -15,11 +15,11 @@ tags:
 author: christoph_burgdorf
 related_posts:
   - Understanding XOR with Keras and TensorFlow
-  - Testing Services with Http in Angular 2
+  - Testing Services with Http in Angular
   - Announcing Angular 2 Master Class in Sydney
-  - Two-way Data Binding in Angular 2
-  - Resolving route data in Angular 2
-  - Angular 2 Animations - Foundation Concepts
+  - Two-way Data Binding in Angular
+  - Resolving route data in Angular
+  - Angular Animations - Foundation Concepts
 related_videos:
   - '175255006'
   - '193524896'

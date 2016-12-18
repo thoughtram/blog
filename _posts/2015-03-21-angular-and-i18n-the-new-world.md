@@ -2,10 +2,10 @@
 layout: post
 title: Angular and i18n - The new world
 date: 2015-03-21T00:00:00.000Z
-update_date: 2016-11-08T00:00:00.000Z
+update_date: 2016-12-16T00:00:00.000Z
 summary: >-
-  Want to internationalize your Angular 2 app? This articles explains the plans
-  for i18n in Angular 2!
+  Want to internationalize your Angular app? This articles explains the plans
+  for i18n in Angular 2.0.0!
 categories:
   - angular
 tags:
@@ -283,7 +283,7 @@ This article detailed the overall picture of the new i18n solution that comes to
 
 Prototypes for tooling are already developed and production ready implementations are in the making, which will enable us to use and extract HTML annotations.
 
-Work on support for Angular 2 is likely to start a few weeks after Angular 1.4 is out.
+Work on support for Angular 2.0.0 is likely to start a few weeks after Angular 1.4 is out.
 
 And of course, contributions are **always** welcome!
 

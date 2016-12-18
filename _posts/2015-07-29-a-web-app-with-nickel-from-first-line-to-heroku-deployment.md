@@ -2,7 +2,7 @@
 layout: post
 title: 'A web app with Nickel: From first line to Heroku deployment'
 date: 2015-07-29T00:00:00.000Z
-update_date: 2016-11-08T00:00:00.000Z
+update_date: 2016-12-16T00:00:00.000Z
 summary: >-
   Learn how to build and deploy a simple web application with Nickel, the web
   application server for the Rust language.
@@ -16,7 +16,7 @@ related_posts:
   - Rust's Ownership model for JavaScript developers
   - clog - A conventional changelog generator for the rest of us
   - Organizing Hanovers first Rust meetup
-  - Testing Services with Http in Angular 2
+  - Testing Services with Http in Angular
   - Understanding XOR with Keras and TensorFlow
 related_videos:
   - '175255006'
@@ -226,7 +226,7 @@ fn main() {
 
 Let's shed some light on the code. In order to use Clog we first need to add it to our `Cargo.toml` file as we did before with Nickel. Then add an `extern crate clog;` statement. We also need to add `mod git;` and `mod clog_interop;` in order to have the compiler include those modules. Otherwise it would be just two Rust files that happen to be placed in our project directory.
 
-The rest should be pretty straight forward. We hardcoded the `repo_uri` to fetch the [Angular 2](github.com/angular/angular) repository and clone it into a local folder called `some-unique-id`. We probably have some work here down the road to get that production ready.
+The rest should be pretty straight forward. We hardcoded the `repo_uri` to fetch the [Angular](github.com/angular/angular) repository and clone it into a local folder called `some-unique-id`. We probably have some work here down the road to get that production ready.
 
 The most interesting part is the `&changelog as &str` for the `middleware!` macro to return on every request.
 
@@ -238,7 +238,7 @@ If we start our server again with `cargo run` and open up the website in the bro
 
 ![Raw Clog Output](/assets/raw_clog_output.png)
 
-Hooray! That's a markdown formatted changelog of the Angular 2 project.
+Hooray! That's a markdown formatted changelog of the Angular project.
 
 ##Working with JSON data
 

@@ -1,10 +1,11 @@
 ---
 layout: post
-title: Testing Services with Http in Angular 2
+title: Testing Services with Http in Angular
 imageUrl: /images/banner/testing-services-with-http-in-angular-2.jpg
 date: 2016-11-28T00:00:00.000Z
+update_date: 2016-12-18T00:00:00.000Z
 summary: >-
-  Want to learn how to test services in Angular 2 that have an Http dependency?
+  Want to learn how to test services in Angular that have an Http dependency?
   Read more here!
 categories:
   - angular
@@ -15,12 +16,12 @@ tags:
   - testing
 author: pascal_precht
 related_posts:
-  - Two-way Data Binding in Angular 2
-  - Resolving route data in Angular 2
-  - Angular 2 Animations - Foundation Concepts
+  - Two-way Data Binding in Angular
+  - Resolving route data in Angular
+  - Angular Animations - Foundation Concepts
   - Angular 2 is out - Get started here
-  - Bypassing Providers in Angular 2
-  - Custom Form Controls in Angular 2
+  - Bypassing Providers in Angular
+  - Custom Form Controls in Angular
 related_videos:
   - '175255006'
   - '193524896'

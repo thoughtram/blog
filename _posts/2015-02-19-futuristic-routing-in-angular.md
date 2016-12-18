@@ -2,7 +2,7 @@
 layout: post
 title: Futuristic Routing in Angular
 date: 2015-02-19T00:00:00.000Z
-update_date: 2016-11-08T00:00:00.000Z
+update_date: 2016-12-16T00:00:00.000Z
 summary: >-
   An this article we discuss the new router APIs and how it's going to change
   the way we implement component based routing in our Angular applications.
@@ -17,10 +17,10 @@ tags:
   - routing
 author: pascal_precht
 related_posts:
-  - Resolving route data in Angular 2
-  - Protecting Routes using Guards in Angular 2
-  - Routing in Angular 2 revisited
-  - Routing in Angular 2
+  - Resolving route data in Angular
+  - Protecting Routes using Guards in Angular
+  - Routing in Angular revisited
+  - Routing in Angular
   - ngMessages in Angular 1.3
   - Go fast with $applyAsync in Angular 1.3
 related_videos:
@@ -37,7 +37,7 @@ One of the latest announcements that counts as the most exciting ones, is that t
 
 It got even better, when the team announced that they plan to back port the new router to the 1.x branch of the Angular framework and having it ready in time for the 1.3 release. Unfortunately it turned out, that it took a bit more effort to make the new router available for both projects, especially considering that both should share as much code as possible. <s>That's why the back port has been postponed to the next bigger 1.4 release, which is targeted to be ready in March, this year (yay!)</s> The router also didn't make it into the 1.4 release.
 
-That's right, at the time of writing this article, the new router hasn't been released yet. However, since we're following the latest developments of all Angular 2.0 related projects actively on GitHub, we can't wait to share our thoughts on the new router with you. In this article we explore the new router and discuss it's concepts and features that we've all been waiting for!
+That's right, at the time of writing this article, the new router hasn't been released yet. However, since we're following the latest developments of all Angular version 2.0.0 related projects actively on GitHub, we can't wait to share our thoughts on the new router with you. In this article we explore the new router and discuss it's concepts and features that we've all been waiting for!
 
 <div class="thtrm-toc is-sticky" markdown="1">
 ### TABLE OF CONTENTS
@@ -113,7 +113,7 @@ But of course, the Angular team is listening. And that's why they implement a ne
 
 You might have seen that Christoph and I gave a talk on "[The Best Angular Yet!](http://thoughtram.io/the-best-angular-yet)" at Amsterdam's Angular conference [NG-NL](http://ng-nl.org). There we already gave a little sneak peak on what the new router will look like. At the time of writing this article and giving that presentation, the router was still in development, so things might have changed over time but we try to keep this article updated.
 
-The new router will be quite different. One of it's main goals is that it works for both Angular `2.x` and Angular `>=1.4`. That means, both need to share as much code as possible, since Angular 2 is written in AtScript. There are a couple more differences but we are going to take a look at them step by step.
+The new router will be quite different. One of it's main goals is that it works for both Angular `2.x` and Angular `>=1.4`. That means, both need to share as much code as possible, since Angular version 2.0.0 is written in <s>AtScript</s> TypeScript. There are a couple more differences but we are going to take a look at them step by step.
 
 We can install the new router via npm by running the following shell command:
 
@@ -131,7 +131,7 @@ var app = angular.module('myApp', ['ngComponentRouter']);
 
 Great! Next up: configuration. Here we're going to encouter the first big difference when using the new router. As we know, in Angular 1 we have this `.config()` phase where we have access to service providers in order to configure services that are used later at runtime. That's why we can use the `$routeProvider` of `ngRoute` to configure our routes.
 
-However, it turned out that there are a lot of problems with having a separation between configuration and run phases, which is why there won't be such a thing in Angular 2. And so there isn't in the new router. Now you might wonder how we are able to configure our routes with the new router, if there's no provider that we can access during our application's `.config()`.
+However, it turned out that there are a lot of problems with having a separation between configuration and run phases, which is why there won't be such a thing in Angular >= 2.0.0. And so there isn't in the new router. Now you might wonder how we are able to configure our routes with the new router, if there's no provider that we can access during our application's `.config()`.
 
 Well, let's take a look at some code.
 

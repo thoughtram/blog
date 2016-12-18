@@ -1,12 +1,13 @@
 ---
 layout: post
-title: Two-way Data Binding in Angular 2
+title: Two-way Data Binding in Angular
 imageUrl: /images/banner/two-way-data-binding-in-angular-2.jpg
 date: 2016-10-13T00:00:00.000Z
+update_date: 2016-12-18T00:00:00.000Z
 summary: >-
-  Two-way data binding was one of the main selling points of Angular. In Angular
-  2, we can build directives that implement two-way data binding. This article
-  explains how!
+  Two-way data binding was one of the main selling points of Angular. Since
+  version 2.x, we can build directives that implement two-way data binding. This
+  article explains how!
 categories:
   - angular
 tags:
@@ -16,11 +17,11 @@ author: pascal_precht
 topic: forms
 related_posts:
   - Validators Pipeline in Angular 1.3
-  - Custom Form Controls in Angular 2
-  - Reactive Forms in Angular 2
-  - Template-driven Forms in Angular 2
-  - Custom Validators in Angular 2
-  - Testing Services with Http in Angular 2
+  - Custom Form Controls in Angular
+  - Reactive Forms in Angular
+  - Template-driven Forms in Angular
+  - Custom Validators in Angular
+  - Testing Services with Http in Angular
 related_videos:
   - '189792758'
   - '189785428'
@@ -35,7 +36,7 @@ If there was one feature in Angular that made us go "Wow", then it was probably 
 
 {% include demos-and-videos-buttons.html post=page %}
 
-**Angular 2 doesn't come with such a (built-in) two-way data binding anymore.** However, this doesn't mean we can't create directives that support two-way data binding. In this article we're going to explore how two-way data binding in Angular 2 is implemented and how we can implement it in our own directives.
+**Angular >= 2.x doesn't come with such a (built-in) two-way data binding anymore.** However, this doesn't mean we can't create directives that support two-way data binding. In this article we're going to explore how two-way data binding in Angular >= 2.x is implemented and how we can implement it in our own directives.
 
 <div id="thtrm-toc is-sticky" markdown="1">
 ### TABLE OF CONTENTS
@@ -47,7 +48,7 @@ If there was one feature in Angular that made us go "Wow", then it was probably 
 
 ## Two-way data binding in a nutshell
 
-There's one directive in Angular 2 that implements two-way data binding: **ngModel**. On the surface, it looks and behaves as magical as we're used to (from Angular 1). But how does it really work? It's not that hard really. In fact, it turns out that two-way data binding really just boils down to event binding and property binding.
+There's one directive in Angular >= 2.x that implements two-way data binding: **ngModel**. On the surface, it looks and behaves as magical as we're used to (from Angular 1). But how does it really work? It's not that hard really. In fact, it turns out that two-way data binding really just boils down to event binding and property binding.
 
 In order to understand what that means, let's take a look at this code snippet here:
 
@@ -59,9 +60,9 @@ In order to understand what that means, let's take a look at this code snippet h
 {% endraw %}
 {% endhighlight %}
 
-Right, this is that one demo that blew our minds back in 2009, implemented in Angular 2. When typing into the input, the input's value is written into the `username` model and then reflected back into the view, resulting in a nice greeting.
+Right, this is that one demo that blew our minds back in 2009, implemented in Angular 2.x. When typing into the input, the input's value is written into the `username` model and then reflected back into the view, resulting in a nice greeting.
 
-How does this all work? Well, as mentioned earlier, two-way data binding in Angular 2 really just boils down to property binding and event binding. There is no such thing as two-way data binding. Without the `ngModel` directive, we could easily implement two-way data binding just like this:
+How does this all work? Well, as mentioned earlier, since version 2.x, two-way data binding in Angular really just boils down to property binding and event binding. There is no such thing as two-way data binding. Without the `ngModel` directive, we could easily implement two-way data binding just like this:
 
 {% highlight html %}
 {% raw %}
@@ -211,4 +212,4 @@ Again, please keep in mind that a component like a custom counter, would better 
 
 ## Conclusion
 
-Angular 2 doesn't come with built-in two-way data binding anymore, but with APIs that allow to implement this type of binding using property and event bindings. `ngModel` comes as a built-in directive as part of the `FormsModule` to implement two-way data binding and should be preferred when building components that serve as custom form controls.
+Angular doesn't come with built-in two-way data binding anymore, but with APIs that allow to implement this type of binding using property and event bindings. `ngModel` comes as a built-in directive as part of the `FormsModule` to implement two-way data binding and should be preferred when building components that serve as custom form controls.

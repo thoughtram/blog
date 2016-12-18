@@ -1,11 +1,11 @@
 ---
 layout: post
-title: Developing a tabs component in Angular 2
+title: Developing a tabs component in Angular
 date: 2015-04-09T00:00:00.000Z
-update_date: 2016-11-08T00:00:00.000Z
+update_date: 2016-12-16T00:00:00.000Z
 summary: >-
-  This article details how to build another simple, but widely used type of
-  component: tabs.
+  This article details how to build a simple, but widely used type of component
+  in Angular: tabs.
 categories:
   - angular
 tags:
@@ -20,12 +20,12 @@ demos:
   - url: 'https://embed.plnkr.co/afhLA8wHw9LRnzwwTT3M/'
     title: Tabs Component using @ContentChildren
 related_posts:
-  - Testing Services with Http in Angular 2
-  - Two-way Data Binding in Angular 2
-  - Resolving route data in Angular 2
-  - Angular 2 Animations - Foundation Concepts
+  - Testing Services with Http in Angular
+  - Two-way Data Binding in Angular
+  - Resolving route data in Angular
+  - Angular Animations - Foundation Concepts
   - Angular 2 is out - Get started here
-  - Bypassing Providers in Angular 2
+  - Bypassing Providers in Angular
 related_videos:
   - '175255006'
   - '193524896'
@@ -35,13 +35,13 @@ related_videos:
   - '189618526'
 
 ---
-Just recently, we wrote about how to [build a zippy component](/angular/2015/03/27/building-a-zippy-component-in-angular-2.html) in Angular 2. We explored how to get started with the framework and learned about some concepts that it comes with to build a very simple component. If you haven't read the article, you might want to check it out.
+Just recently, we wrote about how to [build a zippy component](/angular/2015/03/27/building-a-zippy-component-in-angular-2.html) in Angular. We explored how to get started with the framework and learned about some concepts that it comes with to build a very simple component. If you haven't read the article, you might want to check it out.
 
-As a follow up, we now want to build yet another component that is widely used in a lot of applications: Tabs. Building tabs has always been the de facto example when it comes to explaining directive controllers in Angular. Angular 2 does not have the concept of directive controllers, because the component itself is the execution context. It also makes it much easier to access other directives and components through dependency injection. However, you **do** want to [use directive controllers](/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html) in Angular 1 in order to make the migration process to Angular 2 easier.
+As a follow up, we now want to build yet another component that is widely used in a lot of applications: Tabs. Building tabs has always been the de facto example when it comes to explaining directive controllers in Angular. Angular >= 2.x does not have the concept of directive controllers, because the component itself is the execution context. It also makes it much easier to access other directives and components through dependency injection. However, you **do** want to [use directive controllers](/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html) in Angular 1.x in order to make the migration process to Angular >= 2.x easier.
 
 {% include demos-and-videos-buttons.html post=page %}
 
-Let's start right away and learn how easy it is to build a tabs component in Angular 2 without the confusing relationship between directive link functions and controllers. We'll skip the installation part, since that was explored in the other article.
+Let's start right away and learn how easy it is to build a tabs component in Angular without the confusing relationship between directive link functions and controllers. We'll skip the installation part, since that was explored in the other article.
 
 
 <div class="thtrm-toc is-sticky" markdown="1">
@@ -72,7 +72,7 @@ Of course, in Angular, those implementation details are hidden behind some nice 
 
 We have a `<tab>` element that simply represents a single tab which has a title, and we have a `<tabs>` element that takes care of making those `<tab>` elements actually "tabbable".
 
-If you've been following the development and concepts of Angular 2, you probably learned that, in Angular 2, the **consumer** of a component is in charge of deciding how a value is passed to a component. Whereas in Angular 1, the directive defines how a value is bound to it's scope, so the consumer needs to know about the inner workings of a directive.
+If you've been following the development and concepts of Angular, you probably learned that, since Angular 2.x, the **consumer** of a component is in charge of deciding how a value is passed to a component. Whereas in Angular 1.x, the directive defines how a value is bound to it's scope, so the consumer needs to know about the inner workings of a directive.
 
 This means, talking about the `tabTitle` attribute that we have in the code above, consumers can either write to the component attribute (if it exists), or to the component property. The latter would allow the consumer to pass expressions to the component that first get evaluated. Here's what it could look like:
 
@@ -87,11 +87,11 @@ This means, talking about the `tabTitle` attribute that we have in the code abov
 {% endraw %}
 {% endhighlight %}
 
-Alright, now that we know what we want to build, let's get our hands dirty with some Angular 2 code.
+Alright, now that we know what we want to build, let's get our hands dirty with some Angular code.
 
 ## Building the components
 
-We start off by implementing a rather static version of the `<tabs>` element. If you've read our article on [building a zippy component in Angular 2](/angular/2015/03/27/building-a-zippy-component-in-angular-2.html),
+We start off by implementing a rather static version of the `<tabs>` element. If you've read our article on [building a zippy component in Angular](/angular/2015/03/27/building-a-zippy-component-in-angular-2.html),
 you know that we need the `@Component()` decorator to tell Angular what the selector and template for our component should be.
 
 {% highlight js %}
@@ -191,7 +191,7 @@ export class Tabs {
 {% endraw %}
 {% endhighlight %}
 
-Okay cool, but how do we get our tab titles into that collection? This is where, in Angular 1, directive controllers come in. However, in Angular 2 it's much easier. First we need an interface so that the outside world can actually add items to our internal collection. Let's add a method `addTab(tab: Tab)`, that takes a `Tab` object and does exactly what we need.
+Okay cool, but how do we get our tab titles into that collection? This is where, in Angular 1, directive controllers come in. However, since Angular 2.x it's much easier. First we need an interface so that the outside world can actually add items to our internal collection. Let's add a method `addTab(tab: Tab)`, that takes a `Tab` object and does exactly what we need.
 
 {% highlight js %}
 {% raw %}
@@ -204,7 +204,7 @@ export class Tabs {
 {% endraw %}
 {% endhighlight %}
 
-The method just simply pushes the given object into our collection and we're good. Next we update the template so that the list is generated dynamically based on our collection. In Angular 1 we have a `ngRepeat` directive that lets us iterate over a collection to repeat DOM. Angular 2 has an `ngFor` directive that pretty much solves the exact same problem. We use the directive to iterate over our tabs collection to generate a dynamic list of tab titles in the component's template.
+The method just simply pushes the given object into our collection and we're good. Next we update the template so that the list is generated dynamically based on our collection. In Angular 1 we have a `ngRepeat` directive that lets us iterate over a collection to repeat DOM. Since Angular 2.x there a a `ngFor` directive that pretty much solves the exact same problem. We use the directive to iterate over our tabs collection to generate a dynamic list of tab titles in the component's template.
 
 {% highlight js %}
 {% raw %}
@@ -235,12 +235,12 @@ class Tab {
 {% endraw %}
 {% endhighlight %}
 
-Wait, what happens here? `tabs: Tabs` is just Typescript type annotation which Angular 2 uses for Dependency Injection.
-Please check out our article where we go deeper inside [Angular 2 DI](/angular/2015/05/18/dependency-injection-in-angular-2)
+Wait, what happens here? `tabs: Tabs` is just Typescript type annotation which Angular uses for Dependency Injection.
+Please check out our article where we go deeper inside [Angular DI](/angular/2015/05/18/dependency-injection-in-angular-2)
 
 **tl;dr**
 
-> Angular 2 Hierarchical Injector knows, that we want first `Tabs` instance that it can get,
+> Angular Hierarchical Injector knows, that we want first `Tabs` instance that it can get,
 when traversing upwards from current host. In our case the actual host is our  `<tab>` component.
 > Injector ask on tab for Tabs, if there is none, Injector will ask Parent Injector for `Tabs`. In our case parent Injector is on `<tabs>` component
 and it has indeed `Tabs` instance, so it will return the correct instance of `Tabs`.
@@ -386,14 +386,14 @@ export class AppModule {}
 
 ## Where to go from here
 
-This is a very rudimentary implementation of a tabs component. We can use that as a starting point to make it better over time. For example, we haven't done anything in terms of accessibility. It would also be nice if the component emits some custom events when a tab is activated. We'll cover working with events in Angular 2 in another article.
+This is a very rudimentary implementation of a tabs component. We can use that as a starting point to make it better over time. For example, we haven't done anything in terms of accessibility. It would also be nice if the component emits some custom events when a tab is activated. We'll cover working with events in Angular in another article.
 
 ## Bonus
 
-Angular 2 is so awesome that there is not just one way how to do things!
+Angular is so awesome that there is not just one way how to do things!
 
-We can take a totally different approach how to implement our simple tabs ( which isn't so easily possible in Angular 1 ),
-leveraging special Angular 2 `@ContentChildren` property decorator with `QueryList` type and `AfterContentInit` life cycle interface.
+We can take a totally different approach how to implement our simple tabs ( which isn't so easily possible in Angular 1.x ),
+leveraging special Angular `@ContentChildren` property decorator with `QueryList` type and `AfterContentInit` life cycle hook.
 Those are more advanced concepts, which are covered in more details by [Juri Strumpflohner](https://twitter.com/juristr) in [his follow-up article](http://juristr.com/blog/2016/02/learning-ng2-creating-tab-component).
 
 If you're just curious what it looks like, check out the demos below!

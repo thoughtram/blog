@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Host and Visibility in Angular 2's Dependency Injection
+title: Host and Visibility in Angular's Dependency Injection
 date: 2015-08-20T00:00:00.000Z
-update_date: 2016-11-08T00:00:00.000Z
+update_date: 2016-12-16T00:00:00.000Z
 summary: >-
-  Angular 2's DI allows us to configure the visbility of what gets injected from
+  Angular's DI allows us to configure the visbility of what gets injected from
   where. Learn about @Host in this article!
 categories:
   - angular
@@ -13,12 +13,12 @@ tags:
 topic: di
 author: pascal_precht
 related_posts:
-  - Testing Services with Http in Angular 2
-  - Two-way Data Binding in Angular 2
-  - Resolving route data in Angular 2
-  - Angular 2 Animations - Foundation Concepts
+  - Testing Services with Http in Angular
+  - Two-way Data Binding in Angular
+  - Resolving route data in Angular
+  - Angular Animations - Foundation Concepts
   - Angular 2 is out - Get started here
-  - Bypassing Providers in Angular 2
+  - Bypassing Providers in Angular
 related_videos:
   - '175255006'
   - '193524896'
@@ -29,9 +29,9 @@ related_videos:
 
 ---
 
-In our article on [Dependency Injection in Angular 2](/angular/2015/05/18/dependency-injection-in-angular-2.html) we explored what dependency injection actually is, and how it is implemented in the Angular 2 framework. If you haven't read that article yet, I highly recommend you doing so, since this article is based on it.
+In our article on [Dependency Injection in Angular](/angular/2015/05/18/dependency-injection-in-angular-2.html) we explored what dependency injection actually is, and how it is implemented in the Angular framework. If you haven't read that article yet, I highly recommend you doing so, since this article is based on it.
 
-Even though we learned that Angular 2's new dependency injection is very flexible and solves pretty much all the problems we have with the dependency injection in AngularJS, there are still a couple of topics that we haven't discussed yet. One of them is how Angular treats the relationship between **host** and child injectors, and the other one is how the **visibility of dependencies** are handled. In this article we're going to explore exactly these two topics.
+Even though we learned that Angular's new dependency injection is very flexible and solves pretty much all the problems we have with the dependency injection in AngularJS, there are still a couple of topics that we haven't discussed yet. One of them is how Angular treats the relationship between **host** and child injectors, and the other one is how the **visibility of dependencies** are handled. In this article we're going to explore exactly these two topics.
 
 <div class="thtrm-toc is-sticky" markdown="1">
 ### TABLE OF CONTENTS
@@ -42,9 +42,9 @@ Even though we learned that Angular 2's new dependency injection is very flexibl
 
 ## Understanding host relationships
 
-Host and visibility are both features in Angular 2's dependency injection system, that are very specific to Angular and throughout this article we'll learn why. For now just keep in mind that we probably don't need any of these features when using Angular 2's DI not in the context of Angular itself. However, once we understood the context and why this feature exist, we'll also take a look at how this is implemented under the hood, so we all know what's going on.
+Host and visibility are both features in Angular's dependency injection system, that are very specific to Angular and throughout this article we'll learn why. For now just keep in mind that we probably don't need any of these features when using Angular's DI not in the context of Angular itself. However, once we understood the context and why this feature exist, we'll also take a look at how this is implemented under the hood, so we all know what's going on.
 
-Let's start off by imagining the following scenario. We have three nested components that all do their own thing (because that's what components do in Angular 2):
+Let's start off by imagining the following scenario. We have three nested components that all do their own thing (because that's what components do in Angular):
 
 {% highlight html %}
 {% raw %}
@@ -56,7 +56,7 @@ Let's start off by imagining the following scenario. We have three nested compon
 {% endraw %}
 {% endhighlight %}
 
-As we learned in our article on dependency injection in Angular 2, each component in Angular creates its own injector. Which means the code above can be translated to something like this:
+As we learned in our article on dependency injection in Angular, each component in Angular creates its own injector. Which means the code above can be translated to something like this:
 
 {% highlight sh %}
 {% raw %}
@@ -97,7 +97,7 @@ var grandChildInjector = childInjector.resolveAndCreateChild([
 
 The injector tree allows us to define injector providers for a specific component and its children. With the code above, if we ask `grandChild` for a dependency of type `Car` we'll get back an instance of type `Convertible`, because it defines it's own provider for that type. However, if we ask for a dependency of type `Engine`, we simply get an instance of the class `Engine`, because `grandChild` will ask it's parent injector (recursively) until an injector has providers defined for that type. If this is entirely new to you, all this has been covered in our last [article](/angular/2015/05/18/dependency-injection-in-angular-2.html) on DI.
 
-Okay, this sounds all very powerful but where does this host thing come into play? Let's get back to the original code with our three nested components. `<component-two>` and `<component-three>` are both children of `<component-one>`. However, we don't know yet what's inside of our components themselves. In Angular 2, a component always has a view. A component's view can be in a way [encapsulated](/angular/2015/06/29/shadow-dom-strategies-in-angular2.html), this is due to the fact that Angular 2 supports Shadow DOM.
+Okay, this sounds all very powerful but where does this host thing come into play? Let's get back to the original code with our three nested components. `<component-two>` and `<component-three>` are both children of `<component-one>`. However, we don't know yet what's inside of our components themselves. In Angular, a component always has a view. A component's view can be in a way [encapsulated](/angular/2015/06/29/shadow-dom-strategies-in-angular2.html), this is due to the fact that, since 2.x, Angular supports Shadow DOM.
 
 For example, here's what the view of `<component-one>` could look like:
 
@@ -109,7 +109,7 @@ For example, here's what the view of `<component-one>` could look like:
 {% endraw %}
 {% endhighlight %}
 
-As we can see, the view of a component is just yet another DOM tree. If we configure Angular 2 accordingly, this DOM tree can be Shadow DOM. That's also why we have an `<ng-content>` tag there. It's Angular's implementation of **content insertion points**, which is another Shadow DOM feature.
+As we can see, the view of a component is just yet another DOM tree. If we configure Angular accordingly, this DOM tree can be Shadow DOM. That's also why we have an `<ng-content>` tag there. It's Angular's implementation of **content insertion points**, which is another Shadow DOM feature.
 
 Even though we don't use Shadow DOM, a component still comes with it's own view that is kind of hidden behind the component itself. This is what makes every component in Angular a **host** of a view. In fact, when speaking just about Shadow DOM, we always need a host element to create a shadow dom for it.
 
@@ -164,7 +164,7 @@ This can be problematic. Just imagine someone uses our code with another `<aweso
 
 ## Restricting dependency lookup
 
-Luckily, this is covered by Angular 2's dependency injection system. If we need to ask for a dependency and want to make sure that the lookup ends with the current component's host, we can use the `@Host` decorator. Here's our `<play-button>` component rewritten with the lookup constraint:
+Luckily, this is covered by Angular's dependency injection system. If we need to ask for a dependency and want to make sure that the lookup ends with the current component's host, we can use the `@Host` decorator. Here's our `<play-button>` component rewritten with the lookup constraint:
 
 {% highlight javascript %}
 {% raw %}
@@ -181,7 +181,7 @@ If you don't know what it's about with these decorators, you might want to read 
 
 ## Dependency Visibility
 
-Okay cool, we now know what `@Host` is and why we need it. But we didn't talk about the other thing that Angular 2's DI introduces yet - dependency visibility. So what is this visibility we're talking about here? Well, as we learned, we can use the `providers` property in a `@Component` decorator to define providers for its injector. However, it turns out that there's another property `viewProviders` that basically allows us to do the same thing. What's the difference between those two then?
+Okay cool, we now know what `@Host` is and why we need it. But we didn't talk about the other thing that Angular's DI introduces yet - dependency visibility. So what is this visibility we're talking about here? Well, as we learned, we can use the `providers` property in a `@Component` decorator to define providers for its injector. However, it turns out that there's another property `viewProviders` that basically allows us to do the same thing. What's the difference between those two then?
 
 `viewProviders` allows us to define injector providers that are only available for a component's view. Let's take a closer look at what that means by using our `<video-player>` component. Our `<video-player>` component has its own view with its own components. So usually, we would use that component just like this:
 
@@ -258,4 +258,4 @@ Now, whenever a component of `<video-player>`'s view asks for something of type 
 
 ## Conclusion
 
-Angular 2's DI is very powerful and doesn't only cover the common needs when it comes to a decent dependency injection system. It even implements specific use cases for injector trees that are used in conjunction with DOM trees, which could also be encapsulated. I hope this article made clear why we have `providers`, `viewProviders` and `@Host`.
+Angular's DI is very powerful and doesn't only cover the common needs when it comes to a decent dependency injection system. It even implements specific use cases for injector trees that are used in conjunction with DOM trees, which could also be encapsulated. I hope this article made clear why we have `providers`, `viewProviders` and `@Host`.

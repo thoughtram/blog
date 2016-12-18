@@ -1,11 +1,11 @@
 ---
 layout: post
-title: Template-driven Forms in Angular 2
+title: Template-driven Forms in Angular
 date: 2016-03-21T00:00:00.000Z
-update_date: 2016-11-08T00:00:00.000Z
+update_date: 2016-12-18T00:00:00.000Z
 imageUrl: /images/template-driven-forms.jpeg
 summary: >-
-  In this article we discuss the template-driven forms in Angular 2 and all the
+  In this article we discuss the template-driven forms in Angular and all the
   directives that come into play.
 categories:
   - angular
@@ -23,11 +23,11 @@ demos:
 author: pascal_precht
 related_posts:
   - Validators Pipeline in Angular 1.3
-  - Two-way Data Binding in Angular 2
-  - Custom Form Controls in Angular 2
-  - Reactive Forms in Angular 2
-  - Custom Validators in Angular 2
-  - Testing Services with Http in Angular 2
+  - Two-way Data Binding in Angular
+  - Custom Form Controls in Angular
+  - Reactive Forms in Angular
+  - Custom Validators in Angular
+  - Testing Services with Http in Angular
 related_videos:
   - '189792758'
   - '189785428'
@@ -40,7 +40,7 @@ related_videos:
 
 Angular comes with three different ways of building forms in our applications. There's the template-driven approach which allows us to build forms with very little to none application code required, then there's the model-driven **or reactive** approach using low level APIs, which makes our forms testable without a DOM being required, and last but not least, we can build our forms model-driven but with a higher level API called the `FormBuilder`.
 
-Hearing all these different solutions, it's kind of natural that there are also probably many different tools to reach the goal. This can be sometimes confusing and with this article we want to clarify a subset of form directives by focussing on template-driven forms in Angular 2.
+Hearing all these different solutions, it's kind of natural that there are also probably many different tools to reach the goal. This can be sometimes confusing and with this article we want to clarify a subset of form directives by focussing on template-driven forms in Angular.
 
 {% include demos-and-videos-buttons.html post=page %}
 
@@ -315,7 +315,7 @@ Awesome! We now get the wanted object structure out of our form without writing 
 
 ## What about ngModel with expressions?
 
-So `ngModel` is the thing in Angular 2 that implements two-way data binding. It's not the only thing that does that, but it's in most cases the directive we want to use for simple scenarios. So far we've used `ngModel` as attribute directive without any value, but we might want to use it with an expression to bind an existing domain model to our form. This, of course works out of the box!
+So `ngModel` is the thing in Angular that implements two-way data binding. It's not the only thing that does that, but it's in most cases the directive we want to use for simple scenarios. So far we've used `ngModel` as attribute directive without any value, but we might want to use it with an expression to bind an existing domain model to our form. This, of course works out of the box!
 
 There are two ways to handle this, depending on what we want to do. One thing we can do is to apply property binding using the brackets syntax, so we can bind an existing value to a form control using one-way binding:
 
@@ -371,6 +371,6 @@ This just simply works as expected.
 
 ## More to cover
 
-Of course, this is really just the tip of the ice berg when it comes to building forms. We haven't talked about validation yet and how to display error messages when the validity state of a form control or a control group changes. We will talk about these and other things in future articles. However, if you're interested in how to build a custom validator in Angular 2, checkout [this article](/angular/2016/03/14/custom-validators-in-angular-2.html).
+Of course, this is really just the tip of the ice berg when it comes to building forms. We haven't talked about validation yet and how to display error messages when the validity state of a form control or a control group changes. We will talk about these and other things in future articles. However, if you're interested in how to build a custom validator in Angular, checkout [this article](/angular/2016/03/14/custom-validators-in-angular-2.html).
 
-Watch out for more articles on forms in Angular 2!
+Watch out for more articles on forms in Angular!

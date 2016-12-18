@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Forward references in Angular 2
+title: Forward references in Angular
 relatedLinks:
   - title: Exploring Angular 2 - Article Series
     url: /exploring-angular-2
@@ -10,7 +10,7 @@ relatedLinks:
     url: >-
       /angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html
 date: 2015-09-03T00:00:00.000Z
-update_date: 2016-08-11T00:00:00.000Z
+update_date: 2016-12-16T00:00:00.000Z
 summary: >-
   In this article we like to explore forward references. Why they exist and how
   we can use them.
@@ -21,12 +21,12 @@ tags:
 topic: di
 author: christoph_burgdorf
 related_posts:
-  - Testing Services with Http in Angular 2
-  - Two-way Data Binding in Angular 2
-  - Resolving route data in Angular 2
-  - Angular 2 Animations - Foundation Concepts
+  - Testing Services with Http in Angular
+  - Two-way Data Binding in Angular
+  - Resolving route data in Angular
+  - Angular Animations - Foundation Concepts
   - Angular 2 is out - Get started here
-  - Bypassing Providers in Angular 2
+  - Bypassing Providers in Angular
 related_videos:
   - '175255006'
   - '193524896'
@@ -37,9 +37,9 @@ related_videos:
 
 ---
 
-In our article on [Dependency Injection in Angular 2](/angular/2015/05/18/dependency-injection-in-angular-2.html) we explored what dependency injection actually is, and how it is implemented in the Angular 2 framework. If you haven't read that article yet, I highly recommend you doing so, since this article is based on it.
+In our article on [Dependency Injection in Angular](/angular/2015/05/18/dependency-injection-in-angular-2.html) we explored what dependency injection actually is, and how it is implemented in the Angular framework. If you haven't read that article yet, I highly recommend you doing so, since this article is based on it.
 
-In a [another article](/angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html) we even learned about **host** and **visibility of dependencies** as another aspect of Angular 2's DI system. But that doesn't mean that we've already discovered all features of the machinery yet. In this article we'll take a look at **forward references**. Another tiny, yet useful feature of the DI system in Angular 2.
+In a [another article](/angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html) we even learned about **host** and **visibility of dependencies** as another aspect of Angular's DI system. But that doesn't mean that we've already discovered all features of the machinery yet. In this article we'll take a look at **forward references**. Another tiny, yet useful feature of the DI system in Angular.
 
 <div class="thtrm-toc is-sticky" markdown="1">
 ### TABLE OF CONTENTS
@@ -77,7 +77,7 @@ class AppComponent {
 {% raw %}
 export class NameService {
   getName () {
-    return "Angular 2";
+    return "Angular";
   }
 }
 {% endraw %}
@@ -104,14 +104,14 @@ class AppComponent {
 
 class NameService {
   getName () {
-    return "Angular 2";
+    return "Angular";
   }
 }
 {% endraw %}
 {% endhighlight %}
 
 
-When we try to run this code we notice that it stopped working. In my case, I wasn't even able to get an error reported to the console which I assume boils down to some glitch with debugging TypeScript code with source maps. Anyways, when we use the debuggers "Pause on exceptions" feature we can follow the rabbit into it's hole somewhere deep down inside the Angular 2 framework.
+When we try to run this code we notice that it stopped working. In my case, I wasn't even able to get an error reported to the console which I assume boils down to some glitch with debugging TypeScript code with source maps. Anyways, when we use the debuggers "Pause on exceptions" feature we can follow the rabbit into it's hole somewhere deep down inside the Angular framework.
 
 `Cannot resolve all parameters for AppComponent(undefined). Make sure they all have valid type or annotations`.
 
@@ -125,7 +125,7 @@ import { Component } from '@angular/core';
 
 class NameService {
   getName () {
-    return "Angular 2";
+    return "Angular";
   }
 }
 
@@ -147,7 +147,7 @@ Ok, this seems to work just fine. But why doesn't the JavaScript interpreter do 
 
 ## Classes aren't hoisted for a good reason
 
-Let's step back from Angular 2 for a moment in order to understand the bare mechanics of the JavaScript language in this regard.
+Let's step back from Angular for a moment in order to understand the bare mechanics of the JavaScript language in this regard.
 
 The JavaScript interpreter doesn't hoist class declarations because it may lead to unsound behavior when we have a class that uses the `extend` keyword to inherit from something. In particular, when it inherits from an expression which is absolutely valid.
 
@@ -293,7 +293,7 @@ Now that `Dog` is hoisted to the top the code breaks at the moment where the `ex
 
 ## So the class must always be declared before it's usage?
 
-Ok, now that we understood *why* classes aren't hoisted what does that mean for our earlier Angular 2 example where we had to move the `NameService` to the very top? Is this the only way to get things working?
+Ok, now that we understood *why* classes aren't hoisted what does that mean for our earlier Angular example where we had to move the `NameService` to the very top? Is this the only way to get things working?
 
 Turns out there is a solution we can reach for. Instead of annotating our `nameService` parameter with the `NameService` type which we learned evaluates to `undefined` at this point in time, we can use the `@Inject` annotation in conjunction with the `forwardRef` function as demonstrated here.
 
@@ -315,7 +315,7 @@ class AppComponent {
 
 class NameService {
   getName () {
-    return "Angular 2";
+    return "Angular";
   }
 }
 {% endraw %}

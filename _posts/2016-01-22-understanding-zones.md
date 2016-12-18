@@ -4,8 +4,8 @@ title: Understanding Zones
 date: 2016-01-22T00:00:00.000Z
 update_date: 2016-11-08T00:00:00.000Z
 summary: >-
-  Angular 2 takes advantage of a feature called Zones. Learn here what they are
-  and how they work.
+  Since version 2.x Angular takes advantage of a feature called Zones. Learn
+  here what they are and how they work.
 categories:
   - angular
 tags:
@@ -13,12 +13,12 @@ tags:
 topic: changedetection
 author: pascal_precht
 related_posts:
-  - Testing Services with Http in Angular 2
-  - Two-way Data Binding in Angular 2
-  - Resolving route data in Angular 2
-  - Angular 2 Animations - Foundation Concepts
+  - Testing Services with Http in Angular
+  - Two-way Data Binding in Angular
+  - Resolving route data in Angular
+  - Angular Animations - Foundation Concepts
   - Angular 2 is out - Get started here
-  - Bypassing Providers in Angular 2
+  - Bypassing Providers in Angular
 related_videos:
   - '175255006'
   - '193524896'
@@ -101,7 +101,7 @@ So how do we solve this issue? What we need are basically hooks that allow us to
 
 ## Creating, forking and extending Zones
 
-Zones are actually a language feature in Dart. However, since Dart also just compiles to JavaScript, we can implement the same functionality in JavaScript too. Brian (the guy I've mentioned earlier) has done exactly that. He created [zone.js](https://github.com/angular/zone.js) as a port of Zones to JavaScript, which is also a dependency of Angular 2. Before we take a look at how we can profile our code samples with Zones, let's first discuss how zones are created.
+Zones are actually a language feature in Dart. However, since Dart also just compiles to JavaScript, we can implement the same functionality in JavaScript too. Brian (the guy I've mentioned earlier) has done exactly that. He created [zone.js](https://github.com/angular/zone.js) as a port of Zones to JavaScript, which is also a dependency of Angular. Before we take a look at how we can profile our code samples with Zones, let's first discuss how zones are created.
 
 Once we've embedded zone.js into our website, we have access to the global `zone` object. `zone` comes with a method `run()` that takes a function which should be executed in that zone. In other words, if we'd like to run our code in a zone, we can already do it likes this:
 
@@ -223,4 +223,4 @@ The `+` syntax is a shorthand DSL that allows us to extend the parent zone's hoo
 
 There's also a [LongStackTraceZone](https://github.com/angular/zone.js/tree/master/lib/zones/long-stack-trace.ts) we can take advantage of and even more [examples](https://github.com/angular/zone.js/tree/master/example/profiling.html). Make sure to check those out too!
 
-Watch out for more articles as we're going to discuss very soon what role Zones play in the Angular 2 framework. Find more useful and related links below.
+Watch out for more articles as we're going to discuss very soon what role Zones play in the Angular framework. Find more useful and related links below.

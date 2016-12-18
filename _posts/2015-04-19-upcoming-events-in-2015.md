@@ -2,6 +2,7 @@
 layout: post
 title: Upcoming events in 2015
 date: 2015-04-19T00:00:00.000Z
+update_date: 2016-12-16T00:00:00.000Z
 summary: >-
   Today we'd like to give you information about the next upcoming events that
   we'll be running or attending to.
@@ -52,7 +53,7 @@ We love to attend to conferences, since it's always a nice experience to get to 
 
 ## More to come!
 
-Even if that is already lot of dates to set your alarms for, we're not completely done with our planning for 2015 yet. There's a lot of interest in trainings specifically for testing Angular apps. Also, people are interested in Angular 2. We are working on it and will announce some more exciting things very soon.
+Even if that is already lot of dates to set your alarms for, we're not completely done with our planning for 2015 yet. There's a lot of interest in trainings specifically for testing Angular apps. Also, people are interested in Angular 2.x. We are working on it and will announce some more exciting things very soon.
 
 You can always stay up to date by following us on [twitter](http://twitter.com/thoughtram), checking out our [events](http://thoughtram.io/events.html) website, or by subscribing to our events on [facebook](https://www.facebook.com/thoughtram).
 

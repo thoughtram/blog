@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Reactive Forms in Angular 2
+title: Reactive Forms in Angular
 date: 2016-06-22T00:00:00.000Z
-update_date: 2016-11-08T00:00:00.000Z
+update_date: 2016-12-18T00:00:00.000Z
 imageUrl: /images/banner/model-driven-forms-in-angular-2.jpeg
 summary: >-
   Angular allows us to build forms in a model-driven fashion. In this article
@@ -16,11 +16,11 @@ topic: forms
 author: pascal_precht
 related_posts:
   - Validators Pipeline in Angular 1.3
-  - Two-way Data Binding in Angular 2
-  - Custom Form Controls in Angular 2
-  - Template-driven Forms in Angular 2
-  - Custom Validators in Angular 2
-  - Testing Services with Http in Angular 2
+  - Two-way Data Binding in Angular
+  - Custom Form Controls in Angular
+  - Template-driven Forms in Angular
+  - Custom Validators in Angular
+  - Testing Services with Http in Angular
 related_videos:
   - '189792758'
   - '189785428'
@@ -31,7 +31,7 @@ related_videos:
 
 ---
 
-Just a couple days ago, we've updated our article on [Template-driven Forms in Angular 2](/angular/2016/03/21/template-driven-forms-in-angular-2.html), as the APIs have changed for the better in the second release candidate. We think it's time to talk about **model-driven** and **reactive forms** on our blog. This article builds on top of the knowledge we've gained in our previous article, so you might want to take a look at it in case you haven't yet.
+Just a couple days ago, we've updated our article on [Template-driven Forms in Angular](/angular/2016/03/21/template-driven-forms-in-angular-2.html), as the APIs have changed for the better in the second release candidate. We think it's time to talk about **model-driven** and **reactive forms** on our blog. This article builds on top of the knowledge we've gained in our previous article, so you might want to take a look at it in case you haven't yet.
 
 <div class="thtrm-toc is-sticky" markdown="1">
 ### TABLE OF CONTENTS
@@ -42,9 +42,9 @@ Just a couple days ago, we've updated our article on [Template-driven Forms in A
 
 ## The goal of reactive/model-driven forms
 
-While template-driven forms in Angular 2 give us a way to create sophisticated forms while writing as little JavaScript as possible, model-driven forms enable us to test our forms without being required to rely on end-to-end tests. That's why model-driven forms are created imperatively, so they end up as actually properties on our components, which makes them easier to test.
+While template-driven forms in Angular give us a way to create sophisticated forms while writing as little JavaScript as possible, model-driven forms enable us to test our forms without being required to rely on end-to-end tests. That's why model-driven forms are created imperatively, so they end up as actually properties on our components, which makes them easier to test.
 
-In addition, it's important to understand that when building reactive/model-driven forms, Angular 2 doesn't magically create the templates for us. So it's not that we just create the form model and then all of a sudden we have DOM generated in our app that renders the form. Reactive forms are more like an addition to template-driven forms, although, depending on what we're doing some things can be left out here and there (e.g. validators on DOM elements etc.).
+In addition, it's important to understand that when building reactive/model-driven forms, Angular doesn't magically create the templates for us. So it's not that we just create the form model and then all of a sudden we have DOM generated in our app that renders the form. Reactive forms are more like an addition to template-driven forms, although, depending on what we're doing some things can be left out here and there (e.g. validators on DOM elements etc.).
 
 ## FormGroup and FormControl
 
@@ -273,7 +273,7 @@ We can access the validity state of a form control like this:
 {% endraw %}
 {% endhighlight %}
 
-We get a reference to the form control by traversing the `registerForm` instance. If you're interested in learning how to build a custom validator, you might want to read our article on [Custom Validators in Angular 2](/angular/2016/03/14/custom-validators-in-angular-2.html).
+We get a reference to the form control by traversing the `registerForm` instance. If you're interested in learning how to build a custom validator, you might want to read our article on [Custom Validators in Angular](/angular/2016/03/14/custom-validators-in-angular-2.html).
 
 ## Forms with a single control
 

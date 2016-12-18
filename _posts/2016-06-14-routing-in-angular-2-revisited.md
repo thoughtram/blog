@@ -1,11 +1,11 @@
 ---
 layout: post
-title: Routing in Angular 2 revisited
+title: Routing in Angular revisited
 imageUrl: /images/banner/routing-in-angular-2-revisited.jpeg
 date: 2016-06-14T00:00:00.000Z
-update_date: 2016-11-08T00:00:00.000Z
+update_date: 2016-12-18T00:00:00.000Z
 summary: >-
-  Learn how to implement basic routing in your Angular 2 application using the
+  Learn how to implement basic routing in your Angular application using the
   latest and greatest APIs!
 categories:
   - angular
@@ -23,11 +23,11 @@ videos:
 author: pascal_precht
 related_posts:
   - Futuristic Routing in Angular
-  - Resolving route data in Angular 2
-  - Protecting Routes using Guards in Angular 2
-  - Routing in Angular 2
-  - Testing Services with Http in Angular 2
-  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular
+  - Protecting Routes using Guards in Angular
+  - Routing in Angular
+  - Testing Services with Http in Angular
+  - Two-way Data Binding in Angular
 related_videos:
   - '175218351'
   - '189618526'
@@ -38,7 +38,7 @@ related_videos:
 
 ---
 
-A long time ago we've written about [routing in Angular 2](/angular/2015/06/16/routing-in-angular-2.html) and you've probably noticed that this article is deprecated due to many changes and rewrites that happened in the router module of Angular 2. Just recently, the Angular team announced yet another version of the new router, in which they considered all the gathered feedback from the community to make it finally sophisticated enough, so it'll fulfill our needs when we build applications with Angular 2.
+A long time ago we've written about [routing in Angular](/angular/2015/06/16/routing-in-angular-2.html) and you've probably noticed that this article is deprecated due to many changes and rewrites that happened in the router module of Angular. Just recently, the Angular team announced yet another version of the new router, in which they considered all the gathered feedback from the community to make it finally sophisticated enough, so it'll fulfill our needs when we build applications with Angular.
 
 In this article we want to take a first look at the new and better APIs, touching on the most common scenarios when it comes to routing. We're going to explore how to define routes, linking to other routes, as well as accessing route parameters. Let's jump right into it!
 
@@ -54,7 +54,7 @@ In this article we want to take a first look at the new and better APIs, touchin
 
 ## Defining Routes
 
-Let's say we want to build a contacts application (in fact, this is what we do in our [Angular 2 Master Class](http://thoughtram.io/angular2-master-class.html)). Our contacts application shows a list of contacts, which is our `ContactsListComponent` and when we click on a contact, we navigate to the `ContactsDetailComponent`, which gives us a detailed view of the selected contact.
+Let's say we want to build a contacts application (in fact, this is what we do in our [Angular Master Class](http://thoughtram.io/angular2-master-class.html)). Our contacts application shows a list of contacts, which is our `ContactsListComponent` and when we click on a contact, we navigate to the `ContactsDetailComponent`, which gives us a detailed view of the selected contact.
 
 A simplified version of `ContactsListComponent` could look something like this:
 
@@ -258,7 +258,7 @@ export class ContactsListComponent {
 
 There are a couple of things to note here:
 
-- We use the bracket-syntax for `RouterLink` to make expressions work (if this doesn't make sense to you, you might want to read out article on [Angular 2's Template Syntax Demystified](/angular/2015/08/11/angular-2-template-syntax-demystified-part-1.html)
+- We use the bracket-syntax for `RouterLink` to make expressions work (if this doesn't make sense to you, you might want to read out article on [Angular's Template Syntax Demystified](/angular/2015/08/11/angular-2-template-syntax-demystified-part-1.html)
 - The expression takes an array where the first field is the segment that describes the path we want to route to and the second a dynamic value which ends up as route parameter 
 
 Cool! We can now link to `ContactsDetailComponent`. However, this is only half of the story. We still need to teach `ContactsDetailComponent` how to access the route parameters so it can use them to load a contact object.

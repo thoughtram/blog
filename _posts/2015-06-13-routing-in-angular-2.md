@@ -1,11 +1,11 @@
 ---
 layout: post
-title: Routing in Angular 2
+title: Routing in Angular
 date: 2015-06-16T00:00:00.000Z
-update_date: 2016-11-08T00:00:00.000Z
+update_date: 2016-12-16T00:00:00.000Z
 summary: >-
   Learn how to route between components. In this article we explore how to use
-  the new router in Angular 2.
+  the new router in Angular.
 categories:
   - angular
 tags:
@@ -15,11 +15,11 @@ topic: routing
 author: pascal_precht
 related_posts:
   - Futuristic Routing in Angular
-  - Resolving route data in Angular 2
-  - Protecting Routes using Guards in Angular 2
-  - Routing in Angular 2 revisited
-  - Testing Services with Http in Angular 2
-  - Two-way Data Binding in Angular 2
+  - Resolving route data in Angular
+  - Protecting Routes using Guards in Angular
+  - Routing in Angular revisited
+  - Testing Services with Http in Angular
+  - Two-way Data Binding in Angular
 related_videos:
   - '175218351'
   - '189618526'
@@ -32,7 +32,7 @@ related_videos:
 
 {% include deprecated.html %}
 
-**Please read our new article [Routing in Angular 2 revisited](/angular/2016/06/14/routing-in-angular-2-revisited.html)**
+**Please read our new article [Routing in Angular revisited](/angular/2016/06/14/routing-in-angular-2-revisited.html)**
 
 If you're following our [articles on Angular](http://blog.thoughtram.io/categories/angular) you might know that, a couple of months ago, [we've written about the new router](http://blog.thoughtram.io/angularjs/2015/02/19/futuristic-routing-in-angular.html), how it can be used, and how it differs from the `ngRoute` standard router. Whereas we mostly touched on using the router in Angular 1 applications, this article discusses how it can be used in Angular 2 applications.
 

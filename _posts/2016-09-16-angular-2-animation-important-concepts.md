@@ -1,11 +1,12 @@
 ---
 layout: post
-title: Angular 2 Animations - Foundation Concepts
+title: Angular Animations - Foundation Concepts
 date: 2016-09-16T00:00:00.000Z
+update_date: 2016-12-18T00:00:00.000Z
 imageUrl: /images/banner/angular-2-component-animations.jpg
 summary: >-
-  Animation in Angular 2 is now easy and more intuitive... Learn foundational
-  animation concepts and start animating your Angular 2 components!
+  Animation in Angular is now easy and more intuitive... Learn foundational
+  animation concepts and start animating your Angular components!
 categories:
   - angular
 tags:
@@ -16,12 +17,12 @@ tags:
 topic: components
 author: thomas_burleson
 related_posts:
-  - Component-Relative Paths in Angular 2
-  - Testing Services with Http in Angular 2
-  - Two-way Data Binding in Angular 2
-  - Resolving route data in Angular 2
+  - Component-Relative Paths in Angular
+  - Testing Services with Http in Angular
+  - Two-way Data Binding in Angular
+  - Resolving route data in Angular
   - Angular 2 is out - Get started here
-  - Bypassing Providers in Angular 2
+  - Bypassing Providers in Angular
 related_videos:
   - '175255006'
   - '193524896'
@@ -36,13 +37,13 @@ Animations features often are scary goals for developers. And Angular's doctrine
 
 > "... controllers should not directly modify DOM elements!"
 
-made Animation features intimidating as hell. But **Angular 2 animations are not scary!** Templates are closely associated/integrated with `@Component`. We will notice that animations following a similar pattern.
+made Animation features intimidating as hell. But **Angular animations are not scary!** Templates are closely associated/integrated with `@Component`. We will notice that animations following a similar pattern.
 
 Let's build a component that hides and shows its contents, uses fade animation effects, and allows external components to easily trigger those fade effects.
 
 ### Our Scenario
 
-Here is a simple Angular 2 component with hide and show features. This sample, however, does not have animations (yet):
+Here is a simple Angular component with hide and show features. This sample, however, does not have animations (yet):
 
 {% highlight js %}
 {% raw %}
@@ -114,7 +115,7 @@ The techno-speak above is saying that when the `visibilityChanged` property chan
 
 Now, you might also wonder where `visibilityChanged` comes from? Because our component property is just called `visibility`. Hold your wild horses Mr. StageCoach, we'll clarify that soon!" Let's first talk about animation durations.
 
-We want to animate these changes over a time duration instead of instantly hiding/showing the content. We need to configure a *transition* to specify animation durations. With Angular 2 this is also suprisingly easy:
+We want to animate these changes over a time duration instead of instantly hiding/showing the content. We need to configure a *transition* to specify animation durations. With Angular this is also suprisingly easy:
 
 {% highlight js %}
 {% raw %}
@@ -152,7 +153,7 @@ See how easy this is? This notation is so easy to understand.
 
 ### The Essential Concept
 
-The essential take-away Animation concept is that **Angular 2 Animations** are triggered on component <u>state changes</u>. And developers should consider <u>state changes</u> to be equivalent to <u>value changes in a property</u> of the component instance.
+The essential take-away Animation concept is that **Angular Animations** are triggered on component <u>state changes</u>. And developers should consider <u>state changes</u> to be equivalent to <u>value changes in a property</u> of the component instance.
 
 ![super-cool](https://media.giphy.com/media/NUC0kwRfsL0uk/giphy.gif)
 
@@ -166,7 +167,7 @@ While we configured the Animation metadata,  I am sure you are wondering:
   *  How is the animation property `visibilityChanged` actually connected to the component?
   *  How are the animations linked to the component’s properties?
 
-Since data-binding features are already supported between the **component** and its **template**,  Angular 2 uses a <u>special</u> template animation syntax to support triggering the animation after data-binding changes. So in the component template, we can do this:
+Since data-binding features are already supported between the **component** and its **template**,  Angular uses a <u>special</u> template animation syntax to support triggering the animation after data-binding changes. So in the component template, we can do this:
 
 {% highlight html %}
 {% raw %}
@@ -298,19 +299,19 @@ Above we have an improved the component definition; enhanced with animation feat
 
 ### Animation Philosophy
 
-One of the design goals for Angular 2 Animations is to make it **easy** for developers to configure and use animations. The API and syntax is designed to be:
+One of the design goals for Angular Animations is to make it **easy** for developers to configure and use animations. The API and syntax is designed to be:
 
   *  intuitive
   *  declarative and
   *  immediately associated with the component using metadata
 
-The best part of Angular 2 Animation design is that the **component->template->animation** binding solution <u>decouples</u> the animation from the component internals and uses the template as the binding bridge.
+The best part of Angular Animation design is that the **component->template->animation** binding solution <u>decouples</u> the animation from the component internals and uses the template as the binding bridge.
 
 The developer decides which component properties should bind to which animation triggers, then simply uses the possible component property values to set the animation *state* values accordingly.
 
 > In most cases, you will never need to write JavaScript animation logic.
 
-All the mechanics of preparing and managing the animations are hidden from the developer. This 'separation of concerns' provides HUGE benefits to allow developers to easily use Angular 2 Animations with custom architectures & custom implementations.
+All the mechanics of preparing and managing the animations are hidden from the developer. This 'separation of concerns' provides HUGE benefits to allow developers to easily use Angular Animations with custom architectures & custom implementations.
 
 ### Animations with Components Hierarchies
 
@@ -342,13 +343,13 @@ export class MyAppComponent {
 
 ### Summary
 
-The Angular 2 Animation engine and compiler does all the hard work preparing, managing, and running the animations. Developers use the `@Component` metadata to declaratively define the component styles, templates, and [now] animations. And it is the component **template** that serves as the *bridge* to link the component instance state to the animation trigger property.
+The Angular Animation engine and compiler does all the hard work preparing, managing, and running the animations. Developers use the `@Component` metadata to declaratively define the component styles, templates, and [now] animations. And it is the component **template** that serves as the *bridge* to link the component instance state to the animation trigger property.
 
 <br/>
 
 ### Thanks
 
-Kudos to [Matias Niemelä](https://twitter.com/yearofmoo) for the amazing Animation engine in Angular 2!
+Kudos to [Matias Niemelä](https://twitter.com/yearofmoo) for the amazing Animation engine in Angular!
 
 ![matiasvikinghair](https://cloud.githubusercontent.com/assets/210413/18608523/49b8707c-7cb1-11e6-8d2c-ab43db07ca78.jpg)
 

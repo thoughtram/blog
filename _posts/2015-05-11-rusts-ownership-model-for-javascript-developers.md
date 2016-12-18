@@ -16,7 +16,7 @@ related_posts:
   - Anouncing Hanover's second Rust meetup
   - clog - A conventional changelog generator for the rest of us
   - Organizing Hanovers first Rust meetup
-  - Testing Services with Http in Angular 2
+  - Testing Services with Http in Angular
   - Understanding XOR with Keras and TensorFlow
 related_videos:
   - '175255006'

@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Resolving route data in Angular 2
+title: Resolving route data in Angular
 imageUrl: /images/banner/resolving-route-data-in-angular-2.jpg
 date: 2016-10-10T00:00:00.000Z
-update_date: 2016-11-08T00:00:00.000Z
+update_date: 2016-12-18T00:00:00.000Z
 summary: >-
   We often want to make sure that certain data is available before a component
   is instantiated via routing. In this article you'll learn how to resolve route
@@ -24,11 +24,11 @@ demos:
     title: Route resolver class
 related_posts:
   - Futuristic Routing in Angular
-  - Protecting Routes using Guards in Angular 2
-  - Routing in Angular 2 revisited
-  - Routing in Angular 2
-  - Testing Services with Http in Angular 2
-  - Two-way Data Binding in Angular 2
+  - Protecting Routes using Guards in Angular
+  - Routing in Angular revisited
+  - Routing in Angular
+  - Testing Services with Http in Angular
+  - Two-way Data Binding in Angular
 related_videos:
   - '175218351'
   - '189618526'
@@ -92,7 +92,7 @@ export class AppModule {}
 
 Nothing special going on here. However, if this is all new to you, you might want to read our [article on routing](/angular/2016/06/14/routing-in-angular-2-revisited.html).
 
-Let's take a look at the `ContactsDetailComponent`. This component is responsible of displaying contact data, so it somehow has to get access to a contact object, that matches the `id` provided in the route URL (hence the `:id` parameter in the route configuration). In our article on routing in Angular 2, we've learned that we can easily [access route parameters](/angular/2016/06/14/routing-in-angular-2-revisited.html#access-route-parameters) using the `ActivatedRoute` like this:
+Let's take a look at the `ContactsDetailComponent`. This component is responsible of displaying contact data, so it somehow has to get access to a contact object, that matches the `id` provided in the route URL (hence the `:id` parameter in the route configuration). In our article on routing in Angular, we've learned that we can easily [access route parameters](/angular/2016/06/14/routing-in-angular-2-revisited.html#access-route-parameters) using the `ActivatedRoute` like this:
 
 {% highlight js %}
 {% raw %}
@@ -173,7 +173,7 @@ Depending on our template, adding Safe Navigation Operators everywhere can be qu
 
 As mentioned ealier, route resolvers allow us to provide the needed data for a route, before the route is activated. There are different ways to create a resolver and we'll start with the easiest: a function. A resolver is a function that returns either `Observable<any>`, `Promise<any>` or just data. This is great, because our `ContactsService#getContact()` method returns an `Observable<Contact>`.
 
-Resolvers need to be registered via providers. Our article on [Dependency Injection in Angular 2](/angular/2015/05/18/dependency-injection-in-angular-2.html) explains nicely how to make functions available via DI.
+Resolvers need to be registered via providers. Our article on [Dependency Injection in Angular](/angular/2015/05/18/dependency-injection-in-angular-2.html) explains nicely how to make functions available via DI.
 
 Here's a resolver function that resolves with a static contact object:
 
@@ -322,4 +322,4 @@ Angular is smart enough to detect if a resolver is a function, or a class and if
 
 {% include plunk.html url="http://embed.plnkr.co/u2qR9J/" %}
 
-Hopefully this gave you a better idea of how route resolvers in Angular 2 work!
+Hopefully this gave you a better idea of how route resolvers in Angular work!

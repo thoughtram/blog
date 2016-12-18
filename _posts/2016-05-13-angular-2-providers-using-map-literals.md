@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Angular 2 Providers using Map Literals
+title: Angular Providers using Map Literals
 date: 2016-05-13T00:00:00.000Z
-update_date: 2016-08-11T00:00:00.000Z
+update_date: 2016-12-18T00:00:00.000Z
 imageUrl: /images/banner/angular-2-providers-using-map-literals.png
 summary: >-
   Angular has a shorter syntax for creating providers. In this article we're
@@ -15,11 +15,11 @@ tags:
 topic: di
 author: pascal_precht
 related_posts:
-  - How to prevent name collisions in Angular 2 providers
-  - Testing Services with Http in Angular 2
-  - Two-way Data Binding in Angular 2
-  - Resolving route data in Angular 2
-  - Angular 2 Animations - Foundation Concepts
+  - How to prevent name collisions in Angular providers
+  - Testing Services with Http in Angular
+  - Two-way Data Binding in Angular
+  - Resolving route data in Angular
+  - Angular Animations - Foundation Concepts
   - Angular 2 is out - Get started here
 related_videos:
   - '175255006'
@@ -35,7 +35,7 @@ ng-conf happened just one week ago and there were many announcements about all t
 
 ## Provider recap
 
-So what is it all about? Well, if you've read our articles on [Dependency Injection in Angular 2](/angular/2015/05/18/dependency-injection-in-angular-2.html), you know that an injector needs something called a provider, that knows how to create an object of a certain type, or for a specific token.
+So what is it all about? Well, if you've read our articles on [Dependency Injection in Angular](/angular/2015/05/18/dependency-injection-in-angular-2.html), you know that an injector needs something called a provider, that knows how to create an object of a certain type, or for a specific token.
 
 In other words, if we ask for a service dependency in one of our components like this:
 

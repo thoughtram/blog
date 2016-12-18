@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Component-Relative Paths in Angular 2
+title: Component-Relative Paths in Angular
 date: 2016-06-08T00:00:00.000Z
-update_date: 2016-11-08T00:00:00.000Z
+update_date: 2016-12-18T00:00:00.000Z
 imageUrl: /images/banner/component-relative-paths-in-angular-2.jpg
 summary: >-
   Component-relative enable developers to more easily create maintainable,
-  reusable, portable components in Angular 2. Here's how!
+  reusable, portable components in Angular. Here's how!
 categories:
   - angular
 tags:
@@ -16,12 +16,12 @@ tags:
 topic: components
 author: thomas_burleson
 related_posts:
-  - Angular 2 Animations - Foundation Concepts
-  - Testing Services with Http in Angular 2
-  - Two-way Data Binding in Angular 2
-  - Resolving route data in Angular 2
+  - Angular Animations - Foundation Concepts
+  - Testing Services with Http in Angular
+  - Two-way Data Binding in Angular
+  - Resolving route data in Angular
   - Angular 2 is out - Get started here
-  - Bypassing Providers in Angular 2
+  - Bypassing Providers in Angular
 related_videos:
   - '175255006'
   - '193524896'
@@ -39,7 +39,7 @@ related_videos:
 {:toc}
 </div>
 
-Component-based development is Angular 2's *most-loved* feature. By now you should be familiar with using the `@Component` decorators to create components. You should be familiar with the required metadata information such as `selector` and `template`.
+Component-based development is Angular's *most-loved* feature. By now you should be familiar with using the `@Component` decorators to create components. You should be familiar with the required metadata information such as `selector` and `template`.
 
 {% highlight js %}
 {% raw %}
@@ -58,7 +58,7 @@ export class HeaderComponent implements OnInit {  }
 {% endraw %}
 {% endhighlight %}
 
-> If the above component syntax is new and strange, you should first review our article on [Building a Zipping Component in Angular 2](http://blog.thoughtram.io/angular/2015/03/27/building-a-zippy-component-in-angular-2.html).
+> If the above component syntax is new and strange, you should first review our article on [Building a Zipping Component in Angular](/angular/2015/03/27/building-a-zippy-component-in-angular-2.html).
 
 If you are familiar with these concepts and you happen to be lucky, your components load without any problems.  Mostly likely, though, you have already encountered (or soon will) the dreaded, frustrating 404 component-loading errors:  
 
@@ -70,7 +70,7 @@ Let's talk about why that happens and see how we can solve such problems in a wa
 
 ## Components with Inline Metadata
 
-For every Angular 2 component that we implement, we define not only an HTML template, but may also define the CSS styles that go with that template, specifying any selectors, rules, and media queries that we need.
+For every Angular component that we implement, we define not only an HTML template, but may also define the CSS styles that go with that template, specifying any selectors, rules, and media queries that we need.
 
 One way to do this is to set the `styles` and `template` property in the component metadata. Consider a simple *Header* component:
 
@@ -94,13 +94,13 @@ export class HeaderComponent implements OnInit {
 {% endraw %}
 {% endhighlight %}
 
-> We actually use this component in our [Angular 2 Master Class training](http://thoughtram.io/angular2-master-class.html).
+> We actually use this component in our [Angular Master Class training](http://thoughtram.io/angular2-master-class.html).
 
 Using this component is super easy. There are no external file dependencies as all the HTML and CSS is defined inline. Therefore we should *never* see [in the DevTools console] a 404 loading error for this component.
 
 ## Components with External Assets
 
-Another component feature allows us to load HTML and styles from external files: using URLs in the metadata configuration block. Refactoring a component's code, HTML, and CSS into three separate files [in the same package] is a common [Angular 2 Best-Practice](https://angular.io/docs/ts/latest/guide/style-guide.html#!#components).
+Another component feature allows us to load HTML and styles from external files: using URLs in the metadata configuration block. Refactoring a component's code, HTML, and CSS into three separate files [in the same package] is a common [Angular Best-Practice](https://angular.io/docs/ts/latest/guide/style-guide.html#!#components).
 
 *  header.component.ts
 *  header.component.html
@@ -151,7 +151,7 @@ So the above component - without any url path information - must be stored in th
 *  What if my components are organized in distinct packages ?
 *  What if we want to organize our components by feature or context ?
 
->  'Organizing by feature' is actually an [Angular 2 Style Guide - Best Practice](https://angular.io/docs/ts/latest/guide/style-guide.html#!#application-structure)
+>  'Organizing by feature' is actually an [Angular Style Guide - Best Practice](https://angular.io/docs/ts/latest/guide/style-guide.html#!#application-structure)
 
 
 To explore the issue, let's consider the scenario where our details component (and files) are in the `src/app/header` package. The urls used above ( `header.component.html` and `header.component.css` ) would cause the loader to fail and the developer would see the following 404 error in the developers console:
@@ -234,7 +234,7 @@ There are so many ways developers can deploy their apps: bundled or unbundled, d
 
 If we decide on **CommonJS** formats AND we use a standard module loader, then we can use the `module.id` variable which contains the absolute URL of the component class [when the module file is actually loaded]: the exact syntax is `moduleId : module.id`.
 
-> This **`moduleId`** value is used by the Angular 2 reflection processes and the `metadata_resolver` component to evaluate the fully-qualified component path before the component is constructed.
+> This **`moduleId`** value is used by the Angular reflection processes and the `metadata_resolver` component to evaluate the fully-qualified component path before the component is constructed.
 
 Let's see how this works with the component using **CommonJS**, **SystemJS**, **JSPM**, and **WebPack**:
 
@@ -350,7 +350,7 @@ SystemJS.config({
 
 *WebPack*
 
-If we decide to use **WebPack** to bundle our files, we can use `require` or `import` to force Webpack to load the file contents and assign directly to the metadata property. This means that WebPack is loading the content **instead** of Angular 2's runtime loader. See [WebPack : An Introduction](https://angular.io/docs/ts/latest/guide/webpack.html) for more details.
+If we decide to use **WebPack** to bundle our files, we can use `require` or `import` to force Webpack to load the file contents and assign directly to the metadata property. This means that WebPack is loading the content **instead** of Angular's runtime loader. See [WebPack : An Introduction](https://angular.io/docs/ts/latest/guide/webpack.html) for more details.
 
 With WebPack there are three (3) options available to load the component's external HTML and CSS.
 
@@ -370,7 +370,7 @@ export class HeaderComponent implements OnInit {
 {% endraw %}
 {% endhighlight %}
 
-It is important to note that here we are not using the `templateUrl` or `styleUrls` keys. Instead we are using `require('...')` to load the data and assign the file contents directly to the metadata object key `template` **BEFORE** the Angular 2  component initializes.
+It is important to note that here we are not using the `templateUrl` or `styleUrls` keys. Instead we are using `require('...')` to load the data and assign the file contents directly to the metadata object key `template` **BEFORE** the Angular  component initializes.
 
 2) As an alternative approach to `require(...)`, we can instead use `import headerTemplate from './header.component.html';`:
 
@@ -417,7 +417,7 @@ Personally, I like (3) approach used with the `moduleId` property (as a backup).
 
 ## Conclusion
 
-The key lesson is to set the **`moduleId :  module.id`** in the `@Component` decorator! Without the **moduleId** setting, Angular 2 will look for our files in paths relative to the application root.
+The key lesson is to set the **`moduleId :  module.id`** in the `@Component` decorator! Without the **moduleId** setting, Angular will look for our files in paths relative to the application root.
 
 > And don't forget the `"module": "commonjs"` in your **tsconfig.json**.
 

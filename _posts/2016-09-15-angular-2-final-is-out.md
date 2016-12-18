@@ -3,6 +3,7 @@ layout: post
 title: Angular 2 is out - Get started here
 imageUrl: /images/banner/angular-2-final-is-out.jpg
 date: 2016-09-15T00:00:00.000Z
+update_date: 2016-12-18T00:00:00.000Z
 summary: >-
   Yes. The day has come. Angular 2 is finally released and here's how to get
   started.
@@ -12,12 +13,12 @@ tags:
   - angular2
 author: pascal_precht
 related_posts:
-  - Testing Services with Http in Angular 2
-  - Two-way Data Binding in Angular 2
-  - Resolving route data in Angular 2
-  - Angular 2 Animations - Foundation Concepts
-  - Bypassing Providers in Angular 2
-  - Custom Form Controls in Angular 2
+  - Testing Services with Http in Angular
+  - Two-way Data Binding in Angular
+  - Resolving route data in Angular
+  - Angular Animations - Foundation Concepts
+  - Bypassing Providers in Angular
+  - Custom Form Controls in Angular
 related_videos:
   - '175255006'
   - '193524896'
@@ -42,64 +43,64 @@ We've been writing about Angular 2 too, in fact, since over a year by now and **
 
 ### Getting Started
 
-- [Building a Zippy component in Angular 2](/angular/2015/03/27/building-a-zippy-component-in-angular-2.html)
-- [Developing a Tabs component in Angular 2](/angular/2015/04/09/developing-a-tabs-component-in-angular-2.html)
-- [Angular 2 Template Syntax demystified](/angular/2015/08/11/angular-2-template-syntax-demystified-part-1.html)
-- [Component-relative Paths in Angular 2](/angular/2016/06/08/component-relative-paths-in-angular-2.html)
+- [Building a Zippy component in Angular](/angular/2015/03/27/building-a-zippy-component-in-angular-2.html)
+- [Developing a Tabs component in Angular](/angular/2015/04/09/developing-a-tabs-component-in-angular-2.html)
+- [Angular Template Syntax demystified](/angular/2015/08/11/angular-2-template-syntax-demystified-part-1.html)
+- [Component-relative Paths in Angular](/angular/2016/06/08/component-relative-paths-in-angular-2.html)
 
 ### Routing
 
-- [Routing in Angular 2 revisited](/angular/2016/06/14/routing-in-angular-2-revisited.html)
+- [Routing in Angular revisited](/angular/2016/06/14/routing-in-angular-2-revisited.html)
 - [Protecting Routes using Navigation Guards](/angular/2016/07/18/guards-in-angular-2.html)
 
 ### Upgrading
 
-- [Upgrading Apps to Angular 2 using ngUpgrade](/angular/2015/10/24/upgrading-apps-to-angular-2-using-ngupgrade.html)
+- [Upgrading Apps to Angular using ngUpgrade](/angular/2015/10/24/upgrading-apps-to-angular-2-using-ngupgrade.html)
 
 ### Angular and ES5
 
-- [Writing Angular 2 code in ES5](/angular/2015/05/09/writing-angular-2-code-in-es5.html)
-- [Even better ES5 code for Angular 2](/angular/2015/07/06/even-better-es5-code-for-angular-2.html)
+- [Writing Angular code in ES5](/angular/2015/05/09/writing-angular-2-code-in-es5.html)
+- [Even better ES5 code for Angular](/angular/2015/07/06/even-better-es5-code-for-angular-2.html)
 
 ### Dependency Injection
 
-- [Dependency Injection in Angular 2](/angular/2015/05/18/dependency-injection-in-angular-2.html)
-- [Understanding @Injectable() in Angular 2](/angular/2015/09/17/resolve-service-dependencies-in-angular-2.html)
-- [Host and Visibility in Angular 2 DI](/angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html)
-- [Forward References in Angular 2](/angular/2015/09/03/forward-references-in-angular-2.html)
+- [Dependency Injection in Angular](/angular/2015/05/18/dependency-injection-in-angular-2.html)
+- [Understanding @Injectable() in Angular](/angular/2015/09/17/resolve-service-dependencies-in-angular-2.html)
+- [Host and Visibility in Angular DI](/angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html)
+- [Forward References in Angular](/angular/2015/09/03/forward-references-in-angular-2.html)
 - [Angular Providers using Map literals](/angular/2016/05/13/angular-2-providers-using-map-literals.html)
-- [Multi Providers in Angular 2](/angular2/2015/11/23/multi-providers-in-angular-2.html)
-- [How to prevent name collisions in Angular 2 providers](/angular/2016/05/23/opaque-tokens-in-angular-2.html)
-- [Bypassing Providers in Angular 2](/angular/2016/09/14/bypassing-providers-in-angular-2.html)
+- [Multi Providers in Angular](/angular2/2015/11/23/multi-providers-in-angular-2.html)
+- [How to prevent name collisions in Angular providers](/angular/2016/05/23/opaque-tokens-in-angular-2.html)
+- [Bypassing Providers in Angular](/angular/2016/09/14/bypassing-providers-in-angular-2.html)
 
-### Angular 2 and Observables
+### Angular and Observables
 
-- [Taking advantage of Observables in Angular 2 - Part 1](/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html)
-- [Taking advantage of Observables in Angular 2 - Part 2](/angular/2016/01/07/taking-advantage-of-observables-in-angular2-pt2.html)
+- [Taking advantage of Observables in Angular - Part 1](/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html)
+- [Taking advantage of Observables in Angular - Part 2](/angular/2016/01/07/taking-advantage-of-observables-in-angular2-pt2.html)
 - [Cold vs Hot Observables](/angular/2016/06/16/cold-vs-hot-observables.html)
 - [Exploring Rx Operators: map](/angular/2016/05/16/exploring-rx-operators-map.html)
 - [Exploring Rx Operators: flatMap](/rx/2016/08/01/exploring-rx-operators-flatmap.html)
 
 ### Forms
 
-- [Template-driven Forms in Angular 2](/angular/2016/03/21/template-driven-forms-in-angular-2.html)
-- [Reactive Forms in Angular 2](/angular/2016/06/22/model-driven-forms-in-angular-2.html)
-- [Custom Validators in Angular 2](/angular/2016/03/14/custom-validators-in-angular-2.html)
-- [Custom Form Controls in Angular 2](/angular/2016/07/27/custom-form-controls-in-angular-2.html)
+- [Template-driven Forms in Angular](/angular/2016/03/21/template-driven-forms-in-angular-2.html)
+- [Reactive Forms in Angular](/angular/2016/06/22/model-driven-forms-in-angular-2.html)
+- [Custom Validators in Angular](/angular/2016/03/14/custom-validators-in-angular-2.html)
+- [Custom Form Controls in Angular](/angular/2016/07/27/custom-form-controls-in-angular-2.html)
 
 ### Change Detection
 
 - [Understanding Zones](/angular/2016/01/22/understanding-zones.html)
-- [Zones in Angular 2](/angular/2016/02/01/zones-in-angular-2.html)
-- [Angular 2 Change Detection explained](/angular/2016/02/22/angular-2-change-detection-explained.html)
+- [Zones in Angular](/angular/2016/02/01/zones-in-angular-2.html)
+- [Angular Change Detection explained](/angular/2016/02/22/angular-2-change-detection-explained.html)
 
 ### Animations
 
-- [Animations in Angular 2](/angular/2016/09/16/angular-2-animation-important-concepts.html)
+- [Animations in Angular](/angular/2016/09/16/angular-2-animation-important-concepts.html)
 
 ### Styling and ViewEncapsulation
 
-- [Styling Angular 2 components](/angular/2015/06/25/styling-angular-2-components.html)
-- [ViewEncapsulation in Angular 2](/angular/2015/06/29/shadow-dom-strategies-in-angular2.html)
+- [Styling Angular components](/angular/2015/06/25/styling-angular-2-components.html)
+- [ViewEncapsulation in Angular](/angular/2015/06/29/shadow-dom-strategies-in-angular2.html)
 
 We hope this is useful to you and let us know if you want to have a certain topic covered on our blog!

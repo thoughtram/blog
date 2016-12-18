@@ -1,12 +1,13 @@
 ---
 layout: post
-title: Taking advantage of Observables in Angular 2
+title: Taking advantage of Observables in Angular
 imageUrl: /images/banner/taking-advantage-of-observables.png
 date: 2016-01-06T00:00:00.000Z
 update_date: 2016-11-08T00:00:00.000Z
 summary: >-
-  Angular 2 favors Observables over Promises when it comes to async.  In this
-  article we explore some practical advantages for server communication.
+  Since version 2.x Angular favors Observables over Promises when it comes to
+  async.  In this article we explore some practical advantages for server
+  communication.
 categories:
   - angular
 tags:
@@ -32,8 +33,8 @@ related_posts:
   - Taking advantage of Observables in Angular 2 - Part 2
   - Cold vs Hot Observables
   - 'Exploring Rx Operators: map'
-  - Testing Services with Http in Angular 2
-  - Two-way Data Binding in Angular 2
+  - Testing Services with Http in Angular
+  - Two-way Data Binding in Angular
 related_videos:
   - '181311615'
   - '181311609'
@@ -44,7 +45,7 @@ related_videos:
 
 ---
 
-Some people seem to be confused why Angular 2 seems to favor the Observable abstraction over the Promise abstraction when it comes to dealing with async behavior.
+Some people seem to be confused why Angular seems to favor the Observable abstraction over the Promise abstraction when it comes to dealing with async behavior.
 
 There are pretty good resources about the difference between Observables and Promises already out there. I especially like to highlight this free [7 minutes video](https://egghead.io/lessons/rxjs-rxjs-observables-vs-promises) by [Ben Lesh](https://twitter.com/benlesh) on egghead.io. Technically there are a couple of obvious differences like the *disposability* and *lazyness* of Observables. In this article we like to focus on some practical advantages that Observables introduce for server communication.
 
@@ -145,7 +146,7 @@ export class AppComponent {
 {% endraw %}
 {% endhighlight %}
 
-Not much of a surprise here either. We inject our `WikipediaService` and expose it's functionality via a `search` method to the template. The template simply binds to `keyup` and calls `search(term.value)` leveraging Angular 2's awesome *template ref* feature.
+Not much of a surprise here either. We inject our `WikipediaService` and expose it's functionality via a `search` method to the template. The template simply binds to `keyup` and calls `search(term.value)` leveraging Angular's awesome *template ref* feature.
 
 We unwrap the result of the `Promise` that the `search` method of the `WikipediaService` returns and expose it as a simple Array of strings to the template so that we can have `*ngFor` loop through it and build up a list for us.
 

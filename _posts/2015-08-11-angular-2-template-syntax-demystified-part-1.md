@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Angular 2 Template Syntax Demystified - Part 1
+title: Angular Template Syntax Demystified - Part 1
 date: 2015-08-11T00:00:00.000Z
-update_date: 2016-11-08T00:00:00.000Z
+update_date: 2016-12-16T00:00:00.000Z
 summary: >-
   Angular 2 introduces it's own kind of template syntax in order to implement
   different binding strategies. Learn why it's there and how it works.
@@ -13,12 +13,12 @@ tags:
 topic: views
 author: pascal_precht
 related_posts:
-  - Testing Services with Http in Angular 2
-  - Two-way Data Binding in Angular 2
-  - Resolving route data in Angular 2
-  - Angular 2 Animations - Foundation Concepts
+  - Testing Services with Http in Angular
+  - Two-way Data Binding in Angular
+  - Resolving route data in Angular
+  - Angular Animations - Foundation Concepts
   - Angular 2 is out - Get started here
-  - Bypassing Providers in Angular 2
+  - Bypassing Providers in Angular
 related_videos:
   - '175255006'
   - '193524896'
@@ -29,9 +29,9 @@ related_videos:
 
 ---
 
-I think we've been all through this. We see Angular 2 template code the very first time and all of a sudden we have these weird brackets and parentheses spread all over our HTML. Around a year ago I've written an article about how to [integrate Web Components with AngularJS](https://pascalprecht.github.io/2014/10/25/integrating-web-components-with-angularjs/), which explains how we can use, or not use, Web Components in AngularJS applications today. If you haven't read it yet, I highly recommend you doing so. It's old but the content is still true.
+I think we've been all through this. We see Angular template code the very first time and all of a sudden we have these weird brackets and parentheses spread all over our HTML. Around a year ago I've written an article about how to [integrate Web Components with AngularJS](https://pascalprecht.github.io/2014/10/25/integrating-web-components-with-angularjs/), which explains how we can use, or not use, Web Components in AngularJS applications today. If you haven't read it yet, I highly recommend you doing so. It's old but the content is still true.
 
-It also touches on the new template syntax in Angular 2 and how it tends to solve the existing issues. However, it still seems a mystery for a lot of people and that's why we're going to explore the Angular 2's template syntax in this article. **Please note** that this is the first part of "Angular 2 Template Syntax Demystified". There's going to be another article soon.
+It also touches on the new template syntax in Angular and how it tends to solve the existing issues. However, it still seems a mystery for a lot of people and that's why we're going to explore the Angular's template syntax in this article. **Please note** that this is the first part of "Angular Template Syntax Demystified". There's going to be another article soon.
 
 <div class="thtrm-toc is-sticky" markdown="1">
 ### TABLE OF CONTENTS
@@ -113,7 +113,7 @@ Alright, we access the `value` property and as expected, it returns the string `
 
 {% highlight javascript %}
 {% raw %}
-input.value = 'Angular 2 Master Class';
+input.value = 'Angular Master Class';
 input.getAttribute('value'); // 'thoughtram'
 {% endraw %}
 {% endhighlight %}
@@ -162,12 +162,12 @@ And a template like this:
 
 Angular takes the expression passed to the attribute and parses and evaluates it against the corresponding scope, which allows us to pass other values than strings to directives.
 
-Why can't we just continue like that in Angular 2? There are a couple of reasons:
+Why can't we just continue like that in Angular? There are a couple of reasons:
 
 - **Predictability** - Looking at our template, we can't tell what happens to the value of the attribute inside our directive, without knowing the internals of it. We need a way to decide from the outside world how values are bound.
 - **Compatibility** - This whole mechanism only works with Angular directives. As soon as we use custom elements that aren't directives but vanilla Web Components, `ctrl.objOnCtrl` would just be that string, unless our custom element would come with a similar parsing and evaluating strategy that Angular directives use. Angular should work with any element, no matter if it's a custom element, a Web Component built with Polymer, or a directive.
 
-That's why Angular 2 always binds to properties rather than attributes (as AngularJS does). Every DOM element has properties, regardless of being a native element or a Web Component. In order to tell Angular that we want to bind to a property, we use the brackets syntax. If we'd build our `widget` directive in Angular, we would need to bind to it's `obj` property to assign an object value:
+That's why since version 2.x, Angular always binds to properties rather than attributes (as AngularJS does). Every DOM element has properties, regardless of being a native element or a Web Component. In order to tell Angular that we want to bind to a property, we use the brackets syntax. If we'd build our `widget` directive in Angular, we would need to bind to it's `obj` property to assign an object value:
 
 {% highlight html %}
 {% raw %}
@@ -223,7 +223,7 @@ Binding to properties through HTML is already super powerful. But sometimes we n
 
 In AngularJS, we have a lot of directives that help us out notifying the framework when an event is fired. That's why we have things like `ng-click`, `ng-focus` etc. They simply notify Angular that an event has been fired and application state could have changed. Without these directives, Angular's two-way data binding wouldn't work out-of-the-box. Unfortunately, that doesn't really scale. How can our `<date-picker>` Web Component notify Angular that a change has happened? Correct, we would need to create a directive for each and every event and it's not uncommon for elements to fire more than just one event.
 
-That's why in Angular 2 we have the parenthesis syntax where we can bind to **any** event like this:
+That's why since version 2.x, in Angular we have the parenthesis syntax where we can bind to **any** event like this:
 
 {% highlight html %}
 {% raw %}
@@ -231,11 +231,11 @@ That's why in Angular 2 we have the parenthesis syntax where we can bind to **an
 {% endraw %}
 {% endhighlight %}
 
-The parentheses simply tell Angular that the expression inside the symbols is an event name that it needs to add an event listener for. `statement()` is simply the statement expression that gets executed whenever such an event is fired on that element. Having such a generic binding, all directives that intercepted for us in AngularJS will go away in Angular 2. This framework is getting simpler and simpler.
+The parentheses simply tell Angular that the expression inside the symbols is an event name that it needs to add an event listener for. `statement()` is simply the statement expression that gets executed whenever such an event is fired on that element. Having such a generic binding, all directives that intercepted for us in AngularJS will go away in Angular. This framework is getting simpler and simpler.
 
 **Event Bubbling**
 
-When binding to events in Angular 2, events are caught on the same element as well as from events that bubble up from child elements. E.g. if we have a DOM structure like this:
+When binding to events in Angular, events are caught on the same element as well as from events that bubble up from child elements. E.g. if we have a DOM structure like this:
 
 {% highlight html %}
 {% raw %}
@@ -261,7 +261,7 @@ Of course, using parenthesis is also just a shorthand syntax, so we as developer
 
 We talked about property binding and event binding but what about the biggest selling point of AngularJS - two-way data binding?
 
-**Angular 2 doesn't come with two-way data binding by default**. This feature has been removed intentionally from the framework, because it comes with various drawbacks. But how is something like `ng-model` in Angular 2 implemented then? `ng-model` in Angular 2 gives us two-way data binding, even though under the hood, it simply uses a combination of property and event binding.
+**Since 2.x, Angular doesn't come with two-way data binding by default**. This feature has been removed intentionally from the framework, because it comes with various drawbacks. But how is something like `ng-model` in Angular implemented then? `ng-model` in Angular version >= 2.x gives us two-way data binding, even though under the hood, it simply uses a combination of property and event binding.
 
 Let's take a look at how that works with the following snippet:
 
@@ -287,7 +287,7 @@ This can be easily fixed by adding an event binding accordingly:
 
 We listen to the `input` event and whenever it is fired, we update the value of our `name` expression by pulling the new value out of the event object.
 
-Since this is quite a lot of typing to implement such a common scenario, Angular 2 comes with an `ngModel` directive that saves some key strokes for us, by unifying the property and event binding, and also the extraction of the target's value. Here's the exact same code using `ngModel`:
+Since this is quite a lot of typing to implement such a common scenario, Angular comes with an `ngModel` directive that saves some key strokes for us, by unifying the property and event binding, and also the extraction of the target's value. Here's the exact same code using `ngModel`:
 
 {% highlight html %}
 {% raw %}
@@ -309,4 +309,4 @@ It gets even better! We can shorten that syntax even further by merging both bin
 
 Two-way data binding is back in town! We can easily build our own directives that support that syntax, but that we're going to explore in another article.
 
-This was the first part of "Angular 2 Template Syntax Demystified". We're going to cover local variables and template directives in a second part, which will be published very soon.
+This was the first part of "Angular Template Syntax Demystified". We're going to cover local variables and template directives in a second part, which will be published very soon.

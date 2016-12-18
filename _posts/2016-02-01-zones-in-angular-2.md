@@ -1,14 +1,14 @@
 ---
 layout: post
-title: Zones in Angular 2
+title: Zones in Angular
 demos:
   - url: 'http://embed.plnkr.co/gC7GjU/'
-    title: Zones in Angular 2
+    title: Zones in Angular
 date: 2016-02-01T00:00:00.000Z
 update_date: 2016-08-23T00:00:00.000Z
 summary: >-
-  In this article we're going to discuss what role Zones play in the Angular 2
-  platform, with the Angular 2 specific NgZone.
+  In this article we're going to discuss what role Zones play in the Angular
+  platform, with the Angular specific NgZone.
 categories:
   - angular
 tags:
@@ -16,12 +16,12 @@ tags:
 topic: changedetection
 author: pascal_precht
 related_posts:
-  - Testing Services with Http in Angular 2
-  - Two-way Data Binding in Angular 2
-  - Resolving route data in Angular 2
-  - Angular 2 Animations - Foundation Concepts
+  - Testing Services with Http in Angular
+  - Two-way Data Binding in Angular
+  - Resolving route data in Angular
+  - Angular Animations - Foundation Concepts
   - Angular 2 is out - Get started here
-  - Bypassing Providers in Angular 2
+  - Bypassing Providers in Angular
 related_videos:
   - '175255006'
   - '193524896'
@@ -32,7 +32,7 @@ related_videos:
 
 ---
 
-In [Understanding Zones](/angular/2016/01/22/understanding-zones.html), we explored the power of Zones by building a profiling zone that profiles asynchronous operations in our code. We learned that Zones are a sort of execution context that allows us to hook into our asynchronous tasks. If you haven't read that article, we highly recommend checking it out as this one is based on it. In this article we're going to take a closer look at what role Zones play in Angular 2.
+In [Understanding Zones](/angular/2016/01/22/understanding-zones.html), we explored the power of Zones by building a profiling zone that profiles asynchronous operations in our code. We learned that Zones are a sort of execution context that allows us to hook into our asynchronous tasks. If you haven't read that article, we highly recommend checking it out as this one is based on it. In this article we're going to take a closer look at what role Zones play in Angular.
 
 {% include demos-and-videos-buttons.html post=page %}
 
@@ -55,7 +55,7 @@ Before we dive into these questions, let's first think about what actually cause
 
 It turns out that these three things have something in common. Can you name it? ... Correct! **They are all asynchronous**.
 
-Why do you think is this important? Well ... because it turns out that these are the only cases when Angular is actually interested in updating the view. Let's say we have an Angular 2 component that executes a handler when a button is clicked:
+Why do you think is this important? Well ... because it turns out that these are the only cases when Angular is actually interested in updating the view. Let's say we have an Angular component that executes a handler when a button is clicked:
 
 {% highlight javascript %}
 {% raw %}
@@ -77,7 +77,7 @@ class MyComponent {
 {% endraw %}
 {% endhighlight %}
 
-If you're not familiar with the `(click)` syntax, you might want to read our article on [Angular 2's Template Syntax Demystified](http://blog.thoughtram.io/angular/2015/08/11/angular-2-template-syntax-demystified-part-1.html). The short version is, that this sets up an event handler for the `click` event on the `<button>` element.
+If you're not familiar with the `(click)` syntax, you might want to read our article on [Angular's Template Syntax Demystified](http://blog.thoughtram.io/angular/2015/08/11/angular-2-template-syntax-demystified-part-1.html). The short version is, that this sets up an event handler for the `click` event on the `<button>` element.
 
 When the component's button is clicked, `changeName()` is executed, which in turn will change the `name` property of the component. Since we want this change to be reflected in the DOM as well, Angular is going to update the view binding `{% raw %}{{name}}{% endraw %}` accordingly. Nice, that seems to magically work.
 
@@ -125,11 +125,11 @@ tick() {
 }
 {% endhighlight %}
 
-Whenever Angular's zone emits an `onTurnDone` event, it runs a task that performs change detection for the entire application. If you're interested in how change detection in Angular 2 works, watch out, we're going to publish another article on that soon.
+Whenever Angular's zone emits an `onTurnDone` event, it runs a task that performs change detection for the entire application. If you're interested in how change detection in Angular works, <s>watch out, we're going to publish another article on that soon</s> go ahead and read [this article](/angular/2016/02/22/angular-2-change-detection-explained.html).
 
 But wait, where does the `onTurnDone` event emitter come from? This is not part of the default `Zone` API, right? It turns out that Angular introduces its own zone called `NgZone`.
 
-## NgZone in Angular 2
+## NgZone in Angular
 
 `NgZone` is basically a forked zone that extends its API and adds some additional functionality to its execution context. One of the things it adds to the API is the following set of custom events we can subscribe to, as they are observable streams:
 
@@ -137,7 +137,7 @@ But wait, where does the `onTurnDone` event emitter come from? This is not part 
 - `onTurnDone()` - Notifies subscribers immediately after Angular's zone is done processing the current turn and any micro tasks scheduled from that turn.
 - `onEventDone()` - Notifies subscribers immediately after the final `onTurnDone()` callback before ending VM event. Useful for testing to validate application state.
 
-If "Observables" and "Streams" are super new to you, you might want to read our article on [Taking advantage of Observables in Angular 2](http://blog.thoughtram.io/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html).
+If "Observables" and "Streams" are super new to you, you might want to read our article on [Taking advantage of Observables in Angular](http://blog.thoughtram.io/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html).
 
 The main reason Angular adds its own event emitters instead of relying on `beforeTask` and `afterTask` callbacks, is that it has to keep track of timers and other micro tasks. It's also nice that Observables are used as an API to handle these events.
 

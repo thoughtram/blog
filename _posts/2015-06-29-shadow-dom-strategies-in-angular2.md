@@ -1,8 +1,8 @@
 ---
 layout: post
-title: View Encapsulation in Angular 2
+title: View Encapsulation in Angular
 date: 2015-06-29T00:00:00.000Z
-update_date: 2016-11-08T00:00:00.000Z
+update_date: 2016-12-16T00:00:00.000Z
 summary: >-
   Angular Shadow DOM for styles and DOM encapsulation. This article explores
   Angular 2's view encapsulation and how we can use it.
@@ -13,12 +13,12 @@ tags:
 topic: views
 author: pascal_precht
 related_posts:
-  - Testing Services with Http in Angular 2
-  - Two-way Data Binding in Angular 2
-  - Resolving route data in Angular 2
-  - Angular 2 Animations - Foundation Concepts
+  - Testing Services with Http in Angular
+  - Two-way Data Binding in Angular
+  - Resolving route data in Angular
+  - Angular Animations - Foundation Concepts
   - Angular 2 is out - Get started here
-  - Bypassing Providers in Angular 2
+  - Bypassing Providers in Angular
 related_videos:
   - '175255006'
   - '193524896'
@@ -29,7 +29,7 @@ related_videos:
 
 ---
 
-In our article on [styling Angular 2 components](/angular/2015/06/25/styling-angular-2-components.html) we learned how styles are applied to our component when defining them in different ways. We mentioned that all our component styles are appended to the document head, but usually would end up in the component's template, in case we use native Shadow DOM. This article explains not only how we can tell Angular to use native Shadow DOM, but also what the other view encapsulation solutions are, that the framework comes with and why they exist.
+In our article on [styling Angular components](/angular/2015/06/25/styling-angular-2-components.html) we learned how styles are applied to our component when defining them in different ways. We mentioned that all our component styles are appended to the document head, but usually would end up in the component's template, in case we use native Shadow DOM. This article explains not only how we can tell Angular to use native Shadow DOM, but also what the other view encapsulation solutions are, that the framework comes with and why they exist.
 
 <div class="thtrm-toc is-sticky" markdown="1">
 ### TABLE OF CONTENTS
@@ -46,19 +46,19 @@ In one sentence, Shadow DOM is part of the Web Components standard and enables D
 
 Why is that great? We can finally build components that expose a single (custom) element with hidden DOM logic under the hood, and styles that only apply to that element - a web component. Just think of an `<input type="date">` element. Isn't it nice that we can just use a single tag and the browser renders a whole date picker for us? Guess with what you can achieve that...
 
-## Shadow DOM in Angular 2
+## Shadow DOM in Angular
 
-Now that we got an idea of what Shadow DOM is (and trust me, there is so much more to cover), we can take a look at how Angular 2 actually uses it.
+Now that we got an idea of what Shadow DOM is (and trust me, there is so much more to cover), we can take a look at how Angular actually uses it.
 
-As we know, in Angular 2 we build components. A component is a controller class with a template and styles that belong to it. Those components can be shared across applications if they are general enough. That means, Angular 2 already embraces the idea of building applications in components and making them reusable. However, components in Angular are not web components per se but they take advantage of them as mentioned earlier.
+As we know, in Angular we build components. A component is a controller class with a template and styles that belong to it. Those components can be shared across applications if they are general enough. That means, Angular already embraces the idea of building applications in components and making them reusable. However, components in Angular are not web components per se but they take advantage of them as mentioned earlier.
 
-Whenever we create a component, Angular puts it's template into a `shadowRoot`, which is the Shadow DOM of that particular component. Doing that, we get DOM tree and style encapsulation for free, right? But what if we don't have Shadow DOM in the browser? Does that mean we can't use Angular 2 in those environments? **We can.** In fact, Angular 2 doesn't use native Shadow DOM by default, it uses an emulation. To be technically correct, it also doesn't create a `shadowRoot` for our components in case no native Shadow DOM is used.
+Whenever we create a component, Angular puts it's template into a `shadowRoot`, which is the Shadow DOM of that particular component. Doing that, we get DOM tree and style encapsulation for free, right? But what if we don't have Shadow DOM in the browser? Does that mean we can't use Angular in those environments? **We can.** In fact, Angular doesn't use native Shadow DOM by default, it uses an emulation. To be technically correct, it also doesn't create a `shadowRoot` for our components in case no native Shadow DOM is used.
 
 The main reason for that is that most browsers simply don't support Shadow DOM yet, but we should still be able to use the framework. Even better, we can easily tell Angular to use the native Shadow DOM if we want. So how is that implemented and what do we need to do?
 
 ## View Encapsulation Types
 
-Angular 2 comes with view encapsulation built in, which enables us to use Shadow DOM or even emulate it. There are three view encapsulation types:
+Angular comes with view encapsulation built in, which enables us to use Shadow DOM or even emulate it. There are three view encapsulation types:
 
 - **ViewEncapsulation.None** - No Shadow DOM at all. Therefore, also no style encapsulation.
 - **ViewEncapsulation.Emulated** - No Shadow DOM but style encapsulation emulation.
@@ -68,7 +68,7 @@ You might wonder why we have three types. Why not just one for native Shadow DOM
 
 **ViewEncapsulation.None**
 
-Angular doesn't use Shadow DOM at all. Styles applied to our component are written to the document head. We talked about that in a more detail in [styling Angular 2 components](/angular/2015/06/25/styling-angular-2-components.html), but to make a quick recap, having a zippy component with styles like this (note that we set the `encapsulation` property in our `@Component` decorator):
+Angular doesn't use Shadow DOM at all. Styles applied to our component are written to the document head. We talked about that in a more detail in [styling Angular components](/angular/2015/06/25/styling-angular-2-components.html), but to make a quick recap, having a zippy component with styles like this (note that we set the `encapsulation` property in our `@Component` decorator):
 
 {% highlight js %}
 import {ViewEncapsulation} from '@angular/core';
@@ -216,4 +216,4 @@ Okay that was easy. If we run our code in the browser, we see that no styles are
 
 In order to get an output like this, we need to tell our browser dev tools to display Shadow DOM when inspecting element. No weird attributes anymore. Instead we get a nice shadow root and we can see very nicely how the styles are written into it. 
 
-From here on, all the rules that apply to plain Shadow DOM, apply to our Angular 2 component as well.
+From here on, all the rules that apply to plain Shadow DOM, apply to our Angular component as well.
