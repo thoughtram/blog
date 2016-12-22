@@ -71,6 +71,10 @@
 
   &--is-promo-light {
     background: #5C8491;
+
+    .thtrm-layout-divider-cta:hover {
+      color: #5C8491;
+    }
   }
 }
 
@@ -299,11 +303,6 @@
 
 .thtrm-ad {
   background-color: #62a7be;
-  transition: ease background 300ms;
-
-  &:hover {
-    background-color: #2c94b7;
-  }
 
   &.thtrm-section--is-promo {
     padding: 1.5em;
@@ -328,6 +327,10 @@
     .thtrm-section-text {
       font-size: 16px;
     }
+  }
+
+  &--without-description {
+    .thtrm-section-text { display: none; }
   }
 }
 
