@@ -380,7 +380,7 @@ import {
   BaseRequestOptions,
   HttpModule,
   Http,
-  Respone,
+  Response,
   ResponseOptions
 } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
@@ -414,14 +414,6 @@ describe('VideoService', () => {
     it('should return an Observable<Array<Video>>',
         async(inject([VideoService, MockBackend], (videoService, mockBackend) => {
 
-        videoService.getVideos().subscribe((videos) => {
-          expect(videos.length).toBe(4);
-          expect(videos[0].name).toEqual('Video 0');
-          expect(videos[1].name).toEqual('Video 1');
-          expect(videos[2].name).toEqual('Video 2');
-          expect(videos[3].name).toEqual('Video 3');
-        });
-
         const mockResponse = {
           data: [
             { id: 0, name: 'Video 0' },
@@ -436,6 +428,15 @@ describe('VideoService', () => {
             body: JSON.stringify(mockResponse)
           })));
         });
+
+        videoService.getVideos().subscribe((videos) => {
+          expect(videos.length).toBe(4);
+          expect(videos[0].name).toEqual('Video 0');
+          expect(videos[1].name).toEqual('Video 1');
+          expect(videos[2].name).toEqual('Video 2');
+          expect(videos[3].name).toEqual('Video 3');
+        });
+
     })));
   });
 });
