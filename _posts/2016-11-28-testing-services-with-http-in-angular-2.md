@@ -294,13 +294,14 @@ We can subscribe to all opened http connections via `MockBackend.connections`, a
 {% raw %}
 it('should return an Observable<Array<Video>>',
   inject([VideoService, MockBackend], (videoService, mockBackend) => {
-    ...
     mockBackend.connections.subscribe((connection) => {
       // This is called every time someone subscribes to
       // an http call.
       //
       // Here we want to fake the http response.
     });
+
+    ...
 }));
 {% endraw %}
 {% endhighlight %}
@@ -332,7 +333,11 @@ Cool! With this code we now get a fake response inside that particular test spec
 
 ### Making the test asynchronous
 
-Because the code we want to test is asynchronous, we need to inform Jasmine when the asynchronous operation is done, so it can run our assertions. This is not a problem when testing synchronous code, because the assertions are always executed in the same tick as the code we test. However, when testing asynchronous code, assertions might be executed later in another tick. That's why we can explicitly tell Jasmine that we're writing an asynchronous test. We just need to also tell Jasmine, when the actual code is "done".
+<p><s>Because the code we want to test is asynchronous, we need to inform Jasmine when the asynchronous operation is done, so it can run our assertions.</s></p>
+
+[Johannes Hoppe pointed out](http://stackoverflow.com/questions/41273244/angular-testing-http-with-mockbackend-is-async-really-required) that `MockConnection.mockRespond()` actually emits **synchronously**, not asynchronously, which means that the rest of this section is not needed for our particular test (Thank you Johannes!). However, it's still a useful gem if we **are** writing tests that need asynchronous operations, read on!
+
+When testing asynchronous code, assertions might be executed later in another tick. That's why we can explicitly tell Jasmine that we're writing an asynchronous test. We just need to also tell Jasmine, when the actual code is "done".
 
 Jasmine usually provides access to a function `done()` that we can ask for inside our test spec and then call it when we think our code is done. This looks something like this:
 
@@ -353,21 +358,6 @@ How does that work? Well... Angular takes advantage of a feature called Zones. I
 
 > **Special Tip**: Angular's `async()` function executes test specs in a test zone!
 
-Let's update our test to run inside Angular's test zone:
-
-{% highlight js %}
-{% raw %}
-import { TestBed, inject, async } from '@angular/core/testing';
-...
-it('should return an Observable<Array<Video>>',
-  async(inject([VideoService, MockBackend], (videoService, mockBackend) => {
-    ...
-})));
-...
-{% endraw %}
-{% endhighlight %}
-
-Notice that all we did was wrapping the `inject()` call in an `async()` call.
 
 ## The complete code
 
@@ -412,7 +402,7 @@ describe('VideoService', () => {
   describe('getVideos()', () => {
 
     it('should return an Observable<Array<Video>>',
-        async(inject([VideoService, MockBackend], (videoService, mockBackend) => {
+        inject([VideoService, MockBackend], (videoService, mockBackend) => {
 
         const mockResponse = {
           data: [
@@ -437,7 +427,7 @@ describe('VideoService', () => {
           expect(videos[3].name).toEqual('Video 3');
         });
 
-    })));
+    }));
   });
 });
 {% endraw %}
