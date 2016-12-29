@@ -31,7 +31,7 @@ This is not another article on basic Jasmine/Karma testing with Angular 2. Rathe
 advanced article on DRY Karma testing techinques using **Custom Matchers** and **Special Helpers**... 
 these techniques will make your unit-tests incredibly easy to read and to maintain.
 
-To achieve our goals, there are three (3) important testing topics that we must cover:
+To achieve our goals, there are three (3) important testing topics that I wanto to cover:
 
 * Testing custom Angular **Directives**
 * Building reusable, DRY TestBed **Helper** methods
@@ -40,7 +40,7 @@ To achieve our goals, there are three (3) important testing topics that we must 
 These techniques are practically undocumented... yet they are also fundamentally critical to writing 
 quality tests.
 
-To whet your appetite, here are some sample DRY tests that we will be learning how to write:
+To whet your appetite, here are some sample DRY tests that I will be showing you how to write:
 
 ![pic1](https://cloud.githubusercontent.com/assets/210413/21514513/8a9690ea-cc8b-11e6-98ac-2a66a42f023d.png)
 
@@ -48,7 +48,8 @@ To whet your appetite, here are some sample DRY tests that we will be learning h
 
 ### Background
 
-To be fair there a several excellent resources available to learn about Angular Karma testing:
+Now - to be fair - there a several excellent resources already available that developers can use to 
+learn about Angular Karma testing:
 
 *  [Angular 2 - Testing Guide](https://medium.com/google-developer-experts/angular-2-testing-guide-a485b6cb1ef0#.2ytwy9k9w) (by Gerard Sans)
 *  [Angular 2 - Unit Testing Recipes](https://medium.com/google-developer-experts/angular-2-unit-testing-with-jasmine-defe20421584#.cmk3cg9bc) (by Gerard Sans)
@@ -56,13 +57,13 @@ To be fair there a several excellent resources available to learn about Angular 
 *  [Testing Angular 2 Components](http://chariotsolutions.com/blog/post/testing-angular-2-components-unit-tests-testcomponentbuilder/) (by Ken Rimple)
 
 The biggest take-aways from these ^ articles is the singular concept that instead of using 
-*imports* and manually instantiating and testing classes, developers <u>should be using</u> 
-the `TestBed.configureTestingModule()` to prepare an entire test Angular DI **environment**.
+*imports* and manually instantiating and testing classes, Angular developers <u>should be using</u> 
+the `TestBed.configureTestingModule()` to prepare an entire test Angular DI **environment** for each
+test module (*.spec.ts).
 
 ###### Traditional Approach:
 
 Consider the traditional approach of manual construction:
-
 
 {% highlight js %}
 {% raw %}
@@ -82,11 +83,11 @@ describe('ServiceA', () => {
 
 ###### Angular Approach:
 
-TestBed allows developers to configure **ngModules** that provide instances/values and use 
+The Angular **TestBed** allows developers to configure **ngModules** that provide instances/values and use 
 Dependency Injection... just like those processes developers use in their regular Ng applications. 
 
-And Angular components can be easily instantiated and tested using the **TestBed** with its support 
-for component-lifecycle features.
+With the TestBed and its support for for component-lifecycle features, Angular components can be 
+easily instantiated and tested.
 
 {% highlight js %}
 {% raw %}
@@ -122,9 +123,9 @@ function createTestComponent(template: string): ComponentFixture<Type<any>>
 {% endraw %}
 {% endhighlight %}
 
-Before each test, we want configure a new, fresh testing module with <u>only</u> the providers, 
-components, and directives we need. And we use `createTestComponent()` to allow us to easily 
-specify a custom template to be used when instantiating a component.
+Before each test, I want configure a new, fresh testing module with <u>only</u> the providers, 
+components, and directives I need for this test module. And I use `createTestComponent()` to easily
+specify a custom template that will be used when instantiating a component.
 
 At first, this complexity may seem like overkill. But let's consider two critical requirements 
 shown in the sample above:
@@ -133,7 +134,7 @@ shown in the sample above:
 * `MyComponent` instantiation requires an injected `MatchMedia` instance
 
 Even with these requirements, developers should NOT have to worry about all these internals just 
-to test **MyComponent**. Using ngModule, DI, and Angular... we now don't have to worry about those 
+to test **MyComponent**. Using ngModule, DI, and Angular... I now don't have to worry about those 
 details.
 
 This is just like those real-world scenarios where your components, directives, and services will 
@@ -152,9 +153,9 @@ Yet the <u>How-to's for testing Directives</u> is oddly not well documented.
 
 
 Unlike Components with their associated templates, Directives do not have templates. This means 
-that we cannot simply **import** a Directive and create it. 
+that I cannot simply **import** a Directive and create it. 
 
-Yet the solution is rather easy! We must:
+Yet the solution is rather easy! I need to:
 
 * configure a TestBed that imports and declares the directive(s),
 * prepare a shell test Component, and
@@ -171,7 +172,7 @@ I have found that real-world exmaples provide the best examples for solutions an
 So let's use the Angular [Flex-Layout](http://github.com/angular/flex-layout) library as the basis 
 for the following discussions on Directives, Matchers, and TestBed Helpers.
 
-We will be using excerpts of the karma tests for the **fxLayout** directive as real examples. The 
+I will be using excerpts of the karma tests for the **fxLayout** directive as real examples. The 
 solutions and techniques used in those tests are the same ones that you can also use in your own 
 tests.
 
@@ -184,8 +185,8 @@ But **don't** jump there yet! Wait until you have finished reading this article.
 
 ###### Configuring the TestBed, Component Shell, and Helpers
 
-Very similar to the TestBed sample shown above, we will configure a testing module but we will 
-not *import* an external test component. Our test component `TestLayoutComponent` is itself defined 
+Very similar to the TestBed sample shown above, I will configure a testing module but I will 
+not *import* an external test component. My test component `TestLayoutComponent` is itself defined 
 within our test (*.spec) file.
 
 > Using an internal test component enables each `<directive>.spec.ts` to define and use its own 
@@ -253,7 +254,7 @@ function createTestComponent(template: string): ComponentFixture<TestLayoutCompo
 {% endraw %}
 {% endhighlight %}
 
-We now have everything we need to write a Directive test quickly.
+I now have everything I need to write a Directive test quickly.
 
 {% highlight js %}
 {% raw %}
@@ -283,8 +284,8 @@ The traditional approach would probably implement something like this:
 
 
 
-Above we defined a custom template with bindings to the component property `direction`. Then we use 
-deeply nested references to get access to the native element... and then we test each style individually.
+Above I defined a custom template with bindings to the component property `direction`. Then I use 
+deeply nested references to get access to the native element... and then I test each style individually.
 
 To exacerbate this issue, imagine that our test module has more than 20 individual `it(...)` tests! 
 That is a lot of duplicate code. And there is certainly nothing DRY ("do not repeat yourself") about 
@@ -292,7 +293,7 @@ this code!
 
 ###### Test Directive Logic: Short-Form
 
-Here is the DRY version that we want:
+Here is the DRY version that I want:
 
 ![pic51](https://cloud.githubusercontent.com/assets/210413/21514729/2656a662-cc8e-11e6-8b7a-0594ea3cf120.png)
 
@@ -300,7 +301,7 @@ All the complexities of forcing change detection, accessing the native element, 
 1...n DOM CSS styles is now easily encapsulated in a Helper function and a Custom Matcher 
 (respectively). 
 
-Instead of using the standard `expect(...)` method, we define a custom *expect* Helper function 
+Instead of using the standard `expect(...)` method, I define a custom *expect* Helper function 
 `expectNativeEl( <fixture> )`:
 
 {% highlight js %}
@@ -337,11 +338,11 @@ expectNativeEl(...).toBe
 {% endraw %}
 {% endhighlight %}
 
-For more complex DOM access, we can use a Query to select nested DOM nodes. Consider the following:
+For more complex DOM access, I can use a Query to select nested DOM nodes. Consider the following:
 
 ![pic6](https://cloud.githubusercontent.com/assets/210413/21514536/bf6531dc-cc8b-11e6-8d5f-fad4a1d82be9.png)
 
-In this example ^, we actually want to test the nested DOM node with the attribute **fxFlex**. 
+In this example ^, I actually want to test the nested DOM node with the attribute **fxFlex**. 
 Using another *helper* method makes that easy.
 
 {% highlight js %}
@@ -404,7 +405,7 @@ indicate which values should be used for which mediaQuery:
 {% endraw %}
 {% endhighlight %}
 
-Testing these features presents several additional requirements. We need to be able to :
+Testing these features presents several additional requirements. I need to be able to :
 
 * mock the window API `window.matchMedia(...)`
 * simulate a mediaQuery activation
@@ -412,7 +413,7 @@ Testing these features presents several additional requirements. We need to be a
 * hide all these details from indvidual tests (DRY)
 
 The Flex-Layout library actually publishes a MockMatchMedia class... and our earlier TestBed 
-configuration showed how we setup the DI:
+configuration showed how I setup the DI:
 
 {% highlight js %}
 {% raw %}
@@ -459,7 +460,7 @@ asks for an instance of the `MatchMedia` token to be injected via DI.
 (2) Dynamic Injection
 
 Our special helper `activateMediaQuery()` needs a dynamic injected instance of the MatchMedia token. 
-Using the `fixture` instance, we can dynamically get a **MockMatchMedia** instance from our fixtures 
+Using the `fixture` instance, I can dynamically get a **MockMatchMedia** instance from our fixtures 
 injector.
 
 Notice that all this complexity [and construction details] is encapsulated in our TestBed and special 
@@ -475,7 +476,7 @@ That is very, very cool!
 
 ### Custom Matchers
 
-We have only one more tool - in our testing toolkit - to discuss: Custom Jasmine Matchers.
+I have only one more tool - in our testing toolkit - to discuss: Custom Jasmine Matchers.
 
 For those developers not familiar with the concepts of Jasmine *matchers*, I recommend the online 
 Jasmine documentation:
@@ -491,7 +492,7 @@ complex logic testings.
 
 ###### Building a Typescript Matcher
 
-Similar to `expect(...).toBeTruthy()`, we want a custom matcher `toHaveCSSStyle( )`:
+Similar to `expect(...).toBeTruthy()`, I want a custom matcher `toHaveCSSStyle( )`:
 
 {% highlight js %}
 {% raw %}
@@ -506,12 +507,12 @@ expectNativeEl(fixture).toHaveCssStyle({
 Creating a matcher in JavaScript is documented on the Jasmine site. Our challenge is the harder 
 goal of creating a *custom matcher* implemented in TypeSript and well-defined types.
 
-First we need to enhance the `expect()` API and then implement custom matchers.
+First I need to enhance the `expect()` API and then implement custom matchers.
 
 The global Jasmine `expect()` method normally returns `<any>` value. To use custom matchers 
-(with types), we want the **expect** to support returning a custom matcher.
+(with types), I want the **expect** to support returning a custom matcher.
 
-Here is how we do that in a `custom-matchers.ts` module:
+Here is how I do that in a `custom-matchers.ts` module:
 
 {% highlight js %}
 {% raw %}
@@ -565,10 +566,10 @@ export const customMatchers: jasmine.CustomMatcherFactories = {
 {% endraw %}
 {% endhighlight %}
 
-With the above definitions, we can now use `expect(...).toHaveCssStyles(...)` without any 
+With the above definitions, I can now use `expect(...).toHaveCssStyles(...)` without any 
 TypeScript complaints.
 
-Wait... we need one more addition to our custom-matcher code. Notice the call to 
+Wait... I need one more addition to our custom-matcher code. Notice the call to 
 `getDOM().hasStyle()` ?
 
 Where does `getDOM` come from ? After some inspection of the @angular/core code, I was able to 
@@ -581,7 +582,7 @@ const getDOM = __platform_browser_private__.getDOM;
 {% endraw %}
 {% endhighlight %}
 
-Now we are golden with features. Let's import and use our jasmine matcher.
+Now I am *golden* with features. Let's import and use our jasmine matcher.
 
 {% highlight js %}
 {% raw %}
@@ -599,7 +600,7 @@ describe('layout directive', () => {
 {% endraw %}
 {% endhighlight %}
 
-Notice that we must add the custom matchers in a `beforeEach()` call to configure the 
+Notice that I must add the custom matchers in a `beforeEach()` call to configure the 
 matchers for each subsequent test. And now everything is ready for the individual tests:
 
 {% highlight js %}
