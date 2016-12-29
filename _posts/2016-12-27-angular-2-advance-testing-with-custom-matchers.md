@@ -34,6 +34,8 @@ related_videos:
 
 ---
 
+## Preface 
+
 A few weeks ago, Pascal Precht wrote a blog article on 
 [Testing Services with HTTP with Angular](http://blog.thoughtram.io/angular/2016/11/28/testing-services-with-http-in-angular-2.html).
 In this article, we want to discuss a more advanced topics on DRY Angular testing techniques 
@@ -49,9 +51,9 @@ using **Custom Matchers** and **Special Helpers**.
 These are techniques to make your unit-tests incredibly easy to read and to maintain. And to achieve 
 our learning goals, there are three (3) important testing topics that we want to cover:
 
-* Testing custom Angular **Directives**
-* Building reusable, DRY TestBed **Helper** methods
-* Using Typescript Jasmine **Custom Matchers**
+*  (1) [Testing custom Angular **Directives**](#testing-directives)
+*  (2) [Building reusable, DRY TestBed **Helper** methods](#testing-with-helpers)
+*  (3) [Using Typescript Jasmine **Custom Matchers**](#custom-matchers)
 
 > These techniques are practically undocumented... yet they dramatically improve the quality of 
 our tests.
@@ -82,7 +84,7 @@ test module (*.spec.ts).
 doesn't have any dependencies. It'd be easier and less verbose to just instantiate using `new`. The 
 **TestBed** is for useful for dependencies and injections.
 
-## Traditional Approach
+## Traditional Traditional
 
 Consider the traditional approach of manual construction:
 
@@ -106,7 +108,7 @@ describe('ServiceA', () => {
 else to be instantiated; it is a self-contained service without external dependencies. So assuming 
 that this service won't get any dependencies in the future, this test is the one we want to write.  
 
-## Angular Approach
+## Introducing Angular TestBed
 
 The Angular **TestBed** allows developers to configure **ngModules** that provide instances/values and use 
 Dependency Injection. This is the same approach developers use in their regular Angular applications. 
@@ -177,7 +179,7 @@ And this is where **TestBed** demonstrates its real value!
 > We are not using external templates nor any other resources or services that are asynchronous. 
 So we do not discuss the `async()` nor the the `TestBed::compileComponents()` functions. 
 
-## 1) Testing Angular Directives
+## 1) Testing Directives
 
 With relative ease, developers can find literature on testing Angular Services and Components. 
 Yet the <u>How-to's for testing Directives</u> is oddly not well documented.
@@ -196,8 +198,6 @@ The solution is rather easy! We only need to:
 Since Directives usually affect the **host element**, our tests will check if those changes to the host 
 element are present and valid.
 
-### Testing the fxLayout Directive
-
 So let's use the Angular [Flex-Layout](http://github.com/angular/flex-layout) library as the basis 
 for the following discussions on Directives, Matchers, and TestBed Helpers.
 
@@ -213,7 +213,7 @@ directive.
 <br/>But **don't** jump there yet! Wait until you have finished reading this article.
 
 
-### Configuring the TestBed, Component Shell, and Helpers
+### Configuring the TestBed
 
 Very similar to the TestBed sample shown above, we will configure a testing module but we will 
 not *import* an external test component. My test component `TestLayoutComponent` is itself defined 
@@ -300,15 +300,13 @@ Wow! That is pretty easy.
 > The component has been constructed and prepared with the same 
 processes and DI that your real world application will use.
 
-## 2) Using DRY Helper Methods
-
 Let's first write our test using the traditional long-form... one without custom matchers and the 
 more advanced helper methods.
 
 Since the **fxLayout** directive will add custom flexbox CSS to the host element, our test logic 
 here will confirm that the initial CSS is correctly assigned.
 
-### Test Directive Logic: Long-Form
+### Testing: Long-Form
 
 The traditional approach would probably implement something like this:
 
@@ -346,19 +344,23 @@ Now imagine that our test module has more than 20 individual `it(...)` tests!
 > That would be a lot of duplicate code. And there is certainly nothing DRY ("do not repeat yourself") about 
 such code! 
 
-### Test Directive Logic: Short-Form
+## 2) Testing with Helpers
+
+Above we explored the standard approach to implement unit tests; which resulted 
+in verbose, non-reusable code.
 
 Here is the DRY version that we want:
 
 ![Testing Directives - DRY Code](/images/dry_tests/example3.jpg)
 
-Now this test is much more readable, maintainable, and DRY. All the complexities of 
+Now this test is much more readable, maintainable, and DRY. We hide all the 
+complexities of:
 
 *  forcing change detection, 
 *  accessing the native element, and 
 *  confirming  1...n DOM CSS styles 
 
-is now easily encapsulated in a Helper function and a Custom Matcher (respectively). 
+Those complexities are now encapsulated in a Helper function and a Custom Matcher (respectively). 
 
 The custom Helper function **expectNativeEl( )** is similar to the standard **expect( )** function.
 In fact, it is wrapper function that internalizes the `expect( )` call. 
@@ -398,7 +400,7 @@ expectNativeEl(...).toBe
 {% endhighlight %}
 
 
-### Testing Complex, Nested DOM
+### Testing Nested DOM
 
 For more complex DOM access, we can use the DebugElement's query feature to select nested DOM nodes. 
 
@@ -462,7 +464,7 @@ expectDomForQuery(...).toBe
 {% endhighlight %}
 
  
-## More Special Helpers
+### More Special Helpers
 
 Earlier, we showed a code snapshot that had a *special helper* `activateMediaQuery( )`:
 
@@ -555,7 +557,7 @@ activateMediayQuery('md');
 
 That is very, very cool!
 
-## Custom Matchers
+## 3) Custom Matchers
 
 We have only one more tool [in our testing toolkit] to discuss: **Custom Jasmine Matchers**.
 
@@ -719,7 +721,7 @@ expect(...).toHaveCssStyle({
 {% endraw %}
 {% endhighlight %}
 
-## When to use Protractor + e2e
+## Protractor + e2e
 
 It should be noted that the above sample tests confirm whether CSS styles have been applied 
 correctly to the DOM element. Unit tests perform tests logic and state... but those same 
