@@ -20,7 +20,7 @@ tags:
   - typescript
   - special helper functions
   - DRY
-topic: testings
+topic: testing
 author: thomas_burleson
 related_posts:
   - Testing Services with Http in Angular
@@ -33,6 +33,13 @@ A few weeks ago, Pascal Precht wrote a blog article on
 [Testing Services with HTTP with Angular](http://blog.thoughtram.io/angular/2016/11/28/testing-services-with-http-in-angular-2.html).
 In this article, we want to discuss a more advanced topics on DRY Angular testing techniques 
 using **Custom Matchers** and **Special Helpers**.
+
+<div class="thtrm-toc is-sticky" markdown="1">
+### TABLE OF CONTENTS
+{:.no_toc}
+* TOC
+{:toc}
+</div>
 
 These are techniques to make your unit-tests incredibly easy to read and to maintain. And to achieve 
 our learning goals, there are three (3) important testing topics that we want to cover:
@@ -50,7 +57,7 @@ To whet your appetite, here are some sample DRY tests that we will be showing yo
 
 ![Testing Nested DOM Styles](/images/dry_tests/example2.jpg)
 
-### Background
+## Background
 
 There a several excellent resources already available that developers can read to 
 learn about Angular testing:
@@ -70,7 +77,7 @@ test module (*.spec.ts).
 doesn't have any dependencies. It'd be easier and less verbose to just instantiate using `new`. The 
 **TestBed** is for useful for dependencies and injections.
 
-### Traditional Approach:
+## Traditional Approach
 
 Consider the traditional approach of manual construction:
 
@@ -94,7 +101,7 @@ describe('ServiceA', () => {
 else to be instantiated; it is a self-contained service without external dependencies. So assuming 
 that this service won't get any dependencies in the future, this test is the one we want to write.  
 
-### Angular Approach:
+## Angular Approach
 
 The Angular **TestBed** allows developers to configure **ngModules** that provide instances/values and use 
 Dependency Injection. This is the same approach developers use in their regular Angular applications. 
@@ -165,7 +172,7 @@ And this is where **TestBed** demonstrates its real value!
 > We are not using external templates nor any other resources or services that are asynchronous. 
 So we do not discuss the `async()` nor the the `TestBed::compileComponents()` functions. 
 
-### 1) Testing Angular Directives
+## 1) Testing Angular Directives
 
 With relative ease, developers can find literature on testing Angular Services and Components. 
 Yet the <u>How-to's for testing Directives</u> is oddly not well documented.
@@ -288,7 +295,7 @@ Wow! That is pretty easy.
 > The component has been constructed and prepared with the same 
 processes and DI that your real world application will use.
 
-### 2) Using DRY Helper Methods
+## 2) Using DRY Helper Methods
 
 Let's first write our test using the traditional long-form... one without custom matchers and the 
 more advanced helper methods.
@@ -450,7 +457,7 @@ expectDomForQuery(...).toBe
 {% endhighlight %}
 
  
-#### More Special Helpers
+## More Special Helpers
 
 Earlier, we showed a code snapshot that had a *special helper* `activateMediaQuery( )`:
 
@@ -512,7 +519,7 @@ Let's explore three (3) very interesting things are happening in this code:
 *  use special helper **activateMediaQuery( )** function that hides all these details
 
 
-#### (1) Overriding DI Providers:
+**(1) Overriding DI Providers**
 
 
 {% highlight js %}
@@ -526,7 +533,7 @@ asks for an instance of the `MatchMedia` token to be injected via DI.
 
 > You can read more about the Angular DI systems here:<br/> [Dependency Injection in Angular](http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html)
 
-#### (2) Dynamic Injection
+**(2) Dynamic Injection**
 
 Our special helper `activateMediaQuery()` needs a dynamic injected instance of the MatchMedia token. 
 Using the `fixture` instance, we can dynamically get a **MockMatchMedia** instance from our fixtures 
@@ -707,7 +714,7 @@ expect(...).toHaveCssStyle({
 {% endraw %}
 {% endhighlight %}
 
-### When to use Protractor + e2e
+## When to use Protractor + e2e
 
 It should be noted that the above sample tests confirm whether CSS styles have been applied 
 correctly to the DOM element. Unit tests perform tests logic and state... but those same 
@@ -717,7 +724,7 @@ Jasmine unit tests **do not** test whether the CSS styles or states render the e
 browser as expected. Nor do they test renderings across different browsers. Those types of visual 
 tests are best performed in e2e testing with Protractor and visual differencing tools.
 
-### Summary
+## Summary
 
 Perhaps you will say: "Wow, this is cool... but totally overkill!"  If you are tempted to say that, 
 then look at all the DRY tests here: 
@@ -729,7 +736,7 @@ unit tests.
 
 Enjoy!
 
-### Resources
+## Resources
 
 * [Custom Matchers](https://github.com/angular/flex-layout/blob/master/src/lib/utils/testing/custom-matchers.ts): a full set of custom Jasmine Matchers
 * [Special Helpers](https://github.com/angular/flex-layout/blob/master/src/lib/utils/testing/helpers.ts): a reusable, importable set of Helpers
