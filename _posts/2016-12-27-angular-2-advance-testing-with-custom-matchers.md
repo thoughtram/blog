@@ -114,7 +114,9 @@ The Angular **TestBed** allows developers to configure **ngModules** that provid
 Dependency Injection. This is the same approach developers use in their regular Angular applications. 
 
 With the **TestBed** and its support for for component-lifecycle features, Angular components can be 
-easily instantiated and tested.
+easily instantiated and tested. Here is an example below:
+
+> We will discuss the details of this configuration later.
 
 {% highlight js %}
 {% raw %}
