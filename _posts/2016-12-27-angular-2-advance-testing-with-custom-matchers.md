@@ -38,7 +38,7 @@ related_videos:
 
 A few weeks ago, Pascal Precht wrote a blog article on 
 [Testing Services with HTTP with Angular](http://blog.thoughtram.io/angular/2016/11/28/testing-services-with-http-in-angular-2.html).
-In this article, we want to discuss a more advanced topics on DRY Angular testing techniques 
+In this article, we want to discuss more advanced topics on DRY Angular testing techniques 
 using **Custom Matchers** and **Special Helpers**.
 
 <div class="thtrm-toc is-sticky" markdown="1">
