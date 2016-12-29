@@ -84,7 +84,7 @@ test module (*.spec.ts).
 doesn't have any dependencies. It'd be easier and less verbose to just instantiate using `new`. The 
 **TestBed** is for useful for dependencies and injections.
 
-## Traditional Traditional
+## A Traditional Test
 
 Consider the traditional approach of manual construction:
 
@@ -306,7 +306,7 @@ more advanced helper methods.
 Since the **fxLayout** directive will add custom flexbox CSS to the host element, our test logic 
 here will confirm that the initial CSS is correctly assigned.
 
-### Testing: Long-Form
+### Non-DRY Testing
 
 The traditional approach would probably implement something like this:
 
