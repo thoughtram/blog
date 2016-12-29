@@ -16,12 +16,12 @@ relatedLinks:
   - title: Exploring Angular 2 - Article Series
     url: 'http://blog.thoughtram.io/exploring-angular-2'
 related_posts:
+  - Testing Angular Directives with Custom Matchers
   - Testing Services with Http in Angular
   - Two-way Data Binding in Angular
   - Resolving route data in Angular
   - Angular Animations - Foundation Concepts
   - Angular 2 is out - Get started here
-  - Bypassing Providers in Angular
 related_videos:
   - '175255006'
   - '193524896'

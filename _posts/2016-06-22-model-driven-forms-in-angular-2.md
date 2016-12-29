@@ -20,7 +20,7 @@ related_posts:
   - Custom Form Controls in Angular
   - Template-driven Forms in Angular
   - Custom Validators in Angular
-  - Testing Services with Http in Angular
+  - Testing Angular Directives with Custom Matchers
 related_videos:
   - '189792758'
   - '189785428'

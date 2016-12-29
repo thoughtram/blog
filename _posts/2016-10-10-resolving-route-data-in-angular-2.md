@@ -27,8 +27,8 @@ related_posts:
   - Protecting Routes using Guards in Angular
   - Routing in Angular revisited
   - Routing in Angular
+  - Testing Angular Directives with Custom Matchers
   - Testing Services with Http in Angular
-  - Two-way Data Binding in Angular
 related_videos:
   - '175218351'
   - '189618526'

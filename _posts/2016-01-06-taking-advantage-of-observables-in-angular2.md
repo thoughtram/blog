@@ -33,8 +33,8 @@ related_posts:
   - Taking advantage of Observables in Angular 2 - Part 2
   - Cold vs Hot Observables
   - 'Exploring Rx Operators: map'
+  - Testing Angular Directives with Custom Matchers
   - Testing Services with Http in Angular
-  - Two-way Data Binding in Angular
 related_videos:
   - '181311615'
   - '181311609'

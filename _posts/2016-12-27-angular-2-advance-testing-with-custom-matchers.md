@@ -5,8 +5,8 @@ date: 2016-12-27T00:00:00.000Z
 update_date: 2016-12-27T00:00:00.000Z
 imageUrl: /images/banner/testing-directives-with-custom-matchers.jpg
 summary: >-
-  Deliver terse, DRY, self-documenting unit tests with Angular using custom Jasmine Matchers and 
-  Helper functions.
+  Deliver terse, DRY, self-documenting unit tests with Angular using custom
+  Jasmine Matchers and  Helper functions.
 categories:
   - angular
 tags:
@@ -24,6 +24,11 @@ topic: testing
 author: thomas_burleson
 related_posts:
   - Testing Services with Http in Angular
+  - Two-way Data Binding in Angular
+  - Resolving route data in Angular
+  - Angular Animations - Foundation Concepts
+  - Angular 2 is out - Get started here
+  - Bypassing Providers in Angular
 related_videos:
   - '193524896'
 

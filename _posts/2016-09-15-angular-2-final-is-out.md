@@ -13,12 +13,12 @@ tags:
   - angular2
 author: pascal_precht
 related_posts:
+  - Testing Angular Directives with Custom Matchers
   - Testing Services with Http in Angular
   - Two-way Data Binding in Angular
   - Resolving route data in Angular
   - Angular Animations - Foundation Concepts
   - Bypassing Providers in Angular
-  - Custom Form Controls in Angular
 related_videos:
   - '175255006'
   - '193524896'
