@@ -84,9 +84,9 @@ test module (*.spec.ts).
 doesn't have any dependencies. It'd be easier and less verbose to just instantiate using `new`. The 
 **TestBed** is for useful for dependencies and injections.
 
-## A Traditional Test
+## Traditional Testing 
 
-Consider the traditional approach of manual construction:
+Consider the traditional approach of manually instantiating and testing a Service or component:
 
 {% highlight js %}
 {% raw %}
@@ -104,9 +104,10 @@ describe('ServiceA', () => {
 {% endraw %}
 {% endhighlight %}
 
-> Note that it's fine to do it this way, because **ServiceA** obviously does not need anything 
-else to be instantiated; it is a self-contained service without external dependencies. So assuming 
-that this service won't get any dependencies in the future, this test is the one we want to write.  
+It's fine to do it this way, because **ServiceA** obviously does not need anything 
+else to be instantiated; it is a self-contained service without external dependencies. 
+
+> So assuming that this service won't get any dependencies in the future, this test is the one we want to write.  
 
 ## Introducing Angular TestBed
 
