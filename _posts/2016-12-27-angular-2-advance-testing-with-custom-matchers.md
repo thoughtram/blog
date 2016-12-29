@@ -3,7 +3,7 @@ layout: post
 title: Testing Angular Directives with Custom Matchers
 date: 2016-12-27T00:00:00.000Z
 update_date: 2016-12-27T00:00:00.000Z
-imageUrl: /images/banner/testing-directives-with-custom-matchers.jpg
+imageUrl: /images/banner/testing-directives-with-custom-matchers2.jpg
 summary: >-
   Deliver terse, DRY, self-documenting unit tests with Angular using custom
   Jasmine Matchers and  Helper functions.
