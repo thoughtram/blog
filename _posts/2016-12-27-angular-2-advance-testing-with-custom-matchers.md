@@ -290,7 +290,7 @@ We now have everything we need to write a Directive test quickly.
 {% highlight js %}
 {% raw %}
 it('should compile with custom directives', () => {
-  let fixture = createTestComponent(`<div fxLayout></div>`);
+  let fixture = createTestComponent('<div fxLayout></div>');
   expect( fixture ).toBeDefined();
 });
 {% endraw %}
@@ -342,15 +342,15 @@ All this in one (1) single test. And truly it is not easily read.
 
 Now imagine that our test module has more than 20 individual `it(...)` tests!
  
-> That would be a lot of duplicate code. And there is certainly nothing DRY ("do not repeat yourself") about 
+> That would be a lot of duplicate code. <br/> And there is certainly nothing DRY ("do not repeat yourself") about 
 such code! 
 
 ## 2) Testing with Helpers
 
-Above we explored the standard approach to implement unit tests; which resulted 
+Above we explored the standard approach to implementing unit tests... an approach which resulted 
 in verbose, non-reusable code.
 
-Here is the DRY version that we want:
+Let's contrast that with the DRY version that we want:
 
 ![Testing Directives - DRY Code](/images/dry_tests/example3.jpg)
 
