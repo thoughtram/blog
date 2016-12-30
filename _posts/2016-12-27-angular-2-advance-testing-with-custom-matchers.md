@@ -487,10 +487,10 @@ Testing these features presents several additional requirements:
 * mock the window API `window.matchMedia(...)`
 * simulate a mediaQuery activation
 * trigger fixture.detectChange() after a simulated activation
-* hide all these details from indvidual tests (DRY)
+* hide all these details from individual tests (DRY)
 
-Thankfully, the Flex-Layout library actually publishes a MockMatchMedia class; which we used in our 
-TestBed configuration:
+Thankfully the Flex-Layout library actually publishes a MockMatchMedia class. And we use this class
+in our TestBed configuration below:
 
 {% highlight js %}
 {% raw %}
@@ -523,8 +523,8 @@ beforeEach(() => {
 
 Let's explore three (3) very interesting things are happening in this code: 
 
-*  override DI providers, and
-*  dynamic injection using `injector.get(MatchMedia)`
+*  configure Dependency Injection providers to override a class with a mock, 
+*  dynamic injection using `injector.get(MatchMedia)`, and
 *  use special helper **activateMediaQuery( )** function that hides all these details
 
 
@@ -545,11 +545,15 @@ asks for an instance of the `MatchMedia` token to be injected via DI.
 **(2) Dynamic Injection**
 
 Our special helper `activateMediaQuery()` needs a dynamic injected instance of the MatchMedia token. 
-Using the `fixture` instance, we can dynamically get a **MockMatchMedia** instance from our fixtures 
-injector.
+Using the `fixture` instance, we can access the injector service for our components. With the injector,
+we can dynamically get a **MockMatchMedia** instance using the provider token **MatchMedia**.
 
-Notice that all this complexity [and construction details] is encapsulated in our TestBed and special 
-helper... and the individual tests simply make the easy call:
+> In this case, **MatchMedia** is both a class and a provider token used for D-injection. 
+
+Notice that all this complexity [and construction details] on preparing a MockMatchMedia instance is 
+encapsulated in our TestBed... and the use of the injector is hidden within our special helper. 
+
+Now our individual tests simply use the easy special helper function **activateMediaQuery( )**:
 
 {% highlight js %}
 {% raw %}
