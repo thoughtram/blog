@@ -77,7 +77,7 @@ providers: [DataService]
 {% endraw %}
 {% endhighlight %}
 
-Angular2 has many shorthand versions (DI, annotations, etc); and the above code is just one example of those.
+Angular has many shorthand versions (DI, annotations, etc); and the above code is just one example of those.
 
 Now this is cool, as long as we have classes (or types) to represent the things we want to work with. However, sometimes we need to create other objects that don't necessarily need to be put in a class representation. We could for example have a configuration object that we want to inject into our application. This configuration object can be a simple object literal where there is no type involved.
 

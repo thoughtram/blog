@@ -160,7 +160,7 @@ We can define methods on our class simply by adding a property to it that is a f
 {% endraw %}
 {% endhighlight %}
 
-That's pretty straight forward. But why do properties have to be arrays otherwise? Remember [dependency injection in Angular2](/angular/2015/05/18/dependency-injection-in-angular-2.html)? We can inject services and factories using `@Inject` decorators, but as we know, there are no decorators nor annotations in ES5. That's where the array syntax comes in.
+That's pretty straight forward. But why do properties have to be arrays otherwise? Remember [dependency injection in Angular](/angular/2015/05/18/dependency-injection-in-angular-2.html)? We can inject services and factories using `@Inject` decorators, but as we know, there are no decorators nor annotations in ES5. That's where the array syntax comes in.
 
 {% highlight javascript %}
 {% raw %}
