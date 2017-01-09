@@ -43,4 +43,4 @@ Great question! As of right now we're planning in-house trainings for Q1 2017. W
 
 ## What else...? Oh right, free ng-conf ticket!
 
-Ng-conf is already sold out and it's almost impossible to get a ticket for the biggest Angular conference on this planet..... Unless you're reading our blog. That's right. **Somewhere on this website we've hidden a free ng-conf ticket**. Find it, and it's yours.
+Ng-conf is already sold out and it's almost impossible to get a ticket for the biggest Angular conference on this planet..... Unless you're reading our blog. That's right. **Somewhere on this website we've hidden a free ng-conf ticket**. <s>Find it, and it's yours.</s> Too bad! Some lucky person already found it!
