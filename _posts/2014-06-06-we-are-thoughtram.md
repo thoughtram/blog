@@ -21,9 +21,9 @@ related_posts:
   - Thomas joins thoughtram
   - Upcoming events in 2015
   - Around the globe
+  - A revamped Angular Master Class
   - Announcing Angular 2 Master Class in Sydney
   - Announcing Angular 2 Master Class in NYC
-  - Updates and announcements
 related_videos:
   - '175255006'
   - '193524896'

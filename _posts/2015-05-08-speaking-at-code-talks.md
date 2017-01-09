@@ -11,12 +11,12 @@ tags:
   - announcements
 author: christoph_burgdorf
 related_posts:
+  - A revamped Angular Master Class
   - Announcing Angular 2 Master Class in Sydney
   - Announcing Angular 2 Master Class in NYC
   - Updates and announcements
   - Thomas joins thoughtram
   - Updates and announcements
-  - Upcoming events in 2015
 related_videos:
   - '175255006'
   - '193524896'

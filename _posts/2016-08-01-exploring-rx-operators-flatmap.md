@@ -17,8 +17,8 @@ related_posts:
   - 'Exploring Rx Operators: map'
   - Taking advantage of Observables in Angular 2 - Part 2
   - Taking advantage of Observables in Angular
+  - A revamped Angular Master Class
   - Testing Angular Directives with Custom Matchers
-  - Testing Services with Http in Angular
 related_videos:
   - '181311615'
   - '181311609'

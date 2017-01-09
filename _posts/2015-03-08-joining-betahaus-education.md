@@ -18,8 +18,8 @@ related_posts:
   - Tickets are on sale now!
   - Announcing our first workshop
   - Git Ninja Class in Amsterdam
+  - A revamped Angular Master Class
   - Announcing Angular 2 Master Class in Sydney
-  - Announcing Angular 2 Master Class in NYC
 related_videos:
   - '189792758'
   - '189785428'

@@ -15,8 +15,8 @@ related_posts:
   - Rust's Ownership model for JavaScript developers
   - clog - A conventional changelog generator for the rest of us
   - Organizing Hanovers first Rust meetup
+  - A revamped Angular Master Class
   - Testing Angular Directives with Custom Matchers
-  - Testing Services with Http in Angular
 related_videos:
   - '175255006'
   - '193524896'

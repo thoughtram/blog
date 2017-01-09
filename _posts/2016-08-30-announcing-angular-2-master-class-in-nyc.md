@@ -12,12 +12,12 @@ tags:
   - announcements
 author: pascal_precht
 related_posts:
+  - A revamped Angular Master Class
   - Announcing Angular 2 Master Class in Sydney
   - Updates and announcements
   - Thomas joins thoughtram
   - Updates and announcements
   - Speaking at code.talks
-  - Upcoming events in 2015
 related_videos:
   - '175255006'
   - '193524896'

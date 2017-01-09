@@ -11,6 +11,14 @@ categories:
 tags:
   - announcements
 author: pascal_precht
+related_posts:
+  - Announcing Angular 2 Master Class in Sydney
+  - Announcing Angular 2 Master Class in NYC
+  - Updates and announcements
+  - Thomas joins thoughtram
+  - Updates and announcements
+  - Speaking at code.talks
+
 ---
 
 At thoughtram, we're [constantly](/announcements/2015/10/26/angular-master-class-extended-ngupgrade.html) trying to provide the best training experience we can possibly offer. This includes things like updating the courseware to the latest Angular version, as well as adding new learning modules to the overall Angular Master Class program, so you can pick whatever topic you're most interested in in our classes.
