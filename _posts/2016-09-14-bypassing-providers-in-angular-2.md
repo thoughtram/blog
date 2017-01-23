@@ -33,7 +33,7 @@ related_videos:
 
 ---
 
-We covered a lot of different things everything dependency injection in Angular. However, at our latest training, one of our students came up with a very interesting question: 
+We covered a lot of different things regarding dependency injection in Angular. However, at our latest training, one of our students came up with a very interesting question: 
 
 >> "Can I bypass a provider to get a dependency from another ancestor provider?"
 
