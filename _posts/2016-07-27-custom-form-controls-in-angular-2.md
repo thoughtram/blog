@@ -14,7 +14,7 @@ tags:
   - forms
 topic: forms
 demos:
-  - url: 'http://embed.plnkr.co/035BWnCCvSuchgpO1b9Z/'
+  - url: 'https://embed.plnkr.co/6xVdppNQoLcsXGMf7tph/'
     title: Custom number input control
 author: pascal_precht
 related_posts:
