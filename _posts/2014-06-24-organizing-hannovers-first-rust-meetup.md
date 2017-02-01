@@ -21,8 +21,8 @@ related_posts:
   - 'A web app with Nickel: From first line to Heroku deployment'
   - Anouncing Hanover's second Rust meetup
   - Rust's Ownership model for JavaScript developers
+  - Announcing Angular Master Class in Freiburg
   - A revamped Angular Master Class
-  - Announcing Angular 2 Master Class in Sydney
 related_videos:
   - '175255006'
   - '193524896'

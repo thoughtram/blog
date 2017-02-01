@@ -18,8 +18,8 @@ related_posts:
   - Anouncing Hanover's second Rust meetup
   - Rust's Ownership model for JavaScript developers
   - Organizing Hanovers first Rust meetup
+  - Announcing Angular Master Class in Freiburg
   - A revamped Angular Master Class
-  - Announcing Angular 2 Master Class in Sydney
 related_videos:
   - '175255006'
   - '193524896'

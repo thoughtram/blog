@@ -12,12 +12,12 @@ tags:
   - announcements
 author: pascal_precht
 related_posts:
+  - Announcing Angular Master Class in Freiburg
   - Announcing Angular 2 Master Class in Sydney
   - Announcing Angular 2 Master Class in NYC
   - Updates and announcements
   - Thomas joins thoughtram
   - Updates and announcements
-  - Speaking at code.talks
 
 ---
 

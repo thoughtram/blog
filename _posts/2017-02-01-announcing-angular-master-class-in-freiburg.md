@@ -11,6 +11,14 @@ categories:
 tags:
   - announcements
 author: pascal_precht
+related_posts:
+  - A revamped Angular Master Class
+  - Announcing Angular 2 Master Class in Sydney
+  - Announcing Angular 2 Master Class in NYC
+  - Updates and announcements
+  - Thomas joins thoughtram
+  - Updates and announcements
+
 ---
 
 We just [came back from Sydney](/announcements/2016/10/30/announcing-angular-2-master-class-in-sydney.html) and are still adjusting to the Central European Timezone, but this doesn't keep us from sharing the exciting news with you that we'll be running our **Angular Master Class in Freiburg**!

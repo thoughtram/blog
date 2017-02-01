@@ -16,9 +16,9 @@ related_posts:
   - Thomas joins thoughtram
   - Around the globe
   - We are thoughtram
+  - Announcing Angular Master Class in Freiburg
   - A revamped Angular Master Class
   - Announcing Angular 2 Master Class in Sydney
-  - Announcing Angular 2 Master Class in NYC
 related_videos:
   - '175255006'
   - '193524896'
