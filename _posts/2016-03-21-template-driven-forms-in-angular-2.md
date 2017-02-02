@@ -27,7 +27,7 @@ related_posts:
   - Custom Form Controls in Angular
   - Reactive Forms in Angular
   - Custom Validators in Angular
-  - Testing Angular Directives with Custom Matchers
+  - Making your Angular apps fast
 related_videos:
   - '189792758'
   - '189785428'

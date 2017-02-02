@@ -1,16 +1,23 @@
 ---
 layout: post
-title: "Making your Angular apps fast"
+title: Making your Angular apps fast
 imageUrl: /images/banner/angular-performance-tips.jpg
 date: 2017-02-02T00:00:00.000Z
-summary: >-
-  In this article we discuss tips and tricks to make Angular blazingly fast!
+summary: In this article we discuss tips and tricks to make Angular blazingly fast!
 categories:
   - angular
 tags:
   - angular2
   - performance
 author: pascal_precht
+related_posts:
+  - Go fast with $applyAsync in Angular 1.3
+  - Disabling Debug Info in Angular 1.3
+  - Testing Angular Directives with Custom Matchers
+  - Testing Services with Http in Angular
+  - Two-way Data Binding in Angular
+  - Resolving route data in Angular
+
 ---
 
 Angular claims to be very fast by default. What does "fast" really mean? Of course, this always depends on the context. What does our application do? How many different things is it doing at a certain point? How is our application's component tree structured and how many bindings does it introduce? This and other questions come into play when trying to figure out, how we can make our applications faster.

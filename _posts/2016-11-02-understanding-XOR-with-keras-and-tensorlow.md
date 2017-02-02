@@ -15,11 +15,11 @@ tags:
 author: christoph_burgdorf
 related_posts:
   - Beginning Machine Learning with Keras and TensorFlow
+  - Making your Angular apps fast
   - Announcing Angular Master Class in Freiburg
   - A revamped Angular Master Class
   - Testing Angular Directives with Custom Matchers
   - Testing Services with Http in Angular
-  - Announcing Angular 2 Master Class in Sydney
 related_videos:
   - '175255006'
   - '193524896'

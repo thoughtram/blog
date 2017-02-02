@@ -16,11 +16,11 @@ topic: di
 author: pascal_precht
 related_posts:
   - How to prevent name collisions in Angular providers
+  - Making your Angular apps fast
   - Testing Angular Directives with Custom Matchers
   - Testing Services with Http in Angular
   - Two-way Data Binding in Angular
   - Resolving route data in Angular
-  - Angular Animations - Foundation Concepts
 related_videos:
   - '175255006'
   - '193524896'

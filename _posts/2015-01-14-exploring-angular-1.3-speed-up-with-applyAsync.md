@@ -44,12 +44,12 @@ tags:
   - performance
 author: pascal_precht
 related_posts:
+  - Making your Angular apps fast
   - Disabling Debug Info in Angular 1.3
   - Futuristic Routing in Angular
   - ngMessages in Angular 1.3
   - Validators Pipeline in Angular 1.3
   - Binding to Directive Controllers in Angular 1.3
-  - ES6 Style Promises in Angular 1.3
 related_videos:
   - '189792758'
   - '189785428'

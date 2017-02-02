@@ -24,11 +24,11 @@ topic: testing
 author: thomas_burleson
 related_posts:
   - Testing Services with Http in Angular
+  - Making your Angular apps fast
   - Two-way Data Binding in Angular
   - Resolving route data in Angular
   - Angular Animations - Foundation Concepts
   - Angular 2 is out - Get started here
-  - Bypassing Providers in Angular
 related_videos:
   - '193524896'
 

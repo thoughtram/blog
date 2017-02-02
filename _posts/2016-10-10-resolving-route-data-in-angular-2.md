@@ -27,8 +27,8 @@ related_posts:
   - Protecting Routes using Guards in Angular
   - Routing in Angular revisited
   - Routing in Angular
+  - Making your Angular apps fast
   - Testing Angular Directives with Custom Matchers
-  - Testing Services with Http in Angular
 related_videos:
   - '175218351'
   - '189618526'

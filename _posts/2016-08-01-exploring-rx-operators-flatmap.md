@@ -17,8 +17,8 @@ related_posts:
   - 'Exploring Rx Operators: map'
   - Taking advantage of Observables in Angular 2 - Part 2
   - Taking advantage of Observables in Angular
+  - Making your Angular apps fast
   - Announcing Angular Master Class in Freiburg
-  - A revamped Angular Master Class
 related_videos:
   - '181311615'
   - '181311609'

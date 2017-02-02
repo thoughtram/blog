@@ -17,8 +17,8 @@ related_posts:
   - Cold vs Hot Observables
   - Taking advantage of Observables in Angular 2 - Part 2
   - Taking advantage of Observables in Angular
+  - Making your Angular apps fast
   - Testing Angular Directives with Custom Matchers
-  - Testing Services with Http in Angular
 related_videos:
   - '181311615'
   - '181311609'
