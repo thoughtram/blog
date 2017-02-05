@@ -39,7 +39,7 @@ related_videos:
 
 In our article on [Dependency Injection in Angular](/angular/2015/05/18/dependency-injection-in-angular-2.html) we explored what dependency injection actually is, and how it is implemented in the Angular framework. If you haven't read that article yet, I highly recommend you doing so, since this article is based on it.
 
-In a [another article](/angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html) we even learned about **host** and **visibility of dependencies** as another aspect of Angular's DI system. But that doesn't mean that we've already discovered all features of the machinery yet. In this article we'll take a look at **forward references**. Another tiny, yet useful feature of the DI system in Angular.
+In a another article we even learned about [**host** and **visibility of dependencies**](/angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html) as another aspect of Angular's DI system. But that doesn't mean that we've already discovered all features of the machinery yet. In this article we'll take a look at **forward references**. Another tiny, yet useful feature of the DI system in Angular.
 
 <div class="thtrm-toc is-sticky" markdown="1">
 ### TABLE OF CONTENTS
