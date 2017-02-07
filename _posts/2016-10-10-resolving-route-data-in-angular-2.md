@@ -198,7 +198,7 @@ export class AppModule {}
 {% endraw %}
 {% endhighlight %}
 
-Let's ignore for a second that we don't always want to return he same contact object when this resolver is used. The point here is that we can register a simple resolver function using Angular's dependency injection. Now, how do we attach this resolver to a route configuration? That's pretty straight forward. All we have to do is add a `resolve` property to a route configuration, which is an object where each key points to a resolver.
+Let's ignore for a second that we don't always want to return the same contact object when this resolver is used. The point here is that we can register a simple resolver function using Angular's dependency injection. Now, how do we attach this resolver to a route configuration? That's pretty straight forward. All we have to do is add a `resolve` property to a route configuration, which is an object where each key points to a resolver.
 
 Here's how we add our resolver function to our route configuration:
 
@@ -318,7 +318,7 @@ export const AppRoutes: Routes = [
 {% endraw %}
 {% endhighlight %}
 
-Angular is smart enough to detect if a resolver is a function, or a class and if it's a class, it'll call `resolve()` on it. Check out the demo below to see this code in action and note how Angular delays the component instantiation until the data has arrived.
+Angular is smart enough to detect if a resolver is a function or a class and if it's a class, it'll call `resolve()` on it. Check out the demo below to see this code in action and note how Angular delays the component instantiation until the data has arrived.
 
 {% include plunk.html url="http://embed.plnkr.co/u2qR9J/" %}
 
