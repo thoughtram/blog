@@ -39,7 +39,7 @@ related_videos:
 
 ---
 
-One of the most exciting topics around Angular is it's relationship to Observables. It's such an essential part of the framework that we cover a fair amount of Observable knowledge in our [Angular Master Class](http://thoughtram.io/angular2-master-class.html). That said, the topic is so big that one could easily run a 3-days workshop on Observables itself.
+One of the most exciting topics around Angular is its relationship to Observables. It's such an essential part of the framework that we cover a fair amount of Observable knowledge in our [Angular Master Class](http://thoughtram.io/angular2-master-class.html). That said, the topic is so big that one could easily run a 3-day workshop on Observables itself.
 
 There's one particular area of Observables that we don't explicitly touch on in our workshop but that keeps coming up in questions every single time that we teach them.
 
@@ -54,7 +54,7 @@ There's one particular area of Observables that we don't explicitly touch on in 
 
 ## Hot vs Cold Observables
 
-Understanding the nature of hot and cold Observables is a crucial part to master Observables. Before we try to explore the topic through some practical examples, let's read through the [definition](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/creating.md#cold-vs-hot-observables) from the RxJS project itself
+Understanding the nature of hot and cold Observables is a crucial part to master Observables. Before we try to explore the topic through some practical examples, let's read through the [definition](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/creating.md#cold-vs-hot-observables) from the RxJS project itself:
 
 >Cold observables start running upon subscription, i.e., the observable sequence only starts pushing values to the observers when Subscribe is called. (...) This is different from hot observables such as mouse move events or stock tickers which are already producing values even before a subscription is active.
 
