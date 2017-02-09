@@ -13,12 +13,12 @@ tags:
   - company
 author: christoph_burgdorf
 related_posts:
+  - Dominic joins thoughtram
   - Thomas joins thoughtram
   - Upcoming events in 2015
   - We are thoughtram
   - Announcing Angular Master Class in Freiburg
   - A revamped Angular Master Class
-  - Announcing Angular 2 Master Class in Sydney
 related_videos:
   - '175255006'
   - '193524896'

@@ -4,7 +4,8 @@ title: Dominic joins thoughtram
 date: 2017-02-09T00:00:00.000Z
 imageUrl: /images/dominic.jpg
 summary: >-
-  Today we are happy to announce that we have grown our trainer team. Dominic joins our team!
+  Today we are happy to announce that we have grown our trainer team. Dominic
+  joins our team!
 categories:
   - announcements
 tags:
@@ -12,12 +13,12 @@ tags:
   - company
 author: christoph_burgdorf
 related_posts:
+  - Thomas joins thoughtram
   - Upcoming events in 2015
   - Around the globe
   - We are thoughtram
   - Announcing Angular Master Class in Freiburg
   - A revamped Angular Master Class
-  - Announcing Angular 2 Master Class in Sydney
 related_videos:
   - '175255006'
   - '193524896'

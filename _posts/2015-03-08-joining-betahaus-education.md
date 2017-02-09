@@ -18,8 +18,8 @@ related_posts:
   - Tickets are on sale now!
   - Announcing our first workshop
   - Git Ninja Class in Amsterdam
+  - Dominic joins thoughtram
   - Announcing Angular Master Class in Freiburg
-  - A revamped Angular Master Class
 related_videos:
   - '189792758'
   - '189785428'

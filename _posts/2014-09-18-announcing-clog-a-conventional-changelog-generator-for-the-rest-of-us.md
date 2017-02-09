@@ -18,8 +18,8 @@ related_posts:
   - Anouncing Hanover's second Rust meetup
   - Rust's Ownership model for JavaScript developers
   - Organizing Hanovers first Rust meetup
+  - Dominic joins thoughtram
   - Announcing Angular Master Class in Freiburg
-  - A revamped Angular Master Class
 related_videos:
   - '175255006'
   - '193524896'

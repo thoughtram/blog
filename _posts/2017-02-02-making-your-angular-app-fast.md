@@ -17,6 +17,13 @@ related_posts:
   - Testing Services with Http in Angular
   - Two-way Data Binding in Angular
   - Resolving route data in Angular
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
 
 ---
 

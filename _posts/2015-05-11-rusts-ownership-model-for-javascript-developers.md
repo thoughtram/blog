@@ -16,8 +16,8 @@ related_posts:
   - Anouncing Hanover's second Rust meetup
   - clog - A conventional changelog generator for the rest of us
   - Organizing Hanovers first Rust meetup
+  - Dominic joins thoughtram
   - Making your Angular apps fast
-  - Announcing Angular Master Class in Freiburg
 related_videos:
   - '175255006'
   - '193524896'

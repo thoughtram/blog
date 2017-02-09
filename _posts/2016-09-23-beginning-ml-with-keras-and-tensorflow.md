@@ -15,11 +15,11 @@ tags:
 author: christoph_burgdorf
 related_posts:
   - Understanding XOR with Keras and TensorFlow
+  - Dominic joins thoughtram
   - Making your Angular apps fast
   - Announcing Angular Master Class in Freiburg
   - A revamped Angular Master Class
   - Testing Angular Directives with Custom Matchers
-  - Testing Services with Http in Angular
 related_videos:
   - '175255006'
   - '193524896'
