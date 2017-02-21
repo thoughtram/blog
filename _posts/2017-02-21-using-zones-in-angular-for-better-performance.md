@@ -132,7 +132,7 @@ export class AppComponent {
     this.element = event.target;
 
     this.zone.runOutsideAngular(() => {
-      window.document.addEventListener('mousemove', this.mouseMove);
+      window.document.addEventListener('mousemove', this.mouseMove.bind(this));
     });
   }
 
@@ -183,7 +183,7 @@ export class AppComponent {
 {% endraw %}
 {% endhighlight %}
 
-Also notice that we're removing the event listener for the `mousemove` event **on every mouseUp**. Otherwise, Angular would keep performing change detection on every mouse move, even though we've released the box already. In addition to that, we would pile up event handlers, which could not only cause weird side effects but also blows up our runtime memory.
+Also notice that we're removing the event listener for the `mousemove` event **on every mouseUp**. Otherwise, the event handler would still be executed on every mouse move, even though we've released the box already. In addition to that, we would pile up event handlers, which could not only cause weird side effects but also blows up our runtime memory.
 
 ## Measuring the performance
 
