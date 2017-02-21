@@ -24,12 +24,12 @@ videos:
   - url: 'http://casts.thoughtram.io/embedded/181222349'
 author: pascal_precht
 related_posts:
+  - Using Zones in Angular for better performance
   - Making your Angular apps fast
   - Testing Angular Directives with Custom Matchers
   - Testing Services with Http in Angular
   - Two-way Data Binding in Angular
   - Resolving route data in Angular
-  - Angular Animations - Foundation Concepts
 related_videos:
   - '175255006'
   - '193524896'

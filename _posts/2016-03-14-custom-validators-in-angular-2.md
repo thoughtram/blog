@@ -21,7 +21,7 @@ related_posts:
   - Custom Form Controls in Angular
   - Reactive Forms in Angular
   - Template-driven Forms in Angular
-  - Making your Angular apps fast
+  - Using Zones in Angular for better performance
 related_videos:
   - '189792758'
   - '189785428'

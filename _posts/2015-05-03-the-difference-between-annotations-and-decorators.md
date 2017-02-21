@@ -16,12 +16,12 @@ relatedLinks:
   - title: Exploring Angular 2 - Article Series
     url: 'http://blog.thoughtram.io/exploring-angular-2'
 related_posts:
+  - Using Zones in Angular for better performance
   - Making your Angular apps fast
   - Testing Angular Directives with Custom Matchers
   - Testing Services with Http in Angular
   - Two-way Data Binding in Angular
   - Resolving route data in Angular
-  - Angular Animations - Foundation Concepts
 related_videos:
   - '175255006'
   - '193524896'

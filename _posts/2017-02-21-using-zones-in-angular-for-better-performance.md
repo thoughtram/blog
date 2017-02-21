@@ -3,7 +3,9 @@ layout: post
 title: Using Zones in Angular for better performance
 imageUrl: /images/banner/using-zones-in-angular-for-better-performance.jpg
 date: 2017-02-21T00:00:00.000Z
-summary: In this article we'll take a look at how to use Zone APIs to improve our app's performance!
+summary: >-
+  In this article we'll take a look at how to use Zone APIs to improve our app's
+  performance!
 categories:
   - angular
 tags:
@@ -11,6 +13,14 @@ tags:
   - performance
   - zones
 author: pascal_precht
+related_posts:
+  - Go fast with $applyAsync in Angular 1.3
+  - Disabling Debug Info in Angular 1.3
+  - Making your Angular apps fast
+  - Testing Angular Directives with Custom Matchers
+  - Testing Services with Http in Angular
+  - Two-way Data Binding in Angular
+
 ---
 
 In our latest article, we talked about [how to make our Angular apps fast](/angular/2017/02/02/making-your-angular-app-fast.html) by exploring Angular's `ChangeDetectionStrategy` APIs as well as tricks on how to detach change detectors and many more. While we were covering many different options to improve the demo application's performance, we certainly haven't talked about **all** possible options.

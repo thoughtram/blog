@@ -13,10 +13,10 @@ author: pascal_precht
 related_posts:
   - Go fast with $applyAsync in Angular 1.3
   - Disabling Debug Info in Angular 1.3
+  - Using Zones in Angular for better performance
   - Testing Angular Directives with Custom Matchers
   - Testing Services with Http in Angular
   - Two-way Data Binding in Angular
-  - Resolving route data in Angular
 related_videos:
   - '175255006'
   - '193524896'

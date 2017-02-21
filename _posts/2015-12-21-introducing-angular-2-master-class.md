@@ -11,12 +11,12 @@ categories:
   - announcements
 author: pascal_precht
 related_posts:
+  - Using Zones in Angular for better performance
   - Dominic joins thoughtram
   - Making your Angular apps fast
   - Announcing Angular Master Class in Freiburg
   - A revamped Angular Master Class
   - Testing Angular Directives with Custom Matchers
-  - Testing Services with Http in Angular
 related_videos:
   - '175255006'
   - '193524896'

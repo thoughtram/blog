@@ -27,8 +27,8 @@ related_posts:
   - Taking advantage of Observables in Angular
   - Cold vs Hot Observables
   - 'Exploring Rx Operators: map'
+  - Using Zones in Angular for better performance
   - Making your Angular apps fast
-  - Testing Angular Directives with Custom Matchers
 related_videos:
   - '181311615'
   - '181311609'

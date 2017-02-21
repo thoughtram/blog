@@ -17,11 +17,11 @@ tags:
 author: pascal_precht
 related_posts:
   - Testing Angular Directives with Custom Matchers
+  - Using Zones in Angular for better performance
   - Making your Angular apps fast
   - Two-way Data Binding in Angular
   - Resolving route data in Angular
   - Angular Animations - Foundation Concepts
-  - Angular 2 is out - Get started here
 related_videos:
   - '175255006'
   - '193524896'

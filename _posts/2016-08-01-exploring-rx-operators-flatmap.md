@@ -17,8 +17,8 @@ related_posts:
   - 'Exploring Rx Operators: map'
   - Taking advantage of Observables in Angular 2 - Part 2
   - Taking advantage of Observables in Angular
+  - Using Zones in Angular for better performance
   - Dominic joins thoughtram
-  - Making your Angular apps fast
 related_videos:
   - '181311615'
   - '181311609'
