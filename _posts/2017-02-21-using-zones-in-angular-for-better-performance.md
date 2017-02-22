@@ -183,7 +183,7 @@ export class AppComponent {
 {% endraw %}
 {% endhighlight %}
 
-Also notice that we're removing the event listener for the `mousemove` event **on every mouseUp**. Otherwise, the event handler would still be executed on every mouse move, even though we've released the box already. In addition to that, we would pile up event handlers, which could not only cause weird side effects but also blows up our runtime memory.
+Also notice that we're removing the event listener for the `mousemove` event **on every mouseUp**. Otherwise, the event handler would still be executed on every mouse move. In other words the box would keep moving even after the finger was lifted, essentially taking the *drop* part out of *drag and drop*. In addition to that, we would pile up event handlers, which could not only cause weird side effects but also blows up our runtime memory.
 
 ## Measuring the performance
 
