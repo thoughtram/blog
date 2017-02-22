@@ -31,6 +31,8 @@ Angular claims to be very fast by default. What does "fast" really mean? Of cour
 
 A couple of weeks ago, I had the honour to give a [talk](https://www.youtube.com/watch?v=FIi6AkI7wKE) about [Angular and React - Friends learning from each other](http://pascalprecht.github.io/slides/angular2-react/) at [NG-BE](https://ng-be.org/) together with [Oliver Zeigermann](http://twitter.com/DJCordhose), and we were discussing a demo application in which we compared the default performance and what we can do to make it faster. In this article we'd like to take this demo and show some tips and tricks to make it blazingly fast. One or the other trick might help speeding up **your** application as well.
 
+**UPDATE:** We've written a follow-up article that discusses another option to make your app faster using [Zones in Angular](/angular/2017/02/02/making-your-angular-app-fast.html)
+
 <div class="thtrm-toc is-sticky" markdown="1">
 ### TABLE OF CONTENTS
 {:.no_toc}

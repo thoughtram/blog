@@ -34,6 +34,8 @@ related_videos:
 
 In [Understanding Zones](/angular/2016/01/22/understanding-zones.html), we explored the power of Zones by building a profiling zone that profiles asynchronous operations in our code. We learned that Zones are a sort of execution context that allows us to hook into our asynchronous tasks. If you haven't read that article, we highly recommend checking it out as this one is based on it. In this article we're going to take a closer look at what role Zones play in Angular.
 
+**UPDATE:** We've published another article that discusses how to [use Zones to make your Angular apps faster](/angular/2017/02/21/using-zones-in-angular-for-better-performance.html)
+
 {% include demos-and-videos-buttons.html post=page %}
 
 <div class="thtrm-toc is-sticky" markdown="1">
