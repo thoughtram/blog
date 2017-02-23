@@ -36,7 +36,7 @@ related_videos:
 
 If you've read our article series on everything dependency injection in Angular, you've probably realised that Angular is doing a pretty good job on that. We can either use string or type tokens to make dependencies available to the injector. However, when using string tokens, there's a possibility of running into naming collisions because... well, maybe someone else has used the same token for a different provider. In this article we're going to learn how so called "opaque tokens" solve this problem.
 
-**UPDATE**: Since Angular version 4.x `OpaqueToken` is considered deprecated in favour of `InjectionToken`. Learn about the differences [here](#injectiontoken-since-angular-4.x).
+**UPDATE**: Since Angular version 4.x `OpaqueToken` is considered deprecated in favour of `InjectionToken`. Learn about the differences [here](#injectiontoken-since-angular-4x).
 
 {% include demos-and-videos-buttons.html post=page %}
 
