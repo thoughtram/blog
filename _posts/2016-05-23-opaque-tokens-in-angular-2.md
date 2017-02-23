@@ -2,7 +2,7 @@
 layout: post
 title: How to prevent name collisions in Angular providers
 date: 2016-05-23T00:00:00.000Z
-update_date: 2016-12-18T00:00:00.000Z
+update_date: 2017-02-23T00:00:00.000Z
 imageUrl: /images/banner/opaque-tokens-in-angular-2.jpeg
 summary: >-
   Angular provides a mechanism to avoid name collisions in provider tokens. In
@@ -35,6 +35,8 @@ related_videos:
 ---
 
 If you've read our article series on everything dependency injection in Angular, you've probably realised that Angular is doing a pretty good job on that. We can either use string or type tokens to make dependencies available to the injector. However, when using string tokens, there's a possibility of running into naming collisions because... well, maybe someone else has used the same token for a different provider. In this article we're going to learn how so called "opaque tokens" solve this problem.
+
+**UPDATE**: Since Angular version 4.x `OpaqueToken` is considered deprecated in favour of `InjectionToken`. Learn about the differences [here](#injectiontoken-since-angular-4.x).
 
 {% include demos-and-videos-buttons.html post=page %}
 
@@ -148,7 +150,7 @@ Let's say we use some sort of third-party library that comes with a set of provi
 
 {% highlight js %}
 {% raw %}
-export const THIRDPARTYLIBPROVIDERS = [
+export const THIRD_PARTY_LIB_PROVIDERS = [
   { provide: 'config', useClass: ThirdParyConfig }
 ];
 {% endraw %}
@@ -158,12 +160,12 @@ Even though, it's not a common pattern to use a string token with a class, it's 
 
 {% highlight js %}
 {% raw %}
-import THIRDPARTYLIBPROVIDERS from './third-party-lib';
+import THIRD_PARTY_LIB_PROVIDERS from './third-party-lib';
 
 ...
 providers = [
   DataService,
-  THIRDPARTYLIBPROVIDERS
+  THIRD_PARTY_LIB_PROVIDERS
 ]
 {% endraw %}
 {% endhighlight %}
@@ -175,7 +177,7 @@ Okay, so far so good. Very often, we don't really know what's defined behind oth
 ...
 providers = [
   DataService,
-  THIRDPARTYLIBPROVIDERS,
+  THIRD_PARTY_LIB_PROVIDERS,
   { provide: configToken, useValue: CONFIG }
 ]
 {% endraw %}
@@ -251,6 +253,60 @@ TOKEN_A === TOKEN_B // false
 {% endraw %}
 {% endhighlight %}
 
+## InjectionToken since Angular 4.x
+
+Since Angular version 4.x there's a new, even a little bit better, way of achieving this. `InjectionToken` does pretty much the same thing as `OpaqueToken` (in fact, it derives from it). However, it adds a little bit of sugar that make developers lifes a bit more pleasant when creating factory providers that come with their own dependencies.
+
+Let's take a look at the following provider configuration for `DataService`:
+
+{% highlight js %}
+{% raw %}
+const API_URL = new OpaqueToken('apiUrl');
+
+
+providers: [
+  {
+    provide: DataService,
+    useFactory: (http, apiUrl) => {
+      // create data service
+    },
+    deps: [
+      Http,
+      new Inject(API_URL)
+    ]
+  }
+]
+{% endraw %}
+{% endhighlight %}
+
+We're using a factory function that will create a `DataService` instance using `http` and `apiUrl`. To ensure Angular knows what `http` and `apiUrl` are, we add the corresponding DI token to the provider configuration's `deps` property. Notice how we can just add the `Http` token. However, `apiUrl` is providing using an `OpaqueToken`, and since it since a type, we have to use the `Inject()` constructor (equivalent of `@Inject()` inside constructors).
+
+While this works perfectly fine, developers often ran into errors when they forgot to call `new Inject()` on the token. **That's why since Angular 4.x we don't have to do this anymore.** We can replace all `OpaqueToken` instances with `InjectionToken` instances and everything would work exactly the same way, except for the fact that we don't have to call `new Inject()` in factory provider dependencies anymore.
+
+In other words, the code above can then be written like this:
+
+{% highlight js %}
+{% raw %}
+const API_URL = new InjectionToken('apiUrl');
+
+
+providers: [
+  {
+    provide: DataService,
+    useFactory: (http, apiUrl) => {
+      // create data service
+    },
+    deps: [
+      Http,
+      API_URL // no `new Inject()` needed!
+    ]
+  }
+]
+{% endraw %}
+{% endhighlight %}
+
+Cool right? As of version 4.x `OpaqueToken` is considered deprecated.
+
 ## Conclusion
 
-Opaque tokens are distinguishable and prevent us from running into naming collisions. In addition they provide a bit better error messages. Whenever we create a token that is not a type, `OpaqueToken` should be used.
+Opaque tokens are distinguishable and prevent us from running into naming collisions. In addition they provide a bit better error messages. Whenever we create a token that is not a type, `OpaqueToken` should be used. If we're using Angular in version >= 4.x, we use `InjectionToken` instead.
