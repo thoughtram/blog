@@ -194,38 +194,23 @@ By adding an `HttpModule` to our testing module, providers for `Http`, `Connecti
 
 In practice, this means we need to create a new provider for `Http`, which instantiates the class with a different `ConnectionBackend`. Angular's http module comes with a testing class `MockBackend`. **That** one not only ensures that no real http requests are performed, it also provides APIs to subscribe to opened connections and send mock responses.
 
-With the `useFactory` strategy of a provider configuration, we can then create `Http` instances that use a different `ConnectionBackend`. Here's what that looks like:
-
 {% highlight js %}
 {% raw %}
-import { HttpModule, Http, BaseRequestOptions } from '@angular/http';
+import { HttpModule, Http, BaseRequestOptions, XHRBackend } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 ...
 TestBed.configureTestingModule({
   ...
   providers: [
     ...
-    {
-      provide: Http,
-      useFactory: (mockBackend, options) => {
-        return new Http(mockBackend, options);
-      },
-      deps: [MockBackend, BaseRequestOptions]
-    },
-    MockBackend,
-    BaseRequestOptions
+    { provide: XHRBackend, useClass: MockBackend }
   ]
 });
 ...
 {% endraw %}
 {% endhighlight %}
 
-Wow, that's a lot of code! Let's go through this step by step:
-
-- We create a new provider for `Http` that uses `useFactory` strategy, so we are in charge of creating the actual service instance.
-- `Http` asks for a `ConnectionBackend` and `RequestOptions`. That's why we pass `mockBackend` and `options` to the constructor.
-- To make sure Angular knows what we mean by `mockBackend` and `options`, we add `deps: [MockBackend, BaseRequestOptions]`. This is needed because metadata (Type Annotations) in normal functions aren't preserved at runtime.
-- We add providers for `MockBackend` and `BaseRequestOptions`
+Wow, that was easy! We simply tell our injector to inject an instance of `MockBackend` whenever someone asks for an `XHRBackend`, which is what Angular's Http module does behind the scenes.
 
 Awesome! We've created a testing module that uses an `Http` service with a `MockBackend`. Now let's take a look at how to actually test our service.
 
@@ -367,11 +352,11 @@ Putting it all together, here's what the test spec for the `getVideos()` method 
 {% raw %}
 import { TestBed, async, inject } from '@angular/core/testing';
 import {
-  BaseRequestOptions,
   HttpModule,
   Http,
   Response,
-  ResponseOptions
+  ResponseOptions,
+  XHRBackend
 } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 import { VideoService } from './video.service';
@@ -386,15 +371,7 @@ describe('VideoService', () => {
       providers: [
         { provide: VIMEO_API_URL, useValue: 'http://example.com' },
         VideoService,
-        {
-          provide: Http,
-          useFactory: (mockBackend, options) => {
-            return new Http(mockBackend, options);
-          },
-          deps: [MockBackend, BaseRequestOptions]
-        },
-        MockBackend,
-        BaseRequestOptions
+        { provide: XHRBackend, useClass: MockBackend },
       ]
     });
   });
