@@ -25,12 +25,12 @@ demos:
   - url: 'https://embed.plnkr.co/fdj1rQEnUGhpnFJY4ngY/'
     title: Hello World app in ES5 with syntactic sugar
 related_posts:
+  - Three things you didn't know about the AsyncPipe
   - Using Zones in Angular for better performance
   - Making your Angular apps fast
   - Testing Angular Directives with Custom Matchers
   - Testing Services with Http in Angular
   - Two-way Data Binding in Angular
-  - Resolving route data in Angular
 related_videos:
   - '175255006'
   - '193524896'

@@ -24,11 +24,11 @@ topic: testing
 author: thomas_burleson
 related_posts:
   - Testing Services with Http in Angular
+  - Three things you didn't know about the AsyncPipe
   - Using Zones in Angular for better performance
   - Making your Angular apps fast
   - Two-way Data Binding in Angular
   - Resolving route data in Angular
-  - Angular Animations - Foundation Concepts
 related_videos:
   - '175255006'
   - '193524896'

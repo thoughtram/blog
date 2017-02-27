@@ -15,11 +15,11 @@ tags:
 author: christoph_burgdorf
 related_posts:
   - Beginning Machine Learning with Keras and TensorFlow
+  - Three things you didn't know about the AsyncPipe
   - Using Zones in Angular for better performance
   - Dominic joins thoughtram
   - Making your Angular apps fast
   - Announcing Angular Master Class in Freiburg
-  - A revamped Angular Master Class
 related_videos:
   - '175255006'
   - '193524896'

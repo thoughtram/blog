@@ -13,12 +13,12 @@ categories:
   - announcements
 author: christoph_burgdorf
 related_posts:
+  - Three things you didn't know about the AsyncPipe
   - Using Zones in Angular for better performance
   - Dominic joins thoughtram
   - Making your Angular apps fast
   - Announcing Angular Master Class in Freiburg
   - A revamped Angular Master Class
-  - Testing Angular Directives with Custom Matchers
 related_videos:
   - '175255006'
   - '193524896'

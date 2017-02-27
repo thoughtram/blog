@@ -20,7 +20,7 @@ related_posts:
   - Custom Form Controls in Angular
   - Template-driven Forms in Angular
   - Custom Validators in Angular
-  - Using Zones in Angular for better performance
+  - Three things you didn't know about the AsyncPipe
 related_videos:
   - '189792758'
   - '189785428'

@@ -13,12 +13,12 @@ tags:
   - rx
 author: christoph_burgdorf
 related_posts:
+  - Three things you didn't know about the AsyncPipe
   - Cold vs Hot Observables
   - 'Exploring Rx Operators: map'
   - Taking advantage of Observables in Angular 2 - Part 2
   - Taking advantage of Observables in Angular
   - Using Zones in Angular for better performance
-  - Dominic joins thoughtram
 related_videos:
   - '181311615'
   - '181311609'

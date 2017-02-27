@@ -17,12 +17,12 @@ demos:
     title: Bypassing Providers
 author: pascal_precht
 related_posts:
+  - Three things you didn't know about the AsyncPipe
   - Using Zones in Angular for better performance
   - Making your Angular apps fast
   - Testing Angular Directives with Custom Matchers
   - Testing Services with Http in Angular
   - Two-way Data Binding in Angular
-  - Resolving route data in Angular
 related_videos:
   - '175255006'
   - '193524896'

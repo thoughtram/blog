@@ -27,8 +27,8 @@ related_posts:
   - Taking advantage of Observables in Angular
   - Cold vs Hot Observables
   - 'Exploring Rx Operators: map'
+  - Three things you didn't know about the AsyncPipe
   - Using Zones in Angular for better performance
-  - Making your Angular apps fast
 related_videos:
   - '181311615'
   - '181311609'

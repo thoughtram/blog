@@ -18,11 +18,11 @@ topic: components
 author: thomas_burleson
 related_posts:
   - Component-Relative Paths in Angular
+  - Three things you didn't know about the AsyncPipe
   - Using Zones in Angular for better performance
   - Making your Angular apps fast
   - Testing Angular Directives with Custom Matchers
   - Testing Services with Http in Angular
-  - Two-way Data Binding in Angular
 related_videos:
   - '175255006'
   - '193524896'

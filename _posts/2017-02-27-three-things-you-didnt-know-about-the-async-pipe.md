@@ -3,7 +3,9 @@ layout: post
 title: Three things you didn't know about the AsyncPipe
 imageUrl: /images/banner/three-things-about-the-async-pipe.jpg
 date: 2017-02-27T00:00:00.000Z
-summary: This article explains three lesser known features of the AsyncPipe that help us to write better async code.
+summary: >-
+  This article explains three lesser known features of the AsyncPipe that help
+  us to write better async code.
 categories:
   - angular
 tags:
@@ -13,7 +15,19 @@ tags:
   - asyncpipe
 author: christoph_burgdorf
 related_posts:
+  - 'Exploring Rx Operators: flatMap'
+  - Taking advantage of Observables in Angular 2 - Part 2
+  - Taking advantage of Observables in Angular
+  - Cold vs Hot Observables
+  - 'Exploring Rx Operators: map'
+  - Using Zones in Angular for better performance
 related_videos:
+  - '181311615'
+  - '181311609'
+  - '181311613'
+  - '181311611'
+  - '181311614'
+  - '181311616'
 
 ---
 

@@ -17,9 +17,16 @@ related_posts:
   - Go fast with $applyAsync in Angular 1.3
   - Disabling Debug Info in Angular 1.3
   - Making your Angular apps fast
+  - Three things you didn't know about the AsyncPipe
   - Testing Angular Directives with Custom Matchers
   - Testing Services with Http in Angular
-  - Two-way Data Binding in Angular
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
 
 ---
 

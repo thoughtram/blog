@@ -22,8 +22,8 @@ related_posts:
   - Resolving route data in Angular
   - Routing in Angular revisited
   - Routing in Angular
+  - Three things you didn't know about the AsyncPipe
   - Using Zones in Angular for better performance
-  - Making your Angular apps fast
 related_videos:
   - '175218351'
   - '189618526'
