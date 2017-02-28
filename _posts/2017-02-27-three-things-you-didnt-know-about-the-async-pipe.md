@@ -204,7 +204,7 @@ export class AppComponent {
 
 {% include plunk.html url="http://embed.plnkr.co/Oga2810Sq4FJLA3klU7o/" %}
 
-I'm sure you've heard that the `AsyncPipe` unsubscribes from Observables as soon as the component gets destroyed. But did you also know it unsubscribes as soon as the reference of the expression changes? That's right, as soon as we assign a new Observable to `this.items` the `AsyncPipe` will automatically unsubscribe from the previous bound Observable! Not only does this make our code nice and clean, it's protecting us from *very* subtile memory leaks.
+I'm sure you've heard that the `AsyncPipe` unsubscribes from Observables as soon as the component gets destroyed. But did you also know it unsubscribes as soon as the reference of the expression changes? That's right, as soon as we assign a new Observable to `this.items` the `AsyncPipe` will automatically unsubscribe from the previous bound Observable! Not only does this make our code nice and clean, it's protecting us from *very* subtle memory leaks.
 
 ## Marking things for check
 
