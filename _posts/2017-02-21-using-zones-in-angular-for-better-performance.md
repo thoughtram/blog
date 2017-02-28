@@ -45,7 +45,7 @@ That's why [Jordi Collell](https://twitter.com/galigan) pointed out that another
 
 ## Seeing it in action
 
-Before we jump right into the code, let's first take a look at the demo plunk with the running application. As a quick recap: The idea was to render 10.000 draggable SVG boxes. Rendering 10.000 boxes is not a super sophisticated task, however, the challenge lies in making the dragging experience as smooth as possible. In other words, we aim for 60 fps (frames per second), which can be indeed challenging, considering that Angular re-renders all 10.000 boxes by default when an even has fired (that we bound to).
+Before we jump right into the code, let's first take a look at the demo plunk with the running application. As a quick recap: The idea was to render 10.000 draggable SVG boxes. Rendering 10.000 boxes is not a super sophisticated task, however, the challenge lies in making the dragging experience as smooth as possible. In other words, we aim for 60 fps (frames per second), which can be indeed challenging, considering that Angular re-renders all 10.000 boxes by default when an event has fired (that we bound to).
 
 Here's the demo with the **unoptimized** version:
 
@@ -115,7 +115,7 @@ class AppComponent {
 {% endraw %}
 {% endhighlight %}
 
-Three (3) event handlers are bound to the outer SVG element. When any of these events fire and their handlers have been executed then change detection is performed. In fact, this means that Angular will run change detection, even when we just move with the mouse over the boxes without actually dragging a single box!
+Three (3) event handlers are bound to the outer SVG element. When any of these events fire and their handlers have been executed then change detection is performed. In fact, this means that Angular will run change detection, even when we just move the mouse over the boxes without actually dragging a single box!
 
 This is where taking advantage of `NgZone` APIs comes in handy. `NgZone` enables us to explicitly run certain code **outside** Angular's Zone, preventing Angular to run any change detection. So basically, handlers will still be executed, but since they won't run inside Angular's Zone, Angular won't get notified that a task is done and therefore no change detection will be performed. We only want to run change detection once we release the box we are dragging.
 
@@ -154,7 +154,7 @@ export class AppComponent {
 
 We inject `NgZone` and call `runOutsideAngular()` inside our `mouseDown()` event handler, in which we attach an event handler for the `mousemove` event. This ensures that the `mousemove` event handler is really only attached to the document when a box is being selected. In addition, we save a reference to the underlying DOM element of the clicked box so we can update its `x` and `y` attributes in the `mouseMove()` method. We're working with the DOM element instead of a box object with bindings for `x` and `y`, because bindings won't be change detected since we're running the code outside Angular's Zone. In other words, we **do** update the DOM, so we can see the box is moving, but we aren't actually updating the box model (yet).
 
-Also, notice that we removed the `mouseMove()` binding from our component's template. We could remove the `mouseUp()` handler as well and attach it imperatively, just like we did with the `mouseMove()` handler. However, it won't add any value performance-wise, so we decided to keep it in the template for simplicity-sake:
+Also, notice that we removed the `mouseMove()` binding from our component's template. We could remove the `mouseUp()` handler as well and attach it imperatively, just like we did with the `mouseMove()` handler. However, it won't add any value performance-wise, so we decided to keep it in the template for simplicity's sake:
 
 {% highlight js %}
 {% raw %}
@@ -190,7 +190,7 @@ export class AppComponent {
 {% endraw %}
 {% endhighlight %}
 
-Also notice that we're removing the event listener for the `mousemove` event **on every mouseUp**. Otherwise, the event handler would still be executed on every mouse move. In other words the box would keep moving even after the finger was lifted, essentially taking the *drop* part out of *drag and drop*. In addition to that, we would pile up event handlers, which could not only cause weird side effects but also blows up our runtime memory.
+Also notice that we're removing the event listener for the `mousemove` event **on every mouseUp**. Otherwise, the event handler would still be executed on every mouse move. In other words, the box would keep moving even after the finger was lifted, essentially taking the *drop* part out of *drag and drop*. In addition to that, we would pile up event handlers, which could not only cause weird side effects but also blows up our runtime memory.
 
 ## Measuring the performance
 
