@@ -3,7 +3,7 @@ layout: post
 title: Testing Services with Http in Angular
 imageUrl: /images/banner/testing-services-with-http-in-angular-2.jpg
 date: 2016-11-28T00:00:00.000Z
-update_date: 2016-12-18T00:00:00.000Z
+update_date: 2017-02-28T00:00:00.000Z
 summary: >-
   Want to learn how to test services in Angular that have an Http dependency?
   Read more here!
@@ -278,7 +278,7 @@ We can subscribe to all opened http connections via `MockBackend.connections`, a
 {% highlight js %}
 {% raw %}
 it('should return an Observable<Array<Video>>',
-  inject([VideoService, MockBackend], (videoService, mockBackend) => {
+  inject([VideoService, XHRBackend], (videoService, mockBackend) => {
     mockBackend.connections.subscribe((connection) => {
       // This is called every time someone subscribes to
       // an http call.
