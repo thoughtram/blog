@@ -76,7 +76,7 @@ export class ContactsListComponent implements OnInit {
 
 In the described scenario our Observable is what we like to refer to as short-lived. The Observable emits exactly one value - an array of contacts in this case - and completes right after that. That's the typical scenario when working with http and it's basically the only scenario when working with Promises.
 
-However, we can totally have Observables that emit multiple values. Think about working with websockets for instance. We may have an array that builts up over time! Let's simulate an Observable that emits an array of numbers. But instead of emitting just a single array once, it will emit an array every time a new item was added. To not let the array grow infinitely we will limit it to the last five items.
+However, we can totally have Observables that emit multiple values. Think about working with websockets for instance. We may have an array that builds up over time! Let's simulate an Observable that emits an array of numbers. But instead of emitting just a single array once, it will emit an array every time a new item was added. To not let the array grow infinitely we will limit it to the last five items.
 
 {% highlight js %}
 {% raw %}
@@ -168,7 +168,7 @@ export class AppComponent {
 
 {% include plunk.html url="http://embed.plnkr.co/kRDcQJEJkiBErNGdKKNl/" %}
 
-Everytime we subscribe to our Observable we save the subscription in an instance member of our component. Then, when we run `newSeq` again we check if there's a subscription that we need to call `unsubscribe` on. That's why we don't see our list flipping between different colors anymore no matter how often we click the button.
+Every time we subscribe to our Observable we save the subscription in an instance member of our component. Then, when we run `newSeq` again we check if there's a subscription that we need to call `unsubscribe` on. That's why we don't see our list flipping between different colors anymore no matter how often we click the button.
 
 Now meet the `AsyncPipe` again. Let's change the `ngFor` again to apply the `AsyncPipe` and get rid of all the manual bookkeeping. 
 
@@ -265,7 +265,7 @@ So far, we haven't made any changes to the underlying change detection strategy.
 
 {% include plunk.html url="http://embed.plnkr.co/aFqRxUXaokBTxqluKZTy/" %}
 
-However, in terms of change detection it means that all components are checked each time *any* of the Observables fire. That's a waste of resources. We can do better by setting the change detection for our `SeqComponent` to `OnPush` which means it will only check it's bindings if the inputs - the array in our case - changes.
+However, in terms of change detection, it means that all components are checked each time *any* of the Observables fire. That's a waste of resources. We can do better by setting the change detection for our `SeqComponent` to `OnPush` which means it will only check it's bindings if the inputs - the array in our case - changes.
 
 {% highlight js %}
 {% raw %}
@@ -277,7 +277,7 @@ However, in terms of change detection it means that all components are checked e
 {% endraw %}
 {% endhighlight %}
 
-That works, and seems to be an easy quick win. But here comes the thing: It only works because our Observable creates an entirely new array each time it emits a new value. And even though that's actually not too bad and in fact beneficial in most scenarios, let's consider we use a different implementation which *mutates* the existing array rather than recreating it every time.
+That works and seems to be an easy quick win. But here comes the thing: It only works because our Observable creates an entirely new array each time it emits a new value. And even though that's actually not too bad and in fact beneficial in most scenarios, let's consider we use a different implementation which *mutates* the existing array rather than recreating it every time.
 
 {% highlight js %}
 {% raw %}
@@ -344,7 +344,7 @@ private _updateLatestValue(async: any, value: Object): void {
 {% endraw %}
 {% endhighlight %}
 
-The `AsyncPipe` marks the `ChangeDetectorRef` of our component to be checked, effectively telling the change detection that there may be a change in this component. If you like to get a more detailed understanding about how that works we recommend to read our [in-depth change detection article](/angular/2016/02/22/angular-2-change-detection-explained.html).
+The `AsyncPipe` marks the `ChangeDetectorRef` of our component to be checked, effectively telling the change detection that there may be a change in this component. If you like to get a more detailed understanding of how that works we recommend reading our [in-depth change detection article](/angular/2016/02/22/angular-2-change-detection-explained.html).
 
 ## Conclusion
 
