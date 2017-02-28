@@ -53,7 +53,7 @@ Depending on what we want to do, we might need to implement one or the other gua
 
 ## Defining Guards
 
-Guards can be implemented in different ways, but after all it really boils down to a function that returns either `Observable<boolean>`, `Promise<boolean>` or `boolean`. In addition, guards are registered using providers, so they can be injected by Angular when needed.
+Guards can be implemented in different ways, but after all it really boils down to a function that returns either `Observable<boolean>` or `boolean`. In addition, guards are registered using providers, so they can be injected by Angular when needed.
 
 ### As Functions
 
