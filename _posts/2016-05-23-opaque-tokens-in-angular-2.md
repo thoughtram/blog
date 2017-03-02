@@ -34,7 +34,7 @@ related_videos:
 
 ---
 
-If you've read our article series on everything dependency injection in Angular, you've probably realised that Angular is doing a pretty good job on that. We can either use string or type tokens to make dependencies available to the injector. However, when using string tokens, there's a possibility of running into naming collisions because... well, maybe someone else has used the same token for a different provider. In this article we're going to learn how so called "opaque tokens" solve this problem.
+If you've read our article series on everything dependency injection in Angular, you've probably realized that Angular is doing a pretty good job on that. We can either use string or type tokens to make dependencies available to the injector. However, when using string tokens, there's a possibility of running into naming collisions because... well, maybe someone else has used the same token for a different provider. In this article, we're going to learn how so-called "opaque tokens" solve this problem.
 
 **UPDATE**: Since Angular version 4.x `OpaqueToken` is considered deprecated in favour of `InjectionToken`. Learn about the differences [here](#injectiontoken-since-angular-4x).
 
@@ -81,7 +81,7 @@ providers: [DataService]
 
 Angular has many shorthand versions (DI, annotations, etc); and the above code is just one example of those.
 
-Now this is cool, as long as we have classes (or types) to represent the things we want to work with. However, sometimes we need to create other objects that don't necessarily need to be put in a class representation. We could for example have a configuration object that we want to inject into our application. This configuration object can be a simple object literal where there is no type involved.
+Now this is cool, as long as we have classes (or types) to represent the things we want to work with. However, sometimes we need to create other objects that don't necessarily need to be put in a class representation. We could, for example, have a configuration object that we want to inject into our application. This configuration object can be a simple object literal where there is no type involved.
 
 {% highlight js %}
 {% raw %}
@@ -101,9 +101,9 @@ const FEATURE_ENABLED = true;
 {% endraw %}
 {% endhighlight %}
 
-In these cases, we can't use the `String` or `Boolean` type, as this would set a default value for place where we ask for dependencies of these types. And we really don't want to introduce a new type just to represent these values.
+In these cases, we can't use the `String` or `Boolean` type, as this would set a default value for the place where we ask for dependencies of these types. And we really don't want to introduce a new type just to represent these values.
 
-That's where string tokens come into play. They allows us to make objects available via DI without introducing an actual type:
+That's where string tokens come into play. They allow us to make objects available via DI without introducing an actual type:
 
 {% highlight js %}
 {% raw %}
@@ -138,7 +138,7 @@ class MyComponent {
 
 Note: that above we used `@Inject(featureEnabledToken) private featureEnabled` without any typing information; e.g. `private featureEnabled:boolean`.
 
-Okay awesome, we can use strings and types as tokens to inject dependencies in our application. Unfortunately, using string tokens like this, opens up potential for naming collisions.
+Okay awesome, we can use strings and types as tokens to inject dependencies in our application. Unfortunately, using string tokens like this opens up potential risks for naming collisions.
 
 ## The problem with string tokens
 
@@ -156,7 +156,7 @@ export const THIRD_PARTY_LIB_PROVIDERS = [
 {% endraw %}
 {% endhighlight %}
 
-Even though, it's not a common pattern to use a string token with a class, it's totally possible to do that, but we really just want to demonstrate the problem here. We can import and use these third-party providers like this:
+Even though it's not a common pattern to use a string token with a class, it's totally possible to do that, but we really just want to demonstrate the problem here. We can import and use these third-party providers like this:
 
 {% highlight js %}
 {% raw %}
@@ -185,7 +185,7 @@ providers = [
 
 This will pretty much break our third-party library, because now, the thing that gets injected for the `config` string token is a different object than what the library expects. We basically ran into a naming collision.
 
-## Opaque Tokens to the resque
+## Opaque Tokens to the rescue
 
 Luckily, Angular anticipated such scenarios. It comes with a type called `OpaqueToken` that basically allows us to create string-based tokens without running into any collisions.
 
@@ -225,7 +225,7 @@ Running this code will show us that, even though our application seems to use th
 
 ## Why it works
 
-If we take a look at the implementation of `OpaqueToken` we'll realise that it's just a simple class with only a `.toString()` method.
+If we take a look at the implementation of `OpaqueToken` we'll realize that it's just a simple class with only a `.toString()` method.
 
 {% highlight js %}
 {% raw %}
@@ -255,7 +255,7 @@ TOKEN_A === TOKEN_B // false
 
 ## InjectionToken since Angular 4.x
 
-Since Angular version 4.x there's a new, even a little bit better, way of achieving this. `InjectionToken` does pretty much the same thing as `OpaqueToken` (in fact, it derives from it). However, it allows to attach type info on the token via TypeScript generics, plus, it adds a little bit of sugar that make developers lifes a bit more pleasant when creating factory providers that come with their own dependencies.
+Since Angular version 4.x there's a new, even a little bit better, way of achieving this. `InjectionToken` does pretty much the same thing as `OpaqueToken` (in fact, it derives from it). However, it allows to attach type info on the token via TypeScript generics, plus, it adds a little bit of sugar that makes the developer's life a bit more pleasant when creating factory providers that come with their own dependencies.
 
 Let's take a look at the following provider configuration for `DataService`:
 
@@ -309,4 +309,4 @@ Cool right? As of version 4.x `OpaqueToken` is considered deprecated.
 
 ## Conclusion
 
-Opaque tokens are distinguishable and prevent us from running into naming collisions. In addition they provide a bit better error messages. Whenever we create a token that is not a type, `OpaqueToken` should be used. If we're using Angular in version >= 4.x, we use `InjectionToken` instead.
+Opaque tokens are distinguishable and prevent us from running into naming collisions. In addition, they provide a bit better error messages. Whenever we create a token that is not a type, `OpaqueToken` should be used. If we're using Angular in version >= 4.x, we use `InjectionToken` instead.
