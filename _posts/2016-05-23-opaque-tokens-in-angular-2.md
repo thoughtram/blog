@@ -257,7 +257,6 @@ TOKEN_A === TOKEN_B // false
 
 Since Angular version 4.x there's a new, even a little bit better, way of achieving this. `InjectionToken` does pretty much the same thing as `OpaqueToken` (in fact, it derives from it). However, it allows to attach type info on the token via TypeScript generics, plus, it adds a little bit of sugar that makes the developer's life a bit more pleasant when creating factory providers that come with their own dependencies.
 
-
 Let's take a look at the following provider configuration for `DataService`:
 
 {% highlight js %}
