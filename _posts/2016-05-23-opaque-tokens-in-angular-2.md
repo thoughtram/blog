@@ -2,7 +2,7 @@
 layout: post
 title: How to prevent name collisions in Angular providers
 date: 2016-05-23T00:00:00.000Z
-update_date: 2017-02-23T00:00:00.000Z
+update_date: 2017-03-03T00:00:00.000Z
 imageUrl: /images/banner/opaque-tokens-in-angular-2.jpeg
 summary: >-
   Angular provides a mechanism to avoid name collisions in provider tokens. In
@@ -255,7 +255,7 @@ TOKEN_A === TOKEN_B // false
 
 ## InjectionToken since Angular 4.x
 
-Since Angular version 4.x there's a new, even a little bit better, way of achieving this. `InjectionToken` does pretty much the same thing as `OpaqueToken` (in fact, it derives from it). However, it adds a little bit of sugar that make developers lifes a bit more pleasant when creating factory providers that come with their own dependencies.
+Since Angular version 4.x there's a new, even a little bit better, way of achieving this. `InjectionToken` does pretty much the same thing as `OpaqueToken` (in fact, it derives from it). However, it allows to attach type info on the token via TypeScript generics, plus, it adds a little bit of sugar that make developers lifes a bit more pleasant when creating factory providers that come with their own dependencies.
 
 Let's take a look at the following provider configuration for `DataService`:
 
@@ -281,13 +281,13 @@ providers: [
 
 We're using a factory function that will create a `DataService` instance using `http` and `apiUrl`. To ensure Angular knows what `http` and `apiUrl` are, we add the corresponding DI token to the provider configuration's `deps` property. Notice how we can just add the `Http` token. However, `apiUrl` is providing using an `OpaqueToken`, and since it since a type, we have to use the `Inject()` constructor (equivalent of `@Inject()` inside constructors).
 
-While this works perfectly fine, developers often ran into errors when they forgot to call `new Inject()` on the token. **That's why since Angular 4.x we don't have to do this anymore.** We can replace all `OpaqueToken` instances with `InjectionToken` instances and everything would work exactly the same way, except for the fact that we don't have to call `new Inject()` in factory provider dependencies anymore.
+While this works perfectly fine, developers often ran into errors when they forgot to call `new Inject()` on the token. **That's why since Angular 4.x we don't have to do this anymore.** We can replace all `OpaqueToken` instances with `InjectionToken` instances and everything would work exactly the same way, except for the fact that we don't have to call `new Inject()` in factory provider dependencies anymore. Also, notice the generic. It's the type of what the injector is going to return.
 
 In other words, the code above can then be written like this:
 
 {% highlight js %}
 {% raw %}
-const API_URL = new InjectionToken('apiUrl');
+const API_URL = new InjectionToken<string>('apiUrl'); // generic defines return value of injector
 
 
 providers: [
