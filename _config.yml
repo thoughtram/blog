@@ -12,6 +12,7 @@ highlighter: rouge
 # Build settings
 markdown: kramdown
 paginate: 7
+exclude: [node_modules, deploy.js, package.json]
 sass:
   compressed: true
 whitelist:
