@@ -13,6 +13,8 @@ let spawnIt = (cmd) => {
   }
 }
 
+const skipMeta = process.argv.includes('--skip-meta');
+
 const defaultBranch = 'master';
 const deployBranch = 'gh-pages';
 const stage1 = 'deploy-stage-1';
@@ -20,9 +22,11 @@ const stage2 = 'deploy-stage-2';
 
 console.log('Getting ready for deployment...hold on!');
 
-// generate meta data for posts
-spawnIt(`$(npm bin)/jrp ${__dirname}/_posts`);
-spawnIt(`git add -A . && git commit -m "chore: adds meta data for related posts and videos"`);
+if (!skipMeta) {
+  // generate meta data for posts
+  spawnIt(`$(npm bin)/jrp ${__dirname}/_posts`);
+  spawnIt(`git add -A . && git commit -m "chore: adds meta data for related posts and videos"`);
+}
 
 // perform jekyll build
 spawnIt(`jekyll build`);
