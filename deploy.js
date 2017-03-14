@@ -13,6 +13,7 @@ let spawnIt = (cmd) => {
   }
 }
 
+const defaultBranch = 'master';
 const deployBranch = 'gh-pages';
 const stage1 = 'deploy-stage-1';
 const stage2 = 'deploy-stage-2';
@@ -45,5 +46,7 @@ spawnIt(`git add -A`);
 spawnIt(`git commit -m "rebuilt site"`);
 
 spawnIt(`git push origin ${deployBranch}`);
+
+spawnIt(`git checkout ${defaultBranch}`);
 
 console.log('Everything should be live at http://blog.thoughtram.io');
