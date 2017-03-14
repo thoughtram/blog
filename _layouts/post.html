@@ -84,12 +84,7 @@
       <div class="thtrm-constraint thtrm-constraint--slim">
 
         <div class="thtrm-article">
-          <section class="thtrm-ad thtrm-section thtrm-section--is-promo is-sticky">
-            <img width="100" src="/images/angular2-shield-inverse.svg">
-            <h3 class="thtrm-section-headline">Angular Master Class in Freiburg</h3>
-            <p class="thtrm-section-text">Join our upcoming public training in Germany! </p>
-            <a href="https://www.eventbrite.de/e/angular-master-class-freiburg-tickets-31634972053" title="Angular Master Class in Freiburg" id="event-cta" class="thtrm-layout-divider-cta">Get a ticket <strong>&rarr;</strong></a>
-          </section>
+          {% include private-training-ad.html %}
 
           {% if page.tags contains 'angular2' %}
           <p style="background-color: lightgoldenrodyellow; border: solid 2px #f9dead; padding: 1em; text-align: center; border-radius: 0.3em;">Contents are based on Angular version <strong>>= 2.x</strong> unless explicitely stated differently.</p>
