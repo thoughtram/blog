@@ -1,11 +1,13 @@
 #!/usr/bin/env node
 
-let spawnSync = require('child_process').execSync;
-let spawnOptions = { stdio: 'inherit' };
+let execSync = require('child_process').execSync;
+let spawnOptions = { stdio: 'pipe' };
 
-let spawnIt = (cmd) => {
+let execute = (cmd) => {
   try {
-    spawnSync(cmd, spawnOptions);
+    let output = execSync(cmd, spawnOptions).toString();
+    console.log(output);
+    return output;
   }
   catch (e) {
     //Doesn't feel write to swallow the exceptions but there doesn't seem
@@ -14,6 +16,7 @@ let spawnIt = (cmd) => {
 }
 
 const skipMeta = process.argv.includes('--skip-meta');
+const force = process.argv.includes('--force');
 
 const defaultBranch = 'master';
 const deployBranch = 'gh-pages';
@@ -22,35 +25,43 @@ const stage2 = 'deploy-stage-2';
 
 console.log('Getting ready for deployment...hold on!');
 
+execute(`git fetch origin`);
+let isBehindUpstream = execute('git log HEAD..origin/master --oneline').length > 0;
+
+if (isBehindUpstream && !force) {
+  console.log('Your current HEAD is behind origin/master. Use --force to ignore.')
+  return;
+}
+
 if (!skipMeta) {
   // generate meta data for posts
-  spawnIt(`$(npm bin)/jrp ${__dirname}/_posts`);
-  spawnIt(`git add -A . && git commit -m "chore: adds meta data for related posts and videos"`);
+  execute(`$(npm bin)/jrp ${__dirname}/_posts`);
+  execute(`git add -A . && git commit -m "chore: adds meta data for related posts and videos"`);
 }
 
 // perform jekyll build
-spawnIt(`jekyll build`);
+execute(`jekyll build`);
 
 // cleanup temp branches
-spawnIt(`git branch -D ${stage1}`);
-spawnIt(`git branch -D ${stage2}`);
+execute(`git branch -D ${stage1}`);
+execute(`git branch -D ${stage2}`);
 
 // prepare stage 1
-spawnIt(`git checkout -b ${stage1}`);
-spawnIt(`git add -f _site`);
-spawnIt(`git commit -m "${stage1}"`);
+execute(`git checkout -b ${stage1}`);
+execute(`git add -f _site`);
+execute(`git commit -m "${stage1}"`);
 
 // prepare stage 2
-spawnIt(`git subtree split -P _site -b ${stage2}`);
+execute(`git subtree split -P _site -b ${stage2}`);
 
 // get contents from stage 2 and create a commit
-spawnIt(`git checkout ${deployBranch}`);
-spawnIt(`git checkout ${stage2} .`);
-spawnIt(`git add -A`);
-spawnIt(`git commit -m "rebuilt site"`);
+execute(`git checkout ${deployBranch}`);
+execute(`git checkout ${stage2} .`);
+execute(`git add -A`);
+execute(`git commit -m "rebuilt site"`);
 
-spawnIt(`git push origin ${deployBranch}`);
+execute(`git push origin ${deployBranch}`);
 
-spawnIt(`git checkout ${defaultBranch}`);
+execute(`git checkout ${defaultBranch}`);
 
 console.log('Everything should be live at http://blog.thoughtram.io');
