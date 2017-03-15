@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 let execSync = require('child_process').execSync;
+let chalk = require('chalk');
 let spawnOptions = { stdio: 'pipe' };
 
 let execute = (cmd) => {
@@ -23,9 +24,9 @@ const deployBranch = 'gh-pages';
 const stage1 = 'deploy-stage-1';
 const stage2 = 'deploy-stage-2';
 
-console.log('Getting ready for deployment...hold on!');
+console.log(chalk.green('Getting ready for deployment...hold on!'));
 
-console.log('Fetching from origin...');
+console.log(chalk.green('Fetching from origin...'));
 execute(`git fetch origin`);
 
 let isBehindUpstream = execute('git log HEAD..origin/master --oneline').length > 0;
@@ -42,11 +43,11 @@ if (!skipMeta) {
   execute(`git add -A . && git commit -m "chore: adds meta data for related posts and videos"`);
 }
 
-console.log('Performing jekyll build...');
+console.log(chalk.green('Performing jekyll build...'));
 // perform jekyll build
 execute(`jekyll build`);
 
-console.log('Generating deploy artifacts...');
+console.log(chalk.green('Generating deploy artifacts...'));
 // cleanup temp branches
 execute(`git branch -D ${stage1}`);
 execute(`git branch -D ${stage2}`);
@@ -68,9 +69,9 @@ execute(`git checkout ${stage2} .`);
 execute(`git add -A`);
 execute(`git commit -m "rebuilt site"`);
 
-console.log('Deploying...');
+console.log(chalk.green('Deploying...'));
 execute(`git push origin ${deployBranch}`);
 
 execute(`git checkout ${defaultBranch}`);
 
-console.log('Everything should be live at http://blog.thoughtram.io');
+console.log(chalk.green('Everything should be live at http://blog.thoughtram.io'));

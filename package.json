@@ -19,5 +19,8 @@
   "homepage": "https://github.com/thoughtram/blog#readme",
   "dependencies": {
     "jekyll-related-posts": "git+https://github.com/thoughtram/jekyll-related-posts.git#f0ece96"
+  },
+  "devDependencies": {
+    "chalk": "^1.1.3"
   }
 }
