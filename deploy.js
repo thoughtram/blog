@@ -25,6 +25,7 @@ const stage2 = 'deploy-stage-2';
 
 console.log('Getting ready for deployment...hold on!');
 
+console.log('Fetching from origin...');
 execute(`git fetch origin`);
 
 let isBehindUpstream = execute('git log HEAD..origin/master --oneline').length > 0;
@@ -36,13 +37,16 @@ if (isBehindUpstream && !force) {
 
 if (!skipMeta) {
   // generate meta data for posts
+  console.log('Generating meta data for posts (related posts & videos)...');
   execute(`$(npm bin)/jrp ${__dirname}/_posts`);
   execute(`git add -A . && git commit -m "chore: adds meta data for related posts and videos"`);
 }
 
+console.log('Performing jekyll build...');
 // perform jekyll build
 execute(`jekyll build`);
 
+console.log('Generating deploy artifacts...');
 // cleanup temp branches
 execute(`git branch -D ${stage1}`);
 execute(`git branch -D ${stage2}`);
@@ -64,6 +68,7 @@ execute(`git checkout ${stage2} .`);
 execute(`git add -A`);
 execute(`git commit -m "rebuilt site"`);
 
+console.log('Deploying...');
 execute(`git push origin ${deployBranch}`);
 
 execute(`git checkout ${defaultBranch}`);
