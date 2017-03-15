@@ -26,6 +26,7 @@ const stage2 = 'deploy-stage-2';
 console.log('Getting ready for deployment...hold on!');
 
 execute(`git fetch origin`);
+
 let isBehindUpstream = execute('git log HEAD..origin/master --oneline').length > 0;
 
 if (isBehindUpstream && !force) {
@@ -45,6 +46,9 @@ execute(`jekyll build`);
 // cleanup temp branches
 execute(`git branch -D ${stage1}`);
 execute(`git branch -D ${stage2}`);
+
+// make sure deploy branch is reset to latest version from origin
+execute(`git branch -f ${deployBranch} origin/${deployBranch}`);
 
 // prepare stage 1
 execute(`git checkout -b ${stage1}`);
