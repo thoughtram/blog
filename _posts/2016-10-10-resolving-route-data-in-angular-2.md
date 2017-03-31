@@ -115,7 +115,7 @@ export class ContactsDetailComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    let id = this.route.snapshot.params['id'];
+    let id = this.route.snapshot.paramMap.get('id');
     this.contactsService.getContact(id)
         .subscribe(contact => this.contact = contact);
   }
@@ -280,7 +280,7 @@ export class ContactResolve implements Resolve<Contact> {
   constructor(private contactsService: ContactsService) {}
 
   resolve(route: ActivatedRouteSnapshot) {
-    return this.contactsService.getContact(route.params['id']);
+    return this.contactsService.getContact(route.paramMap.get('id'));
   }
 }
 {% endraw %}

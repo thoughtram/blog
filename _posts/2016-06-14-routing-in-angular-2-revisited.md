@@ -357,4 +357,26 @@ Sometimes we're not interested in future changes of a route parameter. All we ne
 Check out the running example [right here](http://plnkr.co/edit/I9qFkO?p=preview)!
 
 
+## ParamMap since Angular version 4.x
+
+Because router parameters can either have single or multiple values, the params type should actually be `{ [key: string]: string | string[] }`. We as developers usually know if we expect a single or multiple values. That's why since Angular version 4.x, there's a new `ParamMap` interface that we can use to decide whether we we're interested in a single value (`ParamMap.get()`) or multiple values (`ParamMap.getAll()`).
+
+The above code can therefore be rewritten as:
+
+{% highlight js %}
+{% raw %}
+...
+  ngOnInit() {
+
+    this.contactsService
+        .getContacts(this.route.snapshot.paramMap.get('id'))
+        .subscribe(contact => this.contact = contact);
+  }
+...
+{% endraw %}
+{% endhighlight %}
+
+This feature has been introduce in [this commit](https://github.com/angular/angular/commit/a755b71), go ahead and take a look for more information.
+
+
 Of course, there's way more to cover when it comes to routing. We haven't talked about secondary routes or **guards** yet, but we'll do that in our upcoming articles. Hopefully this one gives you an idea of what to expect from the new router. For a more in-depth article on the underlying architecture, you might want to read Victor's [awesome blog](http://victorsavkin.com/post/145672529346/angular-router)!
