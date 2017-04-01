@@ -2,7 +2,7 @@
 layout: post
 title: Angular Animations - Foundation Concepts
 date: 2016-09-16T00:00:00.000Z
-update_date: 2016-12-18T00:00:00.000Z
+update_date: 2017-04-01T00:00:00.000Z
 imageUrl: /images/banner/angular-2-component-animations.jpg
 summary: >-
   Animation in Angular is now easy and more intuitive... Learn foundational
@@ -72,6 +72,26 @@ This component simply publishes an `@Input() isVisible` property; which allows o
 
 {% include plunk.html url="http://embed.plnkr.co/vUPTsY/" %}
 
+### Enable Animations Module
+
+Since Angular 4.x, there's a new module `BrowserAnimationsModule` that introduces all animation capabilities. That's why we first have add that to our application module's `imports` like this:
+
+{% highlight js %}
+{% raw %}
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+@NgModule({
+  imports: [
+    ...
+    BrowserAnimationsModule
+  ]
+  ...
+})
+export class AppModule {}
+{% endraw %}
+{% endhighlight %}
+
+Once that is done, we can use any kind of animation API in our application. If we want to use animation function like `trigger()` or `state()`, we need to import them also from `'@angular/platform-browser/animations'` instead of `'@angular/core'`.
 
 ### Configure Component Animations
 
@@ -184,10 +204,8 @@ Here is the entire component definition updated with Animation features:
 
 {% highlight js %}
 {% raw %}
-import { 
-  Component, OnChanges, Input, 
-  trigger, state, animate, transition, style 
-} from '@angular/core';
+import { Component, OnChanges, Input } from '@angular/core';
+import { trigger, state, animate, transition, style } from '@angular/platform-browser/animations';
 
 @Component({
   selector : 'my-fader',
@@ -253,10 +271,8 @@ If you use the `myFader::isVisible` boolean property, then your animation state 
 
 {% highlight js %}
 {% raw %}
-import {
-  Component, OnChanges, Input,
-  trigger, state, animate, transition, style
-} from '@angular/core';
+import { Component, OnChanges, Input } from '@angular/core';
+import { trigger, state, animate, transition, style } form '@angular/platform-browser/animations';
 
 @Component({
   selector : 'my-fader',
