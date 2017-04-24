@@ -379,7 +379,7 @@ describe('VideoService', () => {
   describe('getVideos()', () => {
 
     it('should return an Observable<Array<Video>>',
-        inject([VideoService, MockBackend], (videoService, mockBackend) => {
+        inject([VideoService, XHRBackend], (videoService, mockBackend) => {
 
         const mockResponse = {
           data: [
