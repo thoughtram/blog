@@ -16,6 +16,7 @@ let execute = (cmd) => {
   }
 }
 
+const metaOnly = process.argv.includes('--meta-only');
 const skipMeta = process.argv.includes('--skip-meta');
 const force = process.argv.includes('--force');
 
@@ -29,18 +30,23 @@ console.log(chalk.green('Getting ready for deployment...hold on!'));
 console.log(chalk.green('Fetching from origin...'));
 execute(`git fetch origin`);
 
+if (!skipMeta) {
+  // generate meta data for posts
+  console.log('Generating meta data for posts (related posts & videos)...');
+  execute(`$(npm bin)/jrp ${__dirname}/_posts`);
+
+  if (metaOnly) {
+    return;
+  }
+
+  execute(`git add -A . && git commit -m "chore: adds meta data for related posts and videos"`);
+}
+
 let isBehindUpstream = execute('git log HEAD..origin/master --oneline').length > 0;
 
 if (isBehindUpstream && !force) {
   console.log('Your current HEAD is behind origin/master. Use --force to ignore.')
   return;
-}
-
-if (!skipMeta) {
-  // generate meta data for posts
-  console.log('Generating meta data for posts (related posts & videos)...');
-  execute(`$(npm bin)/jrp ${__dirname}/_posts`);
-  execute(`git add -A . && git commit -m "chore: adds meta data for related posts and videos"`);
 }
 
 console.log(chalk.green('Performing jekyll build...'));
