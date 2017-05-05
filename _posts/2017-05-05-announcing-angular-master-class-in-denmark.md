@@ -52,7 +52,7 @@ Yes, that's right: This will be the first public training where we debut our bra
 
 ### Tickets on sale now
 
-The early bird round of tickets is on sale now. You can **save up to 200,00 €** so you'll better be fast. Seats are **very** limited this time with only **3** early bird tickets available!
+The early bird round of tickets is on sale now. You can **save up to 125,00 €** so you'll better be fast. Seats are **very** limited this time with only **3** early bird tickets available!
 
 Come to our training... have a blast and get the best acceleration into Angular possible. You can find more information on our official [event page](https://amc-denmark.eventbrite.com/?aff=blogAnnouncement), or grab your ticket right here!
 
