@@ -15,8 +15,8 @@ related_posts:
   - Rust's Ownership model for JavaScript developers
   - clog - A conventional changelog generator for the rest of us
   - Organizing Hanovers first Rust meetup
+  - Announcing Angular Master Class in Denmark
   - Three things you didn't know about the AsyncPipe
-  - Using Zones in Angular for better performance
 related_videos:
   - '175255006'
   - '193524896'

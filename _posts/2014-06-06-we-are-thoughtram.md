@@ -22,8 +22,8 @@ related_posts:
   - Thomas joins thoughtram
   - Upcoming events in 2015
   - Around the globe
+  - Announcing Angular Master Class in Denmark
   - Announcing Angular Master Class in Freiburg
-  - A revamped Angular Master Class
 related_videos:
   - '175255006'
   - '193524896'

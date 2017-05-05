@@ -17,8 +17,8 @@ related_posts:
   - Upcoming events in 2015
   - Around the globe
   - We are thoughtram
+  - Announcing Angular Master Class in Denmark
   - Announcing Angular Master Class in Freiburg
-  - A revamped Angular Master Class
 related_videos:
   - '175255006'
   - '193524896'
