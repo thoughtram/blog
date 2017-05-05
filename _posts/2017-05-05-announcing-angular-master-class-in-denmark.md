@@ -33,7 +33,7 @@ Today we are excited to announce our next public Angular Master Class way up nor
 
 <img src="/images/foss-analytics-a-s-office.jpg" alt="Foss Office Building Hillerød">
 
-The event takes place on the **20th to 22th March 2017 at Foss** in Hillerød about 35 km out of Copenhagen. We couldn't be happier to have [Foss](http://foss.dk) as a strong partner to help us bring our famous training to Denmark.
+The event takes place on the **20th to 22th June 2017 at Foss** in Hillerød about 35 km out of Copenhagen. We couldn't be happier to have [Foss](http://foss.dk) as a strong partner to help us bring our famous training to Denmark.
 
 We will have three (3) days of fun and learning the ins and outs of Angular including things like
 
