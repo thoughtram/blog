@@ -19,11 +19,11 @@ videos:
 author: pascal_precht
 related_posts:
   - Angular Providers using Map Literals
+  - Angular Master Class - Redux and ngrx
   - Three things you didn't know about the AsyncPipe
   - Using Zones in Angular for better performance
   - Making your Angular apps fast
   - Testing Angular Directives with Custom Matchers
-  - Testing Services with Http in Angular
 related_videos:
   - '175255006'
   - '193524896'

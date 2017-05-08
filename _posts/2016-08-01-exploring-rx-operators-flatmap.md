@@ -13,12 +13,12 @@ tags:
   - rx
 author: christoph_burgdorf
 related_posts:
+  - Angular Master Class - Redux and ngrx
   - Three things you didn't know about the AsyncPipe
   - Cold vs Hot Observables
   - 'Exploring Rx Operators: map'
   - Taking advantage of Observables in Angular 2 - Part 2
   - Taking advantage of Observables in Angular
-  - Announcing Angular Master Class in Denmark
 related_videos:
   - '181311615'
   - '181311609'

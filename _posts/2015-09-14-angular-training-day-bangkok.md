@@ -12,12 +12,12 @@ redirect_from:
   - /angular/2015/09/14/angular-training-day-bangkok.html
 author: christoph_burgdorf
 related_posts:
+  - Angular Master Class - Redux and ngrx
   - Announcing Angular Master Class in Denmark
   - Three things you didn't know about the AsyncPipe
   - Using Zones in Angular for better performance
   - Dominic joins thoughtram
   - Making your Angular apps fast
-  - Announcing Angular Master Class in Freiburg
 related_videos:
   - '175255006'
   - '193524896'

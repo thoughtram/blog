@@ -21,7 +21,7 @@ related_posts:
   - Custom Form Controls in Angular
   - Reactive Forms in Angular
   - Template-driven Forms in Angular
-  - Three things you didn't know about the AsyncPipe
+  - Angular Master Class - Redux and ngrx
 related_videos:
   - '189792758'
   - '189785428'

@@ -24,11 +24,11 @@ demos:
 author: christoph_burgdorf
 related_posts:
   - 'Exploring Rx Operators: flatMap'
+  - Angular Master Class - Redux and ngrx
   - Three things you didn't know about the AsyncPipe
   - 'Exploring Rx Operators: map'
   - Taking advantage of Observables in Angular 2 - Part 2
   - Taking advantage of Observables in Angular
-  - Using Zones in Angular for better performance
 related_videos:
   - '181311615'
   - '181311609'

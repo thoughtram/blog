@@ -11,12 +11,12 @@ categories:
   - announcements
 author: pascal_precht
 related_posts:
+  - Angular Master Class - Redux and ngrx
   - Announcing Angular Master Class in Denmark
   - Three things you didn't know about the AsyncPipe
   - Using Zones in Angular for better performance
   - Dominic joins thoughtram
   - Making your Angular apps fast
-  - Announcing Angular Master Class in Freiburg
 related_videos:
   - '175255006'
   - '193524896'

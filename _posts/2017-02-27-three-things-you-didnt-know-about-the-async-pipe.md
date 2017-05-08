@@ -20,7 +20,7 @@ related_posts:
   - Taking advantage of Observables in Angular
   - Cold vs Hot Observables
   - 'Exploring Rx Operators: map'
-  - Using Zones in Angular for better performance
+  - Angular Master Class - Redux and ngrx
 related_videos:
   - '181311615'
   - '181311609'

@@ -27,8 +27,8 @@ related_posts:
   - Protecting Routes using Guards in Angular
   - Routing in Angular revisited
   - Routing in Angular
+  - Angular Master Class - Redux and ngrx
   - Three things you didn't know about the AsyncPipe
-  - Using Zones in Angular for better performance
 related_videos:
   - '175218351'
   - '189618526'
