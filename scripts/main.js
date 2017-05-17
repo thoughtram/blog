@@ -16,11 +16,9 @@
         el.classList.add('thtrm-toc--faded');
       } 
       if (el.classList.contains('thtrm-ad')) {
-        console.log(el);
         el.classList.add('thtrm-ad--sticky');
         el.classList.add('thtrm-ad--description');
       }
-      console.log('foo');
       Stickyfill.add(el);
     }
 }(document, window));
