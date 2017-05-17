@@ -1,33 +1,26 @@
-(function () {
+(function (doc, win) {
   'use strict';
 
-  var querySelector = document.querySelector.bind(document);
-
-  var navdrawerContainer = querySelector('.thtrm-l-navdrawer');
-  var body = document.body;
-  var appbarElement = querySelector('.thtrm-l-header');
-  var menuBtn = querySelector('.thtrm-l-header__menu-btn');
-  var main = querySelector('.thtrm-l-main');
-
-  function closeMenu() {
-    body.classList.remove('open');
-    appbarElement.classList.remove('open');
-    navdrawerContainer.classList.remove('open');
-  }
-
-  function toggleMenu() {
-    body.classList.toggle('open');
-    appbarElement.classList.toggle('open');
-    navdrawerContainer.classList.toggle('open');
-    navdrawerContainer.classList.add('opened');
-  }
-
-  main.addEventListener('click', closeMenu);
-  menuBtn.addEventListener('click', toggleMenu);
-  navdrawerContainer.addEventListener('click', function (event) {
-    if (event.target.nodeName === 'A' || event.target.nodeName === 'LI') {
-      closeMenu();
-    }
+  linkjuice.init('.thtrm-article', {
+    selector: ['h2', 'h3'],
+    icon: ''
   });
 
-})();
+    var stickyElements = doc.querySelectorAll('.is-sticky');
+
+    for (var i = stickyElements.length - 1; i >= 0; i--) {
+      var el = stickyElements[i];
+
+      if (el.classList.contains('thtrm-toc')) {
+        el.classList.add('thtrm-toc--sticky');
+        el.classList.add('thtrm-toc--faded');
+      } 
+      if (el.classList.contains('thtrm-ad')) {
+        console.log(el);
+        el.classList.add('thtrm-ad--sticky');
+        el.classList.add('thtrm-ad--description');
+      }
+      console.log('foo');
+      Stickyfill.add(el);
+    }
+}(document, window));

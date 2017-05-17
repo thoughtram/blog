@@ -25,7 +25,7 @@
 
     //test getComputedStyle
     if (!win.getComputedStyle) {
-        seppuku();
+        // seppuku();
     }
 
     //test for native support

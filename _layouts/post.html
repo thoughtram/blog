@@ -191,33 +191,6 @@
 
     <script src="/scripts/stickyfill.js"></script>
     <script src="/scripts/linkjuice/dist/linkjuice.js"></script>
-    <script>
-    (function (doc, win) {
-
-      linkjuice.init('.thtrm-article', {
-        selector: ['h2', 'h3'],
-        icon: ''
-      });
-
-      if (win.matchMedia && win.matchMedia('(min-width: 1200px)').matches) {
-        var stickyElements = doc.querySelectorAll('.is-sticky');
-
-        for (var i = stickyElements.length - 1; i >= 0; i--) {
-          var el = stickyElements[i];
-
-          if (el.classList.contains('thtrm-toc')) {
-            el.classList.add('thtrm-toc--sticky');
-            el.classList.add('thtrm-toc--faded');
-          } 
-          if (el.classList.contains('thtrm-ad')) {
-            el.classList.add('thtrm-ad--sticky');
-            el.classList.add('thtrm-ad--description');
-          }
-
-          Stickyfill.add(el);
-        }
-      }
-    }(document, window));
-    </script>
+    <script src="/scripts/main.js"></script>
   </body>
 </html>
