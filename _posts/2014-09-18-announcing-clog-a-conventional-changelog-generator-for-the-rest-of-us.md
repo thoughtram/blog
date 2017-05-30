@@ -18,8 +18,8 @@ related_posts:
   - Anouncing Hanover's second Rust meetup
   - Rust's Ownership model for JavaScript developers
   - Organizing Hanovers first Rust meetup
+  - Join our free meetup in Denmark
   - Announcing Angular Master Class in Denmark
-  - Dominic joins thoughtram
 related_videos:
   - '175255006'
   - '193524896'

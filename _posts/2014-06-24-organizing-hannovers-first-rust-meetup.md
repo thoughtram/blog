@@ -21,8 +21,8 @@ related_posts:
   - 'A web app with Nickel: From first line to Heroku deployment'
   - Anouncing Hanover's second Rust meetup
   - Rust's Ownership model for JavaScript developers
+  - Join our free meetup in Denmark
   - Announcing Angular Master Class in Denmark
-  - Dominic joins thoughtram
 related_videos:
   - '175255006'
   - '193524896'
