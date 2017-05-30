@@ -27,7 +27,7 @@ related_posts:
   - Custom Form Controls in Angular
   - Reactive Forms in Angular
   - Custom Validators in Angular
-  - Angular Master Class - Redux and ngrx
+  - Custom themes with Angular Material
 related_videos:
   - '189792758'
   - '189785428'

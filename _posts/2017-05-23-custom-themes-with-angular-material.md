@@ -4,7 +4,9 @@ title: Custom themes with Angular Material
 imageUrl: /images/banner/custom-themes-with-angular-material.jpg
 date: 2017-05-23T00:00:00.000Z
 summary: >-
-  Angular Material offers great theming capabilities for both, built-in and custom themes. In this article we'll explore how to make your custom components theme aware!  
+  Angular Material offers great theming capabilities for both, built-in and
+  custom themes. In this article we'll explore how to make your custom
+  components theme aware!  
 categories:
   - angular
 tags:
@@ -12,6 +14,21 @@ tags:
   - material
   - theming
 author: pascal_precht
+related_posts:
+  - Angular Master Class - Redux and ngrx
+  - Three things you didn't know about the AsyncPipe
+  - Using Zones in Angular for better performance
+  - Making your Angular apps fast
+  - Testing Angular Directives with Custom Matchers
+  - Testing Services with Http in Angular
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+
 ---
 
 When building bigger applications, we always strive for flexibility, extensibility and reusability. This applies not only to the actual application logic, but also to style sheets. Especially nowadays, where things like [CSS variables](https://developers.google.com/web/updates/2016/02/css-variables-why-should-you-care) and [modules](https://github.com/css-modules/css-modules) exist. These tools are great and they solve many different problems in a very elegant way. However, one thing that's still super hard to do these days is **theming**. Being able to use existing, or create new components, but easily changing their look and feel without changing their code. This is often required when we build things that can be reused across different projects, or if the project we're working on should simply enable the user to change the color scheme.

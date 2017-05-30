@@ -22,8 +22,8 @@ related_posts:
   - Resolving route data in Angular
   - Routing in Angular revisited
   - Routing in Angular
+  - Custom themes with Angular Material
   - Angular Master Class - Redux and ngrx
-  - Three things you didn't know about the AsyncPipe
 related_videos:
   - '175218351'
   - '189618526'

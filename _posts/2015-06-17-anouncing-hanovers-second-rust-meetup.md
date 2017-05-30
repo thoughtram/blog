@@ -16,7 +16,7 @@ related_posts:
   - clog - A conventional changelog generator for the rest of us
   - Organizing Hanovers first Rust meetup
   - Join our free meetup in Denmark
-  - Angular Master Class - Redux and ngrx
+  - Custom themes with Angular Material
 related_videos:
   - '175255006'
   - '193524896'

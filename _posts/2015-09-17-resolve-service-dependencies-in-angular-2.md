@@ -15,12 +15,12 @@ videos:
   - url: 'http://casts.thoughtram.io/embedded/181222350'
 author: pascal_precht
 related_posts:
+  - Custom themes with Angular Material
   - Angular Master Class - Redux and ngrx
   - Three things you didn't know about the AsyncPipe
   - Using Zones in Angular for better performance
   - Making your Angular apps fast
   - Testing Angular Directives with Custom Matchers
-  - Testing Services with Http in Angular
 related_videos:
   - '175255006'
   - '193524896'

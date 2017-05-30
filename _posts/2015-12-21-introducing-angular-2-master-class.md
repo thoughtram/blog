@@ -12,11 +12,11 @@ categories:
 author: pascal_precht
 related_posts:
   - Join our free meetup in Denmark
+  - Custom themes with Angular Material
   - Angular Master Class - Redux and ngrx
   - Announcing Angular Master Class in Denmark
   - Three things you didn't know about the AsyncPipe
   - Using Zones in Angular for better performance
-  - Dominic joins thoughtram
 related_videos:
   - '175255006'
   - '193524896'
