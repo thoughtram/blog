@@ -321,7 +321,7 @@ class NameService {
 {% endraw %}
 {% endhighlight %}
 
-What `forwardRef` does is, it takes a function as a parameter that returns a class. And because this functions isn't immediately called but instead is called *after* `NameService` is declared it is safe to return `NameService` from it. In other words: At the point where `() => NameService` runs `NameService` isn't undefined anymore.
+What `forwardRef` does is, it takes a function as a parameter that returns a class. And because this function isn't immediately called but instead is called *after* `NameService` is declared it is safe to return `NameService` from it. In other words: At the point where `() => NameService` runs `NameService` isn't undefined anymore.
 
 ## Conclusion
 
