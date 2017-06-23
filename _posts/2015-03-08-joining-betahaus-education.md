@@ -18,8 +18,8 @@ related_posts:
   - Tickets are on sale now!
   - Announcing our first workshop
   - Git Ninja Class in Amsterdam
+  - Announcing Angular Master Class in Berlin
   - Join our free meetup in Denmark
-  - Announcing Angular Master Class in Denmark
 related_videos:
   - '189792758'
   - '189785428'

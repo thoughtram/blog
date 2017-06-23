@@ -12,12 +12,12 @@ tags:
   - announcements
 author: pascal_precht
 related_posts:
+  - Announcing Angular Master Class in Berlin
   - Join our free meetup in Denmark
   - Announcing Angular Master Class in Denmark
   - Dominic joins thoughtram
   - Announcing Angular Master Class in Freiburg
   - Announcing Angular 2 Master Class in Sydney
-  - Announcing Angular 2 Master Class in NYC
 related_videos:
   - '175255006'
   - '193524896'
