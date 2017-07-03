@@ -23,7 +23,7 @@ related_posts:
   - Upcoming events in 2015
   - Around the globe
   - Announcing Angular Master Class in Berlin
-  - Join our free meetup in Denmark
+  - Announcing Angular Master Class in Houston
 related_videos:
   - '175255006'
   - '193524896'

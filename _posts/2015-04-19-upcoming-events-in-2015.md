@@ -18,7 +18,7 @@ related_posts:
   - Around the globe
   - We are thoughtram
   - Announcing Angular Master Class in Berlin
-  - Join our free meetup in Denmark
+  - Announcing Angular Master Class in Houston
 related_videos:
   - '175255006'
   - '193524896'

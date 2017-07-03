@@ -4,19 +4,20 @@ title: Announcing Angular Master Class in Houston
 imageUrl: /images/banner/announcing_amc_houston.jpg
 date: 2017-06-23T00:00:00.000Z
 summary: >-
-  Our Angular Master Class comes to Houston. Join us for four entire days full of fun and learning Angular!
+  Our Angular Master Class comes to Houston. Join us for four entire days full
+  of fun and learning Angular!
 categories:
   - announcements
 tags:
   - announcements
 author: christoph_burgdorf
 related_posts:
+  - Announcing Angular Master Class in Berlin
   - Join our free meetup in Denmark
   - Announcing Angular Master Class in Denmark
   - Dominic joins thoughtram
   - Announcing Angular Master Class in Freiburg
   - A revamped Angular Master Class
-  - Announcing Angular 2 Master Class in Sydney
 related_videos:
   - '175255006'
   - '193524896'

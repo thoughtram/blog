@@ -19,7 +19,7 @@ related_posts:
   - Rust's Ownership model for JavaScript developers
   - Organizing Hanovers first Rust meetup
   - Announcing Angular Master Class in Berlin
-  - Join our free meetup in Denmark
+  - Announcing Angular Master Class in Houston
 related_videos:
   - '175255006'
   - '193524896'

@@ -11,11 +11,11 @@ categories:
 author: christoph_burgdorf
 related_posts:
   - Announcing Angular Master Class in Berlin
+  - Announcing Angular Master Class in Houston
   - Join our free meetup in Denmark
   - Custom themes with Angular Material
   - Angular Master Class - Redux and ngrx
   - Announcing Angular Master Class in Denmark
-  - Three things you didn't know about the AsyncPipe
 related_videos:
   - '175255006'
   - '193524896'
