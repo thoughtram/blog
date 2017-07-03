@@ -38,7 +38,7 @@ We've found the perfect, artsy venue to get into the right piece of mind to lear
 
 The event takes place on the **22nd to 25th August 2017** in the **Bisong Art Gallery**.
 
-The bulk of the training happens on the first three days whereas day four is optional and covers **Redux and ngrx**. Join us for a couple of days of learning and fun including things like
+This is the first time we'll run a 4-day training. The reason we added another day is because we want to teach our brand new material on  **Redux and ngrx**. Join us for a couple of days of learning and fun including things like
 
 - Components and Modules
 - Fetching data using Http
