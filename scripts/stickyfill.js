@@ -25,7 +25,7 @@
 
     //test getComputedStyle
     if (!win.getComputedStyle) {
-        // seppuku();
+      seppuku();
     }
 
     //test for native support
@@ -46,7 +46,7 @@
 
     //commit seppuku!
     function seppuku() {
-        init = add = rebuild = pause = stop = kill = noop;
+        //init = add = rebuild = pause = stop = kill = noop;
     }
 
     function mergeObjects(targetObj, sourceObject) {
