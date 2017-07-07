@@ -222,7 +222,7 @@ We know that, if `<custom-video>` ask its injector for a dependency, the injecto
   selector: 'video-player',
   providers: [
     PlayerService,
-    provide(VideoService, {useClass: SpecificVideoService})
+    { provide : VideoService, useClass : SpecificVideoService }
   ]
 })
 class VideoPlayer {
