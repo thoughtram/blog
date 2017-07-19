@@ -19,5 +19,10 @@ thomas_burleson:
     github: http://github.com/thomasburleson
     gravatar: /images/thomas_high_res.png
     bio: "Thomas was a late bloomer; programming at 24. He is a autodidact technologist with a passion for Angular, UX, and great software. Thomas is the Team Lead for Angular Material. He loves teaching, mentoring, and working with Angular developers. He also has the irritating habits of daily power-naps and starts a sentence and not finishing…. as his mind races ahead!"
-
-
+dominic_elm:
+    name: Dominic Elm
+    email: dominic@thoughtram.io
+    web: https://twitter.com/elmd_
+    github: https://github.com/d3lm
+    gravatar: /images/author_dominic.jpg
+    bio: "Dominic is a graduate in computer science and is passionate about many web technologies including Angular, Firebase, and ReactiveX. He has always been enthusiastic about teaching. In fact, Dominic devoted his thesis on the topic of enterprise gamification making the the process of sharing and learning within companies fun and enjoyable for everyone."

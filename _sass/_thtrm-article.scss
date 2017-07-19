@@ -21,7 +21,7 @@
   h6 {
     margin-bottom: 10px;
     margin-top: 50px;
-    
+
     + * {
       margin-top: 0;
     }
@@ -64,7 +64,7 @@
     line-height: 1.8;
   }
 
-  p {
+  p, li {
     code {
       background-color: rgba(98, 167, 190, 0.22);
       padding: 3px;
@@ -143,16 +143,16 @@
 .thtrm-article-author {
   padding: 25px;
   border: 3px solid #f2f2f2;
-  
+
   @media screen and(min-width: 420px) {
     display: table;
     width: 100%;
   }
-  
+
   &-matter {
     margin-top: 15px;
     text-align: left;
-    
+
     @media screen and(min-width: 420px) {
       display: table-cell;
       margin-top: 0;
@@ -160,7 +160,7 @@
       vertical-align: top;
       width: 74%;
     }
-    
+
     * {
       color: #333;
     }
@@ -170,7 +170,7 @@
       display: table-cell;
       vertical-align: top;
     }
-    
+
     img {
       max-width: 100%;
     }
@@ -192,7 +192,7 @@
     border: 3px solid #333;
     font-weight: bold;
     text-decoration: none;
-    
+
     &:hover {
       background: #333;
       color: #fff;
@@ -201,7 +201,7 @@
   &-cta-twitter {
     border-color: #62a7be;
     color: #62a7be;
-    
+
     &:hover {
       background: #62a7be;
       color: #fff;
