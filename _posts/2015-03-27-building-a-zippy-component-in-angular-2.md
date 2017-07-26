@@ -46,7 +46,7 @@ related_videos:
 
 ---
 
-<s>Even if Angular 2.0.0 is still in early development, we can already start playing with the code since it's up on GitHub and also published as npm module for early adopters.</sn> We are following the development of Angular 2.0.0 since the beginning on and are also contributing to the project. Just recently we've built a simple zippy component in Angular and in this article we want to show you how.
+We are following the development of Angular 2.0.0 since the beginning on and are also contributing to the project. Just recently we've built a simple zippy component in Angular and in this article we want to show you how.
 
 {% include demos-and-videos-buttons.html post=page %}
 
