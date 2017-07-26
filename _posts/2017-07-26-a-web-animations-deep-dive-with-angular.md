@@ -35,7 +35,7 @@ related_videos:
 
 Motion is an important aspect when building modern web applications. In fact, it's important for all kinds of software products that involve user interfaces and interactions. Good user interfaces with well-designed animations help users understand the flow between two states. Imagine we are on a simple website that only has one button. We click that button and without any motion a box appears. Isn't that boring? Also, we as a user might think that the box appeared because of our action. However, it could have been the result of something else like an http call in the background. In addition, animations can be used to make the user interface more snappy and responsive. They also explain changes in the arrangement of elements on the screen as some user actions may change the UI.
 
-This could easly drift off into a whole new discussion about user experience and why motion matters. The bottom line is that motion not only makes a site more usable but also more fun. They tell stories, add a perceptible time dimension and improve the overall user experience of applications.
+This could easily drift off into a whole new discussion about user experience and why motion matters. The bottom line is that motion not only makes a site more usable but also more fun. They tell stories, add a perceptible time dimension and improve the overall user experience of applications.
 
 In this article we'll briefly look at different ways to approach motion in modern web applications, specifically imperative and declarative animations. We'll cover the basics of CSS and JavaScript animations before diving diving into a sophisticated animation in the context of an Angular application.
 
@@ -64,13 +64,13 @@ The point is, a "system" or some element on the page can have multiple states. I
 
 ## What can we use to animate our UI?
 
-Nowadays, with modern browsers in mind, we have many technologies at hand to animate our UI including CSS3 or JavaScript. The power of CSS animations (transitions or keyframes) is that they allow animating most HTML elements without using JavaScript. CSS animations are also quite fast and allow hardware acceleration. However, there are some limits to this approach. For instance, you can't animate an element along a certain path, use physics-based motion or animate the scroll position with CSS alone. While CSS animations are pretty good for simple transitions between states (e.g. hover-effects), JavaScript-based animations provide far more flexibility.
+Nowadays, with modern browsers in mind, we have many technologies at hand to animate our UI including CSS3 or JavaScript. The power of CSS animations (transitions or keyframes) is that they allow animating most HTML elements without using JavaScript. CSS animations are also quite fast and allow hardware acceleration. However, there are some limitations to this approach. For instance, you can't animate an element along a certain path, use physics-based motion or animate the scroll position with CSS alone. While CSS animations are pretty good for simple transitions between states (e.g. hover-effects), JavaScript-based animations provide far more flexibility.
 
 As a matter of fact, we can take advantage of the same hardware acceleration in JavaSript too. It's as easy as setting a CSS property with a 3D characteristic, such as `translate3d()` or `matrix3d()`. This will push the particular element onto another layer which is then processed by the GPU. The GPU itself is highly optimized for moving pixels making it much for effective for animations compared to the CPU. For more information, check out this great article by Paul Lewis and Paul Irish on [high performance animations](https://www.html5rocks.com/en/tutorials/speed/high-performance-animations/).
 
 CSS animations do not require any 3rd party libraries. However, there are some tools that make your life much easier, for example libraries that provide pre-defined keyframe animations like [Animate.css](https://github.com/daneden/animate.css).
 
-Looking at JavaScript, we can either use vanilla JavaScript or jQuery to animate our UI. Maintaining vanilla JavaScript animations and manually setting up elements on the stage could be quite a hassle. That's one reason why many of us switched to jQuery at some point. jQuery makes it easy to query an element on the page. Then, in order to add motion, all we do is to call `.animate()` and specify properties (e.g. opacity or transform) we'd like to animate. Here is how we'd move a `div` to the right by `200px` animating its `left` property:
+Looking at JavaScript, we can either use vanilla JavaScript or jQuery to animate our UI. Maintaining vanilla JavaScript animations and manually setting up elements on the stage could be quite a hassle. That's one reason why many of us switched to jQuery at some point. jQuery makes it easy to query an element on the page. Then, in order to add motion, all we do is to call `.animate()` and specify the properties (e.g. opacity or transform) we'd like to animate. Here is how we'd move a `div` to the right by `200px` animating its `left` property:
 
 {% highlight js %}
 {% raw %}
@@ -104,7 +104,7 @@ button.addEventListener('click', () => {
 
 When working with frontend frameworks like Angular it could be a whole new story as some of them handle animations differently.
 
-That doesn't mean it's not using some of the core concepts under the hood. Tthey often come with their own animation system. Take Angular's animation system for example, that is built on top of the Web Animations API (WAAPI). It a fairly new and currently being implemented in Chrome and Firefox. It's goal is to unite CSS, JS and SVG. More specifically, it aims to provide the power of CSS performance, add the benefits and flexibility of JS and SVG as well as leave the fundamental work to the browser without the need for additional dependencies.
+That doesn't mean it's not using some of the core concepts under the hood. They often come with their own animation system. Take Angular's animation system for example, that is built on top of the Web Animations API (WAAPI). It's fairly new and currently being implemented in Chrome and Firefox. It's goal is to unite CSS, JS and SVG. More specifically, it aims to provide the power of CSS performance, add the benefits and flexibility of JS and SVG as well as leave the fundamental work to the browser without the need for additional dependencies.
 
 If you want to learn more about the Web Animation API, check out [this](http://danielcwilson.com/blog/2015/07/animations-intro/) series of posts which goes a lot more into detail while covering advanced features like running multiple animations in parallel or in sequence, animating elements along a motion path or controlling animations using the `AnimationPlayer`.
 
@@ -167,7 +167,7 @@ Our application is going to be very simple and mainly consists of two components
 
 The `DashboardComponent` is the entry point (root component) of our application. It contains almost no logic and merely represents a wrapper composing the `ProfileDetailsComponent`.
 
-Inside the `DashboardComponent` we initialize the date for the user profile and toggle the visibility of the dialog. An `ngIf` will then show and hide the template. This is important for our animation because we use it as a trigger.
+Inside the `DashboardComponent` we initialize the data for the user profile and toggle the visibility of the dialog. An `ngIf` will then show and hide the template. This is important for our animation because we use it as a trigger.
 
 Here is the template of the `DashboardComponent`:
 
@@ -241,7 +241,7 @@ Nonetheless, for our animation we still need a wrapper element because the `pers
 
 Again, the perspective only affects **children** elements and only those that are transformed in a three-dimensional space, e.g. rotation about X-axis or translation along Z-axis. The value for the perspective determines the strength of the 3D-effect. In other words, it describes the distance between the object and the viewer. Therefore, if the value is very small the effect will be quite impressive as we are extremely close to the object. On the other hand, if the value is high the distance between the object and the viewer will be large and therefore the animation looks rather subtle. That said, we need to set the `perspective` property in order to achieve 3D-effects.
 
-In addition, we have to specify a point of origin for our upoming transformation. By default the point of origin is exactly the center of any element. The rest is just simple styles for the dialog.
+In addition, we have to specify a point of origin for our upcoming transformation. By default the point of origin is exactly the center of any element. The rest is just simple styling for the dialog.
 
 Alright. Now that we got this in place, let's implement our animation imperatively using GreenSocks's timeline feature.
 
@@ -320,7 +320,7 @@ ngAfterViewInit() {
 {% endraw %}
 {% endhighlight %}
 
-Cool! But before we can construct the timeline for our profile animation there's one thing left we have to do. We need to apply an initial transformation to the `wrapper` element via CSS in order to achieve the fancy 3D-effect:
+Cool! But before we can construct the timeline for our profile animation there's one thing left to do. We need to apply an initial transformation to the `wrapper` element via CSS in order to achieve the fancy 3D-effect:
 
 {% highlight css %}
 {% raw %}
@@ -353,7 +353,7 @@ this.timeline
 {% endraw %}
 {% endhighlight %}
 
-Woah! This looks pretty overwhelming at a first glance. But all we do is is to orchestrate our animation using GreenSock's timeline API. With the help of labels we can run multiple animations in parallel and precisely control the timing of certain animations.
+Woah! This looks pretty overwhelming at first glance. But all we have to do is to orchestrate our animation using GreenSock's timeline API. With the help of labels we can run multiple animations in parallel and precisely control the timing of certain animations.
 
 One thing we haven't talked about so far is `.staggerFrom()`. A stagger is an animation that contains a delay between each successive animation.
 
@@ -367,7 +367,7 @@ Here's the full-fledge solution. Take a look and fiddle with it.
 
 ### Declarative implementation using Angular Animations
 
-In the previous section we have seen how to implement the profile animation with GreenSock in an imperative way. There are some drawbacks to that solution. First, it's quite some boilerplate and work to collect all the elements and manuelly set up the timeline. That said, an animation platform like GSAP requires the DOM to be ready. A framework can make much more assumptions about the instructions (animation data) and the environment (app and browser) before animating things. Second, it can be very beneficial if there's a framework backing the animation engine, like with Angular. GSAP and other animation libraries cannot easily handle DOM insertions or removals because they do not own the DOM transactions. Angular on ther other hand has full control over the DOM.
+In the previous section we have seen how to implement the profile animation with GreenSock in an imperative way. There are some drawbacks to that solution. First, it's quite some boilerplate and work to collect all the elements and manually set up the timeline. That said, an animation platform like GSAP requires the DOM to be ready. A framework can make much more assumptions about the instructions (animation data) and the environment (app and browser) before animating things. Second, it can be very beneficial if there's a framework backing the animation engine, like with Angular. GSAP and other animation libraries cannot easily handle DOM insertions or removals because they do not own the DOM transactions. Angular on the other hand has full control over the DOM.
 
 If you are completely new to animations with Angular, check out [this](/2016-09-16-angular-2-animation-important-concepts.md) post by Thomas Burleson. It covers the fundamentals and shows an example of a more complex fade animation.
 
@@ -388,7 +388,7 @@ export class DashboardModule {}
 
 Remember, animations in Angular are based on the WAAPI and work in browsers that support it including Chrome and Firefox. However, currently Internet Explorer and Safari do not. In this case a [polyfill](https://github.com/web-animations/web-animations-js) is required to achieve similar results. Once animations are properly imported and enabled, we can go ahead and start defining the profile animation.
 
-To quickly recap, animations are declared with the animations metdadata property within the `@Component()` decorator. Each animation is defined by a `trigger` which takes a name and a list of `state` and `transition` entries. Angular's animation engine works basically like a state machine. That's right. This should sound familiar. We have seen it in the beginning of this post, remember? The first argument of `transition` allows you to specify a direction from one state to another, also known as **state-change-expression**. Here are some common values:
+To quickly recap, animations are declared with the animations metadata property within the `@Component()` decorator. Each animation is defined by a `trigger` which takes a name and a list of `state` and `transition` entries. Angular's animation engine works basically like a state machine. That's right. This should sound familiar. We have seen it in the beginning of this post, remember? The first argument of `transition` allows you to specify a direction from one state to another, also known as **state-change-expression**. Here are some common values:
 
 - `* => *` captures a state change between any states
 - `void => *` captures the entering of elements
@@ -405,13 +405,13 @@ Angular 4.2 introduces several new animation features and extends Angular's anim
 - **stagger()** animates a bunch of elements with a delay in between each animation
 - **group()** specifies a list of animations that are run in parallel
 - **sequence()** specifies a list of animations that are run one at a time
-- **animation()** can be used to create reusable animations with input parameters for
+- **animation()** can be used to create reusable animations with input parameters
 - **useAnimation()** invokes reusable animations created with `animation()`
 - **animateChild()** will invoke child animations which are normally blocked
 
-Neat! Let's use that to re-implement our profile animation with Angular's animation DSL. In order to demonstrate most of the above animation helpers, espeically `animateChild()`, we need to refactor our application a bit.
+Neat! Let's use that to re-implement our profile animation with Angular's animation DSL. In order to demonstrate most of the above animation helpers, especially `animateChild()`, we need to refactor our application a bit.
 
-First of all, we create a new component called `ProfileStatsComponent` which now contains the `ul` that was perviously part of the `DashboardComponent`. The template of the `DashboardComponent` now looks like this:
+First of all, we create a new component called `ProfileStatsComponent` which now contains the `ul` that was previously part of the `DashboardComponent`. The template of the `DashboardComponent` now looks like this:
 
 {% highlight html %}
 {% raw %}
@@ -433,7 +433,7 @@ First of all, we create a new component called `ProfileStatsComponent` which now
 {% endraw %}
 {% endhighlight %}
 
-The dasboard now composes the `ProfileStatsComponent` which will later define its own animation. For now, let's focus on the profile animation and talk about child animations in a minute.
+The dashboard now composes the `ProfileStatsComponent` which will later define its own animation. For now, let's focus on the profile animation and talk about child animations in a minute.
 
 Here's how we define our `profileAnimation`:
 
@@ -527,7 +527,7 @@ In the code above, we query a bunch of elements and use several animation helper
 
 If we take a closer look we can see that there's actually more to it. For instance for the `wrapper`, we run two animations in parallel one of which is the reusable animation we defined earlier. We can invoke a reusable animation with the `useAnimation()` method. While `AnimationOptions` are optional, we specify them to override the default input paramters.
 
-Furthermore, we can spot this special style property of `style('*')`. This will basically remove all of the special styling we have added (e.g. initial styles) and reset the state of the element. It's an equivalent of setting each value to `*`. This means that Angular will figure out the values at runtime. On top of that use the `stagger()` animation helper method to animate multiple elements with a timing gap in between each animated element.
+Furthermore, we can spot this special style property of `style('*')`. This will basically remove all of the special styling we have added (e.g. initial styles) and reset the state of the element. It's an equivalent of setting each value to `*`. This means that Angular will figure out the values at runtime. On top of that use the `stagger()` animation helper method to animate multiple elements with a time gap in between each animated element.
 
 #### Applying animations using @HostBinding()
 
