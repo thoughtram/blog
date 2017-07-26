@@ -11,12 +11,12 @@ categories:
   - announcements
 author: pascal_precht
 related_posts:
+  - A web animations deep dive with Angular
   - Announcing Angular Master Class in Berlin
   - Announcing Angular Master Class in Houston
   - Join our free meetup in Denmark
   - Custom themes with Angular Material
   - Angular Master Class - Redux and ngrx
-  - Announcing Angular Master Class in Denmark
 related_videos:
   - '175255006'
   - '193524896'

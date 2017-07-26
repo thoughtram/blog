@@ -17,9 +17,9 @@ related_posts:
   - Go fast with $applyAsync in Angular 1.3
   - Disabling Debug Info in Angular 1.3
   - Making your Angular apps fast
+  - A web animations deep dive with Angular
   - Custom themes with Angular Material
   - Angular Master Class - Redux and ngrx
-  - Three things you didn't know about the AsyncPipe
 related_videos:
   - '175255006'
   - '193524896'

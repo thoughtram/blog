@@ -19,11 +19,11 @@ videos:
 author: pascal_precht
 related_posts:
   - Angular Providers using Map Literals
+  - A web animations deep dive with Angular
   - Custom themes with Angular Material
   - Angular Master Class - Redux and ngrx
   - Three things you didn't know about the AsyncPipe
   - Using Zones in Angular for better performance
-  - Making your Angular apps fast
 related_videos:
   - '175255006'
   - '193524896'

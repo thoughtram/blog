@@ -20,7 +20,7 @@ related_posts:
   - Custom Form Controls in Angular
   - Template-driven Forms in Angular
   - Custom Validators in Angular
-  - Custom themes with Angular Material
+  - A web animations deep dive with Angular
 related_videos:
   - '189792758'
   - '189785428'

@@ -18,8 +18,8 @@ related_posts:
   - Resolving route data in Angular
   - Protecting Routes using Guards in Angular
   - Routing in Angular revisited
+  - A web animations deep dive with Angular
   - Custom themes with Angular Material
-  - Angular Master Class - Redux and ngrx
 related_videos:
   - '175218351'
   - '189618526'

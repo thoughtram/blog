@@ -4,7 +4,9 @@ title: A web animations deep dive with Angular
 imageUrl: /images/banner/angular-animations.jpg
 date: 2017-07-26T00:00:00.000Z
 summary: >-
-  Angular comes with a built-in animation system that lets us create powerful animations based on the Web Animations API. In this article we'll look at two differet approaches, namely imperative and declarative animations.
+  Angular comes with a built-in animation system that lets us create powerful
+  animations based on the Web Animations API. In this article we'll look at two
+  differet approaches, namely imperative and declarative animations.
 categories:
   - angular
 tags:
@@ -14,6 +16,20 @@ tags:
   - imperative
   - declarative
 author: dominic_elm
+related_posts:
+  - Custom themes with Angular Material
+  - Angular Master Class - Redux and ngrx
+  - Three things you didn't know about the AsyncPipe
+  - Using Zones in Angular for better performance
+  - Making your Angular apps fast
+  - Testing Angular Directives with Custom Matchers
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
 
 ---
 
