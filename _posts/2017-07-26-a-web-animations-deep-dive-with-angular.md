@@ -50,13 +50,13 @@ Let's start with a deeper breath of how animations in the web generally work.
 
 ## Understanding state transitions
 
-With animations we aim to guide users between views so they feel comfortable using the site, draw attention to some parts of application, increase spacial awareness, indicate if data is being loaded, and probably the most important point - **smoothly transition users between states**. All this could be achieved by using CSS (declarative) or JavaSript (mostly imperative) to animate certain elements within your page.
+With animations we aim to guide users between views so they feel comfortable using the site, draw attention to some parts of application, increase spacial awareness, indicate if data is being loaded, and probably the most important point - **smoothly transition users between states**. All this could be achieved by using CSS (declarative) or JavaScript (mostly imperative) to animate certain elements within your page.
 
 What's a transition you may ask. Very good question! The [Oxford Dictionary](https://en.oxforddictionaries.com/definition/transition) defines a transition as follows:
 
 > The process or a period of changing from one state or condition to another.
 
-Applied to animations, a transition is the visualization of some state changing over time. A **state** could be a person sitting at the airport waiting for his plane to be boarded. It's a condition something or someone is in at a specific point in time. A button on website could have 4 different states - `idle`, `hover`, `focus` and `pressed`, where the latter is a combination of `focus` and `active`. We could use an infinite state machine or simply state transition system to visualize how it works:
+Applied to animations, a transition is the visualization of some state changing over time. A **state** could be a person sitting at the airport waiting for his plane to be boarded. It's a condition something or someone is in at a specific point in time. A button on website could have 4 different states - `idle`, `hover`, `focus` and `pressed`, where the latter is a combination of `focus` and `active`. We could use a finite state machine or simply state transition system to visualize how it works:
 
 ![button state machine](/images/button_state_machine.gif)
 
