@@ -40,7 +40,7 @@ You or your team should attend our 4-day **Angular Master Class** training.
 *  Day 4: Redux + ngrx with immutable, 1-way dataflows and reactive programming
 
 We have also updated our course and lab exercises to Angular Material and Angular Flex-Layout, you can read about that here:   
-[Revamped Angular Master Class]()https://blog.thoughtram.io/angular/2017/01/08/a-revamped-angular-master-class.html).
+[Revamped Angular Master Class](https://blog.thoughtram.io/angular/2017/01/08/a-revamped-angular-master-class.html).
 
 This is the first time we'll run a public **4-day** training! The reason we added another day is because we want to teach our brand new material on  **Redux and ngrx**.
 
