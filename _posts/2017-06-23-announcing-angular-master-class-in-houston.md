@@ -58,8 +58,6 @@ This is the first time we'll run a 4-day training. The reason we added another d
 
 ### Tickets on sale now
 
-The early bird round of tickets is on sale now. You can **save up to 150,00 USD** so you'll better be fast. Seats are **very** limited with only **5** early bird tickets available!
-
 Come to our training... have a blast and get the best acceleration into Angular possible. You can find more information on our official [event page](https://amc-houston.eventbrite.com/?aff=blogAnnouncement), or grab your ticket right here!
 
 <iframe  src="//eventbrite.de/tickets-external?eid=35632678300&ref=etckt" frameborder="0" vspace="0" hspace="0" marginheight="5" marginwidth="5" scrolling="auto" allowtransparency="true"></iframe>
