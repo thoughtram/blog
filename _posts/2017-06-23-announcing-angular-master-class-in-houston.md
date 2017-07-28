@@ -46,15 +46,17 @@ The reason we added another day is because we want to teach our brand new materi
 >  We have also updated our course and lab exercises to Angular Material and Angular Flex-Layout, you can read about that here: [Revamped Angular Master Class](https://blog.thoughtram.io/angular/2017/01/08/a-revamped-angular-master-class.html).
 
 
-If you would like private, on-site training for a team of 10 or more developers, please contact us at hello@thoughtram.io.
+#### On-Premise, Private Training?
+
+If you would like private, on-site training for a team of 10 or more developers, please contact us at [hello@thoughtram.io]("mailto:hello@thoughtram.io)
 
 
 #### Where is the Houston Training?
 
-And we found the perfect, artsy venue that will get everyone into the right piece of mind to learn the nuances and power of Angular. 
+And we found the perfect, artsy venue that will get everyone into the right piece of mind to learn the nuances and power of Angular.
 The event takes place on the **August 22 - 25, 2017** in the Bisong Art Gallery.
 
-<a href="https://www.eventbrite.de/e/angular-master-class-houston-tickets-35632678300?aff=blogAnnouncement#map-target"
+<a href="https://www.google.com/maps/place/Bisong+Art+Gallery/@29.7675709,-95.3546372,19z/data=!3m1!4b1!4m5!3m4!1s0x8640bf298647bd0d:0x78cc6f2afbb33e48!8m2!3d29.7675697!4d-95.35409?hl=en"
    target="_blank">
   <img src="/images/amc_houston_hall.jpg" alt="AMC Houston Event Location">
 </a>
