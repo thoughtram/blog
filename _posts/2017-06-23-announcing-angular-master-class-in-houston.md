@@ -23,15 +23,15 @@ related_videos:
 
 ---
 
-#### Angular 4 Master Class
+#### Angular Master Class
 
 It's been a couple of month since we've last run our training in the USA, so we are very pleased to announce that our Angular Master Class is coming to **Houston in August!**
 
-We found the perfect, artsy venue that will get everyone into the right piece of mind to learn the nuances and power of Angular 4. The event takes place on the **August 22 - 25, 2017** in the Bisong Art Gallery.
+We found the perfect, artsy venue that will get everyone into the right piece of mind to learn the nuances and power of Angular. The event takes place on the **August 22 - 25, 2017** in the Bisong Art Gallery.
 
 <img src="/images/amc_houston_hall.jpg" alt="AMC Houston Event Location">
 
-You or your team should attend our 4-day **Angular 4 Master Class** training.
+You or your team should attend our 4-day **Angular Master Class** training.
 
 *  Day 1: Jump Start with full, high-level introduction to Angular
 *  Day 2: Observables & Component Architecture
@@ -55,7 +55,7 @@ These are intense, full 8-hour days... but don't worry, we make the classroom fu
 
 We also have social time after class on Day 2 and Day 4... for networking, offline questions, and simply relaxing with fellow Angular-philes.
 
-Come to our training... have a blast and get the best acceleration into Angular 4 possible. And use the public training to expand your Angular community network.
+Come to our training... have a blast and get the best acceleration into Angular possible. And use the public training to expand your Angular community network.
 
 ### Tickets on sale now
 
