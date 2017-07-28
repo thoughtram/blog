@@ -48,12 +48,12 @@ The reason we added another day is because we want to teach our brand new materi
 
 #### On-Premise, Private Training?
 
-If you would like private, on-site training for a team of 10 or more developers, please contact us at <a href="mailto:hello@thoughtram.io">hello@thoughtram.io</a>
+If you would like private, on-site training for a team of 10 or more developers, please contact us at <a href="mailto:hello@thoughtram.io?subject=Re Private AMC Training">hello@thoughtram.io</a>
 
 
 #### Where is the Houston Training?
 
-And we found the perfect, artsy venue that will get everyone into the right piece of mind to learn the nuances and power of Angular.
+And we found the perfect, artsy venue that will get everyone into the right state of mind to learn the nuances and power of Angular.
 The event takes place on the **August 22 - 25, 2017** in the Bisong Art Gallery.
 
 <a href="https://www.google.com/maps/place/Bisong+Art+Gallery/@29.7682252,-95.3704114,14.27z/data=!4m5!3m4!1s0x8640bf298647bd0d:0x78cc6f2afbb33e48!8m2!3d29.7675697!4d-95.35409?hl=en"
