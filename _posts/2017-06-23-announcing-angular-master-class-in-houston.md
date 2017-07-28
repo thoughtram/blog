@@ -58,7 +58,7 @@ The event takes place on the **August 22 - 25, 2017** in the Bisong Art Gallery.
 
 <a href="https://www.google.com/maps/place/Bisong+Art+Gallery/@29.7682252,-95.3704114,14.27z/data=!4m5!3m4!1s0x8640bf298647bd0d:0x78cc6f2afbb33e48!8m2!3d29.7675697!4d-95.35409?hl=en"
    target="_blank">
-  <img src="/images/amc_houston_hall.jpg" alt="AMC Houston Event Location">
+  <img src="/images/amc_houston_hall2.jpg" alt="AMC Houston Event Location">
 </a>
 
 > Click on the picture above to see the map to the venue location.
