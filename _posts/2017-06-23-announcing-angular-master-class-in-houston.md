@@ -43,9 +43,11 @@ The event takes place on the **August 22 - 25, 2017** in the Bisong Art Gallery.
 
 > Click on the picture above to see the map to the venue location.
 
+#### About the Training
+
 You or your team should attend our 4-day **Angular Master Class** training.
-This is the first time we'll run a public **4-day** training!
-The reason we added another day is because we want to teach our brand new material on  **Redux and ngrx**.
+This is the first time for a public **4-day** training!
+The reason we added another day is because we want to teach our brand new course material focused on  **Redux and ngrx**.
 
 *  Day 1: Jump Start with full, high-level introduction to Angular
 *  Day 2: Observables & Component Architecture
@@ -55,8 +57,6 @@ The reason we added another day is because we want to teach our brand new materi
 
 >  We have also updated our course and lab exercises to Angular Material and Angular Flex-Layout, you can read about that here: [Revamped Angular Master Class](https://blog.thoughtram.io/angular/2017/01/08/a-revamped-angular-master-class.html).
 
-
-#### About the Training
 
 These are intense, full 8-hour days... but don't worry, we make the classroom fun. thoughtram teaches the class with two (2) trainers. And almost every 30 minutes, students work with hands-on, coding lab exercises.
 
