@@ -23,13 +23,9 @@ related_videos:
 
 ---
 
-#### Angular Master Class
+#### Angular Master-Class Training
 
 It's been a couple of month since we've last run our training in the USA, so we are very pleased to announce that our Angular Master Class is coming to **Houston in August!**
-
-We found the perfect, artsy venue that will get everyone into the right piece of mind to learn the nuances and power of Angular. The event takes place on the **August 22 - 25, 2017** in the Bisong Art Gallery.
-
-<img src="/images/amc_houston_hall.jpg" alt="AMC Houston Event Location">
 
 You or your team should attend our 4-day **Angular Master Class** training.
 
@@ -38,24 +34,35 @@ You or your team should attend our 4-day **Angular Master Class** training.
 *  Day 3: Routing & Forms
 *  Day 4: Redux + ngrx with immutable, 1-way dataflows and reactive programming
 
+We have also updated our course and lab exercises to Angular Material and Angular Flex-Layout, you can read about that here:   
+[Revamped Angular Master Class]()https://blog.thoughtram.io/angular/2017/01/08/a-revamped-angular-master-class.html).
 
 This is the first time we'll run a public **4-day** training! The reason we added another day is because we want to teach our brand new material on  **Redux and ngrx**.
 
 - - -
 
+If you would like private, on-site training for a team of 10 or more developers, please contact us at hello@thoughtram.io.
 
-If you would like private, onsite training for a team of 10 or more developers, please contact us at hello@thoughtram.io.
 
+#### Where is the Houston Training?
 
-- - -
+And we found the perfect, artsy venue that will get everyone into the right piece of mind to learn the nuances and power of Angular. 
+The event takes place on the **August 22 - 25, 2017** in the Bisong Art Gallery.
+
+<a href= href="https://www.eventbrite.de/e/angular-master-class-houston-tickets-35632678300?aff=blogAnnouncement#map-target"
+               target="_blank">
+  <img  src="/images/amc_houston_hall.jpg" alt="AMC Houston Event Location">
+</a>
+
+> Click on the picture above to see the map to the venue location.
+
 
 #### About the Training
 
 These are intense, full 8-hour days... but don't worry, we make the classroom fun. thoughtram teaches the class with two (2) trainers. And almost every 30 minutes, students work with hands-on, coding lab exercises.
 
-We also have social time after class on Day 2 and Day 4... for networking, offline questions, and simply relaxing with fellow Angular-philes.
-
-Come to our training... have a blast and get the best acceleration into Angular possible. And use the public training to expand your Angular community network.
+We also have social time after class on Day 2 and Day 4. Leverage the social times for networking, offline questions, and simply relaxing with your fellow Angular-philes.
+So come to our training, have a blast, and get the best acceleration into Angular possible. And use the public training to expand your Angular community network.
 
 ### Tickets on sale now
 
