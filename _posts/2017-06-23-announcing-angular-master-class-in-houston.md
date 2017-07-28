@@ -12,6 +12,11 @@ tags:
   - announcements
 author: christoph_burgdorf
 related_posts:
+  - Announcing Angular Master Class in Berlin
+  - Join our free meetup in Denmark
+  - Announcing Angular Master Class in Denmark
+  - Dominic joins thoughtram
+  - Announcing Angular Master Class in Freiburg
   - A revamped Angular Master Class
 related_videos:
   - '175255006'
