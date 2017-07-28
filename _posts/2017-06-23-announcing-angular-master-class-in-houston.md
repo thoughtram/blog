@@ -44,18 +44,19 @@ We have also updated our course and lab exercises to Angular Material and Angula
 
 This is the first time we'll run a public **4-day** training! The reason we added another day is because we want to teach our brand new material on  **Redux and ngrx**.
 
-- - -
+<br/>
 
+---
 If you would like private, on-site training for a team of 10 or more developers, please contact us at hello@thoughtram.io.
-
+---
 
 #### Where is the Houston Training?
 
 And we found the perfect, artsy venue that will get everyone into the right piece of mind to learn the nuances and power of Angular. 
 The event takes place on the **August 22 - 25, 2017** in the Bisong Art Gallery.
 
-<a href= href="https://www.eventbrite.de/e/angular-master-class-houston-tickets-35632678300?aff=blogAnnouncement#map-target"
-               target="_blank">
+<a href="https://www.eventbrite.de/e/angular-master-class-houston-tickets-35632678300?aff=blogAnnouncement#map-target"
+   target="_blank">
   <img  src="/images/amc_houston_hall.jpg" alt="AMC Houston Event Location">
 </a>
 
