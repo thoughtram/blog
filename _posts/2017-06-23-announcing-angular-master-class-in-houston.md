@@ -70,7 +70,7 @@ So come to our training, have a blast, and get the best acceleration into Angula
 
 ### On-Premise, Private Training?
 
-<img src="/images/sample_public_training.jpg" style="margin-top:15px; width:75%; margin-bottom:10px" alt="Public Training at Trade Me, June 2017 New Zealand">
+<img src="/images/sample_private_training.jpg" style="margin-top:15px; width:75%; margin-bottom:10px" alt="Public Training at Trade Me, June 2017 New Zealand">
 
 If you prefer private, on-site training for your development teams [10 or more developers], 
 please contact us for rates, details, and scheduling: <a href="mailto:hello@thoughtram.io?subject=Re Private AMC Training">hello@thoughtram.io</a>
