@@ -55,10 +55,10 @@ The reason we added another day is because we want to teach our brand new course
 *  Day 4: Redux + ngrx with immutable, 1-way dataflows and reactive programming
 <img src="/images/ngrx_sample.jpg" style="margin-top:15px; width:75%; margin-bottom:10px" alt="Sample: ngRx Lab Exercise">
 
->  We have also updated our course and lab exercises to use Angular Material and Angular Flex-Layout. You can read about that here: [Revamped Angular Master Class](https://blog.thoughtram.io/angular/2017/01/08/a-revamped-angular-master-class.html).
-
 
 These are intense, full 8-hour days... but don't worry, we make the classroom fun. thoughtram teaches the class with two (2) trainers. And almost every 30 minutes, students work with hands-on, coding lab exercises.
+
+>  We have also updated our course and lab exercises to use Angular Material and Angular Flex-Layout. You can read about that here: [Revamped Angular Master Class](https://blog.thoughtram.io/angular/2017/01/08/a-revamped-angular-master-class.html).
 
 We also have social time after class on Day 2 and Day 4. Leverage the social times for networking, offline questions, and simply relaxing with your fellow Angular-philes.
 So come to our training, have a blast, and get the best acceleration into Angular possible. 
