@@ -30,9 +30,9 @@ related_videos:
 
 #### Angular Master-Class Training
 
-It's been a couple of month since we've last run our training in the USA, 
-so we are very pleased to announce that our Angular Master Class is coming to **Houston, Texas** 
-on **August 22 - 25, 2017!** 
+It's been a couple of month since we've last run our training in the USA. 
+With help from Bonnie Brennan [Angular Meetup Houston], we are very pleased to announce that our 
+Angular Master Class is finally coming to **Houston, Texas** on **August 22 - 25, 2017!** 
 
 And we found the perfect, artsy venue: Bisong Art Gallery, Houston Texas. 
 After all, fun places are sure to get everyone into the right state of mind to learn the 
@@ -46,8 +46,9 @@ nuances and power of Angular
 #### About the Training
 
 You or your team should attend our 4-day **Angular Master Class** training.
-This is the first time for a public **4-day** training!
-The reason we added another day is because we want to teach our brand new course material focused on  **Redux and ngrx**.
+Developers should note that this is the first time we have offered a public **4-day** training!
+
+> The reason we added another day is because we want to teach our brand new course material focused on  **Redux and ngrx**.
 
 *  Day 1: Jump Start with full, high-level introduction to Angular
 *  Day 2: Observables & Component Architecture
@@ -65,9 +66,10 @@ So come to our training, have a blast, and get the best acceleration into Angula
 
 #### On-Premise, Private Training?
 
-If you would like private, on-site training for a team of 10 or more developers, please contact us at <a href="mailto:hello@thoughtram.io?subject=Re Private AMC Training">hello@thoughtram.io</a>
-
 <img src="/images/sample_public_training.jpg" style="margin-top:15px; width:75%; margin-bottom:10px" alt="Public Training at Trade Me, June 2017 New Zealand">
+
+If you prefer private, on-site training for your development teams [10 or more developers], 
+please contact us for rates, details, and scheduling: <a href="mailto:hello@thoughtram.io?subject=Re Private AMC Training">hello@thoughtram.io</a>
 
 ### Tickets on sale now
 
