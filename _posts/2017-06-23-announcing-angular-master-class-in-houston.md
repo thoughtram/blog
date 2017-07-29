@@ -41,8 +41,6 @@ The event takes place on the **August 22 - 25, 2017** in the Bisong Art Gallery.
   <img src="/images/amc_houston_hall2.jpg" alt="AMC Houston Event Location">
 </a>
 
-> Click on the picture above to see the map to the venue location.
-
 #### About the Training
 
 You or your team should attend our 4-day **Angular Master Class** training.
