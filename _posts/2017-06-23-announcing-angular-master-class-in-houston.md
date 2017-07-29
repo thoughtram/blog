@@ -34,7 +34,7 @@ It's been a couple of month since we've last run our training in the USA,
 so we are very pleased to announce that our Angular Master Class is coming to **Houston in August!**
 
 And we found the perfect, artsy venue that will get everyone into the right state of mind to learn the nuances and power of Angular.
-The event takes place on the **August 22 - 25, 2017** in the Bisong Art Gallery.
+The event takes place on the **August 22 - 25, 2017** in the Bisong Art Gallery, Houston Texas.
 
 <a href="https://www.google.com/maps/place/Bisong+Art+Gallery/@29.7682252,-95.3704114,14.27z/data=!4m5!3m4!1s0x8640bf298647bd0d:0x78cc6f2afbb33e48!8m2!3d29.7675697!4d-95.35409?hl=en"
    target="_blank">

@@ -81,3 +81,7 @@ execute(`git push origin ${deployBranch}`);
 execute(`git checkout ${defaultBranch}`);
 
 console.log(chalk.green('Everything should be live at http://blog.thoughtram.io'));
+
+// cleanup temp branches
+execute(`git branch -D ${stage1}`);
+execute(`git branch -D ${stage2}`);
