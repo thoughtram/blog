@@ -31,7 +31,8 @@ related_videos:
 #### Angular Master-Class Training
 
 It's been a couple of month since we've last run our training in the USA. 
-With help from Bonnie Brennan [Angular Meetup Houston], we are very pleased to announce that our 
+
+With help from Bonnie Brennan [Angular Meetup Houston](https://www.meetup.com/ngHouston/), we are very pleased to announce that our 
 Angular Master Class is finally coming to **Houston, Texas** on **August 22 - 25, 2017!** 
 
 And we found the perfect, artsy venue: Bisong Art Gallery, Houston Texas. 
