@@ -30,7 +30,8 @@ related_videos:
 
 ### Angular Master-Class Training
 
-It's been a couple of month since we've last run our training in the USA. 
+It's been almost 7 months since our last AMC training in USA: 
+[Brooklyn, NY](https://blog.thoughtram.io/announcements/2016/08/30/announcing-angular-2-master-class-in-nyc.html).  
 
 With help from Bonnie Brennan [Angular Meetup Houston](https://www.meetup.com/ngHouston/), we are very pleased to announce that our 
 Angular Master Class is finally coming to **Houston, Texas** on **August 22 - 25, 2017!** 
