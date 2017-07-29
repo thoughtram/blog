@@ -28,7 +28,7 @@ related_videos:
 
 ---
 
-#### Angular Master-Class Training
+### Angular Master-Class Training
 
 It's been a couple of month since we've last run our training in the USA. 
 
@@ -43,21 +43,22 @@ And we found the perfect, artsy venue: Bisong Art Gallery, Houston Texas.
 </a>
 
 After all, fun places are sure to get everyone into the right state of mind to learn the 
-nuances and power of Angular
+nuances and power of Angular!
 
-#### About the Training
+### About the Training
 
 You or your team should attend our 4-day **Angular Master Class** training.
-Developers should note that this is the first time we have offered a public **4-day** training!
 
-> The reason we added another day is because we want to teach our brand new course material focused on  **Redux and ngrx**.
+> Developers should note that this is the first time we have offered a public **4-day** training!
+The reason we added another day is because we want to teach our brand new course material focused on  **Redux and ngrx**.
+
+#### Training Schedule
 
 *  Day 1: Jump Start with full, high-level introduction to Angular
 *  Day 2: Observables & Component Architecture
 *  Day 3: Routing & Forms
 *  Day 4: Redux + ngrx with immutable, 1-way dataflows and reactive programming
 <img src="/images/ngrx_sample.jpg" style="margin-top:15px; width:75%; margin-bottom:10px" alt="Sample: ngRx Lab Exercise">
-
 
 These are intense, full 8-hour days... but don't worry, we make the classroom fun. thoughtram teaches the class with two (2) trainers. And almost every 30 minutes, students work with hands-on, coding lab exercises.
 
@@ -66,7 +67,7 @@ These are intense, full 8-hour days... but don't worry, we make the classroom fu
 We also have social time after class on Day 2 and Day 4. Leverage the social times for networking, offline questions, and simply relaxing with your fellow Angular-philes.
 So come to our training, have a blast, and get the best acceleration into Angular possible. 
 
-#### On-Premise, Private Training?
+### On-Premise, Private Training?
 
 <img src="/images/sample_public_training.jpg" style="margin-top:15px; width:75%; margin-bottom:10px" alt="Public Training at Trade Me, June 2017 New Zealand">
 
