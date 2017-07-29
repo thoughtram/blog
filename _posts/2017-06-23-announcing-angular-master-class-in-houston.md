@@ -53,7 +53,7 @@ The reason we added another day is because we want to teach our brand new course
 *  Day 2: Observables & Component Architecture
 *  Day 3: Routing & Forms
 *  Day 4: Redux + ngrx with immutable, 1-way dataflows and reactive programming
-
+<img src="/images/ngrx_sample.jpg" alt="Sample: ngRx Lab Exercise">
 
 >  We have also updated our course and lab exercises to Angular Material and Angular Flex-Layout, you can read about that here: [Revamped Angular Master Class](https://blog.thoughtram.io/angular/2017/01/08/a-revamped-angular-master-class.html).
 
