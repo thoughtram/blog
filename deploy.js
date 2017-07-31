@@ -70,8 +70,16 @@ execute(`git commit -m "${stage1}"`);
 // prepare stage 2
 execute(`git subtree split -P _site -b ${stage2}`);
 
-// get contents from stage 2 and create a commit
 execute(`git checkout ${deployBranch}`);
+
+// it's important ot wipe all files in the working directory
+// because `checkout <branch> .` will get all contents from
+// <branch> but it will also leave all files around that where
+// in the working directory before and were not overwritten by
+// anything from <branch>
+execute(`git rm -rf . && git clean -fxd`);
+
+// get contents from stage 2 and create a commit
 execute(`git checkout ${stage2} .`);
 execute(`git add -A`);
 execute(`git commit -m "rebuilt site"`);
