@@ -19,6 +19,7 @@ let execute = (cmd) => {
 const metaOnly = process.argv.includes('--meta-only');
 const skipMeta = process.argv.includes('--skip-meta');
 const force = process.argv.includes('--force');
+const noPush = process.argv.includes('--no-push');
 
 const defaultBranch = 'master';
 const deployBranch = 'gh-pages';
@@ -75,12 +76,17 @@ execute(`git checkout ${stage2} .`);
 execute(`git add -A`);
 execute(`git commit -m "rebuilt site"`);
 
-console.log(chalk.green('Deploying...'));
-execute(`git push origin ${deployBranch}`);
+if (!noPush) {
+  console.log(chalk.green('Deploying...'));
+  execute(`git push origin ${deployBranch}`);
+  console.log(chalk.green('Everything should be live at http://blog.thoughtram.io'));
+} else {
+  console.log(chalk.green(`--no-push used. Please check latest commit in ${deployBranch} and push manually`));
+}
+
 
 execute(`git checkout ${defaultBranch}`);
 
-console.log(chalk.green('Everything should be live at http://blog.thoughtram.io'));
 
 // cleanup temp branches
 execute(`git branch -D ${stage1}`);
