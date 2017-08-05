@@ -88,6 +88,11 @@ None of us has much experience with Python but honestly that's not a big issue. 
 
 ## Setting up your machine to become an AI engineer
 
+<div class="thtrm-alert">
+You may want to skip the hassle. Signup for a private beta account at <a href="http://get.machinelabs.ai" target="_blank">MachineLabs</a> to start writing machine learning code in the cloud within seconds. Zero setup.
+</div>
+
+
 Now that we know which library to use, how do we actually set up our machine to get going? As with everything in life there are multiple options.
 
 The most obvious option would be to install TensorFlow and Keras directly on your machine. However, this may lead us down a path of upgrading dependencies such as Python or Numpy which in turn may be hard to upgrade if other software depends on them.
