@@ -218,7 +218,7 @@ The answer may surprise you but it's simply a question of measuring the performa
 
 ## Measure and tweak
 
-Let's run our code and take a look at the output. If you aren't sure how to run it please revisit out [previous post](/machine-learning/2016/09/23/beginning-ml-with-keras-and-tensorflow.html).
+Let's run our code and take a look at the output. If you aren't sure how to run it please revisit out [previous post](/machine-learning/2016/09/23/beginning-ml-with-keras-and-tensorflow.html). Alternatively jump to the end of this section to find the interactive embedded lab or [open it on MachineLabs](https://machinelabs.ai/editor/Hya9gmXvb/1501929813281-ByTLbXXDZ?file=main.py) directly.
 
 {% highlight shell %}
 {% raw %}
@@ -317,6 +317,11 @@ Epoch 3718/20000
 {% endraw %}
 {% endhighlight %}
 
+You can play with all these different configurations and see there effect from right within this embedded lab.
+
+<iframe height="400" scrolling="no" title="MNIST in the browser" src="https://machinelabs.ai/embedded/Hya9gmXvb/1501929813281-ByTLbXXDZ?file=main.py" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">
+      See the Lab <a href="https://machinelabs.ai/editor/Hya9gmXvb/1501929813281-ByTLbXXDZ?file=main.py">Understanding XOR with Keras</a> on <a href="https://machinelabs.ai">MachineLabs</a>.
+</iframe>
 
 ## Conclusion
 
