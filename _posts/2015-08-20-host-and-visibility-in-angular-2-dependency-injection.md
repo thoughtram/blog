@@ -74,9 +74,9 @@ The `^` symbol just signalises that a child injector is created from it's parent
 
 {% highlight js %}
 {% raw %}
-var injector = ReflectiveInjector.resolveAndCreate();
-var childInjector = injector.resolveAndCreateChild();
-var grandChildInjector = childInjector.resolveAndCreateChild();
+var injector = Injector.create();
+var childInjector = Injector.create([], injector);
+var grandChildInjector = Injector.create([], childInjector);
 {% endraw %}
 {% endhighlight %}
 
@@ -84,14 +84,14 @@ Of course, this code is very simplified and as we can see, there are also no pro
 
 {% highlight js %}
 {% raw %}
-var injector = ResolveInjector.resolveAndCreate([
-  { provide: Car, useClass: Car },
-  { provide: Engine, useClass: Engine }
+var injector = Injector.create([
+  { provide: Car, deps: [Engine] },
+  { provide: Engine, deps: [] }
 ]);
-var childInjector = injector.resolveAndCreateChild();
-var grandChildInjector = childInjector.resolveAndCreateChild([
-  { provide: Car, useClass: Convertible }
-]);
+var childInjector = Injector.create([], injector);
+var grandChildInjector = Injector.create([
+  { provide: Car, useClass: Convertible, deps: [] }
+], childInjector);
 {% endraw %}
 {% endhighlight %}
 
@@ -136,7 +136,7 @@ Our `<video-player>` component consists of a couple of other components. Let's s
 @Component({
   selector: 'video-player',
   providers: [
-    PlayerService // shorthand for { provide: PlayerService, useClass: PlayerService }
+    PlayerService // shorthand for { provide: PlayerService, deps: [] }
   ]
 })
 class VideoPlayer {
@@ -177,7 +177,7 @@ class PlayButton {
 {% endraw %}
 {% endhighlight %}
 
-If you don't know what it's about with these decorators, you might want to read our article on [annotations and decorators](http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html). Now we ensured that `PlayerService` instance is always instatiated by our component's host, which is currently our `VideoPlayer` component.
+If you don't know what it's about with these decorators, you might want to read our article on [annotations and decorators](/angular/2015/05/03/the-difference-between-annotations-and-decorators.html). Now we ensured that `PlayerService` instance is always instatiated by our component's host, which is currently our `VideoPlayer` component.
 
 ## Dependency Visibility
 
@@ -222,7 +222,7 @@ We know that, if `<custom-video>` ask its injector for a dependency, the injecto
   selector: 'video-player',
   providers: [
     PlayerService,
-    { provide : VideoService, useClass : SpecificVideoService }
+    { provide : VideoService, useClass : SpecificVideoService, deps: [] }
   ]
 })
 class VideoPlayer {
@@ -243,7 +243,7 @@ To make our code work as expected, all we have to do is to make the `VideoServic
     PlayerService
   ],
   viewProviders: [
-    { provide: VideoService, useClass: SpecificVideoService }
+    { provide: VideoService, useClass: SpecificVideoService, deps: [] }
   ]
 })
 class VideoPlayer {

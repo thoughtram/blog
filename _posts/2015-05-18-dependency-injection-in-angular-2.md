@@ -179,6 +179,16 @@ These problems need to be solved in order to take the DI of Angular to the next 
 
 ## Dependency Injection in Angular
 
+<div class="thtrm-tldr" markdown="1">
+
+### Attention
+
+<br>
+The `ReflectiveInjector` APIs discussed in this article are deprecated as of [this commit](https://github.com/angular/angular/commit/fcadbf4bf6d00ea5b250a8069e05b3e4bd000a29).
+
+To learn about the newer `StaticInjector` API, head over to [this section](#new-staticinjector-apis). However, concepts are still exactly the same, so it's worthwhile to keep on reading.
+</div>
+
 Before we take a look at actual code, let's first understand the concept behind the new DI in Angular. The following graphic illustrates required components in the new DI system:
 
 <img alt="DI in Angular" src="/images/di-in-angular2-5.svg" style="margin-top: 3em;">
@@ -207,7 +217,7 @@ var car = injector.get(Car);
 We import `ReflectiveInjector` from Angular which is an injector implementation that exposes some static APIs to create injectors. `resolveAndCreate()` is basically a factory function that creates an injector and takes a list of providers. We'll explore how those classes are supposed to be providers in a second, but for now we focus on `injector.get()`. See how we ask for an instance of `Car` in the last line? How does our injector know, which dependencies need to be created in order to instantiate a car? A look at our `Car` class will explain...
 
 {% highlight js %}
-import { Inject } from 'angular2/core';
+import { Inject } from '@angular/core';
 
 class Car {
   constructor(
@@ -220,7 +230,7 @@ class Car {
 }
 {% endhighlight %}
 
-We import something called `Inject` from the framework and apply it as decorator to our constructor parameters. If you don't know what decorators are, you might want to read our articles on [the difference between decorators and annotations](http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html) and how to [write Angular code in ES5](http://blog.thoughtram.io/angular/2015/05/09/writing-angular-2-code-in-es5.html).
+We import something called `Inject` from the framework and apply it as decorator to our constructor parameters. If you don't know what decorators are, you might want to read our articles on [the difference between decorators and annotations](/angular/2015/05/03/the-difference-between-annotations-and-decorators.html) and how to [write Angular code in ES5](/angular/2015/05/09/writing-angular-2-code-in-es5.html).
 
 The `Inject` decorator attaches meta data to our `Car` class, that is then consumed by the DI system afterwards. So basically what we're doing here, is that we tell the DI that the first constructor parameter should be an instance of type `Engine`, the second of type `Tires` and the third of type `Doors`. We can rewrite this code to TypeScript, which feels a bit more natural:
 
@@ -372,6 +382,30 @@ The graphic shows three injectors where two of them are child injectors. Each in
 
 We can even configure the **visibility** of dependencies, and also until where a child injector should look things up. However, this will be covered in another [article](/angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html).
 
+## New StaticInjector APIs
+
+Since version 5.0.0, `ReflectiveInjector` has been deprecated in favour of `StaticInjector` to not depend on reflection to get hold of dependencies. We don't really have to worry about this if we aren't dealing with creating injectors manually (because Angular does it for us). However, if we are, for whatever reason, relying on lower level injector APIs, here's what's different:
+
+- Creating injectors is done via `Injector.create()`
+- Dependencies tokens have to be listed explicitly using `deps` property
+
+`StaticInjector` doesn't really need to resolve tokens anymore as everything is supposed to be static and passed right to the configuration. That's why there's not `resolveAndCreate()`, but a `create()` method. Also, instead of importing `ReflectiveInjector`, we're importing `Injector`.
+
+{% highlight js %}
+import { Injector } from '@angular/core';
+
+let injector = Injector.create([
+  { provide: Car, deps: [Engine, Tires, Doors] },
+  { provide: Engine, deps: [] },
+  { provide: Tires, deps: [] },
+  { provide: Doors, deps: [] }
+]);
+
+let car = injector.get(Car);
+{% endhighlight %}
+
+Notice in the following section we discuss how DI is used within Angular. There we don't have to specificy `deps` explicitly as long as we're defining providers in `@Component()` or `@NgModule()`.
+
 ## How is it used in Angular then?
 
 Now that we've learned how the DI in Angular works, you might wonder how it is used in the framework itself. Do we have to create injectors manually when we build Angular components? Luckily, the Angular team spent a lot of energy and time to find a nice API that hides all the injector machinery when building components in Angular.
@@ -443,7 +477,7 @@ Lets say we have `NameService` as application wide injectable for the type `Name
 @Component({
   selector: 'app',
   providers: [
-    {provide: NameService, useValue: 'Thomas' }
+    { provide: NameService, useValue: 'Thomas' }
   ],
   template: '<h1>Hello {{name}}!</h1>'
 })

@@ -103,7 +103,7 @@ With multi providers, we can basically provide **multiple dependencies for a sin
 
 const SOME_TOKEN: OpaqueToken = new OpaqueToken('SomeToken');
 
-var injector = ReflectiveInjector.resolveAndCreate([
+var injector = Injector.create([
   { provide: SOME_TOKEN, useValue: 'dependency one', multi: true },
   { provide: SOME_TOKEN, useValue: 'dependency two', multi: true }
 ]);
@@ -130,9 +130,9 @@ Usually, when we register multiple providers with the same token, the last one w
 class Engine { }
 class TurboEngine { }
 
-var injector = ReflectiveInjector.resolveAndCreate([
-  { provide: Engine, useClass: Engine},
-  { provide: Engine, useClass: TurboEngine}
+var injector = Injector.create([
+  { provide: Engine, deps: []},
+  { provide: Engine, useClass: TurboEngine, deps: [] }
 ]);
 
 var engine = injector.get(Engine);
