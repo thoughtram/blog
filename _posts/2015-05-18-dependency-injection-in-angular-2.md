@@ -4,7 +4,7 @@ title: Dependency Injection in Angular
 redirect_from:
   - /angular/2015/05/18/dependency-injection-in-/
 date: 2015-05-18T00:00:00.000Z
-update_date: 2016-12-16T00:00:00.000Z
+update_date: 2017-08-08T00:00:00.000Z
 summary: >-
   Angular implements a very powerful dependency injection system that makes
   reusing services easy and flexible. Learn how it works!
