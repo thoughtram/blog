@@ -383,5 +383,11 @@ this.contacts = http.get('contacts.json')
 {% endraw %}
 {% endhighlight %}
 
+**Note: When using multiple async pipes on streams with default values, the `.share()` operator might cause problems:**
+
+The `share()`will publish the first value of the stream on the first subscription. The first async pipe will trigger that subscription and get that initial value. The second async pipe however will subscribe after that value has already been emitted and therefore miss that value.
+
+The solution for this problem is the `.shareReplay()` operator, which will keep track of the previous values of the stream. That way all the async pipes will get the last value. Just like the `share()` operator is a shortcut for `publish().refCount()`, the `shareReplay()` operator is a shortcut for `publishReplay().refCount()`. We can see the difference between `share()` and `shareReplay()` in [the following plunk](http://plnkr.co/edit/q9xfvjzHauRBsA8o4nob?p=preview).
+
 
 Whew! We came a long way. We hope this gives you a clearer picture of what the term hot vs cold actually means when it comes to Observables.
