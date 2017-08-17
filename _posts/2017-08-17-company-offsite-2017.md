@@ -47,7 +47,7 @@ After spending some interesting days with lots of input on machine learning in B
 
 ## Hacking on MachineLabs
 
-Our new founded entity is called “MachineLabs, Inc.”. MachineLabs is a platform which could probably be best described as the CodePen for Machine Learning, you can find the announcement here -LINK-. We announced it and its mission a few weeks ago. As mentioned earlier, MachineLabs tries to solve the problem of lowering the barrier to enter the Machine Learning field. While we were in Bilbao and Sitges, we had enough time to talk about common goals with MachineLabs, find solutions and organize all the legal stuff as well. As we have been all together for two weeks, the time was perfect to collaborate on code and discuss the legal background.
+Our new founded entity is called “MachineLabs, Inc.”. MachineLabs is a platform which could probably be best described as the CodePen for Machine Learning, you can find the announcement [here](https://blog.machinelabs.ai/2017/05/11/introducing-machinelabs/). We announced it and its mission a few weeks ago. As mentioned earlier, MachineLabs tries to solve the problem of lowering the barrier to enter the Machine Learning field. While we were in Bilbao and Sitges, we had enough time to talk about common goals with MachineLabs, find solutions and organize all the legal stuff as well. As we have been all together for two weeks, the time was perfect to collaborate on code and discuss the legal background.
 
 <img src="/images/hacking_in_sitges.jpg">
 
