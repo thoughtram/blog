@@ -26,3 +26,10 @@ dominic_elm:
     github: https://github.com/d3lm
     gravatar: /images/author_dominic.jpg
     bio: "Dominic is a graduate in computer science and is passionate about many web technologies including Angular, Firebase, and ReactiveX. He has always been enthusiastic about teaching. In fact, Dominic devoted his thesis on the topic of enterprise gamification making the the process of sharing and learning within companies fun and enjoyable for everyone."
+elvira_eulitz:
+    name: Elvira Eulitz
+    email: elvira@thoughtram.io
+    web: https://twitter.com/eeulitz
+    github: https://github.com/ElviraEulitz
+    gravatar: /images/author_elvira.jpg
+    bio: "Elvira is a executive assistant at thoughtram. She loves to travel and see the different types of living."
