@@ -3,12 +3,29 @@ layout: post
 title: Company offsite in Spain 2017
 imageUrl: /images/banner/company-offsite-group.jpg
 date: 2017-08-17T00:00:00.000Z
-summary: For two weeks we travelled to Spain for attending the Machine Learning Summer School, working together and having fun.
+summary: >-
+  For two weeks we travelled to Spain for attending the Machine Learning Summer
+  School, working together and having fun.
 categories:
-- company
-tags: 
-- company
+  - company
+tags:
+  - company
 author: elvira_eulitz
+related_posts:
+  - Dominic joins thoughtram
+  - Thomas joins thoughtram
+  - Upcoming events in 2015
+  - Around the globe
+  - We are thoughtram
+  - A web animations deep dive with Angular
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+
 ---
 
 At thoughtram we are pretty much a fully distributed team. While some of us live in the same city, the bulk of the team is spread across the entire planet. With such a setting, spending some time together in a pleasant environment naturally comes as a welcoming change from the daily routine. This is why we sat out to bring the entire team with their partners to Spain for two weeks of fun, learning and getting some work done. Unfortunately, Thomas was unable to attend the offsite in Spain. He was needed in the USA to take care of his wife who was having knee surgery.

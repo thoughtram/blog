@@ -13,12 +13,12 @@ tags:
   - company
 author: christoph_burgdorf
 related_posts:
+  - Company offsite in Spain 2017
   - Dominic joins thoughtram
   - Thomas joins thoughtram
   - Upcoming events in 2015
   - We are thoughtram
   - Announcing Angular Master Class in Berlin
-  - Announcing Angular Master Class in Houston
 related_videos:
   - '175255006'
   - '193524896'

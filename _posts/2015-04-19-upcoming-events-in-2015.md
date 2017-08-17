@@ -13,12 +13,12 @@ tags:
   - company
 author: pascal_precht
 related_posts:
+  - Company offsite in Spain 2017
   - Dominic joins thoughtram
   - Thomas joins thoughtram
   - Around the globe
   - We are thoughtram
   - Announcing Angular Master Class in Berlin
-  - Announcing Angular Master Class in Houston
 related_videos:
   - '175255006'
   - '193524896'

@@ -16,8 +16,8 @@ related_posts:
   - Anouncing Hanover's second Rust meetup
   - clog - A conventional changelog generator for the rest of us
   - Organizing Hanovers first Rust meetup
+  - Company offsite in Spain 2017
   - A web animations deep dive with Angular
-  - Announcing Angular Master Class in Berlin
 related_videos:
   - '175255006'
   - '193524896'
