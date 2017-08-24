@@ -510,7 +510,4 @@ Stay tuned!
 
 ## Special Thanks
 
-Special thanks to the people that reviewed this post and helped me to make it better.
-
-- [James Henry](https://twitter.com/MrJamesHenry)
-- [Brecht Billiet](https://twitter.com/brechtbilliet)
+Special thanks to [James Henry](https://twitter.com/MrJamesHenry) and [Brecht Billiet](https://twitter.com/brechtbilliet) for their help with the code.
