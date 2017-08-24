@@ -10,12 +10,12 @@ categories:
   - announcements
 author: christoph_burgdorf
 related_posts:
+  - Taming snakes with reactive streams
   - Company offsite in Spain 2017
   - A web animations deep dive with Angular
   - Announcing Angular Master Class in Berlin
   - Announcing Angular Master Class in Houston
   - Join our free meetup in Denmark
-  - Custom themes with Angular Material
 related_videos:
   - '175255006'
   - '193524896'

@@ -29,12 +29,12 @@ demos:
     title: Smart Wikipedia search using Angular 2
 author: christoph_burgdorf
 related_posts:
+  - Taming snakes with reactive streams
   - 'Exploring Rx Operators: flatMap'
   - Taking advantage of Observables in Angular 2 - Part 2
   - Cold vs Hot Observables
   - 'Exploring Rx Operators: map'
   - Angular Master Class - Redux and ngrx
-  - Three things you didn't know about the AsyncPipe
 related_videos:
   - '181311615'
   - '181311609'

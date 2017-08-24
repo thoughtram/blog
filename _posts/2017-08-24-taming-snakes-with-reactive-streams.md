@@ -4,14 +4,30 @@ title: Taming snakes with reactive streams
 imageUrl: /images/banner/reactive_snake.jpg
 date: 2017-08-24T00:00:00.000Z
 summary: >-
-  Reactive Programming is revolutionary but it's not always straightforward and requires a fundamental shift in mindset. In this post, we'll re-implement a classic video game and transform a programmatic-event-loop into a reactive-event-driven app using RxJS. The goal is to completely avoid external state and embrace a functional reactive style.
+  Reactive Programming is revolutionary but it's not always straightforward and
+  requires a fundamental shift in mindset. In this post, we'll re-implement a
+  classic video game and transform a programmatic-event-loop into a
+  reactive-event-driven app using RxJS. The goal is to completely avoid external
+  state and embrace a functional reactive style.
 categories:
   - rxjs
 tags:
   - rx
 author: dominic_elm
 related_posts:
+  - Angular Master Class - Redux and ngrx
+  - Three things you didn't know about the AsyncPipe
+  - 'Exploring Rx Operators: flatMap'
+  - Cold vs Hot Observables
+  - 'Exploring Rx Operators: map'
+  - Taking advantage of Observables in Angular 2 - Part 2
 related_videos:
+  - '181311615'
+  - '181311609'
+  - '181311613'
+  - '181311611'
+  - '181311614'
+  - '181311616'
 
 ---
 

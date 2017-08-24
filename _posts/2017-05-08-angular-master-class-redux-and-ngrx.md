@@ -16,12 +16,12 @@ tags:
   - redux
 author: pascal_precht
 related_posts:
+  - Taming snakes with reactive streams
   - 'Exploring Rx Operators: flatMap'
   - Taking advantage of Observables in Angular 2 - Part 2
   - Taking advantage of Observables in Angular
   - Cold vs Hot Observables
   - 'Exploring Rx Operators: map'
-  - Three things you didn't know about the AsyncPipe
 related_videos:
   - '181311615'
   - '181311609'
