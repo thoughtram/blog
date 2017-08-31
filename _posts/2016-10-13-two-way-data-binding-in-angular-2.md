@@ -5,7 +5,7 @@ imageUrl: /images/banner/two-way-data-binding-in-angular-2.jpg
 date: 2016-10-13T00:00:00.000Z
 update_date: 2016-12-18T00:00:00.000Z
 summary: >-
-  Two-way data binding was one of the main selling points of Angular. Since
+  Two-way data binding was one of the main selling points of AngularJS. Since
   version 2.x, we can build directives that implement two-way data binding. This
   article explains how!
 categories:
@@ -32,7 +32,7 @@ related_videos:
 
 ---
 
-If there was one feature in Angular that made us go "Wow", then it was probably its two-way data binding system. Changes in the application state have been automagically reflected into the view and vise-versa. In fact, we could build our own directives with two-way data bound scope properties, by setting a configuration value.
+If there was one feature in AngularJS that made us go "Wow", then it was probably its two-way data binding system. Changes in the application state have been automagically reflected into the view and vise-versa. In fact, we could build our own directives with two-way data bound scope properties, by setting a configuration value.
 
 {% include demos-and-videos-buttons.html post=page %}
 
@@ -48,7 +48,7 @@ If there was one feature in Angular that made us go "Wow", then it was probably 
 
 ## Two-way data binding in a nutshell
 
-There's one directive in Angular >= 2.x that implements two-way data binding: **ngModel**. On the surface, it looks and behaves as magical as we're used to (from Angular 1). But how does it really work? It's not that hard really. In fact, it turns out that two-way data binding really just boils down to event binding and property binding.
+There's one directive in Angular >= 2.x that implements two-way data binding: **ngModel**. On the surface, it looks and behaves as magical as we're used to (from AngularJS). But how does it really work? It's not that hard really. In fact, it turns out that two-way data binding really just boils down to event binding and property binding.
 
 In order to understand what that means, let's take a look at this code snippet here:
 
@@ -111,7 +111,7 @@ Using this knowledge, we can now build our own custom two-way data bindings. All
 - Introduce a event binding with the same name, plus a `Change` suffix (e.g. `(fooChange)`)
 - Make sure the event binding takes care of property extraction (if needed)
 
-As you can see, there's a bit more work involved to make two-way data binding work compared to Angular 1. However, we should also always consider if a custom two-way data binding implementation is really needed, or if we can just take advantage of `ngModel`. This, for example is the case when building [custom form controls](/angular/2016/07/27/custom-form-controls-in-angular-2.html).
+As you can see, there's a bit more work involved to make two-way data binding work compared to AngularJS. However, we should also always consider if a custom two-way data binding implementation is really needed, or if we can just take advantage of `ngModel`. This, for example is the case when building [custom form controls](/angular/2016/07/27/custom-form-controls-in-angular-2.html).
 
 Let's say we create a custom counter component and ignore of a second that this would rather be a custom form control.
 
