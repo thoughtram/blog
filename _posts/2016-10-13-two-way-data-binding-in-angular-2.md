@@ -6,7 +6,7 @@ date: 2016-10-13T00:00:00.000Z
 update_date: 2016-12-18T00:00:00.000Z
 summary: >-
   Two-way data binding was one of the main selling points of AngularJS. Since
-  version 2.x, we can build directives that implement two-way data binding. This
+  Angular, we can build directives that implement two-way data binding. This
   article explains how!
 categories:
   - angular
@@ -60,7 +60,7 @@ In order to understand what that means, let's take a look at this code snippet h
 {% endraw %}
 {% endhighlight %}
 
-Right, this is that one demo that blew our minds back in 2009, implemented in Angular 2.x. When typing into the input, the input's value is written into the `username` model and then reflected back into the view, resulting in a nice greeting.
+Right, this is that one demo that blew our minds back in 2009, implemented in Angular >= 2.x. When typing into the input, the input's value is written into the `username` model and then reflected back into the view, resulting in a nice greeting.
 
 How does this all work? Well, as mentioned earlier, since version 2.x, two-way data binding in Angular really just boils down to property binding and event binding. There is no such thing as two-way data binding. Without the `ngModel` directive, we could easily implement two-way data binding just like this:
 
