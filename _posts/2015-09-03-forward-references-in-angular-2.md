@@ -159,15 +159,15 @@ class Dog extends Animal {
 
 }
 
-function Animal {
+function Animal() {
   this.move = function () {
     alert(defaultMove);
   }
 }
 
-let defaultMove = "moving";
+var defaultMove = "moving";
 
-let dog = new Dog();
+var dog = new Dog();
 dog.move();
 {% endraw %}
 {% endhighlight %}
@@ -177,9 +177,9 @@ This alerts `moving` just fine because what happens behind the scenes is that th
 {% highlight js %}
 {% raw %}
 
-let defaultMove, dog;
+var defaultMove, dog;
 
-function Animal {
+function Animal() {
   this.move = function () {
     alert(defaultMove);
   }
@@ -204,15 +204,15 @@ class Dog extends Animal {
 
 }
 
-let Animal = function Animal {
+var Animal = function Animal() {
   this.move = function () {
     alert(defaultMove);
   }
 }
 
-let defaultMove = "moving";
+var defaultMove = "moving";
 
-let dog = new Dog();
+var dog = new Dog();
 dog.move();
 {% endraw %}
 {% endhighlight %}
@@ -222,13 +222,13 @@ Again, this will be hoisted but now it becomes this.
 {% highlight js %}
 {% raw %}
 
-let Animal, defaultMove, dog;
+var Animal, defaultMove, dog;
 
 class Dog extends Animal {
 
 }
 
-Animal = function Animal {
+Animal = function Animal() {
   this.move = function () {
     alert(defaultMove);
   }
@@ -247,19 +247,19 @@ At the point where `class Dog extends Animal` is interpreted `Animal` is actuall
 {% highlight js %}
 {% raw %}
 
-let Animal = function Animal {
+var Animal = function Animal() {
   this.move = function () {
     alert(defaultMove);
   }
 }
 
-class Dog extends Animal{
+class Dog extends Animal {
 
 }
 
-let defaultMove = "moving";
+var defaultMove = "moving";
 
-let dog = new Dog();
+var dog = new Dog();
 dog.move();
 {% endraw %}
 {% endhighlight %}
@@ -269,14 +269,14 @@ This works just fine again. Now think about what *would* actually happen if the 
 {% highlight js %}
 {% raw %}
 
-let Animal, defaultMove, dog;
+var Animal, defaultMove, dog;
 
 // Dog is now hoisted above `Animal = function Anim...`
 class Dog extends Animal{
 
 }
 
-Animal = function Animal {
+Animal = function Animal() {
   this.move = function () {
     alert(defaultMove);
   }
