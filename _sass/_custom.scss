@@ -304,6 +304,25 @@
 .thtrm-ad {
   background-color: #62a7be;
 
+  &-transparent {
+    background: transparent;
+
+    &.thtrm-section--is-promo {
+      img {
+        margin-bottom: 0.5em;
+      }
+
+      .thtrm-layout-divider-cta {
+        border: 2px solid #03a9f4!important;
+        color: #03a9f4;
+      }
+    }
+
+    .thtrm-section-text {
+      color: #444;
+    }
+  }
+
   &.thtrm-section--is-promo {
     padding: 1.5em;
 
