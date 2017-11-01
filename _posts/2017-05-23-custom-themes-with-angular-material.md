@@ -524,7 +524,7 @@ In fact, we can take it one level further and create a meta theme mix-in that ex
 {% highlight scss %}
 {% raw %}
 @mixin custom-theme($theme) {
-  @include ml-file-tree-theme(theme);
+  @include ml-file-tree-theme($theme);
 }
 
 @include custom-theme($custom-theme);
