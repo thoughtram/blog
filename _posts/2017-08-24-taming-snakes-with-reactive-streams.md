@@ -133,7 +133,7 @@ From the preview and the game description we know that we need the following fea
 - Keep track of the snake (includes eating and moving)
 - Keep track of the apples on the field (includes generating new apples)
 
-In reactive programming it's all about programming with data streams, streams of input data. Conceptually, when a reactive program is executed, it sets up an observable pipeline that acts upon changes, e.g. a user has interacted with the application by pressing a key on the keyboard or simply a tick of an interval. So it's all about figuring out **what can change**. Those _changes_ often define the **source streams**. The key is to come up with the source streams and then compose them together to calculate whatever you need, e.g. the game state.
+In reactive programming it's all about programming with data streams, streams of input data. Conceptually, when a reactive program is executed, it sets up an observable pipeline that acts upon changes, e.g. a user has interacted with the application by pressing a key on the keyboard or simply a tick of an interval. So it's all about figuring out **what can change**. Those _changes_ often define the **source streams**. The key is to come up with the streams that represent the **primary source of change** and then compose them together to calculate whatever you need, e.g. the game state.
 
 Let's try to find our source streams by looking at the featurs above.
 
@@ -271,7 +271,7 @@ Before we implement the snake itself, let's come up with an idea to keep track o
 
 In a reactive world it's a bit different. One naive approach could be to use the `snake$` stream and every time it emits a value we know that the snake has grown in length. While it really depends on the implementation of `snake$`, this is not how we'll implement it. From the beginning we know that it depends on `ticks$` as it moves a certain distance over time. As such, `snake$` will accumulate an array of body segments and because it's based on `ticks$` it will generate a value every `x` milliseconds. That said, even if the snake does not collide with anything, `snake$` will still produce distinct values. That's because the snake is constantly moving on the field and therefore the array will always be different.
 
-This can be a bit tricky to grasp because there are some peer dependencies between the different streams. For example `apples$` will depend on `snake$`. The reason for this is that, everytime the snake moves we need the array of body segments to check if any of these pieces collides with an apple. While the `apples$` stream itself will accumulate an array of apples, we need a mechanism to model collisions that, at the same time, avoids circular dependencies.
+This can be a bit tricky to grasp because there are some peer dependencies between the different streams. For example `apples$` will depend on `snake$`. The reason for this is that, everytime the snake moves we need the array of body segments to check if any of these pieces collides with an apple. While the `apples$` stream itself will accumulate an array of apples, we need a mechanism to model collisions that, at the same time, avoids a circular dependency.
 
 ### BehaviorSubject to the rescue
 
