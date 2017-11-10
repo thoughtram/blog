@@ -60,7 +60,7 @@ Applied to animations, a transition is the visualization of some state changing 
 
 ![button state machine](/images/button_state_machine.gif)
 
-The point is, a "system" or some element on the page can have multiple states. Instead of simply going from state A to B, we'd like to interpolate the values in between. Later in this post we'll see how to use Angular's animation system to implement a rich profile animation. For this it is necessary to understand the concept of states and state machines as it is kind of implemented as one. With `transitions` we can listen for state changes and act accordingly.
+The point is, a "system" or some element on the page can have multiple states. Instead of simply going from state A to B, we'd like to interpolate the values in between. Therefore, we can listen for _state changes_ and act accordingly using animated transitions from one state to another.
 
 ## What can we use to animate our UI?
 
