@@ -138,7 +138,7 @@ The dialog reference is important because it lets us react to when something wit
 
 Let's reward ourselves first and take a look at what we've already created:
 
-<iframe style="height: 500px" src="https://matdialog-demo.stackblitz.io/" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe style="height: 500px" src="https://stackblitz.com/edit/matdialog-demo?embed=1&file=main.ts&view=preview" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 ## Configuring dialogs
 
@@ -192,7 +192,7 @@ export class FileNameDialogComponent {}
 
 Okay, this already looks much better. Next we take care of accessing data returned by a dialog.
 
-<iframe style="height: 500px" src="https://matdialog-directives-demo.stackblitz.io/" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe style="height: 500px" src="https://stackblitz.com/edit/matdialog-directives-demo?embed=1&file=main.ts&view=preview" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 ## Returning data from dialogs
 
@@ -385,7 +385,7 @@ export class FileTreeComponent {
 
 Again, this is a trivial file tree implementation. In a real-world app we probably want to take care of having nested directories as well, which changes the level of complexity dramatically here. However, since this article is really all about how easy it is to create dialogs using Angular Material, we stick with what we have.
 
-<iframe style="height: 500px" src="https://matdialog-sharing-data-demo.stackblitz.io/" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe style="height: 500px" src="https://stackblitz.com/edit/matdialog-sharing-data-demo?embed=1&file=main.ts&view=preview" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 ## Where to go from here
 
