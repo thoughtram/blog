@@ -44,7 +44,7 @@ Here are the core building blocks of our application:
 
 <img src="/images/custom_overlays_architecture.png" width="100%" alt="application architecture">
 
-As we can see, we have two components, one service and a class that represents a remote control to an opened overlay. The `AppComponent` is the root (or entry point) of our application. This component contains a toolbar and the list of files that we can preview. In addition, it has access to a `FilePreviewOverlayService` which provides us with the core logic for opnening an overlay. At the same time it's an abstraction for some "heavy" lifting that should be implemneted in a resuable manner. Don't be scared, it's not going to be super heavy and we'll break it down into comprehensible chunks. Last but not least, there's a `FilePreviewOverlayRef` which, as mentioned, is a _handle_ used to control (e.g. close) a particular overlay.
+As we can see, we have two components, one service and a class that represents a remote control to an opened overlay. The `AppComponent` is the root (or entry point) of our application. This component contains a toolbar and the list of files that we can preview. In addition, it has access to a `FilePreviewOverlayService` which provides us with the core logic for opening an overlay. At the same time it's an abstraction for some "heavy" lifting that should be implemented in a resuable manner. Don't be scared, it's not going to be super heavy and we'll break it down into comprehensible chunks. Last but not least, there's a `FilePreviewOverlayRef` which, as mentioned, is a _handle_ used to control (e.g. close) a particular overlay.
 
 For the overlay we choose to render a component, so we can attach some logic and also add animations to our overlay to engage our users and make them happy. We call this component `FilePreviewOverlayComponent`.
 
@@ -60,7 +60,7 @@ Before we can start implementing the custom overlay we need to install the CDK. 
 
 From the `MatDialog` we know that when we open an overlay we must specify a component type that is then created dynamically at runtime. This means it is not created by using the component tags inside an HTML template. Also, we know that whenever a component is created at runtime, we **must add it to our application module's `entryComponents`**.
 
-Let's do that and add the `FilePreviewOverlayComponent` to the arry of `entryComponents`. In addition, we need to add the `OverlayModule` to the `imports` list of the root `AppModule`:
+Let's do that and add the `FilePreviewOverlayComponent` to the array of `entryComponents`. In addition, we need to add the `OverlayModule` to the `imports` list of the root `AppModule`:
 
 {% highlight js %}
 {% raw %}
