@@ -503,7 +503,23 @@ export class FilePreviewOverlayComponent {
 {% endraw %}
 {% endhighlight %}
 
-Finally with a little bit of styling we come much closer to what we were trying to achieve. We can now define data that will be passed to the overlay component and render an image onto the screen:
+We can now define data that will be passed to the overlay component and render an image onto the screen. Here's an example of how we can pass in data:
+
+{% highlight js %}
+{% raw %}
+@Component({...})
+export class AppComponent  {
+  ...
+  showPreview(file) {
+    let dialogRef: FilePreviewOverlayRef = this.previewDialog.open({
+      image: file
+    });
+  }
+}
+{% endraw %}
+{% endhighlight %}
+
+Finally with a little bit of styling we come much closer to what we're trying to achieve.
 
 <iframe style="height: 500px" src="https://stackblitz.com/edit/custom-overlay-step-5?embed=1&file=app/file-preview-overlay.service.ts&ctl=1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
