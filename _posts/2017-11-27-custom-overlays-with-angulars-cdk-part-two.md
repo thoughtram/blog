@@ -4,7 +4,7 @@ title: Custom Overlays with Angular's CDK - Part 2
 imageUrl: /images/banner/custom_overlays_2.jpg
 date: 2017-11-27T00:00:00.000Z
 summary: >-
-  In this follow up post we demonstrate how to use Angular's CDK to build a custom overlay that looks and feels much like the Google Drive file preview overlay. We'll pick up from where we left off and implement keyboard support, image preloading and add animations in order to make our overlay more engaging.
+  In this follow-up post we demonstrate how to use Angular's CDK to build a custom overlay that looks and feels much like the Google Drive file preview overlay. We'll pick up from where we left off and implement keyboard support, image preloading and add animations in order to make our overlay more engaging.
 categories:
   - angular
 tags:
@@ -32,11 +32,11 @@ Let's dive right into it!
 {:toc}
 </div>
 
-# Adding keyboard support
+## Adding keyboard support
 
 Adding keyboard support is easy. All we need to do is to use the `@HostListener()` decorator. This decorator is a **function decorator** that accepts an **event name** as an argument. Let's use it inside our `FilePreviewOverlayComponent` to listen to `keydown` events on the HTML Document, so that we can close the overlay whenever the escape button was pressed.
 
-Closing the dialog from within the overlay component is only possible because the `FilePreviewOverlayRef` is now available via the DI system. Remember? We created our own custom injector and defined custom injection tokens for the remote control and the data that we want to share with the component.
+Closing the dialog from within the overlay component is only possible because the `FilePreviewOverlayRef` is now available via the DI system. Remember that we created our own custom injector and defined custom injection tokens for the remote control and the data that we want to share with the component.
 
 Let's have a look at the code:
 
@@ -61,13 +61,13 @@ constructor(public dialogRef: FilePreviewOverlayRef, ...) { }
 {% endraw %}
 {% endhighlight %}
 
-See the `@HostListener(...)`? This way we decorate a class method that is called on every `keydown` event. The function itself gets the `KeyboardEvent` that we can use to check whether it's the **escape** key and only then call `close()` on the `dialogRef`.
+Using the host listener we decorate a class method that is called on every `keydown` event. The function itself gets the `KeyboardEvent` that we can use to check whether it's the **escape** key and only then call `close()` on the `dialogRef`.
 
 That's it already for adding keyboard support. Go ahead and try it out. Open a file preview and then press the escape button.
 
 <iframe style="height: 500px" src="https://stackblitz.com/edit/custom-overlay-step-6?embed=1&file=app/file-preview-overlay.component.ts&ctl=1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
-# Preloading images
+## Preloading images
 
 Instant app response is without any doubt the best, but there are cases when our apps won't be able to deliver the content immediately, e.g. slow internet connection or even latency issues. In those cases it's extremely important to provide users with feedback and indicate that progress is being made. It's crucial to let the user know what is happening in contrast to keep them guessing. One of the most common forms of such feedback is a progress indicator. It reduces the user's uncertainty, perception of time and offers a reason to wait.
 
@@ -131,7 +131,7 @@ Here's the image preloading in action. To better demonstrate the loading, you ca
 
 <iframe style="height: 500px" src="https://stackblitz.com/edit/custom-overlay-step-7?embed=1&file=app/file-preview-overlay.component.ts&ctl=1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
-# Animating the overlay
+## Animating the overlay
 
 With animations we aim to guide users between views so they feel comfortable using the site, draw focused-attention to some parts of our application, increase spacial awareness, indicate if data is being loaded, and probably the most important point - **smoothly transition users between states**.
 
@@ -226,8 +226,6 @@ We can see that the entire content, including the spinner as well as the image, 
 Done! Here's a live demo with all the code above:
 
 <iframe style="height: 500px" src="https://stackblitz.com/edit/custom-overlay-step-8?embed=1&file=app/file-preview-overlay.component.ts&ctl=1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-
-## Closing animation
 
 Animations guide our users and the overlay smoothly animates in. This is already much more engaging compared to what we had before but we can do even better. What about closing it? That's right, we also want it to animate out.
 
@@ -354,32 +352,34 @@ From there we can use the component instance and subscribe to the animation even
 
 {% highlight js %}
 {% raw %}
+import { filter, take } from 'rxjs/operators';
+...
 export class FilePreviewOverlayRef {
   ...
   close(): void {
     // Listen for animation 'start' events
-    this.componentInstance.animationStateChanged
-      .filter(event => event.phaseName === 'start')
-      .take(1)
-      .subscribe(() => {
-        this._beforeClose.next();
-        this._beforeClose.complete();
-        this.overlayRef.detachBackdrop();
-      });
+    this.componentInstance.animationStateChanged.pipe(
+      filter(event => event.phaseName === 'start'),
+      take(1)
+    ).subscribe(() => {
+      this._beforeClose.next();
+      this._beforeClose.complete();
+      this.overlayRef.detachBackdrop();
+    });
 
     // Listen for animation 'done' events
-    this.componentInstance.animationStateChanged
-      .filter(event => event.phaseName === 'done' && event.toState === 'leave')
-      .take(1)
-      .subscribe(() => {
-        this.overlayRef.dispose();
-        this._afterClosed.next();
-        this._afterClosed.complete();
+    this.componentInstance.animationStateChanged.pipe(
+      filter(event => event.phaseName === 'done' && event.toState === 'leave'),
+      take(1)
+    ).subscribe(() => {
+      this.overlayRef.dispose();
+      this._afterClosed.next();
+      this._afterClosed.complete();
 
-        // Make sure to also clear the reference to the component
-        // instance to avoid memory leaks
-        this.componentInstance = null!;
-      });
+      // Make sure to also clear the reference to the
+      // component instance to avoid memory leaks
+      this.componentInstance = null!;
+    });
 
     // Start exit animation
     this.componentInstance.startExitAnimation();
@@ -392,7 +392,7 @@ That's it. Here's a live demo:
 
 <iframe style="height: 500px" src="https://stackblitz.com/edit/custom-overlay-step-9?embed=1&file=app/file-preview-overlay-ref.ts&ctl=1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
-# Toolbar component
+## Adding a toolbar component
 
 To finish this up we will create a toolbar component, add animations and also make use of the events streams exposed by the remote control to animate the toolbar out **before** the overlay is closed.
 
