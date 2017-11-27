@@ -132,7 +132,7 @@ export class AppModule {}
 {% endraw %}
 {% endhighlight %}
 
-There are a couple of things to note here. We're injecting `MatDialog` into our component and call its `open()` method with the `FileNameDialogComponent` type when a user wants to add a file. `MatDialog#open()` returns a `MatDialogRef` which is, as the name states, a reference to the now created dialog. Yeap, the dialog has already been created with just this little amount of code. 
+There are a couple of things to note here. We're injecting `MatDialog` into our component and call its `open()` method with the `FileNameDialogComponent` type when a user wants to add a file. `MatDialog#open()` returns a `MatDialogRef` which is, as the name states, a reference to the now created dialog. Yeap, the dialog has already been created with just this little amount of code.
 
 The dialog reference is important because it lets us react to when something with our dialog happens. Also, it turns out that we have access to the same reference inside the dialog itself, enabling us to control the dialog from there. We'll see in a second when this is useful.
 
@@ -198,7 +198,7 @@ Okay, this already looks much better. Next we take care of accessing data return
 
 Now that our dialog looks good as well, we need to find a way to let the user enter a file name and once confirmed, taking that name and create a new file object in our application. As mentioned earlier, each `MatDialogRef` gives us APIs to react to events emitted by a dialog. When a dialog gets closed, either by hitting the escape key or by closing it using APIs, the `afterClosed()` Observable emits. From within the dialog, we can control if and what gets emitted by the dialog when it's closed, giving us all the tools we need complete implementing this feature.
 
-Let's first take care of emitting the file name entered by the user after closing the dialog. To do that we create a small form within our `FileNameDialogComponent` which will close the dialog once it's submitted. 
+Let's first take care of emitting the file name entered by the user after closing the dialog. To do that we create a small form within our `FileNameDialogComponent` which will close the dialog once it's submitted.
 
 {% highlight js %}
 {% raw %}
@@ -325,7 +325,7 @@ export class FileTreeComponent {
 {% endraw %}
 {% endhighlight %}
 
-All we need to do now is taking this data in our dialog and pre-fill our the form control accordingly. We can inject any data that is passed like that using the `MAT_DIALOG_DATA` injection token. 
+All we need to do now is taking this data in our dialog and pre-fill our the form control accordingly. We can inject any data that is passed like that using the `MAT_DIALOG_DATA` injection token.
 
 {% highlight js %}
 {% raw %}
@@ -393,4 +393,4 @@ This was it! Even though something like creating dialogs is usually rather trick
 
 Where do we go from here? Using the built-in dialog APIs, we get pretty far and only more sophisticated scenarios require a bit more brain work. For example, one thing we also did at MachineLabs was creating our own custom overlay so we could create Google Drive-like file preview.
 
-**In our next article we'll explore how to create custom overlays and overlay services using the Angular Component Development Kit!**
+**In our [next article](/angular/2017/11/20/custom-overlays-with-angulars-cdk.html) we'll explore how to create custom overlays and overlay services using the Angular Component Development Kit!**
