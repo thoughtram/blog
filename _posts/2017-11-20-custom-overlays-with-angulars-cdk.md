@@ -94,7 +94,7 @@ export class FilePreviewOverlayService {
 
   open() {
     // Returns an OverlayRef (which is a PortalHost)
-    const overlayRef = overlay.create();
+    const overlayRef = this.overlay.create();
 
     // Create ComponentPortal that can be attached to a PortalHost
     const filePreviewPortal = new ComponentPortal(FilePreviewOverlayComponent);
