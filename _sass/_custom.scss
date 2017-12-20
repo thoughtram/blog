@@ -91,7 +91,7 @@
     margin-bottom: 1.5em;
     margin-top: 2.5em;
     position: relative;
-    
+
     &--white {
       color: #fff;
     }
@@ -225,7 +225,7 @@
 
     li {
       margin-top: 2em;
-      
+
       @include phablet {
         padding: 0.8em;
       }
@@ -235,7 +235,7 @@
   li {
     width: 100%;
     display: block;
-    
+
     @include phablet {
       display: inline-block;
       display: flex;
@@ -243,7 +243,7 @@
       vertical-align: top;
       width: 50%;
     }
-    
+
     @include desktop {
       width: 33.33%;
     }
@@ -304,6 +304,18 @@
 .thtrm-ad {
   background-color: #62a7be;
 
+  &--plain {
+    a {
+      border: 0;
+    }
+  }
+
+  &--border {
+    img {
+      border: 5px solid #f2f2f2;
+    }
+  }
+
   &-transparent {
     background: transparent;
 
@@ -324,7 +336,7 @@
   }
 
   &.thtrm-section--is-promo {
-    padding: 1.5em;
+    padding: 1.5em 0;
 
     .thtrm-layout-divider-cta {
       border: 2px solid #fff;
