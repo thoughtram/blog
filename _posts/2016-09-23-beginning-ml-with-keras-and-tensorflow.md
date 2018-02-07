@@ -14,12 +14,12 @@ tags:
   - machine-learning
 author: christoph_burgdorf
 related_posts:
+  - Machine Learning Jump Start - Online Course
   - Understanding XOR with Keras and TensorFlow
-  - Taming snakes with reactive streams
-  - Company offsite in Spain 2017
-  - A web animations deep dive with Angular
-  - Announcing Angular Master Class in Berlin
-  - Announcing Angular Master Class in Houston
+  - Announcing Angular Master Class at Shopware
+  - Custom Overlays with Angular's CDK - Part 2
+  - Custom Overlays with Angular's CDK
+  - Easy Dialogs with Angular Material
 related_videos:
   - '175255006'
   - '193524896'

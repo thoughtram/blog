@@ -18,8 +18,8 @@ related_posts:
   - Anouncing Hanover's second Rust meetup
   - Rust's Ownership model for JavaScript developers
   - Organizing Hanovers first Rust meetup
-  - Announcing Angular Master Class in Berlin
-  - Announcing Angular Master Class in Houston
+  - Announcing Angular Master Class at Shopware
+  - Machine Learning Jump Start - Online Course
 related_videos:
   - '175255006'
   - '193524896'

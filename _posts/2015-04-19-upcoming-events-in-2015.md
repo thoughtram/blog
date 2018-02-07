@@ -18,7 +18,7 @@ related_posts:
   - Thomas joins thoughtram
   - Around the globe
   - We are thoughtram
-  - Announcing Angular Master Class in Berlin
+  - Announcing Angular Master Class at Shopware
 related_videos:
   - '175255006'
   - '193524896'

@@ -4,7 +4,10 @@ title: Machine Learning Jump Start - Online Course
 imageUrl: /images/banner/machine-learning-jump-start.jpg
 date: 2017-12-20T00:00:00.000Z
 summary: >-
-  We started diving into Machine Learning almost 1,5 years ago. Since then, we've started a new company MachineLabs, Inc to innovate the Machine Learning space. Today we're happy to share that we're working on a new kind of Machine Learning online course.
+  We started diving into Machine Learning almost 1,5 years ago. Since then,
+  we've started a new company MachineLabs, Inc to innovate the Machine Learning
+  space. Today we're happy to share that we're working on a new kind of Machine
+  Learning online course.
 categories:
   - announcements
   - machine-learning
@@ -12,6 +15,21 @@ tags:
   - machine-learning
   - announcements
 author: christoph_burgdorf
+related_posts:
+  - Understanding XOR with Keras and TensorFlow
+  - Beginning Machine Learning with Keras and TensorFlow
+  - Announcing Angular Master Class at Shopware
+  - Announcing Angular Master Class in Berlin
+  - Announcing Angular Master Class in Houston
+  - Join our free meetup in Denmark
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+
 ---
 
 About one and a half years ago we first started [dipping our toes into the brave new world of Machine Learning](/machine-learning/2016/09/23/beginning-ml-with-keras-and-tensorflow.html). The concept of a machine figuring out how to solve problems on its own is fascinating and sticked with us. If you've been following along, you've probably noticed that, next to thoughtram, we started our second mission to help innovate the Machine Learning space and [founded a new company MachineLabs, Inc](https://blog.machinelabs.ai/2017/05/11/introducing-machinelabs/).

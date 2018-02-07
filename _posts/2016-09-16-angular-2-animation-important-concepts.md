@@ -18,11 +18,11 @@ topic: components
 author: thomas_burleson
 related_posts:
   - Component-Relative Paths in Angular
+  - Custom Overlays with Angular's CDK - Part 2
+  - Custom Overlays with Angular's CDK
+  - Easy Dialogs with Angular Material
   - A web animations deep dive with Angular
   - Custom themes with Angular Material
-  - Angular Master Class - Redux and ngrx
-  - Three things you didn't know about the AsyncPipe
-  - Using Zones in Angular for better performance
 related_videos:
   - '175255006'
   - '193524896'

@@ -4,15 +4,30 @@ title: Easy Dialogs with Angular Material
 imageUrl: /images/banner/easy-dialogs-with-angular-material.jpg
 date: 2017-11-13T00:00:00.000Z
 summary: >-
-  Building modals and dialogs isn't easy - if we do it ourselves. Angular Material
-  comes with a powerful dialog service that makes it very easy to create custom
-  dialogs in our own applications. Let's take a look!
+  Building modals and dialogs isn't easy - if we do it ourselves. Angular
+  Material comes with a powerful dialog service that makes it very easy to
+  create custom dialogs in our own applications. Let's take a look!
 categories:
   - angular
 tags:
   - angular2
   - material
 author: pascal_precht
+related_posts:
+  - Custom Overlays with Angular's CDK - Part 2
+  - Custom Overlays with Angular's CDK
+  - Custom themes with Angular Material
+  - A web animations deep dive with Angular
+  - Angular Master Class - Redux and ngrx
+  - Three things you didn't know about the AsyncPipe
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+
 ---
 
 Angular comes with a dedicated UI library that implements Google's Material Design with Angular components - [Angular Material](https://material.angular.io). The idea is to have a consistent design language across all apps that not only looks and feels good, but also comes with a great user experience and built-in accessibility. This turns out to be very powerful as we as consumers of the platform get things like [custom theming](/angular/2017/05/23/custom-themes-with-angular-material.html) and high-quality components for free.

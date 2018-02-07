@@ -25,12 +25,12 @@ demos:
   - url: 'https://embed.plnkr.co/fdj1rQEnUGhpnFJY4ngY/'
     title: Hello World app in ES5 with syntactic sugar
 related_posts:
+  - Custom Overlays with Angular's CDK - Part 2
+  - Custom Overlays with Angular's CDK
+  - Easy Dialogs with Angular Material
   - A web animations deep dive with Angular
   - Custom themes with Angular Material
   - Angular Master Class - Redux and ngrx
-  - Three things you didn't know about the AsyncPipe
-  - Using Zones in Angular for better performance
-  - Making your Angular apps fast
 related_videos:
   - '175255006'
   - '193524896'

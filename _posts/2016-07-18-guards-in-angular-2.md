@@ -22,8 +22,8 @@ related_posts:
   - Resolving route data in Angular
   - Routing in Angular revisited
   - Routing in Angular
-  - A web animations deep dive with Angular
-  - Custom themes with Angular Material
+  - Custom Overlays with Angular's CDK - Part 2
+  - Custom Overlays with Angular's CDK
 related_videos:
   - '175218351'
   - '189618526'

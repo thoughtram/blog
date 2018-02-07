@@ -17,7 +17,7 @@ related_posts:
   - Upcoming events in 2015
   - Around the globe
   - We are thoughtram
-  - Taming snakes with reactive streams
+  - Announcing Angular Master Class at Shopware
 related_videos:
   - '175255006'
   - '193524896'

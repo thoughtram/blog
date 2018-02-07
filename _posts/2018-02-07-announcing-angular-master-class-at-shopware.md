@@ -4,14 +4,27 @@ title: Announcing Angular Master Class at Shopware
 imageUrl: /images/banner/amc-shopware.jpg
 date: 2018-02-07T00:00:00.000Z
 summary: >-
-  It's that time again. Want to level up your Angular skills? Join us for a unique public training experience with our Angular Master Class at Shopware!
+  It's that time again. Want to level up your Angular skills? Join us for a
+  unique public training experience with our Angular Master Class at Shopware!
 categories:
   - announcements
 tags:
   - announcements
 author: christoph_burgdorf
 related_posts:
+  - Machine Learning Jump Start - Online Course
+  - Announcing Angular Master Class in Berlin
+  - Announcing Angular Master Class in Houston
+  - Join our free meetup in Denmark
+  - Announcing Angular Master Class in Denmark
+  - Dominic joins thoughtram
 related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
 
 ---
 

@@ -4,7 +4,11 @@ title: Custom Overlays with Angular's CDK - Part 2
 imageUrl: /images/banner/custom_overlays_2.jpg
 date: 2017-11-27T00:00:00.000Z
 summary: >-
-  In this follow-up post we demonstrate how to use Angular's CDK to build a custom overlay that looks and feels much like the Google Drive file preview overlay. We'll pick up from where we left off and implement keyboard support, image preloading and add animations in order to make our overlay more engaging.
+  In this follow-up post we demonstrate how to use Angular's CDK to build a
+  custom overlay that looks and feels much like the Google Drive file preview
+  overlay. We'll pick up from where we left off and implement keyboard support,
+  image preloading and add animations in order to make our overlay more
+  engaging.
 categories:
   - angular
 tags:
@@ -12,7 +16,20 @@ tags:
   - material
 author: dominic_elm
 related_posts:
+  - Custom Overlays with Angular's CDK
+  - Easy Dialogs with Angular Material
+  - Custom themes with Angular Material
+  - A web animations deep dive with Angular
+  - Angular Master Class - Redux and ngrx
+  - Three things you didn't know about the AsyncPipe
 related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+
 ---
 
 In a [previous post](/angular/2017/11/20/custom-overlays-with-angulars-cdk.html) we have layed the foundation for our custom overlay. To recap, we wanted to build a Google Drive-like custom overlay that looks and feels much like the one built for [MachineLabs](https://machinelabs.ai/editor/rJQrQ5wjZ/1506415557004-HkTTQ5Dob?file=ml.yaml&tab=outputs&preview=-KuyslgjIn7kSpuc6pDZ). Let's have a look at a preview:

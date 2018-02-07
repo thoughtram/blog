@@ -21,7 +21,7 @@ related_posts:
   - Custom Form Controls in Angular
   - Reactive Forms in Angular
   - Template-driven Forms in Angular
-  - A web animations deep dive with Angular
+  - Custom Overlays with Angular's CDK - Part 2
 related_videos:
   - '189792758'
   - '189785428'

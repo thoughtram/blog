@@ -12,12 +12,12 @@ redirect_from:
   - /angular/2015/09/14/angular-training-day-bangkok.html
 author: christoph_burgdorf
 related_posts:
+  - Announcing Angular Master Class at Shopware
+  - Machine Learning Jump Start - Online Course
+  - Custom Overlays with Angular's CDK - Part 2
+  - Custom Overlays with Angular's CDK
+  - Easy Dialogs with Angular Material
   - Taming snakes with reactive streams
-  - Company offsite in Spain 2017
-  - A web animations deep dive with Angular
-  - Announcing Angular Master Class in Berlin
-  - Announcing Angular Master Class in Houston
-  - Join our free meetup in Denmark
 related_videos:
   - '175255006'
   - '193524896'

@@ -4,7 +4,12 @@ title: Custom Overlays with Angular's CDK
 imageUrl: /images/banner/custom_overlays.jpg
 date: 2017-11-20T00:00:00.000Z
 summary: >-
-  The Angular Material CDK provides us with tools to build awesome and high-quality Angular components without adopting the Material Design visual language. Its goal is to make our life as developers easier and extract common behaviors and patterns shared between multiple Angular Material components. In this post, we'll use the CDK to build a custom overlay that looks and feels much like the Google Drive file preview overlay.
+  The Angular Material CDK provides us with tools to build awesome and
+  high-quality Angular components without adopting the Material Design visual
+  language. Its goal is to make our life as developers easier and extract common
+  behaviors and patterns shared between multiple Angular Material components. In
+  this post, we'll use the CDK to build a custom overlay that looks and feels
+  much like the Google Drive file preview overlay.
 categories:
   - angular
 tags:
@@ -12,7 +17,20 @@ tags:
   - material
 author: dominic_elm
 related_posts:
+  - Custom Overlays with Angular's CDK - Part 2
+  - Easy Dialogs with Angular Material
+  - Custom themes with Angular Material
+  - A web animations deep dive with Angular
+  - Angular Master Class - Redux and ngrx
+  - Three things you didn't know about the AsyncPipe
 related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+
 ---
 
 You have probably heared of [Angular Material](https://material.angular.io/) haven't you? If you haven't, it's a library that provides you with high-quality Material Design components for Angular. Material Design itself is a visual design language that aims for consistency of user experience across all platforms and device sizes. That's cool but what if your company has its own opinions about styles and the overall look and feel of the UI? How do we get the best of Angular Material without adopting the Material Design visual language?

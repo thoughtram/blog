@@ -16,8 +16,8 @@ related_posts:
   - Anouncing Hanover's second Rust meetup
   - clog - A conventional changelog generator for the rest of us
   - Organizing Hanovers first Rust meetup
-  - Taming snakes with reactive streams
-  - Company offsite in Spain 2017
+  - Announcing Angular Master Class at Shopware
+  - Machine Learning Jump Start - Online Course
 related_videos:
   - '175255006'
   - '193524896'
