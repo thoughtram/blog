@@ -1,0 +1,8 @@
+---
+layout: none
+permalink: .well-known/brave-payments-verification.txt
+---
+This is a Brave Payments publisher verification file.
+
+Domain: thoughtram.io
+Token: dc9473cf14ab9174a7050b933348ab1592cfbbba845dae81db2aba58b3372b9a
