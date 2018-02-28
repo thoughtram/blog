@@ -17,7 +17,7 @@ related_posts:
   - Upcoming events in 2015
   - Around the globe
   - We are thoughtram
-  - Announcing Angular Master Class at Shopware
+  - A simple guide to Reinforcement Learning
 related_videos:
   - '175255006'
   - '193524896'

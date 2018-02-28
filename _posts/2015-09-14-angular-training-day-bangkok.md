@@ -12,12 +12,12 @@ redirect_from:
   - /angular/2015/09/14/angular-training-day-bangkok.html
 author: christoph_burgdorf
 related_posts:
+  - A simple guide to Reinforcement Learning
   - Announcing Angular Master Class at Shopware
   - Machine Learning Jump Start - Online Course
   - Custom Overlays with Angular's CDK - Part 2
   - Custom Overlays with Angular's CDK
   - Easy Dialogs with Angular Material
-  - Taming snakes with reactive streams
 related_videos:
   - '175255006'
   - '193524896'

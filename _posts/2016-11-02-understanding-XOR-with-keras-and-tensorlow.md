@@ -14,12 +14,12 @@ tags:
   - machine-learning
 author: christoph_burgdorf
 related_posts:
+  - A simple guide to Reinforcement Learning
   - Machine Learning Jump Start - Online Course
   - Beginning Machine Learning with Keras and TensorFlow
   - Announcing Angular Master Class at Shopware
   - Custom Overlays with Angular's CDK - Part 2
   - Custom Overlays with Angular's CDK
-  - Easy Dialogs with Angular Material
 related_videos:
   - '175255006'
   - '193524896'

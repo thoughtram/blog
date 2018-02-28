@@ -16,8 +16,8 @@ related_posts:
   - Rust's Ownership model for JavaScript developers
   - clog - A conventional changelog generator for the rest of us
   - Organizing Hanovers first Rust meetup
+  - A simple guide to Reinforcement Learning
   - Announcing Angular Master Class at Shopware
-  - Machine Learning Jump Start - Online Course
 related_videos:
   - '175255006'
   - '193524896'

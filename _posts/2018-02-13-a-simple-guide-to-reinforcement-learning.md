@@ -4,12 +4,27 @@ title: A simple guide to Reinforcement Learning
 imageUrl: /images/banner/a-simple-guide-to-reinforcement-learning.jpg
 date: 2018-02-28T00:00:00.000Z
 summary: >-
-  This is part one in a series of articles on Reinforcement Learning that aim to explore this exciting Machine Learning subfield from a beginners perspective.
+  This is part one in a series of articles on Reinforcement Learning that aim to
+  explore this exciting Machine Learning subfield from a beginners perspective.
 categories:
   - machine-learning
 tags:
   - machine-learning
 author: christoph_burgdorf
+related_posts:
+  - Machine Learning Jump Start - Online Course
+  - Understanding XOR with Keras and TensorFlow
+  - Beginning Machine Learning with Keras and TensorFlow
+  - Announcing Angular Master Class at Shopware
+  - Custom Overlays with Angular's CDK - Part 2
+  - Custom Overlays with Angular's CDK
+related_videos:
+  - '175255006'
+  - '193524896'
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
 
 ---
 

@@ -16,12 +16,12 @@ tags:
   - announcements
 author: christoph_burgdorf
 related_posts:
+  - A simple guide to Reinforcement Learning
   - Understanding XOR with Keras and TensorFlow
   - Beginning Machine Learning with Keras and TensorFlow
   - Announcing Angular Master Class at Shopware
   - Announcing Angular Master Class in Berlin
   - Announcing Angular Master Class in Houston
-  - Join our free meetup in Denmark
 related_videos:
   - '175255006'
   - '193524896'
