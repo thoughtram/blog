@@ -376,6 +376,18 @@
   }
 }
 
+.thtrm-info {
+  background: rgba(245, 237, 128, 0.3);
+  padding: 1em;
+  margin-top: 40px;
+  border: 2px solid rgb(245, 237, 128);
+
+  h2, h3 {
+    margin-top: 0;
+  }
+}
+
+
 .thtrm-tv {
   width: 100%;
   height: 200px;
