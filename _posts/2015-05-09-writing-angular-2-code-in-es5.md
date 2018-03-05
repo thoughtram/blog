@@ -29,12 +29,12 @@ demos:
   - url: 'https://plnkr.co/edit/l2kmT4w0uQMzuwHk4nc6?p=preview'
     title: Hello World app with service injection
 related_posts:
+  - Advanced caching with RxJS
   - Custom Overlays with Angular's CDK - Part 2
   - Custom Overlays with Angular's CDK
   - Easy Dialogs with Angular Material
   - A web animations deep dive with Angular
   - Custom themes with Angular Material
-  - Angular Master Class - Redux and ngrx
 related_videos:
   - '175255006'
   - '193524896'

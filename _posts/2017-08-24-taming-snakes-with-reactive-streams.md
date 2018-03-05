@@ -15,12 +15,12 @@ tags:
   - rx
 author: dominic_elm
 related_posts:
+  - Advanced caching with RxJS
   - Angular Master Class - Redux and ngrx
   - Three things you didn't know about the AsyncPipe
   - 'Exploring Rx Operators: flatMap'
   - Cold vs Hot Observables
   - 'Exploring Rx Operators: map'
-  - Taking advantage of Observables in Angular 2 - Part 2
 related_videos:
   - '181311615'
   - '181311609'

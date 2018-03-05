@@ -19,11 +19,11 @@ videos:
 author: pascal_precht
 related_posts:
   - Angular Providers using Map Literals
+  - Advanced caching with RxJS
   - Custom Overlays with Angular's CDK - Part 2
   - Custom Overlays with Angular's CDK
   - Easy Dialogs with Angular Material
   - A web animations deep dive with Angular
-  - Custom themes with Angular Material
 related_videos:
   - '175255006'
   - '193524896'

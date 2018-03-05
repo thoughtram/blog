@@ -14,9 +14,9 @@ related_posts:
   - Go fast with $applyAsync in Angular 1.3
   - Disabling Debug Info in Angular 1.3
   - Using Zones in Angular for better performance
+  - Advanced caching with RxJS
   - Custom Overlays with Angular's CDK - Part 2
   - Custom Overlays with Angular's CDK
-  - Easy Dialogs with Angular Material
 related_videos:
   - '175255006'
   - '193524896'

@@ -17,12 +17,12 @@ tags:
   - declarative
 author: dominic_elm
 related_posts:
+  - Advanced caching with RxJS
   - Custom Overlays with Angular's CDK - Part 2
   - Custom Overlays with Angular's CDK
   - Easy Dialogs with Angular Material
   - Custom themes with Angular Material
   - Angular Master Class - Redux and ngrx
-  - Three things you didn't know about the AsyncPipe
 related_videos:
   - '175255006'
   - '193524896'

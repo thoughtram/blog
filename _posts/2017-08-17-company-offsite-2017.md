@@ -17,7 +17,7 @@ related_posts:
   - Upcoming events in 2015
   - Around the globe
   - We are thoughtram
-  - A simple guide to Reinforcement Learning
+  - Advanced caching with RxJS
 related_videos:
   - '175255006'
   - '193524896'

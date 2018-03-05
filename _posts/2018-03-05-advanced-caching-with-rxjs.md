@@ -3,8 +3,7 @@ layout: post
 title: Advanced caching with RxJS
 imageUrl: /images/banner/advanced_caching.jpg
 date: 2018-03-05T00:00:00.000Z
-summary: >-
-  TODO
+summary: TODO
 categories:
   - angular
 tags:
@@ -12,7 +11,20 @@ tags:
   - rx
 author: dominic_elm
 related_posts:
+  - Taming snakes with reactive streams
+  - 'Exploring Rx Operators: flatMap'
+  - Angular Master Class - Redux and ngrx
+  - Three things you didn't know about the AsyncPipe
+  - Cold vs Hot Observables
+  - 'Exploring Rx Operators: map'
 related_videos:
+  - '181311615'
+  - '181311609'
+  - '181311613'
+  - '181311611'
+  - '181311614'
+  - '181311616'
+
 ---
 
 When building web applications, performance should always be a top priority. There are many things we can do to speed up our Angular applications like tree-shaking, AoT (ahead-of-time compilation), lazy loading modules or caching. To get an overview of practices that will help you boost the performance of your Angular applications, we highly recommend you to check out the [Angular Performance Checklist](https://github.com/mgechev/angular-performance-checklist#lazy-loading-of-resources) by [Minko Gechev](https://twitter.com/mgechev). In this post we focus on **caching**.

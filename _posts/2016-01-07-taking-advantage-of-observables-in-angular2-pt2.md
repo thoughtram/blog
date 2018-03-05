@@ -26,9 +26,9 @@ related_posts:
   - Taming snakes with reactive streams
   - 'Exploring Rx Operators: flatMap'
   - Taking advantage of Observables in Angular
+  - Advanced caching with RxJS
   - Cold vs Hot Observables
   - 'Exploring Rx Operators: map'
-  - Angular Master Class - Redux and ngrx
 related_videos:
   - '181311615'
   - '181311609'

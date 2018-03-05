@@ -27,7 +27,7 @@ related_posts:
   - Custom Form Controls in Angular
   - Reactive Forms in Angular
   - Custom Validators in Angular
-  - Custom Overlays with Angular's CDK - Part 2
+  - Advanced caching with RxJS
 related_videos:
   - '189792758'
   - '189785428'

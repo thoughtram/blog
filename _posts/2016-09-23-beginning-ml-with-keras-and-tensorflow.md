@@ -17,9 +17,9 @@ related_posts:
   - A simple guide to Reinforcement Learning
   - Machine Learning Jump Start - Online Course
   - Understanding XOR with Keras and TensorFlow
+  - Advanced caching with RxJS
   - Announcing Angular Master Class at Shopware
   - Custom Overlays with Angular's CDK - Part 2
-  - Custom Overlays with Angular's CDK
 related_videos:
   - '175255006'
   - '193524896'

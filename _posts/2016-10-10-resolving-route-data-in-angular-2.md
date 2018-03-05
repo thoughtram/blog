@@ -27,8 +27,8 @@ related_posts:
   - Protecting Routes using Guards in Angular
   - Routing in Angular revisited
   - Routing in Angular
+  - Advanced caching with RxJS
   - Custom Overlays with Angular's CDK - Part 2
-  - Custom Overlays with Angular's CDK
 related_videos:
   - '175218351'
   - '189618526'

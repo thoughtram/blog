@@ -19,9 +19,9 @@ related_posts:
   - Custom Overlays with Angular's CDK
   - Easy Dialogs with Angular Material
   - Custom themes with Angular Material
+  - Advanced caching with RxJS
   - A web animations deep dive with Angular
   - Angular Master Class - Redux and ngrx
-  - Three things you didn't know about the AsyncPipe
 related_videos:
   - '175255006'
   - '193524896'
