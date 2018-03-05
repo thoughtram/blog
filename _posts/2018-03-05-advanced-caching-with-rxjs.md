@@ -3,7 +3,8 @@ layout: post
 title: Advanced caching with RxJS
 imageUrl: /images/banner/advanced_caching.jpg
 date: 2018-03-05T00:00:00.000Z
-summary: TODO
+summary: >-
+  When building web applications, performance should always be a top priority. One very efficient way to optimize the performance of our applications and improve the experience of our site is to use caching mechanisms. In this post we'll develop an advanced caching mechanism with RxJS and the tools provided by Angular to cache application data.
 categories:
   - angular
 tags:
