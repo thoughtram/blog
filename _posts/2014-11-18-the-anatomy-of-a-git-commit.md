@@ -60,7 +60,7 @@ Now that we know what a hash is, we find us wondering, what exactly is the input
     sha1(
         meta data
             commit message
-            commiter
+            committer
             commit date
             author
             authoring date
@@ -102,7 +102,7 @@ Let's go back to our commit object from above and fill it with life. Let's assum
 
     sha1(
         commit message  => "initial commit"
-        commiter        => Christoph Burgdorf <christoph.burgdorf@gmail.com>
+        committer        => Christoph Burgdorf <christoph.burgdorf@gmail.com>
         commit date     => Sat Nov 8 10:56:57 2014 +0100
         author          => Christoph Burgdorf <christoph.burgdorf@gmail.com>
         author date     => Sat Nov 8 10:56:57 2014 +0100
@@ -119,7 +119,7 @@ It was [pointed out on reddit](http://www.reddit.com/r/git/comments/2mocvq/the_a
 
     sha1(
         commit message  => "second commit"
-        commiter        => Christoph Burgdorf <christoph.burgdorf@gmail.com>
+        committer        => Christoph Burgdorf <christoph.burgdorf@gmail.com>
         commit date     => Sat Nov 8 11:13:49 2014 +0100
         author          => Christoph Burgdorf <christoph.burgdorf@gmail.com>
         author date     => Sat Nov 8 11:13:49 2014 +0100
