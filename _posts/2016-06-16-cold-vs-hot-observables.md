@@ -387,7 +387,7 @@ this.contacts = http.get('contacts.json')
 
 The `share()` will publish the first value of the stream on the first subscription. The first async pipe will trigger that subscription and get that initial value. The second async pipe however will subscribe after that value has already been emitted and therefore miss that value.
 
-The solution for this problem is the `.shareReplay(1)` operator, which will keep track of the previous value of the stream. That way all the async pipes will get the last value. Just like the `share()` operator is a shortcut for `publish().refCount()`, the `shareReplay(1)` operator is a shortcut for `publishReplay(1).refCount()`. We can see the difference between `share()` and `shareReplay(1)` in [the following plunk](http://plnkr.co/edit/q9xfvjzHauRBsA8o4nob?p=preview).
+The solution for this problem is the `.shareReplay(1)` operator, which will keep track of the previous value of the stream. That way all the async pipes will get the last value. Just like the `share()` operator is a shortcut for `publish().refCount()`, the `shareReplay(1)` operator is a shortcut for `publishReplay(1).refCount()`. We can see the difference between `share()` and `shareReplay(1)` in [the following plunk](http://plnkr.co/edit/PATRQvsWYWmwvcPiaOZJ?p=preview).
 We should always pass `1` as the parameter value to the shareReplay function. Otherwise RxJS will keep track of all the values of that observable, when we only need the last one.
 
 It's important to note that this problem will only occur when using streams with initial values. 
