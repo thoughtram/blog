@@ -83,15 +83,16 @@
       </div>
       <div class="thtrm-constraint thtrm-constraint--slim">
 
+        {% include public-training-ad.html %}
         <div class="thtrm-article">
-          {% include machinelabs-course-ad.html %}
 
           {{ content }}
 
           {% include demos-and-videos.html post=page %}
+        
+          {% include machinelabs-course-ad.html %}
         </div>
 
-        {% include public-training-ad.html %}
         {% include newsletter-subscriber.html %}
 
         <div class="thtrm-social-links">

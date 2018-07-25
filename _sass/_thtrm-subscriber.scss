@@ -38,6 +38,23 @@
     font-size: 15px;
   }
 
+  .thtrm-form__info-text {
+    font-size: 0.8em;
+    font-weight: normal;
+    max-width:  500px;
+    color: #aaa;
+    margin: auto;
+    margin-top: 1em;
+
+    a {
+      text-decoration: underline;
+      color: #aaa;
+      &:after {
+        display: none;
+      }
+    }
+  }
+
   .thtrm-cta { margin-top: 0; }
 
   input[type="email"] {
@@ -70,3 +87,4 @@
     }
   }
 }
+
