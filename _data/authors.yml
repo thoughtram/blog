@@ -33,3 +33,10 @@ elvira_eulitz:
     github: https://github.com/ElviraEulitz
     gravatar: /images/author_elvira.jpg
     bio: "Elvira works as an Executive Assistant at thoughtram. She loves to travel to see all different types of living."
+maxim_koretskyi:
+    name: Maxim Koretskyi
+    email: m.koretskyi@gmail.com
+    web: https://twitter.com/maxim_koretskyi
+    github: https://github.com/maximusk
+    gravatar: /images/author_maxkoretskyi.jpg
+    bio: "Max is adept at architectural patterns in JS frameworks. He finds them and tries to explain them in plain English. He is a self-taught software engineer that believes in fundamental knowledge and hardcore learning. He’s the founder of Angular In Depth blog and community and one of the top Angular contributors on StackOverflow. He is a Google Developer Expert in Web Technologies and holds the title of Microsoft’s Most Valuable Professional. He currently works as a Developer Advocate at ag-Grid."
