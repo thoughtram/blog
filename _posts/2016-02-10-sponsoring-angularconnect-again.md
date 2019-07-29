@@ -12,12 +12,12 @@ tags:
   - angular
 author: pascal_precht
 related_posts:
+  - "The How and Why on using dynamic Angular components inside your custom\_widgets"
   - 'Exploring Angular 1.5: Lifecycle Hooks'
   - ngMessageFormat - Angular's unheard feature
   - Multiple Transclusion and named Slots
   - Service vs Factory - Once and for all
   - Taking Angular Master Class to the next level
-  - ngMessages revisited
 related_videos:
   - '189792758'
   - '189785428'

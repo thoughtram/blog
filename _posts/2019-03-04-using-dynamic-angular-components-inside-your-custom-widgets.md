@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The How and Why on using dynamic Angular components inside your custom widgets
+title: "The How and Why on using dynamic Angular components inside your custom\_widgets"
 imageUrl: /images/banner/dynamic-angular-components-inside-custom-widgets.jpg
 date: 2019-03-11T00:00:00.000Z
 categories:
@@ -8,6 +8,21 @@ categories:
 tags:
   - angular
 author: maxim_koretskyi
+related_posts:
+  - 'Exploring Angular 1.5: Lifecycle Hooks'
+  - Sponsoring AngularConnect. Again.
+  - ngMessageFormat - Angular's unheard feature
+  - Multiple Transclusion and named Slots
+  - Service vs Factory - Once and for all
+  - Taking Angular Master Class to the next level
+related_videos:
+  - '189792758'
+  - '189785428'
+  - '175218351'
+  - '189618526'
+  - '189613148'
+  - '189603515'
+
 ---
 
 [In my previous article](https://blog.angularindepth.com/a-step-by-step-guide-to-integrating-a-third-party-widget-with-angular-99c2fed174a4/?utm_source=dynamiccomponents3rdpartywidget&utm_medium=blog&utm_campaign=thoughtram) I showed how you can integrate a third party widget with Angular using as an example a datagrid widget by [ag-Grid](https://angular-grid.ag-grid.com/). Most widgets you'll find on the web are customizable and ag-Grid is not an exception. In fact, here at ag-Grid we strongly believe that developers [should be able to easily extend the default functionality](https://medium.com/ag-grid/learn-to-customize-angular-grid-in-less-than-10-minutes-88005d53808d/?utm_source=dynamiccomponents3rdpartywidget&utm_medium=blog&utm_campaign=thoughtram) to meet their business requirements. For example, you can provide your custom components to implement a custom cell renderer, cell editor or custom filters.

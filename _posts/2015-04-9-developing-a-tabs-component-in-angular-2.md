@@ -20,12 +20,12 @@ demos:
   - url: 'https://embed.plnkr.co/afhLA8wHw9LRnzwwTT3M/'
     title: Tabs Component using @ContentChildren
 related_posts:
+  - RxJS Master Class and courseware updates
   - Advanced caching with RxJS
   - Custom Overlays with Angular's CDK - Part 2
   - Custom Overlays with Angular's CDK
   - Easy Dialogs with Angular Material
   - A web animations deep dive with Angular
-  - Custom themes with Angular Material
 related_videos:
   - '175255006'
   - '193524896'

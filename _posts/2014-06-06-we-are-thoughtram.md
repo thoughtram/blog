@@ -23,7 +23,7 @@ related_posts:
   - Thomas joins thoughtram
   - Upcoming events in 2015
   - Around the globe
-  - Announcing Angular Master Class at Shopware
+  - Angular Master Class coming to Málaga
 related_videos:
   - '175255006'
   - '193524896'

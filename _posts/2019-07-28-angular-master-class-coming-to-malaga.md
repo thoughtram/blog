@@ -4,19 +4,20 @@ title: Angular Master Class coming to Málaga
 imageUrl: /images/banner/amc-malaga-2019.jpg
 date: 2019-07-28T00:00:00.000Z
 summary: >-
-  The community has spoken. Our Angular Master Class comes to Málaga. Join us for three entire days full of fun and learning Angular!
+  The community has spoken. Our Angular Master Class comes to Málaga. Join us
+  for three entire days full of fun and learning Angular!
 categories:
   - announcements
 tags:
   - announcements
 author: christoph_burgdorf
 related_posts:
+  - Announcing Angular Master Class at Shopware
   - Machine Learning Jump Start - Online Course
   - Announcing Angular Master Class in Berlin
   - Announcing Angular Master Class in Houston
   - Join our free meetup in Denmark
   - Announcing Angular Master Class in Denmark
-  - Dominic joins thoughtram
 related_videos:
   - '175255006'
   - '193524896'

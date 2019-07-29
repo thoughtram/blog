@@ -17,7 +17,7 @@ related_posts:
   - Upcoming events in 2015
   - Around the globe
   - We are thoughtram
-  - Advanced caching with RxJS
+  - Angular Master Class coming to Málaga
 related_videos:
   - '175255006'
   - '193524896'

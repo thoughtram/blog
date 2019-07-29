@@ -18,8 +18,8 @@ related_posts:
   - Tickets are on sale now!
   - Announcing our first workshop
   - Git Ninja Class in Amsterdam
+  - Angular Master Class coming to Málaga
   - Announcing Angular Master Class at Shopware
-  - Machine Learning Jump Start - Online Course
 related_videos:
   - '189792758'
   - '189785428'

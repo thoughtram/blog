@@ -10,12 +10,12 @@ categories:
   - announcements
 author: christoph_burgdorf
 related_posts:
+  - Angular Master Class coming to Málaga
+  - "The How and Why on using dynamic Angular components inside your custom\_widgets"
+  - RxJS Master Class and courseware updates
   - Advanced caching with RxJS
   - A simple guide to Reinforcement Learning
   - Announcing Angular Master Class at Shopware
-  - Machine Learning Jump Start - Online Course
-  - Custom Overlays with Angular's CDK - Part 2
-  - Custom Overlays with Angular's CDK
 related_videos:
   - '175255006'
   - '193524896'

@@ -18,8 +18,8 @@ related_posts:
   - Resolving route data in Angular
   - Protecting Routes using Guards in Angular
   - Routing in Angular revisited
+  - RxJS Master Class and courseware updates
   - Advanced caching with RxJS
-  - Custom Overlays with Angular's CDK - Part 2
 related_videos:
   - '175218351'
   - '189618526'

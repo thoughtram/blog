@@ -31,10 +31,10 @@ author: christoph_burgdorf
 related_posts:
   - Taming snakes with reactive streams
   - 'Exploring Rx Operators: flatMap'
+  - RxJS Master Class and courseware updates
   - Taking advantage of Observables in Angular 2 - Part 2
   - Advanced caching with RxJS
   - Cold vs Hot Observables
-  - 'Exploring Rx Operators: map'
 related_videos:
   - '181311615'
   - '181311609'

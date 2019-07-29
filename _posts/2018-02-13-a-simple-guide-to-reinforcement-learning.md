@@ -15,9 +15,9 @@ related_posts:
   - Machine Learning Jump Start - Online Course
   - Understanding XOR with Keras and TensorFlow
   - Beginning Machine Learning with Keras and TensorFlow
-  - Advanced caching with RxJS
-  - Announcing Angular Master Class at Shopware
-  - Custom Overlays with Angular's CDK - Part 2
+  - Angular Master Class coming to Málaga
+  - "The How and Why on using dynamic Angular components inside your custom\_widgets"
+  - RxJS Master Class and courseware updates
 related_videos:
   - '175255006'
   - '193524896'

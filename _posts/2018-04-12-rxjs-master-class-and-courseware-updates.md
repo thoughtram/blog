@@ -1,10 +1,13 @@
 ---
 layout: post
-title: "RxJS Master Class and courseware updates"
+title: RxJS Master Class and courseware updates
 imageUrl: /images/banner/rxjs-master-class-and-courseware-updates.jpg
 date: 2018-04-12T00:00:00.000Z
 summary: >-
-  If you've been following us for a while, you're quite aware that we're always striving to provide up-to-date and high-quality content, whether it's software training, blog posts or anything else. Today we're adding another set of updates to our portfolio, including the RxJS Master Class!
+  If you've been following us for a while, you're quite aware that we're always
+  striving to provide up-to-date and high-quality content, whether it's software
+  training, blog posts or anything else. Today we're adding another set of
+  updates to our portfolio, including the RxJS Master Class!
 categories:
   - announcements
 tags:
@@ -12,6 +15,21 @@ tags:
   - rx
   - observables
 author: pascal_precht
+related_posts:
+  - Taming snakes with reactive streams
+  - 'Exploring Rx Operators: flatMap'
+  - Taking advantage of Observables in Angular 2 - Part 2
+  - Taking advantage of Observables in Angular
+  - Advanced caching with RxJS
+  - Cold vs Hot Observables
+related_videos:
+  - '181311615'
+  - '181311609'
+  - '181311613'
+  - '181311611'
+  - '181311614'
+  - '181311616'
+
 ---
 
 When we [introduced our first workshop](/announcements/2014/06/23/announcing-our-first-workshop.html) a few years back, we knew this was just the first step to creating a sophisticated portfolio of courseware material, that enables us to provide high-quality software training.

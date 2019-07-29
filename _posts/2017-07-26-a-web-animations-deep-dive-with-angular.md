@@ -17,12 +17,12 @@ tags:
   - declarative
 author: dominic_elm
 related_posts:
+  - RxJS Master Class and courseware updates
   - Advanced caching with RxJS
   - Custom Overlays with Angular's CDK - Part 2
   - Custom Overlays with Angular's CDK
   - Easy Dialogs with Angular Material
   - Custom themes with Angular Material
-  - Angular Master Class - Redux and ngrx
 related_videos:
   - '175255006'
   - '193524896'

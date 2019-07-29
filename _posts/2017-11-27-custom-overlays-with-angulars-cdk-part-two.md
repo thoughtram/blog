@@ -19,9 +19,9 @@ related_posts:
   - Custom Overlays with Angular's CDK
   - Easy Dialogs with Angular Material
   - Custom themes with Angular Material
+  - RxJS Master Class and courseware updates
   - Advanced caching with RxJS
   - A web animations deep dive with Angular
-  - Angular Master Class - Redux and ngrx
 related_videos:
   - '175255006'
   - '193524896'

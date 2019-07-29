@@ -21,7 +21,7 @@ related_posts:
   - Reactive Forms in Angular
   - Template-driven Forms in Angular
   - Custom Validators in Angular
-  - Advanced caching with RxJS
+  - RxJS Master Class and courseware updates
 related_videos:
   - '189792758'
   - '189785428'

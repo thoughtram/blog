@@ -13,12 +13,12 @@ tags:
   - rx
 author: christoph_burgdorf
 related_posts:
+  - RxJS Master Class and courseware updates
   - Advanced caching with RxJS
   - Taming snakes with reactive streams
   - Angular Master Class - Redux and ngrx
   - Three things you didn't know about the AsyncPipe
   - Cold vs Hot Observables
-  - 'Exploring Rx Operators: map'
 related_videos:
   - '181311615'
   - '181311609'

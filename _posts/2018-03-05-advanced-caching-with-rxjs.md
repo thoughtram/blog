@@ -18,10 +18,10 @@ author: dominic_elm
 related_posts:
   - Taming snakes with reactive streams
   - 'Exploring Rx Operators: flatMap'
+  - RxJS Master Class and courseware updates
   - Angular Master Class - Redux and ngrx
   - Three things you didn't know about the AsyncPipe
   - Cold vs Hot Observables
-  - 'Exploring Rx Operators: map'
 related_videos:
   - '181311615'
   - '181311609'

@@ -24,11 +24,11 @@ topic: testing
 author: thomas_burleson
 related_posts:
   - Testing Services with Http in Angular
+  - RxJS Master Class and courseware updates
   - Advanced caching with RxJS
   - Custom Overlays with Angular's CDK - Part 2
   - Custom Overlays with Angular's CDK
   - Easy Dialogs with Angular Material
-  - A web animations deep dive with Angular
 related_videos:
   - '175255006'
   - '193524896'
