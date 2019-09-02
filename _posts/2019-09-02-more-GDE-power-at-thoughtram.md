@@ -4,19 +4,20 @@ title: More GDE power at thoughtram
 imageUrl: /images/kwinten_brecht.jpg
 date: 2019-09-02T00:00:00.000Z
 summary: >-
-  We congratulate Dominic Elm and Kwinten Pisman on becoming Google Developer Experts (GDE).
+  We congratulate Dominic Elm and Kwinten Pisman on becoming Google Developer
+  Experts (GDE).
 categories:
   - announcements
 tags:
   - announcements
 author: christoph_burgdorf
 related_posts:
+  - Angular Master Class coming to Málaga
   - Announcing Angular Master Class at Shopware
   - Machine Learning Jump Start - Online Course
   - Announcing Angular Master Class in Berlin
   - Announcing Angular Master Class in Houston
   - Join our free meetup in Denmark
-  - Announcing Angular Master Class in Denmark
 related_videos:
   - '175255006'
   - '193524896'

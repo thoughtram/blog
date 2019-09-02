@@ -18,8 +18,8 @@ related_posts:
   - Tickets are on sale now!
   - Announcing our first workshop
   - Git Ninja Class in Amsterdam
+  - More GDE power at thoughtram
   - Angular Master Class coming to Málaga
-  - Announcing Angular Master Class at Shopware
 related_videos:
   - '189792758'
   - '189785428'

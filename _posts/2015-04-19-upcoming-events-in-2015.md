@@ -18,7 +18,7 @@ related_posts:
   - Thomas joins thoughtram
   - Around the globe
   - We are thoughtram
-  - Angular Master Class coming to Málaga
+  - More GDE power at thoughtram
 related_videos:
   - '175255006'
   - '193524896'

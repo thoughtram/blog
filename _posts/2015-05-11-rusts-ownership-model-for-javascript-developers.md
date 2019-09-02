@@ -16,8 +16,8 @@ related_posts:
   - Anouncing Hanover's second Rust meetup
   - clog - A conventional changelog generator for the rest of us
   - Organizing Hanovers first Rust meetup
+  - More GDE power at thoughtram
   - Angular Master Class coming to Málaga
-  - "The How and Why on using dynamic Angular components inside your custom\_widgets"
 related_videos:
   - '175255006'
   - '193524896'

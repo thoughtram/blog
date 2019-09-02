@@ -12,12 +12,12 @@ redirect_from:
   - /angular/2015/09/14/angular-training-day-bangkok.html
 author: christoph_burgdorf
 related_posts:
+  - More GDE power at thoughtram
   - Angular Master Class coming to Málaga
   - "The How and Why on using dynamic Angular components inside your custom\_widgets"
   - RxJS Master Class and courseware updates
   - Advanced caching with RxJS
   - A simple guide to Reinforcement Learning
-  - Announcing Angular Master Class at Shopware
 related_videos:
   - '175255006'
   - '193524896'

@@ -12,12 +12,12 @@ tags:
   - announcements
 author: christoph_burgdorf
 related_posts:
+  - More GDE power at thoughtram
   - Angular Master Class coming to Málaga
   - Machine Learning Jump Start - Online Course
   - Announcing Angular Master Class in Berlin
   - Announcing Angular Master Class in Houston
   - Join our free meetup in Denmark
-  - Announcing Angular Master Class in Denmark
 related_videos:
   - '175255006'
   - '193524896'

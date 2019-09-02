@@ -21,8 +21,8 @@ related_posts:
   - 'A web app with Nickel: From first line to Heroku deployment'
   - Anouncing Hanover's second Rust meetup
   - Rust's Ownership model for JavaScript developers
+  - More GDE power at thoughtram
   - Angular Master Class coming to Málaga
-  - Announcing Angular Master Class at Shopware
 related_videos:
   - '175255006'
   - '193524896'

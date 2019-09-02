@@ -19,9 +19,9 @@ related_posts:
   - A simple guide to Reinforcement Learning
   - Understanding XOR with Keras and TensorFlow
   - Beginning Machine Learning with Keras and TensorFlow
+  - More GDE power at thoughtram
   - Angular Master Class coming to Málaga
   - Announcing Angular Master Class at Shopware
-  - Announcing Angular Master Class in Berlin
 related_videos:
   - '175255006'
   - '193524896'

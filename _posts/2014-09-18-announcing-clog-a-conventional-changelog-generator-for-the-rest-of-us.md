@@ -18,8 +18,8 @@ related_posts:
   - Anouncing Hanover's second Rust meetup
   - Rust's Ownership model for JavaScript developers
   - Organizing Hanovers first Rust meetup
+  - More GDE power at thoughtram
   - Angular Master Class coming to Málaga
-  - Announcing Angular Master Class at Shopware
 related_videos:
   - '175255006'
   - '193524896'

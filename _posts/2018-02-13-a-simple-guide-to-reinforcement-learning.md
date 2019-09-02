@@ -15,9 +15,9 @@ related_posts:
   - Machine Learning Jump Start - Online Course
   - Understanding XOR with Keras and TensorFlow
   - Beginning Machine Learning with Keras and TensorFlow
+  - More GDE power at thoughtram
   - Angular Master Class coming to Málaga
   - "The How and Why on using dynamic Angular components inside your custom\_widgets"
-  - RxJS Master Class and courseware updates
 related_videos:
   - '175255006'
   - '193524896'
