@@ -28,6 +28,9 @@ const stage2 = 'deploy-stage-2';
 
 console.log(chalk.green('Getting ready for deployment...hold on!'));
 
+console.log(chalk.green('Enforcing yarn install...'));
+execute(`yarn install`);
+
 console.log(chalk.green('Fetching from origin...'));
 execute(`git fetch origin`);
 

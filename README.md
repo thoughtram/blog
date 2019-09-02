@@ -27,3 +27,5 @@ This blog requires `ruby`, `jekyll` and a bunch of other dependencies in specifi
 ### Caveats
 
 These commands are intended to be used as straight forward replacements. There's one caveat though: They don't let one use additional parameters. E.g. one can not change the default port for serving, it is hard-wired to serve the site on `http://localhost:4000`.
+
+Also if `sudo` is needed to run these tasks, the repo might end up owned by the super user which may be a slight inconvenience.
