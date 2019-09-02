@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "node deploy.js"
+    "deploy": "node deploy.js",
+    "docker-jekyll-build": "./docker-jekyll-build",
+    "docker-jekyll-serve": "./docker-jekyll-serve"
   },
   "repository": {
     "type": "git",

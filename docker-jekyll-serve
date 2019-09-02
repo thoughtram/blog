@@ -1,0 +1,2 @@
+#!/bin/sh
+docker run -it --init -p  4000:4000 --mount src="$(pwd)",target=/blog,type=bind thoughtram/blog:latest /bin/sh -c "cd /blog && jekyll serve --host 0.0.0.0"

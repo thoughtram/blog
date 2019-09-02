@@ -11,8 +11,7 @@ let execute = (cmd) => {
     return output;
   }
   catch (e) {
-    //Doesn't feel write to swallow the exceptions but there doesn't seem
-    //to be a built in way to supress exceptions if git add and git push fail
+    console.error(chalk.red(e.toString()))
   }
 }
 
@@ -20,6 +19,7 @@ const metaOnly = process.argv.includes('--meta-only');
 const skipMeta = process.argv.includes('--skip-meta');
 const force = process.argv.includes('--force');
 const noPush = process.argv.includes('--no-push');
+const useDocker = process.argv.includes('--use-docker');
 
 const defaultBranch = 'master';
 const deployBranch = 'gh-pages';
@@ -52,7 +52,13 @@ if (isBehindUpstream && !force) {
 
 console.log(chalk.green('Performing jekyll build...'));
 // perform jekyll build
-execute(`jekyll build`);
+
+if (useDocker) {
+  execute(`./docker-jekyll-build`);
+} else {
+  execute(`jekyll build`);
+}
+
 
 console.log(chalk.green('Generating deploy artifacts...'));
 // cleanup temp branches

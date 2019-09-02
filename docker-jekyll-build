@@ -1,0 +1,2 @@
+#!/bin/sh
+docker run -it --init --mount src="$(pwd)",target=/blog,type=bind thoughtram/blog:latest /bin/sh -c "cd /blog && jekyll build"
