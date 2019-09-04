@@ -1,0 +1,25 @@
+.thtrm-metabar {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: -12px;
+
+  &__item {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    margin-top: 4px;
+
+    &:after {
+      content: '/ ';
+      padding: 0 8px;
+    }
+
+    &:last-child {
+      &:after {
+        display: none;
+      }
+    }
+  }
+}

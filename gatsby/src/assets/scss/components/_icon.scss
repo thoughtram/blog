@@ -1,0 +1,22 @@
+.thtrm-icon,
+[class^=thtrm-icon--] {
+    color: inherit;
+    display: inline-block;
+    vertical-align: middle;
+    transition: all 250ms linear;
+
+    height: 24px;
+    width: 24px;
+}
+
+svg.thtrm-icon,
+svg[class^=thtrm-icon] {
+    fill: currentColor;
+}
+
+svg.thtrm-icon path:not([fill=none]),
+svg[class^=thtrm-icon] path:not([fill=none]),
+svg.thtrm-icon use,
+svg[class^=thtrm-icon] use {
+    fill: inherit;
+}

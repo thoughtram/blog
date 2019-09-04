@@ -1,0 +1,46 @@
+.thtrm-form .thtrm-form__label {
+	display: none
+}
+
+.thtrm-form .thtrm-form__input--text {
+	background-color: var(--thtrm-color-gray);
+	border: none;
+	font-size: inherit;
+	padding: .5rem 1rem;
+	min-width: 40%;
+}
+
+.thtrm-form__info-text {
+  font-size: 0.4rem;
+  font-weight: normal;
+  max-width:  500px;
+  color: #aaa;
+  margin: auto;
+  margin-top: 0.4em;
+
+  a {
+    text-decoration: underline;
+    color: #aaa;
+    &:after {
+      display: none;
+    }
+  }
+}
+
+.thtrm-form__row {
+  margin-top: 16px;
+}
+
+.thtrm-form__column-group {
+  display: grid;
+  grid-column-gap: 24px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+
+  label {
+    grid-row: 1;
+  }
+  input {
+    grid-row: 2;
+  }
+}

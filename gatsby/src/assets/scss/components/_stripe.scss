@@ -1,0 +1,35 @@
+/**
+ * Stripe
+ */
+.thtrm-stripe {
+  background-color: var(--thtrm-color-lightblue);
+  color: var(--thtrm-color-white);
+  text-align: center;
+
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 1rem 2rem;
+  min-height: 140px;
+  margin: auto;
+
+  position: relative;
+
+  z-index: var(--thtrm-layer-deco);
+
+  .thtrm-stripe__cta,
+  .thtrm-stripe__location,
+  .thtrm-stripe__title {
+    margin: .5rem 0;
+  }
+
+  @media screen and (min-width: $thtrm-media-nav) {
+    flex-flow: row nowrap;
+    position: absolute;
+    left: var(--thtrm-page-margin);
+    right: var(--thtrm-page-margin);
+    transform: translateY(-50%);
+  }
+}

@@ -1,0 +1,38 @@
+/**
+ * Image grid
+ */
+
+.thtrm-image-grid {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: space-around;
+  z-index: var(--thtrm-layer-submarine);
+  margin-top: -.25rem;
+}
+
+.thtrm-image-grid img {
+  text-align: center;
+  object-fit: contain;
+  font-family: 'object-fit: contain;';
+  width: 50%;
+  max-width: 200px;
+  max-height: 200px;
+}
+
+@media screen and (min-width: $thtrm-media-micro) {
+  .thtrm-image-grid {
+    flex-flow: row wrap;
+  }
+}
+
+@media screen and (min-width: $thtrm-media-phablet) {
+  .thtrm-image-grid img {
+    width: 25%;
+    /* Accomodate for visual balance between different logo shapes */
+    max-width: 18%;
+    max-height: 250px;
+    object-fit: contain;
+    font-family: 'object-fit: contain;';
+  }
+}

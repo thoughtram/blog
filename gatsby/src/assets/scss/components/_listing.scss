@@ -1,0 +1,23 @@
+.thtrm-listing {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &__item {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--thtrm-border-color);
+
+    .thtrm-page--yellow & {
+      border-top-color: #000;
+    }
+  }
+}
+
+.thtrm-topic {
+  font-size: var(--thtrm-small-fontsize);
+}
+
+.thtrm-title {
+  font-size: var(--thtrm-h4-fontszize);
+}

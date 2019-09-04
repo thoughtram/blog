@@ -1,0 +1,31 @@
+[class*=thtrm-ratio--] {
+  position: relative;
+  &::before {
+    content: "";
+    display: block;
+    width: 100%;
+  }
+  > * {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+  }
+  > img {
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.thtrm-ratio--landscape::before {
+  padding-top: 75%;
+}
+
+.thtrm-ratio--square::before {
+  padding-top: 100%;
+}
+
+.thtrm-ratio--stripe::before {
+  padding-top: 50%;
+}

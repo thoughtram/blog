@@ -1,0 +1,44 @@
+.thtrm-media {
+  align-items: center;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  justify-content: center;
+  text-align: center;
+
+  @media screen and (min-width: $thtrm-media-tablet) {
+    align-items: center;    
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: initial;
+    justify-content: flex-start;
+    text-align: left;
+  }
+  
+  &__asset {
+    margin: 0 auto;
+    max-width: 200px;
+
+    @media screen and (min-width: $thtrm-media-tablet) {
+      grid-column: 1;
+      max-width: initial;
+    }
+  }
+  &__body {
+    @media screen and (min-width: $thtrm-media-tablet) {
+      grid-column: 2;
+    }
+  }
+}
+
+.thtrm-media--top-start {
+  align-items: flex-start;
+}
+
+// Short Media (Asset and Text in a Row)
+.thtrm-media-short {
+  display: flex;
+  flex-direction: row;
+
+  &__body {
+    padding-left: 8px;
+  }
+}

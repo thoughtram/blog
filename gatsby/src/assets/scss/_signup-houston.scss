@@ -1,0 +1,58 @@
+.thtrm-banner--coc {
+  background-position: top center;
+  background-color: #4a4a4a;
+  background-blend-mode: normal;
+  background-size: cover;
+}
+
+@media screen and (min-width: 651px) {
+  .thtrm-banner--coc {
+    background-image: url(/assets/images/background-houston-2017.jpg);
+    background-size: auto;
+
+    .thtrm-subscriber {
+      padding-left: 200px;
+      height: 80vh;
+
+      p {
+        margin: 0;
+        text-align: left;
+        margin-top: 10px;
+        color: #fff;
+      }
+
+      form {
+        text-align: left;
+      }
+    }
+
+    .intro {
+      margin-top: -10em;
+      font-size: 1.5em;
+      font-weight: bold;
+      text-align: left;
+    }
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .thtrm-banner--coc {
+    background-image: url(/assets/images/background-houston-2017.sm.jpg);
+
+    .thtrm-subscriber {
+      width: 80vw;
+      height: 50vh;
+      .intro {
+        font-size: 1.1em;
+        margin-top: -20px;
+      }
+
+      p.note {
+        margin-top: 170px;
+        color: #fff;
+        font-size: 0.8em;
+        padding: 10px;
+      }
+    }
+  }
+}
