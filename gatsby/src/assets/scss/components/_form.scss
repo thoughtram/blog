@@ -1,0 +1,32 @@
+.thtrm-form .thtrm-form__label {
+	display: none
+}
+
+.thtrm-form > * {
+	margin: .5rem;
+}
+
+.thtrm-form .thtrm-form__input--text {
+	background-color: var(--thtrm-color-gray);
+	border: none;
+	font-size: inherit;
+	padding: .5rem 1rem;
+	min-width: 40%;
+}
+
+.thtrm-form__info-text {
+  font-size: 0.4rem;
+  font-weight: normal;
+  max-width:  500px;
+  color: #aaa;
+  margin: auto;
+  margin-top: 0.4em;
+
+  a {
+    text-decoration: underline;
+    color: #aaa;
+    &:after {
+      display: none;
+    }
+  }
+}

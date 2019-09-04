@@ -1,0 +1,220 @@
+/**
+ * Blockquote/Testimonial
+ */
+.thtrm-testimonials {
+  width: 90vw;
+  display: block;
+  overflow: hidden;
+}
+
+.thtrm-testimonial {
+  position: relative;
+  width: 100%;
+  padding-top: 1.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  white-space: normal;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.thtrm-testimonial::before {
+  position: absolute;
+  content: "“";
+  top: -35px;
+  left: 20px;
+  font-size: 8rem;
+  color: var(--thtrm-color-text);
+  z-index: 9999;
+}
+
+.thtrm-testimonial > .thtrm-testimonial__avatar {
+  display: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+}
+
+.thtrm-testimonial > .thtrm-testimonial__quote {
+  background-color: var(--thtrm-color-gray);
+  padding: 50px 30px 30px;
+}
+
+.thtrm-testimonial > .thtrm-testimonial__quote cite {
+  color: var(--thtrm-color-darkblue);
+  font-size: .75em;
+}
+
+.thtrm-testimonial--big {
+  position: relative;
+  right: 0;
+  margin-left: auto;
+  max-width: 100%;
+}
+
+.thtrm-testimonial--big > .thtrm-testimonial__quote {
+  background-color: var(--thtrm-color-white);
+  padding: 1rem 0 0;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.thtrm-testimonial--big > .thtrm-testimonial__avatar {
+  max-width: 200px;
+}
+
+.thtrm-testimonial--big > .thtrm-testimonial__quote cite {
+  color: var(--thtrm-color-darkblue);
+  font-size: .75em;
+  font-style: normal;
+  font-weight: var(--thtrm-base-fontweight);
+  margin-top: .5rem;
+}
+
+.thtrm-testimonial--big .thtrm-testimonial__heading {
+  font-weight: var(--thtrm-base-fontweight);
+  font-style: normal;
+  margin-bottom: 1rem;
+}
+
+.thtrm-testimonials__navigation {
+  margin-top: .5rem;
+  text-align: center;
+  width: 100%;
+}
+
+.thtrm-testimonials__thumbnail {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  opacity: .5;
+  font-family: 'object-fit: cover;';
+}
+
+.is-active .thtrm-testimonials__thumbnail {
+  opacity: 1;
+  transition: 250ms;
+}
+
+@media screen and (min-width: $thtrm-media-nav) {
+  .thtrm-testimonial {
+    position: relative;
+    width: 100%;
+    padding-top: 50px;
+  }
+
+  .thtrm-testimonial > .thtrm-testimonial::before {
+    top: -65px;
+    left: 0;
+    font-size: 10rem;
+  }
+
+  .thtrm-testimonials__thumbnail {
+    width: 100px;
+    height: 100px;
+  }
+
+  .thtrm-testimonial > .thtrm-testimonial__quote {
+    padding: 68px 68px 68px 210px;
+    max-width: 80%;
+    position: relative;
+    left: 10%;
+    top: 0;
+    z-index: 98;
+    margin-top: 40px;
+  }
+
+  .thtrm-testimonial > .thtrm-testimonial__avatar {
+    display: block;
+    position: absolute;
+    left: 3%;
+    top: 40px;
+    max-width: 240px;
+    z-index: 99;
+  }
+
+  .thtrm-testimonial--big {
+    position: relative;
+    right: 0;
+    margin-left: auto;
+    top: -300px;
+    max-width: 55%;
+    margin-bottom: -300px;
+  }
+
+  .thtrm-testimonial--big > .thtrm-testimonial__quote {
+    background-color: var(--thtrm-color-white);
+    padding: 2rem 3rem 0;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.25rem;
+  }
+
+  .thtrm-testimonial--big > .thtrm-testimonial__avatar {
+    position: absolute;
+    bottom: 0;
+    left: -200px;
+    max-width: 200px;
+  }
+
+  .thtrm-testimonial--big > .thtrm-testimonial__quote cite {
+    color: var(--thtrm-color-darkblue);
+    font-size: .75em;
+    font-style: normal;
+    font-weight: var(--thtrm-base-fontweight);
+    margin-top: .5rem;
+  }
+
+  .thtrm-testimonial--big .thtrm-testimonial__heading {
+    font-weight: var(--thtrm-base-fontweight);
+    font-style: normal;
+    margin-bottom: 1rem;
+  }
+}
+
+@media screen and (min-width: $thtrm-media-laptop) {
+  .thtrm-testimonials {
+    width: 80vw;
+  }
+}
+
+/**
+ * Lory prerequisited styles
+ */
+
+.thtrm-testimonials .frame {
+  width: 100%;
+  position: relative;
+  font-size: 0;
+  line-height: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.thtrm-testimonials .slides {
+  display: block;
+}
+
+.thtrm-testimonials li {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  vertical-align: top;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+
+.thtrm-testimonials li:active {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  vertical-align: top;
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}

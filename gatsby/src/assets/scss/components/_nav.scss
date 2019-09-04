@@ -1,0 +1,117 @@
+/**
+ * Navigation
+ */
+.thtrm-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    font-size: var(--thtrm-nav-fontsize);
+}
+
+.thtrm-nav .thtrm-nav__list {
+    background-color: var(--thtrm-color-lightgray);
+    box-shadow: 0 1px 2px rgba(50, 50, 50, .1);
+    list-style: none;
+    text-align: left;
+    position: absolute;
+    right: 0;
+
+    top: 70%;
+    width: auto;
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    transition: 250ms;
+    transform: translate3d(0, -10%, 0);
+    padding: 1rem .5rem;
+}
+
+.thtrm-nav .thtrm-nav__list::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-right: 6px solid transparent;
+    border-left: 6px solid transparent;
+    border-bottom: 6px solid var(--thtrm-color-lightgray);
+    position: absolute;
+    top: -10px;
+    right: 10px;
+}
+
+.thtrm-nav .thtrm-nav__list li {
+    padding: 0 1rem;
+    margin-top: .5rem;
+}
+
+.thtrm-nav .thtrm-nav__list a {
+    color: var(--thtrm-color-text);
+    font-weight: var(--thtrm-base-fontweight);
+    text-decoration: none;
+    transition: 250ms
+}
+
+.thtrm-nav .thtrm-nav__list a:hover {
+    color: var(--thtrm-color-blue);
+}
+
+.thtrm-nav .thtrm-nav__list a::after {
+    content: "";
+}
+
+.thtrm-nav__list.is-visible,
+.no-js .thtrm-nav .thtrm-nav__button:focus + .thtrm-nav__list,
+.no-js .thtrm-nav .thtrm-nav__button:hover + .thtrm-nav__list,
+.no-js .thtrm-nav__list:hover {
+    opacity: 1;
+    pointer-events: all;
+    visibility: visible;
+    transform: translate3d(0, 0, 0);
+}
+
+.thtrm-nav-toc {
+    border-top: 3px solid black;
+    font-size: .75rem;
+}
+
+.thtrm-nav-toc li {
+    display: inline-block;
+}
+
+.thtrm-nav-toc a {
+    color: var(--thtrm-color-text);
+    display: block;
+    padding: .75rem 1rem;
+}
+
+.thtrm-nav-toc a::after {
+    content: "";
+}
+
+@media screen and (min-width: $thtrm-media-nav) {
+    .thtrm-nav .thtrm-nav__list li:last-of-type {
+        padding-right: 0;
+    }
+
+    .thtrm-nav .thtrm-nav__list::before {
+      display: none;
+    }
+
+    .thtrm-nav .thtrm-nav__button {
+        display: none;
+    }
+
+    .thtrm-nav .thtrm-nav__list {
+        background-color: var(--thtrm-color-white);
+        box-shadow: none;
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: flex-end;
+        opacity: 1;
+        pointer-events: all;
+        visibility: visible;
+        transform: translate3d(0, 0, 0);
+        position: static;
+    }
+}

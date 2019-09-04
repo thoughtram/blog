@@ -1,0 +1,185 @@
+/**
+ * Layout
+ */
+
+/* Progressively enhance CSS layout grid */
+.thtrm-page {
+    padding-left: 5vw;
+    padding-right: 5vw;
+    overflow-x: hidden; // Fixes wrong width calculations in Chrome on Win10/Linux
+}
+
+.thtrm-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 90px;
+}
+
+.thtrm-footer {
+
+}
+
+@media screen and (min-width: $thtrm-media-laptop) {
+    .thtrm-page {
+        padding-left: 10vw;
+        padding-right: 10vw;
+    }
+
+    .thtrm-banner {
+        height: 160px;
+    }
+
+}
+
+@media screen and (min-width: $thtrm-media-widescreen) {
+    .thtrm-page {
+        padding-left: 10vw;
+        padding-right: 10vw;
+    }
+
+    .thtrm-banner {
+        height: 260px;
+    }
+}
+
+/* Use display:grid where you can */
+@supports (display: grid) {
+
+    .thtrm-page {
+        display: grid;
+        grid-template-columns: [pad-left] 5vw [center] 90vw [pad-left] 5vw;
+        grid-template-rows: [banner] 90px [main] auto [aside] auto [footer] auto;
+        /* Resets for PE */
+        padding-left:0;
+        padding-right:0;
+    }
+
+    @media screen and (min-width: $thtrm-media-laptop) {
+        .thtrm-page {
+            grid-template-columns: [pad-left] 10vw [center] 80vw [pad-left] 10vw;
+            grid-template-rows: [banner] 160px [main] auto [aside] auto [footer] auto;
+        }
+
+    }
+
+    @media screen and (min-width: $thtrm-media-widescreen) {
+        .thtrm-page {
+            grid-template-columns: [pad-left] 10vw [center] 80vw [pad-left] 10vw;
+            grid-template-rows: [banner] 260px [main] auto [aside] auto [footer] auto;
+        }
+
+    }
+
+
+    .thtrm-banner {
+        height: auto;
+        grid-column-start: 2;
+        grid-column-end: 2;
+        grid-row-start: 1;
+        grid-row-end: 1;
+    }
+
+    .thtrm-main {
+        grid-column-start: 2;
+        grid-column-end: 2;
+        grid-row-start: 2;
+        grid-row-end: 2;
+    }
+
+    .thtrm-aside {
+        grid-column-start: 2;
+        grid-column-end: 2;
+        grid-row-start: 3;
+        grid-row-end: 3;
+    }
+
+    .thtrm-footer {
+        grid-column-start: 2;
+        grid-column-end: 2;
+        grid-row-start: 4;
+        grid-row-end: 4;
+    }
+}
+
+/**
+ * Banner
+ */
+.thtrm-banner {
+    position: relative;
+}
+
+/**
+ * Footer
+ */
+
+.thtrm-footer {
+    border-top: 5px solid var(--thtrm-color-text);
+    font-size: var(--thtrm-small-fontsize);
+    padding: 2rem 0;
+    margin-top: 2rem;
+}
+
+.thtrm-footer .thtrm-sitemap {
+    margin-bottom: 2rem;
+}
+
+.thtrm-footer .thtrm-sitemap__heading {
+    font-size: var(--thtrm-base-fontsize);
+    margin-top: 1rem;
+    margin-bottom: .5rem;
+}
+
+.thtrm-footer .thtrm-copyright {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.thtrm-footer .thtrm-sitemap nav ul {
+    list-style: none;
+}
+
+.thtrm-footer .thtrm-sitemap nav li a {
+    text-decoration: none;
+}
+
+.thtrm-footer .thtrm-sitemap nav li a::after {
+    color: currentColor;
+    content: "›";
+    font-weight: normal;
+    font-size: 1.15em;
+    margin-left: .25em;
+}
+
+@media screen and (min-width: $thtrm-media-narrow) {
+    .thtrm-footer .thtrm-sitemap {
+        display: grid;
+        grid-template-columns: 33.33333333333% 33.33333333333% 33.33333333333%;
+        margin-bottom: 2rem;
+    }
+
+    /**
+     * Progressive enchancement for IE/EDGE older grid spec
+     */
+    .thtrm-footer .thtrm-sitemap__item {
+      -ms-grid-column-span: 1;
+    }
+
+    .thtrm-footer .thtrm-sitemap__item:nth-of-type(1) {
+      -ms-grid-column: 1;
+    }
+
+    .thtrm-footer .thtrm-sitemap__item:nth-of-type(2) {
+      -ms-grid-column: 2;
+    }
+
+    .thtrm-footer .thtrm-sitemap__item:nth-of-type(3) {
+      -ms-grid-column: 3;
+    }
+
+    .thtrm-footer .thtrm-sitemap__heading {
+        margin-top: 0;
+        margin-bottom: 1rem;
+    }
+}

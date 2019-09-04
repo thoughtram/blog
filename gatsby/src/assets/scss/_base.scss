@@ -1,0 +1,78 @@
+/**
+ * Base styles
+ */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: var(--thtrm-base-font), var(--thtrm-base-font-stack);
+    font-size: var(--thtrm-base-fontsize);
+    font-weight: var(--thtrm-base-fontweight);
+    line-height: 1.4;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+}
+
+body {
+    position: relative;
+}
+
+h1, h2, h3, h4 {
+    font-weight: var(--thtrm-base-fontweight);
+    line-height: 1.2;
+    letter-spacing: 0;
+    margin: 0;
+}
+
+h1 {
+    font-size: var(--thtrm-h1-fontszize);
+}
+
+a {
+    color: var(--thtrm-color-midblue);
+    text-decoration: none;
+}
+
+a::after {
+    color: currentColor;
+    content: "›";
+    font-weight: normal;
+    font-size: 1.15em;
+    margin-left: .25em;
+}
+
+a[title="Home"]:after {
+  display: none;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+@media screen and (min-width: $thtrm-media-laptop) {
+    :root {
+        --thtrm-base-fontsize: 25px;
+        --thtrm-small-fontsize: calc(0.75 * var(--thtrm-base-fontsize));
+        --thtrm-nav-fontsize: calc(1 * var(--thtrm-base-fontsize));
+        --thtrm-h1-fontszize: calc(2.25 * var(--thtrm-base-fontsize));
+        --thtrm-h2-fontszize: calc(2 * var(--thtrm-base-fontsize));
+
+        /**
+         * @layout
+         */
+        --thtrm-page-margin: 10vw;
+        --thtrm-page-neg-margin: -10vw;
+    }
+}
+
+@media screen and (min-width: $thtrm-media-widescreen) {
+    :root {
+        --thtrm-base-fontsize: 27px;
+    }
+}
