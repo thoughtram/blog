@@ -51,6 +51,11 @@
     transition: 250ms
 }
 
+.thtrm-nav .thtrm-nav__list a.active {
+  border-bottom: solid 2px var(--thtrm-color-text);
+  padding-bottom: 0.3em;
+}
+
 .thtrm-nav .thtrm-nav__list a:hover {
     color: var(--thtrm-color-blue);
 }

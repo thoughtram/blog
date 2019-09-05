@@ -8,8 +8,6 @@ summary: >-
 imageUrl: /images/banner/we-are-thoughtram.jpg
 redirect_from:
   - /posts/we-are-thoughtram/
-categories:
-  - announcements
 tags:
   - announcements
   - company

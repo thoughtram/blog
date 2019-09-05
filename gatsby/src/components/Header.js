@@ -61,7 +61,7 @@ class Header extends React.Component {
           <ul id="thtrm-nav-main-list" className="thtrm-nav__list">
             <li><a title="Training" href="https://thoughtram.io/training.html">Training</a></li>
             <li><a title="Consulting" href="https://thoughtram.io/code-review.html">Consulting</a></li>
-            <li><a title="Blog" href="/">Blog</a></li>
+            <li><a className="active" title="Blog" href="/">Blog</a></li>
           </ul>
         </nav>
       </header>

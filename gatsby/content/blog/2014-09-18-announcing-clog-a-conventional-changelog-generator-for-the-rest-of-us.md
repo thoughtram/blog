@@ -7,7 +7,8 @@ summary: >-
   maintain a semantic history. Introducing clog.
 redirect_from:
   - /posts/anouncing-clog-a-conventional-changelog-generator-for-the-rest-of-us/
-categories: announcements tools
+categories: 
+  - announcements
 tags:
   - rust
   - tools

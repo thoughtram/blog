@@ -7,7 +7,8 @@ summary: >-
   article we'll explore how to do exactly that!
 redirect_from:
   - /posts/going-back-in-time-to-split-older-commits/
-categories: git
+categories:
+  - git
 tags:
   - git
 author: christoph_burgdorf

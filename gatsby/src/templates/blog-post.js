@@ -1,10 +1,8 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
-import SEO from "../components/seo"
-import { rhythm, scale } from "../utils/typography"
+import SubNav from '../components/SubNav';
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -13,7 +11,23 @@ class BlogPostTemplate extends React.Component {
     const { previous, next } = this.props.pageContext
 
     return (
-      <h1>Hello world</h1>
+      <Layout title={post.frontmatter.title}>
+        <SubNav/>
+        <section className="thtrm-section--fullbleed">
+          <div className="thtrm-ratio--stripe u-fill-space">
+            <img className="u-img-fit-height"
+                src={ 'https://blog.thoughtram.io' + post.frontmatter.imageUrl }
+                srcSet={ 'https://blog.thoughtram.io' + post.frontmatter.imageUrl + ' 600w' }
+                sizes="100vw"
+                alt="Angular Master Class attendees"
+            />
+          </div>
+        </section>
+        <h1 className="thtrm-section__subheading">{post.frontmatter.title}</h1>
+        <section className="thtrm-section--fullbleed-intrinsic">
+          <div className="thtrm-section__heading u-max-width--half" dangerouslySetInnerHTML={{ __html: post.html }} />
+        </section>
+      </Layout>
       /* <Layout location={this.props.location} title={siteTitle}> */
       /*   <SEO */
       /*     title={post.frontmatter.title} */
@@ -97,6 +111,7 @@ export const pageQuery = graphql`
       html
       frontmatter {
         title
+        imageUrl
         date(formatString: "MMMM DD, YYYY")
         description
       }
