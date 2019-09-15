@@ -3,7 +3,7 @@ layout: post
 title: How to prevent name collisions in Angular providers
 date: 2016-05-23T00:00:00.000Z
 update_date: 2017-03-03T00:00:00.000Z
-imageUrl: /images/banner/opaque-tokens-in-angular-2.jpeg
+imageUrl: ../assets/images/banner/opaque-tokens-in-angular-2.jpeg
 summary: >-
   Angular provides a mechanism to avoid name collisions in provider tokens. In
   this article we're going to explore how opaque tokens make this possible.

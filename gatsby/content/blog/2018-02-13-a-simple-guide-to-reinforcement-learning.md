@@ -1,7 +1,7 @@
 ---
 layout: post
 title: A simple guide to Reinforcement Learning
-imageUrl: /images/banner/a-simple-guide-to-reinforcement-learning.jpg
+imageUrl: ../assets/images/banner/a-simple-guide-to-reinforcement-learning.jpg
 date: 2018-02-28T00:00:00.000Z
 summary: >-
   This is part one in a series of articles on Reinforcement Learning that aim to

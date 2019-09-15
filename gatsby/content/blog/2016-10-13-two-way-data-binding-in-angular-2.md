@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Two-way Data Binding in Angular
-imageUrl: /images/banner/two-way-data-binding-in-angular-2.jpg
+imageUrl: ../assets/images/banner/two-way-data-binding-in-angular-2.jpg
 date: 2016-10-13T00:00:00.000Z
 update_date: 2016-12-18T00:00:00.000Z
 summary: >-

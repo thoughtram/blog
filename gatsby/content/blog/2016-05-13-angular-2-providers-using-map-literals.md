@@ -3,7 +3,7 @@ layout: post
 title: Angular Providers using Map Literals
 date: 2016-05-13T00:00:00.000Z
 update_date: 2016-12-18T00:00:00.000Z
-imageUrl: /images/banner/angular-2-providers-using-map-literals.png
+imageUrl: ../assets/images/banner/angular-2-providers-using-map-literals.png
 summary: >-
   Angular has a shorter syntax for creating providers. In this article we're
   going to take a look at how to create them using map literals.

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Custom Overlays with Angular's CDK
-imageUrl: /images/banner/custom_overlays.jpg
+imageUrl: ../assets/images/banner/custom_overlays.jpg
 date: 2017-11-20T00:00:00.000Z
 summary: >-
   The Angular Material CDK provides us with tools to build awesome and

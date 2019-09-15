@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Bypassing Providers in Angular
-imageUrl: /images/banner/bypassing-providers-in-angular-2.jpg
+imageUrl: ../assets/images/banner/bypassing-providers-in-angular-2.jpg
 date: 2016-09-14T00:00:00.000Z
 update_date: 2016-12-18T00:00:00.000Z
 summary: >-

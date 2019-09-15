@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Exploring Rx Operators: flatMap'
-imageUrl: /images/banner/rx-flatmap.jpeg
+imageUrl: ../assets/images/banner/rx-flatmap.jpeg
 date: 2016-08-01T00:00:00.000Z
 summary: >-
   Another post in a series of articles to discover the magic of different Rx

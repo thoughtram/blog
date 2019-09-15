@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Cold vs Hot Observables
-imageUrl: /images/banner/hot-vs-cold-observables.jpeg
+imageUrl: ../assets/images/banner/hot-vs-cold-observables.jpeg
 date: 2016-06-16T00:00:00.000Z
 update_date: 2016-12-18T00:00:00.000Z
 summary: >-

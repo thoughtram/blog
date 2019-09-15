@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Join our free meetup in Denmark
-imageUrl: /images/banner/community_event_amc_dk.jpg
+imageUrl: ../assets/images/banner/community_event_amc_dk.jpg
 date: 2017-05-30T00:00:00.000Z
 summary: >-
   Come and join our free meetup on June 21st at 5:30 PM right after the second

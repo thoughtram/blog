@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Easy Dialogs with Angular Material
-imageUrl: /images/banner/easy-dialogs-with-angular-material.jpg
+imageUrl: ../assets/images/banner/easy-dialogs-with-angular-material.jpg
 date: 2017-11-13T00:00:00.000Z
 summary: >-
   Building modals and dialogs isn't easy - if we do it ourselves. Angular

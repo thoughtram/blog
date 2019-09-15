@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Angular Change Detection Explained
-imageUrl: /images/change-detection-explained-bg.jpeg
+imageUrl: ../assets/images/change-detection-explained-bg.jpeg
 date: 2016-02-22T00:00:00.000Z
 update_date: 2016-12-18T00:00:00.000Z
 summary: >-

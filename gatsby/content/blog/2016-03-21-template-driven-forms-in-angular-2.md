@@ -3,7 +3,7 @@ layout: post
 title: Template-driven Forms in Angular
 date: 2016-03-21T00:00:00.000Z
 update_date: 2016-12-18T00:00:00.000Z
-imageUrl: /images/template-driven-forms.jpeg
+imageUrl: ../assets/images/template-driven-forms.jpeg
 summary: >-
   In this article we discuss the template-driven forms in Angular and all the
   directives that come into play.

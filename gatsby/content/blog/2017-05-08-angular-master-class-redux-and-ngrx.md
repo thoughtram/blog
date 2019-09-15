@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Angular Master Class - Redux and ngrx
-imageUrl: /images/banner/ngrx_slide_logo.jpg
+imageUrl: ../assets/images/banner/ngrx_slide_logo.jpg
 date: 2017-05-08T00:00:00.000Z
 summary: >-
   Today we're super excited to announce that we finished working on our new

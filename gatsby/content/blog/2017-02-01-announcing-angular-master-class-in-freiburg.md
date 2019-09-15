@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Announcing Angular Master Class in Freiburg
-imageUrl: /images/banner/announcing-amc-freiburg.jpg
+imageUrl: ../assets/images/banner/announcing-amc-freiburg.jpg
 date: 2017-02-01T00:00:00.000Z
 summary: >-
   Today we're happy to announce that the will run our Angular Master Class in

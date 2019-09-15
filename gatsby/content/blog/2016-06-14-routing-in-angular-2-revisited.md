@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Routing in Angular revisited
-imageUrl: /images/banner/routing-in-angular-2-revisited.jpeg
+imageUrl: ../assets/images/banner/routing-in-angular-2-revisited.jpeg
 date: 2016-06-14T00:00:00.000Z
 update_date: 2016-12-18T00:00:00.000Z
 summary: >-

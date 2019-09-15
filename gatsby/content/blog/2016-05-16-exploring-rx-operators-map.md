@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Exploring Rx Operators: map'
-imageUrl: /images/banner/rx-map.jpg
+imageUrl: ../assets/images/banner/rx-map.jpg
 date: 2016-05-16T00:00:00.000Z
 summary: >-
   This is the first article that is part of a new series where we take a look at

@@ -3,7 +3,7 @@ layout: post
 title: Angular Animations - Foundation Concepts
 date: 2016-09-16T00:00:00.000Z
 update_date: 2017-04-01T00:00:00.000Z
-imageUrl: /images/banner/angular-2-component-animations.jpg
+imageUrl: ../assets/images/banner/angular-2-component-animations.jpg
 summary: >-
   Animation in Angular is now easy and more intuitive... Learn foundational
   animation concepts and start animating your Angular components!

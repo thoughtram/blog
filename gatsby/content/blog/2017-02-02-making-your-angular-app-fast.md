@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Making your Angular apps fast
-imageUrl: /images/banner/angular-performance-tips.jpg
+imageUrl: ../assets/images/banner/angular-performance-tips.jpg
 date: 2017-02-02T00:00:00.000Z
 summary: In this article we discuss tips and tricks to make Angular blazingly fast!
 categories:

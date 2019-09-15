@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Custom Overlays with Angular's CDK - Part 2
-imageUrl: /images/banner/custom_overlays_2.jpg
+imageUrl: ../assets/images/banner/custom_overlays_2.jpg
 date: 2017-11-27T00:00:00.000Z
 summary: >-
   In this follow-up post we demonstrate how to use Angular's CDK to build a

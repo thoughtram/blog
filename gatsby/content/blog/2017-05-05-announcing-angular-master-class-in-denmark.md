@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Announcing Angular Master Class in Denmark
-imageUrl: /images/banner/announcing-amc-denmark.jpg
+imageUrl: ../assets/images/banner/announcing-amc-denmark.jpg
 date: 2017-05-05T00:00:00.000Z
 summary: >-
   Today we're happy to announce that the will run our Angular Master Class in

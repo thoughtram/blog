@@ -2,7 +2,7 @@
 layout: post
 title: Thomas joins thoughtram
 date: 2016-05-19T00:00:00.000Z
-imageUrl: /images/thomas_high_res.png
+imageUrl: ../assets/images/thomas_high_res.png
 summary: >-
   Today we are happy to announce a big step forward for us as a company. Thomas
   Burleson joins our Team!

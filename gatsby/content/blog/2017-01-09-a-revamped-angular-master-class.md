@@ -2,7 +2,7 @@
 layout: post
 title: A revamped Angular Master Class
 date: 2017-01-09T00:00:00.000Z
-imageUrl: /images/banner/an-even-better-angular-master-class.jpg
+imageUrl: ../assets/images/banner/an-even-better-angular-master-class.jpg
 summary: >-
   We're announcing our brand new Angular Master Class courseware including
   Angular Material and Angular Flex Layout!

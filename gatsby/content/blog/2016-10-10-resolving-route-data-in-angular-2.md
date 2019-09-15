@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Resolving route data in Angular
-imageUrl: /images/banner/resolving-route-data-in-angular-2.jpg
+imageUrl: ../assets/images/banner/resolving-route-data-in-angular-2.jpg
 date: 2016-10-10T00:00:00.000Z
 update_date: 2016-12-18T00:00:00.000Z
 summary: >-

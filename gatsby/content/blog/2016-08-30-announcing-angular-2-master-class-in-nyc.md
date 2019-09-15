@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Announcing Angular 2 Master Class in NYC
-imageUrl: /images/banner/announcing-angular-2-master-class-in-nyc.jpg
+imageUrl: ../assets/images/banner/announcing-angular-2-master-class-in-nyc.jpg
 date: 2016-08-30T00:00:00.000Z
 summary: >-
   Today we're super exciting to announce that we'll bring our Angular 2 Master

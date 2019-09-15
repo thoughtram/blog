@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Protecting Routes using Guards in Angular
-imageUrl: /images/banner/protecting-routes-using-guards-in-angular-2.jpg
+imageUrl: ../assets/images/banner/protecting-routes-using-guards-in-angular-2.jpg
 date: 2016-07-18T00:00:00.000Z
 update_date: 2016-12-18T00:00:00.000Z
 summary: >-

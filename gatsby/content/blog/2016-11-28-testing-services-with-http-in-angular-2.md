@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Testing Services with Http in Angular
-imageUrl: /images/banner/testing-services-with-http-in-angular-2.jpg
+imageUrl: ../assets/images/banner/testing-services-with-http-in-angular-2.jpg
 date: 2016-11-28T00:00:00.000Z
 update_date: 2017-02-28T00:00:00.000Z
 summary: >-

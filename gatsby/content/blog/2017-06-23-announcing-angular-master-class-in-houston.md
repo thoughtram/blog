@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Announcing Angular Master Class in Houston
-imageUrl: /images/banner/announcing_amc_houston.jpg
+imageUrl: ../assets/images/banner/announcing_amc_houston.jpg
 date: 2017-06-23T00:00:00.000Z
 summary: >-
   Our Angular Master Class comes to Houston. Join us for four entire days full

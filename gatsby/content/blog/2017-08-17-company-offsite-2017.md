@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Company offsite in Spain 2017
-imageUrl: /images/banner/company-offsite-group.jpg
+imageUrl: ../assets/images/banner/company-offsite-group.jpg
 date: 2017-08-17T00:00:00.000Z
 summary: >-
   For two weeks we travelled to Spain for attending the Machine Learning Summer

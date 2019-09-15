@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Angular Master Class coming to Málaga
-imageUrl: /images/banner/amc-malaga-2019.jpg
+imageUrl: ../assets/images/banner/amc-malaga-2019.jpg
 date: 2019-07-28T00:00:00.000Z
 summary: >-
   The community has spoken. Our Angular Master Class comes to Málaga. Join us

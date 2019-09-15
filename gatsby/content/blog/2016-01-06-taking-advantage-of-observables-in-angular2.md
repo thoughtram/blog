@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Taking advantage of Observables in Angular
-imageUrl: /images/banner/taking-advantage-of-observables.png
+imageUrl: ../assets/images/banner/taking-advantage-of-observables.png
 date: 2016-01-06T00:00:00.000Z
 update_date: 2016-11-08T00:00:00.000Z
 summary: >-

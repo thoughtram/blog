@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Three things you didn't know about the AsyncPipe
-imageUrl: /images/banner/three-things-about-the-async-pipe.jpg
+imageUrl: ../assets/images/banner/three-things-about-the-async-pipe.jpg
 date: 2017-02-27T00:00:00.000Z
 summary: >-
   This article explains three lesser known features of the AsyncPipe that help

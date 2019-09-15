@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+import Img from 'gatsby-image'
 import { upperCaseFirst } from '../utils/uppercase-first';
 
 class Stage extends React.Component {
@@ -16,12 +17,7 @@ class Stage extends React.Component {
           </Link>
         </div>
         <div className="thtrm-section__item--flushright">
-          <div className="thtrm-section__image thtrm-ratio--landscape">
-            <img src={ "https://blog.thoughtram.io/" + post.frontmatter.imageUrl}
-                srcSet={ "https://blog.thoughtram.io/" + post.frontmatter.imageUrl + ' 600w'}
-                sizes="(min-width: 700px) 40vw, 90vw"
-                alt="Cover"/>
-          </div>
+          <Img sizes={post.frontmatter.imageUrl.childImageSharp.sizes} className="thtrm-section__image thtrm-ratio--landscape"/>
         </div>
       </section>
     )
@@ -29,4 +25,3 @@ class Stage extends React.Component {
 }
 
 export default Stage
-

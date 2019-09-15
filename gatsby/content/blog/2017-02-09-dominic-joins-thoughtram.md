@@ -2,7 +2,7 @@
 layout: post
 title: Dominic joins thoughtram
 date: 2017-02-09T00:00:00.000Z
-imageUrl: /images/dominic.jpg
+imageUrl: ../assets/images/dominic.jpg
 summary: >-
   Today we are happy to announce that we have grown our trainer team. Dominic
   joins our team!

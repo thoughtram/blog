@@ -1,7 +1,7 @@
 ---
 layout: post
 title: More GDE power at thoughtram
-imageUrl: /images/kwinten_brecht.jpg
+imageUrl: ../assets/images/kwinten_brecht.jpg
 date: 2019-09-02T00:00:00.000Z
 summary: >-
   We congratulate Dominic Elm and Kwinten Pisman on becoming Google Developer

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Using Zones in Angular for better performance
-imageUrl: /images/banner/using-zones-in-angular-for-better-performance.jpg
+imageUrl: ../assets/images/banner/using-zones-in-angular-for-better-performance.jpg
 date: 2017-02-21T00:00:00.000Z
 summary: >-
   In this article we'll take a look at how to use Zone APIs to improve our app's

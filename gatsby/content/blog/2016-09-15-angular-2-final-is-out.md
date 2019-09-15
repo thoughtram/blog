@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Angular 2 is out - Get started here
-imageUrl: /images/banner/angular-2-final-is-out.jpg
+imageUrl: ../assets/images/banner/angular-2-final-is-out.jpg
 date: 2016-09-15T00:00:00.000Z
 update_date: 2016-12-18T00:00:00.000Z
 summary: >-

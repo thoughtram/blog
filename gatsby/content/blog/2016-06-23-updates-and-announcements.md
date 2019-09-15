@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Updates and announcements
-imageUrl: /images/suomenlinna.jpg
+imageUrl: ../assets/images/suomenlinna.jpg
 date: 2016-06-23T00:00:00.000Z
 summary: >-
   Today we like to bring you up to date with all the exciting things that we

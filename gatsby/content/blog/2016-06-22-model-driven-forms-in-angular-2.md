@@ -3,7 +3,7 @@ layout: post
 title: Reactive Forms in Angular
 date: 2016-06-22T00:00:00.000Z
 update_date: 2016-12-18T00:00:00.000Z
-imageUrl: /images/banner/model-driven-forms-in-angular-2.jpeg
+imageUrl: ../assets/images/banner/model-driven-forms-in-angular-2.jpeg
 summary: >-
   Angular allows us to build forms in a model-driven fashion. In this article
   we're going to discuss what that looks like.

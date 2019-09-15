@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Announcing Angular Master Class at Shopware
-imageUrl: /images/banner/amc-shopware.jpg
+imageUrl: ../assets/images/banner/amc-shopware.jpg
 date: 2018-02-07T00:00:00.000Z
 summary: >-
   It's that time again. Want to level up your Angular skills? Join us for a

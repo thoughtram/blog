@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Machine Learning Jump Start - Online Course
-imageUrl: /images/banner/machine-learning-jump-start.jpg
+imageUrl: ../assets/images/banner/machine-learning-jump-start.jpg
 date: 2017-12-20T00:00:00.000Z
 summary: >-
   We started diving into Machine Learning almost 1,5 years ago. Since then,

@@ -3,7 +3,7 @@ layout: post
 title: Component-Relative Paths in Angular
 date: 2016-06-08T00:00:00.000Z
 update_date: 2016-12-18T00:00:00.000Z
-imageUrl: /images/banner/component-relative-paths-in-angular-2.jpg
+imageUrl: ../assets/images/banner/component-relative-paths-in-angular-2.jpg
 summary: >-
   Component-relative enable developers to more easily create maintainable,
   reusable, portable components in Angular. Here's how!

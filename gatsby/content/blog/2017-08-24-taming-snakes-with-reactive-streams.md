@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Taming snakes with reactive streams
-imageUrl: /images/banner/reactive_snake.jpg
+imageUrl: ../assets/images/banner/reactive_snake.jpg
 date: 2017-08-24T00:00:00.000Z
 summary: >-
   Reactive Programming is revolutionary but it's not always straightforward and

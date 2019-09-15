@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+import Img from 'gatsby-image';
 import { upperCaseFirst } from '../utils/uppercase-first';
 
 class ListingItem extends React.Component {
@@ -14,9 +15,9 @@ class ListingItem extends React.Component {
           </div>
           <h2 className="thtrm-title">{post.frontmatter.title}</h2>
         </div>
-        <div className="thtrm-teaser__thumb">
-          <img src={ "https://blog.thoughtram.io/" + post.frontmatter.imageUrl} alt="" />
-        </div>
+        {post.frontmatter.imageUrl && <div className="thtrm-teaser__thumb">
+          <Img sizes={post.frontmatter.imageUrl.childImageSharp.sizes} />
+        </div>}
       </Link>
     );
   }

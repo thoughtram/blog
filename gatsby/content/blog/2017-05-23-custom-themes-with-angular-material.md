@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Custom themes with Angular Material
-imageUrl: /images/banner/custom-themes-with-angular-material.jpg
+imageUrl: ../assets/images/banner/custom-themes-with-angular-material.jpg
 date: 2017-05-23T00:00:00.000Z
 summary: >-
   Angular Material offers great theming capabilities for both, built-in and

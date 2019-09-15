@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Custom Validators in Angular
-imageUrl: /images/custom-validators-bg.jpeg
+imageUrl: ../assets/images/custom-validators-bg.jpeg
 date: 2016-03-14T00:00:00.000Z
 update_date: 2016-12-18T00:00:00.000Z
 summary: >-

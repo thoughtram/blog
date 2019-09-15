@@ -64,7 +64,13 @@ export const pageQuery = graphql`
             title
             description
             summary
-            imageUrl
+            imageUrl {
+              childImageSharp {
+                sizes(maxWidth: 600) {
+                  ...GatsbyImageSharpSizes
+                }
+              }
+            }
             categories
           }
         }

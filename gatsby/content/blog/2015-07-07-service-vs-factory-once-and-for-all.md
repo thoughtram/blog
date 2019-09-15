@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Service vs Factory - Once and for all
-imageUrl: /images/banner/service-vs-factory.png
+imageUrl: ../assets/images/banner/service-vs-factory.png
 date: 2015-07-07T00:00:00.000Z
 update_date: 2016-11-08T00:00:00.000Z
 summary: >-

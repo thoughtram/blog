@@ -3,7 +3,7 @@ layout: post
 title: Understanding XOR with Keras and TensorFlow
 date: 2016-11-02T00:00:00.000Z
 update_date: 2016-11-08T00:00:00.000Z
-imageUrl: /images/banner/understanding-xor-with-keras-and-tensorflow.jpeg
+imageUrl: ../assets/images/banner/understanding-xor-with-keras-and-tensorflow.jpeg
 summary: >-
   In this article we'll take a closer look at a simple model for a neural net to
   solve an XOR gate. Even with such a basic task, we can figure out quite a

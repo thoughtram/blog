@@ -5,7 +5,7 @@ date: '2014-06-23'
 summary: >-
   As announced earlier this month, we were working on our website to launch it
   as soon as possible. The time has come!
-imageUrl: /images/banner/announcing-our-first-workshop.jpeg
+imageUrl: ../assets/images/banner/announcing-our-first-workshop.jpeg
 redirect_from:
   - /posts/announcing-our-first-workshop/
 categories:

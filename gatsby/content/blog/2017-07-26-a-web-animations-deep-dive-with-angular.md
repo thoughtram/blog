@@ -1,7 +1,7 @@
 ---
 layout: post
 title: A web animations deep dive with Angular
-imageUrl: /images/banner/angular-animations.jpg
+imageUrl: ../assets/images/banner/angular-animations.jpg
 date: 2017-07-26T00:00:00.000Z
 summary: >-
   Angular comes with a built-in animation system that lets us create powerful

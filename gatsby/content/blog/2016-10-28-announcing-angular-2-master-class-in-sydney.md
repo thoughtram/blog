@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Announcing Angular 2 Master Class in Sydney
-imageUrl: /images/banner/announcing-a2mc-sydney.jpg
+imageUrl: ../assets/images/banner/announcing-a2mc-sydney.jpg
 date: 2016-10-30T00:00:00.000Z
 summary: >-
   We are thrilled to share exciting news with you today. We'll bring our Angular

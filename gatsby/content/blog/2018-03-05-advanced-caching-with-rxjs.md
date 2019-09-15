@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Advanced caching with RxJS
-imageUrl: /images/banner/advanced_caching.jpg
+imageUrl: ../assets/images/banner/advanced_caching.jpg
 date: 2018-03-05T00:00:00.000Z
 summary: >-
   When building web applications, performance should always be a top priority.

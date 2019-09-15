@@ -1,7 +1,7 @@
 ---
 layout: post
 title: RxJS Master Class and courseware updates
-imageUrl: /images/banner/rxjs-master-class-and-courseware-updates.jpg
+imageUrl: ../assets/images/banner/rxjs-master-class-and-courseware-updates.jpg
 date: 2018-04-12T00:00:00.000Z
 summary: >-
   Today we're adding another set of
