@@ -2,6 +2,12 @@
 	text-align: center;
 }
 
+.u-flex {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+
 .u-flex--nowrap {
 	flex-wrap: nowrap;
 }
@@ -14,6 +20,14 @@
 	justify-content: flex-end;
 }
 
+.u-distance-reset {
+  margin-top: 0 !important;
+}
+
+.u-distance-bottom-reset {
+  margin-bottom: 0 !important;
+}
+
 .u-unflex {
 	display: block;
 }
@@ -21,6 +35,10 @@
 .u-text--bigger {
 	font-size: 2em;
 	line-height: 1;
+}
+
+.u-text--small {
+  font-size: var(--thtrm-small-fontsize);
 }
 
 .u-min-h1 {

@@ -8,8 +8,9 @@ class Stage extends React.Component {
       <section className="thtrm-section u-flex--nowrap">
         <div className="thtrm-section__item--halfpadded">
           <Link to={post.fields.slug} className="thtrm-section__link thtrm-section__link--black">
-            <h1 className="thtrm-section__heading">{post.frontmatter.title}</h1>
-            <p className="thtrm-section__paragraph">{post.frontmatter.summary}</p>
+            <p className="thtrm-section__heading thtrm-topic u-color--grey u-distance-bottom-reset">{post.frontmatter.categories[0]}</p>
+            <h1>{post.frontmatter.title}</h1>
+            <p className="thtrm-section__paragraph u-color--grey">{post.frontmatter.summary}</p>
             <span className="thtrm-section__link">Read more</span>
           </Link>
         </div>

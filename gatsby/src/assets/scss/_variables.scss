@@ -31,6 +31,7 @@ $thtrm-media-widescreen: 120em; /* 1920px */
   --thtrm-amc-red: #DD0031;
   --thtrm-git-orange: #DE4C36;
   --thtrm-rxjs-pink: #B7178C;
+  --thtrm-border-color: var(--thtrm-color-gray);
 
   /**
    * @typography
@@ -43,6 +44,8 @@ $thtrm-media-widescreen: 120em; /* 1920px */
   --thtrm-nav-fontsize: calc(1 * var(--thtrm-base-fontsize));
   --thtrm-h1-fontszize: calc(1.75 * var(--thtrm-base-fontsize));
   --thtrm-h2-fontszize: calc(1.5 * var(--thtrm-base-fontsize));
+  --thtrm-h3-fontszize: calc(1.3 * var(--thtrm-base-fontsize));
+  --thtrm-h4-fontszize: calc(1.1 * var(--thtrm-base-fontsize));
 
   /**
    * @layout
