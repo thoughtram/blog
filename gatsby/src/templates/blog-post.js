@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import Img from 'gatsby-image';
 
 import { upperCaseFirst } from '../utils/uppercase-first';
 import Layout from "../components/layout"
@@ -16,14 +17,7 @@ class BlogPostTemplate extends React.Component {
       <Layout title={post.frontmatter.title}>
         <SubNav/>
         <section className="thtrm-section--fullbleed">
-          <div className="thtrm-ratio--stripe u-fill-space">
-            <img className="u-img-fit-height"
-                src={ 'https://blog.thoughtram.io' + post.frontmatter.imageUrl }
-                srcSet={ 'https://blog.thoughtram.io' + post.frontmatter.imageUrl + ' 600w' }
-                sizes="100vw"
-                alt="Angular Master Class attendees"
-            />
-          </div>
+          <Img sizes={post.frontmatter.imageUrl.childImageSharp.sizes} className="thtrm-ratio--stripe u-fill-space u-img-fit-height"/>
         </section>
         <div className="u-flex">
           <time dateTime="05 March" className="thtrm-topic u-color--grey">{post.frontmatter.date}</time>
