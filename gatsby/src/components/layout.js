@@ -3,6 +3,7 @@ import SEO from "./seo"
 import Header from './Header';
 import SignUpForm from './SignUpForm';
 import Footer from './Footer';
+import SvgIcons from './SvgIcons';
 
 class Layout extends React.Component {
   render() {
@@ -18,6 +19,7 @@ class Layout extends React.Component {
           <SignUpForm/>
         </aside>
         <Footer/>
+        <SvgIcons/>
       </div>
     )
   }
