@@ -37,6 +37,9 @@ class BlogIndex extends React.Component {
               )
             })}
           </div>
+          <div className="thtrm-section__heading">
+            <a href="" title="All Posts" className="thtrm-button">All Posts</a>
+          </div>
         </section>
       </Layout>
     )

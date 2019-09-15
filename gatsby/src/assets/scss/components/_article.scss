@@ -1,0 +1,27 @@
+.thtrm-article {
+  h2,
+  h3 {
+    margin-top: 48px;
+  }
+  p {
+    margin-top: 24px;
+    font-size: .8rem;
+  }
+  ul,
+  ol {
+    margin-top: 24px;
+    padding-left: 24px;
+
+    li {
+      margin-top: 12px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+  iframe {
+    margin-top: 24px;
+    width: 100%;
+  }
+}

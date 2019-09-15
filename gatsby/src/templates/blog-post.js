@@ -1,8 +1,10 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
+import { upperCaseFirst } from '../utils/uppercase-first';
 import Layout from "../components/layout"
-import SubNav from '../components/SubNav';
+import SubNav from '../components/SubNav'
+import "prismjs/themes/prism-tomorrow.css"
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -23,10 +25,15 @@ class BlogPostTemplate extends React.Component {
             />
           </div>
         </section>
+        <div className="u-flex">
+          <time dateTime="05 March" className="thtrm-topic u-color--grey">{post.frontmatter.date}</time>
+          <p className="thtrm-topic u-color--grey">&nbsp; / {upperCaseFirst(post.frontmatter.categories[0])}</p>
+        </div>
         <h1 className="thtrm-section__subheading">{post.frontmatter.title}</h1>
-        <section className="thtrm-section--fullbleed-intrinsic">
+        <section className="thtrm-section--fullbleed-intrinsic thtrm-article">
           <div className="thtrm-section__heading u-max-width--half" dangerouslySetInnerHTML={{ __html: post.html }} />
         </section>
+        
       </Layout>
       /* <Layout location={this.props.location} title={siteTitle}> */
       /*   <SEO */
@@ -118,8 +125,9 @@ export const pageQuery = graphql`
             }
           }
         }
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "DD. MMMM YYYY")
         description
+        categories
       }
     }
   }

@@ -102,8 +102,7 @@ The first step is to create a new service.
 
 Next, we'll add two interfaces, one that describes the shape of a `Joke` and the other is used to **strongly type** the response of our HTTP request. This makes TypeScript happy but most importantly more convenient and obvious to work with.
 
-{% highlight js %}
-{% raw %}
+```jsx
 export interface Joke {
   id: number;
   joke: string;
@@ -114,8 +113,7 @@ export interface JokeResponse {
   type: string;
   value: Array<Joke>;
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Now let's implement the `JokeService`. We don't want to reveal the implementation detail of whether the data was served from cache or freshly requested from the server, hence we simply expose a property `jokes` returning an Observable that captures a list of jokes.
 
@@ -123,8 +121,7 @@ In order to perform HTTP requests, we need to make sure to inject the `HttpClien
 
 Here's the shell for the `JokeService`:
 
-{% highlight js %}
-{% raw %}
+```jsx
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -137,13 +134,11 @@ export class JokeService {
     ...
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Next, we implement a _private_ method `requestJokes()` which uses the `HttpClient` to perform a _GET_ request to retrieve a list of jokes.
 
-{% highlight js %}
-{% raw %}
+```jsx
 import { map } from 'rxjs/operators';
 
 @Injectable()
@@ -161,8 +156,7 @@ export class JokeService {
     );
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 With that in place, we have everything we need to implement the `jokes` getter method.
 
@@ -174,8 +168,7 @@ In addition, `shareReplay` accepts an optional parameter `bufferSize` that is re
 
 Let's look at the code and use what we have just learned:
 
-{% highlight js %}
-{% raw %}
+```jsx
 import { Observable } from 'rxjs/Observable';
 import { shareReplay, map } from 'rxjs/operators';
 
@@ -204,8 +197,7 @@ export class JokeService {
     );
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Ok, we already talked about most of what we see above. But wait, what's about the private `cache$` property and `if` statement inside the getter? The answer to this is quite simple. If we returned `this.requestJokes().pipe(shareReplay(CACHE_SIZE))` directly then every subscriber creates a **new** cache instance. However, we want to share a single instance across all subscribers. Therefore, we keep the instance in a private property `cache$` and initialize it as soon as the getter was called the first time. All subsequent consumers will receive the shared instance without re-creating the cache every time.
 
@@ -237,8 +229,7 @@ The marble diagram makes it really clear that there's only **one subscription** 
 
 Finally, let's look at the `JokeListComponent` and how we can display the data. The first step is to inject the `JokeService`. After that, inside `ngOnInit` we initialize a property `jokes$` with the value returned by the getter function that is exposed by our service. This will return an Observable of type `Array<Joke>` and this is exactly what we want.
 
-{% highlight js %}
-{% raw %}
+```jsx
 @Component({
   ...
 })
@@ -253,16 +244,13 @@ export class JokeListComponent implements OnInit {
 
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Note that we are not imperatively subscribing to `jokes$`. Instead we use the `async` pipe in the template because it turns out that this pipe is full of little wonders. Curious? Check out this article that unravels [three things you didn't know about the AsyncPipe](/angular/2017/02/27/three-things-you-didnt-know-about-the-async-pipe.html).
 
-{% highlight html %}
-{% raw %}
+```html
 <mat-card *ngFor="let joke of jokes$ | async">...</mat-card>
-{% endraw %}
-{% endhighlight %}
+```
 
 Cool! Here's our simple cache in action. To verify if the request is only made once, open up Chrome's DevTools, click on the _Network_ tab and then select _XHR_. Start out on the dashboard, go to the list view and then navigate back and forth.
 
@@ -280,13 +268,11 @@ The implementation is fairly easy. In a nutshell, we want to create an Observabl
 
 The first option is to use `interval`. This operator takes an optional parameter `period` that defines the time between each emission. Consider the following example:
 
-{% highlight js %}
-{% raw %}
+```jsx
 import { interval } from 'rxjs/observable/interval';
 
 interval(10000).subscribe(console.log);
-{% endraw %}
-{% endhighlight %}
+```
 
 Here we set up an Observable that emits an infinite sequence of integers where each value is emitted every 10 seconds. That also means that the first value is somewhat delayed by the given interval. To better demonstrate the behavior, let's take a look at the marble diagram for `interval`.
 
@@ -318,8 +304,7 @@ As we can see in the marble diagram, the timer emits a value every 10 seconds. F
 
 Let's apply our learnings and update the `JokeService` accordingly.
 
-{% highlight js %}
-{% raw %}
+```jsx
 import { timer } from 'rxjs/observable/timer';
 import { switchMap, shareReplay } from 'rxjs/operators';
 
@@ -348,8 +333,7 @@ export class JokeService {
 
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Awesome! Wanna try it out yourself? Go ahead and play with the following live demo. From the dashboard, go to the list component and then watch the magic happening. Give it a few seconds so that you can see the update in action. Remember, the cache is refreshed every **10 seconds**, but feel free to fiddle with the `REFRESH_INTERVAL`.
 
@@ -371,8 +355,7 @@ First, we have to get an **initial value** to show something to the user, becaus
 
 To make this logic reusable we create a helper methode `getDataOnce()`.
 
-{% highlight js %}
-{% raw %}
+```jsx
 import { take } from 'rxjs/operators';
 
 @Component({
@@ -390,8 +373,7 @@ export class JokeListComponent implements OnInit {
   }
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 From our requirements we know that we only want to update the UI when the user really enforces an update rather than reflecting the change automatically. How does the user enforce an update you ask? This happens when we click on a button in the UI that says "Update". This button is shown together with the notification. For now, let's not worry about the notification and instead focus on the logic that updates the UI when we click that button.
 
@@ -401,8 +383,7 @@ The good thing about the Subject here is that we can simply use an event binding
 
 Let's go ahead and instantiate a new Subject.
 
-{% highlight js %}
-{% raw %}
+```jsx
 import { Subject } from 'rxjs/Subject';
 
 @Component({
@@ -412,13 +393,11 @@ export class JokeListComponent implements OnInit {
   update$ = new Subject<void>();
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Now we can go ahead and wire this up in the template.
 
-{% highlight html %}
-{% raw %}
+```html
 <div class="notification">
   <span>There's new data available. Click to reload the data.</span>
   <button mat-raised-button color="accent" (click)="update$.next()">
@@ -428,8 +407,7 @@ Now we can go ahead and wire this up in the template.
     </div>
   </button>
 </div>
-{% endraw %}
-{% endhighlight %}
+```
 
 See how we use the **event binding** syntax to capture the click event on the `<button>`? When we click on the button we simply propagate a _ghost_ value causing all active Observers to be notified. We call it ghost value because we are not actually passing in any value, or at least a value of type `void`.
 
@@ -443,8 +421,7 @@ From before we should know that there's `switchMap` that solves exactly this pro
 
 In fact, when requesting the most recent value from the cache, the HTTP request is already done and the cache was successfully updated. Therefore, we don't really face the problem of race-conditions here. Though it seems to be asynchronous, it's actually somewhat **synchronous** because the value will be emitted in the same _tick_.
 
-{% highlight js %}
-{% raw %}
+```jsx
 import { Subject } from 'rxjs/Subject';
 import { mergeMap } from 'rxjs/operators';
 
@@ -464,15 +441,13 @@ export class JokeListComponent implements OnInit {
   }
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Sweet! For every "update" we request the latest value from the cache using our helper method we implemented earlier.
 
 From here, it's only a small step to come up with the stream for the jokes that are rendered onto the screen. All we have to do is to merge the initial list of jokes with our `update$` stream.
 
-{% highlight js %}
-{% raw %}
+```jsx
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { merge } from 'rxjs/observable/merge';
@@ -498,8 +473,7 @@ export class JokeListComponent implements OnInit {
   }
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 It's important that we use our helper method `getDataOnce()` to map each update event to the latest cached value. If we recall, it uses `take(1)` internally which will take the first value and then **complete** the stream. This is crucial because otherwise we'd end up with an on-going stream or live connection to the cache. In this case we would basically break our logic of enforcing a UI update only by clicking the "Update" button.
 
@@ -521,8 +495,7 @@ If we think in terms of streams, we can break this up into multiple streams and 
 
 Enough theory! Here's the code:
 
-{% highlight js %}
-{% raw %}
+```jsx
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { skip, mapTo } from 'rxjs/operators';
@@ -544,20 +517,17 @@ export class JokeListComponent implements OnInit {
   }
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Here, we listen for all values emitted by our cache but skip the first because it's not a **refresh**. For every new value on `initialNotifications$` we map it to `true` to show the notification. Once we click the "Update" button in the notification, a value is produced on `update$` and we can simply map it to `false` causing the notification to disappear.
 
 Let's use `showNotification$` inside the template of the `JokeListComponent` to toggle a class that either shows or hides the notification.
 
-{% highlight html %}
-{% raw %}
+```html
 <div class="notification" [class.visible]="showNotification$ | async">
   ...
 </div>
-{% endraw %}
-{% endhighlight %}
+```
 
 Yay! We are getting really close to the final solution. But before we continue, let's try it out and play around with the live demo. Take your time and go through the code step by step again.
 
@@ -575,8 +545,7 @@ Another reason for the destroying the cache is that it's much less complex compa
 
 Let's create a Subject that we use to tell the cache to complete. We'll leverage `takeUntil` and pluck it into our `cache$` stream. In addition, we implement a public facing API that, internally, sets the cache to `null` and also broadcasts an event on our Subject.
 
-{% highlight js %}
-{% raw %}
+```jsx
 import { Subject } from 'rxjs/Subject';
 import { timer } from 'rxjs/observable/timer';
 import { switchMap, shareReplay, map, takeUntil } from 'rxjs/operators';
@@ -613,13 +582,11 @@ export class JokeService {
 
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 This alone doesn't do much, so let's go ahead and use that in our `JokeListComponent`. For this we'll implement a function `forceReload()` that is called whenever we click on the button that says "Fetch new Jokes". Also, we need to create a Subject that is used as an event bus for updating the UI as well as showing the notifications. We'll see in a moment where this comes into play.
 
-{% highlight js %}
-{% raw %}
+```jsx
 import { Subject } from 'rxjs/Subject';
 
 @Component({
@@ -635,28 +602,24 @@ export class JokeListComponent implements OnInit {
   }
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 With this in place we can wire up the button in the template of the `JokeListComponent` to force the cache to reload the data. All we have to do is listen for the `click` event using Angular's event binding syntax and call `forceReload()`.
 
-{% highlight html %}
-{% raw %}
+```html
 <button class="reload-button" (click)="forceReload()" mat-raised-button color="accent">
   <div class="flex-row">
     <mat-icon>cached</mat-icon>
     FETCH NEW JOKES
   </div>
 </button>
-{% endraw %}
-{% endhighlight %}
+```
 
 This already works, but only if we go back to the dashboard and then again to the list view. This is of course not what we want. We want the UI to update **immediately** when we force the cache to reload the data.
 
 Remeber that we have implemented a stream `updates$` that, when we click on "Update", requests the latest data from our cache? It turns out that we need exactly the same behavior, so we can go ahead and extend this stream. This means we have to **merge** both `update$` and `forceReload$`, because those two streams are the sources for updating the UI.
 
-{% highlight js %}
-{% raw %}
+```jsx
 import { Subject } from 'rxjs/Subject';
 import { merge } from 'rxjs/observable/merge';
 import { mergeMap } from 'rxjs/operators';
@@ -678,8 +641,7 @@ export class JokeListComponent implements OnInit {
   }
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 That was easy, wasn't it? Yea but we are not done. In fact, we just "broke" our notifications. It all works just fine until we click "Fetch new Jokes". The data is updated on the screen as well as in our cache, but when we wait 10 seconds there's no notification popping up. The problem here is that forcing an update will complete the cache instance, meaning we no longer receive values in the component. The notification stream (`initialNotifications$`) is basically dead. That's unfortunate, so how can we fix this?
 
@@ -687,8 +649,7 @@ Quite easy! We listen for events on `forceReload$` and for every value we switch
 
 Let's get our hands dirty and implement this!
 
-{% highlight js %}
-{% raw %}
+```jsx
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { merge } from 'rxjs/observable/merge';
@@ -717,8 +678,7 @@ export class JokeListComponent implements OnInit {
   }
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 That's it. Whenever `forceReload$` emits a value we unsubscribe from the previous Observable and switch to a new _notification_ stream. Note that there's a piece of code that we needed twice, that is `this.jokeService.jokes.pipe(skip(1))`. Instead of repeating ourselves, we created a function `getNotifications()` that simply returns a stream of jokes but **skips** the first value. Finally, we merge both `initialNotifications$` and `reload$` together into one stream called `show$`. This stream is responsible for showing the notification on the screen. There's also no need to unsubscribe from `initialNotifications$` because this stream completes before the cache is re-created on the next subscription. The rest stays the same.
 
