@@ -40,13 +40,6 @@ exports.createPages = async ({ graphql, actions }) => {
   posts.forEach((post, index) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node
     const next = index === 0 ? null : posts[index - 1].node
-
-    /* console.log('POST', post); */
-    
-    /* let path = createPath(post.node); */
-    
-    /* console.log('PATH', path); */
-
     createPage({
       path: post.node.fields.slug,
       component: blogPost,
@@ -65,64 +58,16 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   if (node.internal.type === `MarkdownRemark`) {
     const { categories } = node.frontmatter;
     const filename = createFilePath({ node, getNode});
-
-/* FILENAME /2019-09-02-more-GDE-power-at-thoughtram/ */
-/* MATCH [ */
-/*   '/2019-09-02-more-GDE-power-at-thoughtram/', */
-/*   '2019-09-02', */
-/*   'more-GDE-power-at-thoughtram', */
-/*   index: 0, */
-/*   input: '/2019-09-02-more-GDE-power-at-thoughtram/', */
-/*   groups: undefined */
-/* ] */
-    /* console.log('FILENAME', filename); */
-    const match = filename.match(/^\/([\d]{4}-[\d]{2}-[\d]{2})-{1}(.+)\/$/)
+    const match = filename.match(/^\/([\d]{4}-[\d]{2}-[\d]{2})-{1}(.+)\/$/);
 
     let slug;
 
-    if (match) {
-      const date = match[1];
-      const titleSlug = match[2];
-      
-      if (categories) {
-        slug = `/${slugify(
-          categories.concat([date]).join("-"),
-          "/"
-        )}/${titleSlug}.html`
-      } else {
-        slug = `/${date.replace('-', '/')}/${titleSlug}.html`
-      }
+    if (!categories || !match) {
+      slug = filename;
     } else {
-      slug = `${filename}.html`;
+      let date = node.frontmatter.date.substr(0, 10);
+      slug = `/${categories.join('/')}/${slugify(date, "/")}/${match[2]}.html`
     }
-    console.log('SLUG', slug);
-    createNodeField({ node, name: `slug`, value: filename })
-    /* createNodeField({ node, name: `date`, value: date }) */
-
-
-    /* const value = createFilePath({ node, getNode }) */
-    /* createNodeField({ */
-    /*   name: `slug`, */
-    /*   node, */
-    /*   value, */
-    /* }) */
-
-    /* createNodeField({ */
-    /*   name: 'path', */
-    /*   node, */
-    /*   value: createPath(node) */
-    /* }); */
+    createNodeField({ node, name: `slug`, value: slug })
   }
 }
-
-/* function createPath(node) { */
-/*   let path; */
-
-/*   if (node.frontmatter.categories) { */
-/*     path = `${node.frontmatter.categories[0]}/${node.frontmatter.date}${node.fields.slug}`; */
-/*   } else { */
-/*     path = node.fields.slug; */
-/*   } */
-
-/*   return path; */
-/* } */

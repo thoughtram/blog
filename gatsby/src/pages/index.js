@@ -4,6 +4,7 @@ import Layout from '../components/layout'
 import SubNav from '../components/SubNav';
 import Stage from '../components/Stage';
 import Teaser from '../components/Teaser';
+import ListingItem from '../components/ListingItem';
 
 import '../assets/scss/main.scss';
 
@@ -12,7 +13,8 @@ class BlogIndex extends React.Component {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
     const posts = data.allMarkdownRemark.edges
-    const latestPost = posts[10].node;
+    const latestPost = posts[0].node;
+    const morePosts = posts.slice(4, 8);
 
     return (
       <Layout title={siteTitle}>
@@ -26,33 +28,14 @@ class BlogIndex extends React.Component {
           </div>
         </section>
         <section className="thtrm-section">
-          <h2 className="thtrm-section__heading">All Stories</h2>
+          <h2 className="thtrm-section__heading">More Stories</h2>
+
           <div className="thtrm-listing">
-            
-            <a href="" className="thtrm-raw-link thtrm-teaser thtrm-teaser--row thtrm-listing__item">
-              <div>
-                <div className="u-flex">
-                  <time datetime="" className="thtrm-topic u-color--grey">Sep 13</time>
-                  <p className="thtrm-topic u-color--grey">&nbsp; / AngularJS</p>
-                </div>
-                <h2 className="thtrm-title">More peace of mind with new phone backup by Google One</h2>
-              </div>
-              <div className="thtrm-teaser__thumb">
-                <img src="https://blog.thoughtram.io//images/banner/easy-dialogs-with-angular-material.jpg" alt="" />
-              </div>
-            </a>
-            <a href="" className="thtrm-raw-link thtrm-teaser thtrm-teaser--row thtrm-listing__item">
-              <div>
-                <div className="u-flex">
-                  <time datetime="" className="thtrm-topic u-color--grey">Sep 13</time>
-                  <p className="thtrm-topic u-color--grey">&nbsp; / AngularJS</p>
-                </div>
-                <h2 className="thtrm-title">More peace of mind with new phone backup by Google One</h2>
-              </div>
-              <div className="thtrm-teaser__thumb">
-                <img src="https://blog.thoughtram.io//images/banner/easy-dialogs-with-angular-material.jpg" alt="" />
-              </div>
-            </a>
+            {morePosts.map(post => {
+              return (
+                <ListingItem key={post.node.fields.slug} post={post.node}/>
+              )
+            })}
           </div>
         </section>
       </Layout>
@@ -77,7 +60,7 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
-            date(formatString: "MMMM DD, YYYY")
+            date(formatString: "DD MMMM")
             title
             description
             summary
