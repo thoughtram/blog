@@ -2,15 +2,24 @@
   h2,
   h3 {
     margin-top: 48px;
+
+    &:first-child {
+      margin-top: 0;
+    }
   }
   p {
     margin-top: 24px;
     font-size: .8rem;
+
+    &:first-child {
+      margin-top: 0;
+    }
   }
   ul,
   ol {
     margin-top: 24px;
     padding-left: 24px;
+    font-size: .8rem;
 
     li {
       margin-top: 12px;
