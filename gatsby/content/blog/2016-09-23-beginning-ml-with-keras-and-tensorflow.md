@@ -72,7 +72,7 @@ We aren't particular good at math. I'm sure we're actually pretty bad at math. W
 
 In a nutshell, a neural network is a system that is inspired by how we think the human brain works.
 
-<img alt="A neural network" src="/images/1024px-Neural_network.svg.png">
+![](../assets/images/1024px-Neural_network.svg.png)
 
 It has connected neurons where information flows through. The information is then transformed by functions which apply so called weights. The idea is that the neural network finds the right weights for each neuron to eventually learn how to calculate the expected output.
 
@@ -103,11 +103,9 @@ No excuses. Go and [install docker](https://docs.docker.com/engine/installation/
 
 **1. Create a directory on your machine where you want to put your code.**
 
-{% highlight shell %}
-{% raw %}
+```sh
 mkdir ~/ml-fun
-{% endraw %}
-{% endhighlight %}
+```
 
 **2. Create a docker container from our existing image**
 
@@ -115,20 +113,16 @@ When we create a container from an image we can map a local directory (e.g `/Use
 
 We use the `--name` parameter to assign a name to our container that we can easily remember (e.g. `keras-playground`).
 
-{% highlight shell %}
-{% raw %}
+```sh
 docker create -it -v ~/ml-fun:/projects/ml-fun
               --name keras-playground thoughtram/keras
-{% endraw %}
-{% endhighlight %}
+```
 
 **3. The last thing left to do is to *start* the container**
 
-{% highlight shell %}
-{% raw %}
+```sh
 docker start keras-playground
-{% endraw %}
-{% endhighlight %}
+```
 
 
 ## Let's build our first neural network.
@@ -137,14 +131,12 @@ Whew. That was easy, wasn't it? Let's keep it simple and just build our very fir
 
 Many people say that hand-writing recognition would be the *hello world* of machine learning but for now, let's go even simpler than that. Let's teach a neural network to understand the XOR gate. XOR represents the inequality function, i.e., the output is true if the inputs are not alike otherwise the output is false.
 
-{% highlight python %}
-{% raw %}
+```
 [0, 0] = 0
 [0, 1] = 1
 [1, 0] = 1
 [1, 1] = 0
-{% endraw %}
-{% endhighlight %}
+```
 
 
 Our job is to build a neural network that will predict the correct output for any of the four different inputs. Obviously, that isn't a real world use case to throw a neural network at. This task is actually much simpler to solve with traditional programming techniques. Simply put all four states into a HashMap and map them to the desired result.
@@ -153,8 +145,7 @@ That said, it's pretty much the simplest thing we can put together in just a cou
 
 Let's go and create a new file `keras_xor.py` in the directory that we mapped from our host machine into the container. We'll put in the following code.
 
-{% highlight python %}
-{% raw %}
+```py
 import numpy as np
 from keras.models import Sequential
 from keras.layers.core import Activation, Dense
@@ -176,36 +167,30 @@ model.compile(loss='mean_squared_error',
 model.fit(training_data, target_data, nb_epoch=500, verbose=2)
 
 print model.predict(training_data).round()
-{% endraw %}
-{% endhighlight %}
+```
 
 We don't have to understand the code entirely just yet. The most important part is that we set up *training data* and *target data* according to how the XOR gate is supposed to work.
 
-{% highlight python %}
-{% raw %}
+```py
 # the four samples, each with two inputs
 training_data = np.array([[0,0],[0,1],[1,0],[1,1]], "float32")
 
 # the four expected results, each with one output
 target_data = np.array([[0],[1],[1],[0]], "float32")
-{% endraw %}
-{% endhighlight %}
+```
 
 
 To run our code we have to use `docker exec`, pass the name of the container and the command which we want to run *inside* the container.
 
-{% highlight python %}
-{% raw %}
+```py
 docker exec -it keras-playground python /projects/ml-fun/keras_xor.py
-{% endraw %}
-{% endhighlight %}
+```
 
 Alternatively we could execute a `bash` session in the container and then invoke the script from there. Doesn't matter much.
 
 Our output for this command should look somewhat like this.
 
-{% highlight python %}
-{% raw %}
+```py
 ...
 Epoch 14/500
 0s - loss: 0.2376 - binary_accuracy: 0.5000
@@ -221,16 +206,13 @@ Epoch 24/500
  [ 1.]
  [ 1.]
  [ 0.]]
-{% endraw %}
-{% endhighlight %}
+```
 
 The last four lines are the prediction for our input which was
 
-{% highlight python %}
-{% raw %}
+```py
 training_data = np.array([[0,0],[0,1],[1,0],[1,1]], "float32")
-{% endraw %}
-{% endhighlight %}
+```
 
 If you paid attention you'll notice that `0, 1, 1, 0` is actually the correct result for our input according to how the XOR gate is defined.
 
@@ -242,11 +224,9 @@ From the accuracy that is logged after each epoch we can see that the prediction
 
 If you want to see what the prediction is like after the first epoch just change the value of `ng_epoch` to `1`.
 
-{% highlight python %}
-{% raw %}
+```py
 model.fit(training_data, target_data, nb_epoch=1, verbose=2)
-{% endraw %}
-{% endhighlight %}
+```
 
 Run again and you'll see the predictions are really bad in the beginning.
 

@@ -59,8 +59,7 @@ In order to activate the new APIs we need to import Angular's `FormsModule` into
 
 Here's what that could look like:
 
-{% highlight js %}
-{% raw %}
+```js
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -71,27 +70,23 @@ import { FormsModule } from '@angular/forms';
   bootstrap: [AppComponent]
 })
 export AppModule {}
-{% endraw %}
-{% endhighlight %}
+```
 
 We then bootstrap our application module like this:
 
-{% highlight js %}
-{% raw %}
+```js
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app.module';
 
 platformBrowserDynamic().bootstrapModule(AppModule);
-{% endraw %}
-{% endhighlight %}
+```
 
 
 ## `ngForm` Directive
 
 Let's start off with a simple login form that asks for some user data:
 
-{% highlight html %}
-{% raw %}
+```html
 <form>
   <label>Firstname:</label>
   <input type="text">
@@ -110,8 +105,7 @@ Let's start off with a simple login form that asks for some user data:
 
   <button type="submit">Submit</button>
 </form>
-{% endraw %}
-{% endhighlight %}
+```
 
 We've probably all built one of those forms several times. A simple HTML form with input controls for a name and an address of a user. Nothing special going on here.
 
@@ -124,8 +118,7 @@ What we can't see here is that Angular comes with a directive `ngForm` that matc
 
 Angular comes with a very convenient way of exposing directive instances in a component's template using the `exportAs` property of the directive metadata. For example, if we'd build a directive `draggable`, we could expose an instance to the template via the name `draggable` like so:
 
-{% highlight ts %}
-{% raw %}
+```js
 @Directive({
   selector: '[draggable]',
   exportAs: 'draggable'
@@ -133,55 +126,45 @@ Angular comes with a very convenient way of exposing directive instances in a co
 class Draggable {
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 And then, in the template where it's used, we can simply ask for it using Angular's local variable mechanism:
 
-{% highlight ts %}
-{% raw %}
+```html
 <div draggable #myDraggable="draggable">I'm draggable!</div>
-{% endraw %}
-{% endhighlight %}
+```
 
 From this point on `myDraggable` is a reference to an instance of `Draggable` and we can use it throughout our entire template as part of other expressions.
 
 You might wonder why that's interesting. Well, it turns out that `ngForm` directive is exposed as `ngForm`, which means we can get an instance of our form without writing any application code like this:
 
-{% highlight html %}
-{% raw %}
+```html
 <form #form="ngForm">
   ...
 </form>
-{% endraw %}
-{% endhighlight %}
+```
 
 ### Submitting a form and Accessing its value
 
 We can now use `form` to access the form's value and it's validity state. Let's log the value of the form when it's submitted. All we have to do is to add a handler to the form's `submit` event and pass it the form's value. In fact, there's a property on the `ngForm` instance called `value`, so this is what it'd look like:
 
-{% highlight html %}
-{% raw %}
+```html
 <form #form="ngForm" (submit)="logForm(form.value)">
   ...
 </form>
-{% endraw %}
-{% endhighlight %}
+```
 
 Even though this would work, it turns out that there's another output event `ngForm` fires when it's submitted. It's called `ngSubmit`, and it seems to be doing exactly the same as `submit` at a first glance. However, `ngSubmit` ensures that the form doesn't submit when the handler code throws (which is the default behaviour of `submit`) and causes an actual http post request. Let's use `ngSubmit` instead as this is the best practice:
 
-{% highlight html %}
-{% raw %}
+```html
 <form #form="ngForm" (ngSubmit)="logForm(form.value)">
   ...
 </form>
-{% endraw %}
-{% endhighlight %}
+```
 
 In addition, we might have a component that looks something like this:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   selector: 'app',
   template: ...
@@ -192,8 +175,7 @@ class App {
     console.log(value);
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Running this code makes us realize, that the form's value is an empty object. This seems natural, because there's nothing in our component's template yet, that tells the form that the input controls are part of this form. We need a way to register them. This is where `ngModel` comes into play.
 
@@ -203,8 +185,7 @@ In order to register form controls on an `ngForm` instance, we use the `ngModel`
 
 Let's give our form object some structure and register our form controls:
 
-{% highlight html %}
-{% raw %}
+```html
 <form #form="ngForm" (ngSubmit)="logForm(form.value)">
   <label>Firstname:</label>
   <input type="text" name="firstname" ngModel>
@@ -223,13 +204,11 @@ Let's give our form object some structure and register our form controls:
 
   <button type="submit">Submit</button>
 </form>
-{% endraw %}
-{% endhighlight %}
+```
 
 Great! If we now enter some values and submit the form, we'll see that our application will log something like this:
 
-{% highlight json %}
-{% raw %}
+```json
 {
   firstname: 'Pascal',
   lastname: 'Precht',
@@ -237,13 +216,11 @@ Great! If we now enter some values and submit the form, we'll see that our appli
   zip: '00011',
   city: 'San Francisco'
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Isn't that cool? We can basically take this JSON object as it is and send it straight to a remote server for whatever we want to do with it. Oh wait, what if we actually want to have some more structure and make our form object look like this?
 
-{% highlight json %}
-{% raw %}
+```json
 {
   name: {
     firstname: 'Pascal',
@@ -255,8 +232,7 @@ Isn't that cool? We can basically take this JSON object as it is and send it str
     city: 'San Francisco'
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Do we now have to wire everything together by hand when the form is submitted? Nope! Angular has us covered - introducing `ngModelGroup`.
 
@@ -268,8 +244,7 @@ And if you now think: "Wait, isn't a form then also just a control group", then 
 
 Let's semantically group our form control values with `ngModelGroup`:
 
-{% highlight html %}
-{% raw %}
+```html
 <fieldset ngModelGroup="name">
   <label>Firstname:</label>
   <input type="text" name="firstname" ngModel>
@@ -288,15 +263,13 @@ Let's semantically group our form control values with `ngModelGroup`:
   <label>City:</label>
   <input type="text" name="city" ngModel>
 </fieldset>
-{% endraw %}
-{% endhighlight %}
+```
 
 As you can see, all we did was wrapping form controls in `<fieldset>` elements and applied `ngModelGroup` directives to them. There's no specific reason we used `<fieldset>` elements. We could've used `<div>`s too. The point is, that there has to be an element, where we add `ngModelGroup` so it will be registered at our `ngForm` instance.
 
 We can see that it worked out by submitting the form and looking at the output:
 
-{% highlight json %}
-{% raw %}
+```json
 {
   name: {
     firstname: 'Pascal',
@@ -308,8 +281,7 @@ We can see that it worked out by submitting the form and looking at the output:
     city: 'San Francisco'
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Awesome! We now get the wanted object structure out of our form without writing any application code.
 
@@ -319,8 +291,7 @@ So `ngModel` is the thing in Angular that implements two-way data binding. It's 
 
 There are two ways to handle this, depending on what we want to do. One thing we can do is to apply property binding using the brackets syntax, so we can bind an existing value to a form control using one-way binding:
 
-{% highlight html %}
-{% raw %}
+```html
 <fieldset ngModelGroup="name">
   <label>Firstname:</label>
   <input type="text" name="firstname" [ngModel]="firstname">
@@ -328,13 +299,11 @@ There are two ways to handle this, depending on what we want to do. One thing we
   <label>Lastname:</label>
   <input type="text" name="lastname" [ngModel]="lastname">
 </fieldset>
-{% endraw %}
-{% endhighlight %}
+```
 
 Whereas the corresponding model could look something like this:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   selector: 'app',
   template: ...
@@ -348,13 +317,11 @@ class App {
     console.log(value);
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 In addition, we can of course use `ngModel` and two-way data binding, in case we want to reflect the model values somewhere else in our template:
 
-{% highlight html %}
-{% raw %}
+```html
 <fieldset ngModelGroup="name">
   <label>Firstname:</label>
   <input type="text" name="firstname" [(ngModel)]="firstname">
@@ -364,8 +331,7 @@ In addition, we can of course use `ngModel` and two-way data binding, in case we
   <input type="text" name="lastname" [(ngModel)]="lastname">
   <p>You entered {{lastname}}</p>
 </fieldset>
-{% endraw %}
-{% endhighlight %}
+```
 
 This just simply works as expected.
 

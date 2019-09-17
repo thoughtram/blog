@@ -49,13 +49,11 @@ It's actually way simpler than it sounds. In Angular world, when we build direct
 
 The easiest way to illustrate that is the `<details>` element. `<details>` renders a UI component (in some browers), which we can click on to open and close it.
 
-{% highlight html %}
-{% raw %}
+```html
 <details>
   <p>Hey y'all I've put some content here.</p>
 </details>
-{% endraw %}
-{% endhighlight %}
+```
 
 As you can see, we can put some HTML in between the `<details>` tags and it gets somehow magically projected somewhere else. The thing that makes this possible are **Content Insertion Points** which are part of the **Shadow DOM** specification. They allow us to mark places in an element's template where Light DOM is going to be projected.
 
@@ -63,8 +61,7 @@ Angular's transclusion feature is basically some sort of polyfill for this kind 
 
 We can easily reimplement a `<details>` element with Angular like this:
 
-{% highlight js %}
-{% raw %}
+```js
 angular.module('myApp', [])
 
 .directive('ngDetails', function () {
@@ -80,8 +77,7 @@ angular.module('myApp', [])
     `
   };
 });
-{% endraw %}
-{% endhighlight %}
+```
 
 Setting `transclude` to `true` enables transclusion for the directive, whereas `ng-transclude` in the template tells Angular where to put the HTML from the outside world. Of course, this is a very very simple reimplementation, but it's really just to demonstrate the point of transclusion.
 
@@ -93,29 +89,25 @@ Even though transclusion is a very neat feature to provide APIs where consumers 
 
 Shadow DOM uses a `<content>` tag to specify insertion points. If we'd reimplement the `<details>` tag with web components technologies, our component's template could look something like this (simplified):
 
-{% highlight js %}
-{% raw %}
+```html
 <div class="summary">
   Details
 </div>
 <div class="content">
   <content></content>
 </div>
-{% endraw %}
-{% endhighlight %}
+```
 
 This is more or less the equivalent of transclusion in Angular. However, Shadow DOM takes it even further. It allows us to specify what we want to project into our shadow DOM. This is where the `select` attribute comes into play. Let's say we're only interested in projecting `<h2>` elements, we can update our template with content selection like this:
 
-{% highlight js %}
-{% raw %}
+```js
 <div class="summary">
   Details
 </div>
 <div class="content">
   <content select="h2"></content>
 </div>
-{% endraw %}
-{% endhighlight %}
+```
 
 Super powerful! The specification has even evolved more with another `<slot>` tag which is a bit more powerful. However, after all it everything boils down to what we've seen so far. 
 
@@ -127,21 +119,18 @@ Multiple transclusion has been proposed a loooong time ago. In fact, Vojta [came
 
 The `<details>` tag allows us to configure a "summary" which defaults to `"Details"`. In order to change it, all we have to do is to put a `<summary>` tag inside the `<details>` element like this:
 
-{% highlight html %}
-{% raw %}
+```html
 <details>
   <summary>Click me!</summary>
   <p>Hey y'all I've put some content here.</p>
 </details>
-{% endraw %}
-{% endhighlight %}
+```
 
 This we couldn't do with Angular's transclusion before, because we can't just take all the DOM as it is. We would need to take the `<summary>`, transclude at a specific place in our template, and then we'd need to transclude the rest somewhere else.
 
 With multpile transclusion we can totally do that. We just have to extend our directive a tiny little bit (note that we're using `<span>` as summary element, but you can use whatever you want):
 
-{% highlight js %}
-{% raw %}
+```js
 angular.module('myApp', [])
 
 .directive('ngDetails', function () {
@@ -159,8 +148,7 @@ angular.module('myApp', [])
     `
   };
 });
-{% endraw %}
-{% endhighlight %}
+```
 
 We basically made two changes:
 
@@ -169,14 +157,12 @@ We basically made two changes:
 
 The original `ng-transclude` stays as is, since it simply takes the rest to be transcluded. We can now use our `<ng-details>` component like this:
 
-{% highlight html %}
-{% raw %}
+```html
 <ng-details>
   <span>Details</span>
   <p>More content here</p>
 </ng-details>
-{% endraw %}
-{% endhighlight %}
+```
 
 Isn't that cool? Here's the code in action:
 
@@ -184,23 +170,19 @@ Isn't that cool? Here's the code in action:
 
 We can even make transclusion slots optional by prefixing the element tag name with a `?` like this:
 
-{% highlight html %}
-{% raw %}
+```js
 transclude: {
   'summarySlot': '?span'
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 This is already very cool, but our `ng-details` directive still lacks one specific behaviour. If we don't specify a `<summary>`, `<details>` defaults to `"Details"`. Our component however, doesn't do this. We can provide a fallback summary by simply putting something into the DOM where other elements will be transcluded to:
 
-{% highlight js %}
-{% raw %}
+```html
 <div class="summary" ng-click="open = !open">
   {{ open ? '&blacktriangledown;' : '&blacktriangleright;' }} <span ng-transclude="summarySlot">Details</span>
 </div>
-{% endraw %}
-{% endhighlight %}
+```
 
 Seen what happened? We just put `"Details"` as text into our span element. This text will be replace with the transcluded DOM, if it is applied.
 

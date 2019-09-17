@@ -57,8 +57,7 @@ Before we start implementing the actual component, let's first clarify what we w
 
 Of course, in Angular, those implementation details are hidden behind some nice readable and declarative elements that we all know as directives. Having a tool like Angular (and also Web Components) allows us to create custom elements, so that a consumer could use something like the following snippet to add tabs to an application:
 
-{% highlight html %}
-{% raw %}
+```html
 <tabs>
   <tab tabTitle="Tab 1">
     Here's some content.
@@ -67,8 +66,7 @@ Of course, in Angular, those implementation details are hidden behind some nice 
     And here's more in another tab.
   </tab>
 </tabs>
-{% endraw %}
-{% endhighlight %}
+```
 
 We have a `<tab>` element that simply represents a single tab which has a title, and we have a `<tabs>` element that takes care of making those `<tab>` elements actually "tabbable".
 
@@ -76,16 +74,14 @@ If you've been following the development and concepts of Angular, you probably l
 
 This means, talking about the `tabTitle` attribute that we have in the code above, consumers can either write to the component attribute (if it exists), or to the component property. The latter would allow the consumer to pass expressions to the component that first get evaluated. Here's what it could look like:
 
-{% highlight html %}
-{% raw %}
+```html
 <tab tabTitle="This is just a String">
   ...
 </tab>
 <tab [tabTitle]="thisIsAnExpression">
   ...
 </tab>
-{% endraw %}
-{% endhighlight %}
+```
 
 Alright, now that we know what we want to build, let's get our hands dirty with some Angular code.
 
@@ -94,8 +90,7 @@ Alright, now that we know what we want to build, let's get our hands dirty with 
 We start off by implementing a rather static version of the `<tabs>` element. If you've read our article on [building a zippy component in Angular](/angular/2015/03/27/building-a-zippy-component-in-angular-2.html),
 you know that we need the `@Component()` decorator to tell Angular what the selector and template for our component should be.
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   selector: 'tabs',
   template: `
@@ -108,15 +103,13 @@ you know that we need the `@Component()` decorator to tell Angular what the sele
 export class Tabs {
 
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 When using the `Component` decorator, we can specify the template using the `template` property. The back tick syntax comes with ES2015 and allows us to do multi-line string definition without using concatenation operators like `+`.
 
 As you can see, the component template already comes with a static list of tabs. This list will be replaced with a dynamic directive later, for now we keep it like this so we get a better picture of the direction we're going. We also need a place where the tab contents will go. Let's add an insertion point to our template. This will project the outer light DOM into the Shadow DOM (Emulation).
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   selector: 'tabs',
   template: `
@@ -127,23 +120,19 @@ As you can see, the component template already comes with a static list of tabs.
     <ng-content></ng-content>
   `
 })
-{% endraw %}
-{% endhighlight %}
+```
 
 Cool, we can already start using our `<tabs>` component and write HTML into it like this:
 
-{% highlight html %}
-{% raw %}
+```html
 <tabs>
   <p>Some random HTML with some random content</p>
 </tabs>
-{% endraw %}
-{% endhighlight %}
+```
 
 Of course, we do want to use `<tab>` elements inside our `<tabs>` component, so let's build that one. It turns out that the `<tab>` element is actually quite primitive. It's basically just a container element that has an insertion point to project light DOM. We shouldn't forget the configurable `tabTitle`. Here's how we do it.
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   selector: 'tab',
   template: `
@@ -155,15 +144,13 @@ Of course, we do want to use `<tab>` elements inside our `<tabs>` component, so 
 export class Tab {
   @Input() tabTitle;
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 The element should be named `<tab>` so we set the `selector` property accordingly. We bind the `tabTitle` **input** to the component's `tabTitle` **property**. Last but not least we add a template that is just a div with an insertion point.
 
 Wait, that's it? Well, sort of. There's a tiny bit more we need to do, but let's just use our new `<tab>` component in our `<tabs>` component.
 
-{% highlight html %}
-{% raw %}
+```html
 <tabs>
   <tab tabTitle="Foo">
     Content of tab Foo
@@ -172,8 +159,7 @@ Wait, that's it? Well, sort of. There's a tiny bit more we need to do, but let's
     Content of tab Bar
   </tab>
 </tabs>
-{% endraw %}
-{% endhighlight %}
+```
 
 Executing this in the browser, we notice that we still get a list with `Tab 1` and `Tab 2` and in addition, we see the projected contents of both tabs at the same time. That's not quite a tabs component, right?
 
@@ -181,33 +167,28 @@ Executing this in the browser, we notice that we still get a list with `Tab 1` a
 
 We're getting there. Let's first make our `<tabs>` component to actually use the correct titles instead of a hard-coded list. In order to generate a dynamic list, we need a collection. We can use our component's constructor to initialize a collection that holds all tabs like this:
 
-{% highlight js %}
-{% raw %}
+```js
 export class Tabs {
 
   // typescript needs to know what properties will exist on class instances
   tabs: Tab[] = [];
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Okay cool, but how do we get our tab titles into that collection? This is where, in Angular 1, directive controllers come in. However, since Angular 2.x it's much easier. First we need an interface so that the outside world can actually add items to our internal collection. Let's add a method `addTab(tab: Tab)`, that takes a `Tab` object and does exactly what we need.
 
-{% highlight js %}
-{% raw %}
+```js
 export class Tabs {
   ...
   addTab(tab:Tab) {
     this.tabs.push(tab);
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 The method just simply pushes the given object into our collection and we're good. Next we update the template so that the list is generated dynamically based on our collection. In Angular 1 we have a `ngRepeat` directive that lets us iterate over a collection to repeat DOM. Since Angular 2.x there a a `ngFor` directive that pretty much solves the exact same problem. We use the directive to iterate over our tabs collection to generate a dynamic list of tab titles in the component's template.
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   ...
   template: `
@@ -216,8 +197,7 @@ The method just simply pushes the given object into our collection and we're goo
     </ul>
   `
 })
-{% endraw %}
-{% endhighlight %}
+```
 
 If the templating syntax doesn't make sense to you at all, you might want to check out [this design doc](https://docs.google.com/document/d/1HHy_zPLGqJj0bHMiWPzPCxn1pO5GlOYwmv-qGgl4f_s/edit).
 
@@ -225,15 +205,13 @@ Alright, we have a collection, we have an API to extend the collection and we ha
 
 That's where the `<tab>` component comes into play (again). Inside the component we can simply ask for a **parent** `Tabs` dependency by using the new, much more powerful dependency injection system and get an instance of it. This allows us to simply use given APIs inside a child component. Let's take a look at what that looks like.
 
-{% highlight js %}
-{% raw %}
+```js
 class Tab {
   constructor(tabs: Tabs) {
     tabs.addTab(this)
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Wait, what happens here? `tabs: Tabs` is just Typescript type annotation which Angular uses for Dependency Injection.
 Please check out our article where we go deeper inside [Angular DI](/angular/2015/05/18/dependency-injection-in-angular-2)
@@ -254,8 +232,7 @@ Using the components as they are right now, we **do** get a tabs list generated 
 
 Well, first we need a property that activates or deactivates a tab and depending on that value, we either show or hide it. We can simply extend our `<tab>` template accordingly like this:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   template: `
     <div [hidden]="!active">
@@ -264,13 +241,11 @@ Well, first we need a property that activates or deactivates a tab and depending
   `
 })
 class Tab { ... }
-{% endraw %}
-{% endhighlight %}
+```
 
 If a tab is not active, we simply hide it. We haven't specified this property anywhere, which means it's `undefined` which evaluates to `false` in that condition. So every tab is deactivated by default. In order to have at least one tab active, we can extend the `addTab()` method accordingly. The following code for instance, activates the very first tab that is added to the collection.
 
-{% highlight js %}
-{% raw %}
+```js
 export class Tabs {
   ...
   addTab(tab:Tab) {
@@ -280,13 +255,11 @@ export class Tabs {
     this.tabs.push(tab);
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Awesome! The only thing that is missing, is to activate other tabs when a user clicks on a tab. In order to make this possible, we just need a function that sets the `activate` property when a tab is clicked. Here's what such a function could look like.
 
-{% highlight js %}
-{% raw %}
+```js
 export class Tabs {
   ...
   selectTab(tab:Tab) {
@@ -296,13 +269,11 @@ export class Tabs {
     tab.active = true
   }
 }
-{% endraw %}
-{% endhighlight %}
+```js
 
 We simply iterate over all tabs we have, deactivate them, and activate the one that is passed to that function. Then we just add this function to the template, so it is executed whenever a user clicks a tab, like this.
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   ...
   template: `
@@ -313,15 +284,13 @@ We simply iterate over all tabs we have, deactivate them, and activate the one t
     </ul>
   `
 })
-{% endraw %}
-{% endhighlight %}
+```
 
 Again, if this template syntax is new to you, check out the mentioned design document. What happens here is, whenever a `click` event is fired `selectTab()` is executed with the iterator tab instance. Try it out!
 
 Here's the complete source in case you ran into any problems.
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   selector: 'tabs',
   template: `
@@ -367,21 +336,18 @@ export class Tab {
     tabs.addTab(this);
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 And we shouldn't forget that these components need to be declared on our application module:
 
-{% highlight js %}
-{% raw %}
+```js
 @NgModule({
   imports: [BrowserModule],
   declarations: [Tab, Tabs, AppComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
-{% endraw %}
-{% endhighlight %}
+```
 
 
 ## Where to go from here

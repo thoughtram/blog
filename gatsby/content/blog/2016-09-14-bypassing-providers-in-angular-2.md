@@ -47,14 +47,13 @@ As discussed in other [articles](/angular/2015/05/18/dependency-injection-in-ang
 
 To illustrate what that means, let's take a look at the following figure:
 
-<img src="/images/injector-tree.svg" alt="Injector Tree">
+![](../assets/images/injector-tree.svg)
 
 What we see here is a tree of components, which is usually what an application in Angular is composed of. We also see that every component comes with its own injector. This allows us to configure how and what is going to be created when we ask for dependencies, on a component level.
 
 Let's say we have an application where we use a `DataService` to perform actions like fetching data, adding data and deleting data. To make this service injectable,  we need to create a provider for it first.
 
-{% highlight js %}
-{% raw %}
+```js
 class DataService {} // this is usually imported from somewhere
 
 @NgModule({
@@ -62,46 +61,41 @@ class DataService {} // this is usually imported from somewhere
   providers: [DataService]
 })
 export class AppModule {}
-{% endraw %}
-{% endhighlight %}
+```
 
 Once we created the provider, we can ask for dependencies of that type in our components like this:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component()
 export class SomeComponent {
   
   constructor(private contactService: DataService) {}
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 In fact, all components in our component tree will now get exactly the same instance, because their injectors will keep looking upwards in the tree for a provider, until they find one.
 
-<img src="/images/injector-tree-2.svg" alt="Injector Tree with Provider">
+![](../assets/images/injector-tree-2.svg)
 
 We can get a different instance of the same service by adding another provider with the same configuration to the injector tree. Providers can be defined on components as well, to configure the corresponding injector.
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   ...
   providers: [DataService]
 })
 export class SomeOtherComponent {}
-{% endraw %}
-{% endhighlight %}
+```
 
 This will affect the dependency lookup in the sense that all children components and the `SomeOtherComponent` component itself will get the `DataService` instance from `SomeOtherComponent`'s injector, instead of the one configured in the `NgModule`.
 
-<img src="/images/injector-tree-3.svg" alt="Injector Tree with multiple Providers">
+![](../assets/images/injector-tree-3.svg)
 
 As we can see, all components in the left part of the tree get their dependency instance from a different provider than the components in the right part of the tree. Okay cool, nothing new here, this has all been discussed in our guide on [DI in Angular](/angular/2015/05/18/dependency-injection-in-angular-2.html).
 
 However, now we have a problem. What if we **want** to get a dependency instance of the root provider (or just another ancestor), essentially bypassing the nearest provider, even though our component is in the left part of the tree? To illustrate the problem, here another figure:
 
-<img src="/images/injector-tree-4.svg" alt="Injector Tree with bypassed Provider">
+![](../assets/images/injector-tree-4.svg)
 
 With the current setup, both providers use the exact same token, so there's no way for us we can distinguish between the two different dependency instances.
 
@@ -114,8 +108,7 @@ Luckily, Angular comes with a couple more provider strategies (`useValue`, `useF
 To give an example, let's say we want to be able to not only use the `DataService` type as a token to ask for the dependency, but also the token `RootDataService`. We can easily do that with the following provider configuration (as always, we can do the same in `@Component` decorators):
 
 
-{% highlight js %}
-{% raw %}
+```js
 class DataService {} // this is usually imported from somewhere
 class RootDataService {} // alias token, also usually imported from somewhere
 
@@ -127,22 +120,19 @@ class RootDataService {} // alias token, also usually imported from somewhere
   ]
 })
 export class AppModule {}
-{% endraw %}
-{% endhighlight %}
+```
 
 What this does is, it tells Angular when someone asks for a dependency for the token `RootDataService`, inject the dependency instance that is created for the token `DataService`. Or in other words, we just created an alias that gives us the exact same instance that we get for the `DataService` token.
 
 We can then go ahead and use the alias token to inject our service instance just like this:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component()
 export class SomeComponent {
   
   constructor(private contactService: RootDataService) {}
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Again, this is the exact same instance. Now, why is this helpful? Well... now that we have two different tokens to get the same instance, it's no longer a problem that another provider in the injector tree "shadows" the provider from our root injector. We can now ask for the dependency instance of `DataService` that is created at the very top of our tree, no matter where we are in the component tree, because the alias token still points to the original instance.
 

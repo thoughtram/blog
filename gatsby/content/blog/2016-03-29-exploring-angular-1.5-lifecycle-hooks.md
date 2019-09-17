@@ -51,8 +51,7 @@ However, this article is on Angular 1.5. Since Angular 1 is evolving in a way to
 This lifecycle hook will be executed when all controllers on an element have been constructed and after their bindings are initialized. This hook is meant to be used for any kind of initialization work of a controller. To get a better idea of how this behaves, let's take a look at some code.
 
 
-{% highlight js %}
-{% raw %}
+```js
 var mod = angular.module('app', []);
 
 function MyCmpController() {
@@ -63,22 +62,19 @@ mod.component('myCmp', {
   template: '<h1>{{$ctrl.name}}</h1>',
   controller: MyCmpController
 });
-{% endraw %}
-{% endhighlight %}
+```
 
 We start off with an [Angular 1.5 component](https://docs.angularjs.org/guide/component) `myCmp`. A component has a controller and a template, and in our example, our component simply has a `name` property that we interpolate. `$ctrl` is the default `controllerAs` namespace, which is super nice because we don't have to set it up.
 
 We can now move the initialization work into the `$onInit` lifecycle hook, by defining the hook on the controller instance:
 
-{% highlight js %}
-{% raw %}
+```js
 function MyCmpController() {
   this.$onInit = function () {
     this.name = 'My Component';
   };
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Okay great. But uhm... what's the big deal? Well, while the resulting output will be the same, we now have the nice side effect that this component doesn't do any initialization work when its constructor is called. Imagine we'd need to do some http requests during initialization of this component or controller. We'd need to take care of mocking these requests whenever we construct such a component. Now we have a better place for these kind of things.
 
@@ -88,8 +84,7 @@ Another nice thing about `$onInit`, is that we can access controllers of parent 
 
 For example, if we'd build a `<tabs>` component and a `<tab>` component, where the latter needs access to the `TabsController` to register itself on it, we can simply ask for it using the `require` property an call it directly via the controller instance.
 
-{% highlight js %}
-{% raw %}
+```js
 mod.component('myTab', {
   ...
   require: {
@@ -101,17 +96,15 @@ mod.component('myTab', {
     };
   }
 });
-{% endraw %}
-{% endhighlight %}
+```
 
-So after all, this aligns perfectly with what we've predicted a long time ago in our article on [binding to directive controllers](http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html).
+So after all, this aligns perfectly with what we've predicted a long time ago in our article on [binding to directive controllers](/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html).
 
 ## `$onChanges()`
 
 This hook allows us to react to changes of one-way bindings of a component. One-way bindings have also been introduced in Angular 1.5 and align a bit more with Angular 2's uni-directional data flow. Let's say we make the `name` property of our `myCmp` configurable from the outside world using a one-way binding:
 
-{% highlight js %}
-{% raw %}
+```js
 mod.component('myCmp', {
   template: '<h1>{{$ctrl.name}}</h1>',
   bindings: {
@@ -119,21 +112,17 @@ mod.component('myCmp', {
   },
   controller: MyCmpController
 });
-{% endraw %}
-{% endhighlight %}
+```
 
 We can now bind an expression to the component's `name` property like this:
 
-{% highlight html %}
-{% raw %}
+```html
 <my-cmp name="someExpression"></my-cmp>
-{% endraw %}
-{% endhighlight %}
+```
 
 Let's say we want to prepend the name with "Howdy" when the name is "Pascal" and otherwise simply greet with "Hello". We can do that using the `$onChanges()` lifecycle hook. It gets called with an object that holds the changes of all one-way bindings with the `currentValue` and the `previousValue`.
 
-{% highlight js %}
-{% raw %}
+```js
 function MyCmpController() {
   this.$onChanges = function (changesObj) {
     if (changesObj.name) {
@@ -144,8 +133,7 @@ function MyCmpController() {
     }
   };
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Neat stuff!
 
@@ -156,8 +144,7 @@ Neat stuff!
 For example, if we'd manually set up a `click` handler (instead of using `ng-click`), we need unregister the event handler when the component is destroyed, otherwise it'll keep hanging around and leaks memory.
 
 
-{% highlight js %}
-{% raw %}
+```js
 function MyCmpController($element) {
 
   var clickHandler = function () {
@@ -172,9 +159,7 @@ function MyCmpController($element) {
     $element.off('click', clickHandler);
   };
 }
-{% endraw %}
-{% endhighlight %}
-
+```
 
 ## `$postLink()`
 

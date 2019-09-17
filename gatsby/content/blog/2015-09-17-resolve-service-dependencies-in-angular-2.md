@@ -50,8 +50,7 @@ This article discusses what this unexpected problem is, why it exists and how it
 
 Let's say we have a simple Angular component which has a `DataService` dependency. It could look something like this:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   selector: 'my-app',
   template: `
@@ -66,13 +65,11 @@ class AppComponent {
     this.items = dataService.getItems();
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 `DataService` on the other hand is a simple class (because that's what a service in Angular is), that provides a method to return some items.
 
-{% highlight js %}
-{% raw %}
+```js
 class DataService {
   items:Array<any>;
 
@@ -88,13 +85,11 @@ class DataService {
     return this.items;
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Of course, in order to actually be able to ask for something of type `DataService`, we have to add a provider for our injector. We can do that by adding a provider to  our component.
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   selector: 'my-app',
   template: `
@@ -105,15 +100,13 @@ Of course, in order to actually be able to ask for something of type `DataServic
   providers: [DataService]
 })
 ...
-{% endraw %}
-{% endhighlight %}
+```
 
 Until now there's nothing new here. If this *is* new to you, you might want to read our article on [Dependency Injection in Angular](/angular/2015/05/18/dependency-injection-in-angular-2.html) first.
 
 So where is the problem? Well, the problem occurs as soon as we try to inject a dependency into our service. We could for example use `Http` in our `DataService` to fetch our data from a remote server. Let's quickly do that. First, we need  to import Angular's `HttpModule` into our application module.
 
-{% highlight js %}
-{% raw %}
+```js
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
@@ -124,13 +117,11 @@ import { HttpModule } from '@angular/http';
   bootstrap: [AppComponent]
 })
 export class AppModule {}
-{% endraw %}
-{% endhighlight %}
+```
 
 Angular's http module comes with all the providers we need to hook up some http action in our service. Next, we need to inject an instance of `Http` in our service to actually use it.
 
-{% highlight js %}
-{% raw %}
+```js
 import { Http } from '@angular/http';
 
 class DataService {
@@ -141,8 +132,7 @@ class DataService {
   }
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 **Boom**. This thing is going to explode. As soon as we run this code in the browser, we'll get the following error:
 
@@ -156,8 +146,7 @@ Yea, we did. Unfortunately it turns out this is not enough. However, obviously i
 
 In our article on [the difference between decorators and annotations](/angular/2015/05/03/the-difference-between-annotations-and-decorators.html) we learned that decorators simply add metadata to our code. If we take our `AppComponent`, once decorated and transpiled, it looks something like this (simplified):
 
-{% highlight js %}
-{% raw %}
+```js
 function AppComponent(myService) {
   ...
 }
@@ -166,23 +155,20 @@ AppComponent = __decorate([
   Component({...}),
   __metadata('design:paramtypes', [DataService])
 ], AppComponent);
-{% endraw %}
-{% endhighlight %}
+```
 
 We can clearly see that `AppComponent` is decorated with `Component`, and some additional metadata for `paramtypes`. The `paramtypes` metadata is the one that is needed by Angular's DI to figure out, for what type it has to return an instance.
 
 This looks good. Let's take a look at the transpiled `DataService` and see what's going on there (also simplified).
 
-{% highlight js %}
-{% raw %}
+```js
 DataService = (function () {
   function DataService(http) {
     ...
   }
   return DataService;
 })();
-{% endraw %}
-{% endhighlight %}
+```
 
 Oops. Apparently we don't have any metadata at all here. Why is that?
 
@@ -196,8 +182,7 @@ So how can we enforce TypeScript to emit metadata for us accordingly? One thing 
 
 We could change our `DataService` to something like this:
 
-{% highlight js %}
-{% raw %}
+```js
 import { Inject } from '@angular/core';
 import { Http } from '@angular/http';
 
@@ -209,21 +194,18 @@ class DataService {
   }
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 **Problem solved**. In fact, this is exactly what `@Inject` is for when not transpiling with TypeScript. If we take a look at the transpiled code now, we see that all the needed metadata is generated (yeap simplified).
 
-{% highlight js %}
-{% raw %}
+```js
 function DataService(http) {
 }
 DataService = __decorate([
   __param(0, angular2_1.Inject(Http)), 
   __metadata('design:paramtypes', [Http])
 ], DataService);
-{% endraw %}
-{% endhighlight %}
+```
 
 However, now we have this Angular machinery in our code and unfortunately, we won't entirely get rid of it. We can do a little bit better though. Remember that we said metadata is generated, if decorators are attached to our code?
 
@@ -233,8 +215,7 @@ Of course, putting just anything that is a decorator on a class doesn't sound re
 
 All we have to do is to import it and put it on our `DataService` like this:
 
-{% highlight js %}
-{% raw %}
+```js
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
@@ -247,7 +228,6 @@ class DataService {
   }
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Again, this will just enforce TypeScript to emit the needed metadata, the decorator itself doesn't have any special meaning here. This seems to be currently the best option we have to solve the illustrated problem.

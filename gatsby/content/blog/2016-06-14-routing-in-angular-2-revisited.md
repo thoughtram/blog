@@ -54,12 +54,11 @@ In this article we want to take a first look at the new and better APIs, touchin
 
 ## Defining Routes
 
-Let's say we want to build a contacts application (in fact, this is what we do in our [Angular Master Class](http://thoughtram.io/angular2-master-class.html)). Our contacts application shows a list of contacts, which is our `ContactsListComponent` and when we click on a contact, we navigate to the `ContactsDetailComponent`, which gives us a detailed view of the selected contact.
+Let's say we want to build a contacts application (in fact, this is what we do in our [Angular Master Class](http://thoughtram.io/angular-master-class.html)). Our contacts application shows a list of contacts, which is our `ContactsListComponent` and when we click on a contact, we navigate to the `ContactsDetailComponent`, which gives us a detailed view of the selected contact.
 
 A simplified version of `ContactsListComponent` could look something like this:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   selector: 'contacts-list',
   template: `
@@ -74,15 +73,13 @@ A simplified version of `ContactsListComponent` could look something like this:
 export class ContactsListComponent {
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Let's not worry about how `ContactsListComponent` gets hold of the contact data. We just assume it's there and we generate a list using `ngFor` in the template.
 
 `ContactsDetailComponent` displays a single contact. Again, we don't want to worry too much about how this component is implemented yet, but a simplified version could look something like this:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   selector: 'contacts-detail',
   template: `
@@ -99,29 +96,25 @@ Let's not worry about how `ContactsListComponent` gets hold of the contact data.
 export class ContactsDetailComponent {
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Especially in `ContactsDetailComponent` there are a couple more things we need to consider when it comes to routing (e.g. how to link to that component, how to get access to URL parameters), but for now, the first thing we want to do is defining routes for our application.
 
 Defining routes is easy. All we have to do is to create a collection of `Route` which simply follows an object structure that looks like this:
 
-{% highlight js %}
-{% raw %}
+```js
 interface Route {
   path?: string;
   component?: Type|string;
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 As we can see, there are actually a couple more properties than just the three we show here. We'll get to them later but this is all we need for now.
 
 Routes are best defined in a separate module to keep our application easy to test and also to make them easier to reuse. Let's define routes for our components in a new module (maybe `contacts.routes.ts`?) so we can add them to our application in the next step:
 
-{% highlight js %}
-{% raw %}
+```js
 import { ContactsListComponent } from './contacts-list';
 import { ContactsDetailComponent } from './contacts-detail';
 
@@ -129,15 +122,13 @@ export const ContactsAppRoutes = [
   { path: '', component: ContactsListComponent },
   { path: 'contacts/:id', component: ContactsDetailComponent }
 ];
-{% endraw %}
-{% endhighlight %}
+```
 
 Pretty straight forward right? You might notice that the `path` property on our first `Route` definition is empty. This simply tells the router that this component should be loaded into the view by default (this is especially useful when dealing with child routes). The second route has a placeholder in its path called `id`. This allows us to have some dynamic value in our path which can later be accessed in the component we route to. Think of a contact id in our case, so we can fetch the contact object we want to display the details for.
 
 The next thing we need to do is to make these routes available to our application. In fact, we first need to make sure there's a router in our application at all. We do that by importing Angular `RouterModule` into our application module. But not only that, we also configure it with our routes using `RouterModule.forRoot()`.
 
-{% highlight js %}
-{% raw %}
+```js
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
@@ -158,8 +149,7 @@ import { ContactsAppRoutes } from './app.routes';
   ],
   bootstrap: [ContactsAppComponent]
 })
-{% endraw %}
-{% endhighlight %}
+```
 
 You might wonder where `ContactsAppComponent` comes from. Well, this is just the root component we use to bootstrap our application. In fact, it doesn't really know anything about our `ContactsListComponent` and `ContactsDetailComponent`. We're going to take a look at `ContactsAppComponent` in the next step though.
 
@@ -169,8 +159,7 @@ Okay cool, our application now knows about these routes. The next thing we want 
 
 For that, we take a look at `ContactsAppComponent`:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   selector: 'contacts-app',
   template: `
@@ -183,13 +172,11 @@ For that, we take a look at `ContactsAppComponent`:
 export class ContactsAppComponent {
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Nothing special going on there. However, we need to change that. In order to tell Angular where to load the component we route to, we need to use a directive called `RouterOutlet`. Since we've imported `RouterModule` into our application module, this directive is automatically available to us. Let's add a `<router-outlet>` tag to our component's template so that loaded components are displayed accordingly.
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   ...
   template: `
@@ -200,8 +187,7 @@ Nothing special going on there. However, we need to change that. In order to tel
 export class ContactsAppComponent {
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Bootstrapping that app now displays a list of contacts! Awesome! The next thing we want to do is to link to `ContactsDetailComponent` when someone clicks on a contact.
 
@@ -210,33 +196,28 @@ Bootstrapping that app now displays a list of contacts! Awesome! The next thing 
 With the new router, there are different ways to route to other components and routes. The most straight forward way is to simply use strings, that represent the path we want to route to. We can use a directive called `RouterLink` for that. For instance, if we want to route to `ContactsDetailComponent` and pass the contact id `3`, we can do that by simply writing:
 
 
-{% highlight html %}
-{% raw %}
+```html
 <a routerLink="/contacts/3">Details</a>
-{% endraw %}
-{% endhighlight %}
+```
 
 This works perfectly fine. `RouterLink` takes care of generating an `href` attribute for us that the browser needs to make linking to other sites work. And since we've already imported `RouterModule`, we can simply go ahead and use that directive without further things to do.
 
 While this is great we realise very quickly that this isn't the optimal way to handle links, especially if we have dynamic values that we can only represent as expressions in our template. Taking a look at our `ContactsListComponent` template, we see that we're iterating over a list of contacts:
 
-{% highlight html %}
-{% raw %}
+```html
 <ul>
   <li *ngFor="let contact of contacts | async">
     {{contact.name}}
   </li>
 </ul>
-{% endraw %}
-{% endhighlight %}
+```
 
 We need a way to evaluate something like `{% raw %}{{contact.id}}{% endraw %}` to generate a link in our template. Luckily, `RouterLink` supports not only strings, but also expressions! As soon as we want to use expressions to generate our links, we have to use an array literal syntax in `RouterLink`.
 
 Here's how we could extend `ContactsListComponent` to link to `ContactsDetailComponent`:
 
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   selector: 'contacts-list',
   template: `
@@ -253,8 +234,7 @@ Here's how we could extend `ContactsListComponent` to link to `ContactsDetailCom
 export class ContactsListComponent {
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 There are a couple of things to note here:
 
@@ -267,8 +247,7 @@ Cool! We can now link to `ContactsDetailComponent`. However, this is only half o
 
 A component that we route to has access to something that Angular calls the `ActivatedRoute`. An `ActivatedRoute` is an object that contains information about route parameters, query parameters and URL fragments. `ContactsDetailComponent` needs exactly that to get the id of a contact. We can inject the `ActivatedRoute` into `ContactsDetailComponent`, by using Angular's DI like this:
 
-{% highlight js %}
-{% raw %}
+```js
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -281,14 +260,12 @@ export class ContactsDetailComponent {
 
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 `ActivatedRoute` comes with a `params` property which is an `Observable`. To access the contact id, all we have to do is to subscribe to the parameters `Observable` changes. Let's say we have a `ContactsService` that takes a number and returns an observable that emits a contact object. Here's what that could look like:
 
 
-{% highlight js %}
-{% raw %}
+```js
 import { ActivatedRoute } from '@angular/router';
 import { ContactsService } from '../contacts.service';
 
@@ -317,23 +294,20 @@ export class ContactsDetailComponent {
       });
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Oh, look what we have here! Notice that we're nesting two `subscribe()` calls? This is usually an indicator that we can refactor our code using `flatMap()`, or even better `switchMap()`, as we're calling an asynchronous API and want to deal with out-of-order responses.
 
 Let's refactor our code:
 
-{% highlight js %}
-{% raw %}
+```js
 ngOnInit() {
   this.route.params
     .map(params => params['id'])
     .switchMap(id => this.contactsService.getContact(id))
     .subscribe(contact => this.contact = contact);
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Much better! But are observables really required to get hold of our `id` parameter?
 
@@ -341,8 +315,7 @@ Much better! But are observables really required to get hold of our `id` paramet
 
 Sometimes we're not interested in future changes of a route parameter. All we need is this contact id and once we have it, we can provide the data we want to provide. In this case, an Observable can bit a bit of an overkill, which is why the router supports snapshots. A snapshot is simply a snapshot representation of the activated route. We can access the `id` parameter of the route using snapshots like this:
 
-{% highlight js %}
-{% raw %}
+```js
 ...
   ngOnInit() {
 
@@ -351,8 +324,7 @@ Sometimes we're not interested in future changes of a route parameter. All we ne
         .subscribe(contact => this.contact = contact);
   }
 ...
-{% endraw %}
-{% endhighlight %}
+```
 
 Check out the running example [right here](http://plnkr.co/edit/I9qFkO?p=preview)!
 
@@ -363,8 +335,7 @@ Because router parameters can either have single or multiple values, the params 
 
 The above code can therefore be rewritten as:
 
-{% highlight js %}
-{% raw %}
+```js
 ...
   ngOnInit() {
 
@@ -373,8 +344,7 @@ The above code can therefore be rewritten as:
         .subscribe(contact => this.contact = contact);
   }
 ...
-{% endraw %}
-{% endhighlight %}
+```
 
 This feature has been introduce in [this commit](https://github.com/angular/angular/commit/a755b71), go ahead and take a look for more information.
 

@@ -73,7 +73,7 @@ An injector creates dependencies using providers. Providers are recipes that kno
 
 We start by taking a look at the following code and analysing the problems it introduces.
 
-{% highlight js %}
+```js
 class Car {
   constructor() {
     this.engine = new Engine();
@@ -81,7 +81,7 @@ class Car {
     this.doors = app.get('doors');
   }
 }
-{% endhighlight %}
+```
 
 Nothing special here. We have a class `Car` that has a constructor in which we set up everything we need in order to construct a car object once needed. What's the problem with this code? Well, as you can see, the constructor not only assigns needed dependencies to internal properties, it also knows how those object are created. For example the engine object is created using the `Engine` constructor, `Tires` seems to be a singleton interface and the doors are requested via a global object that acts as a **service locator**.
 
@@ -89,7 +89,7 @@ This leads to code that is hard to maintain and even harder to test. Just imagin
 
 So how can we write this code better and make it more testable? It's super easy and you probably already know what to do. We change our code to this:
 
-{% highlight js %}
+```js
 class Car {
   constructor(engine, tires, doors) {
     this.engine = engine;
@@ -97,33 +97,33 @@ class Car {
     this.doors = doors;
   }
 }
-{% endhighlight %}
+```
 
 All we did is we moved the dependency creation out of the constructor and extended the constructor function to expect all needed dependencies. There are no concrete implementations anymore in this code, we literally moved the responsibility of creating those dependencies to a higher level. If we want to create a car object now, all we have to do is to pass all needed dependencies to the constructor:
 
-{% highlight js %}
+```js
 var car = new Car(
   new Engine(),
   new Tires(),
   new Doors()
 );
-{% endhighlight %}
+```
 
 How cool is that? The dependencies are now decoupled from our class, which allows us to pass in mocked dependencies in case we're writing tests:
 
-{% highlight js %}
+```js
 var car = new Car(
   new MockEngine(),
   new MockTires(),
   new MockDoors()
 );
-{% endhighlight %}
+```
 
 And guess what, **this is dependency injection**. To be a bit more specific, this particular pattern is also called **constructor injection**. There are two other injection patterns, setter injection and interface injection, but we won't cover them in this article.
 
 Okay cool, now we use DI, but when comes a DI **system** into play? As mentioned before, we literally moved the responsibility of dependency creation to a higher level. And this is exactly what our new problem is. Who takes care of assembling all those dependencies for us? It's us.
 
-{% highlight js %}
+```js
 function main() {
   var engine = new Engine();
   var tires = new Tires();
@@ -132,34 +132,34 @@ function main() {
 
   car.drive();
 }
-{% endhighlight %}
+```
 
 We need to maintain a `main` function now. Doing that manually can be quite hairy, especially when the application gets bigger and bigger. Wouldn't it be nice if we could do something like this?
 
-{% highlight js %}
+```js
 function main() {
   var injector = new Injector(...)
   var car = injector.get(Car);
 
   car.drive();
 }
-{% endhighlight %}
+```
 
 ## Dependency Injection as a framework
 
 This is where dependency injection as a framework comes in. As we all know, Angular 1 has it's own DI system which allows us to annotate services and other components and let the injector find out, what dependencies need to be instantiated. For example, the following code shows how we can annotate our `Car` class in Angular 1:
 
-{% highlight js %}
+```js
 class Car {
   ...
 }
 
 Car.$inject = ['Engine', 'Tires', 'Doors'];
-{% endhighlight %}
+```
 
 Then, we register our `Car` as a service and whenever we ask for it, we get a singleton instance of it without needing to care about creating needed dependencies for the car.
 
-{% highlight js %}
+```js
 var app = angular.module('myApp', []);
 
 app.service('Car', Car);
@@ -167,7 +167,7 @@ app.service('Car', Car);
 app.service('OtherService', function (Car) { 
   // instance of Car available
 });
-{% endhighlight %}
+```
 
 This is all cool but it turns out, that the existing DI has some problem though:
 
@@ -183,7 +183,6 @@ These problems need to be solved in order to take the DI of Angular to the next 
 
 ### Attention
 
-<br>
 The `ReflectiveInjector` APIs discussed in this article are deprecated as of [this commit](https://github.com/angular/angular/commit/fcadbf4bf6d00ea5b250a8069e05b3e4bd000a29).
 
 To learn about the newer `StaticInjector` API, head over to [this section](#new-staticinjector-apis). However, concepts are still exactly the same, so it's worthwhile to keep on reading.
@@ -191,7 +190,7 @@ To learn about the newer `StaticInjector` API, head over to [this section](#new-
 
 Before we take a look at actual code, let's first understand the concept behind the new DI in Angular. The following graphic illustrates required components in the new DI system:
 
-<img alt="DI in Angular" src="/images/di-in-angular2-5.svg" style="margin-top: 3em;">
+![DI in Angular](../assets/images/di-in-angular2-5.svg)
 
 The DI in Angular basically consists of three things:
 
@@ -201,7 +200,7 @@ The DI in Angular basically consists of three things:
 
 Okay, now that we have an idea of what the concept looks like, lets see how this is translated to code. We stick with our `Car` class and it's dependencies. Here's how we can use Angular's DI to get an instance of `Car`:
 
-{% highlight js %}
+```js
 import { ReflectiveInjector } from '@angular/core';
 
 var injector = ReflectiveInjector.resolveAndCreate([
@@ -212,11 +211,11 @@ var injector = ReflectiveInjector.resolveAndCreate([
 ]);
           
 var car = injector.get(Car);
-{% endhighlight %}
+```
 
 We import `ReflectiveInjector` from Angular which is an injector implementation that exposes some static APIs to create injectors. `resolveAndCreate()` is basically a factory function that creates an injector and takes a list of providers. We'll explore how those classes are supposed to be providers in a second, but for now we focus on `injector.get()`. See how we ask for an instance of `Car` in the last line? How does our injector know, which dependencies need to be created in order to instantiate a car? A look at our `Car` class will explain...
 
-{% highlight js %}
+```js
 import { Inject } from '@angular/core';
 
 class Car {
@@ -228,49 +227,49 @@ class Car {
     ...
   }
 }
-{% endhighlight %}
+```
 
 We import something called `Inject` from the framework and apply it as decorator to our constructor parameters. If you don't know what decorators are, you might want to read our articles on [the difference between decorators and annotations](/angular/2015/05/03/the-difference-between-annotations-and-decorators.html) and how to [write Angular code in ES5](/angular/2015/05/09/writing-angular-2-code-in-es5.html).
 
 The `Inject` decorator attaches meta data to our `Car` class, that is then consumed by the DI system afterwards. So basically what we're doing here, is that we tell the DI that the first constructor parameter should be an instance of type `Engine`, the second of type `Tires` and the third of type `Doors`. We can rewrite this code to TypeScript, which feels a bit more natural:
 
-{% highlight js %}
+```js
 class Car {
   constructor(engine: Engine, tires: Tires, doors: Doors) {
     ...
   }
 }
-{% endhighlight %}
+```
 
 Nice, our class declares it's own dependencies and the DI can read that information to instantiate whatever is needed to create an object of `Car`. But how does the injector know **how** to create such an object? This is where the providers come into play. Remember the `resolveAndCreate()` method in which we passed a list of classes?
 
-{% highlight js %}
+```js
 var injector = ReflectiveInjector.resolveAndCreate([
   Car,
   Engine,
   Tires,
   Doors
 ]);
-{% endhighlight %}
+```
 
 Again, you might wonder how this list of classes is supposed to be a list of providers. Well, it turns out that this is actually a shorthand syntax. If we translate this to the longer, more verbose, syntax, things might become a bit more clear.
 
-{% highlight js %}
+```js
 var injector = RelfectiveInjector.resolveAndCreate([
   { provide: Car, useClass: Car },
   { provide: Engine, useClass: Engine },
   { provide: Tires, useClass: Tires },
   { provide: Doors, useClass: Doors }
 ]);
-{% endhighlight %}
+```
 
 We have an object with a `provide` property, that maps a **token** to a configuration object. The token can either be a type or a string. If you read those providers now, it's much easier to understand what's happening. We provide an instance of type `Car` via the class `Car`,  type `Engine` via the class `Engine` and so on and so forth. This is the recipe mechanism we were talking about earlier. So with the providers we not only let the injector know which dependencies are used across the application, we also configure how objects of these dependencies are created.
 
 Now the next question comes up: When do we want to use the longer instead of the shorthand syntax? There's no reason to write `{ provide: Foo, useClass: Foo}` if we could just stick with `Foo`, right? Yes, that's correct. That's why we started with the shorthand syntax in the first place. However, the longer syntax enables us to do something very very powerful. Take a look at the next code snippet.
 
-{% highlight js %}
+```js
 { provide: Engine, useClass: OtherEngine }
-{% endhighlight %}
+```
 
 Right. We can map a token to pretty much what ever we want. Here we're mapping the token `Engine` to the class `OtherEngine`. Which means, when we now ask for an object of type `Engine`, we get an instance of class `OtherEngine`.
 
@@ -286,9 +285,9 @@ Sometimes, we don't want to get an instance of a class, but rather just a single
 
 We can provide a simple value using `useValue: value`
 
-{% highlight js %}
+```js
 { provide: 'some value', useValue: 'Hello World' }
-{% endhighlight %}
+```
 
 This comes in handy when we want to provide simple configuration values.
 
@@ -296,16 +295,16 @@ This comes in handy when we want to provide simple configuration values.
 
 We can map an alias token to another token like this:
 
-{% highlight js %}
+```js
 { provide: Engine, useClass: Engine }
 { provide: V8, useExisting: Engine }
-{% endhighlight %}
+```
 
 **Providing factories**
 
 Yes, our beloved factories.
 
-{% highlight js %}
+```js
 { 
   provide: Engine,
   useFactory: () => {
@@ -316,11 +315,11 @@ Yes, our beloved factories.
     }
   }
 }
-{% endhighlight %}
+```
 
 Of course, a factory might have its own dependencies. Passing dependencies to factories is as easy as adding a list of tokens to the factory:
 
-{% highlight js %}
+```js
 {
   provide: Engine,
   useFactory: (car, engine) => {
@@ -328,7 +327,7 @@ Of course, a factory might have its own dependencies. Passing dependencies to fa
   },
   deps: [Car, Engine]
 }
-{% endhighlight %}
+```
 
 
 ## Optional Dependencies
@@ -336,7 +335,7 @@ Of course, a factory might have its own dependencies. Passing dependencies to fa
 The `@Optional` decorator lets us declare dependencies as optional. This comes in handy if, for example, our application expects a third-party library, and in case it's not available, it can fallback.
 
 
-{% highlight js %}
+```js
 class Car {
   constructor(@Optional(jQuery) $) {
     if (!$) {
@@ -344,7 +343,7 @@ class Car {
     }
   }
 }
-{% endhighlight %}
+```
 
 As you can see, Angular's DI solves pretty much all issues we have with Angular 1's DI. But there's still one thing we haven't talked about yet. Does the new DI still create singletons? The answer is yes.
 
@@ -354,7 +353,7 @@ If we need a transient dependency, something that we want a new instance every t
 
 **Factories** can return instances of classes. Those won't be singletons. Note that in the following code we're **creating** a factory.
 
-{% highlight js %}
+```js
 { 
   provide: Engine,
   useFactory: () => {
@@ -363,20 +362,20 @@ If we need a transient dependency, something that we want a new instance every t
     }
   }
 }
-{% endhighlight %}
+```
 
 We can create a **child injector** using `Injector.resolveAndCreateChild()`. A child injector introduces its own bindings and an instance of an object will be different from the parent injector's instance.
 
-{% highlight js %}
+```js
 var injector = ReflectiveInjector.resolveAndCreate([Engine]);
 var childInjector = injector.resolveAndCreateChild([Engine]);
 
 injector.get(Engine) !== childInjector.get(Engine);
-{% endhighlight %}
+```
 
 Child injectors are even more interesting. It turns out that a child injector will look up a token binding on it's parent injector if no binding for the given token is registered on the child injector. The following graphic visualises what happens:
 
-<img style="margin-bottom: 2em;" alt="Child injectors" src="/images/transient-dependencies-4.svg">
+![Child injectors](../assets/images/transient-dependencies-4.svg)
 
 The graphic shows three injectors where two of them are child injectors. Each injector gets its own configuration of providers. Now, if we ask the second child injector for an instance of type `Car`, the car object will be created by that child injector. However, the engine will be created by the first child injector and the tires and doors will be created by the outer most parent injector. It kind of works like a prototype chain.
 
@@ -391,7 +390,7 @@ Since version 5.0.0, `ReflectiveInjector` has been deprecated in favour of `Stat
 
 `StaticInjector` doesn't really need to resolve tokens anymore as everything is supposed to be static and passed right to the configuration. That's why there's not `resolveAndCreate()`, but a `create()` method. Also, instead of importing `ReflectiveInjector`, we're importing `Injector`.
 
-{% highlight js %}
+```js
 import { Injector } from '@angular/core';
 
 let injector = Injector.create([
@@ -402,7 +401,7 @@ let injector = Injector.create([
 ]);
 
 let car = injector.get(Car);
-{% endhighlight %}
+```
 
 Notice in the following section we discuss how DI is used within Angular. There we don't have to specificy `deps` explicitly as long as we're defining providers in `@Component()` or `@NgModule()`.
 
@@ -412,7 +411,7 @@ Now that we've learned how the DI in Angular works, you might wonder how it is u
 
 Lets take a look at the following simple Angular component.
 
-{% highlight js %}
+```js
 @Component({
   selector: 'app',
   template: '<h1>Hello {{name}}!</h1>'
@@ -420,11 +419,11 @@ Lets take a look at the following simple Angular component.
 class App {
   name = 'World';
 }
-{% endhighlight %}
+```
 
 Nothing special here. If this is entirely new to you, you might want to read our article on [building a zippy](/angular/2015/03/27/building-a-zippy-component-in-angular-2.html) component in Angular. Lets say we want to extend this component by using a `NameService` that is used in the component's constructor. Such a service could look something like this:
 
-{% highlight js %}
+```js
 class NameService {
   name = 'Pascal';;
 
@@ -432,13 +431,13 @@ class NameService {
     return this.name;
   }
 }
-{% endhighlight %}
+```
 
 Again, nothing special here. We just create a class. Now, to make it available in our application as an injectable, we need to pass some provider configurations to our application's injector. But how do we do that? We haven't even created one.
 
 To boostrap an application, we define an `NgModule`. The `@NgModule()` decorator creates metadata that can include providers, just like this:
 
-{% highlight js %}
+```js
 @NgModule({
   imports: [BrowserModule],
   providers: [NameService],
@@ -446,34 +445,33 @@ To boostrap an application, we define an `NgModule`. The `@NgModule()` decorator
   bootstrap: [App]
 })
 export class AppModule {}
-{% endhighlight %}
+```
 
 That's it. Now, to actually inject it, we just use the tools we've already learned about - `@Inject` decorators.
 
-{% highlight js %}
+```js
 class App {
   constructor(@Inject(NameService) NameService) {
     this.name = NameService.getName();
   }
 }
-{% endhighlight %}
+```
 
 Or, if we prefer TypeScript, we can just add type annotations to our constructor:
 
-{% highlight js %}
+```js
 class App {
   constructor(NameService: NameService) {
     this.name = NameService.getName();
   }
 }
-{% endhighlight %}
+```
 
 Awesome! All of a sudden, we don't have any Angular machinery at all anymore. But there's one last thing: What if we want a different binding configuration in a specific component?
 
 Lets say we have `NameService` as application wide injectable for the type `NameService`, but one particular component should get a different one? This is where the `@Component` decorators' `providers` property comes in. It allows us to add providers to a specific component (and its child components).
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   selector: 'app',
   providers: [
@@ -484,8 +482,7 @@ Lets say we have `NameService` as application wide injectable for the type `Name
 class App {
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 To make things clear: `providers` doesn't configure the instances that will be injected. It configures a child injector that is created for that component. As mentioned earlier, we can also configure the visibility of our bindings, to be even more specific which component can inject what. E.g. the `viewProviders` property allows to make dependencies only available to a component's view, but not its children. <s>We're going to cover that in another article.</s> Dependency injection host and visibility are covered in [this article](/angular/2015/08/20/host-and-visibility-in-angular-2-dependency-injection.html).
 

@@ -51,8 +51,7 @@ In this article we're going to take a closer look at the ES5 syntax improvements
 
 In order to understand the syntactical improvements in ES5 when building Angular applications, we have to understand what the code looked like before. Angular uses decorators to add meta data to it's application code, which in TypeScript (or ES7) looks something like this:
 
-{% highlight javascript %}
-{% raw %}
+```js
 @Component({
   selector: 'hello-cmp',
   template: 'Hello World!'
@@ -60,13 +59,11 @@ In order to understand the syntactical improvements in ES5 when building Angular
 class HelloComponent {
 
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 ES5 doesn't have the concept of annotations or decorators. That's why the code above translates to something like this, if we'd write it in ES5:
 
-{% highlight javascript %}
-{% raw %}
+```js
 var HelloComponent = function () {
 
 };
@@ -77,10 +74,9 @@ HelloComponent.annotations = [
     template: 'Hello World!'
   })
 ];
-{% endraw %}
-{% endhighlight %}
+```
 
-If this is entirely new to you, you might want to read our article on [Angular code in ES5](http://blog.thoughtram.io/angular/2015/05/09/writing-angular-2-code-in-es5.html) which gives a more detailed explanation of this code. This particular ES5 code totally does it's job, but as mentioned earlier, the syntax is quite wordy. We won't get around the fact that we have to assemble annotations for our components ourselves. However, this can easily be fixed since it's really just syntax after all.
+If this is entirely new to you, you might want to read our article on [Angular code in ES5](/angular/2015/05/09/writing-angular-2-code-in-es5.html) which gives a more detailed explanation of this code. This particular ES5 code totally does it's job, but as mentioned earlier, the syntax is quite wordy. We won't get around the fact that we have to assemble annotations for our components ourselves. However, this can easily be fixed since it's really just syntax after all.
 
 Let's take a look at how this can be done better with the more improved syntax for ES5.
 
@@ -88,8 +84,7 @@ Let's take a look at how this can be done better with the more improved syntax f
 
 Angular comes with helper functions to create components and services right out of the box. Let's take our `HelloComponent` and refactor it with the better syntax:
 
-{% highlight javascript %}
-{% raw %}
+```js
 var HelloComponent = ng.core
   .Component({
     selector: 'hello-cmp',
@@ -100,8 +95,7 @@ var HelloComponent = ng.core
 
     }
   });
-{% endraw %}
-{% endhighlight %}
+```
 
 As we can see, `Component()` is pretty much the equivalent of `@Component` decorator. It takes care of creating annotations on our component, while we pass `ComponentArgs` to it accordingly. What about `Class()`? It's pretty obvious that `Class()` takes the constructor function of our component, but can it also extend other "classes" or consume prototype methods as we would like to create?
 
@@ -115,8 +109,7 @@ Nothing special here. `constructor` is a constructor function which internally g
 
 The `extends` property allows us to extend existing classes or components. Here's a small example that shows what that could look like:
 
-{% highlight javascript %}
-{% raw %}
+```js
 var OtherComponent = ng.core
   .Component({
     selector: 'other-cmp',
@@ -139,15 +132,13 @@ var HelloComponent = ng.
 
     }
   });
-{% endraw %}
-{% endhighlight %}
+```
 
 **Prototype methods**
 
 We can define methods on our class simply by adding a property to it that is a function. In fact, every applied property in `Class()` has to be either a function or an array.
 
-{% highlight javascript %}
-{% raw %}
+```js
   ...
   .Class({
     constructor: function () { 
@@ -157,13 +148,11 @@ We can define methods on our class simply by adding a property to it that is a f
       return this.name;
     }
   });
-{% endraw %}
-{% endhighlight %}
+```
 
 That's pretty straight forward. But why do properties have to be arrays otherwise? Remember [dependency injection in Angular](/angular/2015/05/18/dependency-injection-in-angular-2.html)? We can inject services and factories using `@Inject` decorators, but as we know, there are no decorators nor annotations in ES5. That's where the array syntax comes in.
 
-{% highlight javascript %}
-{% raw %}
+```js
 var HelloComponent = ng.core
   Component({
     selector: 'hello-cmp',
@@ -174,8 +163,7 @@ var HelloComponent = ng.core
       ...
     },
   });
-{% endraw %}
-{% endhighlight %}
+```
 
 ## Conclusion
 

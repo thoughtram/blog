@@ -47,7 +47,7 @@ The basic task of change detection is to take the internal state of a program an
 
 This state might end up as paragraphs, forms, links or buttons in the user interface and specifically on the web, it's the Document Object Model (DOM). So basically we take data structures as input and generate DOM output to display it to the user. We call this process rendering.
 
-<img style="background: #0c4eb2; padding: 0 1em;" src="/images/cd-4.svg">
+![](../assets/images/cd-4.svg)
 
 However, it gets trickier when a change happens at runtime. Some time later when the DOM has already been rendered. How do we figure out what has changed in our model, and where do we need to update the DOM? Accessing the DOM tree is always expensive, so not only do we need to find out where updates are needed, but we also want to keep that access as tiny as possible.
 
@@ -61,8 +61,7 @@ So basically the goal of change detection is always projecting data and its chan
 
 Now that we know what change detection is all about, we might wonder, when exactly can such a change happen? When does Angular know that it has to update the view? Well, let's take a look at the following code:
 
-{% highlight javascript %}
-{% raw %}
+```js
 @Component({
   template: `
     <h1>{{firstname}} {{lastname}}</h1>
@@ -79,8 +78,7 @@ class MyApp {
     this.lastname = 'Green';
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 If this is the first time you're seeing an Angular component, you might want to read our article on [building a tabs component](/angular/2015/04/09/developing-a-tabs-component-in-angular-2.html).
 
@@ -88,8 +86,7 @@ The component above simply displays two properties and provides a method to chan
 
 Here's another one:
 
-{% highlight javascript %}
-{% raw %}
+```js
 @Component()
 class ContactsApp implements OnInit{
 
@@ -103,8 +100,7 @@ class ContactsApp implements OnInit{
       .subscribe(contacts => this.contacts = contacts);
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 This component holds a list of contacts and when it initializes, it performs a http request. Once this request comes back, the list gets updated. Again, at this point, our application state has changed so we will want to update the view.
 
@@ -126,8 +122,7 @@ If you've followed our latest articles, you know that [Zones](/angular/2016/01/2
 
 The short version is, that somewhere in Angular's source code, there's this thing called `ApplicationRef`, which listens to `NgZones` `onTurnDone` event. Whenever this event is fired, it executes a `tick()` function which essentially performs change detection.
 
-{% highlight javascript %}
-{% raw %}
+```js
 // very simplified version of actual source
 class ApplicationRef {
 
@@ -143,20 +138,19 @@ class ApplicationRef {
       .forEach((ref) => ref.detectChanges());
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 ## Change Detection
 
 Okay cool, we now know when change detection is triggered, but how is it performed? Well, the first thing we need to notice is that, in Angular, **each component has its own change detector**.
 
-<img style="background: #0c4eb2; padding: 0 1em;" src="/images/cd-tree-2.svg">
+![](../assets/images/cd-tree-2.svg)
 
 This is a significant fact, since this allows us to control, for each component individually, how and when change detection is performed! More on that later.
 
 Let's assume that somewhere in our component tree an event is fired, maybe a button has been clicked. What happens next? We just learned that zones execute the given handler and notify Angular when the turn is done, which eventually causes Angular to perform change detection.
 
-<img style="background: #0c4eb2; padding: 0 1em;" src="/images/cd-tree-7.svg">
+![](../assets/images/cd-tree-7.svg)
 
 Since each component has its own change detector, and an Angular application consists of a component tree, the logical result is that we're having a **change detector tree** too. This tree can also be viewed as a directed graph where data always flows from top to bottom.
 
@@ -187,8 +181,7 @@ Yes it would, and in fact we can! It turns out there are data structures that gi
 
 In order to understand why and how e.g. immutable data structures can help, we need to understand what mutability means. Assume we have the following component:
 
-{% highlight javascript %}
-{% raw %}
+```js
 @Component({
   template: '<v-card [vData]="vData"></v-card>'
 })
@@ -205,8 +198,7 @@ class VCardApp {
     this.vData.name = 'Pascal Precht';
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 `VCardApp` uses `<v-card>` as a child component, which has an input property `vData`. We're passing data to that component with `VCardApp`'s own `vData` property. `vData` is an object with two properties. In addition, there's a method `changeData()`, which changes the name of `vData`. No magic going on here.
 
@@ -224,8 +216,7 @@ Immutable objects give us the guarantee that objects can't change. Meaning that,
 
 This pseudo code demonstrates it:
 
-{% highlight javascript %}
-{% raw %}
+```js
 var vData = someAPIForImmutables.create({
               name: 'Pascal Precht'
             });
@@ -233,8 +224,7 @@ var vData = someAPIForImmutables.create({
 var vData2 = vData.set('name', 'Christoph Burgdorf');
 
 vData === vData2 // false
-{% endraw %}
-{% endhighlight %}
+```
 
 `someAPIForImmutables` can be any API we want to use for immutable data structures. However, as we can see, we can't simply change the `name` property. We'll get a new object with that particular change and this object has a new reference.
 Or in short: **If there's a change, we get a new reference**.
@@ -245,8 +235,7 @@ Angular can skip entire change detection subtrees when input properties don't ch
 
 Let's see how that works by taking a look at `<v-card>`:
 
-{% highlight javascript %}
-{% raw %}
+```js
 @Component({
   template: `
     <h2>{{vData.name}}</h2>
@@ -256,13 +245,11 @@ Let's see how that works by taking a look at `<v-card>`:
 class VCardCmp {
   @Input() vData;
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 As we can see, `VCardCmp` only depends on its input properties. Great. We can tell Angular to skip change detection for this component's subtree if none of its inputs changed by setting the change detection strategy to `OnPush` like this:
 
-{% highlight javascript %}
-{% raw %}
+```js
 @Component({
   template: `
     <h2>{{vData.name}}</h2>
@@ -273,12 +260,11 @@ As we can see, `VCardCmp` only depends on its input properties. Great. We can te
 class VCardCmp {
   @Input() vData;
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 That's it! Now imagine a bigger component tree. We can skip entire subtrees when immutable objects are used and Angular is informed accordingly.
 
-<img style="background: #0c4eb2; padding: 0 1em;" src="/images/cd-tree-8.svg">
+![](../assets/images/cd-tree-8.svg)
 
 [Jurgen Van De Moere](http://twitter.com/jvandemo) has written an [in-depth article](http://www.jvandemo.com/how-i-optimized-minesweeper-using-angular-2-and-immutable-js-to-make-it-insanely-fast/) on how he made a minesweeper game built with Angular and Immutable.js blazingly fast. Make sure to check that one out.
 
@@ -290,8 +276,7 @@ So, if we use Observables and we want to use `OnPush` to skip change detector su
 
 To understand what that means, let's take a look at this component:
 
-{% highlight javascript %}
-{% raw %}
+```js
 @Component({
   template: '{{counter}}',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -307,8 +292,7 @@ class CartBadgeCmp {
     })
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Let's say we build an e-commerce application with a shopping cart. Whenever a user puts a product into the shopping cart, we want a little counter to show up in our UI, so the user can see the amount of products in the cart.
 
@@ -322,43 +306,38 @@ However, as mentioned earlier, the reference of `addItemStream` will never chang
 
 Here's what our change detector tree might look like (we've set **all** to `OnPush`). No change detection will be performed when an event happens:
 
-<img style="background: #0c4eb2; padding: 0 1em;" src="/images/cd-tree-10.svg">
+![](../assets/images/cd-tree-10.svg)
 
 How can we inform Angular about this change? How can we tell Angular that change detection **needs** to be performed for this component, even though the entire tree is set to `OnPush`?
 
 No worries, Angular has us covered. As we've learned earlier, change detection is **always** performed from top to bottom. So what we need is a way to detect changes for the entire path of the tree to the component where the change happened. Angular can't know which path it is, but we do.
 
-We can access a component's `ChangeDetectorRef` via [dependency injection](http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html), which comes with an API called `markForCheck()`. This method does exactly what we need! It marks the path from our component until root to be checked for the next change detection run.
+We can access a component's `ChangeDetectorRef` via [dependency injection](/angular/2015/05/18/dependency-injection-in-angular-2.html), which comes with an API called `markForCheck()`. This method does exactly what we need! It marks the path from our component until root to be checked for the next change detection run.
 
 Let's inject it into our component:
 
-{% highlight javascript %}
-{% raw %}
+```js
 constructor(private cd: ChangeDetectorRef) {}
-{% endraw %}
-{% endhighlight %}
+```
 
 Then, tell Angular to mark the path from this component until root to be checked:
 
-{% highlight javascript %}
-{% raw %}
-  ngOnInit() {
-    this.addItemStream.subscribe(() => {
-      this.counter++; // application state changed
-      this.cd.markForCheck(); // marks path
-    })
-  }
+```js
+ngOnInit() {
+  this.addItemStream.subscribe(() => {
+    this.counter++; // application state changed
+    this.cd.markForCheck(); // marks path
+  })
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Boom, that's it! Here's what it looks like after the observable event is fired but before change detection kicked in:
 
-<img style="background: #0c4eb2; padding: 0 1em;" src="/images/cd-tree-12.svg">
+![](../assets/images/cd-tree-12.svg)
 
 Now, when change detection is performed, it'll simply go from top to bottom.
 
-<img style="background: #0c4eb2; padding: 0 1em;" src="/images/cd-tree-13.svg">
+![](../assets/image/cd-tree-13.svg)
 
 How cool is that? Once the change detection run is over, it'll restore the `OnPush` state for the entire tree.
 

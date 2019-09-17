@@ -52,25 +52,21 @@ There's one directive in Angular >= 2.x that implements two-way data binding: **
 
 In order to understand what that means, let's take a look at this code snippet here:
 
-{% highlight html %}
-{% raw %}
+```html
 <input [(ngModel)]="username">
 
 <p>Hello {{username}}!</p>
-{% endraw %}
-{% endhighlight %}
+```
 
 Right, this is that one demo that blew our minds back in 2009, implemented in Angular >= 2.x. When typing into the input, the input's value is written into the `username` model and then reflected back into the view, resulting in a nice greeting.
 
 How does this all work? Well, as mentioned earlier, since version 2.x, two-way data binding in Angular really just boils down to property binding and event binding. There is no such thing as two-way data binding. Without the `ngModel` directive, we could easily implement two-way data binding just like this:
 
-{% highlight html %}
-{% raw %}
+```html
 <input [value]="username" (input)="username = $event.target.value">
 
 <p>Hello {{username}}!</p>
-{% endraw %}
-{% endhighlight %}
+```
 
 Let's take a closer look at what's going on here:
 
@@ -91,13 +87,11 @@ Okay cool, but when does `ngModel` come into play then? Since a scenario like th
 
 If we take a look at the source code, we'll notice that `ngModel` actually comes with a property and event binding as well. Here's what our example looks like using `ngModel`, but without using the shorthand syntax:
 
-{% highlight html %}
-{% raw %}
+```html
 <input [ngModel]="username" (ngModelChange)="username = $event">
 
 <p>Hello {{username}}!</p>
-{% endraw %}
-{% endhighlight %}
+```
 
 Same rules apply. The property binding `[ngModel]` takes care of updating the underlying input DOM element. The event binding `(ngModelChange)` notifies the outside world when there was a change in the DOM. We also notice that the handler expression uses only `$event` and no longer `$event.target.value`. Why is that? As we've mentioned earlier, `$event` is the payload of the emitted event. In other words, `ngModelChange` takes care of extracting `target.value` from the inner `$event` payload, and simply emits that (to be technically correct, it's actually the `DefaultValueAccessor` that takes of the extracting that value and also writing to the underlying DOM object).
 
@@ -115,8 +109,7 @@ As you can see, there's a bit more work involved to make two-way data binding wo
 
 Let's say we create a custom counter component and ignore of a second that this would rather be a custom form control.
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   selector: 'custom-counter',
   template: `
@@ -145,13 +138,11 @@ export class CustomCounterComponent {
     this.counter++'
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 It has an internal `counter` property that is used to display the current counter value. In order to make this property two-way data bound, the first thing we have to do is to make it an `Input` property. Let's add the `@Input()` decorator:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component()
 export class CustomCounterComponent {
 
@@ -163,22 +154,18 @@ export class CustomCounterComponent {
   }
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 This already enables us to bind expression to that property as a consumer of that component like this:
 
-{% highlight html %}
-{% raw %}
+```html
 <custom-counter [counter]="someValue"></custom-counter>
-{% endraw %}
-{% endhighlight %}
+```
 
 The next thing we need to do, is to introduce an `@Output()` event with the same name, plus the `Change` suffix. We want to emit that event, whenever the value of the `counter` property changes. Let's add an `@Output()` property and emit the latest value in the setter interceptor:
 
 
-{% highlight js %}
-{% raw %}
+```js
 @Component()
 export class CustomCounterComponent {
 
@@ -191,18 +178,15 @@ export class CustomCounterComponent {
   }
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 That's it! We can now bind an expression to that property using the two-way data binding syntax:
 
-{% highlight html %}
-{% raw %}
+```html
 <custom-counter [(counter)]="someValue"></custom-counter>
 
 <p>counterValue = {{someValue}}</p>
-{% endraw %}
-{% endhighlight %}
+```
 
 Check out the demo and try it out!
 

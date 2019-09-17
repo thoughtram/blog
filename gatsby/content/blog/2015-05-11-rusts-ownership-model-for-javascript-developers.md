@@ -60,9 +60,7 @@ Rust doesn't use a garbage collector while still being 100 % memory safe. So how
 
 Let's explore it by comparing some simple JavaScript code (written in ES6) with it's Rust counterpart.
 
-{% highlight js %}
-{% raw %}
-
+```js
 class Product {}
 
 class Config {
@@ -104,15 +102,13 @@ let basketService = new BasketService(config);
 
 var product = productService.getProduct(1);
 basketService.addProduct(product);
-{% endraw %}
-{% endhighlight %}
+```
 
 It's a simple e-commerce example with four different classes working hand in hand. We have a `Product` class without any functionality because it's sole purpose is to represent a product in this demo context. Then there's a `Config` class which may contain a bunch of configurations such as API endpoints or simply a `debugMode` flag as in our simple example. And last but not least do we have a `ProductService` to retrieve products from and a `BasketService` to put products into a shopping basket.
 
 Let's fokus on what follows after the definition of those classes.
 
-{% highlight js %}
-{% raw %}
+```js
 let config = new Config (true);
 
 let productService = new ProductService(config);
@@ -120,8 +116,7 @@ let basketService = new BasketService(config);
 
 let product = productService.getProduct(1);
 basketService.addProduct(product);
-{% endraw %}
-{% endhighlight %}
+```
 
 We create an instance of a `Config` and pass it to both services. The last two lines show how the two services are used. Easy enough, right?
 
@@ -129,8 +124,7 @@ Let's write the same thing in Rust but instead of directly jumping to the final 
 
 We leave out the `getProduct` and `addProduct` methods for our first implementation as they are just a distraction at this point.
 
-{% highlight rust %}
-{% raw %}
+```rust
 struct Product;
 
 struct Config {
@@ -167,8 +161,7 @@ fn main() {
     let product_service = ProductService::new(config);
     let basket_service = BasketService::new(config);
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 The first thing to notice here is that Rust has no classes but instead has structs. It's out of the scope of this article to discuss the differences though. The second thing to notice is that methods aren't written in the struct definition but are attached to a struct through an `impl` block instead.
 
@@ -179,15 +172,13 @@ To get things going we need to put the code that creates a config and both servi
 Ok, so we have our first version to try. That wasn't all that hard, was it? But no, what's that? When we try to run the code the compiler tells us that something isn't quite right.
 
 
-{% highlight rust %}
-{% raw %}
+```sh
 src/main.rs:37:45: 37:51 error: use of moved value: `config`
 src/main.rs:37     let basket_service = BasketService::new(config);
                                                            ^~~~~~
 src/main.rs:36:47: 36:53 note: `config` moved here because it has type `Config`, which is non-copyable
 src/main.rs:36     let product_service = ProductService::new(config);
-{% endraw %}
-{% endhighlight %}
+```
 
 The compiler disallows usage of `config` in line 37 because it moved in line 36. Uhm..what's a move? Let's go back to how this all started. We were talking about memory management and how Rust assures 100 % memory safety without the usage of a garbage collector.
 
@@ -201,8 +192,7 @@ Being the owner of an object means that you (and only you) own the right to dest
 
 Let's see what that really means in the context of our program. The comments explain what happens line by line.
 
-{% highlight rust %}
-{% raw %}
+```rust
 fn main() {
     let config = Config { debug_mode: true };
     // at this point config is owned by the `main` function
@@ -219,8 +209,7 @@ fn main() {
     // it any more
     let basket_service = BasketService::new(config);
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 You may be wondering why we can't just continue to use `config` without being the owner. The point is that since the `new` method is now the new owner it may just decide to free up the memory. Keep in mind that the owner has the right to destroy the thing that it owns (either explicitly or implicity when it goes out of scope).
 
@@ -233,8 +222,7 @@ The good news is that we don't **have** to transfer ownership each time we pass 
 
 Before we refactor our code to have the services borrow the config, we will temporarily simplify the code one last time to make it obvious why the move happens.
 
-{% highlight rust %}
-{% raw %}
+```rust
 struct Product;
 
 struct Config {
@@ -263,35 +251,29 @@ fn main() {
     let product_service = ProductService::new(config);
     let basket_service = BasketService::new(config);
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 We removed the config from both services so that the `new` methods still takes the `config` as parameter but doesn't use it at all. We are still running into the same error.
 
-{% highlight rust %}
-{% raw %}
+```sh
 src/main.rs:27:45: 27:51 error: use of moved value: `config`
 src/main.rs:27     let basket_service = BasketService::new(config);
                                                            ^~~~~~
 src/main.rs:26:47: 26:53 note: `config` moved here because it has type `Config`, which is non-copyable
 src/main.rs:26     let product_service = ProductService::new(config);
-{% endraw %}
-{% endhighlight %}
+```
 
 The reason for that lies in the method signature of `new`.
 
-{% highlight rust %}
-{% raw %}
+```rust
 fn new (config: Config) -> ProductService
-{% endraw %}
-{% endhighlight %}
+```
 
 This method signature says: "I'm a method that takes ownership of a `Config` and returns a `ProductService`".
 
 But we can change it to borrow a reference instead.
 
-{% highlight rust %}
-{% raw %}
+```rust
 struct Product;
 
 struct Config {
@@ -320,26 +302,22 @@ fn main() {
     let product_service = ProductService::new(&config);
     let basket_service = BasketService::new(&config);
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Whew, this compiles! The `&Config` as the parameter type means that it now borrows a reference instead of taking ownership. The `main` method continues to be the owner with this change.
 
 But there's another thing that we changed. Because the `new` methods now expect a reference instead of the actual type, we need to change the call site, too.
 
-{% highlight rust %}
-{% raw %}
+```rust
 let product_service = ProductService::new(&config);
 let basket_service = BasketService::new(&config);
-{% endraw %}
-{% endhighlight %}
+```
 
 The leading `&` before `config` means that we pass the memory address to the config instead of passing the actual data. And that brings us closer to our JavaScript version which also just passes a reference to `config` under the cover.
 
 Let's change our code back to store the config in the services so that the service methods can have access to it.
 
-{% highlight rust %}
-{% raw %}
+```rust
 struct Product;
 
 struct Config {
@@ -376,27 +354,23 @@ fn main() {
     let product_service = ProductService::new(&config);
     let basket_service = BasketService::new(&config);
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Unfortunately this gives us another error.
 
-{% highlight rust %}
-{% raw %}
+```sh
 src/main.rs:8:13: 8:20 error: missing lifetime specifier [E0106]
 src/main.rs:8     config: &Config
                           ^~~~~~~
 src/main.rs:11:13: 11:20 error: missing lifetime specifier [E0106]
 src/main.rs:11     config: &Config
-{% endraw %}
-{% endhighlight %}
+```
 
 Rust's memory management relies on a concept of lifetimes to track references. Most of the time you won't even notice it because Rust lets us omit most lifetime annotations. But there are cases where Rust needs lifetime annotations such as when defining structs that hold references.
 
 Since we changed our services to store a reference to a `Config` instead of the `Config` itself rusts expect us to annotate our services with lifetime annotations.
 
-{% highlight rust %}
-{% raw %}
+```rust
 struct Product;
 
 struct Config {
@@ -433,8 +407,7 @@ fn main() {
     let product_service = ProductService::new(&config);
     let basket_service = BasketService::new(&config);
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Whew, that's a lot of new syntax that we haven't seen yet.
 
@@ -448,8 +421,7 @@ A deep dive into the topic of lifetimes is out of scope for this article but we'
 
 Now that we got things working with the minimal code needed let's jump to the final version which introduces the `get_product` and `add_product` methods to the services.
 
-{% highlight rust %}
-{% raw %}
+```rust
 struct Config {
     debug_mode: bool
 }
@@ -505,8 +477,7 @@ fn main() {
     let product = product_service.get_product(1);
     basket_service.add_product(product);
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 The rest of the code shouldn't be too scary with the `#[derive(Debug)]` annotation being the only exception. For now let's just accept that those are needed in order to print out the product with the `println!` macro.
 

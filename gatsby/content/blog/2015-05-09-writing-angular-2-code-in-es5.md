@@ -61,15 +61,13 @@ In ES5 we don't have a module system yet. So ideally, we should be able to just 
 
 The easiest way to get hold of Angular ES5 bundles is npmcdn. Here's what we need to embed to get started with ES5 and Angular:
 
-{% highlight html %}
-{% raw %}
+```html
 <script src="https://npmcdn.com/@angular/core@2.0.0-rc.5/bundles/core.umd.js"></script>
 <script src="https://npmcdn.com/@angular/common@2.0.0-rc.5/bundles/common.umd.js"></script>
 <script src="https://npmcdn.com/@angular/compiler@2.0.0-rc.5/bundles/compiler.umd.js"></script>
 <script src="https://npmcdn.com/@angular/platform-browser@2.0.0-rc.5/bundles/platform-browser.umd.js"></script>
 <script src="https://npmcdn.com/@angular/platform-browser-dynamic@2.0.0-rc.5/bundles/platform-browser-dynamic.umd.js"></script>
-{% endraw %}
-{% endhighlight %}
+```
 
 Whereas `@2.0.0-rc.5` is the version number we specify. So that part might change depending on what we want to do.
 
@@ -79,8 +77,7 @@ Well, it turns out that the bundled version exposes an `ng.core` object on the c
 
 Let's start off with a simple component that has a template:
 
-{% highlight javascript %}
-{% raw %}
+```js
 var HelloComponent = function () {
 
 };
@@ -91,13 +88,11 @@ HelloComponent.annotations = [
     template: 'Hello World!'
   })
 ];
-{% endraw %}
-{% endhighlight %}
+```
 
 That's it. We have a constructor function that has a component annotation and a view annotation. The TypeScript equivalent would look something like this:
 
-{% highlight javascript %}
-{% raw %}
+```js
 @Component({
   selector: 'hello-cmp',
   template: 'Hello World!'
@@ -105,8 +100,7 @@ That's it. We have a constructor function that has a component annotation and a 
 class HelloComponent {
 
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 ## Bootstrapping an Angular app in ES5
 
@@ -114,18 +108,15 @@ When we come to the point that we want to bootstrap our application, we need to 
 
 Let's go ahead and create such a module first. `ng.core.NgModule` can be used to create the needed metadata on a constructor function. Just like with our `HelloComponent`, we create an `AppModule` function like this:
 
-{% highlight javascript %}
-{% raw %}
+```js
 var AppModule = function () {
 
 };
-{% endraw %}
-{% endhighlight %}
+```
 
 Next, we add `NgModule` annotations to it:
 
-{% highlight javascript %}
-{% raw %}
+```js
 AppModule.annotations = [
   new ng.core.NgModule({
     imports: [ng.platformBrowser.BrowserModule],
@@ -133,31 +124,26 @@ AppModule.annotations = [
     bootstrap: [HelloComponent]
   })
 ];
-{% endraw %}
-{% endhighlight %}
+```
 
 Similar to TypeScript world, we have to import the `BrowserModule` from the `ng.platformBrowser` package, so we can bootstrap our module in the browser environment. Next, we declare all directives and components that are used inside this module, which in our case, is only the `HelloComponent`. Last but not least, we tell Angular which component to bootstrap when the module is bootstrapped.
 
 We need to make sure that all of the DOM is loaded before we bootstrap our module. Adding an event listener for the `DOMContentLoaded` event and call `bootstrap` once triggered, will help here. When the event is fired, we can call `platformBrowserDynamic().bootstrapModule(AppModule)` to bootstrap our app:
 
-{% highlight javascript %}
-{% raw %}
+```js
 document.addEventListener('DOMContentLoaded', function () {
   ng.platformBrowserDynamic
     .platformBrowserDynamic().bootstrapModule(AppModule);
 });
-{% endraw %}
-{% endhighlight %}
+```
 
 And of course, the corresponding application template looks like this:
 
-{% highlight html %}
-{% raw %}
+```html
 <body>
   <hello-component></hello-component>
 </body>
-{% endraw %}
-{% endhighlight %}
+```
 
 Great we've just bootstrapped our Angular application written in ES5! Was it that hard?
 
@@ -165,20 +151,17 @@ Great we've just bootstrapped our Angular application written in ES5! Was it tha
 
 Let's say we want to add a `GreetingService` to our component. The `@Component` annotation takes a property `viewProviders` to define injectable types for this particular component. This is easy to add. First we build the service. A service in Angular can be just a class, which translates to just a function, which is also just an object in JavaScript.
 
-{% highlight javascript %}
-{% raw %}
+```js
 var GreetingService = function () {}
 
 GreetingService.prototype.greeting = function () {
   return 'Hello';
 };
-{% endraw %}
-{% endhighlight %}
+```
 
 Next we tell our component about it's injectable types:
 
-{% highlight javascript %}
-{% raw %}
+```js
 HelloComponent.annotations = [
   new ng.Component({
     selector: 'hello-cmp',
@@ -186,32 +169,27 @@ HelloComponent.annotations = [
   }),
   ...
 ];
-{% endraw %}
-{% endhighlight %}
+```
 
 This basically tells our component that it should return an instance of `GreetingService` when somebody asks for `GreetingService`. Nobody asked for it yet, so let's change that. First we need something we want to inject into our component's constructor:
 
-{% highlight javascript %}
-{% raw %}
+```js
 var HelloComponent = function (greetingService) {
   this.greeting = greetingService.greeting();
 };
-{% endraw %}
-{% endhighlight %}
+```
 
 To make our component explicitly ask for something that is a `GreetingService`, or in other words, to tell the injector that our `greetingService` parameter should be an instance of `GreetingService`, we need to add a parameter annotation accordingly:
 
-{% highlight javascript %}
-{% raw %}
+```js
 HelloComponent.parameters = [[new ng.core.Inject(GreetingService)]];
-{% endraw %}
-{% endhighlight %}
+```
 
 If you wonder why we define a nested array, this is because one constructor parameter can have more than one associated annotation.
 
 Cool, so it turns out that writing Angular code is actually not weird at all. In addition to that, it kind of gets clear that writing Angular code in ES5 requires more typing. But again, in the end it's up to the application author which language or transpiler to use.
 
-There's even a [better syntax](http://blog.thoughtram.io/angular/2015/07/06/even-better-es5-code-for-angular-2.html), that makes writing and reading Angular code a breeze.
+There's even a [better syntax](/angular/2015/07/06/even-better-es5-code-for-angular-2.html), that makes writing and reading Angular code a breeze.
 
 Check out the demos below!
 

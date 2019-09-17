@@ -86,41 +86,41 @@ Let's start right away and see what the usage of `angular-hint` looks like.
 
 Using `angular-hint` is super easy, since all we have to do is to install it via npm, embed the source in our application and use the `ng-hint` directive that takes care of the rest. Alright, so let's install the module via npm:
 
-{% highlight sh %}
+```
 $ npm install angular-hint
-{% endhighlight %}
+```
 
 The `angular-hint` module declares all the sub modules (`angular-hint-directives`, `angular-hint-controllers`, ...) as dependency, so you don't have to care about installing them manually. The command above does the job for you. Also, the package comes with a pre-compiled `hint.js` file that contains the source of all mentioned `angular-hint-*` modules, so you can use it right away.
 
 Once it's installed, we can embed the source in our application right after Angular itself like this:
 
-{% highlight html %}
+```
 <script type="path/to/angular/angular.js"></script>
 <script type="path/to/angular-hint/hint.js"></script>
-{% endhighlight %}
+```
 
 Next, we apply the `ng-hint` directive in order to actually use the `angular-hint` module:
 
-{% highlight html %}
+```
 <body ng-app="myApp" ng-hint>
 </body>
-{% endhighlight %}
+```
 
 That's it. We're done. It's that easy.
 
 Applying the `ng-hint` directive to our document takes care of injecting all needed hint modules in your apps bootstrap phase. But how does `ng-hint` know, which hint modules we actually want to activate? By default, `ng-hint` injects all the mentioned hint modules. However, if we don't want to get controller related hints, but are interested in DOM related hints, we can restrict the use of hint modules by using the `ng-hint-include` directive instead. The following code only injects `angular-hint-dom`:
 
-{% highlight html %}
+```
 <body ng-app="myApp" ng-hint-include="dom">
 </body>
-{% endhighlight %}
+```
 
 We can even define more than just one hint module if needed:
 
-{% highlight html %}
+```
 <body ng-app="myApp" ng-hint-include="dom directives">
 </body>
-{% endhighlight %}
+```
 
 As you can see, the names used as value for `ng-hint-include` map to the suffixes of the actual hint module names. E.g. `dom` and `directives` map to `angular-hint-dom` and `angular-hint-directives` respectively.
 
@@ -128,22 +128,22 @@ As you can see, the names used as value for `ng-hint-include` map to the suffixe
 
 Okay, so now that `angular-hint` is installed, let's try to reproduce the "I forgot to add module dependency" scenario we were talking about. To do that, we declare an additional Angular module that act as our app dependency. For simplicity's sake, we don't add any ground breaking functionality here.
 
-{% highlight javascript %}
+```
 angular.module('myAppDependency', []);
-{% endhighlight %}
+```
 
 Next we take a look at our actual app module definition. As you can see, we declare the module without any further dependencies a.k.a we simply forgot it.
 
-{% highlight javascript %}
+```
 angular.module('myApp', []);
-{% endhighlight %}
+```
 
 Now, instead of fiddling around for an hour to find out why `myAppDependency`'s directives aren't picked up, `angular-hint` is telling us that we might missed something. Simply open your browsers console and you should see something like this:
 
-{% highlight sh %}
+```
 Angular Hint: Modules
   Module "myAppDependency" was created but never loaded.
-{% endhighlight %}
+```
 
 This log occurs whenever an Angular module is present but not declared as dependency anywhere (You might see another message says that `ngHintModules` was also created but never loaded. This is a probably a bug and filed [here](https://github.com/angular/angular-hint-modules/issues/17)).
 
@@ -155,19 +155,19 @@ If there's one thing you should embrace when working on a bigger Angular app and
 
 One of these best practices is, when naming controllers, to suffix them with `Controller` instead of using short names like `Ctrl`. `angular-hint` helps with that too. Let's take a look what happens when we define a controller with a name that doesn't have this suffix:
 
-{% highlight javascript %}
+```
 angular.module('myApp', []).controller('AppCtrl', function () {
 
 });
-{% endhighlight %}
+```
 
 Having a controller registered like this, `angular-hint` gives us the following warning:
 
-{% highlight sh %}
+```
 Angular Hint: Controllers
   The best practice is to name controllers ending with 'Controller'.
   Check the name of 'AppCtrl'
-{% endhighlight %}
+```
 
 I think this makes pretty much clear what can be achieved with such a tool. Having a style guide with conventions and best practices that everybody agrees on, makes a projects structure easier to understand and debug. With `angular-hint` we actually have a tool to embrace and encourage these best practices and conventions and this is just the start!
 
@@ -177,23 +177,23 @@ When dealing with directives, there are a couple of things that can go wrong and
 
 Just take a look at this small snippet:
 
-{% highlight html %}
+```
 <ul>
   <li ng-repaet="i in [1,2,3,4]">
     <!-- more dom goes here -->
   </li>
 </ul>
-{% endhighlight %}
+```
 
 As you can see, there's a typo in the directive name. We actually wanted to type `ng-repeat`, but we typed `ng-repaet`. I can easily remember the last time, when I was debugging for an hour because I just misspelled a directive name. Because literally **nothing** happens.
 
 However, when `angular-hint` is activated, we get the following very useful warning:
 
-{% highlight sh %}
+```
 Angular Hint: Directives
   There was an AngularJS error in LI element.
   Found incorrect attribute "ng-repaet" try "ng-repeat"
-{% endhighlight %}
+```
 
 How cool is that? Not only that `angular-hint` warns me about an incorrect directive name and on what kind of element it is applied, it also suggests me a directive that is actually registered and to use! And now think about how much time you can save with such a helper.
 

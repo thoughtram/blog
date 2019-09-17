@@ -40,8 +40,7 @@ But how do those annotations actually work? And what are decorators then? This a
 
 Let's start off with annotations. As mentioned, the Angular team announced AtScript  as their language extension to JavaScript. AtScript comes with features like **Type Annotations**, **Field Annotations** and **MetaData Annotations**. We're going to focus on metadata annotations. Let's take a look at the following Angular component to get an idea of what metadata annotations can look like:
 
-{% highlight javascript %}
-{% raw %}
+```js
 @Component({
   selector: 'tabs',
   template: `
@@ -54,8 +53,7 @@ Let's start off with annotations. As mentioned, the Angular team announced AtScr
 export class Tabs {
 
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 We have a class `Tabs` that is basically empty. The class has one annotation `@Component`. If we'd remove all annotations, what would be left is just an empty class that doesn't have any special meaning right? So it seems that `@Component` add some metadata to the class in order to give it a specific meaning. This is what annotations are all about. They are a declarative way to add metadata to code.
 
@@ -69,26 +67,22 @@ Okay, even if that seems to be quite clear, there are a few questions coming up:
  
  Let's answer these one by one. Where do those annotations come from? To answer that question, we need to complete the code sample. `@Component` is something we need to import from the Angular framework like this:
 
-{% highlight javascript %}
-{% raw %}
+```js
 import { 
   ComponentMetadata as Component,
 } from '@angular/core';
-{% endraw %}
-{% endhighlight %}
+```
 
 This pretty much answers our first question. Both annotations are provided by the framework. Let's take a look at what the implementation of those annotations look like:
 
-{% highlight javascript %}
-{% raw %}
+```js
 export class ComponentMetadata extends DirectiveMetadata {
 
   constructor() {
     ...
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 We can see that `ComponentMetadata` is in fact an implementation detail of the Angular framework. This answers our second question.
 
@@ -96,8 +90,7 @@ But wait. It's just yet another class? How can just a simple class change the wa
 
 Even though we have a couple of transpilers we can choose from. Babel, Traceur, TypeScript, ... It turns out there's only one that actually implements annotations as we know them from AtScript: Traceur. Taking the component code from above, this is what it translates to using Traceur:
 
-{% highlight javascript %}
-{% raw %}
+```js
 var Tabs = (function () {
   function Tabs() {}
 
@@ -107,26 +100,22 @@ var Tabs = (function () {
 
   return Tabs;
 })
-{% endraw %}
-{% endhighlight %}
+```
 
 In the end, a class is just a function, which is also just an object, and all annotations end up as instance calls on the `annotations` property of the class. When I said "all" annotations end up there, I actually lied a bit. We can have parameter annotations as well and whose will be assigned to a class' `parameters` property. So if we have code like this:
 
-{% highlight javascript %}
-{% raw %}
+```js
 class MyClass {
 
   constructor(@Annotation() foo) {
     ...
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 This would translate to something like this:
 
-{% highlight javascript %}
-{% raw %}
+```js
 var MyClass = (function () {
   function MyClass() {}
 
@@ -134,8 +123,7 @@ var MyClass = (function () {
 
   return MyClass;
 })
-{% endraw %}
-{% endhighlight %}
+```
 
 The reason why this translate to a nested array, is because a parameter can have more than one annotation.
 
@@ -149,24 +137,20 @@ Wouldn't it be nicer if you as a consumer could decide where your metadata is at
 
 Decorators are a [proposed standard](https://github.com/wycats/javascript-decorators) for ECMAScript 2016 by Yehuda Katz, to annotate and modify classes and properties at design time. This sounds pretty much like what annotations do right? Well... sort of. Let's take a look at what a decorator looks like:
 
-{% highlight javascript %}
-{% raw %}
+```js
 // A simple decorator
 @decoratorExpression
 class MyClass { }
-{% endraw %}
-{% endhighlight %}
+```
 
 Wait. This looks exactly like an AtScript annotation! That's right. But it isn't. From a consumer perspective, a decorator indeed looks like the thing that we know as "AtScript Annotation". There is a significant difference though. **We** are in charge of what our decorator does to our code. Taking the code above, a corresponding decorator implementation for `@decoratorExpression` could look like this:
 
-{% highlight javascript %}
-{% raw %}
+```js
 function decoratorExpression(target) {
    // Add a property on target
    target.annotated = true;
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Right. A decorator is just a function that gives you access to the `target` that needs to be decorated. Get the idea? Instead of having a transpiler that decides where your annotations go, we are in charge of defining what a specific decoration/annotation does.
 
@@ -180,13 +164,11 @@ As you might know, the Angular team announced earlier this year that they're goi
 
 It turns out that it actually doesn't. TypeScript supports decorators, but doesn't know about Angular specific annotations. Which makes sense, because they are an implementation detail of Angular. That also means that either we as consumers, or the framework needs to provide those decorators in order to make the code compile. Only the latter really makes sense. Luckily, generators for both, annotation and parameter decorators, have landed in the Angular code base lately. So what the framework behind the scenes does is, it comes with metadata annotation implementations, which are then passed to the decorator generator to make decorators out of them. That's also why we have to write the following code when transpiling with traceur:
 
-{% highlight javascript %}
-{% raw %}
+```js
 import {
   ComponentMetadata as Component
 } from '@angular/core';
-{% endraw %}
-{% endhighlight %}
+```
 
 As we can see, we're actually importing the metadata rather than the decorator. This is simply just because traceur doesn't understand decorators, but does understand `@Component` annotations. Which is why we're also importing them with these namespaces respectively.
 

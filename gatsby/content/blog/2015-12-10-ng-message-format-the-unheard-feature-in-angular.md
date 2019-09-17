@@ -46,46 +46,38 @@ If you're on version 1.4 or higher, this feature is already available to use. So
 
 ## Understanding Pluralization and Gender Selection
 
-Earlier this year I gave a talk together with [Chirayu](http://twitter.com/chirayuk), a former member of the Angular core team, about how the Angular project is going to solve internationalization and localization in the future. The talk can be watched [right here](https://www.youtube.com/watch?v=iBBkCA1M-mc) and if you're more a reader kind of person, we wrote about everything in our article on [Angular and i18n - A new world](http://blog.thoughtram.io/angular/2015/03/21/angular-and-i18n-the-new-world.html).
+Earlier this year I gave a talk together with [Chirayu](http://twitter.com/chirayuk), a former member of the Angular core team, about how the Angular project is going to solve internationalization and localization in the future. The talk can be watched [right here](https://www.youtube.com/watch?v=iBBkCA1M-mc) and if you're more a reader kind of person, we wrote about everything in our article on [Angular and i18n - A new world](/angular/2015/03/21/angular-and-i18n-the-new-world.html).
 
 One thing that is an essential part of i18n, but also a sort of isolated topic at the same time, is **pluralization** and **gender selection**. We probably all ran into this at a some point. For example, displaying a notification that says:
 
-{% highlight html %}
-{% raw %}
+```html
 You have {{numberOfMessages}} new messages.
-{% endraw %}
-{% endhighlight %}
+```
 
 While this works as long as `numberOfMessages` evaluates to something `> 1`, it doesn't fit anymore as soon as we have just a single message. Our template would look something like this:
 
-{% highlight html %}
-{% raw %}
+```html
 You have 1 new messages.
-{% endraw %}
-{% endhighlight %}
+```
 
 This can easily be solved with the `ngSwitch` directive, or, in fact Angular comes with an `ngPluralize` directive that introduces a couple more features (like `offset`) to make pluralization easy. Here's an `ngPluralize` solution for the scenario above:
 
-{% highlight html %}
-{% raw %}
+```html
 <ng-pluralize count="numberOfMessages"
               when="{'1': 'You have one new message.',
                      'other': 'You have {} new messages.'}">
 </ng-pluralize>
-{% endraw %}
-{% endhighlight %}
+```
 
 Pluralization can be hard, especially if we consider that it can vary heavily depending on the language we're using. While we have "one" and "more" in most of the european language rules, other languages have "one", "few" and "more".
 
 Another thing that comes into play is **gender selection**. Depending on a persons gender, we might need to output different text.
 
-{% highlight html %}
-{% raw %}
+```html
 Send him an invite.
 Send her an invite.
 Send them an invite.
-{% endraw %}
-{% endhighlight %}
+```
 
 This can not be solved with `ngPluralize` today. Also, what if we have text in HTML attributes that needs to be pluralized as well?
 
@@ -97,44 +89,36 @@ Well, as part of the effort for the new i18n solution, Angular's interplation sy
 
 `ngMessageFormat` can be installed via npm using the following command:
 
-{% highlight sh %}
-{% raw %}
+```sh
 $ npm install angular-message-format
-{% endraw %}
-{% endhighlight %}
+```
 
 Once installed and included in our HTML document, we can add it as a module dependency and start using it right away! 
 
-{% highlight js %}
-{% raw %}
+```js
 angular.module('myApp', ['ngMessageFormat']);
-{% endraw %}
-{% endhighlight %}
+```
 
 **Pluralization with ngMessageFormat**
 
 With `ngMessageFormat` included, we can overload Angular expressions using a comma like this:
 
-{% highlight html %}
-{% raw %}
+```html
 {{EXPRESSION, TYPE,
      =VALUE { MESSAGE }
      ...
 }}
-{% endraw %}
-{% endhighlight %}
+```
 
 Whereas `EXPRESSION` is the expression that needs to be evaluated, `TYPE` specifies what we want to do `plural` or `select` for pluralization and gender selection respectively. Let's use this syntax to output our notification, based on `numberOfMessages`.
 
-{% highlight html %}
-{% raw %}
+```html
 {{numberOfMessages, plural,
     =0 { You have no new messages }
     =1 { You have one new message }
     other { You have # new messages }
 }}
-{% endraw %}
-{% endhighlight %}
+```
 
 As we can see, `#` can be used as a placeholder that gets replaced with the actual evaluated value. Another nice thing to notice: We can use still use Angular expressions and filters **inside** those messages!
 
@@ -142,15 +126,13 @@ As we can see, `#` can be used as a placeholder that gets replaced with the actu
 
 Gender selection uses the exact same syntax. All we have to do is to change the selection type and define messages for each gender:
 
-{% highlight html %}
-{% raw %}
+```html
 {{genderExpression, select,
     male { Send him a message. }
     female { Send her a message. }
     other { Send them a message. }
 }}
-{% endraw %}
-{% endhighlight %}
+```
 
 Here's `ngMessageFormat` in action:
 

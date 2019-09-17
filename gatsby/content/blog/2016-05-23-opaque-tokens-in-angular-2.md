@@ -56,8 +56,7 @@ Angular DI injects singleton instances which are created by provider-registered 
 
 The bottom line is that a provider token can be either a string or a type. Depending on our use case, we want to use one or the other. For example, if we have a `DataService` class, and all we want to do is inject an instance of that class when we ask for a dependency of that type, we would use `DataService` as a provider token like this:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   selector: 'my-component',
   providers: [
@@ -68,46 +67,37 @@ class MyComponent {
 
   constructor(private dataService: DataService) {}
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Since the token matches the dependency instance-type and the provider strategy is `useClass`, we can also use the **shorthand** version, as:
 
-{% highlight js %}
-{% raw %}
+```js
 providers: [DataService]
-{% endraw %}
-{% endhighlight %}
+```
 
 Angular has many shorthand versions (DI, annotations, etc); and the above code is just one example of those.
 
 Now this is cool, as long as we have classes (or types) to represent the things we want to work with. However, sometimes we need to create other objects that don't necessarily need to be put in a class representation. We could, for example, have a configuration object that we want to inject into our application. This configuration object can be a simple object literal where there is no type involved.
 
-{% highlight js %}
-{% raw %}
+```js
 const CONFIG = {
   apiUrl: 'http://my.api.com',
   theme: 'suicid-squad',
   title: 'My awesome app'
 };
-{% endraw %}
-{% endhighlight %}
+```
 
 Or maybe, we have a primitive value we want to make injectable, like a string or a boolean value.
 
-{% highlight js %}
-{% raw %}
+```js
 const FEATURE_ENABLED = true;
-{% endraw %}
-{% endhighlight %}
+```
 
 In these cases, we can't use the `String` or `Boolean` type, as this would set a default value for the place where we ask for dependencies of these types. And we really don't want to introduce a new type just to represent these values.
 
 That's where string tokens come into play. They allow us to make objects available via DI without introducing an actual type:
 
-{% highlight js %}
-{% raw %}
-
+```js
 let featureEnabledToken = 'featureEnabled';
 let configToken = 'config';
 
@@ -116,14 +106,12 @@ providers: [
   { provide: featureEnabledToken, useValue: FEATURE_ENABLED },
   { provide: configToken, useValue: CONFIG }
 ]
-{% endraw %}
-{% endhighlight %}
+```
 
 Basically all we do is, instead of using a type, we use a simple string as a token. We can inject this dependency using the `@Inject()` decorator likes this:
 
 
-{% highlight js %}
-{% raw %}
+```js
 import { Inject } from '@angular/core';
 
 class MyComponent {
@@ -133,8 +121,7 @@ class MyComponent {
     @Inject(configToken) private config
   ) {...}
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Note: that above we used `@Inject(featureEnabledToken) private featureEnabled` without any typing information; e.g. `private featureEnabled:boolean`.
 
@@ -148,18 +135,15 @@ And there is another concept that allows us to define multiple providers for the
 
 Let's say we use some sort of third-party library that comes with a set of providers defined like this:
 
-{% highlight js %}
-{% raw %}
+```js
 export const THIRD_PARTY_LIB_PROVIDERS = [
   { provide: 'config', useClass: ThirdParyConfig }
 ];
-{% endraw %}
-{% endhighlight %}
+```
 
 Even though it's not a common pattern to use a string token with a class, it's totally possible to do that, but we really just want to demonstrate the problem here. We can import and use these third-party providers like this:
 
-{% highlight js %}
-{% raw %}
+```js
 import THIRD_PARTY_LIB_PROVIDERS from './third-party-lib';
 
 ...
@@ -167,21 +151,18 @@ providers = [
   DataService,
   THIRD_PARTY_LIB_PROVIDERS
 ]
-{% endraw %}
-{% endhighlight %}
+```
 
 Okay, so far so good. Very often, we don't really know what's defined behind other library providers unless we check out the documentation or the source code. Let's assume we also don't know this time, that there's a string token for `config`, and we try to add our own provider like this:
 
-{% highlight js %}
-{% raw %}
+```js
 ...
 providers = [
   DataService,
   THIRD_PARTY_LIB_PROVIDERS,
   { provide: configToken, useValue: CONFIG }
 ]
-{% endraw %}
-{% endhighlight %}
+```
 
 This will pretty much break our third-party library, because now, the thing that gets injected for the `config` string token is a different object than what the library expects. We basically ran into a naming collision.
 
@@ -191,8 +172,7 @@ Luckily, Angular anticipated such scenarios. It comes with a type called `Opaque
 
 Creating an `OpaqueToken` is easy. All we need to do is to import and use it. Here's what the third-party providers collection looks like using `OpaqueToken`:
 
-{% highlight js %}
-{% raw %}
+```js
 import { OpaqueToken } from '@angular/core';
 
 const CONFIG_TOKEN = new OpaqueToken('config');
@@ -200,13 +180,11 @@ const CONFIG_TOKEN = new OpaqueToken('config');
 export const THIRDPARTYLIBPROVIDERS = [
   { provide: CONFIG_TOKEN, useClass: ThirdPartyConfig }
 ];
-{% endraw %}
-{% endhighlight %}
+```
 
 Of course, this is an implementation detail and we usually shouldn't have to care about what APIs are used inside a third-party library. Let's assume we've created an `OpaqueToken` for our config token as well.
 
-{% highlight js %}
-{% raw %}
+```js
 import { OpaqueToken } from '@angular/core';
 import THIRDPARTYLIBPROVIDERS from './third-party-lib';
 
@@ -218,8 +196,7 @@ providers = [
   THIRDPARTYLIBPROVIDERS,
   { provide: MY_CONFIG_TOKEN, useValue: CONFIG }
 ]
-{% endraw %}
-{% endhighlight %}
+```
 
 Running this code will show us that, even though our application seems to use the exact same string token for different providers, Angular's DI is still smart enough to figure out which dependency we're interested in. As if we'd have two *different* tokens. And technically, this is exactly what happens.
 
@@ -227,16 +204,14 @@ Running this code will show us that, even though our application seems to use th
 
 If we take a look at the implementation of `OpaqueToken` we'll realize that it's just a simple class with only a `.toString()` method.
 
-{% highlight js %}
-{% raw %}
+```js
 export class OpaqueToken {
 
   constructor(private _desc: string) {}
 
   toString(): string { return `Token ${this._desc}`; }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 `toString()` gets called when an error is thrown in case we're asking for a dependency that doesn't have a provider. All it does is add a tiny bit more information to the error message.
 
@@ -244,14 +219,12 @@ However, the secret sauce is, that we're creating actual object instances of `Op
 
 We can easily double-check the equality of two opaque tokens like this:
 
-{% highlight js %}
-{% raw %}
+```js
 const TOKEN_A = new OpaqueToken('token');
 const TOKEN_B = new OpaqueToken('token');
 
 TOKEN_A === TOKEN_B // false
-{% endraw %}
-{% endhighlight %}
+```
 
 ## InjectionToken since Angular 4.x
 
@@ -259,8 +232,7 @@ Since Angular version 4.x there's a new, even a little bit better, way of achiev
 
 Let's take a look at the following provider configuration for `DataService`:
 
-{% highlight js %}
-{% raw %}
+```js
 const API_URL = new OpaqueToken('apiUrl');
 
 
@@ -276,8 +248,7 @@ providers: [
     ]
   }
 ]
-{% endraw %}
-{% endhighlight %}
+```
 
 We're using a factory function that will create a `DataService` instance using `http` and `apiUrl`. To ensure Angular knows what `http` and `apiUrl` are, we add the corresponding DI token to the provider configuration's `deps` property. Notice how we can just add the `Http` token. However, `apiUrl` is providing using an `OpaqueToken`, and since it since a type, we have to use the `Inject()` constructor (equivalent of `@Inject()` inside constructors).
 
@@ -285,8 +256,7 @@ While this works perfectly fine, developers often ran into errors when they forg
 
 In other words, the code above can then be written like this:
 
-{% highlight js %}
-{% raw %}
+```js
 const API_URL = new InjectionToken<string>('apiUrl'); // generic defines return value of injector
 
 
@@ -302,8 +272,7 @@ providers: [
     ]
   }
 ]
-{% endraw %}
-{% endhighlight %}
+```
 
 Cool right? As of version 4.x `OpaqueToken` is considered deprecated.
 

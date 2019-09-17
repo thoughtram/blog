@@ -73,30 +73,26 @@ In order to make databinding possible, Angular uses [$watch](https://docs.angula
 
 However, at some point you always deal with a scope and that one is used to observe changes on it with the use of so called *watchers*. Watchers are registered through [directives](https://docs.angularjs.org/guide/directive) that are used in the DOM. So let's say we use the interpolation directive to reflect scope model values in the DOM:
 
-{% highlight html %}
-{% raw %}
+```
 <p>Hello {{name}}!</p>
-{% endraw %}
-{% endhighlight %}
+```
 
 This interpolation directive registers a watch for a property `name` on the corresponding scope (which in our case is `$rootScope`) in order to interpolate against it to display the value in the DOM.
 
 Defining a property with exactly that identifier on our scope and assigning a value to it, makes it magically displaying it in the DOM without further actions:
 
-{% highlight javascript %}
+```
 angular.module('myApp', [])
 .run(function ($rootScope) {
   $rootScope.name = "Pascal";
 });
-{% endhighlight %}
+```
 
 Great! We just bound a model value to the view with an interpolation directive. If now something changes the value, the view gets updated automatically. Let's add a button that updates the value of `name` once it's clicked:
 
-{% highlight html %}
-{% raw %}
+```
 <button ng-click="name = 'Christoph'">Click me!</button>
-{% endraw %}
-{% endhighlight %}
+```
 
 Clicking the button assigns the string `Christoph` to `name` which triggers a [$digest](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest) cycle that automatically updates the DOM accordingly. In this particular case we're just updating the value one-way (top &rarr; down). However, when for example dealing with an `input` element that has an [ngModel](https://docs.angularjs.org/api/ng/directive/ngModel) directive applied, and a user changes its `value` property by typing something into it, the change is reflected back to the actual model.
 
@@ -124,27 +120,21 @@ And this is exactly what the Angular world needs to tackle the problems mentione
 
 Using this new syntax is as easy as starting an expression with `::`. So if we apply the one-time expression to our example above, we change this:
 
-{% highlight html %}
-{% raw %}
+```
 <p>Hello {{name}}!</p>
-{% endraw %}
-{% endhighlight %}
+```
 
 To this:
 
-{% highlight html %}
-{% raw %}
+```
 <p>Hello {{::name}}!</p>
-{% endraw %}
-{% endhighlight %}
+```
 
 This works for all kind of typical Angular expressions you're used to use throughout your app. Which means you can use them in `ng-repeat` expressions or even for directives that expose attributes that set up a two-way binding from the inside out. From the outside you're able to just feed them with a one-time expression:
 
-{% highlight html %}
-{% raw %}
+```
 <custom-directive two-way-attribute="::oneWayExpression"></custom-directive>
-{% endraw %}
-{% endhighlight %}
+```
 
 
 Okay, let's see it in action. We already updated the `name` to `::name` to ensure the one-time binding. The rest of the code just stays as it is to demonstrate that our one-time binding works. Remember the button we added to update the `name` to `Christoph`? Well, try it again:

@@ -40,16 +40,14 @@ item in the collection will potentially be projected into a different value.
 
 Here is a very simple example where an array of numbers is transformed so that each number is multiplied by 10.
 
-{% highlight js %}
-{% raw %}
+```js
 let values = [1, 2, 3];
 
 let transformed = values.map(value => value * 10);
 
 //prints [10, 20, 30]
 console.log(transformed);
-{% endraw %}
-{% endhighlight %}
+```
 
 By now we may be wondering what that has to do with Observables and the `map` operator that is part of RxJS.
 
@@ -61,36 +59,29 @@ It's this similarity that allows us to take advantage of pretty much all operato
 
 Let's start with a little demo. All we need is a simple `<input>` element to enter some text.
 
-{% highlight js %}
-{% raw %}
+```html
 <input type="text" id="demo"/>
-{% endraw %}
-{% endhighlight %}
+```
 
 Then we create an Observable that emits every time that the value of our input changes.
 
-{% highlight js %}
-{% raw %}
+```js
 let demoInput = document.querySelector('#demo')
 let obs = Rx.Observable.fromEvent(demoInput, 'input');
 
 // Activate the observable and log all 'pushed' events
 obs.subscribe(event => console.log(event));
-{% endraw %}
-{% endhighlight %}
+```
 
 The payload of the Observable is the plain old Event object that is provided by the `input` event of the browser. But that may not match what we are most interested in. What if we are more interested in the current value of the input? The `map` operator lets us project the payload of the Observable into something else. All it takes to project the payload is this tiny change.
 
-{% highlight js %}
-{% raw %}
+```js
 let obs = Rx.Observable.fromEvent(demoInput, 'input')
                        .map(e => e.target.value);
-{% endraw %}
-{% endhighlight %}
+```
 
 We can go on and chain `map` calls to project the data even further. For instance, it may be more convenient to work with a data structure that carries the value among with the length of the string.
-{% highlight js %}
-{% raw %}
+```js
 let obs = Rx.Observable.fromEvent(demoInput, 'input')
                        .map(e => e.target.value)
                        .filter( value => value > 100 )
@@ -100,8 +91,7 @@ let obs = Rx.Observable.fromEvent(demoInput, 'input')
                            length: v.length
                          };
                        });
-{% endraw %}
-{% endhighlight %}
+```
 
 Of course, we could have done the same in the first `map` call. But it's sometimes more readable to break things into multiple steps. Notice that often we also use different operators in between of two `map` calls (e.g to filter something out).
 

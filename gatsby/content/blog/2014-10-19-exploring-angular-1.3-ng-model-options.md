@@ -49,12 +49,10 @@ We've written a few other articles on 1.3 already. Here's a list:
 
 `ngModelOptions` allows us to control how `ngModel` updates are done. This includes things like updating the model only after certain events are triggered or a debouncing delay, so that the view value is reflected back to the model only after a timer expires. To get an idea of what that actually means, let's start with the probably simplest use case that sets up a two-way binding using an `input` element that has a `ngModel` directive applied:
 
-{% highlight html %}
-{% raw %}
+```
 <input type="text" ng-model="name">
 <p>Hello {{name}}!</p>
-{% endraw %}
-{% endhighlight %}
+```
 
 Now, when typing something into the `input` element, the model gets updated accordingly and then reflected back to the view, which displays the value in our `p` element. Try it out yourself real quick.
 
@@ -72,15 +70,13 @@ Yes, and we can do so thanks to Angular 1.3 and the `ngModelOptions` directive.
 
 `ngModelOptions` comes with a couple of options to control how `ngModel` updates are done. With the `updateOn` parameter, we can define which events our `input` should be bound to. For example, if we want our model to be updated only after the user removed the focus of our `input` element, we can simply do so by applying the `ngModelOptions` with the following configuration:
 
-{% highlight html %}
-{% raw %}
+```
 <input
   type="text"
   ng-model="name"
   ng-model-options="{ updateOn: 'blur' }">
 <p>Hello {{name}}!</p>
-{% endraw %}
-{% endhighlight %}
+```
 
 This tells Angular that instead of updating the model immediately after each keystroke, it should only update when the `input` fires an `onBlur` event. Here's an example to show what it looks like in action.
 
@@ -88,15 +84,13 @@ This tells Angular that instead of updating the model immediately after each key
 
 If we do want to update the model with the default events that belong to that control and add other events on top of that, we can use a special event called `default`. Adding more then just one event can be done with a space delimited list. The following code updates the model whenever a user types into the input, or removes the focus of it.
 
-{% highlight html %}
-{% raw %}
+```
 <input
   type="text"
   ng-model="name"
   ng-model-options="{ updateOn: 'default blur' }">
 <p>Hello {{name}}!</p>
-{% endraw %}
-{% endhighlight %}
+```
 
 Alright, now that we know how that works, let's take a look at how we can update the model after a timer expires.
 
@@ -108,15 +102,13 @@ Just imagine an `input[type="search"]` element, where every time a user types in
 
 `debounce` defines an integer value which represents a model update delay in milliseconds. Which means, if we take the example mentioned above, that we want to update our model 300 milliseconds after the user stopped typing, we can do so by defining a debounce value of `300` like this:
 
-{% highlight html %}
-{% raw %}
+```
 <input
   type="search"
   ng-model="searchQuery"
   ng-model-options="{ debounce: 300 }">
 <p>Search results for: {{searchQuery}}</p>
-{% endraw %}
-{% endhighlight %}
+```
 
 Now, when typing into the `input` field, there's a slight delay until the model updates. You can try it out right here:
 
@@ -126,15 +118,13 @@ We can go even further and configure how the update delay should be done for cer
 
 The following code generates a model update delay of 300 milliseconds when the user types into our `input`, but an immediate update when removing the focus:
 
-{% highlight html %}
-{% raw %}
+```
 <input
   type="search"
   ng-model="searchQuery"
   ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 300, 'blur': 0 } }">
 <p>Search results for: {{searchQuery}}</p>
-{% endraw %}
-{% endhighlight %}
+```
 
 Super powerful right? There are a few other options that are worth to checkout out. You can read about them in the [official docs](https://docs.angularjs.org/api/ng/directive/ngModelOptions).
 

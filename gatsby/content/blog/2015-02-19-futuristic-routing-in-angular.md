@@ -52,13 +52,13 @@ Before we start off showing what the new router is going to look like, let's rec
 
 And so is the basic Angular router. It's implemented in the `ngRoute` module and can easily be installed through package managers like npm. Once installed, we can add it as module dependency to our application like so:
 
-{% highlight js %}
+```js
 var app = angular.module('myApp', ['ngRoute']);
-{% endhighlight %}
+```
 
 In order to configure routes for our application, we use the `$routeProvider` that we can access in our app's config phase. `$routeProvider` comes with methods like `.when()` and `.otherwise()` to define which route maps to which controller and template. Here's a quick example:
 
-{% highlight js %}
+```js
 app.config(function ($routeProvider) {
   $routeProvider
     .when('/welcome', {
@@ -67,7 +67,7 @@ app.config(function ($routeProvider) {
     })
     .otherwise('/welcome');
 });
-{% endhighlight %}
+```
 
 We can see very nicely that the route `/welcome` maps to the controller `WelcomeController` and the template `welcome.html`. In addition, if at runtime a route is given that is not covered by any `.when()` configuration, the app defaults to `/welcome` route, that's what `.otherwise()` is for.
 
@@ -75,7 +75,7 @@ If we have some additional dependencies that should be resolved before a route's
 
 Here's an example where a promise needs to be resolved first, before a controller can be instantiated:
 
-{% highlight js %}
+```js
 app.config(function ($routeProvider) {
   $routeProvider
     .when('/welcome', {
@@ -93,15 +93,15 @@ app.config(function ($routeProvider) {
 app.controller('WelcomeController', function (person) {
   // do something with person
 });
-{% endhighlight %}
+```
 
 If you're not familiar with promises we've written an [article](http://blog.thoughtram.io/angularjs/2014/12/18/exploring-angular-1.3-es6-style-promises.html) that gives a brief introduction. Also, if this `resolve` property looks completely new to you we recommend reading the [official docs](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider).
 
 Let's take a quick look at our main template to see where our route templates are loaded and rendered.
 
-{% highlight html %}
+```html
 <div ng-view></div>
-{% endhighlight %}
+```
 
 That's it. One single entry point where, depending on our route, a template is loaded and it's corresponding controller is instantiated. And here we already see the first weak points of Angular's built-in routing implementation. The basic routing we get so far is just a simple URL to controller/template mapping. There's no way to have sibling or nested components.
 
@@ -117,17 +117,17 @@ The new router will be quite different. One of it's main goals is that it works 
 
 We can install the new router via npm by running the following shell command:
 
-{% highlight sh %}
+```sh
 $ npm install angular-new-router
-{% endhighlight %}
+```
 
 Once installed we can take a look at `node_modules/angular-new-router/dist/` and see that there are two versions of the router source - `router.es5.js` and `router.js`. The former one is an "angularfied" version of the router. So it's basically the router code in ECMAScript 5 plus some additional Angular 1 specific components like service provider and directives. The latter one is the compiled AtScript code as AMD module so it can be used in other applications as well.
 
 Currently we are interested in the Angular 1 components, so what we need to do is to embed `router.es5.js` and add the new router module as dependency to our application like this:
 
-{% highlight javascript %}
+```js
 var app = angular.module('myApp', ['ngComponentRouter']);
-{% endhighlight %}
+```
 
 Great! Next up: configuration. Here we're going to encouter the first big difference when using the new router. As we know, in Angular 1 we have this `.config()` phase where we have access to service providers in order to configure services that are used later at runtime. That's why we can use the `$routeProvider` of `ngRoute` to configure our routes.
 
@@ -135,7 +135,7 @@ However, it turned out that there are a lot of problems with having a separation
 
 Well, let's take a look at some code.
 
-{% highlight javascript %}
+```js
 app.controller('AppController', function ($router) {
   $router.config([
     {
@@ -144,17 +144,17 @@ app.controller('AppController', function ($router) {
     }
   ]);
 });
-{% endhighlight %}
+```
 
 Oh what's happening here? All we do is creating a new controller that asks for the `$router` service, which we use to configure itself. The configuration is pretty straight forward. We use `$router.config()` and pass it an array with configuration objects that each have a property `path` to set the route and a property `component` that sets the name of the component to be instantiated.
 
 We're going to talk about what a component actually is in a second, but let's first take a look at our template. So let's assume we have an HTML document, this is what our application could look like:
 
-{% highlight html %}
+```html
 <body ng-app="myApp" ng-controller="AppController">
   <ng-outlet></ng-outlet>
 </body>
-{% endhighlight %}
+```
 
 Right, there's no `<ng-view>` anymore. Instead the new router comes with a directive called `<ng-outlet>` which can also be used as an attribute in case it's needed. An outlet basically is a "hole" where component templates are loaded into. So the above code in it's current state is pretty much the same as using `<ng-view>` with the old routing system.
 
@@ -171,29 +171,29 @@ If we're not okay with that configuration, we can simply override this default b
 
 The following code forces the router to load `[COMPONENT_NAME].html` instead of `components/[COMPONENT_NAME]/[COMPONENT_NAME].html`:
 
-{% highlight javascript %}
+```js
 app.config(function ($componentMapperProvider) {
   $componentMapperProvider.setTemplateMapping(function (name) {
     // name == component name
     return name + '.html';
   });
 });
-{% endhighlight %}
+```
 
 
 Let's create `WelcomeController` (for simplicity reasons I define the controller directly on `app` rather than introducing a new module for that component, but you can do that of course).
 
-{% highlight javascript %}
+```js
 app.controller('WelcomeController', function () {
 
 });
-{% endhighlight %}
+```
 
 And here the corresponding template `welcome.html`:
 
-{% highlight html %}
+```html
 <h1>Welcome!</h1>
-{% endhighlight %}
+```
 
 The component is now ready to be loaded and instantiated. Let's see the code in action:
 
@@ -207,7 +207,7 @@ Just keep in mind that the new router enforces `controller as` syntax, which mea
 
 As an example let's add a property and method to our `WelcomeController`:
 
-{% highlight javascript %}
+```js
 app.controller('WelcomeController', function () {
   this.name = 'Pascal';
 
@@ -215,19 +215,17 @@ app.controller('WelcomeController', function () {
     this.name = 'Christoph';
   };
 });
-{% endhighlight %}
+```
 
 In our component template, we can access the controller properties via the `welcome` identifier like this:
 
-{% highlight html %}
-{% raw %}
+```html
 <h1>Welcome!</h1>
 <p>Hello {{welcome.name}}</p>
 <button ng-click="welcome.changeName()">Change Name!</button>
-{% endraw %}
-{% endhighlight %}
+```
 
-If you're not familiar with the `controller as` syntax. you might want to check out our article on [Binding to Directive Controllers](http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html). Here's our updated example as runnable app:
+If you're not familiar with the `controller as` syntax. you might want to check out our article on [Binding to Directive Controllers](/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html). Here's our updated example as runnable app:
 
 {% include plunk.html url="http://embed.plnkr.co/ie9d2F/preview" %}
 
@@ -235,7 +233,7 @@ If you're not familiar with the `controller as` syntax. you might want to check 
 
 In order to have a very easy way to navigate from one component to another, the `ngComponentRouter` module comes with a `routerLink` directive that we can use to tell our application, where to navigate. Let's say we have another component `user`, we'd extend our application with a new configuration for that component.
 
-{% highlight javascript %}
+```js
 app.controller('AppController', function ($router) {
   $router.config([
     {
@@ -248,34 +246,31 @@ app.controller('AppController', function ($router) {
     }
   ]);
 });
-{% endhighlight %}
+```
 
 And as we've learned, we also need a corresponding controller and template to actually assemble our component. Here's our `UserController`:
 
-{% highlight javascript %}
+```js
 app.controller('UserController', function () {
 
 });
-{% endhighlight %}
+```
 
 And here's the template `user.html`.
 
-{% highlight html %}
-{% raw %}
+
+```html
 <h1>User</h1>
-{% endraw %}
-{% endhighlight %}
+```
 
 Now, in order to get there from our `welcome` component, all we have to do is to add an anchor tag to our `welcome` component template and us the `routerLink` directive accordingly.
 
-{% highlight html %}
-{% raw %}
+```html
 <h1>Welcome!</h1>
 <p>Hello {{welcome.name}}</p>
 <button ng-click="welcome.changeName()">Change Name!</button>
 <p><a ng-link="user">User View</a></p>
-{% endraw %}
-{% endhighlight %}
+```
 
 As you can see, we don't have to set an `href` attribute, since `routerLink` takes care of that. The directive itself takes a component name to navigate to once the link is clicked, which in our case is `user`. Again, here the running code:
 
@@ -289,7 +284,7 @@ Configuring a route that expects query parameters works pretty similar to what w
 
 To get a better idea, here's our updated route configuration that takes an additional user id parameter:
 
-{% highlight javascript %}
+```js
 app.controller('AppController', function ($router) {
   $router.config([
     {
@@ -302,26 +297,24 @@ app.controller('AppController', function ($router) {
     }
   ]);
 });
-{% endhighlight %}
+```
 
 Simple right? As already mentioned, query parameter are exposed on the `$routeParams` service as simple hash. Which means, in order to access a given user id from that route, all we have to do is to inject `$routeParams` into our component's controller and ask for the paramters we're looking for.
 
-{% highlight javascript %}
+```js
 app.controller('UserController', function ($routeParams) {
   this.userId = $routeParams.userId;
 });
-{% endhighlight %}
+```
 
 Okay cool. But how do we **link** to a component that takes parameters? We've learned that `ngComponentRouter` comes with a `routerLink` directive that takes a component name. It turns out, we can set parameters, for a route we want to navigate to, with that directive too! All we need to do is to pass a hash literal to specify the values. Here's our updated `welcome` component template:
 
-{% highlight html %}
-{% raw %}
+```html
 <h1>Welcome!</h1>
 <p>Hello {{welcome.name}}</p>
 <button ng-click="welcome.changeName()">Change Name!</button>
 <p><a ng-link="user({ userId: 3 })">User View</a></p>
-{% endraw %}
-{% endhighlight %}
+```
 
 You can see it in action right here:
 
@@ -333,7 +326,7 @@ What we've done so far is not a very complex scenario, nor does it show the adva
 
 Imagine, when a user visits our app, we not only want to have a `welcome` component be loaded, we want to spin up another component for our navigation as well. So we end up with two components at the same time for one single route - `navigation` and `welcome`. We can configure our `$router` accordingly by specifying a `components` property which describes what components should be loaded for which outlet. Let's see how that works.
 
-{% highlight javascript %}
+```js
 app.controller('AppController', function ($router) {
   $router.config([
     {
@@ -345,32 +338,32 @@ app.controller('AppController', function ($router) {
     }
   ]);
 });
-{% endhighlight %}
+```
 
 Here we see that we expect *two* outlets `navigation` and `main` and we say that we want to load the `navigation` and `welcome` component respectively. Of course, we now need a `NavigationController` and `navigation.html` to make this work. Here's a simple controller with an even simpler template:
 
-{% highlight javascript %}
+```js
 app.controller('NavigationController', function () {
 
 });
-{% endhighlight %}
+```
 
-{% highlight html %}
+```html
 <h2>Navigation</h2>
 <p>Yay, navigation goes here.</p>
-{% endhighlight %}
+```
 
 Now we need to decide, *where* our components are actually rendered. We've learned that a component has outlets, in fact, a component can have multiple outlets. In our router configuration we said we have an outlet `navigation` and `main`. All we need to do is to use the `<ng-outlet>` directive multiple times and give them the names accordingly.
 
 Here's our updated `index.html` that now introduces two outlets, one for each component specified in the router configuration:
 
-{% highlight html %}
+```html
 <body ng-app="myApp" ng-controller="AppController">
   <nav ng-outlet="navigation"></nav>
 
   <main ng-outlet="main"></main>
 </body>
-{% endhighlight %}
+```
 
 That's it! Running this code in the browser shows that now two sibling components are loaded for one route.
 

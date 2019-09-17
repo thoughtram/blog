@@ -44,7 +44,7 @@ Let's recap really quick what zones are. As Brian stated in his talk, they are b
 
 In order to understand the execution context part of it, we need to get a better picture of what the problem is that zones are trying to solve. Let's first take a look at the following JavaScript code.
 
-{% highlight javascript %}
+```js
 foo();
 bar();
 baz();
@@ -52,11 +52,11 @@ baz();
 function foo() {...}
 function bar() {...}
 function baz() {...}
-{% endhighlight %}
+```
 
 Nothing special going on here. We have three functions `foo`, `bar` and `baz` that are executed in sequence. Let's say we want to measure the execution time of this code. We could easily extend the snippet with some profiling bits like this:
 
-{% highlight javascript %}
+```js
 var start,
     time = 0;
     timer = performance ? performance.now : Date.now;
@@ -70,11 +70,11 @@ baz();
 time = timer() - start;
 // log time in ms
 console.log(Math.floor(time*100) / 100 + 'ms');
-{% endhighlight %}
+```
 
 However, often we have asynchronous work todo. This can be an AJAX request to fetch some data from a remote server, or a maybe we just want to schedule some work for the next frame. Whatever this asynchronous work is, it happens, as the name claims, asynchronously. Which basically means, those operations won't be considered by our profiler. Take a look at this snippet:
 
-{% highlight javascript %}
+```js
 function doSomething() {
   console.log('Async task');
 }
@@ -87,7 +87,7 @@ bar();
 baz();
 // stop timer
 time = timer() - start;
-{% endhighlight %}
+```
 
 We extended the code sequence with another operation, but this time it's asynchronous. What effect does that have on our profiling? Well, we'll see that there's not such a big difference.
 
@@ -105,7 +105,7 @@ Zones are actually a language feature in Dart. However, since Dart also just com
 
 Once we've embedded zone.js into our website, we have access to the global `zone` object. `zone` comes with a method `run()` that takes a function which should be executed in that zone. In other words, if we'd like to run our code in a zone, we can already do it likes this:
 
-{% highlight javascript %}
+```js
 function main() {
   foo();
   setTimeout(doSomething, 2000);
@@ -114,17 +114,17 @@ function main() {
 }
 
 zone.run(main);
-{% endhighlight %}
+```
 
 Okay cool. But what's the point of this? Well... currently there's in fact no difference in the outcome, except that we had to write slightly more code. However, at this point, our code runs in a zone (another execution context) and as we learned earlier, Zones can perform an operation each time our code enters or exits a zone.
 
 In order to set up these hooks, we need to **fork** the current zone. Forking a zone returns a new zone, which basically inherits from the "parent" zone. However, forking a zone also allows us to extend the returning zone's behaviour. We can fork a zone by calling `.fork()` on the `zone` object. Here's what that could look like:
 
-{% highlight javascript %}
+```js
 var myZone = zone.fork();
 
 myZone.run(main);
-{% endhighlight %}
+```
 
 This really just gives us a new zone with the same power of the original zone (which we haven't discussed just yet). Let's try out these hooks we've mentioned and extend our new zone. Hooks are defined using a `ZoneSpecification` that we can pass to `fork()`. We can take advantage of the following hooks:
 
@@ -135,7 +135,7 @@ This really just gives us a new zone with the same power of the original zone (w
 
 Here's our code sample with an extended zone that logs before and after each task is executed:
 
-{% highlight javascript %}
+```js
 var myZoneSpec = {
   beforeTask: function () {
     console.log('Before task');
@@ -154,7 +154,7 @@ myZone.run(main);
 // Before task
 // Async task
 // After task
-{% endhighlight %}
+```
 
 Oh wait! What's that? Both hooks are executed twice? Why is that? Sure, we've learned that `zone.run` is obviously considered a "task" which is why the first two messages are logged. But it seems like the `setTimeout()` call is treated as a task too. How is that possible?
 
@@ -183,7 +183,7 @@ Our original problem was that we couldn't capture the execution time of asynchro
 
 Here's what it looks like:
 
-{% highlight javascript %}
+```js
 var profilingZone = (function () {
   var time = 0,
       timer = performance ?
@@ -204,11 +204,11 @@ var profilingZone = (function () {
     }
   };
 }());
-{% endhighlight %}
+```
 
 Pretty much the same code as the one we started off with at the beginning of this article, just wrapped in a zone specification. The example also adds a `.time()` and `.reset()` method to the zone, which can be invoked on the zone object like this:
 
-{% highlight javascript %}
+```js
 zone
   .fork(profilingZone)
   .fork({
@@ -217,7 +217,7 @@ zone
     }
   })
   .run(main);
-{% endhighlight %}
+```
 
 The `+` syntax is a shorthand DSL that allows us to extend the parent zone's hook. Neat ha?
 

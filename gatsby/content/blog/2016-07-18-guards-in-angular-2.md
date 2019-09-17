@@ -59,8 +59,7 @@ Guards can be implemented in different ways, but after all it really boils down 
 
 To register a guard we need to define a token and the guard function. Here's what a super simple guard implementation could look like:
 
-{% highlight js %}
-{% raw %}
+```js
 @NgModule({
   ...
   providers: [
@@ -72,16 +71,14 @@ To register a guard we need to define a token and the guard function. Here's wha
   ...
 })
 export class AppModule {}
-{% endraw %}
-{% endhighlight %}
+```
 
 As we can see, it's really just a provider with some made up token that resolves to a guard function that returns `true` (if `provider` doesn't mean anything to you, go and check out our article on [Dependency Injection in Angular](/angular/2015/05/18/dependency-injection-in-angular-2.html)). Since it's always returning `true`, this guard is not protecting anything, as it will always activate the route that uses it. However, this is really just to demonstrate a guard implementation. We also notice that we're using a string token, which works fine but what we really want is an [`OpaqueToken`](/angular/2016/05/23/opaque-tokens-in-angular-2.html) to not run into name collisions.
 
 Once a guard is registered with a token, we can use it in our route configuration. The following route configuration has the `CanAlwaysActivateGuard` attached, which gets executed when routing to that specific route.
 
 
-{% highlight js %}
-{% raw %}
+```js
 export const AppRoutes:RouterConfig = [
   { 
     path: '',
@@ -89,8 +86,7 @@ export const AppRoutes:RouterConfig = [
     canActivate: ['CanAlwaysActivateGuard']
   }
 ];
-{% endraw %}
-{% endhighlight %}
+```
 
 As we can see, all we need to do is to define a list of guard tokens that should be called. This also implies that we can have multiple guards protecting a single route. Guards are executed in the order they are defined on the route.
 
@@ -101,8 +97,7 @@ Sometimes, a guard needs dependency injection capabilities. In these cases, it m
 When creating a guard class, we implement either the `CanActivate`, `CanDeactivate`, or `CanActivateChild` interface, which requires us to have a method `canActivate()`, `canActivateChild()`, or `canDeactivate()` respectively. Those methods are pretty much the equivalent of a guard function in the previous scenario. The following snippet shows a simple `CanActivate` guard implementation using classes.
 
 
-{% highlight js %}
-{% raw %}
+```js
 import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router';
 import { AuthService } from './auth.service';
@@ -116,13 +111,11 @@ export class CanActivateViaAuthGuard implements CanActivate {
     return this.authService.isLoggedIn();
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Pretty straight forward. An [injectable class](/angular/2015/09/17/resolve-service-dependencies-in-angular-2.html) with a `canActivate()` method that now has access to injected dependencies. Angular will call that method for us when a guard is implemented as a class. Just like the previous guard, this one needs to be registered as a provider:
 
-{% highlight js %}
-{% raw %}
+```js
 @NgModule({
   ...
   providers: [
@@ -131,13 +124,11 @@ Pretty straight forward. An [injectable class](/angular/2015/09/17/resolve-servi
   ]
 })
 export class AppModule {}
-{% endraw %}
-{% endhighlight %}
+```
 
 And can then be used on a route:
 
-{% highlight js %}
-{% raw %}
+```js
 { 
   path: '',
   component: SomeComponent,
@@ -146,8 +137,7 @@ And can then be used on a route:
     CanActivateViaAuthGuard
   ]
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 ## Deactivating Routes
 
@@ -157,8 +147,7 @@ The `CanDeactivate` guard also has access to the instance of the active componen
 
 Implementing a `CanDeactivate` guard is very similar to implementing a `CanActivate` guard. All we have to do is to create again, either a function, or a class that implements the `CanDeactivate` interface.  We can implement a super simple safety net for our users like this:
 
-{% highlight js %}
-{% raw %}
+```js
 import { CanDeactivate } from '@angular/router';
 import { CanDeactivateComponent } from './app/can-deactivate';
 
@@ -171,13 +160,11 @@ export class ConfirmDeactivateGuard implements CanDeactivate<CanDeactivateCompon
     return true;
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Even though, this is a very trivial implementation, there's one thing that we didn't see in the previous example. `CanDeactivate<T>` uses a generic, so we need to specify what component type we want to deactivate. Honestly, we're not sure if this is a bug or not. But other than that, it's very clear what's going on here. We implement a method `canDeactivate()`, that is called by Angular's router internally if needed. Last but not least, also this guard needs to be registered accordingly:
 
-{% highlight js %}
-{% raw %}
+```js
 @NgModule({
   ...
   providers: [
@@ -186,8 +173,7 @@ Even though, this is a very trivial implementation, there's one thing that we di
   ]
 })
 export class AppModule {}
-{% endraw %}
-{% endhighlight %}
+```
 
 ## Conclusion
 

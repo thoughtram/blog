@@ -81,7 +81,7 @@ Of course, there are way more things in Angular that will change or be added to 
 
 After doing tons of research at thoughtram with [Christoph](http://twitter.com/cburgdorf) we realised, that the entire upgrade process can basically be categorized in two phases: Preparation and Upgrade.
 
-<img src="/assets/upgrade-2-phases-3.svg">
+![](../assets/images/upgrade-2-phases-3.svg)
 
 **Preparation**
 
@@ -101,7 +101,7 @@ Oldie but goldie. We still see applications using a project structure where all 
 
 We should rather go with something like:
 
-{% highlight sh %}
+```sh
 app
 |- components
   |- productDetail
@@ -112,7 +112,7 @@ app
   |- productList
   |- checkout
   |- wishlist
-{% endhighlight %}
+```
 
 This structure allows us to take e.g. `productDetail` and upgrade it to Angular >= 2.x to integrate it back into the application later on. We don't have to worry if there's anything else related to `productDetail` in the code base that we might forget, because everything is in one place.
 
@@ -187,20 +187,20 @@ The first thing we need to do is to upgrade our Angular 1 application with `ngUp
 
 Let's start with an app we want to upgrade;
 
-{% highlight js %}
+```js
 var app = angular.module('myApp', []);
-{% endhighlight %}
+```
 
 Plain old Angular 1 module. Usually, this module is bootstrapped using the `ng-app` attribute, but now we want to bootstrap our module using `ngUpgrade`. We do that by removing the `ng-app` attribute from the HTML, create an `ngUpgrade` adapter from the upgrade module, and call `bootstrap()` on it with `myApp` as module dependency:
 
-{% highlight js %}
+```js
 import { UpgradeAdapter } from '@angular/upgrade';
 
 var adapter = new UpgradeAdapter();
 var app = angular.module('myApp', []);
 
 adapter.bootstrap(document.body, ['myApp']);
-{% endhighlight %}
+```
 
 Cool, our app is now bootstrapped using `ngUpgrade` and we can start mixing Angular 1.x components with Angular 2.x components. However, in a real world application, you want to create an instance of `UpgradeAdapter` in a separate module and import it where you need it. This leads to cleaner code when upgrading across your application.
 
@@ -208,8 +208,7 @@ Cool, our app is now bootstrapped using `ngUpgrade` and we can start mixing Angu
 
 Let's upgrade our first component to Angular 2.x and use it in our Angular 1.x application. Here we have a `productDetail` component that needs to be upgraded:
 
-{% highlight js %}
-{% raw %}
+```js
 app.component('productDetail', () => {
   bindings: {
     product: '='
@@ -220,13 +219,11 @@ app.component('productDetail', () => {
     <p>{{$ctrl.product.description}}</p>
   `
 });
-{% endraw %}
-{% endhighlight %}
+```
 
 Upgrading this to Angular 2.x looks something like this:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   selector: 'product-detail',
   template: `
@@ -237,19 +234,16 @@ Upgrading this to Angular 2.x looks something like this:
 class ProductDetail {
   @Input() product: Product;
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 **Note**: You might want to define this component in a separate file, for simplicity sake we defined it in place.
 
 Perfect! But how do we get this Angular component into our Angular 1.x application? The `UpgradeAdapter` we've created comes with a method `downgradeNg2Component()`, which takes an Angular component and creates an Angular 1.x directive from it. Let's use our Angular component in Angular 1.x world.
 
-{% highlight js %}
-{% raw %}
+```js
 app.directive('productDetail',
   adapter.downgradeNg2Component(ProductDetail));
-{% endraw %}
-{% endhighlight %}
+```
 
 Yay! That's it! The adapter will bootstrap this component from within the Angular 1 template where it's used. 
 
@@ -261,8 +255,7 @@ There might be cases where one component has already been upgraded to Angular >=
 
 Let's say we continued upgrading our application and have a `ProductList` component like this:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   selector: 'product-list',
   template: `
@@ -279,15 +272,13 @@ class ProductList {
   @Input() products: Product[];
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 `<product-list-item>` is a component that hasn't been ported to Angular 2.x yet and maybe can't even for some reason. It needs to be upgraded but how do we get there? As you can see, there's a `directives` property in the `@Component()` metadata. This property defines which directives are used in the component's template. What we need is a way to add `<product-list-item>` there too.
 
 `upgradeNg1Component()` enables us to do exactly that. It takes the name of a directive that has been registered somewhere on our Angular 1 module and upgrades it to an Angular 2.x component. Here's what it looks like:
 
-{% highlight js %}
-{% raw %}
+```js
 @NgModule({
   imports: [BrowserModule],
   declarations: [
@@ -298,8 +289,7 @@ class ProductList {
   ...
 })
 export class AppModule {}
-{% endraw %}
-{% endhighlight %}
+```
 
 All we need to do is to downgrade `ProductList` item and we can use it right away!
 
@@ -309,8 +299,7 @@ Upgrading components is probably the most crucial part in the entire upgrade pro
 
 Let's say our `ProductDetail` component, already upgraded to Angular >= 2.x, has a `ProductService` dependency.
 
-{% highlight js %}
-{% raw %}
+```js
 class ProductService {
 
 }
@@ -321,16 +310,13 @@ class ProductDetail {
 
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 In Angular >= 2.x, we have to add a provider configuration for the component's injector, but since we don't bootstrap using Angular 2.x, there's no way to do so. `ngUpgrade` allows us to add a provider using the `addProvider()` method to solve this scenario.
 
-{% highlight js %}
-{% raw %}
+```js
 adapter.addProvider(ProductService);
-{% endraw %}
-{% endhighlight %}
+```
 
 That's all we need to do!
 
@@ -338,8 +324,7 @@ That's all we need to do!
 
 Let's say our `ProductService` depends on another lower level `DataService` to communicate with a remote server. `DataService` is already implemented in our Angular 1 application but not yet upgraded to Angular 2.x.
 
-{% highlight js %}
-{% raw %}
+```js
 class ProductService {
 
   constructor(@Inject('DataService') dataService) {
@@ -350,43 +335,35 @@ class ProductService {
 app.service('DataService', () => {
   ...
 });
-{% endraw %}
-{% endhighlight %}
+```
 
 As you can see, we're using `@Inject` to specify the provider token for `DataService`, since we don't have a `DataService` type. If this is unclear, you might want to read our articles on [DI in Angular](/angular/2015/05/18/dependency-injection-in-angular-2.html).
 
 However, there's no provider for `'DataService'` in Angular 2.x world yet. Let's make it available using `upgradeNg1Provider()`.
 
-{% highlight js %}
-{% raw %}
+```js
 adapter.upgradeNg1Provider('DataService');
-{% endraw %}
-{% endhighlight %}
+```
 
 Boom! We can make it even better. Let's assume our Angular 1 service has already been written as class.
 
-{% highlight js %}
-{% raw %}
+```js
 class DataService {
 
 }
 
 app.service('DataService', DataService);
-{% endraw %}
-{% endhighlight %}
+```
 
 We can use that class as type and token for dependency injection in Angular 2.x. All we have to do, is to upgrade our service with that token.
 
-{% highlight js %}
-{% raw %}
+```js
 adapter.upgradeNg1Provider('DataService', {asToken: DataService});
-{% endraw %}
-{% endhighlight %}
+```
 
 Now we can inject it using plain old type annotations.
 
-{% highlight js %}
-{% raw %}
+```js
 @Injectable()
 class ProductService {
 
@@ -394,8 +371,7 @@ class ProductService {
     ...
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 **Note**: We added `@Injectable()` to our service because TypeScript needs at least one decorator to emit metadata for it. Learn more in our article on [Injecting Services in Services in Angular](/angular/2015/09/17/resolve-service-dependencies-in-angular-2.html).
 
@@ -403,12 +379,10 @@ class ProductService {
 
 Last but not least, we might need to be able to use Angular 2.x services in Angular 1.x components. Guess what, `ngUpgrade` comes with a `downgradeNg2Provider()` method.
 
-{% highlight js %}
-{% raw %}
+```js
 app.factory('ProductService',
   adapter.downgradeNg2Provider(ProductService));
-{% endraw %}
-{% endhighlight %}
+```
 
 ## Conclusion
 

@@ -68,33 +68,29 @@ I think I don't have to go into much detail when it comes to how to use filters 
 
 For instance, in the following example, we use the `json` filter to convert a JavaScript object into a JSON string:
 
-{% highlight html %}
-{% raw %}
+```
 {{ jsonExpression | json }}
-{% endraw %}
-{% endhighlight %}
+```
 
 Expecting `jsonExpression` to look something like: `{'name':'value'}`, the filter would return a string that looks something like this:
 
-{% highlight json %}
+```
 {
   "name": "value"
 }
-{% endhighlight %}
+```
 
 If we use a filter that can be configured with additional parameters, we can pass them to the filter by chaining them with a `:` symbol right in the expression. The following example uses the `currency` filter to format the given expression accordingly and uses an optional `symbol` parameter to change the default currency symbol for this particular use case.
 
-{% highlight html %}
-{% raw %}
+```
 {{ amount | currency:'€' }}
-{% endraw %}
-{% endhighlight %}
+```
 
 Okay, so this is pretty straight forward right? A filter takes an expression and uses it as input to manipulate the expressions value and returns (ideally) a string, so it can be used in our HTML right away.
 
 We can go even further and build a custom filter that depends on another service to manipulate the given input. Let's assume we have a filter like this:
 
-{% highlight javascript %}
+```
 angular.module('myApp', [])
 
 .filter('customFilter', ['someService', function (someService) {
@@ -104,7 +100,7 @@ angular.module('myApp', [])
     return input;
   };
 }]);
-{% endhighlight %}
+```
 
 In this example we have a filter that depends on `someService` and this particular service apparently comes with a method `getData()`, which is used to change the value of `input` that gets returned.
 
@@ -128,17 +124,15 @@ But to get a better picture, let's take a look at the `translate` filter that co
 
 Here's what it looks like:
 
-{% highlight javascript %}
-{% raw %}
+```
 {{ 'TRANSLATIONID' | translate }}
-{% endraw %}
-{% endhighlight %}
+```
 
 As we already discussed, Angular caches the value of this expression and won't re-evaluate it unless `'TRANSLATIONID'` changes. This is actually a problem, because `'TRANSLATIONID'` never changes. When the user changes the language, the given translation id again, is looked up by the filter in a translation table, but the expression stays the exact same.
 
 So how do we tell Angular, that expressions that are stateful  *have* to be re-evaluated? It's easy. All we have to do is to add a `$stateful` property to our filter that flags it as stateful. Here we see our `customFilter` being flagged accordingly:
 
-{% highlight javascript %}
+```
 angular.module('myApp', [])
 
 .filter('customFilter', ['someService', function (someService) {
@@ -152,7 +146,7 @@ angular.module('myApp', [])
 
   return customFilter;
 }]);
-{% endhighlight %}
+```
 
 That's it. Setting the `$stateful` property to `true` does the trick (angular-translate's filter comes with that flag already). Keep in mind that it's in general recommended to avoid building stateful filters, because the execution of those can't be optimized by Angular. Better build stateless filters that get all needed information as parameters.
 

@@ -46,20 +46,17 @@ Host and visibility are both features in Angular's dependency injection system, 
 
 Let's start off by imagining the following scenario. We have three nested components that all do their own thing (because that's what components do in Angular):
 
-{% highlight html %}
-{% raw %}
+```html
 <component-one>
   <component-two>
     <component-three></component-three>
   </component-two>
 </component-one>
-{% endraw %}
-{% endhighlight %}
+```
 
 As we learned in our article on dependency injection in Angular, each component in Angular creates its own injector. Which means the code above can be translated to something like this:
 
-{% highlight sh %}
-{% raw %}
+```
 injector (<component-one>)
       ^
       |
@@ -67,23 +64,19 @@ child injector (<component-two>)
       ^
       |
 grand child injector (<component-three>)
-{% endraw %}
-{% endhighlight %}
+```
 
 The `^` symbol just signalises that a child injector is created from it's parent. To come back to our nice and cozy JavaScript world, we could also translate it to this:
 
-{% highlight js %}
-{% raw %}
+```js
 var injector = Injector.create();
 var childInjector = Injector.create([], injector);
 var grandChildInjector = Injector.create([], childInjector);
-{% endraw %}
-{% endhighlight %}
+```
 
 Of course, this code is very simplified and as we can see, there are also no providers passed to any of the injectors. Usually, when injectors are created, there are providers passed to them so we can ask for specific dependencies in our code. Let's add some actual providers, to see how the relationships between the injectors affect dependency instantiation.
 
-{% highlight js %}
-{% raw %}
+```js
 var injector = Injector.create([
   { provide: Car, deps: [Engine] },
   { provide: Engine, deps: [] }
@@ -92,8 +85,7 @@ var childInjector = Injector.create([], injector);
 var grandChildInjector = Injector.create([
   { provide: Car, useClass: Convertible, deps: [] }
 ], childInjector);
-{% endraw %}
-{% endhighlight %}
+```
 
 The injector tree allows us to define injector providers for a specific component and its children. With the code above, if we ask `grandChild` for a dependency of type `Car` we'll get back an instance of type `Convertible`, because it defines it's own provider for that type. However, if we ask for a dependency of type `Engine`, we simply get an instance of the class `Engine`, because `grandChild` will ask it's parent injector (recursively) until an injector has providers defined for that type. If this is entirely new to you, all this has been covered in our last [article](/angular/2015/05/18/dependency-injection-in-angular-2.html) on DI.
 
@@ -101,13 +93,11 @@ Okay, this sounds all very powerful but where does this host thing come into pla
 
 For example, here's what the view of `<component-one>` could look like:
 
-{% highlight html %}
-{% raw %}
+```html
 <h1>Component 1</h1>
 
 <ng-content></ng-content>
-{% endraw %}
-{% endhighlight %}
+```
 
 As we can see, the view of a component is just yet another DOM tree. If we configure Angular accordingly, this DOM tree can be Shadow DOM. That's also why we have an `<ng-content>` tag there. It's Angular's implementation of **content insertion points**, which is another Shadow DOM feature.
 
@@ -119,20 +109,17 @@ That's a good question! We've now seen a couple of times that an injector is alw
 
 To make things a bit more clear, let's say we have a component `<video-player>` which comes with the following view.
 
-{% highlight html %}
-{% raw %}
+```html
 <video-screen></video-screen>
 <video-controls>
   <play-button></play-button>
   <pause-button></pause-button>
 </video-controls>
-{% endraw %}
-{% endhighlight %}
+```
 
 Our `<video-player>` component consists of a couple of other components. Let's say that the injector of `<video-player>` comes with providers for a `PlayerService`:
 
-{% highlight javascript %}
-{% raw %}
+```js
 @Component({
   selector: 'video-player',
   providers: [
@@ -142,21 +129,18 @@ Our `<video-player>` component consists of a couple of other components. Let's s
 class VideoPlayer {
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 `PlayerService` is used by the component's view components (`<play-button>`, `<pause-button>`), to play and pause a video respectively. In order to get an instance of `PlayerService`, we'd need to inject it like this:
 
-{% highlight javascript %}
-{% raw %}
+```js
 @Component({ ... })
 class PlayButton {
   constructor(playerService: PlayerService) {
 
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Since we have a provider for `PlayerService` defined in `VideoPlayer`, its injector will return an instance accordingly and everything works as expected, even if `<play-button>` doesn't know anything about that provider. However, in case `VideoPlayer` wouldn't define that provider, the lookup will go on and on (even outside the `<video-player>` component) until either some other component has such a provider, or an error is thrown.
 
@@ -166,16 +150,14 @@ This can be problematic. Just imagine someone uses our code with another `<aweso
 
 Luckily, this is covered by Angular's dependency injection system. If we need to ask for a dependency and want to make sure that the lookup ends with the current component's host, we can use the `@Host` decorator. Here's our `<play-button>` component rewritten with the lookup constraint:
 
-{% highlight javascript %}
-{% raw %}
+```js
 @Component({ ... })
 class PlayButton {
   constructor(@Host() playerService: PlayerService) {
 
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 If you don't know what it's about with these decorators, you might want to read our article on [annotations and decorators](/angular/2015/05/03/the-difference-between-annotations-and-decorators.html). Now we ensured that `PlayerService` instance is always instatiated by our component's host, which is currently our `VideoPlayer` component.
 
@@ -185,39 +167,32 @@ Okay cool, we now know what `@Host` is and why we need it. But we didn't talk ab
 
 `viewProviders` allows us to define injector providers that are only available for a component's view. Let's take a closer look at what that means by using our `<video-player>` component. Our `<video-player>` component has its own view with its own components. So usually, we would use that component just like this:
 
-{% highlight html %}
-{% raw %}
+```html
 <video-player><video-player>
-{% endraw %}
-{% endhighlight %}
+```
 
 But let's imagine, we change the API and `<video-player>` expects a child element, that implements a video component (whatever that looks like). So we go ahead an build a `<custom-video>` component that does exactly that and we use it as a child of `<video-player>` so it can do it's job with it:
 
-{% highlight html %}
-{% raw %}
+```html
 <video-player>
   <custom-video></custom-video>
 </video-player>
-{% endraw %}
-{% endhighlight %}
+```
 
 Now `<video-player>` has a child element (with it's own injector) that it needs to work. Note that this child is part of the Light DOM rather than the video player component's Shadow DOM (emulation). Next, we realise that `<custom-video>` needs something of type `VideoService` in order to work correctly, so we inject it accordingly:
 
-{% highlight javascript %}
-{% raw %}
+```js
 @Component({ ... })
 class CustomVideo {
   constructor(videoService: VideoService) {
 
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 We know that, if `<custom-video>` ask its injector for a dependency, the injector will look up the dependency in it's injector tree if it doesn't have a provider for that type, until it gets the requested instance. This is quite cool, but now imagine that `<video-player>` has its own provider for the type `VideoService`, because it needs a very specific instance for it's view, in order to work:
 
-{% highlight javascript %}
-{% raw %}
+```js
 @Component({
   selector: 'video-player',
   providers: [
@@ -228,15 +203,13 @@ We know that, if `<custom-video>` ask its injector for a dependency, the injecto
 class VideoPlayer {
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 What now happens is, that `<custom-video>` would get an instance of `SpecificVideoService` but it actually needs an instance of `VideoService`. However, due to the lookup that happens in the injector tree, the provider defined in `<video-player>` is the next one that is available. How can we get around that? This is exactly where `viewProviders` come in. With `viewProviders` we can tell the DI system very specifically, which providers are available to which child injectors (Light DOM or Shadow DOM).
 
 To make our code work as expected, all we have to do is to make the `VideoService` provider of `<video-player>` explicitly available only for its view:
 
-{% highlight javascript %}
-{% raw %}
+```js
 @Component({
   selector: 'video-player',
   providers: [
@@ -249,8 +222,7 @@ To make our code work as expected, all we have to do is to make the `VideoServic
 class VideoPlayer {
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Now, whenever a component of `<video-player>`'s view asks for something of type `VideoService`, it'll get an instance of `SpecificVideoService` as expected. Other child components from the outside world that ask for the same type however, won't see this provider and will continue with the lookup in the injector tree. Which means `<custom-video>` now gets an expected instance from another parent injector without even knowing that `<video-player>` actually introduces its own provider.
 

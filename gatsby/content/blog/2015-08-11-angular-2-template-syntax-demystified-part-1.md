@@ -46,8 +46,7 @@ Just to make sure that everyone knows what we are talking about when mentioning 
 
 If you've read the [step-by-step guide](https://angular.io/docs/js/latest/guide/) you've probably seen the following syntaxes:
 
-{% highlight html %}
-{% raw %}
+```html
 <p>My name: {{ myName}}</p>
 <ul>
   <li *ngFor="let name of names">
@@ -55,17 +54,14 @@ If you've read the [step-by-step guide](https://angular.io/docs/js/latest/guide/
   </li>
 </ul>
 <input #myname (keyup)="myControllerMethod()">
-{% endraw %}
-{% endhighlight %}
+```
 
 And that's not all, in fact we could add some more:
 
-{% highlight html %}
-{% raw %}
+```html
 <todo [todo]="todo"></todo>
 <input [(ngModel)]="foo">
-{% endraw %}
-{% endhighlight %}
+```
 
 What we see here is **Event Binding**, **Property Binding**, **Local Variables** and **Template Directives**. In this article we're going to focus on property, event and two-way binding. But before we explore all of these different syntaxes, let's answer the first question that comes to our mind when seeing this code: 
 
@@ -94,36 +90,29 @@ The most interesting part here, is how attributes and properties behave on a DOM
 
 Let's just take this simple `input` example here:
 
-{% highlight html %}
-{% raw %}
+```html
 <input value="thoughtram">
-{% endraw %}
-{% endhighlight %}
+```
 
 We use the `value` attribute to set the **initial** value of the input element. Let's see what happens when we access the DOM object and it's `value` property:
 
-{% highlight javascript %}
-{% raw %}
+```js
 var input = document.querySelector('input');
 input.value // 'thoughtram'
-{% endraw %}
-{% endhighlight %}
+```
 
 Alright, we access the `value` property and as expected, it returns the string `thoughtram`. But what happens when we change that value and read from its attribute?
 
-{% highlight javascript %}
-{% raw %}
+```js
 input.value = 'Angular Master Class';
 input.getAttribute('value'); // 'thoughtram'
-{% endraw %}
-{% endhighlight %}
+```
 
 As we can see, the property value is not reflected back to the attribute. There are very few elements that actually reflect their property value back to its attribute. For example the `src` property of an `img` element. Changing its property will also change its attribute. In addition to that, a property can really get any value, whereas an attribute is always a string.
 
 So how could we pass objects to directives in AngularJS? Well, as most of us know, there's this directive definition object (DDO), which allows us to specify how directives' scope properties (or controller properties) are bound to the outside world. The following code for example, allows us to pass an expression to a directive via attributes, that actually results in an object once evaluated.
 
-{% highlight javascript %}
-{% raw %}
+```js
 angular.module('app', []).directive('widget', function () {
   return {
     scope: {},
@@ -135,30 +124,25 @@ angular.module('app', []).directive('widget', function () {
     template: 'Value: ctrl.obj.foo'
   }
 });
-{% endraw %}
-{% endhighlight %}
+```
 
-If `bindToController` is new to you, you might want to read [this article](http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html).
+If `bindToController` is new to you, you might want to read [this article](/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html).
 
 From the outside world, we can then pass an object to our `widget` directive simply with an expression. Let's say we have a controller like this:
 
-{% highlight javascript %}
-{% raw %}
+```js
 angular.module('app', []).controller('AppController', function () {
   this.objOnCtrl = {
     foo: 'Hello World!'
   };
 });
-{% endraw %}
-{% endhighlight %}
+```
 
 And a template like this:
 
-{% highlight html %}
-{% raw %}
+```html
 <widget ng-controller="AppController as ctrl" obj="ctrl.objOnCtrl">
-{% endraw %}
-{% endhighlight %}
+```
 
 Angular takes the expression passed to the attribute and parses and evaluates it against the corresponding scope, which allows us to pass other values than strings to directives.
 
@@ -169,19 +153,15 @@ Why can't we just continue like that in Angular? There are a couple of reasons:
 
 That's why since version 2.x, Angular always binds to properties rather than attributes (as AngularJS does). Every DOM element has properties, regardless of being a native element or a Web Component. In order to tell Angular that we want to bind to a property, we use the brackets syntax. If we'd build our `widget` directive in Angular, we would need to bind to it's `obj` property to assign an object value:
 
-{% highlight html %}
-{% raw %}
+```html
 <widget [obj]="objOnComponent">
-{% endraw %}
-{% endhighlight %}
+```
 
 Another feature that property binding brings to the table is **escaping**. Just think about the `img` tag and its `src` attribute. What happens when the browser ecounters an `img` tag with a source when parsing the HTML? Right, it tries to request the source of that image. If we'd have HTML like this:
 
-{% highlight html %}
-{% raw %}
+```html
 <img src="{{someExpression}}">
-{% endraw %}
-{% endhighlight %}
+```
 
 It would result in a `404` error, because the source isn't a valid URL. That's why AngularJS has this `ng-src` directive. It takes an expression, evaluates it and once evaluated, it adds the actual `src` attribute to the image element, which results in a correct request. Binding to properties escapes automatically, because value will also only be assigned once their expressions are evaluated.
 
@@ -191,29 +171,23 @@ We can still use normal attributes without brackets though. Just keep in mind th
 
 Good question! Interpolation in Angular has always been one of the biggest features of the framework. If there's only property binding, how does something like the following work then?
 
-{% highlight html %}
-{% raw %}
+```html
 <p>Hello {{name}}</p>
-{% endraw %}
-{% endhighlight %}
+```
 
 It turns out, that interpolation syntax is just a shorthand syntax for property binding as well. The code above could be translated to something like this:
 
-{% highlight html %}
-{% raw %}
+```html
 <p [textContent]="interpolate(['Hello'], [name])"></p>
-{% endraw %}
-{% endhighlight %}
+```
 
 **Canonical syntax**
 
 Okay cool, now we know what property binding is and why we want to use it, but there's still a problem we haven't talked about yet. What if we generate our templates with an HTML preprocessor that doesn't like the brackets syntax? Guess what, the brackets syntax itself is really just a shorthand for us developers so we can save some key strokes. All property bindings inside a template can be written as:
 
-{% highlight html %}
-{% raw %}
+```html
 <ANY bind-{PROPERTY_NAME}="{EXPRESSION}"></ANY>
-{% endraw %}
-{% endhighlight %}
+```
 
 Which makes it an alpha numeric version that all preprocessors should be able to deal with.
 
@@ -225,11 +199,9 @@ In AngularJS, we have a lot of directives that help us out notifying the framewo
 
 That's why since version 2.x, in Angular we have the parenthesis syntax where we can bind to **any** event like this:
 
-{% highlight html %}
-{% raw %}
+```html
 <date-picker (dateChanged)="statement()"></date-picker>
-{% endraw %}
-{% endhighlight %}
+```
 
 The parentheses simply tell Angular that the expression inside the symbols is an event name that it needs to add an event listener for. `statement()` is simply the statement expression that gets executed whenever such an event is fired on that element. Having such a generic binding, all directives that intercepted for us in AngularJS will go away in Angular. This framework is getting simpler and simpler.
 
@@ -237,13 +209,11 @@ The parentheses simply tell Angular that the expression inside the symbols is an
 
 When binding to events in Angular, events are caught on the same element as well as from events that bubble up from child elements. E.g. if we have a DOM structure like this:
 
-{% highlight html %}
-{% raw %}
+```html
 <div (click)="statement()">
   <div></div>
 </div>
-{% endraw %}
-{% endhighlight %}
+```
 
 This will execute the given statement, if the first `div` or any of it's child elements are clicked.
 
@@ -251,11 +221,9 @@ This will execute the given statement, if the first `div` or any of it's child e
 
 Of course, using parenthesis is also just a shorthand syntax, so we as developers can save some key strokes. We can always use the canonical syntax, which is `on-*`.
 
-{% highlight html %}
-{% raw %}
+```html
 <ANY on-{EVENT_NAME}="{STATEMENT}"></ANY>
-{% endraw %}
-{% endhighlight %}
+```
 
 ## Two-way Data Binding
 
@@ -265,47 +233,39 @@ We talked about property binding and event binding but what about the biggest se
 
 Let's take a look at how that works with the following snippet:
 
-{% highlight html %}
-{% raw %}
+```html
 <input [value]="name">
 
 <p>Hello {{name}}</p>
-{% endraw %}
-{% endhighlight %}
+```
 
 We already learned what's happening here. We're simply binding the value of a `name` expression to the `value` property of an input element. In addition we want to output the same value in our view and update it when someone changes the value by typing into the input. This, however, doesn't work because we're just writing to the elements property. There's nothing that tells the expression to update when the value changes through typing.
 
 This can be easily fixed by adding an event binding accordingly:
 
-{% highlight html %}
-{% raw %}
+```html
 <input [value]="name" (input)="name = $event.target.value">
 
 <p>Hello {{name}}</p>
-{% endraw %}
-{% endhighlight %}
+```
 
 We listen to the `input` event and whenever it is fired, we update the value of our `name` expression by pulling the new value out of the event object.
 
 Since this is quite a lot of typing to implement such a common scenario, Angular comes with an `ngModel` directive that saves some key strokes for us, by unifying the property and event binding, and also the extraction of the target's value. Here's the exact same code using `ngModel`:
 
-{% highlight html %}
-{% raw %}
+```html
 <input [ngModel]="name" (ngModelChange)="name = $event">
 
 <p>Hello {{name}}</p>
-{% endraw %}
-{% endhighlight %}
+```
 
 It gets even better! We can shorten that syntax even further by merging both bindings like this:
 
-{% highlight html %}
-{% raw %}
+```html
 <input [(ngModel)]="name">
 
 <p>Hello {{name}}</p>
-{% endraw %}
-{% endhighlight %}
+```
 
 Two-way data binding is back in town! We can easily build our own directives that support that syntax, but that we're going to explore in another article.
 

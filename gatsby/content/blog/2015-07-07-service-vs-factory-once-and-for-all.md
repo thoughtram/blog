@@ -45,30 +45,25 @@ This article explains once and for all the difference between services and facto
 
 Okay, so what is the difference between a service and a factory in AngularJS? As we all know, we can define a service like this:
 
-{% highlight javascript %}
-{% raw %}
+```js
 app.service('MyService', function () {
   this.sayHello = function () {
     console.log('hello');
   };
 });
-{% endraw %}
-{% endhighlight %}
+```
 
 `.service()` is a method on our module that takes a name and a function that defines the service. Pretty straight forward. Once defined, we can inject and use that particular service in other components, like controllers, directives and filters, like this:
 
-{% highlight javascript %}
-{% raw %}
+```js
 app.controller('AppController', function (MyService) {
   MyService.sayHello(); // logs 'hello'
 });
-{% endraw %}
-{% endhighlight %}
+```
 
 Okay, clear. Now the same thing as a factory:
 
-{% highlight javascript %}
-{% raw %}
+```js
 app.factory('MyService', function () {
   return {
     sayHello: function () {
@@ -76,8 +71,7 @@ app.factory('MyService', function () {
     }
   }
 });
-{% endraw %}
-{% endhighlight %}
+```
 
 Again, `.factory()` is a method on our module and it also takes a name and a function, that defines the factory. We can inject and use that thing exactly the same way we did with the service. Now what is the difference here?
 
@@ -85,37 +79,31 @@ Well, you might see that instead of working with `this` in the factory, we're re
 
 To make that a bit more clear, we can simply take a look at the Angular source code. Here's what the `factory()` function looks like:
 
-{% highlight javascript %}
-{% raw %}
+```js
 function factory(name, factoryFn, enforce) {
   return provider(name, {
     $get: enforce !== false ? enforceReturnValue(name, factoryFn) : factoryFn
   });
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 It takes the name and the factory function that is passed and basically returns a provider with the same name, that has a `$get` method which is our factory function. So what is it with this provider thing? Well, whenever you ask the injector for a specific dependency, it basically asks the corresponding provider for an instance of that service, by calling the `$get()` method. That's why `$get()` is required, when creating providers.
 
 In other words, if we inject `MyService` somewhere, what happens behind the scenes is:
 
-{% highlight javascript %}
-{% raw %}
+```js
 MyServiceProvider.$get(); // return the instance of the service
-{% endraw %}
-{% endhighlight %}
+```
 
 Alright, factory functions just get called, what about the service code? Here's another snippet:
 
-{% highlight javascript %}
-{% raw %}
+```js
 function service(name, constructor) {
   return factory(name, ['$injector', function($injector) {
     return $injector.instantiate(constructor);
   }]);
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Oh look, it turns out that when we call `service()` it actually calls `factory()`. But it doesn't just pass our service constructor function to the factory as it is. It passes a function that asks the injector to instantiate and object by the given constructor. In other words: a service calls a predefined factory, which ends up as `$get()` method on the corresponding provider. `$injector.instantiate()` is the method that ultimately calls `Object.create()` with the constructor function. That's why we use `this` in services.
 
@@ -128,8 +116,7 @@ Asking that question on the internet takes us to a couple of articles and StackO
 "Basically the difference between the service and factory is as follows:"
 
 
-{% highlight javascript %}
-{% raw %}
+```js
 app.service('myService', function() {
 
   // service is just a constructor function
@@ -151,8 +138,7 @@ app.factory('myFactory', function() {
     }
   }
 });
-{% endraw %}
-{% endhighlight %}
+```
 
 We now already know what happens behind the scenes, but this answer adds another comment. It says we can run code **before** we return our object literal. That basically allows us to do some configuration stuff or conditionally create an object or not, which doesn't seem to be possible when creating a service directly, which is why **most resources recommend to use factories over services, but the reasoning is inappreciable.**
 
@@ -160,8 +146,7 @@ What if I told you, **we can do the exact same thing with services too?**
 
 Yeap, correct. A service is a constructor function, however, that doesn't prevent us from doing additional work and return object literals. In fact, constructor functions in JavaScript can return whatever they want. So we can take our service code and write it in a way that it basically does the exact same thing as our factory:
 
-{% highlight javascript %}
-{% raw %}
+```js
 app.service('MyService', function () {
 
   // we could do additional work here too
@@ -171,8 +156,7 @@ app.service('MyService', function () {
     };
   }
 });
-{% endraw %}
-{% endhighlight %}
+```
 
 Hoppla, so what now? We just realised that, depending on how we write our services, there's no difference between the two at all anymore. The big question remains: Which one should we use?
 
@@ -182,8 +166,7 @@ Of course, writing services in that way is kind of contra productive, since it's
 
 For example, we can take our code and rewrite it in ES6 like this:
 
-{% highlight javascript %}
-{% raw %}
+```js
 class MyService {
   sayHello() {
     console.log('hello');
@@ -191,10 +174,9 @@ class MyService {
 }
 
 app.service('MyService', MyService);
-{% endraw %}
-{% endhighlight %}
+```
 
-An ES6 class is really just a constructor function in ES5. We wrote about that in [Using ES6 with Angular today](http://blog.thoughtram.io/angularjs/es6/2015/01/23/exploring-angular-1.3-using-es6.html), if you haven't read that article yet, I'd recommend checking that out.
+An ES6 class is really just a constructor function in ES5. We wrote about that in [Using ES6 with Angular today](/angularjs/es6/2015/01/23/exploring-angular-1.3-using-es6.html), if you haven't read that article yet, I'd recommend checking that out.
 
 With factories, this is not possible because they are simply called as functions. I hope this article made everything clear and encourages people to **not** use factories over services, if they don't know what to use.
 

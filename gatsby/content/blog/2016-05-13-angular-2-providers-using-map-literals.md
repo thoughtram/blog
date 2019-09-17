@@ -39,8 +39,7 @@ So what is it all about? Well, if you've read our articles on [Dependency Inject
 
 In other words, if we ask for a service dependency in one of our components like this:
 
-{% highlight js %}
-{% raw %}
+```js
 import { Component } from '@angular/core';
 import { MyService } from './my-service.service';
 
@@ -52,15 +51,13 @@ class MyComponent {
 
   constructor(private myService: MyService) {}
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 We would run into an error, because even though, we import `MyService` and use that type to annotate our constructor parameter, there's nothing that tells Angular (or the injector) what to do, when someone asks for something of that type. Of course, Angular could simply automagically call `new` on the given type and that's it, but then there's no way to replace the actual dependency with an object of a different type, or maybe even the way we want to construct a dependency (class vs. factory vs. value).
 
 That's why Angular has the concept of providers, which basically act as a sort of recipe that describe how an object of a certain type is created.
 
-{% highlight js %}
-{% raw %}
+```js
 import { Component } from '@angular/core';
 import { MyService } from './my-service.service';
 @Component({
@@ -72,13 +69,11 @@ class MyComponent {
 
   constructor(private myService: MyService) {}
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 You might know that adding a provider as shown above is actually a shorthand syntax for developer ergonomics. The same logic can be expressed with this more verbose syntax:
 
-{% highlight js %}
-{% raw %}
+```js
 import { provide } from '@angular/core';
 
 @Component({
@@ -90,13 +85,11 @@ import { provide } from '@angular/core';
 class MyComponent {
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 This enables us to create objects of different types, or even use completely different ways of constructing objects like using a factory function, or simply injecting a value.
 
-{% highlight js %}
-{% raw %}
+```js
 // creates instance of MyOtherService
 provide(MyService, { useClass: MyOtherService })
 
@@ -105,8 +98,7 @@ provide(MyService, { useFactory: () => return { foo: 'bar' } })
 
 // injects a simple value
 provide(MyService, { useValue: true })
-{% endraw %}
-{% endhighlight %}
+```
 
 This is already pretty cool and powerful, because we can control what gets injected where in our application, without changing the application code itself.
 
@@ -116,8 +108,7 @@ As mentioned earlier, there's a little change that makes the more verbose syntax
 
 Here's one of our earlier snippets, but this time we use Map literals:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   selector: 'my-component',
   template: '{{myService.sayHello()}}',
@@ -129,7 +120,6 @@ class MyComponent {
 
   constructor(private myService: MyService) {}
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Keep in mind that this is not a breaking change that has been introduced. It's an additional syntax we can take advantage of. If you're into saving key strokes, you might want to prefer Map literals over `provide()`.

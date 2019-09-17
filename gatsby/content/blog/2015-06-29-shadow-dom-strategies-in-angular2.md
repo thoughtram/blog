@@ -70,7 +70,7 @@ You might wonder why we have three types. Why not just one for native Shadow DOM
 
 Angular doesn't use Shadow DOM at all. Styles applied to our component are written to the document head. We talked about that in a more detail in [styling Angular components](/angular/2015/06/25/styling-angular-2-components.html), but to make a quick recap, having a zippy component with styles like this (note that we set the `encapsulation` property in our `@Component` decorator):
 
-{% highlight js %}
+```js
 import {ViewEncapsulation} from '@angular/core';
 
 @Component({
@@ -87,11 +87,11 @@ import {ViewEncapsulation} from '@angular/core';
 class ZippyComponent {
   @Input() title: string;
 }
-{% endhighlight %}
+```
 
 And a template like this:
 
-{% highlight html %}
+```html
 <div class="zippy">
   <div (click)="toggle()" class="zippy__title">
     {{ visible ? '&blacktriangledown;' : '&blacktriangleright;' }} {{title}}
@@ -100,11 +100,11 @@ And a template like this:
     <ng-content></ng-content>
   </div>
 </div>
-{% endhighlight %}
+ ```
  
 Will make Angular creating a DOM like this:
 
-{% highlight html %}
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -129,7 +129,7 @@ Will make Angular creating a DOM like this:
     </my-zippy>
   </body>
 </html>
-{% endhighlight %}
+```
 
 Again, this is due to the fact that there's no Shadow DOM. This also means that all the styles apply to the entire document. Or in other words, a component could overwrite styles from another component because its styles are applied to the document head later. That's why this is the **unscoped** strategy. If there was Shadow DOM, Angular could just write all the styles into the `shadowRoot` which will enable style encapsulation.
 
@@ -139,17 +139,17 @@ Also note that the `<ng-content>` tag has been replaced with `<script>` tags tha
 
 This view encapsulation is used by default. `ViewEncapsulation.Emulated` emulates style encapsulation, even if no Shadow DOM is available. This is a very powerful feature in case you want to use a third-party component that comes with styles that might affect your application. What happens to our components, and especially to the styles, when this view encapsulation is used? Well, let's first check if the styles are still written to the document head. Here's what the head looks like with the exact same component but different strategy:
 
-{% highlight html %}
+```html
 <head>
   <style>.zippy[_ngcontent-1] {
   background: green;
   }</style>
 </head>
-{% endhighlight %}
+```
 
 Looks like styles are still written to the document head. But wait, what's that? Instead of the simple `.zippy` selector that we used, Angular creates a `.zippy[_ngcontent-1]` selector. So it seems like Angular rewrote our component's styles. Let's see what the component's template looks like:
 
-{% highlight html %}
+```html
 <my-zippy title="Details" _ngcontent-0 _nghost-1>
   <div class="zippy" _ngcontent-1>
     <div (click)="toggle()" class="zippy__title" _ngcontent-1>
@@ -162,7 +162,7 @@ Looks like styles are still written to the document head. But wait, what's that?
     </div>
   </div>
 </my-zippy>
-{% endhighlight %}
+```
 
 Ha! Angular added some attributes to our component's template as well! We see the `_ngcontent-1` attribute which is also used in our rewritten CSS, but we also have `_ngcontent-0` and `_nghost-1`. So what the hell is going on there?
 
@@ -178,7 +178,7 @@ Not sure what **you** think, but in my opinion, this is a very smart approach.
 
 Last but not least, we have the native Shadow DOM view encapsulation. This one is super simple to understand since it basically just makes Angular using native Shadow DOM. We can activate it the same way we did with the other types. Here's what that looks like:
 
-{% highlight js %}
+```js
 @Component({
   moduleId: module.id,
   templateUrl: 'my-zippy.component.html',
@@ -190,11 +190,11 @@ Last but not least, we have the native Shadow DOM view encapsulation. This one i
   encapsulation: ViewEncapsulation.Native
 })
 ...
-{% endhighlight %}
+```
 
 Okay that was easy. If we run our code in the browser, we see that no styles are written to the document head anymore. However, styles do now end up in the component's template inside the shadow root. Here's what that looks like:
 
-{% highlight html %}
+```html
 <my-zippy title="Details">
   #shadow-root
   | <style>
@@ -212,7 +212,7 @@ Okay that was easy. If we run our code in the browser, we see that no styles are
   | </div>
   "This is some content"
 </my-zippy>
-{% endhighlight %}
+```
 
 In order to get an output like this, we need to tell our browser dev tools to display Shadow DOM when inspecting element. No weird attributes anymore. Instead we get a nice shadow root and we can see very nicely how the styles are written into it. 
 

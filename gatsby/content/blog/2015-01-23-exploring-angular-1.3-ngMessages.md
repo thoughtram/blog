@@ -51,8 +51,7 @@ We've already learned about the [validators pipeline](http://blog.thoughtram.io/
 
 Let's say we want to build a common login form where the user needs to enter an email address and a password, like this:
 
-{% highlight html %}
-{% raw %}
+```html
 <form name="loginForm">
   <label>Email:</label>
   <input type="email" ng-model="email" name="email">
@@ -60,23 +59,19 @@ Let's say we want to build a common login form where the user needs to enter an 
   <label>Password:</label>
   <input type="password" ng-model="password" name="password">
 </form>
-{% endraw %}
-{% endhighlight %}
+```
 
 Notice the `name` attributes on the `<form>` and `<input>` elements. These make sure the form's `FormController` instance, that holds the state of the form, is exposed on the scope. Giving the `<input>` elements names exposes _their_ state on the `FormController`. In other words, `loginForm` is now an actual expressions on the scope that we can use to evaluate data in our template.
 
 We also specify the `type` of each `<input>` which adds some default validations to the fields behind the scenes. In fact, we can visualize the form's state by adding the following expression to our document:
 
-{% highlight html %}
-{% raw %}
+```js
 {{ loginForm | json }}
-{% endraw %}
-{% endhighlight %}
+```
 
 While entering an email address, Angular automatically validates the data given to the field and exposes the state to `loginForm`. That means, as long as we're entering data which isn't valid, the `$error` property of `loginForm` gets extended with a new object `email` that has all information about the state of the field.
 
-{% highlight json %}
-{% raw %}
+```json
 {
   "$error": {
     "email": [
@@ -105,13 +100,11 @@ While entering an email address, Angular automatically validates the data given 
   },
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 In addition to that, due to adding `name` attributes to the field itself, there's also an `email` and `password` property on `loginForm` which have an `$error` object themselves. The `$error` object on form fields is a simple key/value store that represents the error state for each applied validator on a field.
 
-{% highlight json %}
-{% raw %}
+```json
 {
   ...
   "email": {
@@ -122,41 +115,33 @@ In addition to that, due to adding `name` attributes to the field itself, there'
     ...
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 So, in order to display a message when there's an error with the default email validation (which we get automatically by specifying the `type`), all we need to do is to conditionally add a DOM node to the document like this:
 
-{% highlight html %}
-{% raw %}
+```html
 <p ng-if="loginForm.email.$error.email">
   Please enter a valid email
 </p>
-{% endraw %}
-{% endhighlight %}
+```
 
 Again, `loginForm.email` is the field reference, `$error.email` is the result of the `email` validation. To make it more clear, we can extend the example by adding a `required` attribute to the field, which also adds a validator to the field behind the scenes.
 
-{% highlight html %}
-{% raw %}
+```html
 <input type="email" ng-model="email" name="email" required>
-{% endraw %}
-{% endhighlight %}
+```
 
 Displaying an error message accordingly could look like this:
 
-{% highlight html %}
-{% raw %}
+```html
 <p ng-if="loginForm.email.$error.required">
   Please enter your email
 </p>
-{% endraw %}
-{% endhighlight %}
+```
 
 I think we get the idea. Now imagine instead of just two different validations, we have five validations for just one field and we want to display a message for each. The markup for our form gets out of control very quickly. Here's how our `password` field could be extended with conditional messages.
 
-{% highlight html %}
-{% raw %}
+```html
 <label>Password:</label>
 <input
   name="password"
@@ -173,8 +158,7 @@ I think we get the idea. Now imagine instead of just two different validations, 
 <p ng-if="loginForm.email.$error.pattern">...
 <p ng-if="loginForm.email.$error.validator4">...
 <p ng-if="loginForm.email.$error.validator5">...
-{% endraw %}
-{% endhighlight %}
+```
 
 We probably also want to control what message shows up when, especially when multiple messages occur at the same time. Try to build that with just `ngIf` directives all over the place. And this is where `ngMessages` comes into play.
 
@@ -182,23 +166,21 @@ We probably also want to control what message shows up when, especially when mul
 
 `ngMessages` comes as a separate module. In order to use it, we first need to install it. One way to do so is to use npm:
 
-{% highlight sh %}
+```sh
 $ npm install angular-messages
-{% endhighlight %}
+```
 
 Then, we need to embed the actual script in our document:
 
-{% highlight html %}
+```html
 <script src="path/to/angular-messages.js"></script>
-{% endhighlight %}
+```
 
 Once done, we declare `ngMessages` as module dependency of our app and we are ready to go.
 
-{% highlight html %}
-{% raw %}
+```js
 angular.module('myApp', ['ngMessages']);
-{% endraw %}
-{% endhighlight %}
+```
 
 Alright. The module is now installed and ready to be used. Let's take a look at what our login form would look when `ngMessages` is used. The module comes with two directives - `ngMessages` and `ngMessage`.
 
@@ -206,8 +188,7 @@ Whereas `ngMessages` directive gets an expression that evaluates to an object wh
 
 Things are a bit easier to understand when actual code is shown, so here's what our DOM looks like when `ngMessages` is used:
 
-{% highlight html %}
-{% raw %}
+```html
 <div ng-messages="loginForm.password.$error">
   <p ng-message="required">...</p>
   <p ng-message="minlength">...</p>
@@ -215,8 +196,7 @@ Things are a bit easier to understand when actual code is shown, so here's what 
   <p ng-message="validator4">...</p>
   <p ng-message="validator5">...</p>
 </div>
-{% endraw %}
-{% endhighlight %}
+```
 
 We have an element where `ngMessages` directive is applied. As mentioned earlier, `ngMessages` gets an expression that evaluates to an object where each member is either `true` or `false`. This fits perfectly to what `FormController` exposes on the scope, when fields have validations errors and a `name` attribute applied.
 
@@ -224,8 +204,7 @@ With `ngMessage` directive, we can just conditionally display messages by provid
 
 In case we don't want to pollute our DOM with additional elements, just to apply the directives, `ngMessages` and `ngMessage` are not restricted to attributes. We can also use them as elements. In that case, `for` and `when` attributes are needed to pass expressions accordingly.
 
-{% highlight html %}
-{% raw %}
+```html
 <ng-messages for="loginForm.password.$error">
   <ng-message when="required">...</ng-message>
   <ng-message when="minlength">...</ng-message>
@@ -233,8 +212,7 @@ In case we don't want to pollute our DOM with additional elements, just to apply
   <ng-message when="validator4">...</ng-message>
   <ng-message when="validator5">...</ng-message>
 </ng-messages>
-{% endraw %}
-{% endhighlight %}
+```
 
 Taking a closer look at this code snippet, you might think this is a very familiar construct. Right. It looks pretty much like using `ngSwitch` and `ngSwitchWhen` directives. In fact, it **is** almost the same.
 
@@ -244,26 +222,22 @@ So what is the difference and why do we want to use one version over the other? 
 
 Only one message is displayed at a time by default when using `ngMessages`. However, there might be cases where we want to display multiple message for a single field at a time. This we cannot do with `ngSwitch`, since it only renders a single match of the given construct. In order to display multiple messages, we can apply the `ng-messages-multiple` attribute to our `ngMessages` directive. This causes all messages to be displayed where the corresponding validations fail.
 
-{% highlight html %}
-{% raw %}
+```html
 <ng-messages ng-messages-multiple for="loginForm.password.$error">
   ...
 </ng-messages>
-{% endraw %}
-{% endhighlight %}
+```
 
 Or, if we want to display a single one, we at least want to prioritize which message shows up when. For example, before we want to display a message that says the given value doesn't match a particular pattern, we first want to make sure we have at least six characters (`minlength`) and therefore displaying a message for that first.
 
 We can do so by simply assembling our DOM accordingly. Messages that appear first in the DOM are also displayed first. The following construct displays a message for entering a value that is too short, before it informs the user that the given value doesn't match certain pattern:
 
-{% highlight html %}
-{% raw %}
+```html
 <ng-messages for="loginForm.password.$error">
   <ng-message when="minlength">...</ng-message>
   <ng-message when="pattern">...</ng-message>
 </ng-messages>
-{% endraw %}
-{% endhighlight %}
+```
 
 ## Reusing existing messages
 
@@ -271,8 +245,7 @@ It gets even better. It's pretty common to have the same messages for the same v
 
 All we need to do is to define a template that contains the messages we want to reuse and give it an id so we can reference it via `ng-messages-include`.
 
-{% highlight html %}
-{% raw %}
+```html
 <script type="script/ng-template" id="required-message">
   <ng-message when="required">
     This field is required!
@@ -287,8 +260,7 @@ All we need to do is to define a template that contains the messages we want to 
 <ng-messages ng-messages-include="required-message" for="otherForm.field.$error">
   ...
 </ng-messages>
-{% endraw %}
-{% endhighlight %}
+```
 
 <p style="background: #f47676; border-radius: 0.3em; padding: 1em; border: red 1px solid;"><strong>Breaking change in Angular 1.4</strong>: <br><code>ngMessagesInclude</code> is no longer an attribute in Angular 1.4. If you're using an Angular version >= 1.4, we recommend reading <a href="http://blog.thoughtram.io/2015/06/06/ng-messages-revisited.html" tile="ngMessages revisited">this article</a> on breaking changes introduced in ngMessages.</p>
 

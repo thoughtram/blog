@@ -50,8 +50,7 @@ In addition, it's important to understand that when building reactive/model-driv
 
 Let's start off again with the same form we used in our previous article, a form to register a new user on a platform:
 
-{% highlight html %}
-{% raw %}
+```html
 <form>
   <label>Firstname:</label>
   <input type="text">
@@ -70,15 +69,13 @@ Let's start off again with the same form we used in our previous article, a form
 
   <button type="submit">Submit</button>
 </form>
-{% endraw %}
-{% endhighlight %}
+```
 
 Nothing special going on here. We simply ask for a firstname, a lastname and some address information. Now, to make this form model-driven, what we need to do is to create a form model that represents that DOM structure in our component. One way to do that is to use the low level APIs for `FormGroup` and `FormControl`.
 
 `FormGroup` always represents a set of `FormControl`s. In fact, a form is always a `FormGroup`. Let's create the corresponding form model for our template:
 
-{% highlight js %}
-{% raw %}
+```js
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
@@ -98,8 +95,7 @@ export class AppComponent {
     })
   });
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Uff, that looks quite wordy! We'll fix that in a second but let's first discuss what happened. We created a component property `registerForm` which represents the `FormGroup`, which is our form. For each field in the form, we've created a `FormControl` and what we can't see here, is that a `FormControl` takes a string as first argument in case we want to prefill the form control with a default value. 
 
@@ -113,8 +109,7 @@ Currently, there's nothing in our code that tells Angular that our form model is
 
 In order to use that directive we need to import the `ReactiveFormsModule` into our application module:
 
-{% highlight js %}
-{% raw %}
+```js
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@anglar/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -125,25 +120,21 @@ import { ReactiveFormsModule } from '@angular/forms';
   bootstrap: [AppComponent]
 })
 export class AppModule {}
-{% endraw %}
-{% endhighlight %}
+```
 
 Now we can go ahead and use `formGroup` to connect the model with the form template:
 
-{% highlight html %}
-{% raw %}
+```html
 <form [formGroup]="registerForm">
   ...
 </form>
-{% endraw %}
-{% endhighlight %}
+```
 
 Great, the next thing we need to do is to associate the form controls to the model as well, because there's nothing that tells Angular "Hey these form controls here belong to your form control models!".
 
 This is where the `formControlName` directive comes into play. It's pretty much the equivalent of an `ngModel` and `name` attribute combination in template-driven forms. Each form control gets a `formControlName` directive applied so we can register the controls on the outer form:
 
-{% highlight html %}
-{% raw %}
+```html
 <form [formGroup]="registerForm">
   <label>Firstname:</label>
   <input type="text" formControlName="firstname">
@@ -162,13 +153,11 @@ This is where the `formControlName` directive comes into play. It's pretty much 
 
   <button type="submit">Submit</button>
 </form>
-{% endraw %}
-{% endhighlight %}
+```
 
 And last but not least, since `address` is created as a `FormGroup` as well, we can associate a group of form controls to that model using `formGroupName`. However, we need a surrounding element for that, otherwise there's no place where we can apply that directive. Let's surround the address fields with a `<fieldset>` element and apply `formGroupName` there.
 
-{% highlight html %}
-{% raw %}
+```html
 <fieldset formGroupName="address">
   <label>Street:</label>
   <input type="text" formControlName="street">
@@ -179,8 +168,7 @@ And last but not least, since `address` is created as a `FormGroup` as well, we 
   <label>City:</label>
   <input type="text" formControlName="city">
 </fieldset>
-{% endraw %}
-{% endhighlight %}
+```
 
 It's time to make our code a bit more readable and replace `FormGroup` and `FormControl` with `FormBuilder`.
 
@@ -190,8 +178,7 @@ As mentioned earlier, the creation of our form model looks quite wordy as we hav
 
 `FormBuilder` is like a factory that creates `FormGroup`'s and `FormControl`'s for us. All we need to do is to import it and us its `.group()` method like this:
 
-{% highlight js %}
-{% raw %}
+```js
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -216,8 +203,7 @@ export class AppComponent implements OnInit {
     });
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 This looks way better! Let's recap really quick what happened:
 
@@ -232,8 +218,7 @@ Now that we have the form model set up, we can start adding validators to our fo
 
 Let's say we want to add a validators that makes sure that `firstname` and `lastname` is set. Angular comes with a `Validators` class that has some common validators built-in. We can import and apply them right away:
 
-{% highlight js %}
-{% raw %}
+```js
 import { 
   FormBuilder,
   FormGroup,
@@ -253,16 +238,13 @@ ngOnInit() {
     })
   });
 }
-
-{% endraw %}
-{% endhighlight %}
+```
 
 A `FormControl` takes a value as first, a synchronous validator as second and an asynchronous validator as third parameter. We can also pass a collection of validators which causes Angular to compose them for us. And all we do here is applying a synchronous validator (`Validators.required`) to our form controls.
 
 We can access the validity state of a form control like this:
 
-{% highlight html %}
-{% raw %}
+```html
 <form [formGroup]="registerForm">
   <label>Firstname:</label>
   <input type="text" formControlName="firstname">
@@ -270,8 +252,7 @@ We can access the validity state of a form control like this:
 
   ...
 </form>
-{% endraw %}
-{% endhighlight %}
+```
 
 We get a reference to the form control by traversing the `registerForm` instance. If you're interested in learning how to build a custom validator, you might want to read our article on [Custom Validators in Angular](/angular/2016/03/14/custom-validators-in-angular-2.html).
 
@@ -281,17 +262,14 @@ Sometimes, we don't need a `FormGroup`, as our form might only consist of a sing
 
 Angular comes with a directive `formControl` which doesn't have to be inside a `formGroup`. We can simply add it to a single form control and are ready to go:
 
-{% highlight html %}
-{% raw %}
+```html
 <!-- no surrounding form -->
 <input type="search" [formControl]="seachControl">
-{% endraw %}
-{% endhighlight %}
+```
 
 The cool thing about form controls in Angular is, that we can listen reactively for changes that are happening to that control. Every form controls exposes an Observable propery `valuesChanges()` that we can subscribe to. So in order to get notified about changes in the example above, all we have to do is:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component()
 export class SearchComponent implements OnInit {
 
@@ -303,7 +281,6 @@ export class SearchComponent implements OnInit {
     });
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Hopefully this one gave you a better idea of how reactive/model-driven and template-driven forms relate to each other.

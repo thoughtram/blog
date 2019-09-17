@@ -9,6 +9,7 @@ redirect_from:
   - /posts/anouncing-clog-a-conventional-changelog-generator-for-the-rest-of-us/
 categories: 
   - announcements
+  - tools
 tags:
   - rust
   - tools
@@ -35,7 +36,7 @@ At thoughtram we teach people how to master Git. We also teach them how to maint
 
 Let's take a look at such a commit message.
 
-{% highlight sh %}
+```
 feat(ngInclude): add template url parameter to events
 
 The `src` (i.e. the url of the template to load) is now provided to the
@@ -44,13 +45,12 @@ events.
 
 Closes #8453
 Closes #8454
+```
 
-{% endhighlight %}
 
 If you look closely, you might notice a pattern behind this commit message. Let's annotate it to make things more clear.
 
-{% highlight sh %}
-
+```
                       component        commit title
         commit type       /                /      
                 \        |                |
@@ -62,8 +62,7 @@ If you look closely, you might notice a pattern behind this commit message. Let'
 
  referenced  ->  Closes #8453
  issues          Closes #8454
-
-{% endhighlight %}
+```
 
 Notice how this commit message preserves valuable meta data among the plain message. Namely the `commit type` that can either be `feat`, `fix`, `docs`, `style`, `refactor`, `test` or `chore` to indicate the *type* of the change. What follows is the name of the *component* that was changed, wrapped in parenthesis. It also contains a short title and an optional body that must have a preceding blank line.
 
@@ -81,11 +80,11 @@ We want changelog generation to be usable for everyone with the most minimal foo
 
 clogs usage is quite simple. It follows the POSIX standard. Just invoke it with `clog --help` and you'll get this output.
 
-{% highlight sh %}
+```
 Usage:
   clog [--repository=<link> --setversion=<version> --subtitle=<subtitle> 
         --from=<from> --to=<to> --from-latest-tag]
-{% endhighlight %}
+```
 
 You can invoke `clog` without any parameter to generate a nice changelog for the entire history of your project. Provide the `--repository` parameter to set the URL of the github repository to make the changelog include links to the commits on github. 
 
@@ -103,6 +102,6 @@ clog is a work in progress and there are some things missing (like exposing a C 
 
 If you happen to use Rust for your project you can simply get clog via Rust's package manager Cargo. Otherwise you can also just grab the binary and put it somewhere on your machine. Given the small file size you may also directly put clog into your project folder so that everyone on the team has it and changelog generation can be made part of the build process.
 
-[clog for Mac (binary)](/assets/clog) [(source)](https://github.com/thoughtram/clog)
+[clog for Mac (binary)](../assets/clog) [(source)](https://github.com/thoughtram/clog)
 
 Binaries for Windows will follow shortly. Since none of us uses Windows, we first need figure out how to properly set up the build chain there.

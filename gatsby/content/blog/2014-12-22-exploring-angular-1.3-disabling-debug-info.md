@@ -71,70 +71,62 @@ When using certain directives, Angular attaches some additional debug informatio
 
 For example, if we have a scope property like this:
 
-{% highlight js %}
+```
 app.controller('AppController', ['$scope', function ($scope) {
   $scope.name = 'Pascal';
 }]);
-{% endhighlight %}
+```
 
 And an expression in our HTML code like this:
 
-{% highlight html %}
-{% raw %}
+```
 <p>Hello {{name}}!</p>
-{% endraw %}
-{% endhighlight %}
+```
 
 What we get, once compiled, is this:
 
-{% highlight html %}
-{% raw %}
+```
 <p class="ng-binding">Hello Pascal!</p>
-{% endraw %}
-{% endhighlight %}
+```
 
 The same happens when using `ng-bind` or `ng-bind-html` directives. The former is an equivalent to the interpolation directive, in form of an attribute to prevent flash of uncompiled content flickering. The latter lets us evaluate expressions that have HTML code as value while the HTML itself is interpreted by the browser (use of `$sce.trustAsHtml()` required here).
 
 To make things a bit more clear, here's our example as `ng-bind` version:
 
-{% highlight html %}
-{% raw %}
+```
 <p>Hello <span ng-bind="name"></span>!</p>
-{% endraw %}
-{% endhighlight %}
+```
 
 Which would end up in a DOM that looks like this:
 
-{% highlight html %}
-{% raw %}
+```
 <p>Hello <span class="ng-binding" ng-bind="name">Pascal</span>!</p>
-{% endraw %}
-{% endhighlight %}
+```
 
 Angular has some more cases where additional debug information is attached to an element. When Angular's compiler creates a new scope, it adds either `ng-scope` or `ng-isolated-scope` classes to the element, depending on what kind of scope is created. So for example, having a directive like this:
 
-{% highlight js %}
+```
 app.directive('myComponent', function () {
   return {
     scope: {},
     template: 'This is a component with isolated scope.'
   };
 });
-{% endhighlight %}
+```
 
 Which is used like this:
 
-{% highlight html %}
+```
 <my-component></my-component>
-{% endhighlight %}
+```
 
 Creates this compiled DOM:
 
-{% highlight html %}
+```
 <my-component class="ng-isolated-scope">
   This is a component with isolated scope.
 </my-component>
-{% endhighlight %}
+```
 
 As we can see, the compiler adds an `ng-isolated-scope` class to that element, because it has an isolated scope. But that's not all. What also happens is, that the actual scope is added to the DOM element as well. Wait... the scope object itself? Hey that means we can access it imperatively in JavaScript, right? Yes!
 
@@ -142,11 +134,11 @@ Depending on what type of scope is created, the corresponding element gets eithe
 
 Running the following code in a browser console would display the components scope object:
 
-{% highlight js %}
+```
 angular
   .element(document.querySelector('my-component'))
   .isolateScope();
-{% endhighlight %}
+```
 
 Now we may wonder why these classes and element properties are added by the compiler. It turns out that tools like [Protractor](http://angular.github.io/protractor/#/) and the [Angular Batarang](https://chrome.google.com/webstore/detail/angularjs-batarang/ighdmehidhipcmcojjgiloacoafjmpfk?hl=en) need all this information to actually run. Batarang for example displays scope data in the developer tools.
 
@@ -157,12 +149,12 @@ Having Angular providing all this information in our application is super useful
 What we need is a way to actually turn off this behaviour when an application is deployed to production, because we usually don't need this information there. Luckily Angular has exactly that switch since version 1.3. In order to turn off this default behaviour, all we have to do is to call the `.debugInfoEnabled()` method on the `$compileProvider` during our application's configuration phase (since this is the only place where we have access to providers).
 
 
-{% highlight js %}
+```
 app.config(['$compileProvider', function ($compileProvider) {
   // disable debug info
   $compileProvider.debugInfoEnabled(false);
 }]);
-{% endhighlight %}
+```
 
 Yay, just one line of code and our production application runs faster! But what if we **do** want to have this debug information in our application because something's wrong in our production environment and we need to debug?
 

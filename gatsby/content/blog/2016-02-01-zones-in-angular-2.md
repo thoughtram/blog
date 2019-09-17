@@ -59,8 +59,7 @@ It turns out that these three things have something in common. Can you name it? 
 
 Why do you think is this important? Well ... because it turns out that these are the only cases when Angular is actually interested in updating the view. Let's say we have an Angular component that executes a handler when a button is clicked:
 
-{% highlight javascript %}
-{% raw %}
+```js
 @Component({
   selector: 'my-component',
   template: `
@@ -76,17 +75,15 @@ class MyComponent {
     this.name = 'Angular';
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
-If you're not familiar with the `(click)` syntax, you might want to read our article on [Angular's Template Syntax Demystified](http://blog.thoughtram.io/angular/2015/08/11/angular-2-template-syntax-demystified-part-1.html). The short version is, that this sets up an event handler for the `click` event on the `<button>` element.
+If you're not familiar with the `(click)` syntax, you might want to read our article on [Angular's Template Syntax Demystified](/angular/2015/08/11/angular-2-template-syntax-demystified-part-1.html). The short version is, that this sets up an event handler for the `click` event on the `<button>` element.
 
 When the component's button is clicked, `changeName()` is executed, which in turn will change the `name` property of the component. Since we want this change to be reflected in the DOM as well, Angular is going to update the view binding `{% raw %}{{name}}{% endraw %}` accordingly. Nice, that seems to magically work.
 
 Another example would be to update the `name` property using `setTimeout()`. Note that we removed the button.
 
-{% highlight javascript %}
-{% raw %}
+```js
 @Component({
   selector: 'my-component',
   template: `
@@ -103,16 +100,15 @@ class MyComponent implements OnInit {
     }, 1000);
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 We don't have to do anything special to tell the framework that a change has happened. **No `ng-click`, no `$timeout`, `$scope.$apply()`**.
 
-If you've read our article on [understanding Zones](http://blog.thoughtram.io/angular/2016/01/22/understanding-zones.html), you know that this works obviously because Angular takes advantage of Zones. Zones monkey-patches global asynchronous operations such as `setTimeout()` and `addEventListener()`, which is why Angular can easily find out, when to update the DOM.
+If you've read our article on [understanding Zones](/angular/2016/01/22/understanding-zones.html), you know that this works obviously because Angular takes advantage of Zones. Zones monkey-patches global asynchronous operations such as `setTimeout()` and `addEventListener()`, which is why Angular can easily find out, when to update the DOM.
 
 In fact, the code that tells Angular to perform change detection whenever the VM turn is done, is as simple as this:
 
-{% highlight javascript %}
+```js
 ObservableWrapper.subscribe(this.zone.onTurnDone, () => {
   this.zone.run(() => {
     this.tick();
@@ -125,7 +121,7 @@ tick() {
     detector.detectChanges();
   });
 }
-{% endhighlight %}
+```
 
 Whenever Angular's zone emits an `onTurnDone` event, it runs a task that performs change detection for the entire application. If you're interested in how change detection in Angular works, <s>watch out, we're going to publish another article on that soon</s> go ahead and read [this article](/angular/2016/02/22/angular-2-change-detection-explained.html).
 
@@ -153,8 +149,7 @@ We probably don't want to perform change detection every time `mousemove` is fir
 
 That's why `NgZone` comes with an API `runOutsideAngular()` which performs a given task in `NgZone`'s parent zone, which **does not** emit an `onTurnDone` event, hence no change detection is performed. To demonstrate this useful feature, let's take look at the following code:
 
-{% highlight javascript %}
-{% raw %}
+```js
 @Component({
   selector: 'progress-bar',
   template: `
@@ -175,13 +170,11 @@ class ProgressBar {
     this.increaseProgress(() => console.log('Done!'));
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Nothing special going on here. We have component that calls `processWithinAngularZone()` when the button in the template is clicked. However, that method calls `increaseProgress()`. Let's take a closer look at this one:
 
-{% highlight javascript %}
-{% raw %}
+```js
 increaseProgress(doneCallback: () => void) {
   this.progress += 1;
   console.log(`Current progress: ${this.progress}%`);
@@ -194,15 +187,13 @@ increaseProgress(doneCallback: () => void) {
     doneCallback();
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 `increaseProgress()` calls itself every 10 milliseconds until `progress` equals `100`. Once it's done, the given `doneCallback` will execute. Notice how we use `setTimeout()` to increase the progress.
 
 Running this code in the browser, basically demonstrates what we already know. After each `setTimeout()` call, Angular performs change detection and updates the view, which allows us to see how `progress` is increased every 10 milliseconds. It gets more interesting when we run this code outside Angular's zone. Let's add a method that does exactly that.
 
-{% highlight javascript %}
-{% raw %}
+```js
 processOutsideAngularZone() {
   this.progress = 0;
   this.zone.runOutsideAngular(() => {
@@ -213,8 +204,7 @@ processOutsideAngularZone() {
     });
   });
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 `processOutsideAngularZone()` also calls `increaseProgress()` but this time using `runOutsideAngularZone()` which causes Angular not to be notified after each timeout. We access Angular's zone by injecting it into our component using the `NgZone` token.
 

@@ -47,8 +47,7 @@ As an absolute machine learning beginner you're probably still wondering what th
 
 Let's take another look at our model from the previous article. We'll be exploring what it actually means line by line.
 
-{% highlight python %}
-{% raw %}
+```py
 import numpy as np
 from keras.models import Sequential
 from keras.layers.core import Dense
@@ -70,18 +69,15 @@ model.compile(loss='mean_squared_error',
 model.fit(training_data, target_data, nb_epoch=500, verbose=2)
 
 print model.predict(training_data).round()
-{% endraw %}
-{% endhighlight %}
+```
 
 Let's focus on the list of imports first. These are all things that we need to bring into scope because we need them in the rest of the code.
 
-{% highlight python %}
-{% raw %}
+```py
 import numpy as np
 from keras.models import Sequential
 from keras.layers.core import Dense
-{% endraw %}
-{% endhighlight %}
+```
 
 The Python ecosystem has pretty strong math support. One of the most popular libraries is `numpy` which makes working with arrays a joy. [Keras](https://keras.io/) also uses numpy internally and expects numpy arrays as inputs. We import `numpy` and alias it as `np` which is pretty common thing to do when writing this kind of code.
 
@@ -91,15 +87,13 @@ Neural networks consist of different layers where input data flows through and g
 
 What follows are two sets of data.
 
-{% highlight python %}
-{% raw %}
+```py
 # the four different states of the XOR gate
 training_data = np.array([[0,0],[0,1],[1,0],[1,1]], "float32")
 
 # the four expected results in the same order
 target_data = np.array([[0],[1],[1],[0]], "float32")
-{% endraw %}
-{% endhighlight %}
+```
 
 We initialize `training_data` as a two-dimensional array (an array of arrays) where each of the inner arrays has exactly two items. As we've already described in the previous article, each of these pairs has a corresponding expected result. That's why we could solve the whole task with a simple hash map but let's carry on.
 
@@ -107,13 +101,11 @@ We setup `target_data` as another two-dimensional array. All the inner arrays in
 
 Let's get to the most interesting part, the model!
 
-{% highlight python %}
-{% raw %}
+```py
 model = Sequential()
 model.add(Dense(16, input_dim=2, activation='relu'))
 model.add(Dense(1, activation='sigmoid'))
-{% endraw %}
-{% endhighlight %}
+```
 
 The first line sets up an empty model using the `Sequential` API. But what's going on in the second line?
 
@@ -131,32 +123,26 @@ Let's just take it as this for now. We'll come back to look at what the number o
 
 But there's one more thing in the current snippet that may scare us: `activation='relu'`. What does that mean? Do we finally have to talk about the scary math? Not really! Remember that neural networks are all about taking your inputs and transforming them into some output. Obviously there has to be some sort of math in between. There also need to be some moving parts, otherwise there wouldn't be a chance for the model to learn anything. The moving parts are the so called weights and a **simplified** version of the math looks roughly like this.
 
-{% highlight python %}
-{% raw %}
+```py
 output = activation(input x weight)
-{% endraw %}
-{% endhighlight %}
+```
 
 By setting `activation='relu'` we specify that we want to use the [relu](https://en.wikipedia.org/wiki/Rectifier_(neural_networks)) function as the activation function. But really it doesn't matter as much as you may think. We could totally change this to use the [sigmoid](https://en.wikipedia.org/wiki/Sigmoid_function) function and it would still work. We could even use no activation function at all so that our algorithm essentially becomes.
 
-{% highlight python %}
-{% raw %}
+```py
 output = input x weight
-{% endraw %}
-{% endhighlight %}
+```
 
 Yes, that's right. You can solve the XOR problem even without any activation function at all. It would just take much more time to train the model. Please don't get us wrong. We aren't saying the activation function doesn't matter. In fact it matters a lot. But for our specific task which is very trivial, it matters less than people may think when they see the code for the very first time.
 
 There's one last thing we have to do before we can start training our model. We have to configure the learning process by calling `model.compile(...)` with a set of parameters.
 
 
-{% highlight python %}
-{% raw %}
+```py
 model.compile(loss='mean_squared_error',
               optimizer='adam',
               metrics=['binary_accuracy'])
-{% endraw %}
-{% endhighlight %}
+```
 
 In order for the neural network to be able to make the right adjustments to the weights we need to be able to tell how good our model is performing. Or to be more specific, with neural nets we always want to calculate a number that tells us how bad our model performs and then try to get that number lower.
 
@@ -168,21 +154,17 @@ The third parameter, `metrics` is actually much more interesting for our learnin
 
 And that's all we have to set up before we can start training our model. We kick off the training by calling `model.fit(...)` with a bunch of parameters.
 
-{% highlight python %}
-{% raw %}
+```py
 model.fit(training_data, target_data, nb_epoch=500, verbose=2)
-{% endraw %}
-{% endhighlight %}
+```
 
 The first two params are training and target data, the third one is the number of epochs (learning iterations) and the last one tells keras how much info to print out during the training.
 
 Once the training phase finished we can start making predictions.
 
-{% highlight python %}
-{% raw %}
+```py
 print model.predict(training_data).round()
-{% endraw %}
-{% endhighlight %}
+```
 
 Please note that in a real world scenario our predictions would be tested against data that the neural network hasn't seen during the training. That's because we usually want to see if our model generalizes well. In other words, does it work with new data or does it just memorize all the data and expected results it had seen in the training phase? However, with this toy task there are really only our four states and four expected outputs. No way to proof generalization here.
 
@@ -194,8 +176,7 @@ Now that we know what all those numbers mean. Let's take a closer look at how we
 
 The answer is simple: Because our input data is one-dimensional. Wait! Didn't we just say we setup `training_data` as a two-dimensional array? Yes, that's right. It's an array of arrays but only because it's an array holding different samples to feed into our network. Each sample though is one-dimensional. That is what counts for when we have to pick between different types of layers. Consider each sample would be an array or arrays instead.
 
-{% highlight python %}
-{% raw %}
+```py`
 other_training_data = np.array([[[0,0],
                                  [0,0]],
                                 [[1,0],
@@ -204,8 +185,7 @@ other_training_data = np.array([[[0,0],
                                  [1,0]],
                                 [[1,1],
                                  [1,1]]], "float32")
-{% endraw %}
-{% endhighlight %}
+```
 
 If that was the case we'd have to pick a different layer because a `Dense` layer is really only for one-dimensional input. We'll get to the more advanced use cases with two-dimensional input data in another blog post soon.
 
@@ -220,8 +200,7 @@ The answer may surprise you but it's simply a question of measuring the performa
 
 Let's run our code and take a look at the output. If you aren't sure how to run it please revisit out [previous post](/machine-learning/2016/09/23/beginning-ml-with-keras-and-tensorflow.html). Alternatively jump to the end of this section to find the interactive embedded lab or [open it on MachineLabs](https://machinelabs.ai/editor/Hya9gmXvb/1501929813281-ByTLbXXDZ?file=main.py) directly.
 
-{% highlight shell %}
-{% raw %}
+```sh
 Epoch 1/20000
 0s - loss: 0.7443 - binary_accuracy: 0.2500
 Epoch 2/20000
@@ -240,41 +219,34 @@ Epoch 283/20000
 0s - loss: 0.5948 - binary_accuracy: 0.7500
 Epoch 284/20000
 0s - loss: 0.5943 - binary_accuracy: 1.0000
-{% endraw %}
-{% endhighlight %}
+```
 
 Since we've set `verbose=2` and `metrics=['binary_accuracy']` earlier we get all these nice infos after each epoch. The interesting number we want to focus on is `binary_accuracy`. Guess what the `0.2500` at the first two epochs mean? If you're thinking it means that our model predicts one out of our four states correctly you're damn right. It took us 63 epochs to predict half of the four states correctly. After 284 epochs the model makes perfect predictions for all of our four XOR states.
 
 Now we can start making changes to our model and see how it affects the performance. Let's try to increase the size of our hidden layer from 16 to 32.
 
-{% highlight shell %}
-{% raw %}
+```sh
 0s - loss: 0.6023 - binary_accuracy: 0.7500
 Epoch 124/20000
 0s - loss: 0.6015 - binary_accuracy: 1.0000
-{% endraw %}
-{% endhighlight %}
+```
 
 Now, that's cool! Took us only 124 epochs to get to an accuracy of 100%!
 
 What if we stack in another layer?
 
-{% highlight python %}
-{% raw %}
+```py
 model.add(Dense(32, input_dim=2, activation='relu'))
 model.add(Dense(32, activation='relu'))
 model.add(Dense(1, activation='sigmoid'))
-{% endraw %}
-{% endhighlight %}
+```
 
 Interesting. That change brings us down to 56 epochs to solve the task. But would that be the same as just using one hidden layer with a size of 64?
 
-{% highlight python %}
-{% raw %}
+```py
 model.add(Dense(64, input_dim=2, activation='relu'))
 model.add(Dense(1, activation='sigmoid'))
-{% endraw %}
-{% endhighlight %}
+```
 
 Turns out, it isn't. With this configuration our model starts making perfect predictions after 32 epochs.
 
@@ -284,38 +256,32 @@ Notice how we are able to play and figure out lots of interesting details once w
 
 Let's see if we can hold our claim of solving XOR without any activation function at all. We change our model to look like this.
 
-{% highlight python %}
-{% raw %}
+```py
 model = Sequential()
 model.add(Dense(128, input_dim=2, activation='linear'))
 model.add(Dense(1, activation='linear'))
-{% endraw %}
-{% endhighlight %}
+```
 
 Wait? But this says we actually do use an activation function called `linear`! What's going on here?
 
 If we look at the keras source code we'll see it is defined as [this](https://github.com/fchollet/keras/blob/25dbe8097fba9a6a429e19d0625d78c3b8731527/keras/activations.py#L45-L49).
 
-{% highlight python %}
-{% raw %}
+```py
 def linear(x):
     '''
     The function returns the variable that is passed in, so all types work.
     '''
     return x
-{% endraw %}
-{% endhighlight %}
+```
 
 The function simply returns it's input without applying any math, so it's essentially the same as using no activation function at all.
 
 Honestly, this is just a little fun experiment but if we increase the number of epochs we can see that even with this config we can build up a net to make 100 % correct predictions.
 
-{% highlight python %}
-{% raw %}
+```py
 Epoch 3718/20000
 0s - loss: 0.2500 - binary_accuracy: 1.0000
-{% endraw %}
-{% endhighlight %}
+```
 
 You can play with all these different configurations and see there effect from right within this embedded lab.
 

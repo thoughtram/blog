@@ -48,11 +48,9 @@ Before we start looking at what the latest bigger Angular release brings to the 
 
 HTML5 provides some validation attributes we can use to let the browser validate our form controls. For example, if we want to have native validation support for email input fields, all we have to do is to apply the `required` attribute to that element.
 
-{% highlight html %}
-{% raw %}
+```
 <input type="email" required>
-{% endraw %}
-{% endhighlight %}
+```
 
 And as you probably know, there are a couple of other validation attributes like `minlength`, `maxlength` and `pattern`. However, it turns out that the API is inconsistent and not even supported in all browsers and platforms today. That's why Angular provides basic implementation for HTML5 validation with its `ngModel` directive and controller and makes it consistent between browsers.
 
@@ -67,14 +65,12 @@ Here's a list of supported validation attributes:
 
 In addition to that, Angular validates certain input types automatically without us doing anything. The following code displays a simple form that has just one field of type `email`. Applying an `ng-model` to it makes Angular aware of it. Also notice the `name` attribute of the form which publishes the `FormController` instance of the form into the scope.
 
-{% highlight html %}
-{% raw %}
+```
 <form name="myForm">
   <input type="email" name="emailField">
   <p ng-if="myForm.emailField.$error.email">Email address is not valid!</p>
 </form>
-{% endraw %}
-{% endhighlight %}
+```
 
 Running this code in the browser, you can see the validation happens automatically. Errors are even exposed on the `FormController`'s `$error` object, which makes displaying error messages a breeze.
 
@@ -88,8 +84,7 @@ The key part of validation in Angular is the `ngModelController` since it contro
 
 Let's say we want to implement a custom validation that checks if the value that is passed by the user is an actual integer. In order to do that, we would first create a new directive that accesses `ngModelController` like so:
 
-{% highlight js %}
-
+```
 app.directive('validateInteger', function () {
   return {
     require: 'ngModel',
@@ -98,8 +93,7 @@ app.directive('validateInteger', function () {
     }
   };
 });
-
-{% endhighlight %}
+```
 
 In a directive's `link` function, we can ask for other directives controllers with the `require` property of the directive definition object. `ctrl` is now a reference to an `ngModelController` instance which has a `$formatters` and `$parsers` property. These two properties are arrays, that act as pipelines that get called when certain things happen.
 
@@ -114,8 +108,7 @@ Okay, so we have one pipeline that pipes the value from model to view and anothe
 
 All we have to do now, is to add a new function to `$parsers` that performs the needed checks and sets the validity state with `$setValidity()` accordingly. In order to make sure that our validation function is called first in the pipe, we use [Array.prototype.unshift](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/unshift).
 
-{% highlight js %}
-
+```
 app.directive('validateInteger', function () {
 
   var REGEX = /^\-?\d+$/;
@@ -140,8 +133,7 @@ app.directive('validateInteger', function () {
     }
   };
 });
-
-{% endhighlight %}
+```
 
 We check if the new values matches against our regular expression. If it matches we set the validity of `integer` to `true` and return `viewValue`, so it can be passed to further parser functions.
 
@@ -149,12 +141,12 @@ In case it doesn't match, we set it's validity to `false`, which also exposes an
 
 We can then use it like every other directive:
 
-{% highlight html %}
+```
 <form name="myForm">
   <input type="text" validate-integer>
   <p ng-if="myForm.$error.integer">Oups error.</p>
 </form>
-{% endhighlight %}
+```
 
 As you can see, there's a lot to take care of when writing custom validations. We need to know about the `$parsers` and `$formatters` pipeline. We also need to set a value's validity state explicitly with `$setValidity()`.
 
@@ -169,8 +161,7 @@ Angular 1.3 introduces yet another pipeline, the `$validators` pipeline, which i
 Another API difference is that `$validators` is not an array, but an object with each member describing a validator. Let's implement our `integer` custom validation as part of the `$validators` pipeline.
 
 
-{% highlight js %}
-
+```
 app.directive('validateInteger', function () {
 
   var REGEX = /^\-?\d+$/;
@@ -189,8 +180,7 @@ app.directive('validateInteger', function () {
     }
   };
 });
-
-{% endhighlight %}
+```
 
 As you can see, we no longer have to take care of calling `$setValidity()`. Angular calls `$setValidity()` internally, with the value that a validator returns, which is either `true` or `false`.
 
@@ -204,8 +194,7 @@ That's why there's next to `$validators` **another** validators object called `$
 
 Here's what it could look like:
 
-{% highlight js %}
-
+```
 app.directive('validateUsername', function ($q, userService) {
 
   return {
@@ -224,19 +213,18 @@ app.directive('validateUsername', function ($q, userService) {
     }
   };
 });
-
-{% endhighlight %}
+```
 
 Asynchronous validators are called, after synchronous validators have been successfully executed. While an asynchronous validator is running, a `$pending` object will be exposed on the field's `ngModelController`. Flags like `$valid` and `$invalid` are set to `undefined` at this point.
 
 We could display a loading message like this (notice the `name` attribute applied to the field to expose it's controller):
 
-{% highlight html %}
+```
 <form name="myForm">
   <input type="text" name="username" validate-username>
   <p ng-if="myForm.username.$pending">Validating user name...</p>
 </form>
-{% endhighlight %}
+```
 
 Okay, we now learned about `$validators` and `$asynchValidators`, but does that mean our existing `$parsers` and `$formatters` won't work anymore?
 

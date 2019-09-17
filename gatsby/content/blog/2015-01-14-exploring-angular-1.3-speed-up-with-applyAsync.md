@@ -94,7 +94,7 @@ As the name already says, `$applyAsync` has something to do with executing a `$s
 
 We mentioned that one of the cases where a `$digest` is triggered, is when an XHR call using `$http` service returns from it's execution. This is nice because we don't have to worry about updating our model in the DOM once the model is updated. Here's a small snippet that details that scenario (note that we don't use `$scope` here since we assume that [controllerAs](http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html) syntax is used:
 
-{% highlight js %}
+```js
 app.controller('Ctrl', function ($http) {
 
   // Make XHR and update model accordingly
@@ -102,7 +102,7 @@ app.controller('Ctrl', function ($http) {
     this.myModel = response.data;
   }.bind(this));
 });
-{% endhighlight %}
+```
 
 We have a controller that asks for `$http` service and uses it to make an XHR to some url and once the call resolves, we update `myModel` on our controller with the new data that we got from the server. There's nothing we need to do to update `myModel` in our DOM, since this call, once it resolves, triggers a `$digest` that takes care of the rest.
 
@@ -112,11 +112,11 @@ Since Angular 1.3, `$rootScope` comes with a new method [$applyAsync](https://co
 
 All we need to do is to call the provider's [useApplyAsync](https://code.angularjs.org/1.3.8/docs/api/ng/provider/$httpProvider#useApplyAsync) method and Angular takes care of deferring the resolution of your XHR calls to the next tick. Here's what it looks like:
 
-{% highlight js %}
+```js
 app.config(function ($httpProvider) {
   $httpProvider.useApplyAsync(true);
 });
-{% endhighlight %}
+```
 
 That's it! If the application now receives multiple `$http` responses at around the same time, this is what happens (a bit simplified though):
 

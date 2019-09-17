@@ -50,7 +50,7 @@ You wonder what these things are? Just ask yourself: Who defines the tokens for 
 
 Right, all of a sudden we realise, that there's much more required than just translating messages from one locale to another. In order to make i18n as a process a bit more clear, here's a graphic that visualises a good i18n solution that covers all the problems we're facing with existing solutions.
 
-![i18n as a process visualised](/images/i18n-process.svg)
+![i18n as a process visualised](../assets/images/i18n-process.svg)
 
 Let's go through this step by step:
 
@@ -90,19 +90,15 @@ Let's take a closer look at some of those topics to get an idea of how we plan t
 
 One of the most important things when it comes to i18n, is to provide our translators context along the messages that get extracted from our templates. Imagine we have a simple template as the following one:
 
-{% highlight html %}
-{% raw %}
+```html
 <p>Limit is 255 characters.</p>
-{% endraw %}
-{% endhighlight %}
+```
 
 There's nothing special about this template. In fact, a simple HTML template that just contains plain text is content to be extracted by the message extraction tool. However, if this particular message gets extracted and handed to our translator, how does he or she ever know what this message is about? In the end, all the translator gets is this:
 
-{% highlight html %}
-{% raw %}
+```html
 Limit is 255 characters.
-{% endraw %}
-{% endhighlight %}
+```
 
 What is the "Limit" we are talking about? Also, "characters" can have different meaning depending on the context of the message. In case this example doesn't make it clear enough, just think about the word "crane". Without context it could be the bird, or the machine, right?
 
@@ -110,62 +106,50 @@ In order to get high quality translations back, we need to provide enough inform
 
 Coming back to our example, what is the information we want to provide to the translator? Let's say it's a message to show the maximum length of characters allowed in a comment. With the `i18n` attribute we can add this information to our message:
 
-{% highlight html %}
-{% raw %}
+```html
 <p i18n="Label to show the maximum length of characters
    allowed in comments.">Limit is 255 characters.</p>
-{% endraw %}
-{% endhighlight %}
+```
 
 Now when the message gets extracted, the description is extracted as well which ends up at our translator's software and would look something like this (Note that translator's usually have a proper graphical user interface):
 
-{% highlight html %}
-{% raw %}
+```html
 Limit is 255 characters.
 
 DESCRIPTION: Label to show the maximum length of 
              characters allowed in comments.
-{% endraw %}
-{% endhighlight %}
+```
 
 Now it makes much more sense to our translator and he or she can actually reason about the given messages. The cool thing about the annotation is, that it doesn't require a DOM element with an `i18n` attribute. There's another comment based syntax annotation we can use if we don't have that surrounding DOM element.
-{% highlight html %}
-{% raw %}
+```html
 <!--i18n: Label to show the maximum length of
           characters allowed in comments.-->
 Limit is 255 characters.
 <!--/i18n-->
-{% endraw %}
-{% endhighlight %}
+```
 
 Another use case were messages are extracted and meta information needed is when HTML attributes are used. Just take a look at this simple snippet:
 
-{% highlight html %}
-{% raw %}
+```html
 <input placeholder="Firstname Lastname">
-{% endraw %}
-{% endhighlight %}
+```
 
 `placeholder` is a standard HTML attribute for input elements. For attributes like this, our new tools will provide our translator with a default description in case none is provided.
 
-{% highlight html %}
-{% raw %}
+```html
 Firstname Lastname
 
 DESCRIPTION: HTML input control placeholder text
-{% endraw %}
-{% endhighlight %}
+```
 
 However, in case we **do** want to be more specific, all we need to do is to introduce a new `i18n-[ATTRNAME]` attribute that gets the description:
 
-{% highlight html %}
-{% raw %}
+```html
 <input 
   placeholder="Firstname Lastname"
   i18n-placeholder="Text input placeholder for the full
                     name of a friend.">
-{% endraw %}
-{% endhighlight %}
+```
 
 Yes, this works with all attributes! It doesn't matter if you have a directive that introduces it's own attribute APIs or even a Web Component, as long as you prefix your attribute with `i18n-` the message extractor will take care of extracting the message together with it's description.
 
@@ -173,17 +157,14 @@ Yes, this works with all attributes! It doesn't matter if you have a directive t
 
 Even if what we've seen so far is pretty powerful, you might have noticed that we've only seen simple text messages that get extracted. But usually, in an Angular application, we have interpolation directives in our messages. Let's say we replace the limit value in our example with something dynamic that is interpolated later at runtime.
 
-{% highlight html %}
-{% raw %}
+```html
 <p i18n="Label to show the maximum length of characters
    allowed in comments.">Limit is {{count}} characters.</p>
-{% endraw %}
-{% endhighlight %}
+```
 
 What will the translator see now? Well, it turns out that the Message Extraction tool will extract those messages as so called *Placeholders*. Our translator would see something like this:
 
-{% highlight html %}
-{% raw %}
+```html
 Limit is EXPRESSION characters.
 
 DESCRIPTION: Label to show the maximum length of 
@@ -193,8 +174,7 @@ PLACEHOLDERS
 
 - EXPRESSION
     Description: Angular Expression
-{% endraw %}
-{% endhighlight %}
+```
 
 A placeholder cannot be changed by a translator. However, they are able to move them around inside the message in case it's needed for the locale messages are translated to. We also notice that we get some meta information on what the placeholder `EXPRESSION` is about.
 
@@ -202,8 +182,7 @@ Of course, our translator probably doesn't know about Angular at all and even `E
 
 Something like this would be more useful to the translator:
 
-{% highlight html %}
-{% raw %}
+```html
 Limit is MAXCHARS characters.
 
 DESCRIPTION: Label to show the maximum length of 
@@ -214,8 +193,7 @@ PLACEHOLDERS
 - MAXCHARS
     Description: Angular Expression
     Example: 255
-{% endraw %}
-{% endhighlight %}
+```
 
 The annotation syntax to override default placeholder names and add examples is still in discussion.
 
@@ -231,43 +209,37 @@ With the new i18n solution, Angular's interpolation syntax gets extended with th
 
 Alright, but how can we pluralize declaratively with that support? Well, take a look at the following snippet.
 
-{% highlight html %}
-{% raw %}
+```html
 {{numMessages, plural,
      =0 { You have no new messages }
      =1 { You have one new message }
   other { You have # new messages }
 }}
-{% endraw %}
-{% endhighlight %}
+```
 
 It's that easy. If you're familiar with Messageformat then you know this syntax already. We're able to overload a simple Angular interpolation by defining the selection type (`plural` or `gender`) as second parameter and a "list" of categories to match the selection based on the given expression `numMessages`. The `#` symbol is a placeholder for value that the expression returns.
 
 Why is that cool? We can use that syntax inside HTML attributes, we can use all interpolations inside selection messages (incl. filters), and even more important, our translators are likely to know this syntax. Because what ends up in their software, once extracted, is a message that looks something like this:
 
-{% highlight html %}
-{% raw %}
+```html
 {numMessages, plural,
      =0 { You have no new messages }
      =1 { You have one new message }
   other { You have # new messages }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Yeap. It's pretty much the same, except that they see single curlies instead of double curlies. Now, if a language has different categories than `0`, `1` and `other`, maybe `few`, `many` and `more`, translators can easily at those and it gets especially easy if their software comes up with corresponding suggestions based on the locale.
 
 Just to give you an idea what the gender selection syntax looks like, here's an example.
 
-{% highlight html %}
-{% raw %}
+```html
 {{friendGender, gender,
     male { Invite him }
   female { Invite her }
    other { Invite them }
 }}
-{% endraw %}
-{% endhighlight %}
+```
 
 We can nest plural and gender messages as well, which makes this feature super powerful.
 

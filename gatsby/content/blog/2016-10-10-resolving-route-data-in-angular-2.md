@@ -57,8 +57,7 @@ However, one thing that these guards don't allow us to do, is to ensure that cer
 Let's just stick with the scenario of a contacts application. We have a route for a contacts list, and a route for contacts details. Here's what the route configuration might look like:
 
 
-{% highlight js %}
-{% raw %}
+```js
 import { Routes } from '@angular/router';
 import { ContactsListComponent } from './contacts-list';
 import { ContactsDetailComponent } from './contacts-detail';
@@ -67,13 +66,11 @@ export const AppRoutes: Routes = [
   { path: '', component: ContactsListComponent },
   { path: 'contact/:id', component: ContactsDetailComponent }
 ];
-{% endraw %}
-{% endhighlight %}
+```
 
 And of course, we use that configuration to configure the router for our application:
 
-{% highlight js %}
-{% raw %}
+```js
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
@@ -87,15 +84,13 @@ import { AppRoutes } from './app.routes';
   ...
 })
 export class AppModule {}
-{% endraw %}
-{% endhighlight %}
+```
 
 Nothing special going on here. However, if this is all new to you, you might want to read our [article on routing](/angular/2016/06/14/routing-in-angular-2-revisited.html).
 
 Let's take a look at the `ContactsDetailComponent`. This component is responsible of displaying contact data, so it somehow has to get access to a contact object, that matches the `id` provided in the route URL (hence the `:id` parameter in the route configuration). In our article on routing in Angular, we've learned that we can easily [access route parameters](/angular/2016/06/14/routing-in-angular-2-revisited.html#access-route-parameters) using the `ActivatedRoute` like this:
 
-{% highlight js %}
-{% raw %}
+```js
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ContactsService } from '../contacts.service';
@@ -120,16 +115,14 @@ export class ContactsDetailComponent implements OnInit {
         .subscribe(contact => this.contact = contact);
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Okay, cool. So the only thing `ContactsDetailComponent` does, is to fetch a contact object by the given id and assign that object to its local `contact` property, which then allows us to interpolate expressions like `{%raw%}{{contact.name}}{%endraw%}` in the template of the component.
 
 Let's take a look at the component's template:
 
 
-{% highlight html %}
-{% raw %}
+```html
 <h2>{{contact?.name}}</h2>
 
 <dl>
@@ -138,15 +131,13 @@ Let's take a look at the component's template:
   <dt>Website</dt>
   <dd>{{contact?.website}}</dd>
 </dl>
-{% endraw %}
-{% endhighlight %}
+```
 
 Notice that we've attached Angular's Safe Navigation Operator to all of our expressions that rely on `contact`. The reason for that is, that `contact` will be undefined at the time this component is initialized, since we're fetching the data asynchronously. The Safe Navigation Operator ensures that Angular won't throw any errors when we're trying to read from an object that is `null` or `undefined`.
 
 In order to demonstrate this issue, let's assume `ContactsService#getContact()` takes 3 seconds until it emits a contact object. In fact, we can easily fake that delay right away like this:
 
-{% highlight js %}
-{% raw %}
+```js
 import { Injectable } from '@angular/core';
 
 @Injectable()
@@ -160,8 +151,7 @@ export class ContactsService {
     }).delay(3000);
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Take a look at the demo and notice how the UI flickers until the data arrives.
 
@@ -177,8 +167,7 @@ Resolvers need to be registered via providers. Our article on [Dependency Inject
 
 Here's a resolver function that resolves with a static contact object:
 
-{% highlight js %}
-{% raw %}
+```js
 @NgModule({
   ...
   providers: [
@@ -195,15 +184,13 @@ Here's a resolver function that resolves with a static contact object:
   ]
 })
 export class AppModule {}
-{% endraw %}
-{% endhighlight %}
+```
 
 Let's ignore for a second that we don't always want to return the same contact object when this resolver is used. The point here is that we can register a simple resolver function using Angular's dependency injection. Now, how do we attach this resolver to a route configuration? That's pretty straight forward. All we have to do is add a `resolve` property to a route configuration, which is an object where each key points to a resolver.
 
 Here's how we add our resolver function to our route configuration:
 
-{% highlight js %}
-{% raw %}
+```js
 export const AppRoutes: Routes = [
   ...
   { 
@@ -214,15 +201,13 @@ export const AppRoutes: Routes = [
     }
   }
 ];
-{% endraw %}
-{% endhighlight %}
+```
 
 That's it? Yes! `'contact'` is the provider token we refer to when attaching resolvers to route configurations. Of course, this can also be an [OpaqueToken](/angular/2016/05/23/opaque-tokens-in-angular-2.html), or a class (as discussed later).
 
 Now, the next thing we need to do is to change the way `ContactsDetailComponent` gets hold of the contact object. Everything that is resolved via route resolvers is exposed on an `ActivatedRoute`'s `data` property. In other words, for now we can get rid of the `ContactsService` dependency like this:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component()
 export class ContactsDetailComponent implements OnInit {
 
@@ -234,8 +219,7 @@ export class ContactsDetailComponent implements OnInit {
     this.contact = this.route.snapshot.data['contact'];
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Here's the code in action:
 
@@ -243,8 +227,7 @@ Here's the code in action:
 
 In fact, when defining a resolver as a function, we get access to the `ActivatedRouteSnapshot`, as well as the `RouterStateSnapshot` like this:
 
-{% highlight js %}
-{% raw %}
+```js
 @NgModule({
   ...
   providers: [
@@ -257,8 +240,7 @@ In fact, when defining a resolver as a function, we get access to the `Activated
   ]
 })
 export class AppModule {}
-{% endraw %}
-{% endhighlight %}
+```
 
 This is useful in many scenarios where we need access to things like router parameters, which we actually do. However, we also need a `ContactsService` instance, which we **don't** get injected here. So how do we create resolver that need dependency injection?
 
@@ -268,8 +250,7 @@ As we know, dependency injection works on class constructors, so what we need is
 
 Here's what our contact resolver could look like as a class implementation:
 
-{% highlight js %}
-{% raw %}
+```js
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { ContactsService } from './contacts.service';
@@ -283,13 +264,11 @@ export class ContactResolve implements Resolve<Contact> {
     return this.contactsService.getContact(route.paramMap.get('id'));
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 As soon as our resolver is a class, our provider configuration becomes simpler as well, because the class can be used as provider token!
 
-{% highlight js %}
-{% raw %}
+```js
 @NgModule({
   ...
   providers: [
@@ -298,13 +277,11 @@ As soon as our resolver is a class, our provider configuration becomes simpler a
   ]
 })
 export class AppModule {}
-{% endraw %}
-{% endhighlight %}
+```
 
 And of course, we use the same token to configure the resolver on our routes:
 
-{% highlight js %}
-{% raw %}
+```
 export const AppRoutes: Routes = [
   ...
   { 
@@ -315,8 +292,7 @@ export const AppRoutes: Routes = [
     }
   }
 ];
-{% endraw %}
-{% endhighlight %}
+```
 
 Angular is smart enough to detect if a resolver is a function or a class and if it's a class, it'll call `resolve()` on it. Check out the demo below to see this code in action and note how Angular delays the component instantiation until the data has arrived.
 

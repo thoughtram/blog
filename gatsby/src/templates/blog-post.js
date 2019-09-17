@@ -19,12 +19,12 @@ class BlogPostTemplate extends React.Component {
         <section className="thtrm-section--fullbleed-intrinsic u-max-width--half">
           <div className="thtrm-section__heading u-distance-bottom-reset">
             <div className="u-flex">
-              <time dateTime="05 March" className="thtrm-topic u-color--grey">{post.frontmatter.date}</time>
-              <p className="thtrm-topic u-color--grey">&nbsp; / {upperCaseFirst(post.frontmatter.categories[0])}</p>
+              <time dateTime={post.frontmatter.date} className="thtrm-topic u-color--grey">{post.frontmatter.date}</time>
+              {post.frontmatter.categories && <p className="thtrm-topic u-color--grey">&nbsp; / {upperCaseFirst(post.frontmatter.categories[0])}</p>}
             </div>
             <h1 className="thtrm-section__subheading">{post.frontmatter.title}</h1>
           </div>
-          <Img sizes={post.frontmatter.imageUrl.childImageSharp.sizes} className="thtrm-ratio--stripe thtrm-article-thumb u-fill-space u-img-fit-height"/>
+          {post.frontmatter.imageUrl && <Img sizes={post.frontmatter.imageUrl.childImageSharp.sizes} className="thtrm-ratio--stripe thtrm-article-thumb u-fill-space u-img-fit-height"/>}
         </section>
         
         <section className="thtrm-section--fullbleed-intrinsic thtrm-article u-max-width--half">
@@ -139,7 +139,7 @@ export const pageQuery = graphql`
             }
           }
         }
-        date(formatString: "DD. MMMM YYYY")
+        date(formatString: "DD MMMM YYYY")
         description
         categories
       }

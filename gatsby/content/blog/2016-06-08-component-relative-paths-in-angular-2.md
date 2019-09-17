@@ -41,8 +41,7 @@ related_videos:
 
 Component-based development is Angular's *most-loved* feature. By now you should be familiar with using the `@Component` decorators to create components. You should be familiar with the required metadata information such as `selector` and `template`.
 
-{% highlight js %}
-{% raw %}
+```js
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -55,8 +54,7 @@ import { Component, OnInit } from '@angular/core';
   styles: ['.navbar-fixed { position:fixed; }']
 })
 export class HeaderComponent implements OnInit {  }
-{% endraw %}
-{% endhighlight %}
+```
 
 > If the above component syntax is new and strange, you should first review our article on [Building a Zipping Component in Angular](/angular/2015/03/27/building-a-zippy-component-in-angular-2.html).
 
@@ -74,8 +72,7 @@ For every Angular component that we implement, we define not only an HTML templa
 
 One way to do this is to set the `styles` and `template` property in the component metadata. Consider a simple *Header* component:
 
-{% highlight js %}
-{% raw %}
+```js
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -91,10 +88,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 }
-{% endraw %}
-{% endhighlight %}
+```
 
-> We actually use this component in our [Angular Master Class training](http://thoughtram.io/angular2-master-class.html).
+> We actually use this component in our [Angular Master Class training](http://thoughtram.io/angular-master-class.html).
 
 Using this component is super easy. There are no external file dependencies as all the HTML and CSS is defined inline. Therefore we should *never* see [in the DevTools console] a 404 loading error for this component.
 
@@ -109,8 +105,7 @@ Another component feature allows us to load HTML and styles from external files:
 This practice of using external files is especially important when your HTML or CSS is non-trivial. And using external files keeps your *.ts logic files much cleaner and easier to maintain.
 
 **header.component.ts**
-{% highlight js %}
-{% raw %}
+```js
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -120,28 +115,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 **header.component.css**
-{% highlight css %}
-{% raw %}
+```css
 .navbar-fixed {
   position:fixed;
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 **header.component.html**
-{% highlight html %}
-{% raw %}
+```html
 <nav class="navbar-fixed">
   <div class="nav-wrapper">
     <span class="brand-logo center">Contacts</span>
   </div>
 </nav>
-{% endraw %}
-{% endhighlight %}
+```
 
 Above we used URLs to specify external HTML and CSS resources. The important factor to note is that the URL required above [in `header.component.ts`] is not an absolute path. The path is actually relative to the **application root**: which is usually the location of the `index.html` web page that hosts the application.
 
@@ -161,8 +151,7 @@ To explore the issue, let's consider the scenario where our details component (a
 If path to the component HTML or CSS file is not valid, the **EASY** workaround is to add absolute paths to the URLs. Let's briefly explore that idea:
 
 
-{% highlight js %}
-{% raw %}
+```js
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -172,8 +161,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 This approach immediately triggers important questions and concerns:
 
@@ -192,8 +180,7 @@ In fact, we can use relative paths. But not the way you may first think... and n
 
 At first we might be tempted to try this:
 
-{% highlight js %}
-{% raw %}
+```js
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -203,8 +190,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 We might expect that `./header.component.html` is a path relative to the `header.component.ts` file and that component-relative paths should work, right?  
 
@@ -245,8 +231,7 @@ Let's see how this works with the component using **CommonJS**, **SystemJS**, **
 *CommonJS*
 
 **header.component.ts**
-{% highlight js %}
-{% raw %}
+```js
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -257,25 +242,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 > *Note:* the above requires that your `tsconfig.json` file specifies **commonjs**; since `module.id` is a variable available when using that module format:
 
 **tsconfig.json**
-{% highlight json %}
-{% raw %}
+```json
 {
   "compilerOptions": {
     "module": "commonjs",
     "target": "es5"
   }
 }
-{% endraw %}
-{% endhighlight %}
-
-
-<br/>
+```
 
 ----
 
@@ -285,8 +264,7 @@ If we decide to use SystemJS, we use **`__moduleName`** variable instead of the 
 
 
 **header.component.ts**
-{% highlight js %}
-{% raw %}
+```js
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -297,12 +275,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 }
-{% endraw %}
-{% endhighlight %}
-
-
-<br/>
-
+```
 ----
 
 *JSPM*
@@ -310,8 +283,7 @@ export class HeaderComponent implements OnInit {
 If we decide to use **JSPM**, we use the `typescriptOptions` configuration format in the `config.js` file:
 
 **config.js**
-{% highlight js %}
-{% raw %}
+```js
 SystemJS.config({
   typescriptOptions: {
     module: "commonjs",
@@ -339,12 +311,9 @@ SystemJS.config({
     }
   }
 });
-{% endraw %}
-{% endhighlight %}
+```
 
 > *Note* this solution requires the [SystemJS Typescript Plugin](https://github.com/frankwallis/plugin-typescript) to transcompile the typescript
-
-<br/>
 
 ----
 
@@ -356,8 +325,7 @@ With WebPack there are three (3) options available to load the component's exter
 
 1) We can use `require( )` to reference component-relative paths.
 
-{% highlight js %}
-{% raw %}
+```js
 import { Component } from '@angular/core';
 
 @Component({
@@ -367,15 +335,13 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 It is important to note that here we are not using the `templateUrl` or `styleUrls` keys. Instead we are using `require('...')` to load the data and assign the file contents directly to the metadata object key `template` **BEFORE** the Angular  component initializes.
 
 2) As an alternative approach to `require(...)`, we can instead use `import headerTemplate from './header.component.html';`:
 
-{% highlight js %}
-{% raw %}
+```js
 import { Component } from '@angular/core';
 
 import { Component }  from '@angular/core';
@@ -389,15 +355,13 @@ import headerStyle    from './header.component.css';
 })
 export class HeaderComponent implements OnInit {
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 3) Finally, WebPack developers can load templates and styles at runtime by adding `./` at the beginning of the template,
 styles, and styleUrls properties that reference *component-relative URLS.
 
 
-{% highlight js %}
-{% raw %}
+```js
 import { Component } from '@angular/core';
 
 @Component({
@@ -406,8 +370,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit { }
-{% endraw %}
-{% endhighlight %}
+```
 
 > Behind the scenese, Webpack will actually still do a `require` to load the templates and styles.
 But our markup remains clean and uncluttered.

@@ -42,7 +42,7 @@ If you've read our article on [Dependency Injection in Angular](/angular/2015/05
 
 Quick example: In an Angular component we might have a `DataService` dependency, which we can ask for like this:
 
-{% highlight js %}
+```js
 import { DataService } from './data.service';
 
 @Component(...)
@@ -52,11 +52,11 @@ class AppComponent {
     // dataService instanceof DataService === true
   }
 }
-{% endhighlight %}
+```
 
 We import the **type** of the dependency we're asking for, and annotate our dependency argument with it in our component's constructor. Angular knows how to create and inject an object of type `DataService`, if we configure a provider for it. This can happen either on the application module, that bootstrap our app, or in the component itself (both ways have different implications on the dependency's life cycle and availability).
 
-{% highlight js %}
+```js
 // application module
 @NgModule({
   ...
@@ -74,11 +74,11 @@ We import the **type** of the dependency we're asking for, and annotate our depe
   ]
 })
 class AppComponent { }
-{% endhighlight %}
+```
 
 In fact, there's a shorthand syntax we can use if the instruction is `useClass` and the value of it the same as the token, which is the case in this particular provider:
 
-{% highlight js %}
+```js
 @NgModule({
   ...
   providers: [DataService]
@@ -91,7 +91,7 @@ In fact, there's a shorthand syntax we can use if the instruction is `useClass` 
   providers: [DataService]
 })
 class AppComponent { }
-{% endhighlight %}
+```
 
 Now, whenever we ask for a dependency of type `DataService`, Angular knows how to create an object for it.
 
@@ -99,8 +99,7 @@ Now, whenever we ask for a dependency of type `DataService`, Angular knows how t
 
 With multi providers, we can basically provide **multiple dependencies for a single token**. Let's see what that looks like. The following code manually creates an injector with multi providers:
 
-{% highlight js %}
-
+```js
 const SOME_TOKEN: OpaqueToken = new OpaqueToken('SomeToken');
 
 var injector = Injector.create([
@@ -110,8 +109,7 @@ var injector = Injector.create([
 
 var dependencies = injector.get(SOME_TOKEN);
 // dependencies == ['dependency one', 'dependency two']
-
-{% endhighlight %}
+```
 
 **Note**: We usually don't create injectors manually when building Angular applications since the platform takes care of that for us. This is really just for demonstration purposes.
 
@@ -125,8 +123,7 @@ Alright, fine. We can provide multiple values for a single token. But why in hel
 
 Usually, when we register multiple providers with the same token, the last one wins. For example, if we take a look at the following code, only `TurboEngine` gets injected because it's provider has been registered at last:
 
-{% highlight js %}
-
+```js
 class Engine { }
 class TurboEngine { }
 
@@ -137,14 +134,13 @@ var injector = Injector.create([
 
 var engine = injector.get(Engine);
 // engine instanceof TurboEngine
-{% endhighlight %}
+```
 
 This means, with multi providers we can basically **extend** the thing that is being injected for a particular token. Angular uses this mechanism to provide pluggable hooks.
 
 One of these hooks for example are validators. When creating a validator, we need to add it to the `NG_VALIDATORS` multi provider, so Angular picks it up when needed
 
-{% highlight js %}
-{% raw %}
+```js
 @Directive({
   selector: '[customValidator][ngModel]',
   providers: [
@@ -156,8 +152,7 @@ One of these hooks for example are validators. When creating a validator, we nee
   ]
 })
 class CustomValidator {}
-{% endraw %}
-{% endhighlight %}
+```
 
 Multi providers also can't be mixed with normal providers. This makes sense since we either extend or override a provider for a token.
 

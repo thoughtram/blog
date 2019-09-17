@@ -52,7 +52,7 @@ Angular components are designed with exactly that in mind. A component comes wit
 
 The easiest way to add styles to a component is taking advantage of the `@Component` decorators that allow us to define component inline styles. All we need to do is to add a `styles` property to the decorator and define the styles. To see what that looks like, here's a snippet of our zippy component that we've built a while ago.
 
-{% highlight js %}
+```js
 @Component({
   moduleId: module.id,
   selector: 'my-zippy',
@@ -66,13 +66,13 @@ The easiest way to add styles to a component is taking advantage of the `@Compon
 class ZippyComponent {
   @Input() title: string;
 }
-{% endhighlight %}
+```
 
 This is pretty straight forward. You might wonder though, why the value of that property is a list and not just a (multi-line) string. Well, I wonder too. That's why I asked the [question](https://github.com/angular/angular/issues/2730) right away.
 
 Okay, so defining styles on the component is pretty clear, but where did those end up in the DOM? If we run this code in our browser, we see that there's something very interesting happening. It turns out that Angular takes the defined styles, and writes them into the head of the HTML document. Here's what that looks like:
 
-{% highlight html %}
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -86,7 +86,7 @@ Okay, so defining styles on the component is pretty clear, but where did those e
   ...
   </body>
 </html>
-{% endhighlight %}
+```
 
 What's going on there? The reason why Angular takes our styles and puts them up there, is because of the **View Encapsulation** that we are using. Since Angular 2.x, it comes with three different view encapsulation types in order to support both, browsers that don't support Shadow DOM, and also the ones that do support it. The view encapsulations <s>will be explored in another article</s> are covered in [this article](/angular/2015/06/29/shadow-dom-strategies-in-angular2.html), but we have to touch on this though in order to understand why this is happening.
 
@@ -100,7 +100,7 @@ Let's take a look at another way of adding styles to our component.
 
 In an ideal world, we don't have to mix our styles with our application code. That's why we have the `<link>` tag, that allows us to fetch and embed a stylesheet from a server. Angular components allow us to define `styleUrls`, so that styles don't have to be written into the component. Pretty straight forward, here's an example:
 
-{% highlight js %}
+```js
 @Component({
   moduleId: module.id,
   selector: 'my-zippy',
@@ -110,11 +110,11 @@ In an ideal world, we don't have to mix our styles with our application code. Th
 class ZippyComponent {
   @Input() title: string;
 }
-{% endhighlight %}
+```
 
 Where do **those** end up in the DOM? Well, for the same reason as explained earlier, they are written into the head of the document. But not only that, when Angular fetches the style resources, it takes the text response, inlines and appends them after all component inline styles. So if we would have a configuration like this:
 
-{% highlight js %}
+```js
 @Component({
   moduleId: module.id,
   selector: 'my-zippy',
@@ -125,19 +125,19 @@ Where do **those** end up in the DOM? Well, for the same reason as explained ear
 class ZippyComponent {
   @Input() title: string;
 }
-{% endhighlight %}
+```
 
 And the `my-zippy.component.css` content would look like this:
 
-{% highlight js %}
+```css
 .zippy {
   background: blue;
 }
-{% endhighlight %}
+```
 
 We will end up with a document head that looks something like this:
 
-{% highlight html %}
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -155,7 +155,7 @@ We will end up with a document head that looks something like this:
   ...
   </body>
 </html>
-{% endhighlight %}
+```
 
 This also brings us to the next conclusion that styles defined in style urls will always be appended and therefore override styles defined in the component, unless the inline styles don't have a higher specificity.
 
@@ -167,7 +167,7 @@ We can for sure always write our styles directly into the DOM, nobody can preven
 
 Translating the styles used above to template inline styles would look something like this (in case of our zippy component):
 
-{% highlight html %}{% raw %}
+```html
 <style>
   .zippy {
     background: red;
@@ -181,7 +181,6 @@ Translating the styles used above to template inline styles would look something
     <content></content>
   </div>
 </div>
-{% endraw %}
-{% endhighlight %}
+```
 
 Guess what, also those will be appended in the head of our document, after the ones defined in the component or as style urls. Template inline styles always have the highest priority, which sounds pretty straight forward to me.

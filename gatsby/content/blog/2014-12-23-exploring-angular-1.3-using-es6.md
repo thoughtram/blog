@@ -42,19 +42,19 @@ In this post we are going to look at two very exciting ES2015 features and how t
 
 Modules are one of the most exciting features of ES2015. They enable us to decouple our code easier than ever before. The concept isn't all that new as most programming languages have some kind of module system. Using JavaScript, your best bet so far was to use one of the community projects such as [requirejs](http://requirejs.org/). With ES2015 a proper module standard is coming right into your browser, natively. With modules code can be structured to explicitly import all dependencies that are used in a file. Before a module can imported it first needs to be exported as a module.
 
-{% highlight javascript %}
+```
 function MainController () {
   
 }
 
 export { MainController }
-{% endhighlight %}
+```
 
 Once a module has been exported it can easily be imported from another file.
 
-{% highlight javascript %}
+```
 import { MainController } from './path/to/MainController';
-{% endhighlight %}
+```
 
 ## Inheritance
 
@@ -66,7 +66,7 @@ With ES2015 we don't need to rely on such non standard abstractions anymore. ES2
 
 To use inheritance we need to make use of the new `class` keyword.
 
-{% highlight javascript %}
+```
 class Vehicle {
 
     constructor (name) {
@@ -78,11 +78,11 @@ class Vehicle {
     }
 }
 export { Vehicle }
-{% endhighlight %}
+```
 
 In the example above we construct a simple `Vehicle` class which isn't different from a simple constructor function in ES5. Where the new class syntax really shines is when you want to inherit from another constructor function. Let's write a `Car` class that inherits from `Vehicle`.
 
-{% highlight javascript %}
+```
 import { Vehicle } from './Vehicle';
 
 class Car extends Vehicle {
@@ -92,11 +92,11 @@ class Car extends Vehicle {
     }
 }
 export { Car }
-{% endhighlight %}
+```
 
 Seen that? We import `Vehicle` as a module and extend it by using the new `extends` keyword. We could have done the same with ES5 but it's much more boilerplate code. Let's forget about the nice module seperation for a moment and put both `Vehicle` and `Car` into one file for the ES5 version.
 
-{% highlight javascript %}
+```
 //Vehicle
 function Vehicle (name) {
     this._name = name;
@@ -119,7 +119,7 @@ Car.prototype.constructor = Car;
 Car.prototype.move = function () {
     console.log(this.name + ' is spinning wheels...');
 }
-{% endhighlight %}
+```
 
 Oh wow, things really got a lot easier with ES2015, no?
 
@@ -129,7 +129,7 @@ Now that we know what modules and inheritance mean in the context of ES2015, let
 
 Let's first look at ES2015 modules in the context of Angular 1.x. 
 
-{% highlight javascript %}
+```
 class MainController {
 
     constructor(searchService) {
@@ -145,7 +145,7 @@ class MainController {
     }
 }
 export { MainController }
-{% endhighlight %}
+```
 
 Notice something? There's no Angular in our controller definition at all. It's plain old JavaScript code that happens to be in control of something.
 
@@ -153,7 +153,7 @@ The spirit of Angular has always been to stay out of the way of the developer as
 
 At some point though, we need to make Angular aware of the controller. Otherwise it just won't play any role in our Angular application.
 
-{% highlight javascript %}
+```
 import { MainController } from './MainController';
 import { SearchService } from './SearchService';
 
@@ -161,7 +161,7 @@ angular
     .module('app', [])
     .controller('mainController', MainController)
     .service('searchService', SearchService);
-{% endhighlight %}
+```
 
 We simply import the `MainController` in our `app.js` file that we use to bootstrap our application. In order to register it as a controller, we pass it on to Angular's `controller()` method.
 
@@ -169,7 +169,7 @@ We simply import the `MainController` in our `app.js` file that we use to bootst
 
 The good news is, you already know how to use it! We've already seen how easy inheritance becomes with ES2015 in our earlier example. Let's create a `PageController` and a `ProductPageController` whereas the `PageController` simply defines a `title()` function that should be available in all controllers that derive from `PageController`. All it does is that it prepends the string `Title: ` to the instance variable `_title`.
 
-{% highlight javascript %}
+```
 class PageController {
 
     constructor(title) {
@@ -181,11 +181,11 @@ class PageController {
     }
 }
 export { PageController }
-{% endhighlight %}
+```
 
 While it's possible to just set `_title` to a string from within the constructor of our `ProductPageController` we are aiming for the cleaner way and instead pass it to the constructor of our `PageController` by calling `super('ES2015 inheritance with Angular');`
 
-{% highlight javascript %}
+```
 import { PageController } from './PageController';
 
 class ProductPageController extends PageController {
@@ -196,17 +196,17 @@ class ProductPageController extends PageController {
 }
 
 export { ProductPageController }
-{% endhighlight %}
+```
 
 That's probably not the most exciting example in the world but it works! All there's left to do is to angularize the `ProductPageController`. 
 
-{% highlight javascript %}
+```
 import { ProductPageController } from './ProductPageController';
 
 angular
     .module('app', [])
     .controller('ProductPageController', ProductPageController);
-{% endhighlight %}
+```
 
 Please note that we don't have to do the same with the `PageController` as long as it's not *explicitly* used as an Angular controller. In our case, it's only used *implicitly* by the `ProductPageController`.
 

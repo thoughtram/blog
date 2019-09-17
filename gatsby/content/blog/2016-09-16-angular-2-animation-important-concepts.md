@@ -45,8 +45,7 @@ Let's build a component that hides and shows its contents, uses fade animation e
 
 Here is a simple Angular component with hide and show features. This sample, however, does not have animations (yet):
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   selector: 'my-fader',
     template: `
@@ -65,8 +64,7 @@ export class MyComponent implements OnChanges {
    this.visibility = this.isVisible ? 'shown' : 'hidden';
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 This component simply publishes an `@Input() isVisible` property; which allows other external components to show/hide the text content... without any animations.
 
@@ -76,8 +74,7 @@ This component simply publishes an `@Input() isVisible` property; which allows o
 
 Since Angular 4.x, there's a new module `BrowserAnimationsModule` that introduces all animation capabilities. That's why we first have add that to our application module's `imports` like this:
 
-{% highlight js %}
-{% raw %}
+```js
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -88,8 +85,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ...
 })
 export class AppModule {}
-{% endraw %}
-{% endhighlight %}
+```
 
 Once that is done, we can use any kind of animation API in our application. If we want to use animation function like `trigger()` or `state()`, we need to import them also from `'@angular/platform-browser/animations'` instead of `'@angular/core'`.
 
@@ -99,8 +95,7 @@ We want the `my-fader` component to **fade-in** or **fade-out** its text content
 
 To start animating, let's first add animation metadata to our component.
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   ...,
   template : ``,
@@ -109,23 +104,20 @@ To start animating, let's first add animation metadata to our component.
   ]
 )]
 class MyComponent() { ... }
-{% endraw %}
-{% endhighlight %}
+```
 
 Above we show that the `animations` metadata property is defined in the `@Component` decorator. Just like `template` metadata property!
 
 Since our component has a `visibility` property whose state can change between `shown` and `hidden`, let’s configure animations to trigger and animate during each value change.
 
-{% highlight js %}
-{% raw %}
+```js
 animations: [
   trigger('visibilityChanged', [
   state('shown' , style({ opacity: 1 })), 
   state('hidden', style({ opacity: 0 }))
   ])
 ]
-{% endraw %}
-{% endhighlight %}
+```
 
 Before we add more metadata, let's talk about the syntax above. What does it mean... and why is this syntax used?
 
@@ -137,8 +129,7 @@ Now, you might also wonder where `visibilityChanged` comes from? Because our com
 
 We want to animate these changes over a time duration instead of instantly hiding/showing the content. We need to configure a *transition* to specify animation durations. With Angular this is also suprisingly easy:
 
-{% highlight js %}
-{% raw %}
+```js
 animations: [
   trigger(’visibilityChanged', [
     state('shown' , style({ opacity: 1 })), 
@@ -146,8 +137,7 @@ animations: [
     transition('* => *', animate('.5s'))
   ])
 ]
-{% endraw %}
-{% endhighlight %}
+```
 
 With the above `transition`, we added information to the animation configuration so each trigger value change will have a 500 msec transition. 
 
@@ -155,8 +145,7 @@ So a **fade-in** (opacity 0 -> 1, with a duration of 500 msec) will occur when t
 
 And what does the `transition('* => *', ...)` mean? Think of `* => *` as a transition from one state to another state; where `*` is a wildcard to mean **any** state value. If we wanted the *fade-out* to be slower than the *fade-in*, here is how we would configure the animation metadata:
 
-{% highlight js %}
-{% raw %}
+```js
 animations: [
   trigger(’visibilityChanged', [
     state('shown' , style({ opacity: 1 })),
@@ -165,8 +154,7 @@ animations: [
     transition('hidden => shown', animate('300ms')),
   ])
 ]
-{% endraw %}
-{% endhighlight %}
+```
 
 See how easy this is? This notation is so easy to understand.
 
@@ -189,21 +177,18 @@ While we configured the Animation metadata,  I am sure you are wondering:
 
 Since data-binding features are already supported between the **component** and its **template**,  Angular uses a <u>special</u> template animation syntax to support triggering the animation after data-binding changes. So in the component template, we can do this:
 
-{% highlight html %}
-{% raw %}
+```html
 <div [@visibilityChanged]="visibility">
   Can you see me? I should fade in or out...
 </div>
-{% endraw %}
-{% endhighlight %}
+```
 
 
 Above the `@visibilityChanged` is the special template animation property and it uses databinding  `[@visibilityChanged]=“visibility”` to bind the component's visibility property to the animation  trigger property `visibilityChanged`.
 
 Here is the entire component definition updated with Animation features:
 
-{% highlight js %}
-{% raw %}
+```js
 import { Component, OnChanges, Input } from '@angular/core';
 import { trigger, state, animate, transition, style } from '@angular/platform-browser/animations';
 
@@ -231,17 +216,14 @@ export class FaderComponent implements OnChanges {
    this.visibility = this.isVisible ? 'shown' : 'hidden';
   }
 }
-{% endraw %}
-{% endhighlight %}
-<br/>
+```
 
 
 ### Reducing Complexity
 
 What if - instead of the using the extra `visibility` property - you just wanted to use the `isVisible` property directly? This would obviate `ngOnChanges()` and reduce the code complexity to:
 
- {% highlight js %}
- {% raw %}
+ ```js
  @Component({
    animations: [
      trigger('visibilityChanged', [
@@ -259,8 +241,7 @@ What if - instead of the using the extra `visibility` property - you just wanted
  export class FaderComponent {
    @Input() isVisible : boolean = true;
  }
- {% endraw %}
- {% endhighlight %}
+```
 
 I love the tersity of this code. But this will not work without another **important** change to the animation metadata!
 
@@ -269,8 +250,7 @@ I love the tersity of this code. But this will not work without another **import
 If you use the `myFader::isVisible` boolean property, then your animation state values must be changed to `true` and `false` since those are the possible values of the `isVisible` property.
 
 
-{% highlight js %}
-{% raw %}
+```js
 import { Component, OnChanges, Input } from '@angular/core';
 import { trigger, state, animate, transition, style } form '@angular/platform-browser/animations';
 
@@ -294,9 +274,7 @@ import { trigger, state, animate, transition, style } form '@angular/platform-br
 export class FaderComponent implements OnChanges {
   @Input() isVisible : boolean = true;
 }
-{% endraw %}
-{% endhighlight %}
-<br/>
+```
 
 {% include plunk.html url="http://embed.plnkr.co/74lprkmzUGjT7UWbiyUr/" %}
 
@@ -335,8 +313,7 @@ Components should never be concerned with the details regarding animation of chi
 
 In our examples (above), parent components can simply change the state of the child `my-fader` instances and then magically the contents of the `my-fader` instance will fadeIn or fadeOut.
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   selector : 'my-app',
   template: `
@@ -351,8 +328,7 @@ In our examples (above), parent components can simply change the state of the ch
 export class MyAppComponent {  
   showFader : boolean = true;
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 {% include plunk.html url="http://embed.plnkr.co/NbWGjs/" %}
 

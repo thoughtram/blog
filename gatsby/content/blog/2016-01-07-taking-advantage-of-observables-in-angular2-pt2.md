@@ -45,8 +45,7 @@ In a [previous post](/angular/2016/01/06/taking-advantage-of-observables-in-angu
 
 As a recap, we built a simple Wikipedia search demo consisting of a `WikipediaService` to query a JSONP API.
 
-{% highlight js %}
-{% raw %}
+```js
 import { Injectable } from '@angular/core';
 import { URLSearchParams, Jsonp } from '@angular/http';
 
@@ -65,13 +64,11 @@ export class WikipediaService {
                 .map((response) => response.json()[1]);
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 We also built an `App` component that uses this service and applies some Rx gymnastics to tame the user input, prevent duplicate requests and deal with out-of-order responses.
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   selector: 'my-app',
   template: `
@@ -98,8 +95,7 @@ export class App implements OnInit {
                  .switchMap(term => this.wikipediaService.search(term));
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Thinking ahead we can refactor our code even further and let our API design leverage from the power of Observables.
 
@@ -119,8 +115,7 @@ With that in mind: wouldn't it be actually nice if we could save the component f
 
 To let code speak we can transform our `WikipediaService` into this.
 
-{% highlight js %}
-{% raw %}
+```js
 @Injectable()
 export class WikipediaService {
   constructor(private jsonp: Jsonp) {}
@@ -141,15 +136,13 @@ export class WikipediaService {
                 .map((response) => response.json()[1]);
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Notice that the service still exposes the previous api as `rawSearch` and builds a more clever `search` API on top of it.
 
 This dramatically simplifies our `App` component.
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   selector: 'my-app',
   template: `
@@ -171,8 +164,7 @@ export class App {
     this.items = wikipediaService.search(this.term.valueChanges);
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 See what happened? We just wire together event streams like lego blocks!
 

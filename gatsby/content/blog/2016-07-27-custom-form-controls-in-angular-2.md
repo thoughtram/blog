@@ -84,8 +84,7 @@ However, in this article we want to demonstrate how to implement a custom form c
 
 We start off with the raw component. All we need is a model value that can be changed and two buttons that cause the change.
 
-{% highlight js %}
-{% raw %}
+```js
 import { Component, Input } from '@angular/core';
 
 @Component({
@@ -109,27 +108,23 @@ class CounterInputComponent {
     this.counterValue--;
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Nothing special going on here. `CounterInputComponent` has a model `counterValue` that is interpolated in its template and can be incremented or decremented by the `increment()` and `decrement()` methods respectively. This component works perfectly fine, we can already use it once declared on our application module, as it is by putting it into another component like this:
 
 **app.module.ts**
 
-{% highlight js %}
-{% raw %}
+```js
 @NgModule({
   imports: [BrowserModule],
   declarations: [AppComponent, CounterInputComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
-{% endraw %}
-{% endhighlight %}
+```
 
 **app.component.ts**
-{% highlight js %}
-{% raw %}
+```js
 import { Component } from '@angular/core';
 
 @Component({
@@ -139,20 +134,17 @@ import { Component } from '@angular/core';
   `,
 })
 class AppComponent {}
-{% endraw %}
-{% endhighlight %}
+```
 
 Okay cool, but now we want to make it work with Angular's form APIs. Ideally, what we end up with is a custom control that works with template-driven forms and reactive/model-driven forms. For example, in the most simple scenario, we should be able to create a template-driven form like this:
 
-{% highlight html %}
-{% raw %}
+```html
 <!-- this doesn't work YET -->
 <form #form="ngForm" (ngSubmit)="submit(form.value)">
   <counter-input name="counter" ngModel></counter-input>
   <button type="submit">Submit</button>
 </form>
-{% endraw %}
-{% endhighlight %}
+```
 
 If that syntax is new to you, check out our article on [Template-Driven forms in Angular](/angular/2016/03/21/template-driven-forms-in-angular-2.html). Okay but how do we get there? We need to learn what a `ControlValueAccessor` is, because that's the thing that Angular uses to build a bridge between a form model and a DOM element.
 
@@ -177,15 +169,13 @@ Our counter component needs a `ControlValueAccessor` that knows how to update th
 
 The `ControlValueAccessor` interface looks like this:
 
-{% highlight js %}
-{% raw %}
+```js
 export interface ControlValueAccessor {
   writeValue(obj: any) : void
   registerOnChange(fn: any) : void
   registerOnTouched(fn: any) : void
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 **writeValue(obj: any)** is the method that writes a new value from the form model into the view or (if needed) DOM property. This is where we want to update our `counterValue` model, as that's the thing that is used in the view.
 
@@ -195,21 +185,18 @@ export interface ControlValueAccessor {
 
 A `ControlValueAccessor` needs access to its control's view and model, which means, the custom form control itself has to implement that interface. Let's start with `writeValue()`. First we import the interface and update the class signature.
 
-{% highlight js %}
-{% raw %}
+```js
 import { ControlValueAccessor } from '@angular/forms';
 
 @Component(...)
 class CounterInputComponent implements ControlValueAccessor {
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Next, we implement `writeValue()`. As mentioned earlier, it takes a new value from the form model and writes it into the view. In our case, all we need is updating the `counterValue` property, as it's interpolated automatically.
 
-{% highlight js %}
-{% raw %}
+```js
 @Component(...)
 class CounterInputComponent implements ControlValueAccessor {
   ...
@@ -217,33 +204,27 @@ class CounterInputComponent implements ControlValueAccessor {
     this.counterValue = value;
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 This method gets called when the form is initialized, with the form model's initial value. This means it will override the default value `0`, which is fine but if we think about the simple form setup we talked about earlier, we realise that there is no initial value in the form model:
 
-{% highlight js %}
-{% raw %}
+```html
 <counter-input name="counter" ngModel></counter-input>
-{% endraw %}
-{% endhighlight %}
+```
 
 This will cause our component to render an empty string. As a quick fix, we only set the value when it's not undefined:
 
-{% highlight js %}
-{% raw %}
+```js
 writeValue(value: any) {
   if (value !== undefined) {
     this.counterValue = value;
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Now, it only overrides the default when there's an actual value written to the control. Next, we implement `registerOnChange()` and `registerOnTouched()`. `registerOnChange()` has access to a function that informs the outside world about changes. Here's where we can do special work, whenever we propagate the change, if we wanted to. `registerOnTouched()` registers a callback that is excuted whenever a form control is "touched". E.g. when an input element blurs, it fire the touch event. We don't want to do anything at this event, so we can implement the interface with an empty function.
 
-{% highlight js %}
-{% raw %}
+```js
 @Component(...)
 class CounterInputComponent implements ControlValueAccessor {
   ...
@@ -255,15 +236,13 @@ class CounterInputComponent implements ControlValueAccessor {
 
   registerOnTouched() {}
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Great, our counter input now implements the `ControlValueAccessor` interface. The next thing we need to do is to call `propagateChange()` with the value whenever `counterValue` changes through the view. In other words, if either the `increment()` or `decrement()` button is clicked, we want to propagate the new value to the outside world.
 
 Let's update these methods accordingly.
 
-{% highlight js %}
-{% raw %}
+```js
 @Component(...)
 class CounterInputComponent implements ControlValueAccessor {
   ...
@@ -277,14 +256,12 @@ class CounterInputComponent implements ControlValueAccessor {
     this.propagateChange(this.counterValue);
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 We can make this code a little better using property mutators. Both methods, `increment()` and `decrement()`, call `propagateChange()` whenever `counterValue` changes. Let's use getters and setters to get rid off the redudant code:
 
 
-{% highlight js %}
-{% raw %}
+```js
 @Component(...)
 class CounterInputComponent implements ControlValueAccessor {
   ...
@@ -308,8 +285,7 @@ class CounterInputComponent implements ControlValueAccessor {
     this.counterValue--;
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 
 `CounterInputComponent` is almost ready for prime-time. Even though it implements the `ControlValueAccessor` interface, there's nothing that tells Angular that it should be considered as such. We need to register it.
@@ -324,8 +300,7 @@ In order to get hold of a `ControlValueAccessor` for a form control, Angular int
 
 Let's do that right away:
 
-{% highlight js %}
-{% raw %}
+```js
 import { Component, Input, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -342,8 +317,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 class CounterInputComponent {
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 If this code doesn't make any sense to you, you should definitely check out our article on [multi-providers in Angular](/angular2/2015/11/23/multi-providers-in-angular-2.html), but the bottom line is, that we're adding our custom value accessor to the DI system so Angular can get an instance of it. We also have to use `useExisting` because `CounterInputComponent` will be already created as a directive dependency in the component that uses it. If we don't do that, we get a new instance as this is how DI in Angular works. The `forwardRef()` call is explained in [this article](/angular/2015/09/03/forward-references-in-angular-2.html).
 
@@ -357,8 +331,7 @@ We've already seen that the counter component works as intended, but now we want
 
 As discussed in our article on [template-driven forms in Angular](/angular/2016/03/21/template-driven-forms-in-angular-2.html#activating-new-form-apis), we need to activate the form APIs like this:
 
-{% highlight js %}
-{% raw %}
+```js
 import { FormsModule} from '@angular/forms';
 
 @NgModule({
@@ -366,15 +339,13 @@ import { FormsModule} from '@angular/forms';
   ...
 })
 export class AppModule {}
-{% endraw %}
-{% endhighlight %}
+```
 
 <h3 id="without-model-initialization">Without model initialization</h3>
 
 That's pretty much it! Remember our `AppComponent` from ealier? Let's create a template-driven form in it and see if it works. Here's an example that uses the counter control without initializing it with a value (it will use its own internal default value which is `0`):
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   selector: 'app-component',
   template: `
@@ -386,8 +357,7 @@ That's pretty much it! Remember our `AppComponent` from ealier? Let's create a t
   `
 })
 class AppComponent {}
-{% endraw %}
-{% endhighlight %}
+```
 
 > **Special Tip:** Using the json pipe is a great trick to debug a form's value.
 
@@ -397,8 +367,7 @@ class AppComponent {}
 
 Here's another example that binds a value to the custom control using property binding:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   selector: 'app-component',
   template: `
@@ -412,19 +381,16 @@ Here's another example that binds a value to the custom control using property b
 class AppComponent {
   outerCounterValue = 5;  
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 <h3 id="two-way-data-binding-with-ngmodel-template-driven">Two-way data binding with ngModel</h3>
 
 And of course, we can take advantage of `ngModel`'s two-way data binding implementation simply by changing the syntax to this:
 
-{% highlight html %}
-{% raw %}
+```html
 <p>ngModel value: {{outerCounterValue}}</p>
 <counter-input name="counter" [(ngModel)]="outerCounterValue"></counter-input>
-{% endraw %}
-{% endhighlight %}
+```
 
 How cool is that? Our custom form control works seamlessly with the template-driven forms APIs! Let's see what that looks like when using model-driven forms.
 
@@ -436,8 +402,7 @@ The following examples use Angular's reactive form directives, so don't forget t
 
 Once we've set up a `FormGroup` that represents our form model, we can bind it to a form element and associate each control using `formControlName`. This example binds a value to our custom form control from a form model:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   selector: 'app-component',
   template: `
@@ -460,8 +425,7 @@ class AppComponent implements OnInit {
     });
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 ## Adding custom validation 
 
@@ -469,8 +433,7 @@ One last thing we want to take a look at is how we can add validation to our cus
 
 Let's say we want to teach our control to become invalid when its `counterValue` is greater than `10` or smaller than `0`. Here's what it could look like:
 
-{% highlight js %}
-{% raw %}
+```js
 import { NG_VALIDATORS, FormControl } from '@angular/forms';
 
 @Component({
@@ -496,13 +459,11 @@ import { NG_VALIDATORS, FormControl } from '@angular/forms';
 class CounterInputComponent implements ControlValueAccessor {
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 We register a validator function that returns `null` if the control value is valid, or an error object when it's not. This already works great, we can display an error message accordingly like this:
 
-{% highlight js %}
-{% raw %}
+```html
 <form [formGroup]="form">
   <counter-input
     formControlName="counter"
@@ -511,8 +472,7 @@ We register a validator function that returns `null` if the control value is val
 
 <p *ngIf="!form.valid">Counter is invalid!</p>
 <pre>{{ form.value | json }}</pre>
-{% endraw %}
-{% endhighlight %}
+```
 
 ## Making the validator testable
 
@@ -520,8 +480,7 @@ We can do a little bit better though. When using model-driven forms, we might wa
 
 Let's change our code to this:
 
-{% highlight js %}
-{% raw %}
+```js
 export function validateCounterRange(c: FormControl) {
   let err = {
     rangeError: {
@@ -547,15 +506,13 @@ export function validateCounterRange(c: FormControl) {
 class CounterInputComponent implements ControlValueAccessor {
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 >> **Special Tip:** To make validator functions available to other modules when building reactive forms, it's good practice to declare them first and reference them in the provider configuration.
 
 Now, the validator can be imported and added to our form model like this:
 
-{% highlight js %}
-{% raw %}
+```js
 import { validateCounterRange } from './counter-input';
 
 @Component(...)
@@ -567,8 +524,7 @@ class AppComponent implements OnInit {
     });
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 This custom control is getting better and better, but wouldn't it be **really** cool if the validator was configurable, so that the consumer of the custom form control can decide what the max and min range values are?
 
@@ -576,22 +532,19 @@ This custom control is getting better and better, but wouldn't it be **really** 
 
 Ideally, the consumer of our custom control should be able to do something like this:
 
-{% highlight html %}
-{% raw %}
+```html
 <counter-input
   formControlName="counter"
   counterRangeMax="10"
   counterRangeMin="0"
   ></counter-input>
-{% endraw %}
-{% endhighlight %}
+```
 
 Thanks to Angular's dependency injection and property binding system, this is very easy to implement. Basically what we want to do is to teach our [validator to have dependencies](/angular/2016/03/14/custom-validators-in-angular-2.html#custom-validators-with-dependencies).
 
 Let's start off by adding the input properties.
 
-{% highlight js %}
-{% raw %}
+```js
 import { Input } from '@angular/core';
 ...
 
@@ -605,13 +558,11 @@ class CounterInputComponent implements ControlValueAccessor {
   counterRangeMin;
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Next, we somehow have to pass these values to our `validateCounterRange(c: FormControl)`, but per API it only asks for a `FormControl`. That means we need to create that validator function using a factory that creates a closure like this:
 
-{% highlight js %}
-{% raw %}
+```js
 export function createCounterRangeValidator(maxValue, minValue) {
   return function validateCounterRange(c: FormControl) {
     let err = {
@@ -625,13 +576,11 @@ export function createCounterRangeValidator(maxValue, minValue) {
     return (c.value > +maxValue || c.value < +minValue) ? err: null;
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Great, we can now create the validator function with the dynamic values we get from the input properties inside our component, and implement a `validate()` method that Angular will use to perform validation:
 
-{% highlight js %}
-{% raw %}
+```js
 import { Input, OnInit } from '@angular/core';
 ...
 
@@ -649,14 +598,12 @@ class CounterInputComponent implements ControlValueAccessor, OnInit {
     return this.validateFn(c);
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 This works but introduces a new problem: `validateFn` is only set in `ngOnInit()`. What if `counterRangeMax` or `counterRangeMin` change via their bindings? We need to create a new validator function based on these changes. Luckily there's the `ngOnChanges()` lifecycle hook that, allows us to do exactly that. All we have to do is to check if there are changes on one of the input properties and recreate our validator function. We can even get rid off `ngOnInit()` again, because `ngOnChanges()` is called before `ngOnInit()` anyways:
 
 
-{% highlight js %}
-{% raw %}
+```js
 import { Input, OnChanges } from '@angular/core';
 ...
 
@@ -673,14 +620,12 @@ class CounterInputComponent implements ControlValueAccessor, OnChanges {
   }
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 
 Last but not least, we need to update the provider for the validator, as it's now no longer just the function, but the component itself that performs validation:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   ...
   providers: [
@@ -695,39 +640,33 @@ Last but not least, we need to update the provider for the validator, as it's no
 class CounterInputComponent implements ControlValueAccessor, OnInit {
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Believe it or not, we can now configure the max and min values for our custom form control! If we're building template-driven forms, it simply looks like this:
 
-{% highlight html %}
-{% raw %}
+```html
 <counter-input
   ngModel
   name="counter"
   counterRangeMax="10"
   counterRangeMin="0"
   ></counter-input>
-{% endraw %}
-{% endhighlight %}
+```
 
 This works also with expressions:
 
-{% highlight html %}
-{% raw %}
+```html
 <counter-input
   ngModel
   name="counter"
   [counterRangeMax]="maxValue"
   [counterRangeMin]="minValue"
   ></counter-input>
-{% endraw %}
-{% endhighlight %}
+```
 
 If we're building model-driven forms, we can simply use the validator factory to add the validator to the form control like this:
 
-{% highlight js %}
-{% raw %}
+```js
 import { createCounterRangeValidator } from './counter-input';
 
 @Component(...)
@@ -739,7 +678,6 @@ class AppComponent implements OnInit {
     });
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Check out the demos below!
