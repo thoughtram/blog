@@ -49,8 +49,7 @@ At thoughtram, we're currently recording screencasts and video tutorials, to pro
 
 Here's what our `VideoService` roughly looks like:
 
-{% highlight js %}
-{% raw %}
+```js
 import { Injectable, Inject } from '@angular/core';
 import { VIMEO_API_URL } from '../config';
 
@@ -66,8 +65,7 @@ export class VideoService {
                     .map(res => res.json().data);
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 `getVideos()` returns an `Observable<Array<Video>>`. This is just an excerpt of the actual service we use in production. In reality, we cache the responses so we don't peform an http request every single time we call this method. 
 
@@ -76,21 +74,18 @@ export class VideoService {
 
 To use this service in our application, we first need to create a provider for it on our application module, later we will use it in our tests:
 
-{% highlight js %}
-{% raw %}
+```js
 @NgModule({
   imports: [HttpModule]
   providers: [VideoService]
   ...
 })
 export class AppModule {}
-{% endraw %}
-{% endhighlight %}
+```
 
 Since the API returns an Observable, we need to subscribe to it to actually perform the http request. That's why the call side of the method looks something like this:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component()
 export class VideoDashboard {
   
@@ -103,8 +98,7 @@ export class VideoDashboard {
         .subscribe(videos => this.videos = videos);
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Notice how we're passing a callback function to access the video data that is emitted by the Observable. We need to keep that in mind when testing these methods, because we can't call them synchronously. To get an introduction to Observables in conjunction with Angular, make sure to read [this article](/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html).
 
@@ -116,23 +110,20 @@ Before we can start writing test specs for our service APIs, we need to configur
 
 When testing services or components that don't have any dependencies, we can just go ahead an instantiate them manually, using their constructors like this:
 
-{% highlight js %}
-{% raw %}
+```js
 it('should do something', () => {
   let service = new VimeoService();
 
   expect(service.foo).toEqual('bar');
 });
-{% endraw %}
-{% endhighlight %}
+```
 
 
 > **Special Tip**: When testing components and services that don't have any dependencies, we don't necessarily need to create a testing module.
 
 To configure a testing module, we use Angular's `TestBed`. `TestBed` is Angular's primary API to configure and initialize environments for unit testing and provides methods for creating components and services in unit tests. We can create a module that overrides the actual dependencies with testing dependencies, using `TestBed.configureTestingModule()`. 
 
-{% highlight js %}
-{% raw %}
+```js
 import { TestBed } from '@angular/core/testing';
 
 describe('VideoService', () => {
@@ -145,15 +136,13 @@ describe('VideoService', () => {
 
   });
 });
-{% endraw %}
-{% endhighlight %}
+```
 
 This will create an NgModule for every test spec, as we're running this code as part of a `beforeEach()` block. This is a [Jasmine](https://jasmine.github.io/) API. If you aren't familiar with Jasmine, we highly recommend reading their documentation.
 
 Okay, but what does a configuration for such a testing module look like? Well, it's an NgModule, so it has pretty much the same API. Let's start with adding an `import` for `HttpModule` and a provider for `VideoService` like this:
 
-{% highlight js %}
-{% raw %}
+```js
 import { HttpModule } from '@angular/http';
 import { VideoService } from './video.service';
 import { VIMEO_API_URL } from '../config';
@@ -166,15 +155,13 @@ TestBed.configureTestingModule({
   ]
 });
 ...
-{% endraw %}
-{% endhighlight %}
+```
 
 This configures an injector for our tests that knows how to create our `VideoService`, as well as the `Http` service. However, what we actually want is an `Http` service that doesn't really perform http requests. How do we do that? It turns out that the `Http` service uses a `ConnectionBackend` to perform requests. If we find a way to swap that one out with a different backend, we get what we want.
 
 To give a better picture, here's what the constructor of Angular's `Http` service looks like:
 
-{% highlight js %}
-{% raw %}
+```js
 @Injectable()
 export class Http {
 
@@ -185,8 +172,7 @@ export class Http {
 
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 By adding an `HttpModule` to our testing module, providers for `Http`, `ConnectionBackend` and `RequestOptions` are already configured. However, using an NgModule's `providers` property, we can **override** providers that have been introduced by other imported NgModules! This is where Angular's dependency injection really shines!
 
@@ -194,8 +180,7 @@ By adding an `HttpModule` to our testing module, providers for `Http`, `Connecti
 
 In practice, this means we need to create a new provider for `Http`, which instantiates the class with a different `ConnectionBackend`. Angular's http module comes with a testing class `MockBackend`. **That** one not only ensures that no real http requests are performed, it also provides APIs to subscribe to opened connections and send mock responses.
 
-{% highlight js %}
-{% raw %}
+```js
 import { HttpModule, Http, BaseRequestOptions, XHRBackend } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 ...
@@ -207,8 +192,7 @@ TestBed.configureTestingModule({
   ]
 });
 ...
-{% endraw %}
-{% endhighlight %}
+```
 
 Wow, that was easy! We simply tell our injector to inject an instance of `MockBackend` whenever someone asks for an `XHRBackend`, which is what Angular's Http module does behind the scenes.
 
@@ -218,8 +202,7 @@ Awesome! We've created a testing module that uses an `Http` service with a `Mock
 
 When writing unit tests with Jasmine, every test spec is written as an `it()` block, where an assertion is made and then checked if that assertion is true or not. We won't go into too much detail here, since there's a lot of documentation for Jasmine out there. We want to test if our `VideoService` returns an `Observable<Array<Video>>`, so let's start with the following `it()` statement:
 
-{% highlight js %}
-{% raw %}
+```js
 describe('VideoService', () => {
   ...
   describe('getVideos()', () => {
@@ -229,8 +212,7 @@ describe('VideoService', () => {
     });
   });
 });
-{% endraw %}
-{% endhighlight %}
+```
 
 We've also added another nested `describe()` block so we can group all tests that are related to that particular method we test. Okay, next we need to get an instance of our `VideoService`. Since we've created a testing module that comes with all providers for our services, we can use dependency injection to inject instances accordingly.
 
@@ -238,21 +220,18 @@ We've also added another nested `describe()` block so we can group all tests tha
 
 Angular's testing module comes with a helper function `inject()`, which injects service dependencies. This turns out to be super handy as we don't have to take care of getting access to the injector ourselves. `inject()` takes a list of provider tokens and a function with the test code, and it **returns** a function in which the test code is executed. That's why we can pass it straight to our spec and remove the anonymous function we've introduced in the first place:
 
-{% highlight js %}
-{% raw %}
+```js
 import { TestBed, inject } from '@angular/core/testing';
 ...
 it('should return an Observable<Array<Video>>',
   inject([/* provider tokens */], (/* dependencies */) => {
   // test goes here
 }));
-{% endraw %}
-{% endhighlight %}
+```
 
 Cool, now we have all the tools we need to inject our services and write a test. Let's go ahead an do exactly that. Once we have our service injected, we can call `getVideos()` and subscribe to the Observable it returns, to then test if the emitted value is the one we expect.
 
-{% highlight js %}
-{% raw %}
+```js
 it('should return an Observable<Array<Video>>',
   inject([VideoService], (videoService) => {
 
@@ -264,8 +243,7 @@ it('should return an Observable<Array<Video>>',
       expect(videos[3].name).toEqual('Video 3');
     });
 }));
-{% endraw %}
-{% endhighlight %}
+```
 
 **This test is not finished yet.** Right now we're having a test that expects some certain data that is going to be emitted by `getVideos()`, however, remember we've swapped out the `Http` backend so there's no actual http request performed? Right, if there's no request performed, this Observable won't emit anything. We need a way to fake a response that is emitted when we subscribe to our Observable.
 
@@ -275,8 +253,7 @@ As mentioned earlier, `MockBackend` provides APIs to not only subscribe to http 
 
 We can subscribe to all opened http connections via `MockBackend.connections`, and get access to a `MockConnection` like this:
 
-{% highlight js %}
-{% raw %}
+```js
 it('should return an Observable<Array<Video>>',
   inject([VideoService, XHRBackend], (videoService, mockBackend) => {
     mockBackend.connections.subscribe((connection) => {
@@ -288,13 +265,11 @@ it('should return an Observable<Array<Video>>',
 
     ...
 }));
-{% endraw %}
-{% endhighlight %}
+```
 
 The next thing we need to do, is to make the connection send a response. We use `MockConnection.mockRespond()` for that, which takes an instance of Angular's `Response` class. In order to define what the response looks like, we need to create `ResponseOptions` and define the response body we want to send (which is a string):
 
-{% highlight js %}
-{% raw %}
+```js
 ...
 const mockResponse = {
   data: [
@@ -311,8 +286,7 @@ mockBackend.connections.subscribe((connection) => {
   })));
 });
 ...
-{% endraw %}
-{% endhighlight %}
+```
 
 Cool! With this code we now get a fake response inside that particular test spec. Even though it looks like we're done, **there's one more thing we need to do**.
 
@@ -326,16 +300,14 @@ When testing asynchronous code, assertions might be executed later in another ti
 
 Jasmine usually provides access to a function `done()` that we can ask for inside our test spec and then call it when we think our code is done. This looks something like this:
 
-{% highlight js %}
-{% raw %}
+```js
 it('should do something async', (done) => {
   setTimeout(() => {
     expect(true).toBe(true);
     done();
   }, 2000);
 });
-{% endraw %}
-{% endhighlight %}
+```
 
 Angular makes this a little bit more convenient. It comes with another helper function `async()` which takes a test spec and then runs `done()` behind the scenes for us. This is pretty cool, because we can write our test code as if it was synchronous!
 
@@ -348,8 +320,7 @@ How does that work? Well... Angular takes advantage of a feature called Zones. I
 
 Putting it all together, here's what the test spec for the `getVideos()` method looks like:
 
-{% highlight js %}
-{% raw %}
+```js
 import { TestBed, async, inject } from '@angular/core/testing';
 import {
   HttpModule,
@@ -407,7 +378,6 @@ describe('VideoService', () => {
     }));
   });
 });
-{% endraw %}
-{% endhighlight %}
+```
 
 This pattern works for pretty much every test that involves http operations. Hopefully this gave you a better understanding of what `TestBed`, `MockBackend` and `async` are all about.
