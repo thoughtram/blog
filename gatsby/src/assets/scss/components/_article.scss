@@ -1,8 +1,11 @@
 .thtrm-article {
-
+  font-weight: 300;
+  
   h2,
-  h3 {
+  h3,
+  h4 {
     margin-top: 48px;
+    font-weight: 500;
 
     &:first-child {
       margin-top: 0;
