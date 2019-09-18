@@ -70,17 +70,14 @@ As mentioned earlier, Angular Material already comes with a set of pre-built the
 
 Using them is as easy as including or importing the dedicated CSS file that comes with all Angular Material builds. So assuming we've installed Angular Material in our **Angular CLI** project using:
 
-{% highlight sh %}
-{% raw %}
+```sh
 $ yarn|npm install --save @angular/material
-{% endraw %}
-{% endhighlight %}
+```
 
 We can go ahead and add any of the pre-built CSS files to our global styles by configuring our `.angular-cli.json` accordingly:
 
 
-{% highlight json %}
-{% raw %}
+```json
 {
   ...
   "styles": [
@@ -89,21 +86,17 @@ We can go ahead and add any of the pre-built CSS files to our global styles by c
   ]
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Or, if we don't want to fiddle around in our `angular-cli.json` file, we can also import any pre-built theme right into the projects `styles.scss` file like this:
 
-{% highlight scss %}
-{% raw %}
+```scss
 @import '../node_modules/@angular/material/prebuilt-themes/indigo-pink.css';
-{% endraw %}
-{% endhighlight %}
+```
 
 We can easily try it out by having our application using Angular Material components. So first we add `MaterialModule` to our `AppModule`'s imports:
 
-{% highlight ts %}
-{% raw %}
+```js
 import { MaterialModule } from '@angular/material';
 
 @NgModule({
@@ -114,13 +107,11 @@ import { MaterialModule } from '@angular/material';
   ...
 })
 export class AppModule {}
-{% endraw %}
-{% endhighlight %}
+```
 
 Then we go ahead and render, for example, Angular Material's tool bar component:
 
-{% highlight ts %}
-{% raw %}
+```js
 @Component({
   selector: 'my-app',
   template: `
@@ -128,20 +119,17 @@ Then we go ahead and render, for example, Angular Material's tool bar component:
   `
 })
 export class AppComponent {}
-{% endraw %}
-{% endhighlight %}
+```
 
-<img src="/images/md-toolbar.png" alt="Picture of md-toolbar component">
+![](../assets/images/md-toolbar.png)
 
 Looks cool right? Another thing that's worth mentioning is that some Material components offer properties to configure whether they use the current theme's primary, accent or warn color:
 
-{% highlight html %}
-{% raw %}
+```html
 <md-toolbar color="primary">Awesome toolbar</md-toolbar>
-{% endraw %}
-{% endhighlight %}
+```
 
-<img src="/images/md-toolbar-primary.png" alt="Picture of md-toolbar component with primary theme color">
+![](../assets/images/md-toolbar-primary.png)
 
 ## Custom theme using built-in color palettes
 
@@ -157,11 +145,9 @@ In order to create a custom theme, we need to do a couple of things:
 
 While this looks like a lot of work, it turns out Angular Material gives us many tools to make these tasks a breeze. Let's start off by creating a new `custom-theme.scss` file and import it in our root `styles.scss` instead of the pre-built theme. After that we'll go through the list step by step:
 
-{% highlight scss %}
-{% raw %}
+```scss
 @import './custom-theme';
-{% endraw %}
-{% endhighlight %}
+```
 
 ### Generate core styles
 
@@ -169,13 +155,11 @@ This is a pretty easy one. Angular Material provides many very powerful SCSS mix
 
 Here's what that looks like (custom-theme.scss):
 
-{% highlight scss %}
-{% raw %}
+```scss
 @import '../node_modules/@angular/material/theming';
 
 @include mat-core();
-{% endraw %}
-{% endhighlight %}
+```
 
 ### Generate color palettes
 
@@ -183,14 +167,13 @@ The next thing we need to do is to generate color palettes, which can then be co
 
 But what is this base palette? The base palette is just another color palette that compromises primary and accent colors of a single color. Wait, this sounds super confusing! Let's take Material Design's red color palette as an example:
 
-<img src="/images/material-design-red-palette.png" alt="Picture of a Material Design color palette">
+![](../assets/images/material-design-red-palette.png)
 
 Here we see all color codes for lighter and darker versions of the color red, as part of the Material Design specification. The values 50 - 900 represent the hue values or the "strength" of the color, or how light or dark it is. 500 is the recommended value for a theme's primary color. There are much more defined color palettes and they are very nicely documented [right here](https://material.io/guidelines/style/color.html#color-color-palette).
 
 So now that we know what a base palette is, we need to figure out how to create such a thing. Do we have to define and write them ourselves? The answer is yes and no. If we want to use our own custom color palettes, we need to define them manually. However, if we want to use any of Material Design colors, Angular Material comes with predefined palette definitions for all of them! If we take a quick look at the source code, we can see how to palette for the color red is implemented:
 
-{% highlight scss %}
-{% raw %}
+```scss
 $mat-red: (
   50: #ffebee,
   100: #ffcdd2,
@@ -223,20 +206,17 @@ $mat-red: (
     A700: white,
   )
 );
-{% endraw %}
-{% endhighlight %}
+```
 
 It's basically just a map where each key (tone value) maps to a color code. So if we ever want to define our own custom color palette, this is what it could look like.
 
 Okay, let's create a palette for our primary, accent and warn colors. All we have to do is to call the `mat-palette` mix-in with a base color palette. Let's use `$mat-light-blue` for primary, `$mat-orange` for accent and `$mat-red` for warn colors. We can simply reference these variables because we imported Angular Material's theming capabilities in the previous step:
 
-{% highlight scss %}
-{% raw %}
+```scss
 $custom-theme-primary: mat-palette($mat-light-blue);
 $custom-theme-accent: mat-palette($mat-orange, A200, A100, A400);
 $custom-theme-warn: mat-palette($mat-red);
-{% endraw %}
-{% endhighlight %}
+```
 
 Oh wait, what's that? Why do we pass additional values to `mat-palette` when generating our accent color palette? Well... Let's take a closer look at what `mat-palette` actually does.
 
@@ -244,8 +224,7 @@ Oh wait, what's that? Why do we pass additional values to `mat-palette` when gen
 
 We've already mentioned that `mat-palette` generates a Material Design color palette out of a base color palette. But what does that actually mean? In order to get a better picture of what's going on in that mix-in, let's take a look at its source code:
 
-{% highlight scss %}
-{% raw %}
+```scss
 @function mat-palette($base-palette, $default: 500, $lighter: 100, $darker: 700) {
   $result: map_merge($base-palette, (
     default: map-get($base-palette, $default),
@@ -266,8 +245,7 @@ We've already mentioned that `mat-palette` generates a Material Design color pal
 
   @return $result;
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 A mix-in is just a function - it takes arguments and returns something. `mat-palette` takes a base color palette (which is a map like `$mat-red`) and optional default values for the generated color palette's **default**, **lighter** and **darker** colors. Eventually it returns a new color palette that has some additional map values. Those additional values are the mentioned `default`, `lighter` and `darker` colors, as well as their corresponding `default-contrast`, `lighter-contrast` and `darker-contrast` colors. On top of that it generates keys for contrast values for each base hue tone (50 - 900).
 
@@ -280,16 +258,13 @@ A theme lets us apply a consistent tone to our application. It specifies the dar
 Angular Material implements another set of mix-ins to generate either light or dark themes using `mat-light-theme` and `mat-dark-theme` respectively. Now that we have all of our color palettes in place, we can do exactly that. Let's create a light theme object like this:
 
 
-{% highlight scss %}
-{% raw %}
+```scss
 $custom-theme: mat-light-theme($custom-theme-primary, $custom-theme-accent, $custom-theme-warn);
-{% endraw %}
-{% endhighlight %}
+```
 
 If we take a quick look at `mat-light-theme`'s source code, we can see that ti really just prepares another map object that can be later easily consumed for theming:
 
-{% highlight scss %}
-{% raw %}
+```scss
 @function mat-light-theme($primary, $accent, $warn: mat-palette($mat-red)) {
   @return (
     primary: $primary,
@@ -300,21 +275,17 @@ If we take a quick look at `mat-light-theme`'s source code, we can see that ti r
     background: $mat-light-theme-background,
   );
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 That's it! We can now use that generated theme object and feed it to Angular Material's `angular-material-theme` mix-in, which really just passes that theme object to other mix-ins for each component, so they can access the color values from there:
 
-{% highlight scss %}
-{% raw %}
+```scss
 @include angular-material-theme($custom-theme);
-{% endraw %}
-{% endhighlight %}
+```
 
 Here's the complete code for our custom theme, using `$mat-light-blue` and `$mat-orange`:
 
-{% highlight scss %}
-{% raw %}
+```scss
 @import '../node_modules/@angular/material/theming';
 
 @include mat-core();
@@ -326,16 +297,14 @@ $custom-theme-warn: mat-palette($mat-red);
 $custom-theme: mat-light-theme($custom-theme-primary, $custom-theme-accent, $custom-theme-warn);
 
 @include angular-material-theme($custom-theme);
-{% endraw %}
-{% endhighlight %}
+```
 
 ## Theming custom components
 
 There's one thing we haven't talked about yet: theming custom components. So far we've only changed the look and feel of Angular Material's components. That's because we're calling the `angular-material-theme` mix-in with our custom theme object. If we'd remove that call, we'd end up with all Material components in their base colors. This becomes more clear when we take a look at what `angular-material-theme` does:
 
 
-{% highlight scss %}
-{% raw %}
+```scss
 @mixin angular-material-theme($theme) {
   @include mat-core-theme($theme);
   @include mat-autocomplete-theme($theme);
@@ -362,27 +331,23 @@ There's one thing we haven't talked about yet: theming custom components. So far
   @include mat-toolbar-theme($theme);
   @include mat-tooltip-theme($theme);
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Every component in Angular Material comes with a dedicated theme mix-in, that takes a theme object to access its values for theme specific styles. We can use exactly the same pattern to theme our own custom components. This turns out to be very powerful because it enables us to easily change a theme in our entire application just by changing the theme object!
 
 Let's say we have a custom component `FileTreeComponent` as we created it in [MachineLabs](https://blog.machinelabs.ai/2017/05/11/introducing-machinelabs/) (a project you might want to check out!). `FileTreeComponent` renders a list of files and we want that component to respond to the configured theme. Here's what its template looks like (simplified):
 
-{% highlight html %}
-{% raw %}
+```html
 <ul class="ml-file-list">
   <li class="ml-file-list-item" *ngFor="let file of files">
     <md-icon>description</md-icon> {{file.name}}
   </li>
 </ul>
-{% endraw %}
-{% endhighlight %}
+```
 
 It also comes with a base CSS file that introduces just enough styles so that the component is usable and accessible. No colors applied though. We won't go into much detail here because there's nothing new to learn. However, just to give a better idea, here are some corresponding base styles for `FileTreeComponent`:
 
-{% highlight scss %}
-{% raw %}
+```scss
 .ml-file-list {
   max-height: 250px;
   overflow: scroll;
@@ -410,12 +375,11 @@ It also comes with a base CSS file that introduces just enough styles so that th
 
   &:hover { cursor: pointer; }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 The component looks something like this:
 
-<img src="/images/ml-file-tree.png" alt="MachineLabs file tree component">
+![](../assets/images/ml-file-tree.png)
 
 We want to add theming capabilities to the following elements inside `FileTreeComponent` when a theme is applied:
 
@@ -427,8 +391,7 @@ These rules can be easily implemented, simply by following the same pattern that
 
 Let' start off by creating a `ml-file-tree-theme` mix-in and pull out the color palettes from the given theme we're interested in (file-tree-theme.scss):
 
-{% highlight scss %}
-{% raw %}
+```scss
 @mixin ml-file-tree-theme($theme) {
 
   $primary: map-get($theme, primary);
@@ -437,25 +400,21 @@ Let' start off by creating a `ml-file-tree-theme` mix-in and pull out the color 
   $foreground: map-get($theme, foreground);
 
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Remember how `mat-light-theme` created additional values for `foreground` and `background` for our theme? With `map-get` we can access any value by its key of a given map. In other words, we're pulling out color palettes for the theme's primary, warn, background and foreground  colors.
 
 Once that is done, we can start using color values of these color palettes in our style sheets using the `mat-color` mix-in. `mat-color` takes a color palette and a hue value (or one of the descriptive names like `lighter`) returns the color corresponding color. If we want `.ml-file-list` to have a border in the divider foreground color of the given theme, it'd look something like this:
 
-{% highlight scss %}
-{% raw %}
+```scss
 .ml-file-list {
   border-bottom: 1px solid mat-color($foreground, divider);
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 We use exactly the same technique to theme the background color of `.ml-file-list-item` like this:
 
-{% highlight scss %}
-{% raw %}
+```scss
 .ml-file-list-item {
 
   &:hover, &:active, &:focus {
@@ -467,15 +426,13 @@ We use exactly the same technique to theme the background color of `.ml-file-lis
     color: mat-color($foreground, text);
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 One thing to note here is that `mat-color` takes an optional third argument to configure the color's opacity.
 
 That's it! `FileTreeComponent` is now fully theme-aware and its look and feel responds to the configured theme. Here's the complete code:
 
-{% highlight scss %}
-{% raw %}
+```scss
 @mixin ml-file-tree-theme($theme) {
 
   $primary: map-get($theme, primary);
@@ -499,42 +456,36 @@ That's it! `FileTreeComponent` is now fully theme-aware and its look and feel re
     }
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 And here's what our component looks like now:
 
-<img src="/images/ml-file-tree-themed.png" alt="MachineLabs file tree component">
+![](../assets/images/ml-file-tree-themed.png)
 
 Last but not least, we have to call the `ml-file-tree-theme` mixing with our custom theme object. We do that by importing the mix-in in our `custom-theme.scss` file and execute it like this:
 
-{% highlight scss %}
-{% raw %}
+```scss
 ...
 @import 'app/lab-editor/file-tree/file-tree-theme.scss';
 
 ...
 @include ml-file-tree-theme($custom-theme);
-{% endraw %}
-{% endhighlight %}
+```
 
 In fact, we can take it one level further and create a meta theme mix-in that executes all theme mix-ins for our custom components, the same way Angular Material does it with `angular-material-theme`. To do that we create a new mix-in `custom-theme`, which would look like this:
 
 
-{% highlight scss %}
-{% raw %}
+```scss
 @mixin custom-theme($theme) {
   @include ml-file-tree-theme($theme);
 }
 
 @include custom-theme($custom-theme);
-{% endraw %}
-{% endhighlight %}
+```
 
 Here again, the complete code of our `custom-theme.scss` file:
 
-{% highlight scss %}
-{% raw %}
+```scss
 @import '../node_modules/@angular/material/theming';
 @import 'app/lab-editor/file-tree/file-tree-theme.scss';
 
@@ -552,8 +503,7 @@ $custom-theme: mat-light-theme($custom-theme-primary, $custom-theme-accent, $cus
 
 @include angular-material-theme($custom-theme);
 @include custom-theme($custom-theme);
-{% endraw %}
-{% endhighlight %}
+```
 
 ## Conclusion
 

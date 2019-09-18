@@ -34,8 +34,7 @@ However, when ag-Grid is used inside Angular, we don't directly work with DOM. I
 
 Let me give you an example. A developer uses ag-Grid as an Angular component and wants to implement a requirement to format all numbers in cells according to a user's locale (EUR). To implement this formatting logic in the pure JavaScript grid version, the developer needs to wrap this logic into a JavaScript class and implement the `getGui` method that returns the DOM with formatted values. This will be a component that ag-Grid will use for cell rendering, hence the type of a component is defined in the docs as a [cell renderer](https://www.ag-grid.com/javascript-grid-cell-rendering/?utm_source=dynamiccomponents3rdpartywidget&utm_medium=blog&utm_campaign=thoughtram). Here is how it could look:
 
-{% highlight js %}
-{% raw %}
+```js
 class NumberCellFormatter {
     init(params) {
         const text = params.value.toLocaleString(undefined, {style: 'currency', currency: 'EUR'});
@@ -48,13 +47,11 @@ class NumberCellFormatter {
         return this.eGui;
     }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 But when ag-Grid is used as an Angular datagrid, we want developers to define a cell render in Angular way like this:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
     selector: 'app-number-formatter-cell',
     template: `
@@ -68,8 +65,7 @@ export class NumberFormatterComponent {
         this.params = params;
     }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Also, as you can see, if a customization component is defined as an Angular component, it can take advantage of built-in Angular mechanisms, like the `currency` pipe to format values.
 
@@ -81,8 +77,7 @@ We represent each customization component using a generic wrapper component [Dyn
 
 Here’s how it all looks in code. The `DynamicAgNg2Component` component extends the [BaseGuiComponent](https://github.com/ag-grid/ag-grid/blob/5372a42fa6042c7ddc3c7c13b94eebcc348715d3/packages/ag-grid-angular/src/ng2FrameworkComponentWrapper.ts#L62) it delegates all work to the `init` method of the class:
 
-{% highlight js %}
-{% raw %}
+```js
 class DynamicAgNg2Component extends BaseGuiComponent {
     init(params) {
            _super.prototype.init.call(this, params);
@@ -90,15 +85,13 @@ class DynamicAgNg2Component extends BaseGuiComponent {
     };
     ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Inside the `init` method of the `BaseGuiComponent` is where a dynamic component is initialized and the DOM is retrieved. Once everything is setup, we run change detection manually once and forget about it. 
 
 The `BaseGuiComponent` implements a few required methods for the communication with ag-Grid. Particularly, it implements the `getGui` method that ag-Grid uses to obtain the DOM that needs to be rendered inside the grid:
 
-{% highlight js %}
-{% raw %}
+```js
 class BaseGuiComponent {
     protected init(params: P): void { ... }
 
@@ -106,15 +99,13 @@ class BaseGuiComponent {
         return this._eGui;
     }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 As you can see, the implementation of the `getGui` is very trivial. We simply return the value of the `_eGui` property. This property holds the DOM created for a dynamic component by Angular. When we dynamically instantiate a component, we obtain its DOM and assign it to the `_eGui` property. This happens in the `init` method.
 
 Before we take a look at the implementation of the method, let’s remember that to dynamically instantiate components in Angular we need to get a factory for Angular components. The factory can be obtained using a [ComponentFactoryResolver](https://angular.io/api/core/ComponentFactoryResolver). That’s why we inject it to the main [AgGridNg2](https://github.com/ag-grid/ag-grid/blob/c7d34a7bda3bfecdf90a11fd6d9a1ed478cc56e5/packages/ag-grid-angular/src/agGridNg2.ts#L42) when the component is initialized:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
     selector: 'ag-grid-angular',
     ...
@@ -129,15 +120,13 @@ export class AgGridNg2 implements AfterViewInit {
         this.frameworkComponentWrapper.setComponentFactoryResolver(this._componentFactoryResolver);
     }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 We also inject [ViewContainerRef](https://angular.io/api/core/ViewContainerRef) and [Ng2FrameworkComponentWrapper](https://github.com/ag-grid/ag-grid/blob/5372a42fa6042c7ddc3c7c13b94eebcc348715d3/packages/ag-grid-angular/src/ng2FrameworkComponentWrapper.ts#L7) services. The latter is used to wrap an original customization component provided by a developer into the `DynamicAgNg2Component`. The view container is used to render DOM and make change detection automatic. We run change detection manually only once in the init method of the `DynamicAgNg2Component` once the component is rendered. By injecting `ViewContainerRef` into the `AgGridNg2` we turn this top level component a container and all dynamic customization components are attached to this container. When Angular checks the top-level `AgGridNg2` component, all customization components are checked automatically as [part of change detection process](https://blog.angularindepth.com/everything-you-need-to-know-about-change-detection-in-angular-8006c51d206f).
 
 Let’s now take a closer look at the `init` method:
 
-{% highlight js %}
-{% raw %}
+```js
 class BaseGuiComponent {
     protected init(params: P): void {
         this._params = params;
@@ -152,13 +141,11 @@ class BaseGuiComponent {
 
     ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Basically, inside the `createComponent` we delegate the call to the `createComponent` method of the `Ng2FrameworkComponentWrapper`. As you remember, this service keeps the references to the `ViewContainerRef` and `componentFactoryResolver` that were attached to it during the instantiation of `AgGridNg2`. In the `createComponent` method it uses them to resolve a factory for the customization component and instantiate the component:
 
-{% highlight js %}
-{% raw %}
+```js
 export class Ng2FrameworkComponentWrapper extends ... {
     ...
     public createComponent<T>(componentType: { new(...args: any[]): T; }): ComponentRef<T> {
@@ -166,19 +153,16 @@ export class Ng2FrameworkComponentWrapper extends ... {
         return this.viewContainerRef.createComponent(factory);
     }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Then using the component reference we get the DOM and attach it to the `eGui` private property:
 
-{% highlight js %}
-{% raw %}
+```js
 this._componentRef = this.createComponent();
 this._agAwareComponent = this._componentRef.instance;
 this._frameworkComponentInstance = this._componentRef.instance;
 this._eGui = this._componentRef.location.nativeElement;
-{% endraw %}
-{% endhighlight %}
+```
 
 And that’s it. If you’re interested to learn how we implemented the component resolution process, continue reading.
 
@@ -187,8 +171,7 @@ And that’s it. If you’re interested to learn how we implemented the componen
 
 Resolution is performed through the `ComponentResolver` service. When the resolver is instantiated, the `frameworkComponentWrapper` and `componentProvider` services are attached to the resolver through the DI system and are available on the class instance:
 
-{% highlight js %}
-{% raw %}
+```js
 @Bean('componentResolver')
 export class ComponentResolver {
     @Autowired("gridOptions")
@@ -202,13 +185,11 @@ export class ComponentResolver {
 
     ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 When the grid needs to instantiate a particular type of a component, e.g. a cell renderer, it calls `ComponentResolver.createAgGridComponent` method. The method uses a descriptor of a column to obtain the name of a component that needs to be created. For the cell renderer component the property that contains the name of a component is `cellRenderer`:
 
-{% highlight js %}
-{% raw %}
+```js
 let columnDefs = [
     {
         headerName: 'Price',
@@ -218,13 +199,11 @@ let columnDefs = [
     },
     ...
 ]
-{% endraw %}
-{% endhighlight %}
+```
 
 Once the name is obtained, it is used to [retrieve the component class](https://github.com/ag-grid/ag-grid/blob/04cd73b3716d9da66b9187f5450ecf4911158075/packages/ag-grid-community/src/ts/components/framework/componentResolver.ts#L239) and metadata from the `componentProvider`:
 
-{% highlight js %}
-{% raw %}
+```js
 export class ComponentResolver {
     private resolveByName(propertyName, ...) {
         const componentName = componentNameOpt != null ? componentNameOpt : propertyName;
@@ -232,21 +211,18 @@ export class ComponentResolver {
         ...
     }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 The `retrieve` method returns the following descriptor of a component:
 
-{% highlight js %}
-{% raw %}
+```js
 {
     component: NumberFormatterComponent
     dynamicParams: null
     source: 1
     type: Component_Type.Framework
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 The type of a component denotes that it’s a framework specific component. All framework components are wrapped into the `DynamicAgNg2Component` as explained the first section of the article. Once the component is wrapped, it contains the `getGui` method common to all customization components and ag-Grid can work with it as if it’s a plain JavaScript component.
 

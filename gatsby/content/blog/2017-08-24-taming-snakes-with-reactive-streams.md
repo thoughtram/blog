@@ -64,7 +64,7 @@ As a player you control a line that resembles a hungry snake. The goal is to eat
 
 Here's a preview of what we are going to build:
 
-![button state machine](/images/snake_preview.gif)
+![button state machine](../assets/images/snake_preview.gif)
 
 For this specific implementation the snake is represented as a line of blue squares where its head is painted in black. Can you tell how the fruits look? Exactly, red squares. Everything is a square and that's not because they look so beautiful but they are very simple geometric shapes and easy to draw. The graphics are not very shiny but hey, it's about making the shift from imperative programming to reactive programming and not about game art.
 
@@ -76,8 +76,7 @@ If this is completely new to you, check out [this](https://egghead.io/courses/le
 
 The `index.html` is quite simple because most of the _magic_ happens with JavaScript.
 
-{% highlight html %}
-{% raw %}
+```html
 <html>
 <head>
   <meta charset="utf-8">
@@ -87,13 +86,11 @@ The `index.html` is quite simple because most of the _magic_ happens with JavaSc
   <script src="/main.bundle.js"></script>
 </body>
 </html>
-{% endraw %}
-{% endhighlight %}
+```
 
 The script that we add to the body is essentially the output of the build process and contains all of our code. However, you may be wondering why there is no such `<canvas>` element inside the `<body>`. It's because we'll create that element using JavaScript. In addition, we add a few constants that define how many `rows` and `columns` we have as well as the `width` and `height` of the canvas.
 
-{% highlight js %}
-{% raw %}
+```js
 export const COLS = 30;
 export const ROWS = 30;
 export const GAP_SIZE = 1;
@@ -107,18 +104,15 @@ export function createCanvasElement() {
   canvas.height = CANVAS_HEIGHT;
   return canvas;
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 With that in place we can call this function, create a `<canvas>` element on the fly and append it to the `<body>` of our page:
 
-{% highlight js %}
-{% raw %}
+```js
 let canvas = createCanvasElement();
 let ctx = canvas.getContext('2d');
 document.body.appendChild(canvas);
-{% endraw %}
-{% endhighlight %}
+```
 
 Note that we are also getting a reference to the `CanvasRenderingContext2D` by calling `getContext('2d')` on the `<canvas>` element. This 2D rendering context for the canvas allows us to draw for example rectangles, text, lines, paths and much more.
 
@@ -163,16 +157,13 @@ In the next sections we'll look closely at how to implement each of these source
 
 Let's dive right into code and implement the steering mechanism for our snake. As mentioned in the previous section the steering depends on keyboard inputs. Turns out it's deceptively simple and the first step is to create an observable sequence from keyboard events. For this we can leverage the `fromEvent()` operator:
 
-{% highlight js %}
-{% raw %}
+```js
 let keydown$ = Observable.fromEvent(document, 'keydown');
-{% endraw %}
-{% endhighlight %}
+```
 
 This is our very first source stream and it will emit a `KeyboardEvent` everytime the user presses down a key. Note that literally every `keydown` event is emitted. Therefore, we also get events for keys that we are not really interested in and that's basically everything else but the arrow keys. But before we tackle this specific issue, we define a constant map of directions:
 
-{% highlight js %}
-{% raw %}
+```js
 export interface Point2D {
   x: number;
   y: number;
@@ -188,8 +179,7 @@ export const DIRECTIONS: Directions = {
   38: { x: 0, y: -1 }, // Up Arrow
   40: { x: 0, y: 1 }   // Down Arrow
 };
-{% endraw %}
-{% endhighlight %}
+```
 
 By looking at the `KeyboardEvent` object it appears that every key has a unique `keyCode`. In order to get the codes for the arrow keys we can use [this](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode) table.
 
@@ -199,22 +189,18 @@ Each direction is of type `Point2D` which is simply an object with an `x` and `y
 
 So, we already have a stream for `keydown` events and everytime the player presses down a key we need to **map** the value, which will be a `KeyboardEvent`, to one of the direction vectors above. For that we can use the `map()` operator to project each keyboard event to a direction vector.
 
-{% highlight js %}
-{% raw %}
+```js
 let direction$ = keydown$
   .map((event: KeyboardEvent) => DIRECTIONS[event.keyCode])
-{% endraw %}
-{% endhighlight %}
+```
 
 As mentioned earlier, we'll receive **every** keydown event because we are not filtering out the ones that we are not interested in, such as the character keys. However, one could argue that we are already filtering out events by looking them up in the directions map. For every `keyCode` that is not defined in that map it will return `undefined`. Nevertheless, that's not really filtering out values on the stream which is why we can use the `filter()` operator to only pipe through desired values.
 
-{% highlight js %}
-{% raw %}
+```js
 let direction$ = keydown$
   .map((event: KeyboardEvent) => DIRECTIONS[event.keyCode])
   .filter(direction => !!direction)
-{% endraw %}
-{% endhighlight %}
+```
 
 Ok, that was easy. The code above is perfectly fine and works as expected. However, there's still some room for improvement. Can you think of something?
 
@@ -222,8 +208,7 @@ Well, one thing is that we want to prevent the snake from going into the opposit
 
 The solution is fairly easy. We cache the previous direction and when a new event is emitted we check if the new direction is not equal to the opposite of the last one. Here's a function that calculates the `next` direction:
 
-{% highlight js %}
-{% raw %}
+```js
 export function nextDirection(previous, next) {
   let isOpposite = (previous: Point2D, next: Point2D) => {
     return next.x === previous.x * -1 || next.y === previous.y * -1;
@@ -235,8 +220,7 @@ export function nextDirection(previous, next) {
 
   return next;
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 This is the first time we are tempted to store state outside of the Observable pipeline because we somehow need to keep track of the previous direction right? An easy solution is to simply keep the previous direction in an external state variable. But wait! We wanted to avoid this, right?
 
@@ -246,16 +230,14 @@ The `scan()` operator is very similar to `Array.reduce()` but instead of only re
 
 Let's apply this and take a look at our final `direction$` stream:
 
-{% highlight js %}
-{% raw %}
+```js
 let direction$ = keydown$
   .map((event: KeyboardEvent) => DIRECTIONS[event.keyCode])
   .filter(direction => !!direction)
   .scan(nextDirection)
   .startWith(INITIAL_DIRECTION)
   .distinctUntilChanged();
-{% endraw %}
-{% endhighlight %}
+```
 
 Notice that we are using `startWith()` to emit an inital value before beginning to emit values from the source Observable (`keydown$`). Without this operator our Observable would start emitting only when the player presses a key.
 
@@ -263,7 +245,7 @@ The second improvement is to _only_ emit values when the emitted direction is di
 
 The following figure visualizes our `direction$` stream and how it works. Values painted in blue represent initial values, yellow means the value was changed on the Observable pipeline and values emitted on the **result** stream are colored orange.
 
-<img src="/images/snake_direction.png" width="70%" alt="direction stream">
+![](../assets/images/snake_direction.png)
 
 ## Keeping track of the length
 
@@ -281,22 +263,18 @@ A `BehaviorSubject` is a more specialized Subject that represents a value that c
 
 Let's go ahead and create a new `BehaviorSubject` with an initial value of `SNAKE_LENGTH`:
 
-{% highlight js %}
-{% raw %}
+```js
 // SNAKE_LENGTH specifies the inital length of our snake
 let length$ = new BehaviorSubject<number>(SNAKE_LENGTH);
-{% endraw %}
-{% endhighlight %}
+```
 
 From here it's only a small step to implement `snakeLength$`:
 
-{% highlight js %}
-{% raw %}
+```js
 let snakeLength$ = length$
   .scan((step, snakeLength) => snakeLength + step)
   .share();
-{% endraw %}
-{% endhighlight %}
+```
 
 In the code above we can see that `snakeLength$` is based on `length$` which is our `BehaviorSubject`. This means that whenever we feed a new value to the Subject using `next()`, it will be emitted on `snakeLength$`. In addition, we use `scan()` to accumulate the length over time. Cool, but you may be wondering what that `share()` is all about, right?
 
@@ -312,19 +290,17 @@ Awesome! Now that we have a mechanism that we can use to broadcast values to mul
 
 The player's score is as simple as it can get. Equipped with `snakeLength$` we can now create the `score$` stream that simply accumulates the player's score using `scan()`:
 
-{% highlight js %}
-{% raw %}
+```js
 let score$ = snakeLength$
   .startWith(0)
   .scan((score, _) => score + POINTS_PER_APPLE);
-{% endraw %}
-{% endhighlight %}
+```
 
 We basically use `snakeLength$` or rather `length$` to notify subscribers that there's been a collision and if there was, we just increase the score by `POINTS_PER_APPLE`, a constant amount of points per apple. Note that `startWith(0)` must be added before `scan()` to avoid specifying a _seed_ (initial accumulator value).
 
 Let's look at a more visual representation of what we just implemented:
 
-<img src="/images/snake_length_and_score.png" width="70%" alt="snake length and score">
+![](../assets/images/sname_length_and_score.png)
 
 By looking at the figure above you may be wondering why the initial value of the `BehaviorSubject` only shows up on `snakeLength$` and is missing on `score$`. That's because the first subscriber will cause `share()` to subscribe to the underlying data source and because the underlying data source immediately emits a value, the value has already passed by the time that the subsequent subscriptions has happened.
 
@@ -334,11 +310,9 @@ Sweet. With that in place, let's implement the stream for our snake. Isn't this 
 
 So far, we have learned a bunch of operators and we can use them to implement our `snake$` stream. As discussed in the beginning of this post, we need some sort of _ticker_ that keeps our hungry snake moving. Turns out there's a handy operator for that called `interval(x)` which emits a value every `x` milliseconds. We'll call each value _tick_.
 
-{% highlight js %}
-{% raw %}
+```js
 let ticks$ = Observable.interval(SPEED);
-{% endraw %}
-{% endhighlight %}
+```
 
 From here it's only a small stretch to the final `snake$` stream. For every _tick_, depending on whether the snake has eaten an apple, we want to either move it foward or add new segment. Therefore, we can use the all so familiar `scan()` operator to accumulate an array of body segments. But, as you may have guessed, we're facing a problem. Where's the `direction$` or `snakeLength$` stream coming into play?
 
@@ -348,14 +322,12 @@ Luckily, RxJS offers yet another very convenient operator called `withLatestFrom
 
 With the above, we have the tools we need to finally implement the hungry `snake$`:
 
-{% highlight js %}
-{% raw %}
+```js
 let snake$ = ticks$
   .withLatestFrom(direction$, snakeLength$, (_, direction, snakeLength) => [direction, snakeLength])
   .scan(move, generateSnake())
   .share();
-{% endraw %}
-{% endhighlight %}
+```
 
 Our _primary_ source is `ticks$` and whenever a new value comes down the pipe, we take the latest
 values from both `direction$` and `snakeLength$`. Note that even if the _secondary_ streams frequently emit values, for example if the player is smashing his head on the keyboard, we'd only be proccessing the data for each _tick_.
@@ -366,7 +338,7 @@ We'll leave out the explanation for the `move()` function as the primary goal of
 
 Here's a figure that visually demonstrates the code above:
 
-<img src="/images/snake_stream.png" width="110%" alt="snake stream">
+![](../assets/images/sname_stream.png)
 
 See how we _throttle_ `direction$`? The point is that `withLatestFrom()` is very practical when you want to **combine** multiple streams and you are not interested in producing values on the Observable pipeline when **either** of the streams emit data.
 
@@ -380,14 +352,12 @@ Let's generate some apples to satisfy our snake's appetite. First, let's clarify
 
 Right, we can use `scan()` again to accumulate an array of apples. We start with an initial value and every time the snake moves, we check if there was a collision. If that's the case, we generate a new apple and return a **new** array. This way we can leverage `distinctUntilChanged()` to filter out identical values.
 
-{% highlight js %}
-{% raw %}
+```js
 let apples$ = snake$
   .scan(eat, generateApples())
   .distinctUntilChanged()
   .share();
-{% endraw %}
-{% endhighlight %}
+```
 
 Cool! This means that whenever `apples$` produces a new value we can assume that our snake has devoured one of those tasty fruits. What's left is to increase to score and also notify other streams about this event, such as `snake$` that takes the latest value from `snakeLength$` to figure out whether to add a new body segment.
 
@@ -395,8 +365,7 @@ Cool! This means that whenever `apples$` produces a new value we can assume that
 
 Earlier we have implemented this **broadcasting** mechanism, remember? Let's use that to trigger the desired actions. Here's our code for `eat()`:
 
-{% highlight js %}
-{% raw %}
+```js
 export function eat(apples: Array<Point2D>, snake) {
   let head = snake[0];
 
@@ -410,8 +379,7 @@ export function eat(apples: Array<Point2D>, snake) {
 
   return apples;
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 A simple solution is to call `length$.next(POINTS_PER_APPLE)` right inside that `if` block. But then we're facing a problem because we couldn't extract this _utility_ method into its own module (ES2015 module). In ES2015 modules are stored in files and there's exactly one module per file. The goal is to organize our code in a way that is easy to maintain and to reason about.
 
@@ -421,28 +389,24 @@ Sounds feasible. But, we somehow need to **skip** the first (initial) value emit
 
 The fact that `applesEaten$` only acts as a _publisher_ to notify other streams, there's not going to be an Observer subscribing to this stream. Therefore, we have to **manually** subscribe.
 
-{% highlight js %}
-{% raw %}
+```js
 let appleEaten$ = apples$
   .skip(1)
   .do(() => length$.next(POINTS_PER_APPLE))
   .subscribe();
-{% endraw %}
-{% endhighlight %}
+```
 
 ## Putting everything together
 
 At this point, we have implemented all core buildings blocks of our game and we are good to go to finally combine everything into one result stream - `scene$`. For that we'll use `combineLatest`. It's quite similar to `withLatestFrom` but different in detail. First, let's look at the code:
 
-{% highlight js %}
-{% raw %}
+```js
 let scene$ = Observable.combineLatest(snake$, apples$, score$, (snake, apples, score) => ({ snake, apples, score }));
-{% endraw %}
-{% endhighlight %}
+```
 
 Instead of throttling secondary streams, we are interested in an event whenever **any** of the _input_ Observables produces a new value. The last argument is again a selector function and we are simply taking all the values and returning an object that represents our **game state**. The game state contains everything that needs to be rendered onto the canvas.
 
-<img src="/images/snake_scene.png" width="110%" alt="scene">
+![](../assets/images/snake_scene.png)
 
 ### Maintaining performance
 
@@ -450,12 +414,10 @@ Not only in games but but also for web applications we aim for performance. Perf
 
 We can do that by introducing another stream similar to `ticks$` but for rendering. Basically it's another interval:
 
-{% highlight js %}
-{% raw %}
+```js
 // Interval expects the period to be in milliseconds which is why we devide FPS by 1000
 Observable.interval(1000 / FPS)
-{% endraw %}
-{% endhighlight %}
+```
 
 The problem is that JavaScript is single-threaded. The worst case is that we prevent the browser from doing anything so that it locks up. In other words, the browser may not be able to process all these updates quickly enough. The reason for this is that the browser is trying to render a frame and then it's immediately asked to render the next one. As a result, it drops the current one to keep up the speed. That's when animations start to look choppy.
 
@@ -465,12 +427,10 @@ While RxJS offers a variety of Schedulers, the one that we're interested in is c
 
 Perfect! Let's apply this to our interval and we'll call the resulting Observable `game$`:
 
-{% highlight js %}
-{% raw %}
+```js
 // Note the last parameter
 const game$ = Observable.interval(1000 / FPS, animationFrame)
-{% endraw %}
-{% endhighlight %}
+```
 
 This interval will now produce values roughly every 16ms maintaining 60 FPS.
 
@@ -478,8 +438,7 @@ This interval will now produce values roughly every 16ms maintaining 60 FPS.
 
 What's left is to combine our `game$` with the `scene$`. Can you guess what operator we use for that? Remember, both streams emit at different intervals and the goal now is to render our scene onto the canvas, 60 times per second. We'll use `game$` as our **primary** stream and every time it emits a value we combine it with the **latest** value from `scene$`. Sounds familiar? Yes, we can use `withLatestFrom` again.
 
-{% highlight js %}
-{% raw %}
+```js
 // Note the last parameter
 const game$ = Observable.interval(1000 / FPS, animationFrame)
   .withLatestFrom(scene$, (_, scene) => scene)
@@ -488,19 +447,13 @@ const game$ = Observable.interval(1000 / FPS, animationFrame)
     next: (scene) => renderScene(ctx, scene),
     complete: () => renderGameOver(ctx)
   });
-
-{% endraw %}
-{% endhighlight %}
+```
 
 You may have spotted `takeWhile()` in the code above. It's another very useful operator that we can call on an exisiting Observable. It will return values from `game$` **until** `isGameOver()` returns `true`.
 
 That's it! We have just implemented snake, fully reactively and without relying on any external state using nothing but Observables and operators provided by RxJS.
 
-Here's a live demo for you to play with:
-
-<a href="https://stackblitz.com/edit/reactive-snake?file=main.ts" target="_blank" style="border-bottom: 0;">
-  <img src="/images/snake_live_demo.png" width="80%" alt="live demo">
-</a>
+Here's a <a href="https://stackblitz.com/edit/reactive-snake?file=main.ts" target="_blank" style="border-bottom: 0;">live demo</a> for you to play with.
 
 ## Future work
 

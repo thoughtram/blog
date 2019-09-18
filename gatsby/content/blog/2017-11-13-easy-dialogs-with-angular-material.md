@@ -49,7 +49,7 @@ The best way to learn a new skill is when we have a concrete use case for the th
 
 You may or may not have heard that we're working on [MachineLabs](https://machinelabs.ai), a platform to run Machine Learning experiments in the browser. One essential UI component there is the file tree of the in-browser editor. In fact, we touched on that component in our article on [custom theming](/angular/2017/05/23/custom-themes-with-angular-material.html). Users can create files and folders, edit them and delete them. Every time a user adds or edits a file or folder, a dialog pops open where users have a chance to decide on a name for the thing they edit or create.
 
-<img src="/images/files-and-folders-dialog.gif" width="">
+![](../assets/images/files-and-folders-dialog.gif)
 
 This is a great scenario to learn about Angular Material's dialog as we not only get to learn how to create and close them, but also how to use the same dialog for different actions, feeding it with different data depending on a certain context.
 
@@ -59,8 +59,7 @@ Let's get right to it!
 
 Angular Material comes with a very easy to use API to create dialogs using the `MatDialog` service. In order to get hold of it we first need to import the `MatDialogModule` into our application's `NgModule` like this:
 
-{% highlight js %}
-{% raw %}
+```js
 import { NgModule } from '@angular/core';
 import { MatDialogModule } from '@angular/material';
 
@@ -72,8 +71,7 @@ import { MatDialogModule } from '@angular/material';
   ]
 })
 export class AppModule {}
-{% endraw %}
-{% endhighlight %}
+```
 
 Remember that as of Angular Material [2.0.0-beta.10](https://github.com/angular/material2/blob/master/CHANGELOG.md#200-beta10-découpage-panjandrum-2017-08-29) `MaterialModule` is deprecated, which is why we're importing `MatDialogModule` here right away. However, best practice is rather to create your own `MaterialModule` that imports and exports the needed material modules. We keep it simple here for the sake of this article.
 
@@ -81,21 +79,18 @@ Now that we've imported `MatDialogModule` we can start using its services and di
 
 Here's what the template of the file tree could look like:
 
-{% highlight html %}
-{% raw %}
+```html
 <ul>
   <li *ngFor="file of files">
     {{file.name}}
   <li>
 </ul>
 <button (click)="openAddFileDialog()">Add file</button>
-{% endraw %}
-{% endhighlight %}
+```
 
 The corresponding component looks something like this (again, simplified):
 
-{% highlight js %}
-{% raw %}
+```js
 @Component(...)
 export class FileTreeComponent {
 
@@ -103,13 +98,11 @@ export class FileTreeComponent {
 
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Great. Now all we have to do is to use Angular Material's `MatDialog` service to create a dialog. To do that we need to inject an instance of that service into our component and  tell it what component type to use to create such a dialog using its `open()` method. Let's say we create a component `FileNameDialogComponent` which takes care of showing an input control so users can enter a name of a new file.
 
-{% highlight js %}
-{% raw %}
+```js
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { FileNameDialogComponent } from '../file-name-dialog';
 
@@ -124,13 +117,11 @@ export class FileTreeComponent {
     this.fileNameDialogRef = this.dialog.open(FileNameDialogComponent);
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Another thing we need to do is to add `FileNameDialogComponent` to our application module's `entryComponents`, since it's dynamically created at runtime.
 
-{% highlight js %}
-{% raw %}
+```js
 @NgModule({
   ...
   declarations: [
@@ -144,8 +135,7 @@ Another thing we need to do is to add `FileNameDialogComponent` to our applicati
   entryComponents: [FileNameDialogComponent]
 })
 export class AppModule {}
-{% endraw %}
-{% endhighlight %}
+```
 
 There are a couple of things to note here. We're injecting `MatDialog` into our component and call its `open()` method with the `FileNameDialogComponent` type when a user wants to add a file. `MatDialog#open()` returns a `MatDialogRef` which is, as the name states, a reference to the now created dialog. Yeap, the dialog has already been created with just this little amount of code.
 
@@ -159,8 +149,7 @@ Let's reward ourselves first and take a look at what we've already created:
 
 Every dialog created using `MatDialog` already comes with a decent default behaviour and default configuration. However, we can still tune things to our needs. This includes things like the `width` or `height` of the dialog. Or whether the dialog should have a backdrop or not. Dialog configuration can be easily passed as a second argument to `MatDialog#open()` as an object like this:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component(...)
 export class FileTreeComponent {
   ...
@@ -170,8 +159,7 @@ export class FileTreeComponent {
     });
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 For a full list of configuration options checkout the dedicated [API documentation](https://material.angular.io/components/dialog/api#MatDialogConfig).
 
@@ -187,8 +175,7 @@ To make our dialogs look more like they come straight our of Google's offices, A
 
 Alright, that's use those in our `FileNameDialogComponent`:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   template: `
     <h1 mat-dialog-title>Add file</h1>
@@ -202,8 +189,7 @@ Alright, that's use those in our `FileNameDialogComponent`:
   `
 })
 export class FileNameDialogComponent {}
-{% endraw %}
-{% endhighlight %}
+```
 
 Okay, this already looks much better. Next we take care of accessing data returned by a dialog.
 
@@ -215,8 +201,7 @@ Now that our dialog looks good as well, we need to find a way to let the user en
 
 Let's first take care of emitting the file name entered by the user after closing the dialog. To do that we create a small form within our `FileNameDialogComponent` which will close the dialog once it's submitted.
 
-{% highlight js %}
-{% raw %}
+```js
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 import { FormGroup, FormBuilder } from '@angular/forms';
@@ -243,15 +228,13 @@ export class FileNameDialogComponent {
     this.dialogRef.close(`${form.value.filename}`);
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Notice how we inject `MatDialogRef<FileNameDialogComponent>`. Yes, this is exactly the same reference we have access to from within our `FileTreeComponent`. `MatDialogRef` has a method `close()` which will essentially close the dialog. Any data that is passed to that method call will be emitted in its `afterClosed()` stream. Since the template got a little bigger now, we've extracted it into its own template file.
 
 Here's what it looks like:
 
-{% highlight js %}
-{% raw %}
+```html
 <form [formGroup]="form" (ngSubmit)="submit(form)">
   <h1 mat-dialog-title>Add file</h1>
   <mat-dialog-content>
@@ -264,15 +247,13 @@ Here's what it looks like:
     <button mat-button type="button" mat-dialog-close>Cancel</button>
   </mat-dialog-actions>
 </form>
-{% endraw %}
-{% endhighlight %}
+```
 
 One thing to point out here is that we use the `mat-dialog-close` directive, which is kind of the equivalent to `(click)="dialogRef.close()"`, just that we don't have to type it out every time. If all these forms APIs are new to you, we recommend checkout out our articles on [Template-driven Forms](/angular/2016/03/21/template-driven-forms-in-angular-2.html) and [Reactive Forms](https://blog.thoughtram.io/angular/2016/06/22/model-driven-forms-in-angular-2.html) in Angular.
 
 Great! Now that our dialog emits the entered file name, we can access it from within `FileTreeComponent` and create a new file object. In order to do that, we subscribe to `fileNameDialogRef.afterClosed()`. We also need to make sure that we only perform our file object creation when the emittion has an actual value and isn't an empty string. This can be done easily by using Reactive Extensions and its `filter` operator (obviously we should add some validation for that but let's not get distracted too much here).
 
-{% highlight js %}
-{% raw %}
+```js
 ...
 import { filter } from 'rxjs/operators';
 
@@ -290,8 +271,7 @@ export class FileTreeComponent {
         .subscribe(name => this.files.push({ name, content: '' }));
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 That's it! We can now add new files to our file tree via our brand new dialog. As mentioned earlier, we would also obviously take care of some validation, such as not allowing the user to submit the form when no file name has been entered. Another thing we might want to ensure is that no duplicated files can be created. However, this is out of the scope of this article.
 
@@ -307,8 +287,7 @@ Luckily, this is quite easy because Angular Material got us covered! It turns ou
 
 Since we want to use the same dialog for both actions, let's also rename `openAddFileDialog()` to `openFileDialog()` and give it an optional `file` parameter. Here's what that would look like:
 
-{% highlight html %}
-{% raw %}
+```html
 <ul>
   <li *ngFor="file of files">
     {{file.name}}
@@ -316,14 +295,11 @@ Since we want to use the same dialog for both actions, let's also rename `openAd
   <li>
 </ul>
 <button (click)="openFileDialog()">Add file</button>
-{% endraw %}
-{% endhighlight %}
+```
 
 Now, we also need to check inside our component whether a file has been passed to that method or not, and pass it on to the dialog like this:
 
-{% highlight js %}
-{% raw %}
-
+```js
 @Component(...)
 export class FileTreeComponent {
   ...
@@ -337,13 +313,11 @@ export class FileTreeComponent {
     ...
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 All we need to do now is taking this data in our dialog and pre-fill our the form control accordingly. We can inject any data that is passed like that using the `MAT_DIALOG_DATA` injection token.
 
-{% highlight js %}
-{% raw %}
+```js
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
@@ -366,13 +340,11 @@ export class FileNameDialogComponent implements OnInit {
     })
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Last but not least we need to ensure that when the dialog is closed, we update the file that has been edited instead of adding a new one. We keep it simple and just look for the index of the file that's being edited and replace it with the updated one.
 
-{% highlight js %}
-{% raw %}
+```js
 ...
 
 @Component(...)
@@ -395,8 +367,7 @@ export class FileTreeComponent {
     });
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Again, this is a trivial file tree implementation. In a real-world app we probably want to take care of having nested directories as well, which changes the level of complexity dramatically here. However, since this article is really all about how easy it is to create dialogs using Angular Material, we stick with what we have.
 

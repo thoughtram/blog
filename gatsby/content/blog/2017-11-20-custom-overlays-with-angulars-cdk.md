@@ -41,7 +41,7 @@ Over at [MachineLabs](https://www.machinelabs.ai), we thought it would be useful
 
 In this post, we'll use the CDK to build a Google Drive-like custom overlay that looks and feels much like the one built for [MachineLabs](https://machinelabs.ai/editor/rJQrQ5wjZ/1506415557004-HkTTQ5Dob?file=ml.yaml&tab=outputs&preview=-KuyslgjIn7kSpuc6pDZ). Here's how it looks like:
 
-![overlay preview](/images/overlay_preview.gif)
+![overlay preview](../assets/images/overlay_preview.gif)
 
 <div class="thtrm-toc is-sticky" markdown="1">
 ### TABLE OF CONTENTS
@@ -60,7 +60,7 @@ In general, the `MatDialog` is great for showing content in a dialog box but as 
 
 Here are the core building blocks of our application:
 
-<img src="/images/custom_overlays_architecture.png" width="100%" alt="application architecture">
+![](../assets/images/custom_overlays_architecture.png)
 
 As we can see, we have two components, one service and a class that represents a remote control to an opened overlay. The `AppComponent` is the root (or entry point) of our application. This component contains a toolbar and the list of files that we can preview. In addition, it has access to a `FilePreviewOverlayService` which provides us with the core logic for opening an overlay. At the same time it's an abstraction for some "heavy" lifting that should be implemented in a resuable manner. Don't be scared, it's not going to be super heavy and we'll break it down into comprehensible chunks. Last but not least, there's a `FilePreviewOverlayRef` which, as mentioned, is a _handle_ used to control (e.g. close) a particular overlay.
 
@@ -80,8 +80,7 @@ From the `MatDialog` we know that when we open an overlay we must specify a comp
 
 Let's do that and add the `FilePreviewOverlayComponent` to the array of `entryComponents`. In addition, we need to add the `OverlayModule` to the `imports` list of the root `AppModule`:
 
-{% highlight js %}
-{% raw %}
+```js
 import { OverlayModule } from '@angular/cdk/overlay';
 ...
 
@@ -97,13 +96,11 @@ import { OverlayModule } from '@angular/cdk/overlay';
   ]
 })
 export class AppModule { }
-{% endraw %}
-{% endhighlight %}
+```
 
 From there, creating an overlay is easy. First, we inject the `Overlay` service. This service has a `create()` function that we need to call in order to create a `PortalHost` for our `FilePreviewOverlayComponent`. Finally we need to create a `ComponentPortal` from this component and attach it to the `PortalHost`. Wait, what? Let's give it a moment and look at some code before taking it apart:
 
-{% highlight js %}
-{% raw %}
+```js
 @Injectable()
 export class FilePreviewOverlayService {
 
@@ -121,8 +118,7 @@ export class FilePreviewOverlayService {
     overlayRef.attach(filePreviewPortal);
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 The first step is to create a `PortalHost`. We do that by calling `create()` on the `Overlay` service. This will return an `OverlayRef` instance which is basically a remote control for the overlay. One unique attribute of this `OverlayRef` is that it's a `PortalHost`, and once created, we can attach or detach `Portal`s. We can think of a `PortalHost` as a placeholder for a component or template. So in our scenario, we are creating a `ComponentPortal` that takes a component type as its fist argument. In order to actually display this component we need to attach the portal to the host.
 
@@ -130,15 +126,13 @@ The first step is to create a `PortalHost`. We do that by calling `create()` on 
 
 Good question. There's an `OverlayContainer` service which creates a container `div` under the hood that gets appended to the `body` of the HTML Document. There are a few more wrapper elements created but our component eventually ends up in a `div` with a class of `cdk-overlay-pane`. Here's what the DOM structure looks like:
 
-{% highlight html %}
-{% raw %}
+```html
 <div class="cdk-overlay-container">
   <div id="cdk-overlay-0" class="cdk-overlay-pane" dir="ltr">
     <!-- Component goes here -->
   </div>
 </div>
-{% endraw %}
-{% endhighlight %}
+```
 
 Done. That's all we need to create our very first custom overlay using the CDK. Let's try it out and see what we got so far:
 
@@ -152,20 +146,17 @@ Now that we have layed the foundation for our custom overlay, let's take it one 
 
 When creating an overlay, we can pass an optional configuration object to `create()` to set the desired options, e.g. whether it has backdrop, the position or scroll strategy, width, height and many more. Here's an example:
 
-{% highlight js %}
-{% raw %}
+```js
 // Example configuration
 overlay.create({
   width: '400px',
   height: '600px'
 });
-{% endraw %}
-{% endhighlight %}
+```
 
 First of all, we allow the consumer of our API to override certain options. Therefore, we update the signature for `open()` to also take a configuration object. In addition, we define an interface that describes the shape of the configuration from a consumer perspective:
 
-{% highlight js %}
-{% raw %}
+```js
 // Each property can be overridden by the consumer
 interface FilePreviewDialogConfig {
   panelClass?: string;
@@ -179,13 +170,11 @@ export class FilePreviewOverlayService {
     ...
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Next, we define some initial values for the config, so that, by default, every overlay has a backdrop alongside a `backdropClass` and `panelClass`:
 
-{% highlight js %}
-{% raw %}
+```js
 const DEFAULT_CONFIG: FilePreviewDialogConfig = {
   hasBackdrop: true,
   backdropClass: 'dark-backdrop',
@@ -196,13 +185,11 @@ const DEFAULT_CONFIG: FilePreviewDialogConfig = {
 export class FilePreviewOverlayService {
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 With that in place, we can define a new method `getOverlayConfig()` which takes care of creating a new `OverlayConfig` for the custom overlay. Remember, it's better to break down the logic into smaller parts instead of implementing everything in one giant function. This ensures better maintainability but also readability of our code.
 
-{% highlight js %}
-{% raw %}
+```js
 @Injectable()
 export class FilePreviewOverlayService {
 
@@ -225,8 +212,7 @@ export class FilePreviewOverlayService {
     return overlayConfig;
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Our method is quite simple. It takes a `FilePreviewDialogConfig` and creates a new `OverlayConfig` with the values from the given configuration. However, there are two important things to mention. One is the `scrollStrategy` and the other one is the `positionStrategy`.
 
@@ -243,15 +229,13 @@ For our file preview overlay, we are going to use the `BlockScrollStrategy` beca
 
 The `scrollStrategy` takes a function that returns a scroll strategy. All strategies are provided by the `Overlay` service and can be accessed via the `scrollStrategies` property:
 
-{% highlight js %}
-{% raw %}
+```js
 const overlayConfig = new OverlayConfig({
   ...
   // Other strategies are .noop(), .reposition(), or .close()
   scrollStrategy: this.overlay.scrollStrategies.block()
 });
-{% endraw %}
-{% endhighlight %}
+```
 
 If we don't specify a strategy explicitly, all overlays will use the `NoopScrollStrategy`.
 
@@ -266,8 +250,7 @@ We'll be using the `GlobalPositionStrategy` for our overlay because it's suppose
 
 Similar to the `scrollStrategy` we can access all position strategies through the `Overlay` service like so:
 
-{% highlight js %}
-{% raw %}
+```js
 const positionStrategy = this.overlay.position()
   .global()
   .centerHorizontally()
@@ -277,13 +260,11 @@ const overlayConfig = new OverlayConfig({
   ...
   positionStrategy
 });
-{% endraw %}
-{% endhighlight %}
+```
 
 With the configuration in place, we go ahead and define another method `createOverlay()` that hides the complexity of creating an overlay with a given configuration:
 
-{% highlight js %}
-{% raw %}
+```js
 @Injectable()
 export class FilePreviewOverlayService {
   ...
@@ -295,13 +276,11 @@ export class FilePreviewOverlayService {
     return this.overlay.create(overlayConfig);
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 We now refactor our `open()` method to generate a default config and utilize `createOverlay()`:
 
-{% highlight js %}
-{% raw %}
+```js
 export class FilePreviewOverlayService {
   ...
   open(config: FilePreviewDialogConfig = {}) {
@@ -312,8 +291,7 @@ export class FilePreviewOverlayService {
     ...
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Here's what it looks like in action:
 
@@ -329,8 +307,7 @@ Just like we use remote controls to snap between television channels, we want a 
 
 Our remote control will be a simple class that exposes only one public method - `close()`. For now we keep simple and extend it as we introduce more features. Here's what it looks like:
 
-{% highlight js %}
-{% raw %}
+```js
 import { OverlayRef } from '@angular/cdk/overlay';
 
 export class FilePreviewOverlayRef {
@@ -341,15 +318,13 @@ export class FilePreviewOverlayRef {
     this.overlayRef.dispose();
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 When implementing the remote control, the only thing we have to make sure is that we need access to the `OverlayRef`. It's a reference to the overlay (portal host) that allows us to detach the portal. Note that, there's no `@Injectable` decorator attached to the class which means that we can't leverage the DI system for this service. This, however, is no big deal because we will manually create an instance for every overlay and therefore we don't need to register a provider either. Theoretically, we could open multiple overlays stacked on top of each other where each overlay has its own remote control. The DI system creates singletons by default. That's not what we want in this case.
 
 What's left to do is to update our `open()` method to create a remote control and return it to the consumer of our API:
 
-{% highlight js %}
-{% raw %}
+```js
 @Injectable()
 export class FilePreviewOverlayService {
   ...
@@ -363,15 +338,13 @@ export class FilePreviewOverlayService {
     // Return remote control
     return dialogRef;
   }
-{% endraw %}
-{% endhighlight %}
+```
 
 Notice how we pass in the `overlayRef` when creating a new `FilePreviewOverlayRef`? That's how we get a hold of the `PortalHost` inside the remote. Instead of implementing a class that represents a reference to the open overlay, we could have returned the `OverlayRef` directly. However, it's not a good idea to expose lower-level APIs because users could mess with the overlay and detach the backdrop for instance. Also, we need a little bit more logic later on when we introduce animations. A remote control is a good way of limiting the access to the underlying APIs and expose only those that we want to be publicly available.
 
 From a consumer perspective we now get a handle to the overlay that allows us to programatically close it at some point. Let's go ahead and update `AppComponent` accordingly:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({...})
 export class AppComponent  {
   ...
@@ -385,8 +358,7 @@ export class AppComponent  {
     }, 2000);
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Here's our code in action. Remember, once we open an overlay it will automatically close after 2 seconds:
 
@@ -400,8 +372,7 @@ In the previous sections we have mainly improved the overlay under the hood and 
 
 Turns out that the backdrop logic is extremely easy with the CDK. All we have to do is to subscribe to a stream that emits a value when the backdrop was clicked:
 
-{% highlight js %}
-{% raw %}
+```js
 @Injectable()
 export class FilePreviewOverlayService {
   open(config: FilePreviewDialogConfig = {}) {
@@ -412,8 +383,7 @@ export class FilePreviewOverlayService {
     return dialogRef;
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 That's it! Imagine how much work this would be without the CDK.
 
@@ -431,8 +401,7 @@ In a nutshell, the DI system is flexible enough that we can reconfigure the inje
 
 Turns out, the CDK already has a class `PortalInjector` that that we can use to provide custom injection tokens to components inside a portal. This is exactly what we need. Let's break ground and implement a function `createInjector()` that creates a new `PortalInjector` and defines a list of custom injection tokens.
 
-{% highlight js %}
-{% raw %}
+```js
 @Injectable()
 export class FilePreviewOverlayService {
   ...
@@ -447,8 +416,7 @@ export class FilePreviewOverlayService {
     // Instantiate new PortalInjector
     return new PortalInjector(this.injector, injectionTokens);
   }
-{% endraw %}
-{% endhighlight %}
+```
 
 In the code above we create a new `WeakMap`, set our custom injection tokens that we want to be available (injectable) in the overlay component, and finally instantiate a new `PortalInjector`. The important part though is that we also specify a parent injector (first argument) which is mandatory. Also notice the second argument where we pass in our injection tokens.
 
@@ -456,20 +424,17 @@ There are two things that we are providing. The first token is the `FilePreviewD
 
 For the `InjectionToken` we create new file `file-preview-overlay.tokens` and instantiate a new `InjectionToken`:
 
-{% highlight js %}
-{% raw %}
+```js
 import { InjectionToken } from '@angular/core';
 
 import { Image } from './file-preview-overlay.service';
 
 export const FILE_PREVIEW_DIALOG_DATA = new InjectionToken<Image>('FILE_PREVIEW_DIALOG_DATA');
-{% endraw %}
-{% endhighlight %}
+```
 
 Next, let's update our `FilePreviewDialogConfig` so that the user can specify an image that will be used by the overlay component:
 
-{% highlight js %}
-{% raw %}
+```js
 interface Image {
   name: string;
   url: string;
@@ -486,13 +451,11 @@ interface FilePreviewDialogConfig {
 export class FilePreviewOverlayService {
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 For better readability we'll also refactor our `open()` method and create a new `attachDialogContainer()` function that now takes care of creating the injector and component portal, as well as attaching the portal to the host.
 
-{% highlight js %}
-{% raw %}
+```js
 @Injectable()
 export class FilePreviewOverlayService {
   ...
@@ -505,26 +468,22 @@ export class FilePreviewOverlayService {
     return containerRef.instance;
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 With that in place, we can now update our `FilePreviewOverlayComponent` and inject the tokens that we have defined on a component level with the help of a custom injector.
 
-{% highlight js %}
-{% raw %}
+```js
 export class FilePreviewOverlayComponent {
   constructor(
     public dialogRef: FilePreviewOverlayRef,
     @Inject(FILE_PREVIEW_DIALOG_DATA) public image: any
   ) { }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 We can now define data that will be passed to the overlay component and render an image onto the screen. Here's an example of how we can pass in data:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({...})
 export class AppComponent  {
   ...
@@ -534,8 +493,7 @@ export class AppComponent  {
     });
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Finally with a little bit of styling we come much closer to what we're trying to achieve.
 

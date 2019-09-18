@@ -104,9 +104,7 @@ As we can see our game isn't that complex and we may wonder what's the point of 
 
 Notice that the **5** is a special state here as it is the final winning state from which no further action can be done.
 
-<div style="text-align:center">
-  <img src="/images/catch_5_game_states.png" alt="Catch 5 game states">
-</div>
+![](../assets/images/catch_5_game_states.png)
 
 *Let's ignore the fact that our defined rules would allow to also reach numbers above 12 or below 1. Even if we allow these states to happen, they don't change the principles of what we are about to learn.*
 
@@ -114,9 +112,7 @@ Our main takeway for now should be, that we can think of our game as a defined s
 
 The thing that we want our machine to learn is **a mapping** from every **possible state** to its **best possible action**. Let's assume the best strategy to win this game would be to always move with the biggest possible step towards the number 5. We could visualize the entire state space and their best actions as seen in the following animation.
 
-<div style="text-align:center">
-  <img src="/images/catch_5_state_flow.gif" alt="Catch 5 game states">
-</div>
+![](../assets/images/catch_5_state_flow.gif)
 
 For instance, starting at **12**, the best move we could do is to play **-3** which takes us to **9**, from where we play **-3** again, which takes us to **6**, from where we play **-1** and win the game in three turns.
 
@@ -126,10 +122,7 @@ The most important learning up to this point should be that our machine can deve
 
 For instance, looking at state **9** we can easily imagine that the machine develops a strong sympathy towards playing **-3** indicated in red with the other possible actions having a less strong indication of being the best action.
 
-
-<div style="text-align:center">
-  <img src="/images/catch5_heatmap.png" alt="Catch 5 game states">
-</div>
+![Catch 5 game states](../assets/images/catch5_heatmap.png)
 
 The complete **Q-Table** contains all possible states and their rated possible actions. Once the machine has developed such a mapping, it can simply lookup the current state in the table and perform the action with the highest rating. It repeats this process for each turn until it wins the game.
 
@@ -149,8 +142,7 @@ The game is already implemented in the demo above. Notice that the interactive d
 Rest assured, the code is equally simple no matter whether we'll be using TypeScript or Python!
 
 
-{% highlight python %}
-{% raw %}
+```py
 class Game():
   def __init__(self):
     self.reset()
@@ -179,8 +171,7 @@ class Game():
     self.current_number += int(action)
 
     return self.has_won()
-{% endraw %}
-{% endhighlight %}
+```
 
 There are really only two basic requirements that we have for the API of the game:
 
@@ -198,8 +189,7 @@ In order to play the game we need an *agent* that will perform actions in the ga
 
 We'll start with something really simple and implement two methods, namely `play` and `play_and_train`. The `play` method basically lets the agent play the game for a given number of times in a mode where we can follow the visual output.
 
-{% highlight python %}
-{% raw %}
+```py
 # creating random actions
 def get_action(self):
   return random.randrange(0, 6)
@@ -228,8 +218,7 @@ def play(self, num_times):
           print('You lost')
 
       print('##############################################')
-{% endraw %}
-{% endhighlight %}
+```
 
 As you can see, there's no rocket sience behind it. A simple loop for the number of times we want our agent to play and an inner loop for the game itself to make turns as long as the game isn't either won or lost.
 
@@ -237,8 +226,7 @@ Also notice that we are mapping the human readable answers (`+3, +2..-2, -3`) to
 
 Since our agent is just making random moves, we should't expect super powers either. Here's some output from it playing randomly. It even won game #4 by accident. Hooray! For this simple game though we'd really want our agent to win 100% of the games!
 
-{% highlight shell %}
-{% raw %}
+```sh
 Starting game #1
 Current number is 7
 Playing 1
@@ -271,8 +259,7 @@ Current number is 7
 Playing -2
 You won!
 ##############################################
-{% endraw %}
-{% endhighlight %}
+```
 
 
 Ok, great, feel free to checkout this embedded demo to familiarize yourself with the code at this point.
@@ -288,8 +275,7 @@ As we mentioned we'll also implement a `play_and_train` method which will play i
 
 Let's take a look how `play_and_train` is implemented.
 
-{% highlight python %}
-{% raw %}
+```py
 def play_and_train(self):
   stats = TrainStats()
 
@@ -323,8 +309,7 @@ def play_and_train(self):
 
     if (epoch % self.config.print_every_n_epoch == 0):
       self.print_epoch_stats(stats)
-{% endraw %}
-{% endhighlight %}
+```
 
 It's really not that much different. Instead of printing out each and every move, we'll collect `stats` to print out at a given frequency. Also notice that we slightly changed the wording: From now on, we'll be calling the number of times that our agent plays the game **epochs** which is the general term for a complete training cycle.
 
@@ -352,8 +337,7 @@ It's out of the scope of this article to discuss this in detail. Fortunately des
 
 Remember that this is the function we call *after* our agent performed an action.
 
-{% highlight python %}
-{% raw %}
+```py
 def get_reward(self):
   if self.game.has_won():
     return 1
@@ -361,8 +345,7 @@ def get_reward(self):
     return -1
   else:
     return -0.1
-{% endraw %}
-{% endhighlight %}
+```
 
 As we can see, we return a positive reward of `1` when our agent won the game, a negative reward of `-1` when it lost the game and a negative reward of `-0.1` for every action that didn't *directly* lead to winning or losing the game. In other words, every action is penalized with a slightly negative reward of `-0.1`. This makes sense if we keep in mind that it is our goal to win the game in a maximum of three turns. So even if we consider that we have to make at least one turn per game, turns can be considered costly overall which is essentially what we price in here.
 
@@ -372,28 +355,23 @@ Ok, so let's see how we can build up this **Q-Table** that we talked about befor
 
 Before we move on, let's create a new instance member on our agent called `qtable`. We'll initialize it as an empty hash map. Remember that we said the Q-Table basically maps states to rated actions. Naturally these things can well be represented as hash maps.
 
-{% highlight python %}
-{% raw %}
+```py
 self.qtable = {}
-{% endraw %}
-{% endhighlight %}
+```
 
 We will also create a new method `ensure_qtable_entry` which takes care of creating entries in our qtable in case they don't exist yet.
 
-{% highlight python %}
-{% raw %}
+```py
 def ensure_qtable_entry(self, state):
   if state not in self.qtable:
     self.qtable[state] = np.zeros(6)
-{% endraw %}
-{% endhighlight %}
+```
 
 Notice that the key is the `state` itself and the value is a numpy array with six entries initialized to `0`, each representing one of our six possible actions. If the term *numpy array* is new to you, just think of an array with a [super powerful API](https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html).
 
 With that in place, let's unveil what happens inside  the `train` method.
 
-{% highlight python %}
-{% raw %}
+```py
 def train(self, state, action, reward, next_state, final):
 
   self.ensure_qtable_entry(state)
@@ -408,8 +386,7 @@ def train(self, state, action, reward, next_state, final):
     q_value = reward + self.config.discount_factor * next_state_max
 
   self.qtable[state][action] = q_value
-{% endraw %}
-{% endhighlight %}
+```
 
 The first two lines are just to ensure we have entries in the `qtable` for the values at `state` and `next_state` as we are about to work with them.
 
@@ -423,8 +400,7 @@ In other words, what we need is a formular that not only takes the **immediate r
 
 The formular for that is hiding in this innocently looking `if` / `else` block.
 
-{% highlight python %}
-{% raw %}
+```py
 if final:
   q_value = reward
 else:
@@ -432,8 +408,7 @@ else:
   next_state_max = np.amax(next_state_actions)
 
   q_value = reward + self.config.discount_factor * next_state_max
-{% endraw %}
-{% endhighlight %}
+```
 
 It says that if we reached a final state (won or lost) the `q_value` should simply be the `reward`. This makes a lot of sense because there is no future reward to expect from subsequent actions simply because there are no further actions possible from here.
 
@@ -451,16 +426,13 @@ Getting back to the `discount_factor`, this thing is less scary than we may thin
 
 The nice thing about using such a terrible simple toy task is that we can make this process perfectly visible. We can simply print out the Q-Table at different stages of the learning.
 
-{% highlight python %}
-{% raw %}
+```py
 print(self.qtable)
-{% endraw %}
-{% endhighlight %}
+```
 
 This is what the Q-Table looks like after our agent played the game 10 times.
 
-{% highlight python %}
-{% raw %}
+```py
 {
     # actions go from +3, +2, + 1, -1, -2, -3
     0: array([0., 0., 0., -0.1, 0., -1.]),
@@ -482,15 +454,13 @@ This is what the Q-Table looks like after our agent played the game 10 times.
     -3: array([0., 0., 0., 0., 0., 0.]),
     -1: array([0., 0., 0., -1., 0., 0.])
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Each line represents a state with the right-hand side being the array of q-values for each action starting at `3` and ending at `-3`. Notice how the machine "thinks" playing a `-2` on a six would be the best move. We need to give it some more training cycles!
 
 And after 100 games the Q-Table looks like this. By now, the agent has figured out how to play **perfectly**. Also notice that the entire Q-Table grow a bit as it figured out how to get to exotic states such as `20` or `-7`.
 
-{% highlight python %}
-{% raw %}
+```py
 {
     # actions go from +3, +2, + 1, -1, -2, -3
     0: array([-1., 0.89, 0.7811, 0.7811, -1., -1.09]),
@@ -524,8 +494,7 @@ And after 100 games the Q-Table looks like this. By now, the agent has figured o
     -3: array([-1., -1., -1., -1., -1., -1.]),
     -1: array([0.89, -1., -1., -1., -1., -1.09])
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Notice that the Q-Table righfully favors playing `-1` on a `6` now. All the other moves seem to make sense as well.
 
@@ -542,8 +511,7 @@ A simple condition would do the trick but we can do a litle better and introduce
 
 We just have to apply a tiny refactoring to our `get_action` method to pass in the `state` and then return an action randomly or based on a Q-Table lookup depending on the `randomness_rate`.
 
-{% highlight python %}
-{% raw %}
+```py
 def get_action(self, state):
   if not self.should_go_random() and state in self.qtable:
     return self.predict_action(state)
@@ -558,15 +526,13 @@ def get_random_action(self):
 
 def predict_action(self, state):
   return np.argmax(self.qtable[state])
-{% endraw %}
-{% endhighlight %}
+```
 
 A `randomness_rate` of `0` means that all actions should be based on Q-Table lookups (unless the Q-Table is lacking the entry) whereas a value of `1` means that all actions should be choosen randomly. We can choose any value in between 0 and 1 such as `0.3` so that 30 % of the actions are picked randomly.
 
 With that in place we can first perform 100 epochs of training and then have the trained agent play 1000 games.
 
-{% highlight python %}
-{% raw %}
+```py
 config = AgentConfig()
 config.nb_epoch = 100
 agent = Agent(config)
@@ -576,21 +542,17 @@ agent.play_and_train()
 config.nb_epoch = 1000
 agent.randomness_rate = 0
 agent.play_and_train()
-{% endraw %}
-{% endhighlight %}
+```
 
 We can see that it really wins every single game out of 1000.
 
-{% highlight python %}
-{% raw %}
+```sh
 Epoch: 1000 Wins: 1000 (100.00%) Losses: 0 (0.00%)
-{% endraw %}
-{% endhighlight %}
+```
 
 We can also see that it's not always going for the straight path that we would expect it to take.
 
-{% highlight python %}
-{% raw %}
+```sh
 Starting game #2
 
 Current number is 10
@@ -601,9 +563,7 @@ Current number is 8
 Playing -3
 You won!
 ##############################################
-{% endraw %}
-{% endhighlight %}
-
+```
 However this is just becaue it was trained on 100 randomly played games. We could increase the number of games the agent performs for the training or fine tune our training strategy to fix that!
 
 You can check out the final code of the agent playing perfectly in this embedded lab.

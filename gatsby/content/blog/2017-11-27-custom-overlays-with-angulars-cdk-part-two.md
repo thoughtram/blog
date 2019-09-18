@@ -34,7 +34,7 @@ related_videos:
 
 In a [previous post](/angular/2017/11/20/custom-overlays-with-angulars-cdk.html) we have layed the foundation for our custom overlay. To recap, we wanted to build a Google Drive-like custom overlay that looks and feels much like the one built for [MachineLabs](https://machinelabs.ai/editor/rJQrQ5wjZ/1506415557004-HkTTQ5Dob?file=ml.yaml&tab=outputs&preview=-KuyslgjIn7kSpuc6pDZ). Let's have a look at a preview:
 
-![overlay preview](/images/overlay_preview.gif)
+![overlay preview](../assets/images/overlay_preview.gif)
 
 In the first part of this series we learned how to use Angular's CDK to create our very first custom overlay. On top of that we made it configurable, implemented a "handle" to control (e.g. close) an opened overlay and made it possible to share data with the overlay component.
 
@@ -57,8 +57,7 @@ Closing the dialog from within the overlay component is only possible because th
 
 Let's have a look at the code:
 
-{% highlight js %}
-{% raw %}
+```js
 import { ..., HostListener } from '@angular/core';
 
 // Keycode for ESCAPE
@@ -75,8 +74,7 @@ export class FilePreviewOverlayComponent {
 }
 
 constructor(public dialogRef: FilePreviewOverlayRef, ...) { }
-{% endraw %}
-{% endhighlight %}
+```
 
 Using the host listener we decorate a class method that is called on every `keydown` event. The function itself gets the `KeyboardEvent` that we can use to check whether it's the **escape** key and only then call `close()` on the `dialogRef`.
 
@@ -92,8 +90,7 @@ Looking at our overlay, we are facing the exact same problems. When we click to 
 
 To solve this, we can use a progress indicator. The good thing is we don't need to write one from scratch because Angular Material already provides a nice set of loading indicators, one of which is the `<mat-spinner>`. In order to use it, we need to add the `MatProgressSpinnerModule` from `@angular/material` to the imports of our application:
 
-{% highlight js %}
-{% raw %}
+```js
 import { ..., MatProgressSpinnerModule } from '@angular/material';
 
 @NgModule({
@@ -104,8 +101,7 @@ import { ..., MatProgressSpinnerModule } from '@angular/material';
   ...
 })
 export class AppModule { }
-{% endraw %}
-{% endhighlight %}
+```
 
 Note that the `<mat-spinner>` component is an alias for `<mat-progress-spinner mode="indeterminate">`. As we can see, the progress-spinner supports different modes, **determinate** and **indeterminate**.
 
@@ -113,8 +109,7 @@ The difference is that determinate progress indicators are used to indicate how 
 
 Ok, now that we have added the respective module to our imports we can go ahead and update the template of the `FilePreviewOverlayComponent` as well as the component class:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   template: `
     <div class="overlay-content">
@@ -137,8 +132,7 @@ export class FilePreviewOverlayComponent {
     this.loading = false;
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 First off, we introduce a new property `loading` and initialize it with a meaningful value, e.g. `false`. This will show our spinner until the image is loaded. Also note that we are using a property binding to set the `opacity` of the `<img>` element to 0 when it's loading and 1 when it's finished. If we didn't do this, we'd still see the image being rendered or filled in from top to bottom. This is just a temporary solution that we will replace with a proper solution using Angular's Animation DSL in just a moment. Last but not least, we define a success callback as a method on our class that is called when the image is loaded. The callback is hooked up in the template via an event binding. In this particular case we are listening for the `load` event and when fired, we call the `onLoad()` method.
 
@@ -158,8 +152,7 @@ If you are completely new to animations in Angular, please check out our post on
 
 Let's start off by importing the `BrowserAnimationsModule` into our application's `NgModule` like this:
 
-{% highlight js %}
-{% raw %}
+```js
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -170,13 +163,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ...
 })
 export class AppModule { }
-{% endraw %}
-{% endhighlight %}
+```
 
 With this in place, we can go ahead and define our animations with Angular's Animation DSL and add it to the component via the `animations` metadata property in the `@Component()` decorator:
 
-{% highlight js %}
-{% raw %}
+```js
 // Reusable animation timings
 const ANIMATION_TIMINGS = '400ms cubic-bezier(0.25, 0.8, 0.25, 1)';
 
@@ -199,27 +190,23 @@ const ANIMATION_TIMINGS = '400ms cubic-bezier(0.25, 0.8, 0.25, 1)';
 export class FilePreviewOverlayComponent {
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 As you can see we created two animations, one for fading in the image (`fade`) and the other one to slide up the content (`slideContent`). The fade animation will mostly be visible in combination with a spinner. Remember how we used the property binding to temporarily make the image invisible while loading? With the fade animation we can now replace our temporary solution with proper one that leverages the animation DSL.
 
 Next, we define an `animationState` property that represents the current animation state, e.g. `void`, `enter` or `leave`. By default it's set to `enter` that will cause the content of the file preview to always slide up when it's opened.
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({...})
 export class FilePreviewOverlayComponent {
   ...
   animationState: 'void' | 'enter' | 'leave' = 'enter';
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Now we can connect the pieces and set it up in the template:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   template: `
     <div class="overlay-content" [@slideContent]="animationState">
@@ -235,8 +222,7 @@ Now we can connect the pieces and set it up in the template:
 export class FilePreviewOverlayComponent {
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 We can see that the entire content, including the spinner as well as the image, is wrapped in a container `div`. That's because we only want the content to slide up. Later we'll introduce a toolbar component which comes with its own set of animations. This also implies that it wouldn't make any sense to use a `@HostBinding()` and apply the animation to the host element.
 
@@ -252,8 +238,7 @@ What we can do instead is to leverage **animation callbacks** and introduce even
 
 Let's start with the animation callbacks and hook them in the template of our `FilePreviewOverlayComponent`:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   template: `
     <div class="overlay-content"
@@ -268,13 +253,11 @@ Let's start with the animation callbacks and hook them in the template of our `F
 export class FilePreviewOverlayComponent {
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 The animation callbacks alone are not very useful, at least not for animating the overlay out. What's missing is an event bus that we can use to broadcast animation events. That's needed because when we close an overlay, we have to wait until the _leaving_ animation is done before we can dispose the overlay. We'll see in just a second how to use this but first let's define a new `EventEmitter` inside the overlay component class:
 
-{% highlight js %}
-{% raw %}
+```js
 import { ..., EventEmitter } from '@angular/core';
 ...
 @Component({...})
@@ -282,15 +265,13 @@ export class FilePreviewOverlayComponent {
   ...
   animationStateChanged = new EventEmitter<AnimationEvent>();
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 The `EventEmitter` is an abstraction around a the `Subject` type from RxJS.
 
 Cool, now let's wire up the animation callbacks. To do this, we'll define the two missing methods `onAnimationStart()` and `onAnimationDone()`. Every time one of the animation callbacks is fired, we broadcast the animation event using `animationStateChanged`. Moreover, we need a way to start the `leave` animation once we close an overlay. Therefore we'll also add a method called `startExitAnimation()` that sets the `animationState` to `leave`. This will then trigger the corresponding animation.
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({...})
 export class FilePreviewOverlayComponent {
   ...
@@ -306,25 +287,21 @@ export class FilePreviewOverlayComponent {
     this.animationState = 'leave';
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 We know that we programatically close an overlay using the remote control aka `FilePreviewOverlayRef`. So far we have no access to the overlay component from within the `FilePreviewOverlayRef`. To fix this we define a property `componentInstance` on the remote control.
 
-{% highlight js %}
-{% raw %}
+```js
 export class FilePreviewOverlayRef {
   ...
   componentInstance: FilePreviewOverlayComponent;
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 We simply set the `componentInstance` when an overlay is opened.
 
-{% highlight js %}
-{% raw %}
+```js
 @Injectable()
 export class FilePreviewOverlayService {
   ...
@@ -340,13 +317,11 @@ export class FilePreviewOverlayService {
     ...
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Now we can go ahead and introduce two event streams on the `FilePreviewOverlayRef`. The first one emits values **before** the overlay is closed and the other one **after** is was closed. For the streams we'll use the `Subject` type from RxJS and also expose public methods for each of the event streams.
 
-{% highlight js %}
-{% raw %}
+```js
 export class FilePreviewOverlayRef {
 
   private _beforeClose = new Subject<void>();
@@ -362,13 +337,11 @@ export class FilePreviewOverlayRef {
     return this._beforeClose.asObservable();
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 From there we can use the component instance and subscribe to the animation events and act accordingly. This means that when an animation was started we detach the backdrop and call `next()` on `_beforeClose`. When an animation is finished we broadcast on `_afterClosed`. This also means we can dispose the overlay and remove it from the DOM.
 
-{% highlight js %}
-{% raw %}
+```js
 import { filter, take } from 'rxjs/operators';
 ...
 export class FilePreviewOverlayRef {
@@ -402,8 +375,7 @@ export class FilePreviewOverlayRef {
     this.componentInstance.startExitAnimation();
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 That's it. Here's a live demo:
 
@@ -413,8 +385,7 @@ That's it. Here's a live demo:
 
 To finish this up we will create a toolbar component, add animations and also make use of the events streams exposed by the remote control to animate the toolbar out **before** the overlay is closed.
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   selector: 'tm-file-preview-overlay-toolbar',
   templateUrl: './file-preview-overlay-toolbar.component.html',
@@ -441,24 +412,20 @@ export class FilePreviewOverlayToolbarComponent implements OnInit {
     this.dialogRef.beforeClose().subscribe(() => this.slideDown = 'leave');
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 The template is very straightforward and leverages content projection to project content into the template of the toolbar component.
 
-{% highlight html %}
-{% raw %}
+```html
 <!-- file-preview-overlay-toolbar.component.html -->
 <div class="toolbar-wrapper">
   <ng-content></ng-content>
 </div>
-{% endraw %}
-{% endhighlight %}
+```
 
 Finally we have to use the toolbar inside the template of the overlay component:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   template: `
     <tm-file-preview-overlay-toolbar>
@@ -475,8 +442,7 @@ Finally we have to use the toolbar inside the template of the overlay component:
 export class FilePreviewOverlayComponent {
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 That's pretty much! Let's have a look at our final solution:
 

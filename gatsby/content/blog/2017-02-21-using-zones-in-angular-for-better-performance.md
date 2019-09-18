@@ -68,8 +68,7 @@ If you haven't read these articles yet, we definitely recommend you to do so as 
 
 Once notified, Angular knows that it has to perform change detection because any of the asynchronous operations might have changed the application state. This, for instance, is always the case when we use Angular's `Http` service to fetch data from a remote server. The following snippet shows how such a call can change application state:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component(...)
 export class AppComponent {
 
@@ -83,8 +82,7 @@ export class AppComponent {
     });
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 The nice thing about this is that we as developers don't have to care about notifying Angular to perform change detection, because Zones will do it for us as Angular subscribes to them under the hood.
 
@@ -94,8 +92,7 @@ Okay, now that we touched on that, let's take a look at how they can be used to 
 
 We know that change detection is performed whenever an asynchronous event happened and an event handler was bound to that event. This is exactly the reason why our initial demo performs rather jankee. Let's look at `AppComponent`'s template:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   ...
   template: `
@@ -112,8 +109,7 @@ We know that change detection is performed whenever an asynchronous event happen
 class AppComponent {
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Three (3) event handlers are bound to the outer SVG element. When any of these events fire and their handlers have been executed then change detection is performed. In fact, this means that Angular will run change detection, even when we just move the mouse over the boxes without actually dragging a single box!
 
@@ -123,8 +119,7 @@ Okay, how do we achieve this? In our article on [Zones in Angular](/angular/2016
 
 Here's what that looks like:
 
-{% highlight js %}
-{% raw %}
+```js
 import { Component, NgZone } from '@angular/core';
 
 @Component(...)
@@ -149,15 +144,13 @@ export class AppComponent {
     this.element.setAttribute('y', event.clientX + this.clientY + 'px');
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 We inject `NgZone` and call `runOutsideAngular()` inside our `mouseDown()` event handler, in which we attach an event handler for the `mousemove` event. This ensures that the `mousemove` event handler is really only attached to the document when a box is being selected. In addition, we save a reference to the underlying DOM element of the clicked box so we can update its `x` and `y` attributes in the `mouseMove()` method. We're working with the DOM element instead of a box object with bindings for `x` and `y`, because bindings won't be change detected since we're running the code outside Angular's Zone. In other words, we **do** update the DOM, so we can see the box is moving, but we aren't actually updating the box model (yet).
 
 Also, notice that we removed the `mouseMove()` binding from our component's template. We could remove the `mouseUp()` handler as well and attach it imperatively, just like we did with the `mouseMove()` handler. However, it won't add any value performance-wise, so we decided to keep it in the template for simplicity's sake:
 
-{% highlight js %}
-{% raw %}
+```html
 <svg (mousedown)="mouseDown($event)"
       (mouseup)="mouseUp($event)">
 
@@ -165,15 +158,13 @@ Also, notice that we removed the `mouseMove()` binding from our component's temp
   </svg:g>
 
 </svg>
-{% endraw %}
-{% endhighlight %}
+```
 
 In the next step, we want to make sure that, whenever we release a box (`mouseUp`), we update the box model, plus, we want to perform change detection so that the model is in sync with the view again. The cool thing about `NgZone` is not only that it allows us to run code outside Angular's Zone, it also comes with APIs to run code **inside** the Angular Zone, which ultimately will cause Angular to perform change detection again. All we have to do is to call `NgZone.run()` and give it the code that should be executed.
 
 Here's the our updated `mouseUp()` event handler:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component(...)
 export class AppComponent {
   ...
@@ -187,8 +178,7 @@ export class AppComponent {
     window.document.removeEventListener('mousemove', this.mouseMove);
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Also notice that we're removing the event listener for the `mousemove` event **on every mouseUp**. Otherwise, the event handler would still be executed on every mouse move. In other words, the box would keep moving even after the finger was lifted, essentially taking the *drop* part out of *drag and drop*. In addition to that, we would pile up event handlers, which could not only cause weird side effects but also blows up our runtime memory.
 
@@ -196,7 +186,7 @@ Also notice that we're removing the event listener for the `mousemove` event **o
 
 Alright, now that we know how Jordi implemented this version of our demo application, let's take a look at some numbers! The following numbers have been recorded using the exact same techniques on the exact same machine as in our [previous article on performance](/angular/2017/02/02/making-your-angular-app-fast.html).
 
-<a href="/images/dnd-perf-profile-5.png" title="Screenshot of the third profile"><img src="/images/dnd-perf-profile-5.png" alt="Screenshot of a timeline profile"></a>
+![](../assets/images/dnd-perf-profile-5.png)
 
 - 1st Profile, Event (mousemove): **~0.45ms, ~0.50ms (fastest, slowest)**
 - 2nd Profile, Event (mousemove): **~0.39ms, ~0.52ms (fastest, slowest)**

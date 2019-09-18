@@ -54,12 +54,12 @@ Our slides are built up on [reveal.js](https://github.com/hakimel/reveal.js) and
 
 From the feedback we got, we knew that would be something where we could definitely do better.
 
-That's why we built [classroom](http://classroom.thoughtram.io). It's our very own platform to serve our workshop material to the attendees. With classroom, attendees can easily view all slides right from their browser. One thing to highlight here is that attendees get access to all slide decks of the master class even to those that weren't covered in that particular workshop. Also we constantly keep updating and adding new slide decks and attendees automatically have access to the improved material through classroom, too. For example, we just [announced new material](http://blog.thoughtram.io/announcements/2015/10/26/angular-master-class-extended-ngupgrade.html) that teaches how to upgrade from Angular 1 to Angular 2.
+That's why we built [classroom](http://classroom.thoughtram.io). It's our very own platform to serve our workshop material to the attendees. With classroom, attendees can easily view all slides right from their browser. One thing to highlight here is that attendees get access to all slide decks of the master class even to those that weren't covered in that particular workshop. Also we constantly keep updating and adding new slide decks and attendees automatically have access to the improved material through classroom, too. For example, we just [announced new material](/announcements/2015/10/26/angular-master-class-extended-ngupgrade.html) that teaches how to upgrade from Angular 1 to Angular 2.
 
-<img src="/assets/classroom_login.png" style="width: 350px;"/>
-<img src="/assets/classroom_gmc.png" style="width: 350px;"/>
-<img src="/assets/classroom_amc.png" style="width: 350px;"/>
-<img src="/assets/classroom_digest_cycle.png" style="width: 350px;"/>
+![](../assets/classroom_login.png)
+![](../assets/classroom_gmc.png)
+![](../assets/classroom_amc.png)
+![](../assets/classroom_digest_cycle.png)
 
 When we started to use classroom for our workshops we noticed that the exercise blocks went much smoother. People had an easier time looking up things in the slides and even started sharing links to specific slides in the chatroom (which isn't part of classroom yet).
 

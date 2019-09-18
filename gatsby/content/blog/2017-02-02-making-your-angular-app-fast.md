@@ -48,8 +48,7 @@ Let's start off with the demo itself. We wanted to go with a scenario in which t
 
 The application consists of two components - `AppComponent` and `BoxComponent` -  here's what `AppComponent` looks like:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   selector: 'demo-app',
   template: `
@@ -99,8 +98,7 @@ export class AppComponent implements OnInit {
     box.y = y;
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Let's not get too overwhelmed by the code. The only really important parts here are:
 
@@ -110,8 +108,7 @@ Let's not get too overwhelmed by the code. The only really important parts here 
 
 Okay, next we take a look at the `BoxComponent`. 
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   selector: '[box]',
   template: `
@@ -130,8 +127,7 @@ export class BoxComponent {
   @Input() box;
   @Input() selected;
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 This one really just renders an SVG rect element using a couple of bindings to set the coordinates from the given box object.
 
@@ -161,7 +157,7 @@ Ideally, any kind of measuring is done in an incognito browser tab so the record
 
 Here are the numbers we measured on a MacBook Air (*1,7 GHz Intel Core i7, 8 GB DDR3*) in Chrome (*Version 55.0.2883.95 (64-bit)*):
 
-<a href="/images/dnd-perf-profile.png" title="Screenshot of the first profile"><img src="/images/dnd-perf-profile.png" alt="Screenshot of the first profile"></a>
+![](../assets/images/dnd-perf-profile.png)
 
 - 1st Profile, Event (mousemove): **~40ms, ~52ms (fastest, slowest)**
 - 2nd Profile, Event (mousemove): **~45ms, ~61ms (fastest, slowest)**
@@ -185,8 +181,7 @@ The idea is to make Angular only check a component's view bindings if one of its
 
 Here's how we set the change detection strategy to `OnPush`:
 
-{% highlight js %}
-{% raw %}
+```js
 import { 
   Component,
   Input,
@@ -202,13 +197,11 @@ export class BoxComponent {
   @Input() box;
   @Input() selected;
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 To make all inputs immutable, we simply create new references every time we update a box:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component(...)
 class AppComponent {
   ...
@@ -216,8 +209,7 @@ class AppComponent {
     this.boxes[id] = { id, x, y }; // new references instead of mutation
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 That's it! Here's a the improved demo:
 
@@ -225,7 +217,7 @@ That's it! Here's a the improved demo:
 
 At this point it gets rather hard to notice an actual difference. This is because the previous unoptimized demo was already pretty fast. Let's measure again and see if our application is faster (these profiles are made on the same machine as the previous ones).
 
-<a href="/images/dnd-perf-profile-2.png" title="Screenshot of the second profile"><img src="/images/dnd-perf-profile-2.png" alt="Screenshot of the second profile"></a>
+![](../assets/images/dnd-perf-profile-2.ong)
 
 - 1st Profile, Event (mousemove): **~25ms, ~35ms (fastest, slowest)**
 - 2nd Profile, Event (mousemove): **~21ms, ~44ms (fastest, slowest)**
@@ -245,7 +237,7 @@ In our demo however, we don't really move the items in the collection itself. In
 
 {% include plunk.html url="http://embed.plnkr.co/rCqTphznFbImsy9wbWP6/" %}
 
-<a href="/images/dnd-perf-profile-3.png" title="Screenshot of the third profile"><img src="/images/dnd-perf-profile-3.png" alt="Screenshot of the third profile"></a>
+![](../assets/images/dnd-perf-profile-3.png)
 
 **SimpleNgFor (without OnPush)**
 
@@ -271,8 +263,7 @@ How do we get there? The first thing we do is, we detach the component's change 
 
 Here's what that looks like:
 
-{% highlight js %}
-{% raw %}
+```js
 import { AfterViewInit, ChangeDetectorRef } from '@angular/core';
 
 @Component(...)
@@ -284,13 +275,11 @@ class AppComponent implements AfterViewInit {
     this.cdr.detach();
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 We do exactly the same for the all box components.
 
-{% highlight js %}
-{% raw %}
+```js
 @Component(...)
 class BoxComponent implements AfterViewInit {
   ...
@@ -300,15 +289,13 @@ class BoxComponent implements AfterViewInit {
     this.cdr.detach();
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Okay cool, now we should see all the boxes but the dragging and dropping doesn't work anymore. That makes sense because change detection is turned off entirely and no handlers for any events are executed anymore.
 
 The next thing we need to do, is to make sure that change detection is performed for the box that is being dragged. We can extend our `BoxComponent` to have a method `update()` which performs change detection just like this:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component(...)
 class BoxComponent implements AfterViewInit {
   ...
@@ -316,15 +303,13 @@ class BoxComponent implements AfterViewInit {
     this.cdr.detectChanges();
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Cool, now we need to call this method whenever needed. This is essentially in our `mouseDown()`, `mouseMove()` and `mouseUp()` handlers. But how to do we get access to that one particular box component instance that is touched? Simply relying on `this.boxes[id]` doesn't do the trick anymore because it's not an instance of `BoxComponent`. We need to extend the `event` object with such an instance so we access it accordingly.
 
 **This is where it gets a liiiittle hacky**. We could expect the `BoxComponent` instance on the DOM event object we get from the `mousedown` event like this:
 
-{% highlight js %}
-{% raw %}
+```js
 @Component(...)
 export class AppComponent implements AfterViewInit {
   ...
@@ -343,13 +328,11 @@ export class AppComponent implements AfterViewInit {
     boxComponent.update();
   }
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 To make the box component instance available on `event.target`, where `target` is the underlying SVG rect element, we can access it as a view child of `BoxComponent` and extend it with a new property that has the `BoxComponent` instance. We also add a local template variable `#rect` to the SVG element, so that `ViewChild('rect')` can query it accordingly.
 
-{% highlight js %}
-{% raw %}
+```js
 @Component({
   selector: '[box]',
   template: `
@@ -366,8 +349,7 @@ export class BoxComponent implements AfterViewInit {
   }
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Great! We can now go ahead and use `BoxComponent.update()` in all other methods where needed.
 
@@ -375,7 +357,7 @@ Here's the demo application in action, updating only the box that is being dragg
 
 {% include plunk.html url="http://embed.plnkr.co/3aVnNf7sogtvUa9Nng51/" %}
 
-<a href="/images/dnd-perf-profile-4.png" title="Screenshot of the fourth profile"><img src="/images/dnd-perf-profile-4.png" alt="Screenshot of the fourth profile"></a>
+![](../assets/images/dnd-perf-profile-4.png)
 
 JavaScript execution time is now **always below 1ms**, which makes sense as Angular has to only check the box component that is dragged by the user. This shows very nicely how much control Angular gives us as developers and how we can take advantage of that for our specific needs.
 
