@@ -58,7 +58,7 @@ What's a transition you may ask. Very good question! The [Oxford Dictionary](htt
 
 Applied to animations, a transition is the visualization of some state changing over time. A **state** could be a person sitting at the airport waiting for his plane to be boarded. It's a condition something or someone is in at a specific point in time. A button on website could have 4 different states - `idle`, `hover`, `focus` and `pressed`, where the latter is a combination of `focus` and `active`. We could use a finite state machine or simply state transition system to visualize how it works:
 
-![button state machine](/images/button_state_machine.gif)
+![button state machine](../assets/images/button_state_machine.gif)
 
 The point is, a "system" or some element on the page can have multiple states. Instead of simply going from state A to B, we'd like to interpolate the values in between. Therefore, we can listen for _state changes_ and act accordingly using animated transitions from one state to another.
 
@@ -72,15 +72,13 @@ CSS animations do not require any 3rd party libraries. However, there are some t
 
 Looking at JavaScript, we can either use vanilla JavaScript or jQuery to animate our UI. Maintaining vanilla JavaScript animations and manually setting up elements on the stage could be quite a hassle. That's one reason why many of us switched to jQuery at some point. jQuery makes it easy to query an element on the page. Then, in order to add motion, all we do is to call `.animate()` and specify the properties (e.g. opacity or transform) we'd like to animate. Here is how we'd move a `div` to the right by `200px` animating its `left` property:
 
-{% highlight js %}
-{% raw %}
+```js
 $("button").click(function(){
   $("div").animate({
     left: '200px'
   }, 'slow');
 });
-{% endraw %}
-{% endhighlight %}
+```
 
 While this works, it's better to stick with either the `transform` or `opacity` property as those are the only things a browser can animate cheaply. Note that we use the string `slow` to specify the duration of the animation. It is an equivalent for supplying a duration of `600` milliseconds.
 
@@ -88,8 +86,7 @@ Turns out there is another cool kid on the block called [GreenSock](https://gree
 
 Let's create the same animation as before, but this time using GSAP. More specifically we'll use [TweenLite](https://greensock.com/tweenlite), a lightweight animation tool that serves as the foundation of GSAP.
 
-{% highlight js %}
-{% raw %}
+```js
 var button = document.querySelector('button');
 
 button.addEventListener('click', () => {
@@ -97,8 +94,7 @@ button.addEventListener('click', () => {
     left: 200
   });
 });
-{% endraw %}
-{% endhighlight %}
+```
 
 > Note that the code above requires a plugin called [CSSPlugin](https://greensock.com/CSSPlugin). This plugin allows us to animate almost any CSS property.
 
@@ -110,8 +106,7 @@ If you want to learn more about the Web Animation API, check out [this](http://d
 
 Here is a snippet showing the WAAPI in action:
 
-{% highlight js %}
-{% raw %}
+```js
 var button = document.querySelector('button');
 
 var wrapper = document.querySelector('div');
@@ -123,13 +118,11 @@ button.addEventListener('click', () => {
     { left: '200px' }
   ], { duration: 600, /* and more like easing, delay etc. */ });
 });
-{% endraw %}
-{% endhighlight %}
+```
 
 Remember, the WAAPI is still a work in progress and things like additive animations are not fully supported yet. That's why we use `getComputedStyle()` to calculate the very first `KeyframeEffect`. A `KeyframeEffect` is used to specify the values for the properties we'd like to animate. Each effect represents one keyframe and the values are basically interpolated over time. In other words, the array is a collection of keyframes. Here is an equivalent CSS keyframe animation:
 
-{% highlight css %}
-{% raw %}
+```js
 @keyframes moveToRight {
   from {
     left: 0px;
@@ -143,8 +136,7 @@ div {
   position: relative;
   animation: moveToRight 600ms forwards;
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Similar to the WAAPI, we also need to set the initial value when animating the `left` property. This is not needed if we were translating the element on the X-axis to another location via its `transform` property. With CSS keyframe animations we normally define when the change will happen with either percentage values or the keywords `from` and `to`, which are the same as `0%` and `100%`.
 
@@ -158,7 +150,7 @@ Enough about theory! Let's build a simple modal-based user profile and apply ani
 
 Here's a preview of what we are going to build:
 
-![animation preview](/images/animation_preview.gif)
+![animation preview](../assets/images/animation_preview.gif)
 
 Our application is going to be very simple and mainly consists of two components:
 
@@ -171,8 +163,7 @@ Inside the `DashboardComponent` we initialize the data for the user profile and 
 
 Here is the template of the `DashboardComponent`:
 
-{% highlight html %}
-{% raw %}
+```html
 <div>
   <header>
     <span class="title">Dashboard</span>
@@ -183,13 +174,11 @@ Here is the template of the `DashboardComponent`:
 
   <profile-details [user]="user" *ngIf="showProfileDetails"></profile-details>
 </div>
-{% endraw %}
-{% endhighlight %}
+```
 
 So far so good. Let's look at the template of `ProfileDetailsComponent`:
 
-{% highlight html %}
-{% raw %}
+```html
 <div class="wrapper">
   <header>
     <div class="profile-image-wrapper">
@@ -218,15 +207,13 @@ So far so good. Let's look at the template of `ProfileDetailsComponent`:
     </ul>
   </main>
 </div>
-{% endraw %}
-{% endhighlight %}
+```
 
 To achieve the desired animation we need to set some initial CSS properties to enable 3D-space for the children elements inside `ProfileDetailsComponent`. We do that by setting the `perspective` on the `host` element. CSS host selectors are a great way to apply styles without introducing an additional wrapper element.
 
 Nonetheless, for our animation we still need a wrapper element because the `perspective` property doesn't affect how the host element is rendered; it simply enables 3D-space for children elements.
 
-{% highlight css %}
-{% raw %}
+```css
 :host {
   perspective: 500px;
   ...
@@ -236,8 +223,7 @@ Nonetheless, for our animation we still need a wrapper element because the `pers
   transform-origin: top center;
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Again, the perspective only affects **children** elements and only those that are transformed in a three-dimensional space, e.g. rotation about X-axis or translation along Z-axis. The value for the perspective determines the strength of the 3D-effect. In other words, it describes the distance between the object and the viewer. Therefore, if the value is very small the effect will be quite impressive as we are extremely close to the object. On the other hand, if the value is high the distance between the object and the viewer will be large and therefore the animation looks rather subtle. That said, we need to set the `perspective` property in order to achieve 3D-effects.
 
@@ -251,8 +237,7 @@ In order to achieve this animation with GSAP we need to use its timeline feature
 
 A timeline is basically a container where we place tweens over the course of time. Tweening is the process of generating intermediate frames between two states. With GSAP's timeline we can easily build sequences of animations and animate an element `.to()` or `.from()` a certain state. In addition, we get a lot of control over our animations. As such, we can stop, pause, resume, or even reverse them. Here is a simple example:
 
-{% highlight js %}
-{% raw %}
+```js
 window.onload = function () {
   var timeline = new TimelineLite();
 
@@ -272,8 +257,7 @@ window.onload = function () {
     timeline.restart();
   });
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Check out the demo and try it out!
 
@@ -289,52 +273,43 @@ For more information check out Minko's [blog post](http://blog.mgechev.com/2016/
 
 Here's how we use it in our Angular application to grab the elements we need:
 
-{% highlight js %}
-{% raw %}
+```js
 @ViewChild('wrapper') wrapper: ElementRef;
 @ViewChild('main') main: ElementRef;
 ...
-{% endraw %}
-{% endhighlight %}
+```
 
 The decorator takes either a type or a template reference variable. In most cases, such template reference variable is a reference to a DOM element inside a component's template. The following snippet shows how we'd get a reference to the `wrapper` element:
 
-{% highlight html %}
-{% raw %}
+```html
 <div class="wrapper" #wrapper>
 ...
 </div>
-{% endraw %}
-{% endhighlight %}
+```
 
 See the `#wrapper`? That's how we declare a local template reference for that specific element. We do this for all the elements we need for the animation. With that in place, we can instantiate our timeline.
 
 Usually we use `ngOnInit` to implement our initialization logic. However, this is a little bit too early in a component's lifecycle because we have to wait for the component to be fully initialized in order to use the DOM elements we collected. There's a lifecycle hook called `ngAfterViewInit` which is the perfect moment in a component's initialization process in which we have everything we need to set up the timeline.
 
-{% highlight js %}
-{% raw %}
+```js
 ngAfterViewInit() {
   this.timeline = new TimelineLite();
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Cool! But before we can construct the timeline for our profile animation there's one thing left to do. We need to apply an initial transformation to the `wrapper` element via CSS in order to achieve the fancy 3D-effect:
 
-{% highlight css %}
-{% raw %}
+```css
 .wrapper {
   transform: rotateX(-90deg) translateY(150px) translateZ(50px);
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 We can now apply the concepts we learned to build the timeline:
 
-{% highlight js %}
-{% raw %}
+```js
 this.timeline
   .add('start')
   .from(this.wrapper.nativeElement, .15, { opacity: 0 }, 'start')
@@ -350,8 +325,7 @@ this.timeline
   .staggerFrom(this.statsIcons, .3, { opacity: 0, top: 10 }, 0.1, 'icons')
   .staggerFrom(this.statsTexts, .3, { opacity: 0 }, 0.1, 'text')
   .play();
-{% endraw %}
-{% endhighlight %}
+```
 
 Woah! This looks pretty overwhelming at first glance. But all we have to do is to orchestrate our animation using GreenSock's timeline API. With the help of labels we can run multiple animations in parallel and precisely control the timing of certain animations.
 
@@ -359,7 +333,7 @@ One thing we haven't talked about so far is `.staggerFrom()`. A stagger is an an
 
 The whole animation can be illustrated as follows:
 
-<img src="/images/animation_timeline.png" width="80%" alt="animation timeline" />
+![](../assets/images/animation_timeline.png)
 
 Here's the full-fledge solution. Take a look and fiddle with it.
 
@@ -373,8 +347,7 @@ If you are completely new to animations with Angular, check out [this](/2016-09-
 
 Alright, let's refactor our profile animation using the latest animation features introduced with Angular 4.2. To get started, we first have to import the `BrowserAnimationsModule` from `@angular/platform-browser/animations` and add it to the `imports` of our application:
 
-{% highlight js %}
-{% raw %}
+```js
 @NgModule({
   imports: [
     BrowserAnimationsModule
@@ -383,8 +356,7 @@ Alright, let's refactor our profile animation using the latest animation feature
   ...
 })
 export class DashboardModule {}
-{% endraw %}
-{% endhighlight %}
+```
 
 Remember, animations in Angular are based on the WAAPI and work in browsers that support it including Chrome and Firefox. However, currently Internet Explorer and Safari do not. In this case a [polyfill](https://github.com/web-animations/web-animations-js) is required to achieve similar results. Once animations are properly imported and enabled, we can go ahead and start defining the profile animation.
 
@@ -413,8 +385,7 @@ Neat! Let's use that to re-implement our profile animation with Angular's animat
 
 First of all, we create a new component called `ProfileStatsComponent` which now contains the `ul` that was previously part of the `DashboardComponent`. The template of the `DashboardComponent` now looks like this:
 
-{% highlight html %}
-{% raw %}
+```html
 <div class="wrapper">
   <header>
     <div class="profile-image-wrapper">
@@ -430,15 +401,13 @@ First of all, we create a new component called `ProfileStatsComponent` which now
     <profile-stats [user]="user"></profile-stats>
   </main>
 </div>
-{% endraw %}
-{% endhighlight %}
+```
 
 The dashboard now composes the `ProfileStatsComponent` which will later define its own animation. For now, let's focus on the profile animation and talk about child animations in a minute.
 
 Here's how we define our `profileAnimation`:
 
-{% highlight js %}
-{% raw %}
+```js
 animations: [
   trigger('profileAnimation', [
     transition(':enter', group([
@@ -446,13 +415,11 @@ animations: [
     ]))
   ])
 ]
-{% endraw %}
-{% endhighlight %}
+```
 
 Within our `profileAnimation` we define one `transition` and on `:enter` (when the dialog enters the DOM) we run several animations in parallel. Next, we use `query()` to grab the DOM elements we need for our animation and set some initial styles using the `styles` helper:
 
-{% highlight js %}
-{% raw %}
+```js
 animations: [
   trigger('profileAnimation', [
     transition(':enter', group([
@@ -463,27 +430,23 @@ animations: [
     ]))
   ])
 ]
-{% endraw %}
-{% endhighlight %}
+```
 
 Remember how we collected the DOM elements using `@ViewChild()` and `@ViewChildren()`? We don't need to do that anymore. Plus, we can get rid of all the local template references because that is now handled by `query()`. Quite powerful, huh?
 
 Before we implement the profile animation, let's create a reusable **fade** animation that we can use elsewhere in different places with full input parameter support:
 
-{% highlight js %}
-{% raw %}
+```js
 export const fadeAnimation = animation([
   animate('{{ duration }}', style({ opacity: '{{ to }}' }))
 ], { params: { duration: '1s', to: 1 }});
-{% endraw %}
-{% endhighlight %}
+```
 
 The `fadeAnimation` can now be imported into our application, adjusted via input parameter and invoked using `useAnimation()`. The values we specified for the input parameters are default values.
 
 Once we have that in place, let's add the missing pieces to our animation:
 
-{% highlight js %}
-{% raw %}
+```js
 animations: [
   trigger('profileAnimation', [
     transition(':enter', group([
@@ -520,8 +483,7 @@ animations: [
     ]))
   ])
 ]
-{% endraw %}
-{% endhighlight %}
+```
 
 In the code above, we query a bunch of elements and use several animation helpers to achieve the desired effect. All animations will run in parallel because they are defined within a `group()`. Also, there are no "labels" or a similar feature to what GreenSock provides with `.add()`. Turns out, Angular has no timeline support yet and we need to fiddle with delays in order to orchestrate the animation.
 
@@ -533,8 +495,7 @@ Furthermore, we can spot this special style property of `style('*')`. This will 
 
 Ok, but how do we use the animation? For that we can either attach the **trigger** to the element within the component's template or use a `@HostBinding()`. In our case, we use the `@HostBinding()` because we want to attach the trigger to the host element:
 
-{% highlight js %}
-{% raw %}
+```js
 export class ProfileStatsComponent {
   ...
 
@@ -543,8 +504,7 @@ export class ProfileStatsComponent {
 
   ...
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 #### Understanding child animations
 
@@ -552,8 +512,7 @@ In a real-world scenario you most likely end up having multiple components and a
 
 In our example, we created a component called `ProfileStatsComponent`. Let's see this in action and start off by creating a child animation for this component using everything we know by now:
 
-{% highlight js %}
-{% raw %}
+```js
 animations: [
   trigger('statsAnimation', [
     transition('* => *', group([
@@ -570,13 +529,11 @@ animations: [
     ])
   ])
 ]
-{% endraw %}
-{% endhighlight %}
+```
 
 Easy, right? Now we can go ahead and use the `animateChild()` helper as mentioned earlier in our `profileAnimation`:
 
-{% highlight js %}
-{% raw %}
+```js
 animations: [
   trigger('profileAnimation', [
     transition(':enter', group([
@@ -589,8 +546,7 @@ animations: [
     ]))
   ])
 ]
-{% endraw %}
-{% endhighlight %}
+```
 
 That's it. We fully re-implemented the profile animation using Angular's built-in animation system. It's very intuitive, easy to use and declarative.
 

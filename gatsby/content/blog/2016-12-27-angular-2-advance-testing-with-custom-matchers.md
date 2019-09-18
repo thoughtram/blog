@@ -65,9 +65,9 @@ our tests.
 
 To whet your appetite, here are some sample DRY tests that we will be showing you how to write:
 
-![Unit Test with Matchers and Helpers](/images/dry_tests/example1.jpg)
+![Unit Test with Matchers and Helpers](../assets/images/dry_tests/example1.jpg)
 
-![Testing Nested DOM Styles](/images/dry_tests/example2.jpg)
+![Testing Nested DOM Styles](../assets/images/dry_tests/example2.jpg)
 
 ## Background
 
@@ -93,8 +93,7 @@ doesn't have any dependencies. It'd be easier and less verbose to just instantia
 
 Consider the traditional approach of manually instantiating and testing a Service or component:
 
-{% highlight js %}
-{% raw %}
+```js
 import { ServiceA } from './services/ServiceA';
 
 describe('ServiceA', () => {
@@ -106,8 +105,7 @@ describe('ServiceA', () => {
     inst.sayHello();
   });
 });
-{% endraw %}
-{% endhighlight %}
+```
 
 It's fine to do it this way, because **ServiceA** obviously does not need anything 
 else to be instantiated; it is a self-contained service without external dependencies. 
@@ -123,8 +121,7 @@ With the **TestBed** and its support for for component-lifecycle features, Angul
 easily instantiated and tested. Here is an example - shown below - that we will continue to 
 use in this article:
 
-{% highlight js %}
-{% raw %}
+```js
 import { MyComponent } from './viewer/MyComponent';
 
 /**
@@ -158,8 +155,7 @@ function createTestComponent(template: string): ComponentFixture<Type<any>>
     .overrideComponent(MyComponent, {set: {template: template}} )
     .createComponent(MyComponent);
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 Before each test, we want configure a new, fresh testing module with <u>only</u> the providers, 
 components, and directives we <u>need for the current test module</u>. 
@@ -231,8 +227,7 @@ and use its own custom test component with custom properties.
 
 Here is the initial configuration:
 
-{% highlight js %}
-{% raw %}
+```js
 import {Component, OnInit} from '@angular/core';
 import {ComponentFixture, TestBed } from '@angular/core/testing';
 import {
@@ -288,19 +283,16 @@ function createTestComponent(template: string): ComponentFixture<TestLayoutCompo
     .overrideComponent(TestLayoutComponent, {set: {template: template}} )
     .createComponent(TestLayoutComponent);
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 We now have everything we need to write a Directive test quickly.
 
-{% highlight js %}
-{% raw %}
+```js
 it('should compile with custom directives', () => {
   let fixture = createTestComponent('<div fxLayout></div>');
   expect( fixture ).toBeDefined();
 });
-{% endraw %}
-{% endhighlight %}
+```
 
 Wow! That is pretty easy. 
 
@@ -317,8 +309,7 @@ here will confirm that the initial CSS is correctly assigned.
 
 The traditional approach would probably implement something like this:
 
-{% highlight js %}
-{% raw %}
+```js
 it('should add correct styles for `fxLayout` with template bindings', () => {
   let template = '<div [fxLayout]="direction"></div>';
   let fixture = createTestComponent(template);
@@ -335,8 +326,7 @@ it('should add correct styles for `fxLayout` with template bindings', () => {
     
   expect( el.style['flex-direction'] ).toBe('row'); 
 });
-{% endraw %}
-{% endhighlight %}
+```
 
 In the code above, we 
 
@@ -358,7 +348,7 @@ in verbose, non-reusable code.
 
 Let's contrast that with the DRY version that we want:
 
-![Testing Directives - DRY Code](/images/dry_tests/example3.jpg)
+![Testing Directives - DRY Code](../assets/images/dry_tests/example3.jpg)
 
 Now this test is much more readable, maintainable, and DRY. We hide all the 
 complexities of:
@@ -372,8 +362,7 @@ Those complexities are now encapsulated in a Helper function and a Custom Matche
 The custom Helper function **expectNativeEl( )** is similar to the standard **expect( )** function.
 In fact, it is wrapper function that internalizes the `expect( )` call. 
 
-{% highlight js %}
-{% raw %}
+```js
 /**
  * Note: this helper only accesses the 1st-level child within a component
  *       A different helper method is need to access deep-level DOM nodes
@@ -384,27 +373,22 @@ export function expectNativeEl(fixture: ComponentFixture<any>): any {
   // Return response of `expect(...)`
   return expect(fixture.debugElement.children[0].nativeElement);
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 
 > It is important to note that these helper methods always return the value of an `expect(...)` call!
 
 And the resulting code change uses a similar notation to our standard training. So
 
-{% highlight js %}
-{% raw %}
+```
 expect(...).toBe
-{% endraw %}
-{% endhighlight %}
+```
 
 becomes
 
-{% highlight js %}
-{% raw %}
+```
 expectNativeEl(...).toBe
-{% endraw %}
-{% endhighlight %}
+```
 
 
 ### Testing Nested DOM
@@ -421,13 +405,12 @@ Angular's **DebugElement** has several query features:
 
 Consider the following helper function **expectDomForQuery( )**:
 
-![pic6](/images/dry_tests/example2.jpg)
+![pic6](../assets/images/dry_tests/example2.jpg)
 
 In this example, we actually want to test the <u>nested DOM node</u> that hosts the attribute **fxFlex**. 
 Using another helper method **expectDomForQuery( )** makes that easy.
 
-{% highlight js %}
-{% raw %}
+```js
 /**
  * Create component instance using custom template, the query for the native DOM node
  * based on the query selector
@@ -451,41 +434,34 @@ import {By} from '@angular/platform-browser';
 function  queryFor(fixture:ComponentFixture<any>, selector:string):any {
   return fixture.debugElement.query(By.css(selector))
 }
-{% endraw %}
-{% endhighlight %}
+```
 
 And the resulting code change is again a similar notation to our standard training:
 
-{% highlight js %}
-{% raw %}
+```js
 expect(...).toBe
-{% endraw %}
-{% endhighlight %}
+```
 
 becomes
 
-{% highlight js %}
-{% raw %}
+```js
 expectDomForQuery(...).toBe
-{% endraw %}
-{% endhighlight %}
+```
 
  
 ### More Special Helpers
 
 Earlier, we showed a code snapshot that had a *special helper* `activateMediaQuery( )`:
 
-![Unit Test with Matchers and Helpers](/images/dry_tests/example1.jpg)
+![Unit Test with Matchers and Helpers](../assets/images/dry_tests/example1.jpg)
 
 The Flex-Layout library has a responsive engine that supports change detection when a mediaQuery 
 activates (*aka* when the viewport size changes). The API uses selectors with dot-notation to 
 indicate which values should be used for which mediaQuery:
 
-{% highlight html %}
-{% raw %}
+```html
 <div fxLayout="row" fxLayout.md="column"></div>
-{% endraw %}
-{% endhighlight %}
+```
 
 Testing these features presents several additional requirements:
 
@@ -497,8 +473,7 @@ Testing these features presents several additional requirements:
 Thankfully the Flex-Layout library actually publishes a MockMatchMedia class. And we use this class
 in our TestBed configuration below:
 
-{% highlight js %}
-{% raw %}
+```js
 let fixture: ComponentFixture<any>;
 
 /**
@@ -523,8 +498,7 @@ beforeEach(() => {
     ]
   })
 });
-{% endraw %}
-{% endhighlight %}
+```
 
 Let's explore three (3) very interesting things are happening in this code: 
 
@@ -536,11 +510,9 @@ Let's explore three (3) very interesting things are happening in this code:
 **(1) Overriding DI Providers**
 
 
-{% highlight js %}
-{% raw %}
+```js
 { provide: MatchMedia, useClass: MockMatchMedia }
-{% endraw %}
-{% endhighlight %}
+```
 
 tells the TestBed DI system to provide an instance of the `MockMatchMedia` **whenever** any code 
 asks for an instance of the `MatchMedia` token to be injected via DI.
@@ -560,11 +532,9 @@ encapsulated in our TestBed... and the use of the injector is hidden within our 
 
 Now our individual tests simply use the easy special helper function **activateMediaQuery( )**:
 
-{% highlight js %}
-{% raw %}
+```js
 activateMediayQuery('md');
-{% endraw %}
-{% endhighlight %}
+```
 
 That is very, very cool!
 
@@ -591,15 +561,13 @@ And we should always give our custom matcher functions clear, readable names. E.
 
 Similar to `expect(...).toBeTruthy()`, we want a custom matcher `toHaveCSSStyle( )`:
 
-{% highlight js %}
-{% raw %}
+```js
 expectNativeEl(fixture).toHaveCssStyle({
   'display': 'flex',
   'flex-direction': 'row',
   'box-sizing': 'border-box'
 });
-{% endraw %}
-{% endhighlight %}
+```
 
 Creating a matcher in JavaScript is documented on the Jasmine site. Our challenge is the harder 
 goal of creating a *custom matcher* implemented in TypeScript using well-defined types.
@@ -613,21 +581,18 @@ a custom matcher.
 
 Here is a teaser that shows how that is done:
 
-{% highlight js %}
-{% raw %}
+```js
 export const expect: (actual: any) => NgMatchers = <any> _global.expect;
 
 export interface NgMatchers extends jasmine.Matchers { /* ... */ };
-{% endraw %}
-{% endhighlight %}
+```
 
 We assigned the global *expect* function reference to a new export that states that `expect()` calls 
 now return references to a **NgMatchers** interface.
   
 Here are the full implementation details of our `custom-matchers.ts` module:
 
-{% highlight js %}
-{% raw %}
+```js
 declare var global: any;
 const _global = <any>(typeof window === 'undefined' ? global : window);
 
@@ -676,8 +641,7 @@ export const customMatchers: jasmine.CustomMatcherFactories = {
   }
 
 };
-{% endraw %}
-{% endhighlight %}
+```
 
 With the above definitions, we can now use `expect(...).toHaveCssStyles(...)` without any 
 TypeScript complaints.
@@ -690,12 +654,10 @@ We need one to discuss one more addition to our custom-matcher code. Did you not
 After some inspection of the **@angular/core** code, we were able to 
 get a reference to the special Angular DOM Adapter:
 
-{% highlight js %}
-{% raw %}
+```js
 import {__platform_browser_private__} from '@angular/platform-browser';
 const getDOM = __platform_browser_private__.getDOM;
-{% endraw %}
-{% endhighlight %}
+```
 
 > Please note that the **getDOM()** is a private Angular API and may change in the future.
 
@@ -703,8 +665,7 @@ const getDOM = __platform_browser_private__.getDOM;
 
 Now we are *golden* with features. Let's import and use our custom Jasmine matcher.
 
-{% highlight js %}
-{% raw %}
+```js
 import {customMatchers} from '../utils/testing/custom-matchers';
 
 describe('layout directive', () => {
@@ -716,21 +677,18 @@ describe('layout directive', () => {
   });
 
 });
-{% endraw %}
-{% endhighlight %}
+```
 
 Notice that we must register the custom matchers in a `beforeEach()` call to configure the 
 matchers for each subsequent test. And now everything is ready for the individual tests:
 
-{% highlight js %}
-{% raw %}
+```js
 expect(...).toHaveCssStyle({
   'display': 'flex',
   'flex-direction': 'row',
   'box-sizing': 'border-box'
 });
-{% endraw %}
-{% endhighlight %}
+```
 
 ## Protractor + e2e
 
