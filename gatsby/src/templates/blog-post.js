@@ -30,6 +30,23 @@ class BlogPostTemplate extends React.Component {
         <section className="thtrm-section--fullbleed-intrinsic thtrm-article u-max-width--half">
           <div className="thtrm-section__heading u-distance-reset" dangerouslySetInnerHTML={{ __html: post.html }} />
         </section>
+        <section className="thtrm-section">
+          <div className="thtrm-card thtrm-section__heading u-max-width--half">
+            <div className="thtrm-media thtrm-media--top-start">
+              <img src="https://www.rust-lang.org/static/images/rust-logo-blk.svg" alt="" className="thtrm-media__asset" />
+              <div className="thtrm-media__body">
+                <h2>Learn Rust the right way</h2>
+                <p>Our Online Course is the best material for JS Developers.</p>
+                <ul className="thtrm-card__list">
+                  <li>Introduction</li>
+                  <li>Architecture</li>
+                  <li>API</li>
+                </ul>
+                <a href="" className="thtrm-button u-distance-small">Explore Course</a>
+              </div>
+            </div>
+          </div>
+        </section>
         
       </Layout>
       /* <Layout location={this.props.location} title={siteTitle}> */

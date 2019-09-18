@@ -1,0 +1,16 @@
+.thtrm-media {
+  align-items: center;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  
+  &__asset {
+    grid-column: 1;
+  }
+  &__body {
+    grid-column: 2;
+  }
+}
+
+.thtrm-media--top-start {
+  align-items: flex-start;
+}

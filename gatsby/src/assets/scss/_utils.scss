@@ -8,6 +8,10 @@
   flex-direction: row;
 }
 
+.u-flex--start {
+  align-items: flex-start;
+}
+
 .u-flex--nowrap {
 	flex-wrap: nowrap;
 }
