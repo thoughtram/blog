@@ -2,10 +2,6 @@
 	display: none
 }
 
-.thtrm-form > * {
-	margin: .5rem;
-}
-
 .thtrm-form .thtrm-form__input--text {
 	background-color: var(--thtrm-color-gray);
 	border: none;
@@ -28,5 +24,23 @@
     &:after {
       display: none;
     }
+  }
+}
+
+.thtrm-form__row {
+  margin-top: 16px;
+}
+
+.thtrm-form__column-group {
+  display: grid;
+  grid-column-gap: 24px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+
+  label {
+    grid-row: 1;
+  }
+  input {
+    grid-row: 2;
   }
 }
