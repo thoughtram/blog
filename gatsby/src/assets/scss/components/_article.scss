@@ -9,6 +9,12 @@
     }
   }
 
+  a {
+    &:after {
+      display: none;
+    }
+  }
+
   p {
     margin-top: 24px;
     font-size: .8rem;
@@ -31,6 +37,11 @@
         margin-top: 0;
       }
     }
+  }
+  
+  .gatsby-highlight {
+    margin-top: 24px;
+    font-size: .65rem;
   }
 
   iframe {

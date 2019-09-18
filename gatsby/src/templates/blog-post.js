@@ -5,7 +5,7 @@ import Img from 'gatsby-image';
 import { upperCaseFirst } from '../utils/uppercase-first';
 import Layout from "../components/layout"
 import SubNav from '../components/SubNav'
-import "prismjs/themes/prism-tomorrow.css"
+import "prismjs/themes/prism-okaidia.css"
 
 class BlogPostTemplate extends React.Component {
   render() {
