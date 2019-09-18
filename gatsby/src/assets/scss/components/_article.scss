@@ -10,6 +10,10 @@
     &:first-child {
       margin-top: 0;
     }
+
+    code {
+      vertical-align: 8px;
+    }
   }
 
   a {
@@ -44,6 +48,10 @@
   
   .gatsby-highlight {
     margin-top: 24px;
+    font-size: .65rem;
+  }
+
+  code {
     font-size: .65rem;
   }
 
