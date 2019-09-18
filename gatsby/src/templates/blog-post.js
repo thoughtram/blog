@@ -16,19 +16,19 @@ class BlogPostTemplate extends React.Component {
     return (
       <Layout title={post.frontmatter.title}>
         <SubNav/>
-        <section className="thtrm-section--fullbleed-intrinsic">
-          <div className="thtrm-section__heading u-max-width--half">
+        <section className="thtrm-section--fullbleed-intrinsic u-max-width--half">
+          <div className="thtrm-section__heading u-distance-bottom-reset">
             <div className="u-flex">
               <time dateTime="05 March" className="thtrm-topic u-color--grey">{post.frontmatter.date}</time>
               <p className="thtrm-topic u-color--grey">&nbsp; / {upperCaseFirst(post.frontmatter.categories[0])}</p>
             </div>
             <h1 className="thtrm-section__subheading">{post.frontmatter.title}</h1>
           </div>
-          <Img sizes={post.frontmatter.imageUrl.childImageSharp.sizes} className="thtrm-ratio--stripe u-fill-space u-img-fit-height"/>
+          <Img sizes={post.frontmatter.imageUrl.childImageSharp.sizes} className="thtrm-ratio--stripe thtrm-article-thumb u-fill-space u-img-fit-height"/>
         </section>
         
-        <section className="thtrm-section--fullbleed-intrinsic thtrm-article">
-          <div className="thtrm-section__heading u-max-width--half u-distance-reset" dangerouslySetInnerHTML={{ __html: post.html }} />
+        <section className="thtrm-section--fullbleed-intrinsic thtrm-article u-max-width--half">
+          <div className="thtrm-section__heading u-distance-reset" dangerouslySetInnerHTML={{ __html: post.html }} />
         </section>
         
       </Layout>

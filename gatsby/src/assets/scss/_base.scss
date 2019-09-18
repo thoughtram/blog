@@ -11,7 +11,7 @@ html {
     font-family: var(--thtrm-base-font), var(--thtrm-base-font-stack);
     font-size: var(--thtrm-base-fontsize);
     font-weight: var(--thtrm-base-fontweight);
-    line-height: 1.4;
+    line-height: 1.45;
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -23,7 +23,7 @@ body {
 }
 
 h1, h2, h3, h4 {
-    font-weight: var(--thtrm-base-fontweight);
+    font-weight: var(--thtrm-bold-fontweight);
     line-height: 1.2;
     letter-spacing: 0;
     margin: 0;
