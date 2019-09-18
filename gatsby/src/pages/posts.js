@@ -2,43 +2,31 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import Layout from '../components/layout'
 import SubNav from '../components/SubNav';
-import Stage from '../components/Stage';
-import Teaser from '../components/Teaser';
 import ListingItem from '../components/ListingItem';
 
 import '../assets/scss/main.scss';
 
-class BlogIndex extends React.Component {
+class Posts extends React.Component {
   render() {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
     const posts = data.allMarkdownRemark.edges
-    const latestPost = posts[0].node;
-    const morePosts = posts.slice(4, 8);
 
     return (
       <Layout title={siteTitle}>
         <SubNav/>
-        <Stage post={latestPost}/>
-        <section className="thtrm-section--fullbleed-intrinsic u-bg-lightgray">
-          <div className="thtrm-layout thtrm-layout-thirds">
-            <Teaser post={posts[1]}/>
-            <Teaser post={posts[2]}/>
-            <Teaser post={posts[3]}/>
-          </div>
-        </section>
-        <section className="thtrm-section">
-          <h2 className="thtrm-section__heading">More Stories</h2>
+        <section className="thtrm-section u-max-width--half">
+          <h2 className="thtrm-section__heading">All Stories</h2>
 
           <div className="thtrm-listing">
-            {morePosts.map(post => {
+            {posts.map(post => {
               return (
                 <ListingItem key={post.node.fields.slug} post={post.node}/>
               )
             })}
           </div>
-          <div className="thtrm-section__heading">
-            <Link to="/posts" title="All Posts" className="thtrm-button">All Posts</Link>
+          <div className="thtrm-section__footer">
+            <Link to="/" title="Zurück" className="thtrm-button">Zurück</Link>
           </div>
         </section>
       </Layout>
@@ -46,7 +34,7 @@ class BlogIndex extends React.Component {
   }
 }
 
-export default BlogIndex
+export default Posts
 
 export const pageQuery = graphql`
   query {

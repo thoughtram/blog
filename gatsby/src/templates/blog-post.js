@@ -1,13 +1,8 @@
 import React from "react"
-import {
-  Link,
-  graphql
-} from "gatsby"
+import { Link, graphql } from "gatsby"
 import Img from 'gatsby-image';
 
-import {
-  upperCaseFirst
-} from '../utils/uppercase-first';
+import { upperCaseFirst } from '../utils/uppercase-first';
 import Layout from "../components/layout"
 import SubNav from '../components/SubNav'
 import "prismjs/themes/prism-tomorrow.css"
@@ -16,103 +11,27 @@ class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
-    const {
-      previous,
-      next
-    } = this.props.pageContext
+    const { previous, next } = this.props.pageContext
 
-    return ( <
-      Layout title = {
-        post.frontmatter.title
-      } >
-      <
-      SubNav / >
-      <
-      section className = "thtrm-section" >
-      <
-      div >
-      <
-      div className = "thtrm-section__heading u-max-width--half" >
-      <
-      div className = "u-flex" >
-      <
-      p className = "thtrm-topic u-color--grey u-flex" >
-      <
-      img src = "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
-      className = "thtrm-avatar u-width-small" / >
-      &
-      nbsp; {
-        post.frontmatter.author
-      } <
-      /p> <
-      Link to = {
-        `/category/${post.fields.category}`
-      } > {
-        post.fields.category
-      } <
-      /Link> <
-      time dateTime = "05 March"
-      className = "thtrm-topic u-color--grey" > & nbsp;
-      / {post.frontmatter.date}</time >
-      <
-      p className = "thtrm-topic u-color--grey" > & nbsp;
-      / {upperCaseFirst(post.frontmatter.categories[0])}</p >
-      <
-      /div> <
-      h1 className = "thtrm-section__subheading" > {
-        post.frontmatter.title
-      } < /h1> <
-      Img sizes = {
-        post.frontmatter.imageUrl.childImageSharp.sizes
-      }
-      className = "thtrm-ratio--stripe u-fill-space thtrm-article-thumb" / >
-      <
-      /div> <
-      div className = "thtrm-section__heading u-max-width--half u-distance-reset thtrm-article"
-      dangerouslySetInnerHTML = {
-        {
-          __html: post.html
-        }
-      }
-      /> <
-      /div> <
-      /section> <
-      section className = "thtrm-section--fullbleed-intrinsic u-bg-lightgray" >
-      <
-      div className = "thtrm-section__header u-max-width--half" >
-      <
-      h2 className = "thtrm-section__subheading" > Related Articles < /h2> <
-      /div> <
-      div className = "thtrm-layout thtrm-layout-thirds" >
-      <
-      div className = "thtrm-teaser" >
-      <
-      h4 className = "thtrm-topic thtrm-teaser__topic u-color--grey" > dasda < /h4> <
-      h3 className = "thtrm-teaser__title thtrm-title" > Title < /h3> <
-      p className = "thtrm-teaser__paragraph u-text--small u-color--grey" > dasd < /p> <
-      Link className = "thtrm-teaser__link u-text--small" > Read more < /Link> <
-      /div> <
-      div className = "thtrm-teaser" >
-      <
-      h4 className = "thtrm-topic thtrm-teaser__topic u-color--grey" > dasda < /h4> <
-      h3 className = "thtrm-teaser__title thtrm-title" > Title < /h3> <
-      p className = "thtrm-teaser__paragraph u-text--small u-color--grey" > dasd < /p> <
-      Link className = "thtrm-teaser__link u-text--small" > Read more < /Link> <
-      /div> <
-      div className = "thtrm-teaser" >
-      <
-      h4 className = "thtrm-topic thtrm-teaser__topic u-color--grey" > dasda < /h4> <
-      h3 className = "thtrm-teaser__title thtrm-title" > Title < /h3> <
-      p className = "thtrm-teaser__paragraph u-text--small u-color--grey" > dasd < /p> <
-      Link className = "thtrm-teaser__link u-text--small" > Read more < /Link> <
-      /div> <
-      /div>
-
-      <
-      /section>
-
-      <
-      /Layout>
+    return (
+      <Layout title={post.frontmatter.title}>
+        <SubNav/>
+        <section className="thtrm-section--fullbleed-intrinsic">
+          <div className="thtrm-section__heading u-max-width--half">
+            <div className="u-flex">
+              <time dateTime="05 March" className="thtrm-topic u-color--grey">{post.frontmatter.date}</time>
+              <p className="thtrm-topic u-color--grey">&nbsp; / {upperCaseFirst(post.frontmatter.categories[0])}</p>
+            </div>
+            <h1 className="thtrm-section__subheading">{post.frontmatter.title}</h1>
+          </div>
+          <Img sizes={post.frontmatter.imageUrl.childImageSharp.sizes} className="thtrm-ratio--stripe u-fill-space u-img-fit-height"/>
+        </section>
+        
+        <section className="thtrm-section--fullbleed-intrinsic thtrm-article">
+          <div className="thtrm-section__heading u-max-width--half u-distance-reset" dangerouslySetInnerHTML={{ __html: post.html }} />
+        </section>
+        
+      </Layout>
       /* <Layout location={this.props.location} title={siteTitle}> */
       /*   <SEO */
       /*     title={post.frontmatter.title} */
@@ -182,7 +101,7 @@ class BlogPostTemplate extends React.Component {
 
 export default BlogPostTemplate
 
-export const pageQuery = graphql `
+export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
     site {
       siteMetadata {
@@ -195,7 +114,6 @@ export const pageQuery = graphql `
       excerpt(pruneLength: 160)
       html
       frontmatter {
-        author
         title
         imageUrl {
           childImageSharp{

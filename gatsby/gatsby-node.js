@@ -1,11 +1,13 @@
 const path = require(`path`)
 const slugify = require('slugify');
+const _ = require("lodash");
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  const categoryTemplate = path.resolve("src/templates/category.js")
   const result = await graphql(
     `
       {
@@ -24,6 +26,11 @@ exports.createPages = async ({ graphql, actions }) => {
                 categories
               }
             }
+          }
+        }
+        categoriesGroup: allMarkdownRemark(limit: 2000) {
+          group(field: frontmatter___categories) {
+            fieldValue
           }
         }
       }
@@ -47,6 +54,20 @@ exports.createPages = async ({ graphql, actions }) => {
         slug: post.node.fields.slug,
         previous,
         next,
+      },
+    })
+  })
+
+  // Extract tag data from query
+  const categories = result.data.categoriesGroup.group
+
+  // Make tag pages
+  categories.forEach(category => {
+    createPage({
+      path: `/categories/${_.kebabCase(category.fieldValue)}/`,
+      component: categoryTemplate,
+      context: {
+        category: category.fieldValue,
       },
     })
   })
