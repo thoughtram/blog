@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -12,8 +12,15 @@ class NotFoundPage extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="404: Not Found" />
-        <h1>Not Found</h1>
-        <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+        <section className="thtrm-section thtrm-section--centered u-flex--justify-center">
+          <div>
+            <h1 className="thtrm-section__heading">Lost in Space</h1>
+            <p>The page you have requested could not be found. Don't worry and and go to the homepage.</p>
+            <div className="thtrm-section__footer">
+              <Link to="/" className="thtrm-button">Homepage</Link>
+            </div>
+          </div>
+        </section>
       </Layout>
     )
   }
