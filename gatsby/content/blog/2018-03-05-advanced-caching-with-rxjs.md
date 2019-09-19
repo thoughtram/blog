@@ -92,7 +92,7 @@ Let's summarize what we want to build:
 
 Here's a preview of what we are going to build:
 
-![app preview](/images/cache_app_preview.gif)
+![app preview](../assets/images/cache_app_preview.gif)
 
 ## Implementing a basic cache
 
@@ -203,7 +203,7 @@ Ok, we already talked about most of what we see above. But wait, what's about th
 
 Let's look at a more visual representation of what we've just implemented:
 
-<img src="/images/cache_sequence_diagram.png" width="100%" alt="sequence diagram for our simple cache mechanism">
+![](../assets/images/cache_sequence_diagram.png)
 
 Above we can see a **sequence diagram** that depicts the objects involved in our scenario, that is requesting a list of jokes, and the sequences of messages exchanged between the objects. Let's break it down to understand what's going on here.
 
@@ -223,7 +223,7 @@ Simple, right?
 
 To rip this really apart, let's take this one step further and look at how the cache works on an Observable level. For this we use a **marble diagram** to visualize how the stream actually works:
 
-<img src="/images/cache_share_replay.png" width="100%" alt="marble diagram for our cache">
+![](../assets/images/cache_share_replay.png)
 
 The marble diagram makes it really clear that there's only **one subscription** to the underlying Observable and all consumers simply subscribe to the shared Observable, that is the `ReplaySubject`. We can also see that only the first subscriber triggers the HTTP call and all others get the latest value replayed.
 
@@ -276,7 +276,7 @@ interval(10000).subscribe(console.log);
 
 Here we set up an Observable that emits an infinite sequence of integers where each value is emitted every 10 seconds. That also means that the first value is somewhat delayed by the given interval. To better demonstrate the behavior, let's take a look at the marble diagram for `interval`.
 
-<img src="/images/interval_operator.png" width="100%" alt="interval operator">
+![](../assets/images/interval_operator.png)
 
 Yep, as expected. The first value is "delayed" and this is not what we want. Why? Because if we come from the dashboard and navigate to the list component to read some funny jokes, we'd have to wait for 10 seconds before the data is requested from the server and rendered onto the screen.
 
@@ -286,7 +286,7 @@ What if I told you that there's an operator that emits a sequence of values afte
 
 Visualization time!
 
-<img src="/images/timer_operator.png" width="100%" alt="timer operator">
+![](../assets/images/timer_operator.png)
 
 Cool, but does that really solve our problem? Yep it does. If we set the initial delay to **zero (0)** and set the period to **10 seconds**, we end up with the same behavior as if we used `interval(10000).pipe(startWith(0))` but only with a single operator.
 
@@ -298,7 +298,7 @@ The rest of our cache remains untouched, meaning that our stream is still multic
 
 Again, the nature of `shareReplay` will broadcast new values to exisiting subscribers and replay the most recent value to new subscribers.
 
-<img src="/images/timer_cache.png" width="100%" alt="timer based cache">
+![](../assets/images/timer_cache.png)
 
 As we can see in the marble diagram, the timer emits a value every 10 seconds. For every value we switch to an inner Observable that fetches our data. Because we are using `switchMap`, we avoid race conditions and therefore the consumer only receives the value `1` and `3`. The value from the second inner Observable is "skipped" because we are already unsubscribed when the value arrives.
 
@@ -481,7 +481,7 @@ Also, because the underlying cache is multicasted, it's totally safe to always r
 
 Before we continue with the notification stream, let's stop for a moment and visualize what we just implemented as a marble diagram.
 
-<img src="/images/jokes.png" width="100%" alt="jokes">
+![](../assets/images/jokes.png)
 
 As we can see in the diagram above, `initialJokes$` is crucial because otherwise we'd only see something on the screen when we click "Update". While the data is already updated in the background every 10 seconds, there's no way we can press this button. That's because the button is part of the notification and we never really show it to the user.
 
@@ -684,7 +684,7 @@ That's it. Whenever `forceReload$` emits a value we unsubscribe from the previou
 
 Puh, we did it. Let's take a moment and look at a more visual representation of what we just implemented.
 
-<img src="/images/notification_cache.png" width="100%" alt="notification system">
+![](../assets/images/notification_cache.png)
 
 As we can see in the marble diagrams, `initialNotifications$` is very important for showing notifications. If we were missing this particular stream then we would only see a notification when we force the cache to update. That said, when we request new data on demand, we have to constantly switch to a new notification stream because the previous (old) Observable will complete and no longer emit values.
 

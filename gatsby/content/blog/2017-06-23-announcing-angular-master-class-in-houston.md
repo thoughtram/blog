@@ -38,10 +38,7 @@ Angular Master Class is finally coming to **Houston, Texas** on **August 22 - 25
 
 And we found the perfect, artsy venue: Bisong Art Gallery, Houston Texas. 
 
-<a href="https://www.google.com/maps/place/Bisong+Art+Gallery/@29.7682252,-95.3704114,14.27z/data=!4m5!3m4!1s0x8640bf298647bd0d:0x78cc6f2afbb33e48!8m2!3d29.7675697!4d-95.35409?hl=en"
-   target="_blank">
-  <img src="/images/amc_houston_hall2.jpg" alt="AMC Houston Event Location">
-</a>
+![](../assets/images/amc_houston_hall2.jpg)
 
 After all, fun places are sure to get everyone into the right state of mind to learn the 
 nuances and power of Angular!
@@ -70,7 +67,7 @@ So come to our training, have a blast, and get the best acceleration into Angula
 
 ### On-Premise, Private Training?
 
-<img src="/images/sample_private_training.jpg" style="margin-top:15px; width:75%; margin-bottom:10px" alt="Public Training at Trade Me, June 2017 New Zealand">
+![](../assets/images/sample_private_training.jpg)
 
 If you prefer private, on-site training for your development teams [10 or more developers], 
 please contact us for rates, details, and scheduling: <a href="mailto:hello@thoughtram.io?subject=Re Private AMC Training">hello@thoughtram.io</a>

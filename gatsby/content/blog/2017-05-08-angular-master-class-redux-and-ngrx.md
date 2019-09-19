@@ -34,7 +34,7 @@ related_videos:
 
 Despite some appearances at [ng-conf](https://www.ng-conf.org/) and [Jazoon Conference](http://jazoon.com/), it's been a little bit quiet around us since [the last time we blogged](/angular/2017/02/27/three-things-you-didnt-know-about-the-async-pipe.html). You might have read our [announcement about the upcoming Angular Master Class](/announcements/2017/05/05/announcing-angular-master-class-in-denmark.html) in Denmark, however, apart from that, many people have been wondering what we've been up to these days and what's the reason for not publishing Angular articles at the pace we usually do. Let's get straight to the point: We've been working super hard on some very exciting things. One of these things is - you probably guessed it - **brand new Angular Master Class courseware**, and we can't wait to see it in action in our upcoming classes!
 
-<img src="/images/banner/ngrx_slide_logo.jpg" alt="Redux and ngrx banner">
+![](../assets/images/banner/ngrx_slide_logo.jpg)
 
 ## What's new?
 

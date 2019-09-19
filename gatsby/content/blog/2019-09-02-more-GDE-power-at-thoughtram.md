@@ -38,10 +38,7 @@ Who are we talking about you may ask? That's **Dominic Elm** and **Kwinten Pisma
 
 Our beautiful dream team of trainers, both of whom recently became **Google Developer Experts (GDE's) for Web Technologies**, specializing in **Angular**.
 
-<a href="https://goo.gl/maps/1ZfcnhZFpUQWATJn6"
-   target="_blank">
-  <img src="/images/kwinten_brecht.jpg" width="50%" height="50%" alt="Kwinten Pisman and Dominic Elm">
-</a>
+![](../assets/images/kwinten_brecht.jpg)
 
 Congrats to both of you, that is very well deserved! 🙏
 

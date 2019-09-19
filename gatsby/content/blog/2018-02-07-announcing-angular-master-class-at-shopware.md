@@ -38,7 +38,7 @@ The facilities of Shopware in Schöppingen are modern, spacious and fancy and wi
 The event will take place from **20th to 22nd June 2018** at Shopware in Schöppingen. 
 
 
-<img src="/images/shopware_classroom.jpg" alt="AMC Shopware Event Location">
+![](../assets/images/shopware_classroom.jpg)
 <span style="font-size: 12px">Picture by Rainer Lonsing</span>
 
 
@@ -62,9 +62,9 @@ During the day we will deepen our Angular knowledge together and at the end of t
 
 This will be so much fun! 
 
-<img src="/images/shopware_volleyball.jpg" style="width:50%; float:left" alt="AMC Shopware Volleyball court">
+![](../assets/images/shopware_volleyball.jpg)
 
-<img src="/images/amc_denmark_audience.jpg" style="width:50%" alt="AMC Denmark audience">
+![](..//images/amc_denmark_audience.jpg)
 
 <span style="font-size: 12px">Left picture by Rainer Lonsing</span>
 

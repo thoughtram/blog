@@ -37,7 +37,7 @@ Many of these people asked us if they could join our company to work with us. So
 
 Things changed slowly but steady once we met Thomas.
 
-<img alt="Picture of Thomas Burleson" src="/images/thomas_high_res.png">
+![](../assets/images/thomas_high_res.png)
 
 You may know Thomas already from his work as the **Team Lead developer** on [Angular Material](https://material.angularjs.org/latest/), [ngMaterial ](https://github.com/angular/material-start/tree/es6-tutorial) Workshops, and the [Material-Adaptive](https://github.com/angular/material-adaptive/tree/master/shrine) solutions. He is very smart, organized and more importantly tons of fun! We had the chance to hang out, talk, laugh and work as a group of three over the last couple of months. We then explored ways of collaboration and most visibly ran one of the full-day thoughtram trainings at ng-conf together.
 

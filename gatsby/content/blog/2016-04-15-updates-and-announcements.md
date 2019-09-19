@@ -37,13 +37,13 @@ As you might know, we usually run our trainings with two trainers. Since the cla
 
 **Thomas Burleson**
 
-<img src="/images/thomas-burleson.jpeg">
+![](../assets/images/thomas-burleson.jpeg)
 
 Thomas is not only part of the Angular Material team and ensures that you can build crisp user interfaces in your Angular applications, he's also an all-around nice guy that hanging around with is just pure fun.
 
 **Gerard Sans**
 
-<img src="/images/gerard_sans-1.jpg">
+![](../assets/images/gerard_sans-1.jpg)
 
 You might have seen Gerard at one or the other conference talking about Angular 2. He's a Google Developer Expert for Angular, loves running workshops and he's a super fun guy too!
 

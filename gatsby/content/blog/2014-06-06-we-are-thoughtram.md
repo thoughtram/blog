@@ -41,7 +41,7 @@ introducing [Pascal Precht](https://twitter.com/PascalPrecht) and [Christoph Bur
 Since our first mysterious [announcement on twitter](https://twitter.com/thoughtram/status/471040173565042688) people
 have been wondering what the heck [thoughtram.io](http://thoughtram.io) is.
 
-![more ram](/css/images/more_ram.png)
+![more ram](../assets/images/more_ram.png)
 
 Sorry, folks. No fancy dropbox competitor here. Our mission is something completely different.
 

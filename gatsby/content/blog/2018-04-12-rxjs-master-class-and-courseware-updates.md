@@ -38,7 +38,7 @@ Ever since, we've added the [Angular Master Class](/announcements/2015/12/21/int
 
 In fact, today we're happy to let you know that our Angular Master Class now officially covers **Progressive Web Apps with Angular** and **Server-side rendering with Angular Universal** as well!
 
-<img src="/images/amc-pwa-universal.png">
+![](../assets/images/amc-pwa-universal.png)
 
 These are the missing pieces to take your Angular apps to the next level and provide a richer user experience, by making them blazingly fast. Those topics might become part of our [upcoming Angular Master Class in Germany](/announcements/2018/02/07/announcing-angular-master-class-at-shopware.html) and we have a couple of seats left!
 
@@ -46,7 +46,7 @@ These are the missing pieces to take your Angular apps to the next level and pro
 
 By the title of this post, you might have guessed that this is not everything we have to share today. Many of you might have noticed that Angular embraces functional reactive programming paradigms using RxJS. We see many people struggling with this topic, which is why we decided to create a dedicated class just about that!
 
-<img src="/images/rxjs-master-class.png">
+![](../assets/images/rxjs-master-class.png)
 
 The fun thing about this class is that you'll build the classic video game "Snake" from scratch, using Observables and powerful operators purely with RxJS. This also means that this class is a standalone one and doesn't go necessarily hand-in-hand with our Angular Master Class.
 

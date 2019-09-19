@@ -31,7 +31,7 @@ related_videos:
 
 Today we are excited to announce our next public Angular Master Class way up north in Denmark! We couldn't be happier to finally run our training in the country where [Bjarne Stroustrup](https://en.wikipedia.org/wiki/Bjarne_Stroustrup) and [Anders Hejlsberg](https://en.wikipedia.org/wiki/Anders_Hejlsberg) were born!
 
-<img src="/images/foss-analytics-a-s-office.jpg" alt="Foss Office Building Hillerød">
+![](../assets/images/foss-analytics-a-s-office.jpg)
 
 The event takes place on the **20th to 22th June 2017 at Foss** in Hillerød about 35 km out of Copenhagen. We couldn't be happier to have [Foss](http://foss.dk) as a strong partner to help us bring our famous training to Denmark.
 

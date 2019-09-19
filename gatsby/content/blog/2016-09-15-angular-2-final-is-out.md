@@ -31,7 +31,7 @@ related_videos:
 
 Last night, one of the biggest announcement in the Angular history has happened. Brad Green announced that **Angular 2 Final is out**!
 
-<img src="/images/a2-final-announcement.jpg" alt="Brad Green announcing Angular 2 final">
+![](../assets/images/a2-final-announcement.jpg)
 
 Even though it took about 2.5 years to reach this milestone, this is really just the start. There are plans to release the Angular Material implementation for Angular 2, broader support for server-side rendering, more guides and much much more. Head over to the [official blog](https://angularjs.blogspot.de/2016/09/angular2-final.html) to learn more about the future plans (**we're super excited that we made it into the list of contributors, next to all the great people who made Angular 2 happen**). Or, check out Juri's [great write-up](http://juristr.com/blog/2016/09/ng2-released/) of the event.
 

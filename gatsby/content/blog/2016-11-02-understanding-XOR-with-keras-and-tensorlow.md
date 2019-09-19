@@ -117,7 +117,7 @@ We also added another layer with an output dimension of `1` and without an expli
 
 We can visualize our model like this.
 
-<img alt="A neural network" src="/images/xor_model.png">
+![](../assets/images/xor_model.png)
 
 Let's just take it as this for now. We'll come back to look at what the number of neurons means in a moment.
 

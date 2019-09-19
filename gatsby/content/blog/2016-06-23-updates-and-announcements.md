@@ -34,11 +34,11 @@ Today we like to bring you up to date with all the exciting things that we were 
 
 Two months ago we rolled out a new design for our blog to make discovering all our different articles a whole lot easier. The feedback we got is overwhelming and we are thrilled to see how many people read and love our blog. Just recently we hit **170k sessions per month**.
 
-![170k monthly sessions](/images/170k_monthly_sessions.png)
+![170k monthly sessions](../assets/images/170k_monthly_sessions.png)
 
 With that in mind we thought it would be nice to make it simpler to search for articles on our blog. Say hello to the new search bar feature which makes finding articles on our blog easier than ever before.
 
-![search bar feature](/images/search-bar.png)
+![search bar feature](../assets/images/search-bar.png)
 
 ## Meet us at thoughtram TV
 
@@ -54,7 +54,7 @@ Don't forget to subscribe to [our channel on YouTube](https://www.youtube.com/ch
 
 We're thrilled to announce yet another public **Angular 2 Master Class**. It's in Helsinki and it's gonna be epic. The venue for this event is actual an old fortress on an Island. It's an **UNESCO world heritage site** and will give this event an unforgettable touch. Shout out to Panu from [frantic](https://www.frantic.com) who helps us organizing the event and pointed us to this beauty.
 
-![Suomenlinna](/images/suomenlinna.jpg)
+![Suomenlinna](../assets/images/suomenlinna.jpg)
 
 The event takes place **5th and 6th of September 2016** and you can get your ticket right now, right here. Better be quick, there'll only be 5 early bird tickets for a limited time!
 

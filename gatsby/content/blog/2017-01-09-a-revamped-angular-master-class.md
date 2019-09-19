@@ -32,7 +32,7 @@ At thoughtram, we're [constantly](/announcements/2015/10/26/angular-master-class
 
 **Today we're super happy to announce** that we've recreated our courseware from the ground up to integrate the brand new [Angular Material library](http://material.angular.io), as well as the even newer [Angular Flex Layout Module](https://github.com/angular/flex-layout)!
 
-<a href="http://thoughtram.io/angular-master-class.html#whats-inside" title="What's inside Angular Master Class?"><img src="/images/website-topic-box.png" alt="Angular Master Class topic box"></a>
+[![](../assets/images/website-topic-box.png)](http://thoughtram.io/angular-master-class.html#whats-inside)
 
 ## Why is this great?
 

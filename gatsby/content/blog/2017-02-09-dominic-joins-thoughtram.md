@@ -43,7 +43,7 @@ We've first met Dominic almost two years ago as an attendee of one of our classe
 
 People keep asking if his last name "Elm" is real or if he's just a big fan of the [Elm programming language](https://en.wikipedia.org/wiki/Elm_(programming_language)). We think the reality is that Elm took a lot of inspiration from Dominics last name!
 
-<img alt="Picture of Dominic Elm" src="/images/dominic.jpg">
+![](../assets/images/dominic.jpg)
 
 Over the last couple of months we've had the chance to closely work with Dominic and co-run trainings with him all across Europe.
 

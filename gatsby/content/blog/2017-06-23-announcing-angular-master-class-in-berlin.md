@@ -35,9 +35,8 @@ If you haven't had the chance to join us in Denmark you really missed out on a f
 
 We are happy to team up with **Westernacher Solutions AG** to run the training in a really cool atmosphere with lots of room to teach, learn and have fun!
 
-<img style="width: 50%; float:left" src="/images/amc_berlin_main_room.jpg" alt="AMC Berlin Event Location">
-
-<img style="width: 50%;" src="/images/amc_berlin_billard.jpg" alt="AMC Berlin Event Location">
+![](../assets/images/amc_berlin_main_room.jpg)
+![](../assets/images/amc_berlin_billard.jpg)
 
 The event takes place on the **18th to 20th September 2017** in one of the most vibrant parts of the city.
 

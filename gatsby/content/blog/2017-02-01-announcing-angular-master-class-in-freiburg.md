@@ -30,7 +30,7 @@ related_videos:
 
 We just [came back from Sydney](/announcements/2016/10/30/announcing-angular-2-master-class-in-sydney.html) and are still adjusting to the Central European Timezone, but this doesn't keep us from sharing the exciting news with you that we'll be running our **Angular Master Class in Freiburg**!
 
-<img src="/images/humboldtsaal.jpg" alt="Humboldtsaal Freiburg">
+![](../assets/images/humboldtsaal.jpg)
 
 The event takes place on the **13th to 15th March 2017 at the [Humboldtsaal](http://www.humboldtsaal.de/)** in Freiburg, where we will have three (3) days of fun and learning the ins and outs of Angular including things like
 

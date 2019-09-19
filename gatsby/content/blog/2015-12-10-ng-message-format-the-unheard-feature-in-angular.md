@@ -36,7 +36,7 @@ related_videos:
 Angular 1.5 is pretty much around the corner and with a new release, new fixes, improvements and features are added to the framework. While this is awesome and we're all excited about it, it seems like we're forgetting about all the nice things we already have.
 
 
-<img src="/images/tweet.png" alt="Tweet by thoughtram">
+![](../assets/images/tweet.png)
 
 A few days ago, we asked on twitter who's interested to learn about an **unheard feature** in Angular. Based on the reactions to that tweet, it's quite obvious that you all are and that's awesome! So what is this unheard feature we're talking about? If you read this article you can surely tell from its title that it's probably about this thing called **ngMessageFormat**. We'll get right into it but first we'd like to make one thing clear:
 

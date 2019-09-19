@@ -38,7 +38,7 @@ In our workshops we try to give a very deep understanding of what happens under 
 
 Guess what, we listened! Today we are very happy to announce that we've extended our material with additional and advanced topics.
 
-<img src="/images/angular-master-class-extended.png">
+![](../assets/images/angular-master-class-extended.png)
 
 Next to our existing material, we now offer enough slides and exercises for everything about Forms, the UI-Router and server communication. We also talk about **migration** and how you can prepare your applications for Angular 2.x today. You can find more information at our [dedicated website](http://thoughtram.io/angular-master-class.html).
 

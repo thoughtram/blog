@@ -74,6 +74,6 @@ See you in Málaga!
 
 ### On-Premise, Private Training?
 
-<img src="/images/sample_private_training.jpg" style="margin-top:15px; width:75%; margin-bottom:10px" alt="Private, on-site Angular Training by thoughtram">
+![](../assets/images/sample_private_training.jpg)
 
 If you prefer private, on-site training for your development teams, please contact us for rates, details, and scheduling: <a href="mailto:hello@thoughtram.io?subject=Re Private AMC Training">hello@thoughtram.io</a>
