@@ -16,22 +16,28 @@ class BlogPostTemplate extends React.Component {
     return (
       <LayoutWithSignUp title={post.frontmatter.title}>
         <SubNav/>
-        <section className="thtrm-section--fullbleed-intrinsic u-max-width--half">
-          <div className="thtrm-section__heading u-distance-bottom-reset">
-            <div className="u-flex">
-              <time dateTime={post.frontmatter.date} className="thtrm-topic u-color--grey">{post.frontmatter.date}</time>
-              {post.frontmatter.categories && <p className="thtrm-topic u-color--grey">&nbsp; / {upperCaseFirst(post.frontmatter.categories[0])}</p>}
+        <section className="thtrm-section">
+          <div className="thtrm-section__heading thtrm-article-header thtrm-section-constrained u-distance-bottom-reset">
+            <div className="thtrm-metabar thtrm-article-header__metabar">
+              <div className="thtrm-metabar__item thtrm-topic u-color--grey">
+                <div className="thtrm-media-short">
+                  <Img sizes={post.frontmatter.imageUrl.childImageSharp.sizes} className="thtrm-avatar" />
+                  <p className="thtrm-media-short__body">Tim Hartmann</p>
+                </div>
+              </div>
+              <time dateTime={post.frontmatter.date} className="thtrm-metabar__item thtrm-topic u-color--grey">{post.frontmatter.date}</time>
+              {post.frontmatter.categories && <p className="thtrm-metabar__item thtrm-topic u-color--grey">{upperCaseFirst(post.frontmatter.categories[0])}</p>}
             </div>
-            <h1 className="thtrm-section__subheading">{post.frontmatter.title}</h1>
+            <h1 className="thtrm-section__subheading u-distance-tiny">{post.frontmatter.title}</h1>
           </div>
           {post.frontmatter.imageUrl && <Img sizes={post.frontmatter.imageUrl.childImageSharp.sizes} className="thtrm-ratio--stripe thtrm-article-thumb u-fill-space u-img-fit-height"/>}
         </section>
         
-        <section className="thtrm-section--fullbleed-intrinsic thtrm-article u-max-width--half">
+        <section className="thtrm-section thtrm-section-constrained thtrm-article">
           <div className="thtrm-section__heading u-distance-reset" dangerouslySetInnerHTML={{ __html: post.html }} />
         </section>
         <section className="thtrm-section">
-          <div className="thtrm-card thtrm-section__heading u-max-width--half">
+          <div className="thtrm-card thtrm-section__heading">
             <div className="thtrm-media thtrm-media--top-start">
               <img src="https://www.rust-lang.org/static/images/rust-logo-blk.svg" alt="" className="thtrm-media__asset" />
               <div className="thtrm-media__body">
@@ -76,7 +82,7 @@ export const pageQuery = graphql`
             }
           }
         }
-        date(formatString: "DD MMMM YYYY")
+        date(formatString: "DD. MMMM YYYY")
         description
         categories
       }

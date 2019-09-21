@@ -193,6 +193,13 @@
   z-index: var(--thtrm-layer-deco);
 }
 
+.thtrm-section-constrained {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
 @media screen and (min-width: $thtrm-media-nav) {
   .thtrm-section--fullbleed {
     margin-left: var(--thtrm-page-neg-margin);
