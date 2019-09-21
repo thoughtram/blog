@@ -14,3 +14,13 @@
 .thtrm-media--top-start {
   align-items: flex-start;
 }
+
+// Short Media (Asset and Text in a Row)
+.thtrm-media-short {
+  display: flex;
+  flex-direction: row;
+
+  &__body {
+    padding-left: 8px;
+  }
+}
