@@ -14,10 +14,10 @@ class NotFoundPage extends React.Component {
         <SEO title="404: Not Found" />
         <section className="thtrm-section thtrm-section--centered u-flex--justify-center">
           <div>
-            <h1 className="thtrm-section__heading">Lost in Space</h1>
-            <p>The page you have requested could not be found. Don't worry and and go to the homepage.</p>
+            <h1 className="thtrm-section__heading">Lost in Space.</h1>
+            <p>The page you have requested could not be found.</p>
             <div className="thtrm-section__footer">
-              <Link to="/" className="thtrm-button">Homepage</Link>
+              <Link to="/all">Take me to all blog posts</Link>
             </div>
           </div>
         </section>

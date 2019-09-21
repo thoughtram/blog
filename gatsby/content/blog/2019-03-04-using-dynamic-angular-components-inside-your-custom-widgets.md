@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Dynamic Angular components inside custom widgets"
-imageUrl: ../assets/images/banner/dynamic-angular-components-inside-custom-widgets.jpg
+imageUrl: ../assets/images/banner/dynamic-angular-components-inside-custom-widgets.png
 summary: "Learn how and why you want to use dynamic Angular components inside your custom widgets."
 date: 2019-03-11T00:00:00.000Z
 categories:

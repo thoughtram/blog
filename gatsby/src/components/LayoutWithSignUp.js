@@ -5,7 +5,7 @@ import SignUpForm from './SignUpForm';
 import Footer from './Footer';
 import SvgIcons from './SvgIcons';
 
-class Layout extends React.Component {
+class LayoutWithSignUp extends React.Component {
   render() {
     const { title, children } = this.props
     return (
@@ -15,6 +15,9 @@ class Layout extends React.Component {
         <main className="thtrm-main" role="main">
           {children}
         </main>
+        <aside className="thtrm-aside">
+          <SignUpForm/>
+        </aside>
         <Footer/>
         <SvgIcons/>
       </div>
@@ -22,4 +25,5 @@ class Layout extends React.Component {
   }
 }
 
-export default Layout
+export default LayoutWithSignUp
+

@@ -26,7 +26,7 @@ class Posts extends React.Component {
             })}
           </div>
           <div className="thtrm-section__footer">
-            <Link to="/" title="Zurück" className="thtrm-button">Zurück</Link>
+            <Link to="/" title="back" className="thtrm-button">Back to Blog</Link>
           </div>
         </section>
       </Layout>

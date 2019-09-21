@@ -1,11 +1,10 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import Layout from '../components/layout'
-import SubNav from '../components/SubNav';
 
 import '../assets/scss/main.scss';
 
-class FinishNewsletterSubscription extends React.Component {
+class SubscriptionConfirmation extends React.Component {
   render() {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
@@ -14,9 +13,9 @@ class FinishNewsletterSubscription extends React.Component {
       <Layout title={siteTitle}>
         <section className="thtrm-section--fullbleed-intrinsic u-bg-lightgray">
           <div class="thtrm-section__header u-max-width--half">
-            <h2 class="thtrm-section__subheading">Almost finished...</h2>
-            <p>We need to confirm your email address. To complete the subscription process, please click the link in the email we just sent you.</p>
-            <Link to="/" title="Back to website">Alrighty, back to website please!</Link>
+            <h2 class="thtrm-section__subheading">Awesome!</h2>
+            <p>Your subscription was successful.</p>
+            <Link to="/" title="Back to blog">Cool, take me back please!</Link>
           </div>
         </section>
       </Layout>
@@ -24,7 +23,7 @@ class FinishNewsletterSubscription extends React.Component {
   }
 }
 
-export default FinishNewsletterSubscription
+export default SubscriptionConfirmation
 
 export const pageQuery = graphql`
   query {
@@ -45,3 +44,4 @@ export const pageQuery = graphql`
     }
   }
 `
+
