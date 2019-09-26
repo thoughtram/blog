@@ -16,7 +16,7 @@ class BlogPostTemplate extends React.Component {
     return (
       <LayoutWithSignUp title={post.frontmatter.title}>
         <SubNav/>
-        <section className="thtrm-section">
+        <section className="thtrm-section u-distance-bottom-reset">
           <div className="thtrm-section__heading thtrm-article-header thtrm-section-constrained u-distance-bottom-reset">
             <div className="thtrm-metabar thtrm-article-header__metabar">
               <div className="thtrm-metabar__item thtrm-topic u-color--grey">
@@ -33,7 +33,7 @@ class BlogPostTemplate extends React.Component {
           {post.frontmatter.imageUrl && <Img sizes={post.frontmatter.imageUrl.childImageSharp.sizes} className="thtrm-ratio--stripe thtrm-article-thumb u-fill-space u-img-fit-height"/>}
         </section>
         
-        <section className="thtrm-section thtrm-section-constrained thtrm-article">
+        <section className="thtrm-section thtrm-section-constrained thtrm-article u-distance">
           <div className="thtrm-section__heading u-distance-reset" dangerouslySetInnerHTML={{ __html: post.html }} />
         </section>
         <section className="thtrm-section">
