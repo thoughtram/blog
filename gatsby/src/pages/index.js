@@ -62,6 +62,7 @@ export const pageQuery = graphql`
           fields {
             slug
           }
+          tableOfContents
           frontmatter {
             date(formatString: "DD MMMM")
             title

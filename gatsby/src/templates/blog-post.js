@@ -89,6 +89,7 @@ export const pageQuery = graphql`
       frontmatter {
         author
         title
+        author
         imageUrl {
           childImageSharp{
             sizes(maxWidth: 630) {

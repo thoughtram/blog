@@ -1,13 +1,31 @@
 .thtrm-media {
   align-items: center;
   display: grid;
-  grid-template-columns: 200px 1fr;
+  grid-template-rows: auto 1fr;
+  justify-content: center;
+  text-align: center;
+
+  @media screen and (min-width: $thtrm-media-tablet) {
+    align-items: center;    
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: initial;
+    justify-content: flex-start;
+    text-align: left;
+  }
   
   &__asset {
-    grid-column: 1;
+    margin: 0 auto;
+    max-width: 200px;
+
+    @media screen and (min-width: $thtrm-media-tablet) {
+      grid-column: 1;
+      max-width: initial;
+    }
   }
   &__body {
-    grid-column: 2;
+    @media screen and (min-width: $thtrm-media-tablet) {
+      grid-column: 2;
+    }
   }
 }
 
