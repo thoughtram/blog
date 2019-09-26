@@ -79,6 +79,16 @@
   margin-bottom: 32px;
 }
 
+// Caption
+.thtrm-article-caption {
+  margin-top: -16px;
+  font-size: .7rem;
+
+  a:after {
+    display: none;
+  }
+}
+
 // Header in Article (blog-post)
 .thtrm-article-header {
   justify-content: center;

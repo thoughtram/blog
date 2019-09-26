@@ -29,7 +29,7 @@ class BlogPostTemplate extends React.Component {
             <div className="thtrm-metabar thtrm-article-header__metabar">
               <div className="thtrm-metabar__item thtrm-topic u-color--grey">
                 <div className="thtrm-media-short">
-                  <img src="" className="thtrm-avatar" />
+                  <img src={author.img} className="thtrm-avatar" />
                   <p className="thtrm-media-short__body"><a href={twitterLink} className="u-link-plain">{author.name}</a></p>
                 </div>
               </div>
@@ -39,6 +39,7 @@ class BlogPostTemplate extends React.Component {
             <h1 className="thtrm-section__subheading u-distance-tiny">{post.frontmatter.title}</h1>
           </div>
           {post.frontmatter.imageUrl && <Img sizes={post.frontmatter.imageUrl.childImageSharp.sizes} className="thtrm-ratio--stripe thtrm-article-thumb u-fill-space u-img-fit-height"/>}
+          {post.frontmatter.imgCaption && <p className="thtrm-article-caption u-color--grey">{post.frontmatter.imgCaption}</p>}
         </section>
         
         <section className="thtrm-section thtrm-section-constrained thtrm-article u-distance">
@@ -97,6 +98,7 @@ export const pageQuery = graphql`
             }
           }
         }
+        imgCaption
         date(formatString: "DD MMMM YYYY")
         description
         categories
