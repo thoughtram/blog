@@ -13,12 +13,15 @@ class BlogPostTemplate extends React.Component {
     const siteTitle = this.props.data.site.siteMetadata.title
     const author = this.props.data.site.siteMetadata.authors
                         .find(a => a.id == post.frontmatter.author)
-    /* console.log(post.frontmatter.author); */
+    const category = post.frontmatter.categories[0];
+    const categoryLink = `/categories/${category}`;
     const { previous, next } = this.props.pageContext
 
     return (
       <LayoutWithSignUp title={post.frontmatter.title}>
-        <SubNav/>
+        <nav className="thtrm-nav-toc">
+         <Link to="/" title="Back to Blog">&larr; Back to Blog</Link>
+        </nav>
         <section className="thtrm-section">
           <div className="thtrm-section__heading thtrm-article-header thtrm-section-constrained u-distance-bottom-reset">
             <div className="thtrm-metabar thtrm-article-header__metabar">
@@ -29,7 +32,7 @@ class BlogPostTemplate extends React.Component {
                 </div>
               </div>
               <time dateTime={post.frontmatter.date} className="thtrm-metabar__item thtrm-topic u-color--grey">{post.frontmatter.date}</time>
-              {post.frontmatter.categories && <p className="thtrm-metabar__item thtrm-topic u-color--grey">{upperCaseFirst(post.frontmatter.categories[0])}</p>}
+              {post.frontmatter.categories && <p className="thtrm-metabar__item thtrm-topic u-color--grey"><Link to={categoryLink}>{upperCaseFirst(category)}</Link></p>}
             </div>
             <h1 className="thtrm-section__subheading u-distance-tiny">{post.frontmatter.title}</h1>
           </div>
