@@ -34,17 +34,7 @@ related_videos:
 
 If there was one feature in AngularJS that made us go "Wow", then it was probably its two-way data binding system. Changes in the application state have been automagically reflected into the view and vise-versa. In fact, we could build our own directives with two-way data bound scope properties, by setting a configuration value.
 
-{% include demos-and-videos-buttons.html post=page %}
-
 **Angular >= 2.x doesn't come with such a (built-in) two-way data binding anymore.** However, this doesn't mean we can't create directives that support two-way data binding. In this article we're going to explore how two-way data binding in Angular >= 2.x is implemented and how we can implement it in our own directives.
-
-<div id="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
-
 
 ## Two-way data binding in a nutshell
 

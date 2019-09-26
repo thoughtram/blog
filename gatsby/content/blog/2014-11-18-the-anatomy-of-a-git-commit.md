@@ -29,13 +29,6 @@ related_videos:
 
 Ever wondered what a Git commit looks like internally? Why it has those long revision identifiers? If they are unique or not? We are going to look at exactly that!
 
-<div class="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
-
 ## What's up with those long revision names?
 
 One of the first things people notice when they switch from other version controls to Git is that revisions use hard to remember 40 char long hashes. Why do that if you can just use revision names such as `r4711`, `r4712` etc? The short answer: Git has integrity. 

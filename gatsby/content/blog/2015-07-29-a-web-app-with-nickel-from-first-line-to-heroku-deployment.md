@@ -31,13 +31,6 @@ related_videos:
 
 Occasionally people ask about [Nickel](http://nickel.rs) projects that they can dig into to get a feel of some real world Nickel code. In case you never heard of Nickel, it's a web application server written in Rust. We thought it'd be nice to write a simple web application with Nickel, deploy it to Heroku and blog about it.
 
-<div class="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
-
 ##Defining the scope of the application
 
 What's better than dog fooding your project? Dog fooding two of your projects at once! In case you missed it, with the help of awesome contributors, we created [Clog](https://github.com/thoughtram/clog) which is a small tool to generate nice changelogs from semantic Git histories. Clog parses commit messages that follow the Angular commit message conventions which are quite popular among many projects such as [Angular](http://github.com/angular/angular), [angular-translate](https://github.com/angular-translate/angular-translate), [Hoodie](https://github.com/hoodiehq/hoodie-server), [Nickel](https://github.com/nickel-org/nickel.rs), [Clap.rs](https://github.com/kbknapp/clap-rs) and many more. Clog started as a fork of the Node.js based [conventional changelog](https://github.com/ajoslin/conventional-changelog) project but has since moved on to follow it's own ideas.

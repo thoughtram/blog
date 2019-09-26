@@ -45,13 +45,6 @@ In this article we want to learn the basics of Reinforcement Learning using a si
 
 We'll be taking things further in follow-up articles in which we'll do **Deep Reinforcement Learning** using a **neural net** instead of the Q-Table. Step by step we'll learn about the **explore-exploit dilemma**, **replay memory** and many other exciting things. But let's start simple!
 
-<div class="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
-
 ## Defining a simple game
 
 As our main goal is to learn Reinforcement Learning, let's keep the actual task that we want our machine to learn as simple as possible. In fact let's just make up a simple math game ourselves! We'll call it "Catch 5" and these are the rules:

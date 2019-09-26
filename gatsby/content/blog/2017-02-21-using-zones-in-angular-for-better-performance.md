@@ -36,13 +36,6 @@ That's why [Jordi Collell](https://twitter.com/galigan) pointed out that another
 
 **We want to say thank you for his contribution** and think that the solution he came up with deserves its own article. So in this article we're going to explore his plunk and explain how Jordi used Zones to make our demo application perform at almost 60 fps.
 
-<div class="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
-
 ## Seeing it in action
 
 Before we jump right into the code, let's first take a look at the demo plunk with the running application. As a quick recap: The idea was to render 10.000 draggable SVG boxes. Rendering 10.000 boxes is not a super sophisticated task, however, the challenge lies in making the dragging experience as smooth as possible. In other words, we aim for 60 fps (frames per second), which can be indeed challenging, considering that Angular re-renders all 10.000 boxes by default when an event has fired (that we bound to).

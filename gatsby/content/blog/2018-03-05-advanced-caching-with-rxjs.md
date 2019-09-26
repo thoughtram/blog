@@ -42,13 +42,6 @@ No matter what mechanism we use, a cache generally **improves the responsiveness
 
 In this post we'll develop an advanced caching mechanism with RxJS and the tools provided by Angular.
 
-<div class="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
-
 ## Motivation
 
 Every now and then there's this question popping up how to cache data in an Angular application that makes excessive use of Observables. Most people have a good understanding on how to cache data with Promises but feel overwhelmed when it comes to functional reactive programming, due to its complexity (large API), fundamental shift in mindset (from imperative to declarative) and the multitude of concepts. Hence, it can be hard to actually translate an existing caching mechanism based on Promises to Observables, especially if you want that mechanism to be a little bit more advanced.

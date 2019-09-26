@@ -33,13 +33,6 @@ I think we've been all through this. We see Angular template code the very first
 
 It also touches on the new template syntax in Angular and how it tends to solve the existing issues. However, it still seems a mystery for a lot of people and that's why we're going to explore the Angular's template syntax in this article. **Please note** that this is the first part of "Angular Template Syntax Demystified". There's going to be another article soon.
 
-<div class="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
-
 ## What it looks like
 
 Just to make sure that everyone knows what we are talking about when mentioning "weird" brackets and parentheses in our HTML, we're going to make a quick recap on what this template syntax looks like.

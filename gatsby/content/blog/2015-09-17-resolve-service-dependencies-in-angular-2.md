@@ -37,15 +37,6 @@ Angular applications can basically be written in any language, as long as it com
 
 This article discusses what this unexpected problem is, why it exists and how it can be solved.
 
-{% include demos-and-videos-buttons.html post=page %}
-
-<div class="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
-
 ## Injecting Service Dependencies
 
 Let's say we have a simple Angular component which has a `DataService` dependency. It could look something like this:

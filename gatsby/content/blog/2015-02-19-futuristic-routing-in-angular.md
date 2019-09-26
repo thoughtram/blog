@@ -39,13 +39,6 @@ It got even better, when the team announced that they plan to back port the new 
 
 That's right, at the time of writing this article, the new router hasn't been released yet. However, since we're following the latest developments of all Angular version 2.0.0 related projects actively on GitHub, we can't wait to share our thoughts on the new router with you. In this article we explore the new router and discuss it's concepts and features that we've all been waiting for!
 
-<div class="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
-
 ## The Routing we know
 
 Before we start off showing what the new router is going to look like, let's recap what kind of routing Angular comes with. The Angular source tries to be as modular as possible. Code components, that aren't necessary to get an Angular application running, but provide nice additional functionality that might be needed, are sliced into their own modules.

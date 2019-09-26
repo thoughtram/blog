@@ -46,13 +46,6 @@ A few weeks ago, Pascal Precht wrote a blog article on
 In this article, we want to discuss more advanced topics on DRY Angular testing techniques 
 using **Custom Matchers** and **Special Helpers**.
 
-<div class="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
-
 These are techniques to make your unit-tests incredibly easy to read and to maintain. And to achieve 
 our learning goals, there are three (3) important testing topics that we want to cover:
 

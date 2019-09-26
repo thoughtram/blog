@@ -51,8 +51,6 @@ That's why developers with more experience will tell us that we don't have to wr
 
 In this article, we will use that information, to actually write Angular code in ES5 with the latest version released at the time of writing (2.x).
 
-{% include demos-and-videos-buttons.html post=page %}
-
 ## Getting started with Angular in ES5
 
 If you've read our article on [building a zippy component](/angular/2015/03/27/building-a-zippy-component-in-angular-2.html) in Angular, you might know that nowadays, there's quite a bit of work to do, in order to get started if you want to write your application in ES6/TypeScript and take advantage of it's module system.

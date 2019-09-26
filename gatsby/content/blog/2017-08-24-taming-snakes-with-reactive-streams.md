@@ -49,13 +49,6 @@ The goal of this post is to learn how to think reactively by building a classic 
 
 The code is available on [Github](https://github.com/thoughtram/reactive-snake) and a live demo can be found [here](https://stackblitz.com/edit/reactive-snake?file=main.ts). I encourage you to clone the project, fiddle with it and implement cool new game features. If you do, ping me on [Twitter](https://twitter.com/elmd_).
 
-<div class="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
-
 ## The game
 
 As mentioned earlier, we are going to re-create Snake, a classic video game from the late 1970s. But instead of simply copying the game, we add a little bit of variation to it. Here's how the game works.

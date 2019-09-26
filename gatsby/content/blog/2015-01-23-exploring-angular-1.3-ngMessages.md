@@ -36,13 +36,6 @@ While the validators pipeline seems to make our life a lot easier and we as deve
 
 [ngMessages](https://docs.angularjs.org/api/ngMessages) is an entire new module that comes with a couple of directives to enhance the support for displaying messages within templates. Which means, even if in this article we're using it just for forms, we're not restricted to do so. But let's start right away and take a look at a scenario that `ngMessages` tries to solve.
 
-<div class="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
-
 ## Displaying messages in forms - The old way
 
 Providing a good user experience is always important. When building forms, it's pretty common to display messages to the user depending on the data that the user entered into the form fields. This, for example, could be a message that tells the user that a specific field is required to be filled out, or a message that says that the given data doesn't match a certain pattern.

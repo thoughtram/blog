@@ -49,15 +49,6 @@ Some people seem to be confused why Angular seems to favor the Observable abstra
 
 There are pretty good resources about the difference between Observables and Promises already out there. I especially like to highlight this free [7 minutes video](https://egghead.io/lessons/rxjs-rxjs-observables-vs-promises) by [Ben Lesh](https://twitter.com/benlesh) on egghead.io. Technically there are a couple of obvious differences like the *disposability* and *lazyness* of Observables. In this article we like to focus on some practical advantages that Observables introduce for server communication.
 
-{% include demos-and-videos-buttons.html post=page %}
-
-<div class="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
-
 ## The scenario
 
 Consider you are building a search input mask that should instantly show you results as you type.

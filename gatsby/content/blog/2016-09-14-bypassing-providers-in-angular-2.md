@@ -39,8 +39,6 @@ We covered a lot of different things regarding dependency injection in Angular. 
 
 This was then followed by a very interesting, collaborative discussion with the other students, as we all tried to come up with a solution - and it turned out, there **is** a solution. In this article we'd like to quickly demonstrate the problem and then show how we can use one of Angular's provider recipes to solve it in a very elegant way.
 
-{% include demos-and-videos-buttons.html post=page %}
-
 ## Understanding the Problem
 
 As discussed in other [articles](/angular/2015/05/18/dependency-injection-in-angular-2.html), dependencies in Angular are singletons inside their injector containers they belong to. If we need multiple dependency instances, we can take advantage of the injector tree, and provide different instances via different providers.

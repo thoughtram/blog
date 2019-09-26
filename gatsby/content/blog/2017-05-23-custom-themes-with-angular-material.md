@@ -37,13 +37,6 @@ The [Angular Material](http://material.angular.io) project comes with a built-in
 
 In this article we'll explore how theming is implemented, how pre-built themes can be used and how we can make our own custom components theme-able so they pick up the configured theme as well!
 
-<div class="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
-
 ## What is a theme?
 
 "Theme" can mean many different things to different people, so it's good to clarify what a theme in the context of Angular Material means. Let's get right into it.

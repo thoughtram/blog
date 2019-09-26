@@ -31,13 +31,6 @@ related_videos:
 
 In our article on [styling Angular components](/angular/2015/06/25/styling-angular-2-components.html) we learned how styles are applied to our component when defining them in different ways. We mentioned that all our component styles are appended to the document head, but usually would end up in the component's template, in case we use native Shadow DOM. This article explains not only how we can tell Angular to use native Shadow DOM, but also what the other view encapsulation solutions are, that the framework comes with and why they exist.
 
-<div class="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
-
 ## Understanding Shadow DOM
 
 Before we get started and take a look at how to use Angular's different view encapsulation types, we need to understand what Shadow DOM actually is, what it makes so awesome and why we want to use it. We won't have a super deep dive here, since there are a lot of great resources out there already. If you want to start from scratch and learn Shadow DOM 101, which you really should in case this is new to you, [Eric Bidelman](http://twitter.com/ebidel) has written one of the best [guides](http://www.html5rocks.com/en/search?q=Shadow+DOM) over at [html5rocks.com](http://html5rocks.com).

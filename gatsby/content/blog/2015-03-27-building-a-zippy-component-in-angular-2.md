@@ -48,16 +48,6 @@ related_videos:
 
 We are following the development of Angular 2.0.0 since the beginning on and are also contributing to the project. Just recently we've built a simple zippy component in Angular and in this article we want to show you how.
 
-{% include demos-and-videos-buttons.html post=page %}
-
-
-<div class="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
-
 ## Getting started with Angular 2.0.0
 
 There are several options today to get started with Angular. For instance, we can go to [angular.io](http://angular.io) and use the [quickstart](https://angular.io/docs/js/latest/quickstart.html) guide. Or, we can install the [Angular CLI](http://cli.angulario), which takes care of scaffolding, building and serving Angular applications. In this article we will use <s><a href="http://twitter.com/pkozlowski_os" title="Pawel Kozlowski on Twitter">Pawel Kozlowski's</a> <a href="https://github.com/pkozlowski-opensource/ng2-play" title="ng2-play on GitHub">ng2-play repository</a></s> the Angular CLI, but again, you can use whatever suits you.

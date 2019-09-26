@@ -42,15 +42,6 @@ Angular comes with three different ways of building forms in our applications. T
 
 Hearing all these different solutions, it's kind of natural that there are also probably many different tools to reach the goal. This can be sometimes confusing and with this article we want to clarify a subset of form directives by focussing on template-driven forms in Angular.
 
-{% include demos-and-videos-buttons.html post=page %}
-
-<div class="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
-
 ## Activating new Form APIs
 
 The form APIs have changed in RC2 and in order to not break all existing apps that have been built with RC1 and use forms, these **new APIs are added on top** of the existing ones. That means, we need to tell Angular explicitly which APIs we want to use (of course, this will go away in the final release).

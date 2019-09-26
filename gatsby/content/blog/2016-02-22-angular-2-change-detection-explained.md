@@ -34,13 +34,6 @@ related_videos:
 
 Now let's take a look at this beast.
 
-<div class="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
-
 ## What's Change Detection anyways?
 
 The basic task of change detection is to take the internal state of a program and make it somehow visible to the user interface. This state can be any kind of objects, arrays, primitives, ... just any kind of JavaScript data structures.

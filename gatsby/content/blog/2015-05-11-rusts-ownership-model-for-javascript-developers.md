@@ -37,13 +37,6 @@ While we wrote a lot about Angular and Git in this blog already, we didn't actua
 
 Let's change that and start with baby steps. Many readers of this blog are familiar with JavaScript so let's explore a core concept of Rust from the perspective of a JavaScript developer.
 
-<div class="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
-
 ## Memory management
 
 Most languages (JavaScript included) use a garbage collector to ensure memory safety.

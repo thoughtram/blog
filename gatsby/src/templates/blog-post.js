@@ -15,6 +15,7 @@ class BlogPostTemplate extends React.Component {
                         .find(a => a.id == post.frontmatter.author)
     const category = post.frontmatter.categories[0];
     const categoryLink = `/categories/${category}`;
+    const twitterLink = `https://twitter.com/${author.twitter}`;
     const { previous, next } = this.props.pageContext
 
     return (
@@ -28,7 +29,7 @@ class BlogPostTemplate extends React.Component {
               <div className="thtrm-metabar__item thtrm-topic u-color--grey">
                 <div className="thtrm-media-short">
                   <img src="" className="thtrm-avatar" />
-                  <p className="thtrm-media-short__body">{author.name}</p>
+                  <p className="thtrm-media-short__body"><a href={twitterLink}>{author.name}</a></p>
                 </div>
               </div>
               <time dateTime={post.frontmatter.date} className="thtrm-metabar__item thtrm-topic u-color--grey">{post.frontmatter.date}</time>
