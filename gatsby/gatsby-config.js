@@ -1,3 +1,4 @@
+const authors = require('./authors');
 const autoprefixer = require('autoprefixer');
 
 const title = 'Articles by thoughtram';
@@ -8,6 +9,7 @@ module.exports = {
   siteMetadata: {
     title,
     author,
+    authors,
     description,
     siteUrl: `https://blog.thoughtram.io`,
     social: {
@@ -83,6 +85,6 @@ module.exports = {
           camelCase: false,
         }
       }
-    },
+    }
   ],
 }

@@ -11,6 +11,9 @@ class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
+    const author = this.props.data.site.siteMetadata.authors
+                        .find(a => a.id == post.frontmatter.author)
+    /* console.log(post.frontmatter.author); */
     const { previous, next } = this.props.pageContext
 
     return (
@@ -21,8 +24,8 @@ class BlogPostTemplate extends React.Component {
             <div className="thtrm-metabar thtrm-article-header__metabar">
               <div className="thtrm-metabar__item thtrm-topic u-color--grey">
                 <div className="thtrm-media-short">
-                  <Img sizes={post.frontmatter.imageUrl.childImageSharp.sizes} className="thtrm-avatar" />
-                  <p className="thtrm-media-short__body">Tim Hartmann</p>
+                  <img src="" className="thtrm-avatar" />
+                  <p className="thtrm-media-short__body">{author.name}</p>
                 </div>
               </div>
               <time dateTime={post.frontmatter.date} className="thtrm-metabar__item thtrm-topic u-color--grey">{post.frontmatter.date}</time>
@@ -66,7 +69,12 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
-        author
+        authors {
+          id
+          name
+          twitter
+          img
+        }
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
@@ -74,6 +82,7 @@ export const pageQuery = graphql`
       excerpt(pruneLength: 160)
       html
       frontmatter {
+        author
         title
         imageUrl {
           childImageSharp{
@@ -82,7 +91,7 @@ export const pageQuery = graphql`
             }
           }
         }
-        date(formatString: "DD. MMMM YYYY")
+        date(formatString: "DD MMMM YYYY")
         description
         categories
       }
