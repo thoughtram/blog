@@ -41,8 +41,6 @@ related_videos:
 
 In a [previous post](/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html) we showed how to leverage Observables, and especially their strength of composability to ease complicated async tasks. Today we want to take it one step further.
 
-{% include demos-and-videos-buttons.html post=page %}
-
 As a recap, we built a simple Wikipedia search demo consisting of a `WikipediaService` to query a JSONP API.
 
 ```js

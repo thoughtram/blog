@@ -129,3 +129,9 @@
   }
 }
 
+
+.u-link-plain {
+  &:after {
+    display: none;
+  }
+}

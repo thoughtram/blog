@@ -34,13 +34,6 @@ In version 1.2, Angular introduced a new `controllerAs` syntax that made scoping
 
 Even if it's nice that we are able to use that syntax in pretty much every case where a controller comes into play, it turned out that in version 1.2, there's a little quirk when using it with directives that have an isolated scope. But before we get to the actual problem, let's recap `controllerAs` in general first, to get an idea of what problems it solves and how to use it, so that we are all on the same page.
 
-<div class="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
-
 ## `controllerAs` as Namespace
 
 Who of us did not run into the problem that, when having nested scopes created by nested controllers, scope properties that have the same name as properties on the parent scope, shadow that value of the parent scope property due to JavaScript's prototypical inheritance model?

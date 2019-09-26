@@ -36,13 +36,6 @@ Forms are part of almost every web application out there. Angular strives for ma
 
 We can easily extend the browser vocabulary with additional custom validators and in this article we are going to explore how to do that.
 
-<div class="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
-
 ## Built-in Validators
 
 Angular comes with a subset of built-in validators out of the box. We can apply them either declaratively as directives on elements in our DOM, in case we're building a <strong>template-driven</strong> form, or imperatively using the `FormControl` and `FormGroup` or `FormBuilder` APIs, in case we're building a <strong>reactive</strong> forms. If you don't know what it's all about with template-driven and reactive forms, don't worry, we have an articles about both topics [here](/angular/2016/03/21/template-driven-forms-in-angular-2.html) and [here](/angular/2016/06/22/model-driven-forms-in-angular-2.html).

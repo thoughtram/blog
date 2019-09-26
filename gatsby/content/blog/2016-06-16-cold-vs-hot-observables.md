@@ -43,15 +43,6 @@ One of the most exciting topics around Angular is its relationship to Observable
 
 There's one particular area of Observables that we don't explicitly touch on in our workshop but that keeps coming up in questions every single time that we teach them.
 
-{% include demos-and-videos-buttons.html post=page %}
-
-<div class="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
-
 ## Hot vs Cold Observables
 
 Understanding the nature of hot and cold Observables is a crucial part to master Observables. Before we try to explore the topic through some practical examples, let's read through the [definition](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/creating.md#cold-vs-hot-observables) from the RxJS project itself:

@@ -1,13 +1,14 @@
 import React from "react"
+import { Link } from "gatsby"
 
 class SubNav extends React.Component {
   render() {
     return (
       <nav className="thtrm-nav-toc">
         <ul>
-          <li><a href="#section:training-courses">Rust</a></li>
-          <li><a href="#section:training-courses">Angular</a></li>
-          <li><a href="#section:training-courses">Git</a></li>
+          <li><Link to="/categories/rust">Rust</Link></li>
+          <li><Link to="/cateogories/angular">Angular</Link></li>
+          <li><Link to="/cateogries/git">Git</Link></li>
         </ul>
       </nav>
     )

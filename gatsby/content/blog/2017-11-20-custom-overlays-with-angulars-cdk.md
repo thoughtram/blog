@@ -43,13 +43,6 @@ In this post, we'll use the CDK to build a Google Drive-like custom overlay that
 
 ![overlay preview](../assets/images/overlay_preview.gif)
 
-<div class="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
-
 ## The building blocks
 
 Let's start simple and work our way up to the final, fully-fledged solution which will have a very similar API as the `MatDialog` service provided by Angular Material. It's not important to know exactly how the `MatDialog` works but it's definitely helpful. If this is new to you, we recommend to check out our post on [Easy Dialogs with Angular Material](/angular/2017/11/13/easy-dialogs-with-angular-material.html).

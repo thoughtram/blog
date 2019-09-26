@@ -45,8 +45,6 @@ A couple of weeks ago we wrote about how to write [Angular code in ES5](/angular
 
 In this article we're going to take a closer look at the ES5 syntax improvements and how they make upgrading even easier.
 
-{% include demos-and-videos-buttons.html post=page %}
-
 ## Angular in ES5 before syntactical improvements
 
 In order to understand the syntactical improvements in ES5 when building Angular applications, we have to understand what the code looked like before. Angular uses decorators to add meta data to it's application code, which in TypeScript (or ES7) looks something like this:

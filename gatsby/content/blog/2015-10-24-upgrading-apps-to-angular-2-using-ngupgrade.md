@@ -37,13 +37,6 @@ Earlier this year however, the Angular team has made an [official announcement](
 
 Meanwhile, first implementations of `ngUpgrade` have landed in the code base and it's time to start digging into it. In this article we're going to explore what we can do to prepare for an upgrade, and of course how we eventually use `ngUpgrade` to upgrade our Angular application.
 
-<div class="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
-
 ## Why upgrade?
 
 One thing that seems to be a bit left out when people get scared that they can't upgrade to Angular >= 2.x for various reasons, is to think about if an upgrade is needed in the first place. Of course, Angular >= 2.x is the next major version of the framework and it will surely be the version we want to go with when building web applications in the future.

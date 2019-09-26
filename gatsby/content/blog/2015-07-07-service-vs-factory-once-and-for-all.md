@@ -34,13 +34,6 @@ Wait, what? Yet another article that answers the big question: Service vs Factor
 This article explains once and for all the difference between services and factories and why **we want to prefer services over factories**.
 
 
-<div class="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
-
 ## The difference between services and factories
 
 Okay, so what is the difference between a service and a factory in AngularJS? As we all know, we can define a service like this:

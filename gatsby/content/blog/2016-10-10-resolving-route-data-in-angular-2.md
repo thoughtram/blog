@@ -43,15 +43,6 @@ Not long ago, we wrote about [Navigation Guards](/angular/2016/07/18/guards-in-a
 
 However, one thing that these guards don't allow us to do, is to ensure that certain data is loaded before a route is actually activated. For example, in a contacts application where we're able to click on a contact to view a contact's details, the contact data should've been loaded before the component we're routing to is instantiated, otherwise we might end up with a UI that already renders its view and a few moments later, the actual data arrives (of course, there are many ways to get around this). **Route resolvers** allow us to do exactly that and in this article we're going to explore how they work!
 
-{% include demos-and-videos-buttons.html post=page %}
-
-<div class="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
-
 ## Understanding the problem
 
 Let's just stick with the scenario of a contacts application. We have a route for a contacts list, and a route for contacts details. Here's what the route configuration might look like:

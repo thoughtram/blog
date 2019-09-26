@@ -34,14 +34,6 @@ related_videos:
 
 You sure heard about Angular's `AsyncPipe` haven't you? It's this handy little pipe that we can use from within our templates so that we don't have to deal with unwrapping data from Observables or Promises imperatively. Turns out the `AsyncPipe` is full of little wonders that may not be obvious at first sight. In this article we like to shed some light on the inner workings of this useful little tool.
 
-
-<div class="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
-
 ## Subscribing to long-lived Observables
 
 Often when we think about the `AsyncPipe`, we only think about values that resolve from some http call. We issue an http call, get an `Observable<Response>` back, apply some transformations (e.g. `map(...).filter(...)`) and finally expose an Observable to the template of our component. Here is what that typically looks like.

@@ -36,15 +36,6 @@ In [Understanding Zones](/angular/2016/01/22/understanding-zones.html), we explo
 
 **UPDATE:** We've published another article that discusses how to [use Zones to make your Angular apps faster](/angular/2017/02/21/using-zones-in-angular-for-better-performance.html)
 
-{% include demos-and-videos-buttons.html post=page %}
-
-<div class="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
-
 ## Zones are a perfect fit for Angular
 
 It turns out that, the problem that Zones solve, plays very nicely with what Angular needs in order to perform change detection in our applications. Did you ever ask yourself when and why Angular performs change detection? What is it that tells Angular "Dude, a change probably occurred in my application. Can you please check?".

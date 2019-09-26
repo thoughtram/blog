@@ -33,13 +33,6 @@ We all know that internationalization is important when it comes to bigger apps,
 
 In fact, I was honoured to give a talk on that topic at this year's [ng-conf](http://ng-conf.org) with [Chirayu Krishnappa](http://twitter.com/chirayuk) and you can watch the recording of it right [here](https://www.youtube.com/watch?v=iBBkCA1M-mc). This article is a detailed write-up based on the talk and I hope it will answer all the questions it raised.
 
-<div class="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
-
 ## Understanding the process of i18n
 
 When I started working on [angular-translate](http://angular-translate.github.io) two years ago, i18n to me, was really just about making it possible that the user of an application is able to change the locale through the user interface. So what is needed? Well, we have our application, we replace all strings with an abstraction that takes care of displaying the actual messages of a certain locale later at runtime, tokenize all our existing messages and write them into JSON so we can easily add new messages - Done!

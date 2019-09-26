@@ -36,13 +36,6 @@ One component that's often needed in different applications but not trivial to i
 
 In this article we'll take a look at how to leverage Angular Material's built-in `MatDialog` to create easy to maintain dialogs and modals in our apps!
 
-<div class="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
-
 ## Motivation
 
 The best way to learn a new skill is when we have a concrete use case for the thing we want to learn. For the sake of this article, we'll use a scenario that has actually seen the light of a real world production app.

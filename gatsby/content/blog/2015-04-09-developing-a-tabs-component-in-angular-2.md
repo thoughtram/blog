@@ -39,17 +39,7 @@ Just recently, we wrote about how to [build a zippy component](/angular/2015/03/
 
 As a follow up, we now want to build yet another component that is widely used in a lot of applications: Tabs. Building tabs has always been the de facto example when it comes to explaining directive controllers in Angular. Angular >= 2.x does not have the concept of directive controllers, because the component itself is the execution context. It also makes it much easier to access other directives and components through dependency injection. However, you **do** want to [use directive controllers](/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html) in Angular 1.x in order to make the migration process to Angular >= 2.x easier.
 
-{% include demos-and-videos-buttons.html post=page %}
-
 Let's start right away and learn how easy it is to build a tabs component in Angular without the confusing relationship between directive link functions and controllers. We'll skip the installation part, since that was explored in the other article.
-
-
-<div class="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
 
 ## What it should look like
 

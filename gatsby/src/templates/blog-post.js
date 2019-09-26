@@ -11,22 +11,30 @@ class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
+    const author = this.props.data.site.siteMetadata.authors
+                        .find(a => a.id == post.frontmatter.author)
+    const category = post.frontmatter.categories[0];
+    const categoryLink = `/categories/${category}`;
+    const twitterLink = `https://twitter.com/${author.twitter}`;
     const { previous, next } = this.props.pageContext
 
     return (
       <LayoutWithSignUp title={post.frontmatter.title}>
         <SubNav/>
+        <nav className="thtrm-nav-toc">
+         <Link to="/" title="Back to Blog">&larr; Back to Blog</Link>
+        </nav>
         <section className="thtrm-section u-distance-bottom-reset">
           <div className="thtrm-section__heading thtrm-article-header thtrm-section-constrained u-distance-bottom-reset">
             <div className="thtrm-metabar thtrm-article-header__metabar">
               <div className="thtrm-metabar__item thtrm-topic u-color--grey">
                 <div className="thtrm-media-short">
-                  <Img sizes={post.frontmatter.imageUrl.childImageSharp.sizes} className="thtrm-avatar" />
-                  <p className="thtrm-media-short__body">Tim Hartmann</p>
+                  <img src="" className="thtrm-avatar" />
+                  <p className="thtrm-media-short__body"><a href={twitterLink} className="u-link-plain">{author.name}</a></p>
                 </div>
               </div>
               <time dateTime={post.frontmatter.date} className="thtrm-metabar__item thtrm-topic u-color--grey">{post.frontmatter.date}</time>
-              {post.frontmatter.categories && <p className="thtrm-metabar__item thtrm-topic u-color--grey">{upperCaseFirst(post.frontmatter.categories[0])}</p>}
+              {post.frontmatter.categories && <p className="thtrm-metabar__item thtrm-topic u-color--grey"><Link to={categoryLink} className="u-link-plain">{upperCaseFirst(category)}</Link></p>}
             </div>
             <h1 className="thtrm-section__subheading u-distance-tiny">{post.frontmatter.title}</h1>
           </div>
@@ -66,7 +74,12 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
-        author
+        authors {
+          id
+          name
+          twitter
+          img
+        }
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
@@ -74,6 +87,7 @@ export const pageQuery = graphql`
       excerpt(pruneLength: 160)
       html
       frontmatter {
+        author
         title
         imageUrl {
           childImageSharp{
@@ -82,7 +96,7 @@ export const pageQuery = graphql`
             }
           }
         }
-        date(formatString: "DD. MMMM YYYY")
+        date(formatString: "DD MMMM YYYY")
         description
         categories
       }

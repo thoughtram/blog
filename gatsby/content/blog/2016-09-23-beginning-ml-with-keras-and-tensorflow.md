@@ -38,14 +38,6 @@ Companies such as Google, NVIDIA or [Comma.ai](http://comma.ai/) are using neura
 
 We are happy to jump on this exciting journey and we are even happier to share our findings with you.
 
-<div class="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
-
-
 ## What's all the buzz about AI and Machine Learning
 
 If you like to learn about the difference between AI, Machine Learning and Deep Learning we recommend [this article](https://blogs.nvidia.com/blog/2016/07/29/whats-difference-artificial-intelligence-machine-learning-deep-learning-ai/) by NVIDIA. For the rest of this article we will use these terms interchangeably.

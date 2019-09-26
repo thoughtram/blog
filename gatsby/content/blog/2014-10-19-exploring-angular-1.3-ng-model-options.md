@@ -39,13 +39,6 @@ We've written a few other articles on 1.3 already. Here's a list:
 - [Exploring Angular 1.3 - Angular-hint](http://blog.thoughtram.io/angularjs/2014/11/06/exploring-angular-1.3-angular-hint.html)
 
 
-<div class="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
-
 
 `ngModelOptions` allows us to control how `ngModel` updates are done. This includes things like updating the model only after certain events are triggered or a debouncing delay, so that the view value is reflected back to the model only after a timer expires. To get an idea of what that actually means, let's start with the probably simplest use case that sets up a two-way binding using an `input` element that has a `ngModel` directive applied:
 

@@ -42,16 +42,6 @@ A long time ago we've written about [routing in Angular](/angular/2015/06/16/rou
 
 In this article we want to take a first look at the new and better APIs, touching on the most common scenarios when it comes to routing. We're going to explore how to define routes, linking to other routes, as well as accessing route parameters. Let's jump right into it!
 
-{% include demos-and-videos-buttons.html post=page %}
-
-<div class="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
-
-
 ## Defining Routes
 
 Let's say we want to build a contacts application (in fact, this is what we do in our [Angular Master Class](http://thoughtram.io/angular-master-class.html)). Our contacts application shows a list of contacts, which is our `ContactsListComponent` and when we click on a contact, we navigate to the `ContactsDetailComponent`, which gives us a detailed view of the selected contact.

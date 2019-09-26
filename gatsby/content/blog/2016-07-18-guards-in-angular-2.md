@@ -38,8 +38,6 @@ In our last article, [Routing in Angular revisited](/angular/2016/06/14/routing-
 
 Protecting routes is a very common task when building applications, as we want to prevent our users from accessing areas that they're not allowed to access, or, we might want to ask them for confirmation when leaving a certain area. Angular's router provides a feature called **Navigation Guards** that try to solve exactly that problem. In this article, we'd like to take a look at the different types of guards and how to implement them for actual use cases.
 
-{% include demos-and-videos-buttons.html post=page %}
-
 ## Guard Types
 
 There are four different guard types we can use to protect our routes:

@@ -30,7 +30,7 @@ As I'm writing this I'm sitting in the train from Berlin to Hanover after return
 
 Reflecting about how we prepared the workshop it kind of makes me feel honored to run this company with my friend Pascal and be on this exciting journey with him.
 
-![Pascal at the Angular Days](/assets/pascal_angular_days.jpg)
+![Pascal at the Angular Days](../assets/images/pascal_angular_days.jpg)
 
 Pascal is that kind of person who cares about all the little details. He is **very** passionate about all kind of web technologies and makes a huge effort to keep up with the rapid pace of innovation.
 

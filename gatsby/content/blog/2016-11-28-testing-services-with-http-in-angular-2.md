@@ -34,13 +34,6 @@ related_videos:
 
 Testing is important. That's why Angular comes with a testing story out-of-the-box. Due to its dependency injection system, it's fairly easy to mock dependencies, swap out Angular modules, or even create so called "shallow" tests, which enable us to test Angular components, without actually depending on their views (DOM). In this article we're going to take a look at how to unit test a service that performs http calls, since there's a little bit more knowledge required to make this work.
 
-<div class="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
-
 ## The Service we want to test
 
 Let's start off by taking a look at the service want to test. Sure, sometimes we actually want to do test-driven development, where we **first** create the test and **then** implement the actual service. However, from a learning point of view, it's probably easier to grasp testing concepts when we first explore the APIs we want to test.

@@ -41,13 +41,6 @@ In this article we'll briefly look at different ways to approach motion in moder
 
 Let's start with a deeper breath of how animations in the web generally work.
 
-<div class="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
-
 ## Understanding state transitions
 
 With animations we aim to guide users between views so they feel comfortable using the site, draw attention to some parts of application, increase spacial awareness, indicate if data is being loaded, and probably the most important point - **smoothly transition users between states**. All this could be achieved by using CSS (declarative) or JavaScript (mostly imperative) to animate certain elements within your page.

@@ -42,13 +42,6 @@ In this post, we'll pick up from where we left off and implement a few additiona
 
 Let's dive right into it!
 
-<div class="thtrm-toc is-sticky" markdown="1">
-### TABLE OF CONTENTS
-{:.no_toc}
-* TOC
-{:toc}
-</div>
-
 ## Adding keyboard support
 
 Adding keyboard support is easy. All we need to do is to use the `@HostListener()` decorator. This decorator is a **function decorator** that accepts an **event name** as an argument. Let's use it inside our `FilePreviewOverlayComponent` to listen to `keydown` events on the HTML Document, so that we can close the overlay whenever the escape button was pressed.
