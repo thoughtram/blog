@@ -33,6 +33,12 @@
     margin-top: 24px;
     font-size: .8rem;
 
+    code {
+      background-color: var(--thtrm-color-lighterblue);
+      color: var(--thtrm-color-midblue);
+      text-shadow: none;
+    }
+
     &:first-child {
       margin-top: 0;
     }
