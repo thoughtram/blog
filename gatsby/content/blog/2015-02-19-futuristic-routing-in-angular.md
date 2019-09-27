@@ -188,9 +188,7 @@ And here the corresponding template `welcome.html`:
 <h1>Welcome!</h1>
 ```
 
-The component is now ready to be loaded and instantiated. Let's see the code in action:
-
-{% include plunk.html url="http://embed.plnkr.co/uc2RuLRa1aYmRI2THRcO/preview" %}
+The component is now ready to be loaded and instantiated. 
 
 ## Adding behaviour to components
 
@@ -218,9 +216,7 @@ In our component template, we can access the controller properties via the `welc
 <button ng-click="welcome.changeName()">Change Name!</button>
 ```
 
-If you're not familiar with the `controller as` syntax. you might want to check out our article on [Binding to Directive Controllers](/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html). Here's our updated example as runnable app:
-
-{% include plunk.html url="http://embed.plnkr.co/ie9d2F/preview" %}
+If you're not familiar with the `controller as` syntax. you might want to check out our article on [Binding to Directive Controllers](/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html). 
 
 ## Linking to other components
 
@@ -265,9 +261,7 @@ Now, in order to get there from our `welcome` component, all we have to do is to
 <p><a ng-link="user">User View</a></p>
 ```
 
-As you can see, we don't have to set an `href` attribute, since `routerLink` takes care of that. The directive itself takes a component name to navigate to once the link is clicked, which in our case is `user`. Again, here the running code:
-
-{% include plunk.html url="http://embed.plnkr.co/dds8KE/preview" %}
+As you can see, we don't have to set an `href` attribute, since `routerLink` takes care of that. The directive itself takes a component name to navigate to once the link is clicked, which in our case is `user.
 
 ## Linking with dynamic parameters
 
@@ -308,11 +302,6 @@ Okay cool. But how do we **link** to a component that takes parameters? We've le
 <button ng-click="welcome.changeName()">Change Name!</button>
 <p><a ng-link="user({ userId: 3 })">User View</a></p>
 ```
-
-You can see it in action right here:
-
-{% include plunk.html url="http://embed.plnkr.co/2C40t4/preview" %}
-
 ## Sibling Components
 
 What we've done so far is not a very complex scenario, nor does it show the advantage over Angular's basic routing with `ngRoute`. There are other scenarios where the power of the new router really shines. One of them is being able to have sibling components per route. Exactly, we're finally able to load more than one component at a time!

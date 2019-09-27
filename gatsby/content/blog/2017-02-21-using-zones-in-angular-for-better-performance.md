@@ -40,14 +40,6 @@ That's why [Jordi Collell](https://twitter.com/galigan) pointed out that another
 
 Before we jump right into the code, let's first take a look at the demo plunk with the running application. As a quick recap: The idea was to render 10.000 draggable SVG boxes. Rendering 10.000 boxes is not a super sophisticated task, however, the challenge lies in making the dragging experience as smooth as possible. In other words, we aim for 60 fps (frames per second), which can be indeed challenging, considering that Angular re-renders all 10.000 boxes by default when an event has fired (that we bound to).
 
-Here's the demo with the **unoptimized** version:
-
-{% include plunk.html url="https://embed.plnkr.co/UBI5Sc5eDMpkDDkJfeGX/" %}
-
-And here's Jordi's **optimized** plunk, which uses Angular's `NgZone` APIs:
-
-{% include plunk.html url="https://embed.plnkr.co/GIf9sPuuZRLKwYK7mTfr/" %}
-
 Even though the difference is rather subtle, the optimized version performs much better in terms of JavaScript execution per frame. We'll take a look at some numbers later, but let's quickly recap Zones and then dive into the code and discuss how Jordi used Angular's `NgZone` APIs to achieve this performance first.
 
 ## The idea of Zones

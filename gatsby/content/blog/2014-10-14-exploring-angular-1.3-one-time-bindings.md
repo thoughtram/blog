@@ -98,10 +98,6 @@ Clicking the button assigns the string `Christoph` to `name` which triggers a [$
 
 This happens because when a `$digest` cycle is triggered, Angular processes all registered watchers on the current scope and its children and checks for model mutations and calls dedicated watch listeners until the model is stabilized and no more listeners are fired. Once the `$digest` loop finishes the execution, the browser re-renders the DOM and reflects the changes.
 
-Here's a running example of the code described above:
-
-{% include plunk.html url="http://embed.plnkr.co/MGz5NrK1HKOy62fyVtmU/preview" %}
-
 ## The problem with too many watchers
 
 Now that we have a picture of how the databinding mechanism in Angular actually works, we might wonder why there is a feature for one-time binding.
@@ -137,8 +133,6 @@ This works for all kind of typical Angular expressions you're used to use throug
 ```
 
 
-Okay, let's see it in action. We already updated the `name` to `::name` to ensure the one-time binding. The rest of the code just stays as it is to demonstrate that our one-time binding works. Remember the button we added to update the `name` to `Christoph`? Well, try it again:
-
-{% include plunk.html url="http://embed.plnkr.co/WHHnp4KWKmd3O5twbzKV/preview" %}
+Okay, let's see it in action. We already updated the `name` to `::name` to ensure the one-time binding. The rest of the code just stays as it is to demonstrate that our one-time binding works. Remember the button we added to update the `name` to `Christoph`? Well, try it again.
 
 Perfect. `name` won't ever change again. `Pascal` is a much better name anyway, right?

@@ -35,11 +35,9 @@ Machine Learning is all about having a piece of software learn to solve tasks th
 
 Most forms of Machine learning still relies on human input though. In particular, humans are needed to select and provide lots of data for the machine to learn from. In contrast, Reinforcement Learning takes the idea another step forward. Instead of providing datasets, we let the machine take actions in the environment that we want it to master and give it feedback on its actions in the form of rewards or punishment. In other words, the machine has no clue about the task it is trying to solve. It basically starts acting randomly at first, but develops a policy to solve the task over time. Doesn't that sound exciting?
 
-<div class="thtrm-info">
 <h3>A word of warning</h3>
 
-<p>This post aims to provide an easy entry for beginners who are new to Reinforcement Learning or even Machine Learning in general. We may oversimplify or sacrifice performance in certain areas to achieve this goal. We'll also choose a simpler vocabulary over a more scientific one whenever possible.</p>
-</div>
+This post aims to provide an easy entry for beginners who are new to Reinforcement Learning or even Machine Learning in general. We may oversimplify or sacrifice performance in certain areas to achieve this goal. We'll also choose a simpler vocabulary over a more scientific one whenever possible.
 
 In this article we want to learn the basics of Reinforcement Learning using a simple **Q-Table** approach. Don't worry if that doesn't ring a bell yet. We'll learn what all of this means as we go.
 
@@ -253,14 +251,6 @@ Playing -2
 You won!
 ##############################################
 ```
-
-
-Ok, great, feel free to checkout this embedded demo to familiarize yourself with the code at this point.
-
-
-{% include plunk.html url="https://machinelabs.ai/embedded/catch-5/1519735417824-BJzFfAGdG?tab=console&file=main.py" %}
-
-
 
 We'll keep the `play` method to have an API that we can call that gives us visual feedback when the agent plays the game.
 
@@ -558,10 +548,6 @@ You won!
 ##############################################
 ```
 However this is just becaue it was trained on 100 randomly played games. We could increase the number of games the agent performs for the training or fine tune our training strategy to fix that!
-
-You can check out the final code of the agent playing perfectly in this embedded lab.
-
-{% include plunk.html url="https://machinelabs.ai/embedded/catch-5/1519742329241-H1-K6kQ_z?tab=console&file=main.py" %}
 
 Play with the code, fork it and try solving other challenges!
 

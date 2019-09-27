@@ -41,7 +41,7 @@ Over the last 12 months we have given workshops and talks in countries such as t
 
 **As of today we are proud and happy to announce that from the 1st of September on we are going to work full-time for our own company thoughtram**.
 
-![Christoph & Pascal](/assets/christoph_pascal.jpg)
+![Christoph & Pascal](../assets/images/christoph_pascal.jpg)
 
 We would like to thank our previous co-workers for the wonderful time spent together. It was great to help CouchCommerce to get where it is right now. It has a bright future ahead and continues to be an awesome company to work for (hint: they are always looking for talents to join the team!).
 

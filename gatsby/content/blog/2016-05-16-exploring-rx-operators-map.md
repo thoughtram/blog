@@ -95,10 +95,6 @@ let obs = Rx.Observable.fromEvent(demoInput, 'input')
 
 Of course, we could have done the same in the first `map` call. But it's sometimes more readable to break things into multiple steps. Notice that often we also use different operators in between of two `map` calls (e.g to filter something out).
 
-If you like to play a bit with the operator yourself, here is a working demo.
-
-{% include plunk.html url="http://embed.plnkr.co/iWR9b2s4wd0pZSOEfHuR/" %}
-
 At this point, you may think that Observables are really just a minor enhancement on the Observer or Promise patterns... better suited to handle a sequence of events rather than a single callback. And the `.map()` function certainly does not - at first glance - seem to offer any added-value. The power of Observables is revealed when you start using Rx operators to transform, combine, manipulate, and work with sequences of items emitted by Observables.
 
 These operators allow you to compose asynchronous sequences together in a declarative manner with all the efficiency benefits of callbacks but without the drawbacks of nesting callback handlers that are typically associated with asynchronous systems.
