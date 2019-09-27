@@ -1,7 +1,6 @@
 import React from "react"
 import SEO from "./seo"
 import Header from './Header';
-import SignUpForm from './SignUpForm';
 import Footer from './Footer';
 import SvgIcons from './SvgIcons';
 

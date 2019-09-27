@@ -22,7 +22,6 @@ const Categories = ({ pageContext, data }) => {
             {edges.map(({ node }) => {
               const { slug } = node.fields
               const { title } = node.frontmatter
-              const { description } = node.frontmatter
               const { summary } = node.frontmatter
               const { categories } = node.frontmatter
               const { imageUrl } = node.frontmatter

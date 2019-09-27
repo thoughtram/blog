@@ -54,11 +54,6 @@ As our main goal is to learn Reinforcement Learning, let's keep the actual task 
 
   3. We can only play a maximum of three turns. If we don't get to 5 within three turns, we have lost the game. Since the starting number is between 1 and 12, it is always possible to win the game if we don't screw up the basic math :)
 
-Before we move on, let's get familiar with the game itself. We've created a browser based version that you can play with right here:
-
-{% include plunk.html url="https://stackblitz.com/edit/angular-u1rnbn?embed=1&file=game/game.ts&hideExplorer=1" %}
-
-
 Our game may turn out like this and we win in two turns.
 
 >**Game**: Starting number is **9**. Catch 5!

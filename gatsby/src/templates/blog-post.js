@@ -5,18 +5,18 @@ import Img from 'gatsby-image';
 import { upperCaseFirst } from '../utils/uppercase-first';
 import LayoutWithSignUp from "../components/LayoutWithSignUp"
 import SubNav from '../components/SubNav'
+import AdCard from '../components/Ad'
 import "prismjs/themes/prism-okaidia.css"
 
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
-    const siteTitle = this.props.data.site.siteMetadata.title
     const author = this.props.data.site.siteMetadata.authors
-                        .find(a => a.id == post.frontmatter.author)
+                        .find(a => a.id === post.frontmatter.author)
     const category = post.frontmatter.categories[0];
     const categoryLink = `/categories/${category}`;
     const twitterLink = `https://twitter.com/${author.twitter}`;
-    const { previous, next } = this.props.pageContext
+    /* const { previous, next } = this.props.pageContext */
 
     return (
       <LayoutWithSignUp title={post.frontmatter.title}>
@@ -29,7 +29,7 @@ class BlogPostTemplate extends React.Component {
             <div className="thtrm-metabar thtrm-article-header__metabar">
               <div className="thtrm-metabar__item thtrm-topic u-color--grey">
                 <div className="thtrm-media-short">
-                  <img src={author.img} className="thtrm-avatar" />
+                  <img alt="Author" src={author.img} className="thtrm-avatar" />
                   <p className="thtrm-media-short__body"><a href={twitterLink} className="u-link-plain">{author.name}</a></p>
                 </div>
               </div>
@@ -46,21 +46,7 @@ class BlogPostTemplate extends React.Component {
           <div className="thtrm-section__heading u-distance-reset" dangerouslySetInnerHTML={{ __html: post.html }} />
         </section>
         <section className="thtrm-section">
-          <div className="thtrm-card thtrm-section__heading">
-            <div className="thtrm-media thtrm-media--top-start">
-              <img src="https://www.rust-lang.org/static/images/rust-logo-blk.svg" alt="" className="thtrm-media__asset" />
-              <div className="thtrm-media__body">
-                <h2>Learn Rust the right way</h2>
-                <p>Our Online Course is the best material for JS Developers.</p>
-                <ul className="thtrm-card__list">
-                  <li>Introduction</li>
-                  <li>Architecture</li>
-                  <li>API</li>
-                </ul>
-                <a href="" className="thtrm-button u-distance-small">Explore Course</a>
-              </div>
-            </div>
-          </div>
+          <AdCard/>
         </section>
         
       </LayoutWithSignUp>
@@ -98,7 +84,6 @@ export const pageQuery = graphql`
             }
           }
         }
-        imgCaption
         date(formatString: "DD MMMM YYYY")
         description
         categories
