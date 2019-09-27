@@ -9,20 +9,19 @@ import { upperCaseFirst } from '../utils/uppercase-first'
 const Categories = ({ pageContext, data }) => {
   const siteTitle = data.site.siteMetadata.title
   const { category } = pageContext
-  const { edges, totalCount } = data.allMarkdownRemark
+  const { edges } = data.allMarkdownRemark
 
   return (
     <Layout title={siteTitle}>
       <SubNav/>
       <div className="u-max-width--half">
         <section className="thtrm-section">
-          <h1 className="thtrm-section__heading">{totalCount} Artikel in <strong>{category}</strong></h1>
+          <h2 className="thtrm-section__heading">Articles in <strong>{category}</strong></h2>
           
           <div className="thtrm-listing">
             {edges.map(({ node }) => {
               const { slug } = node.fields
               const { title } = node.frontmatter
-              const { summary } = node.frontmatter
               const { categories } = node.frontmatter
               const { imageUrl } = node.frontmatter
               const { date } = node.frontmatter
@@ -34,9 +33,6 @@ const Categories = ({ pageContext, data }) => {
                       { categories && <p className="thtrm-topic u-color--grey">&nbsp; / {upperCaseFirst(categories[0])}</p>}
                     </div>
                     <h2 className="thtrm-title">{title}</h2> 
-                    <p className="u-text--small u-color--grey u-distance-tiny">
-                      {summary}
-                    </p>
                   </div>
                   {imageUrl && <div className="thtrm-teaser__thumb">
                       <Img sizes={imageUrl.childImageSharp.sizes} />
@@ -44,9 +40,6 @@ const Categories = ({ pageContext, data }) => {
                 </Link>
               )
             })}
-          </div>
-          <div className="thtrm-section__heading">
-            <Link to="/categories" title="All Posts" className="thtrm-button">All Categories</Link>
           </div>
         </section>
       </div>

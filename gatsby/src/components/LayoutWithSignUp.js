@@ -7,10 +7,10 @@ import SvgIcons from './SvgIcons';
 
 class LayoutWithSignUp extends React.Component {
   render() {
-    const { title, children } = this.props
+    const { title, description, children } = this.props
     return (
       <div className="thtrm-page">
-        <SEO title={title} />
+        <SEO title={title} description={description}/>
         <Header/>
         <main className="thtrm-main" role="main">
           {children}

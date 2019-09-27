@@ -4,7 +4,6 @@ import Img from 'gatsby-image';
 
 import { upperCaseFirst } from '../utils/uppercase-first';
 import LayoutWithSignUp from "../components/LayoutWithSignUp"
-import SubNav from '../components/SubNav'
 import AdCard from '../components/Ad'
 import "prismjs/themes/prism-okaidia.css"
 
@@ -16,11 +15,11 @@ class BlogPostTemplate extends React.Component {
     const category = post.frontmatter.categories[0];
     const categoryLink = `/categories/${category}`;
     const twitterLink = `https://twitter.com/${author.twitter}`;
+
     /* const { previous, next } = this.props.pageContext */
 
     return (
-      <LayoutWithSignUp title={post.frontmatter.title}>
-        <SubNav/>
+      <LayoutWithSignUp title={post.frontmatter.title} description={post.frontmatter.summary}>
         <nav className="thtrm-nav-toc">
          <Link to="/" title="Back to Blog">&larr; Back to Blog</Link>
         </nav>
@@ -85,6 +84,7 @@ export const pageQuery = graphql`
           }
         }
         date(formatString: "DD MMMM YYYY")
+        summary
         description
         categories
       }
