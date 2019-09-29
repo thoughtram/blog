@@ -252,10 +252,6 @@ window.onload = function () {
 }
 ```
 
-Check out the demo and try it out!
-
-{% include plunk.html url="https://embed.plnkr.co/KOg0LSVLU1JIH8QAVu49/preview" %}
-
 With `TimelineLite` we have complete control over where tweens are placed on the timeline and they can overlap as much as we want. Notice how we use `.add()` to add a label to the timeline. We can use labels to start multiple animations at the same time. For instance, we use this mechanism to run two animations in parallel. The `h1` will fade and translate in at the same time. Both animations could easily be combined in a single animation, but they have different easing functions. It solely demonstrates how to use labels.
 
 Let's see how we can do that in our Angular application. First off, we get all the elements using Angular's built-in `@ViewChild()` and `@ViewChildren()` decorators. We leverage those to query specific elements within the view of a component.

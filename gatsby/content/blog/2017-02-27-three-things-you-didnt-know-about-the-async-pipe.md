@@ -83,8 +83,6 @@ export class AppComponent {
 }
 ```
 
-{% include plunk.html url="http://embed.plnkr.co/qG9tOINwYPL0gKf2Pxqd/" %}
-
 Notice how our list is kept nicely in sync without further ado thanks to the `AsyncPipe`!
 
 ## Keeping track of references
@@ -121,11 +119,6 @@ export class AppComponent {
 }
 ```
 
-{% include plunk.html url="http://embed.plnkr.co/sxYyq3m4PfnLfyeGW1Gx/" %}
-
-
-Click on the button and play with the demo. Notice something? The color flips back and forth between more and more different colors with every click of the button. That's because in this case the Observable is what we like to refer to as long-lived. And furthermore, every time we click the button we are creating one more of these long-lived Observables without cleaning up the previous.
-
 Let's refactor the code to track subscriptions and tear down our long-lived Observable every time that we create a new one.
 
 ```js
@@ -149,8 +142,6 @@ export class AppComponent {
   }
 }
 ```
-
-{% include plunk.html url="http://embed.plnkr.co/kRDcQJEJkiBErNGdKKNl/" %}
 
 Every time we subscribe to our Observable we save the subscription in an instance member of our component. Then, when we run `newSeq` again we check if there's a subscription that we need to call `unsubscribe` on. That's why we don't see our list flipping between different colors anymore no matter how often we click the button.
 
@@ -183,8 +174,6 @@ export class AppComponent {
   }
 }
 ```
-
-{% include plunk.html url="http://embed.plnkr.co/Oga2810Sq4FJLA3klU7o/" %}
 
 I'm sure you've heard that the `AsyncPipe` unsubscribes from Observables as soon as the component gets destroyed. But did you also know it unsubscribes as soon as the reference of the expression changes? That's right, as soon as we assign a new Observable to `this.items` the `AsyncPipe` will automatically unsubscribe from the previous bound Observable! Not only does this make our code nice and clean, it's protecting us from *very* subtle memory leaks.
 
@@ -241,8 +230,6 @@ export class AppComponent {
 
 So far, we haven't made any changes to the underlying change detection strategy. If you click the button a couple of times, notice how we get multiple lists that update independently at a different timing.
 
-{% include plunk.html url="http://embed.plnkr.co/aFqRxUXaokBTxqluKZTy/" %}
-
 However, in terms of change detection, it means that all components are checked each time *any* of the Observables fire. That's a waste of resources. We can do better by setting the change detection for our `SeqComponent` to `OnPush` which means it will only check it's bindings if the inputs - the array in our case - changes.
 
 ```js
@@ -267,8 +254,6 @@ Observable.interval(1000)
 ```
 
 If we try that out `OnPush` doesn't seem to work anymore because the reference of `items` simply won't change anymore. In fact, when we try that out we see each list doesn't grow beyond its first element.
-
-{% include plunk.html url="http://embed.plnkr.co/FTfazxpTsya8n7cEkcDO/" %}
 
 Meet the `AsyncPipe` again! Let's change our `SeqComponent` so that it takes an Observable instead of an array as its input.
 
@@ -296,8 +281,6 @@ Also note that it now applies the `AsyncPipe` in its template since it's not dea
   <my-seq *ngFor="let seq of seqs" [items]="seq"></my-seq>
 </ul>
 ```
-
-{% include plunk.html url="http://embed.plnkr.co/HUgTj5qzAYcbNaHYWawu/" %}
 
 Voila! That seems to work!
 

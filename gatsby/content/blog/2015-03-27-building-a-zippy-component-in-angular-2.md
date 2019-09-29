@@ -77,10 +77,6 @@ We open a browser tab on `localhost://4200` and what we see is the text "zippy-a
 
 Before we start building the zippy component with Angular, we need to clarify what we're talking about when using the term "zippy". It turns out that a lot of people think they don't know what a zippy is, even if they do, just because of the naming.
 
-Long story short: this, is a zippy.
-
-{% include plunk.html url="http://embed.plnkr.co/1djdpE5uFLfYpYO8qBnm/preview" %}
-
 Also known as "accordion". You can click the summary text and the actual content toggles accordingly. If you take a look at this particular plunk, you'll see that we actually don't need to do any special implementation to get this working. We have the `<details>` element that does the job for us. But how can we implement such a thing in Angular?
 
 We start off by adding a new file `src/app/my-zippy.component.ts` and creating a class in ES2015 that we export, so it can be imported by other consumers of this class, by using the ES2015 module system. If you're not familiar with modules in ES2015 you might want to read our article on [using ES2015 with Angular today](/angularjs/es6/2015/01/23/exploring-angular-1.3-using-es6.html).

@@ -47,9 +47,7 @@ We've written a few other articles on 1.3 already. Here's a list:
 <p>Hello {{name}}!</p>
 ```
 
-Now, when typing something into the `input` element, the model gets updated accordingly and then reflected back to the view, which displays the value in our `p` element. Try it out yourself real quick.
-
-{% include plunk.html url="http://embed.plnkr.co/dB0p5wysKLvjK7oKAA3b/preview" %}
+Now, when typing something into the `input` element, the model gets updated accordingly and then reflected back to the view, which displays the value in our `p` element.
 
 [Magic](http://weknowgifs.com/wp-content/uploads/2013/03/its-magic-shia-labeouf-gif.gif). If you're not familiar with what's going on here, I recommend heading over to the official docs and reading the chapter about the [concepts of Angular](https://docs.angularjs.org/guide/concepts).
 
@@ -71,9 +69,7 @@ Yes, and we can do so thanks to Angular 1.3 and the `ngModelOptions` directive.
 <p>Hello {{name}}!</p>
 ```
 
-This tells Angular that instead of updating the model immediately after each keystroke, it should only update when the `input` fires an `onBlur` event. Here's an example to show what it looks like in action.
-
-{% include plunk.html url="http://embed.plnkr.co/F5IGCe/preview" %}
+This tells Angular that instead of updating the model immediately after each keystroke, it should only update when the `input` fires an `onBlur` event.
 
 If we do want to update the model with the default events that belong to that control and add other events on top of that, we can use a special event called `default`. Adding more then just one event can be done with a space delimited list. The following code updates the model whenever a user types into the input, or removes the focus of it.
 
@@ -103,9 +99,7 @@ Just imagine an `input[type="search"]` element, where every time a user types in
 <p>Search results for: {{searchQuery}}</p>
 ```
 
-Now, when typing into the `input` field, there's a slight delay until the model updates. You can try it out right here:
-
-{% include plunk.html url="http://embed.plnkr.co/PNxIXX/preview" %}
+Now, when typing into the `input` field, there's a slight delay until the model updates.
 
 We can go even further and configure how the update delay should be done for certain events. Controlling the debounce delay for specific events can be done by defining an object literal instead of a primitive integer value, where keys represent the event name and values the debounce delay. A delay of `0` triggers an immediate model update.
 
@@ -127,8 +121,6 @@ Due to the fact that we are able to control with `ngModelOptions` how and when m
 
 There might be situations, where you want to roll the view value back to what it was, before the change has been made. For such cases, Angular introduces a so called `$rollbackViewValue` method that can be invoked to synchronize the model and view. Basically what this method does is, it takes the value that is currently in the model and reflects it back to the view. In addition, it cancels all debounced changes.
 
-To demonstrate this use case, we can setup a `form` that has an `input` element that updates the model when the user removes the focus. As long as the user didn't remove the focus of the `input` element, he can hit the `Esc` key to discard his changes and get the value of the model back. Try it out yourself:
-
-{% include plunk.html url="http://embed.plnkr.co/KQbeSE/preview" %}
+To demonstrate this use case, we can setup a `form` that has an `input` element that updates the model when the user removes the focus. As long as the user didn't remove the focus of the `input` element, he can hit the `Esc` key to discard his changes and get the value of the model back.
 
 So it turns out that `ngModelOptions` is a super powerful directive that helps us making our apps more intuitive. Go and check out the [docs](https://code.angularjs.org/1.3.0/docs/api/ng/directive/ngModelOptions) about the `allowInvalid` and `getterSetter` options, to see what else is possible!

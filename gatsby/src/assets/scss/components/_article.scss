@@ -34,7 +34,7 @@
     font-size: .8rem;
 
     code {
-      background-color: var(--thtrm-color-lighterblue);
+      background-color: var(--thtrm-color-gray);
       color: var(--thtrm-color-midblue);
       text-shadow: none;
     }
@@ -52,6 +52,11 @@
 
     li {
       margin-top: 12px;
+
+      code {
+        background-color: var(--thtrm-color-gray);
+        color: var(--thtrm-color-midblue);
+      }
 
       &:first-child {
         margin-top: 0;
@@ -82,7 +87,9 @@
 // Caption
 .thtrm-article-caption {
   margin-top: -16px;
-  font-size: .7rem;
+  font-size: .6rem;
+  width: 100%;
+  text-align: right;
 
   a:after {
     display: none;

@@ -137,10 +137,6 @@ Not much of a surprise here either. We inject our `WikipediaService` and expose 
 
 We unwrap the result of the `Promise` that the `search` method of the `WikipediaService` returns and expose it as a simple Array of strings to the template so that we can have `*ngFor` loop through it and build up a list for us.
 
-You can play with the demo and fiddle with the code through this plnkr.
-
-{% include plunk.html url="http://embed.plnkr.co/Vp5ZmAAT68FqeKlBCp0Y/" %}
-
 Unfortunately this implementation doesn't address any of the described edge cases that we would like to deal with. Let's refactor our code to make it match the expected behavior.
 
 **Taming the user input**

@@ -178,10 +178,6 @@ That's it! We can now bind an expression to that property using the two-way data
 <p>counterValue = {{someValue}}</p>
 ```
 
-Check out the demo and try it out!
-
-{% include plunk.html url="https://embed.plnkr.co/RtrRej/" %}
-
 Again, please keep in mind that a component like a custom counter, would better serve as a custom form control and takes advantage of `ngModel` to implement two-way data binding as explained in [this article](/angular/2016/07/27/custom-form-controls-in-angular-2.html).
 
 ## Conclusion

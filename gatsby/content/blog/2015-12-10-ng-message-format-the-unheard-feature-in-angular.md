@@ -134,10 +134,6 @@ Gender selection uses the exact same syntax. All we have to do is to change the 
 }}
 ```
 
-Here's `ngMessageFormat` in action:
-
-{% include plunk.html url="http://embed.plnkr.co/UYyBFyafomFllh5ZcP0s/" %}
-
 ## Conclusion
 
 Unfortunately [ngMessageFormat](https://docs.angularjs.org/api/ngMessageFormat) is not very well documented and it didn't get a lot of love after it has been released. However, it is right there and it wants to be used. Just remember that it allows you to pluralize not only HTML attributes, it even makes nesting of plural and gender selection possible!

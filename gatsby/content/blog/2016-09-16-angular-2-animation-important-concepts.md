@@ -68,8 +68,6 @@ export class MyComponent implements OnChanges {
 
 This component simply publishes an `@Input() isVisible` property; which allows other external components to show/hide the text content... without any animations.
 
-{% include plunk.html url="http://embed.plnkr.co/vUPTsY/" %}
-
 ### Enable Animations Module
 
 Since Angular 4.x, there's a new module `BrowserAnimationsModule` that introduces all animation capabilities. That's why we first have add that to our application module's `imports` like this:
@@ -276,8 +274,6 @@ export class FaderComponent implements OnChanges {
 }
 ```
 
-{% include plunk.html url="http://embed.plnkr.co/74lprkmzUGjT7UWbiyUr/" %}
-
 > Extra Bonus: The demo has some extra features. The *host* `my-fader` element now has a purple background; when you hide the `my-fader` content children you will see the host background. This change was added so you can visually see the differences between the *host* and the *target* animation elements.
 
 ### Our Animation Workflow
@@ -330,14 +326,9 @@ export class MyAppComponent {
 }
 ```
 
-{% include plunk.html url="http://embed.plnkr.co/NbWGjs/" %}
-
-
 ### Summary
 
 The Angular Animation engine and compiler does all the hard work preparing, managing, and running the animations. Developers use the `@Component` metadata to declaratively define the component styles, templates, and [now] animations. And it is the component **template** that serves as the *bridge* to link the component instance state to the animation trigger property.
-
-<br/>
 
 ### Thanks
 

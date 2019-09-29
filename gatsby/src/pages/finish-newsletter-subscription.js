@@ -1,7 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import Layout from '../components/layout'
-import SubNav from '../components/SubNav';
 
 import '../assets/scss/main.scss';
 

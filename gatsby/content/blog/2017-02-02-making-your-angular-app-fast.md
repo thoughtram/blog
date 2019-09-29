@@ -123,10 +123,6 @@ export class BoxComponent {
 
 This one really just renders an SVG rect element using a couple of bindings to set the coordinates from the given box object.
 
-Okay cool, so that's our app. Let's try it out and see how it performs. Simply run it and click and drag and drop a box.
-
-{% include plunk.html url="https://embed.plnkr.co/UBI5Sc5eDMpkDDkJfeGX/" %}
-
 By clicking and dragging a box, we can see and feel that the app is quite [janky](http://jankfree.org/). Time to measure how fast it really is!
 
 ## Measuring the app's performance
@@ -203,10 +199,6 @@ class AppComponent {
 }
 ```
 
-That's it! Here's a the improved demo:
-
-{% include plunk.html url="http://embed.plnkr.co/F9DgvCHV7ayw4x9545DM/" %}
-
 At this point it gets rather hard to notice an actual difference. This is because the previous unoptimized demo was already pretty fast. Let's measure again and see if our application is faster (these profiles are made on the same machine as the previous ones).
 
 ![](../assets/images/dnd-perf-profile-2.ong)
@@ -225,9 +217,7 @@ However, this would not only make our code way more complicated, it also changes
 
 Another thing that is rather not obvious in our demo, is that `NgFor` might take up more time than it should. Now, what does that mean? Well, if we take a look at `NgFor`'s source code, we can see that it not only creates DOM items it iterates through, it also keeps track of the **position** of each item, in case things have been moved around. This is great for animations as we can animate-in and -out naturally.
 
-In our demo however, we don't really move the items in the collection itself. In fact, we don't really touch it at all. So what if we can use a simpler `NgFor` that doesn't care about item positions in the collection? Creating such a directive requires a bit more work and it would not fit in the scope of this article, which is why we will discuss the implementation of `SimpleNgFor` in another article. However, we put the source code in the following demo, feel free to check it out:
-
-{% include plunk.html url="http://embed.plnkr.co/rCqTphznFbImsy9wbWP6/" %}
+In our demo however, we don't really move the items in the collection itself. In fact, we don't really touch it at all. So what if we can use a simpler `NgFor` that doesn't care about item positions in the collection? Creating such a directive requires a bit more work and it would not fit in the scope of this article, which is why we will discuss the implementation of `SimpleNgFor` in another article.
 
 ![](../assets/images/dnd-perf-profile-3.png)
 
@@ -344,10 +334,6 @@ export class BoxComponent implements AfterViewInit {
 ```
 
 Great! We can now go ahead and use `BoxComponent.update()` in all other methods where needed.
-
-Here's the demo application in action, updating only the box that is being dragged:
-
-{% include plunk.html url="http://embed.plnkr.co/3aVnNf7sogtvUa9Nng51/" %}
 
 ![](../assets/images/dnd-perf-profile-4.png)
 

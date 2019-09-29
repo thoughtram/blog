@@ -1,10 +1,8 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import Layout from '../components/layout'
 import SubNav from '../components/SubNav';
-import Stage from '../components/Stage';
 import Teaser from '../components/Teaser';
-import ListingItem from '../components/ListingItem';
 
 import '../assets/scss/main.scss';
 

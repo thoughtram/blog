@@ -1,16 +1,15 @@
 import React from "react"
 import SEO from "./seo"
 import Header from './Header';
-import SignUpForm from './SignUpForm';
 import Footer from './Footer';
 import SvgIcons from './SvgIcons';
 
 class Layout extends React.Component {
   render() {
-    const { title, children } = this.props
+    const { title, children, description } = this.props
     return (
       <div className="thtrm-page">
-        <SEO title={title} />
+        <SEO title={title} description={description}/>
         <Header/>
         <main className="thtrm-main" role="main">
           {children}
