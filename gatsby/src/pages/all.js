@@ -15,7 +15,7 @@ class Posts extends React.Component {
     return (
       <Layout title={siteTitle}>
         <SubNav/>
-        <section className="thtrm-section u-max-width--half">
+        <section className="thtrm-section u-max-width--3-4">
           <h2 className="thtrm-section__heading">All Stories</h2>
 
           <div className="thtrm-listing">

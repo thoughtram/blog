@@ -126,6 +126,15 @@
   .u-max-width--half {
     max-width: 50%;
     margin: 0 auto;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: $thtrm-media-nav) {
+  .u-max-width--3-4 {
+    max-width: 75%;
+    margin: 0 auto;
+    width: 100%;
   }
 }
 

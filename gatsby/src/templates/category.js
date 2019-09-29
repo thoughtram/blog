@@ -14,7 +14,7 @@ const Categories = ({ pageContext, data }) => {
   return (
     <Layout title={siteTitle}>
       <SubNav/>
-      <div className="u-max-width--half">
+      <div className="u-max-width--3-4">
         <section className="thtrm-section">
           <h2 className="thtrm-section__heading">Articles in <strong>{category}</strong></h2>
           
