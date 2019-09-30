@@ -12,6 +12,12 @@
   align-items: flex-start;
 }
 
+.u-link-plain {
+  &:after {
+    display: none;
+  }
+}
+
 .u-flex--nowrap {
 	flex-wrap: nowrap;
 }
