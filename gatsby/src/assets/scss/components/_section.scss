@@ -19,6 +19,15 @@
 
   .thtrm-section__paragraph {
     margin-bottom: 1rem;
+
+    a:after {
+      display: none;
+    }
+  }
+
+  .thtrm-section__paragraph--small {
+    font-size: 0.8rem;
+    font-weight: 400;
   }
 
   .thtrm-section__link {
@@ -172,7 +181,7 @@
 
   @media screen and (min-width: $thtrm-media-tablet) {
     padding-left: 16rem;
-    margin-top: 4rem;
+    margin-top: 2rem;
     padding-top: initial;
     .thtrm-section__hero-image {
       height: 14rem;

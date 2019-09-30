@@ -22,9 +22,9 @@ class BlogIndex extends React.Component {
         <Stage post={latestPost}/>
         <section className="thtrm-section--fullbleed-intrinsic u-bg-lightgray">
           <div className="thtrm-layout thtrm-layout-thirds">
-            <Teaser post={posts[1]}/>
-            <Teaser post={posts[2]}/>
-            <Teaser post={posts[3]}/>
+            <Teaser post={posts[1]} paragraphClass="u-color--grey"/>
+            <Teaser post={posts[2]} paragraphClass="u-color--grey"/>
+            <Teaser post={posts[3]} paragraphClass="u-color--grey"/>
           </div>
         </section>
         <section className="thtrm-section">

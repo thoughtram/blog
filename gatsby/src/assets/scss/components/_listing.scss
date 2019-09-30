@@ -7,6 +7,10 @@
     margin-top: 24px;
     padding-top: 24px;
     border-top: 1px solid var(--thtrm-border-color);
+
+    .thtrm-page--yellow & {
+      border-top-color: #000;
+    }
   }
 }
 

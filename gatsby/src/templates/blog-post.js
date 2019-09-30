@@ -45,9 +45,17 @@ class BlogPostTemplate extends React.Component {
           <div className="thtrm-section__heading u-distance-reset" dangerouslySetInnerHTML={{ __html: post.html }} />
         </section>
         <section className="thtrm-section">
-          <AdCard/>
+          <div className="thtrm-section__heading thtrm-article-header thtrm-section-constrained u-distance-reset">
+            <div className="thtrm-metabar thtrm-article-header__metabar">
+              <div className="thtrm-metabar__item thtrm-topic u-color--grey">
+                <div className="thtrm-media-short">
+                  Written by&nbsp; <img alt="Author" src={author.img} className="thtrm-avatar" />
+                  <p className="thtrm-media-short__body"><a href={twitterLink} className="u-link-plain">{author.name}</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
-        
       </LayoutWithSignUp>
     )
   }

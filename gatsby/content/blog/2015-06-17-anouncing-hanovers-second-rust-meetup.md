@@ -6,7 +6,7 @@ summary: >-
   It's been roughly a year ago that we organized the very first Rust meetup
   Hanover. We'll run a second one, read on for more information!
 categories:
-  - rust
+  - annoucements
 tags:
   - rust
 author: christoph_burgdorf

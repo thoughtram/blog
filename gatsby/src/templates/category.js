@@ -5,15 +5,21 @@ import PropTypes from "prop-types"
 import Img from 'gatsby-image'
 import { Link, graphql } from "gatsby"
 import { upperCaseFirst } from '../utils/uppercase-first'
+import RustSignUp from '../components/RustSignUp';
 
 const Categories = ({ pageContext, data }) => {
-  const siteTitle = data.site.siteMetadata.title
   const { category } = pageContext
+  const isRust = category === 'rust';
   const { edges } = data.allMarkdownRemark
 
   return (
-    <Layout title={siteTitle}>
+    <Layout title={category + ' Articles'} backgroundClass={isRust ? 'thtrm-page--yellow': ''}>
       <SubNav/>
+      { isRust && (
+        <section className="thtrm-section">
+          <RustSignUp/>
+        </section>
+      )}
       <div className="u-max-width--3-4">
         <section className="thtrm-section">
           <h2 className="thtrm-section__heading">Articles in <strong>{category}</strong></h2>

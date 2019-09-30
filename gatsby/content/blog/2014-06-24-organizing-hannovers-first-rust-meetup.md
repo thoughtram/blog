@@ -9,7 +9,6 @@ redirect_from:
   - /posts/organizing-hannovers-first-rust-meetup/
 categories:
   - announcements
-  - rust
   - meetups
 tags:
   - announcements

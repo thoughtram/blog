@@ -17,6 +17,10 @@
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+
+  .thtrm-page--yellow & {
+    background-color: #000;
+  }
 }
 
 .thtrm-button--bordered {
@@ -28,4 +32,8 @@
 	background-color: transparent;
 	color: inherit;
 	padding: .25rem;
+
+  .thtrm-page--yellow & {
+    background-color: transparent;
+  }
 }

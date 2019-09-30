@@ -7,6 +7,10 @@
     padding-left: 5vw;
     padding-right: 5vw;
     overflow-x: hidden; // Fixes wrong width calculations in Chrome on Win10/Linux
+
+  &.thtrm-page--yellow {
+	  background-color: var(--thtrm-rustforjs-yellow);
+  }
 }
 
 .thtrm-banner {

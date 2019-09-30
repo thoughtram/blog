@@ -6,9 +6,9 @@ import SvgIcons from './SvgIcons';
 
 class Layout extends React.Component {
   render() {
-    const { title, children, description } = this.props
+    const { title, children, description, backgroundClass } = this.props
     return (
-      <div className="thtrm-page">
+      <div className={'thtrm-page ' + backgroundClass}>
         <SEO title={title} description={description}/>
         <Header/>
         <main className="thtrm-main" role="main">
