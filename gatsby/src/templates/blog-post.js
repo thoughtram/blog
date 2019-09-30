@@ -4,7 +4,6 @@ import Img from 'gatsby-image';
 
 import { upperCaseFirst } from '../utils/uppercase-first';
 import LayoutWithSignUp from "../components/LayoutWithSignUp"
-import AdCard from '../components/Ad'
 import "prismjs/themes/prism-okaidia.css"
 
 class BlogPostTemplate extends React.Component {
