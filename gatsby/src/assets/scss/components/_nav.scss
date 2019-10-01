@@ -81,12 +81,24 @@
 
 .thtrm-nav-toc li {
     display: inline-block;
+
+    &:first-child a {
+      padding-left: 0;
+    }
+
+    &:last-child a {
+      padding-right: 0;
+    }
 }
 
 .thtrm-nav-toc a {
     color: var(--thtrm-color-text);
     display: block;
     padding: .75rem 1rem;
+}
+
+.thtrm-nav-toc a.is-active {
+  color: var(--thtrm-color-midblue);
 }
 
 .thtrm-nav-toc a::after {

@@ -6,11 +6,11 @@ class SubNav extends React.Component {
     return (
       <nav className="thtrm-nav-toc">
         <ul>
-          <li><Link to="/categories/angular">Angular</Link></li>
-          <li><Link to="/categories/rxjs">Rx</Link></li>
-          <li><Link to="/categories/rust">Rust</Link></li>
-          <li><Link to="/categories/git">Git</Link></li>
-          <li><Link to="/categories/announcements">Announcements</Link></li>
+          <li><Link to="/categories/angular" activeClassName="is-active">Angular</Link></li>
+          <li><Link to="/categories/rxjs" activeClassName="is-active">Rx</Link></li>
+          <li><Link to="/categories/rust" activeClassName="is-active">Rust</Link></li>
+          <li><Link to="/categories/git" activeClassName="is-active">Git</Link></li>
+          <li><Link to="/categories/announcements" activeClassName="is-active">Announcements</Link></li>
         </ul>
       </nav>
     )
