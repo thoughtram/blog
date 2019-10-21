@@ -78,7 +78,7 @@ When I said `Hash-Of-Entire-Working-Directory` I made a bit of an oversimplifica
 
 Here is what Git's representation of the working directory looks like.
 
-<img alt="Visualization of a Git tree object" src="/assets/git_tree.png">
+![](../assets/images/git_tree.png)
 
 Each file is stored as a blob object. So what does that mean? Let's keep things simple and just assume that Git generates the SHA-1 hash of the contents of `logo.png` and puts it somewhere addressable as `aa1b2fb696a831c89c53f787e03d863691d2b671`. It also generates the SHA-1 hash of the contents of `app.css` and puts it somewhere addressable as `4c511f16ef2644854d04cabebfcecc82be0eb04f`. Same goes for the `app.js` file. Notice that at this point Git doesn't even link the file name `logo.png` with the hash `aa1b2fb696a831c89c53f787e03d863691d2b671`. This is done on a higher level for good reasons.
 
