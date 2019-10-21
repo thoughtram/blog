@@ -16,9 +16,9 @@ class Stage extends React.Component {
             <span className="thtrm-section__link">Read more</span>
           </Link>
         </div>
-        <div className="thtrm-section__item--flushright">
+        {post.frontmatter.imageUrl && <div className="thtrm-section__item--flushright">
           <Img sizes={post.frontmatter.imageUrl.childImageSharp.sizes} className="thtrm-section__image thtrm-ratio--landscape"/>
-        </div>
+        </div>}
       </section>
     )
   }
