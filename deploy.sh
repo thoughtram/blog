@@ -24,8 +24,8 @@ cd ../
 git subtree split -P gatsby/public -b deploy-dist
 
 # Push source and build repos.
-# git push -f origin deploy-dist:gh-pages
-#git branch -D deploy-dist
+ git push -f origin deploy-dist:gh-pages
+git branch -D deploy-dist
 git checkout master
 git branch -D deploy
 rm -rf gatsby/.cache
