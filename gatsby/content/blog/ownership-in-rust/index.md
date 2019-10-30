@@ -276,6 +276,6 @@ greet(a);
 
 ## Conclusion
 
-This was really just the tip of the iceberg. There are a few more things to consider when it comes to Ownership, Borrowing and Moving data, but hopefully this artice conveys a good basic understanding of what's going on behind the scenes on how Rust ensures memory safety.
+This was really just the tip of the iceberg. There are a few more things to consider when it comes to Ownership, Borrowing and Moving data, but hopefully this article conveys a good basic understanding of what's going on behind the scenes on how Rust ensures memory safety.
 
 More articles on Rust to come!
