@@ -55,6 +55,9 @@ class BlogPostTemplate extends React.Component {
             </div>
           </div>
         </section>
+        <section className="thtrm-section">
+          <a href="https://rebase-book.com" title="REBASE Book" target="_blank"><img src="https://pbs.twimg.com/media/ELbSpCgXkAEn4Uo?format=jpg&name=4096x4096" alt="Rebase Book ad"/></a>
+        </section>
       </LayoutWithSignUp>
     )
   }
