@@ -1,6 +1,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import Img from 'gatsby-image';
+import rebaseBanner from '../assets/images/rebase-banner.svg';
 
 import { upperCaseFirst } from '../utils/uppercase-first';
 import LayoutWithSignUp from "../components/LayoutWithSignUp"
@@ -41,6 +42,7 @@ class BlogPostTemplate extends React.Component {
         </section>
         
         <section className="thtrm-section thtrm-section-constrained thtrm-article u-distance">
+          <a style={{width: '100%'}} href="https://rebase-book.com" title="REBASE"><img src={rebaseBanner} style={{border: '1px solid #eee', boxShadow: '0px 10px 31px -15px rgba(0, 0, 0, 0.5)', display: 'block', margin: 'auto', marginBottom: '2em' }} alt="Rebase banner"/></a>
           <div className="thtrm-section__heading u-distance-reset" dangerouslySetInnerHTML={{ __html: post.html }} />
         </section>
         <section className="thtrm-section">
