@@ -42,7 +42,7 @@ class BlogPostTemplate extends React.Component {
         </section>
         
         <section className="thtrm-section thtrm-section-constrained thtrm-article u-distance">
-          <a style={{width: '100%'}} href="https://rebase-book.com" title="REBASE"><img src={rebaseBanner} style={{border: '1px solid #eee', boxShadow: '0px 10px 31px -15px rgba(0, 0, 0, 0.5)', display: 'block', margin: 'auto', marginBottom: '2em' }} alt="Rebase banner"/></a>
+          {post.frontmatter.title !== "Announcing the REBASE ebook" && <a style={{width: '100%'}} href="https://rebase-book.com" title="REBASE"><img src={rebaseBanner} style={{border: '1px solid #eee', boxShadow: '0px 10px 31px -15px rgba(0, 0, 0, 0.5)', display: 'block', margin: 'auto', marginBottom: '2em' }} alt="Rebase banner"/></a>}
           <div className="thtrm-section__heading u-distance-reset" dangerouslySetInnerHTML={{ __html: post.html }} />
         </section>
         <section className="thtrm-section">
@@ -57,9 +57,9 @@ class BlogPostTemplate extends React.Component {
             </div>
           </div>
         </section>
-        <section className="thtrm-section">
+        {post.frontmatter.title !== "Announcing the REBASE ebook" && <section className="thtrm-section">
           <a href="https://rebase-book.com" title="REBASE Book" target="_blank"><img src="https://pbs.twimg.com/media/ELbSpCgXkAEn4Uo?format=jpg&name=4096x4096" alt="Rebase Book ad"/></a>
-        </section>
+        </section>}
       </LayoutWithSignUp>
     )
   }
