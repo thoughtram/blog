@@ -18,7 +18,7 @@ In our [previous](/rust/2015/05/11/rusts-ownership-model-for-javascript-develope
 
 First and foremost it's good to understand what memory safety actually means when it comes to discussing what makes Rust stand out as a programming language. Especially when coming from a non-systems programming background, or with mainly experience in garbage collected languages, it might be a bit harder to appreciate this fundamental feature of Rust.
 
-As Will Crichton states in his great article [Memory Safety in Rust: A Case Stud with C](http://willcrichton.net/notes/rust-memory-safety/):
+As Will Crichton states in his great article [Memory Safety in Rust: A Case Study with C](http://willcrichton.net/notes/rust-memory-safety/):
 
 "_Memory safety is the property of a program where memory pointers used always point to valid memory, i.e. allocated and of the correct type/size. Memory safety is a correctness issue—a memory unsafe program may crash or produce nondeterministic output depending on the bug._"
 
