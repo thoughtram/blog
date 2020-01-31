@@ -2,6 +2,7 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import Img from 'gatsby-image';
 import rebaseBanner from '../assets/images/rebase-banner.svg';
+import rebaseAd from '../assets/images/rebase-ad.png';
 
 import { upperCaseFirst } from '../utils/uppercase-first';
 import LayoutWithSignUp from "../components/LayoutWithSignUp"
@@ -58,7 +59,7 @@ class BlogPostTemplate extends React.Component {
           </div>
         </section>
         {post.frontmatter.title !== "Announcing the REBASE ebook" && <section className="thtrm-section">
-          <a href="https://rebase-book.com" title="REBASE Book" target="_blank"><img src="https://pbs.twimg.com/media/ELbSpCgXkAEn4Uo?format=jpg&name=4096x4096" alt="Rebase Book ad"/></a>
+          <a href="https://rebase-book.com" title="REBASE" target="_blank" style={{textAlign: 'center', width: '100%'}}><img style={{maxWidth: '800px'}} src={rebaseAd} alt="Rebase book"/></a>
         </section>}
       </LayoutWithSignUp>
     )
