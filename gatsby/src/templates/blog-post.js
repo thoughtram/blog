@@ -24,7 +24,7 @@ class BlogPostTemplate extends React.Component {
         <nav className="thtrm-nav-toc">
          <Link to="/" title="Back to Blog">&larr; Back to Blog</Link>
         </nav>
-        <div style={{ margin: 'auto', textAlign: 'center'}} id="codefund"></div>
+        <div style={{ margin: 'auto', textAlign: 'center', height: '30px'}} id="codefund"></div>
         <section className="thtrm-section u-distance-bottom-reset">
           <div className="thtrm-section__heading thtrm-article-header thtrm-section-constrained u-distance-bottom-reset">
             <div className="thtrm-metabar thtrm-article-header__metabar">
