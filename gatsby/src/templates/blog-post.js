@@ -3,6 +3,7 @@ import { Link, graphql } from "gatsby"
 import Img from 'gatsby-image';
 import rebaseBanner from '../assets/images/rebase-banner.svg';
 import rebaseAd from '../assets/images/rebase-ad.png';
+import ScriptTag from "react-script-tag"
 
 import { upperCaseFirst } from '../utils/uppercase-first';
 import LayoutWithSignUp from "../components/LayoutWithSignUp"
@@ -24,7 +25,15 @@ class BlogPostTemplate extends React.Component {
         <nav className="thtrm-nav-toc">
          <Link to="/" title="Back to Blog">&larr; Back to Blog</Link>
         </nav>
-        <div style={{ margin: 'auto', textAlign: 'center', height: '30px'}} id="codefund"></div>
+        <div
+          style={{ margin: "auto", textAlign: "center", height: "30px" }}
+          id="codefund"
+        ></div>
+        <ScriptTag
+          type="text/javascript"
+          src="https://app.codefund.io/properties/723/funder.js"
+          async={true}
+        />
         <section className="thtrm-section u-distance-bottom-reset">
           <div className="thtrm-section__heading thtrm-article-header thtrm-section-constrained u-distance-bottom-reset">
             <div className="thtrm-metabar thtrm-article-header__metabar">
@@ -42,7 +51,7 @@ class BlogPostTemplate extends React.Component {
           {post.frontmatter.imageUrl && <Img sizes={post.frontmatter.imageUrl.childImageSharp.sizes} className="thtrm-ratio--stripe thtrm-article-thumb u-fill-space u-img-fit-height"/>}
           {post.frontmatter.imgCaption && <p className="thtrm-article-caption u-color--grey">{post.frontmatter.imgCaption}</p>}
         </section>
-        
+
         <section className="thtrm-section thtrm-section-constrained thtrm-article u-distance">
           <div className="thtrm-section__heading u-distance-reset" dangerouslySetInnerHTML={{ __html: post.html }} />
         </section>
