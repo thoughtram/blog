@@ -34,9 +34,6 @@ function SEO({ description, lang, meta, title }) {
       }}
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
-      script={[
-        {src: `https://app.codefund.io/properties/723/funder.js`, async: true}
-      ]}
       meta={[
         {
           name: `description`,
