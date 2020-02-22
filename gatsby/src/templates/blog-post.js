@@ -26,7 +26,7 @@ class BlogPostTemplate extends React.Component {
          <Link to="/" title="Back to Blog">&larr; Back to Blog</Link>
         </nav>
         <div
-          style={{ margin: "auto", textAlign: "center", height: "30px" }}
+          style={{ margin: "auto", textAlign: "center", minHeight: "30px" }}
           id="codefund"
         ></div>
         <ScriptTag
