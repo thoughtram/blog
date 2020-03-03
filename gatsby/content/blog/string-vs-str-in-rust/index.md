@@ -135,15 +135,15 @@ That said, there's still an entry on the stack that points to that preallocated 
 ```
             my_name: &str
             [–––––––––––]
-            +–––+–––+–––+
-stack frame │ • │ 8 │ 6 │ 
-            +–│–+–––+–––+
+            +–––+–––+
+stack frame │ • │ 6 │ 
+            +–│–+–––+
               │                 
               +––+                
                  │
- preallocated  +–V–+–––+–––+–––+–––+–––+–––+–––+
- read-only     │ P │ a │ s │ c │ a │ l │   │   │
- memory        +–––+–––+–––+–––+–––+–––+–––+–––+
+ preallocated  +–V–+–––+–––+–––+–––+–––+
+ read-only     │ P │ a │ s │ c │ a │ l │
+ memory        +–––+–––+–––+–––+–––+–––+
 
 ```
 
