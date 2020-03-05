@@ -107,14 +107,16 @@ stack frame │ • │ 16 │ 13 │   │ • │ 6 │
               │                 │
               │                 +–––––––––+
               │                           │
+              │                           │
+              │                         [–│––––––– str –––––––––]
             +–V–+–––+–––+–––+–––+–––+–––+–V–+–––+–––+–––+–––+–––+–––+–––+–––+
        heap │ P │ a │ s │ c │ a │ l │   │ P │ r │ e │ c │ h │ t │   │   │   │
             +–––+–––+–––+–––+–––+–––+–––+–––+–––+–––+–––+–––+–––+–––+–––+–––+
 ```
 
-Notice that `last_name` does not store capacity information on the stack. This is because it's just a reference to another `String` that manages its size. That's also why a `str` is considered "**unsized**". It doesn't have a size. Also, string slices are **always** references so their type will always be `&str` instead of `str`.
+Notice that `last_name` does not store capacity information on the stack. This is because it's just a reference to a slice of another `String` that manages its capacity. The string slice, or `str` itself, is what's considered "**unsized**". Also, in practice string slices are **always** references so their type will always be `&str` instead of `str`.
 
-Okay, this explains the difference between `String` and `&str` but we haven't actually created such a reference in our original example, did we?
+Okay, this explains the difference between `String`, `&String` and `str` and `&str`, but we haven't actually created such a reference in our original example, did we?
 
 ## Understanding string literals
 
@@ -151,7 +153,7 @@ With a better understanding of the difference between `String` and `&str`, there
 
 ## Which one should be used?
 
-Obviously, this depends on a number of variables, but generally, it's safe to say that, the API we're building doesn't need to own or mutate the text it's working with, it should take a `&str` instead of a `String`. This means, an improved version of the original `greet()` function would look like this:
+Obviously, this depends on a number of variables, but generally, it's safe to say that, if the API we're building doesn't need to own or mutate the text it's working with, it should take a `&str` instead of a `String`. This means, an improved version of the original `greet()` function would look like this:
 
 ```rust
 fn greet(name: &str) {
@@ -159,7 +161,7 @@ fn greet(name: &str) {
 }
 ```
 
-Wait, but what if the caller of this API really only has a `String` and can't convert it to a `&str` for unknown reasons? No problem at all. Rust has this super powerful feature of **dereferencing** which allows it to turn any passed `String` to a `&str` before the API is executed, if the `String` is passed by reference. 
+Wait, but what if the caller of this API really only has a `String` and can't convert it to a `&str` for unknown reasons? No problem at all. Rust has this super powerful feature called **deref coercing** which allows it to turn any passed `String` reference using the borrow operator, so `&String`, to a `&str` before the API is executed. This will be covered in more detail in another article.
 
 Our `greet()` function therefore will work with the following code:
 
@@ -179,4 +181,4 @@ fn greet(name: &str) {
 
 See it in action [here](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=0fd3fcd6a4a00fdebf30844a15fe6f52)!
 
-That's it! I hope this article was useful. Let me know what you think or what you would like to learn about next [on twitter](https://twitter.com/PascalPrecht) or sign up for the [Rust For JavaScript Developers](/categories/rust) mailing list!
+That's it! I hope this article was useful. There's an [interesting discussion on Reddit](https://www.reddit.com/r/rust/comments/fcuq8x/understanding_string_and_str_in_rust/) about this content as well! Let me know what you think or what you would like to learn about next [on twitter](https://twitter.com/PascalPrecht) or sign up for the [Rust For JavaScript Developers](/categories/rust) mailing list!
