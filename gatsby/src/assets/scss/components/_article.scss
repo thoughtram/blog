@@ -34,9 +34,9 @@
     font-size: .8rem;
 
     code {
-      background-color: var(--thtrm-color-gray);
-      color: var(--thtrm-color-midblue);
-      text-shadow: none;
+      background-color: var(--thtrm-color-gray)!important;
+      color: var(--thtrm-color-midblue)!important;
+      text-shadow: none!important;
     }
 
     &:first-child {
