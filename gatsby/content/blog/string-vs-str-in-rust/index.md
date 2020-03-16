@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Understanding String and &str in Rust"
+title: "String vs &str in Rust"
 imageUrl: ../../assets/images/rust-letters.jpg
 imgCaption: Photo by Shaun Bell on Unsplash
 summary: "In this article we'll explore the difference between String and str in Rust and when to use which."
