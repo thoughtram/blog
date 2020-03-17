@@ -14,6 +14,7 @@ So you want to learn Rust and keep hearing about the concept of Ownership and Bo
 
 In our [previous](/rust/2015/05/11/rusts-ownership-model-for-javascript-developers.html) article, we've already talked about the Ownership model from a JavaScript developer's perspective. In this article we'll take a closer look at how Rust manages memory and why this ultimately affects how we write our code in Rust and preserve memory safety.
 
+Once you're done reading this, you might want to check out our article on [References in Rust](/references-in-rust) as well as the [difference between String and &str](/string-vs-str-in-rust).
 
 ## What is Memory Safety anyway?
 
