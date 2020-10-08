@@ -6,7 +6,7 @@ import rebaseAd from '../assets/images/rebase-ad.png';
 import ScriptTag from "react-script-tag"
 
 import { upperCaseFirst } from '../utils/uppercase-first';
-import LayoutWithSignUp from "../components/LayoutWithSignUp"
+import Layout from '../components/layout';
 import "prismjs/themes/prism-okaidia.css"
 
 class BlogPostTemplate extends React.Component {
@@ -21,7 +21,7 @@ class BlogPostTemplate extends React.Component {
     /* const { previous, next } = this.props.pageContext */
 
     return (
-      <LayoutWithSignUp title={post.frontmatter.title} description={post.frontmatter.summary}>
+      <Layout title={post.frontmatter.title} description={post.frontmatter.summary}>
         <nav className="thtrm-nav-toc">
          <Link to="/" title="Back to Blog">&larr; Back to Blog</Link>
         </nav>
@@ -68,8 +68,7 @@ class BlogPostTemplate extends React.Component {
             </div>
           </div>
         </section>
-        {post.frontmatter.title !== "Announcing the REBASE ebook" && <a style={{width: '100%'}} href="https://rebase-book.com" title="REBASE"><img src={rebaseBanner} style={{border: '1px solid #eee', boxShadow: '0px 10px 31px -15px rgba(0, 0, 0, 0.5)', display: 'block', margin: 'auto', marginBottom: '2em', maxWidth: '800px'}} alt="Rebase banner"/></a>}
-      </LayoutWithSignUp>
+      </Layout>
     )
   }
 }
