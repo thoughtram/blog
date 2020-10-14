@@ -258,4 +258,4 @@ The `.`-operator will implicitly borrow a reference to its left operand. This me
 
 ## What's next?
 
-If there's one more thing that should be talked about when it comes to references in Rust, it's probably its safety and lifetime characteristics. Those however, we'll discuss in another article very soon, so stay tuned and make sure to sign up to our [Rust For JavaScript Developers](/categories/rust) newsletter!
+If there's one more thing that should be talked about when it comes to references in Rust, it's probably its safety and lifetime characteristics. You can read more about that in our article about [Lifetimes in Rust](/lifetimes-in-rust/)!
