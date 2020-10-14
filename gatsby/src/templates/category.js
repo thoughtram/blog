@@ -13,7 +13,7 @@ const Categories = ({ pageContext, data }) => {
   const { edges } = data.allMarkdownRemark
 
   return (
-    <Layout title={category + ' Articles'} backgroundClass={isRust ? 'thtrm-page--yellow': ''}>
+    <Layout title={category + ' Articles'}>
       <SubNav/>
       { isRust && (
         <section className="thtrm-section">
