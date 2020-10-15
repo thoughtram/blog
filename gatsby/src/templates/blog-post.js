@@ -56,21 +56,9 @@ class BlogPostTemplate extends React.Component {
           {category == 'rust' && <p style={{textAlign: 'center', fontStyle: 'italic', width: '100%', marginBottom: '1em'}}>New to Rust? Check out my <strong>free</strong> <a href="https://egghead.io/courses/write-your-first-program-with-the-rust-language" target="_blank">introduction course</a>!</p>}
           <div className="thtrm-section__heading u-distance-reset" dangerouslySetInnerHTML={{ __html: post.html }} />
         </section>
-        <section className="thtrm-section">
-          <div className="thtrm-section__heading thtrm-article-header thtrm-section-constrained u-distance-reset">
-            <div className="thtrm-metabar thtrm-article-header__metabar">
-              <div className="thtrm-metabar__item thtrm-topic u-color--grey">
-                <div className="thtrm-media-short">
-                  Written by&nbsp; <img alt="Author" src={author.img} className="thtrm-avatar" />
-                  <p className="thtrm-media-short__body"><a href={twitterLink} className="u-link-plain">{author.name}</a></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
         { isRust && (
-          <section className="thtrm-section--centered thtrm-section-constrained u-flex--justify-center" style={{boxShadow: "0px 2px 9px 2px rgba(0,0,0, 0.1)", padding: "2em"}}>
-            <h1 className="thtrm-section__heading--small">Get notified about upcoming Rust content</h1>
+          <section className="thtrm-section--centered thtrm-section-constrained u-flex--justify-center" style={{boxShadow: "0px 2px 9px 2px rgba(0,0,0, 0.1)", padding: "2em", marginTop: "-2em"}}>
+            <h1 className="thtrm-section__heading--small">Liked this Rust article?</h1>
             <form id="signup-form" method="post" className="thtrm-form u-distance-small" action="https://gmail.us3.list-manage.com/subscribe/post?u=06cf39a53e3ac1a4db816a8f1&amp;id=08cf21d77b" noValidate target="_blank">
               <p className="thtrm-section__paragraph thtrm-section__paragraph--small" style={{lineHeight: "1.4em", fontSize: "0.7em", marginTop: "-1em"}}>
                 I started learning Rust out of curiosity with zero experience in systems programming. I know the pain. <span style={{fontWeight: "600"}}>Learning Rust doesn't have to be hard</span>. If you liked the article, sign up here and I'll inform you about new Rust content. ✌🏼</p>
@@ -84,6 +72,18 @@ class BlogPostTemplate extends React.Component {
             </form>
           </section>
         )}
+        <section className="thtrm-section">
+          <div className="thtrm-section__heading thtrm-article-header thtrm-section-constrained u-distance-reset">
+            <div className="thtrm-metabar thtrm-article-header__metabar">
+              <div className="thtrm-metabar__item thtrm-topic u-color--grey">
+                <div className="thtrm-media-short">
+                  Written by&nbsp; <img alt="Author" src={author.img} className="thtrm-avatar" />
+                  <p className="thtrm-media-short__body"><a href={twitterLink} className="u-link-plain">{author.name}</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </Layout>
     )
   }
