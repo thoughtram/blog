@@ -204,7 +204,7 @@ Coming back to the scenario we started out with, namely structs that contain ref
 
 ## Structs with references
 
-When it comes to actual type definitions, like the ones we've started out with in this article, as soon as it contains references, we have to write out their lifetimes. The code bwlow won't compile.
+When it comes to actual type definitions, like the ones we've started out with in this article, as soon as it contains references, we have to write out their lifetimes. The code below won't compile.
 
 ```rust
 struct Config {
