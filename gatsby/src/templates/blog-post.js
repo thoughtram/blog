@@ -53,7 +53,7 @@ class BlogPostTemplate extends React.Component {
         </section>
 
         <section className="thtrm-section thtrm-section-constrained thtrm-article u-distance">
-          {category == 'rust' && <p style={{textAlign: 'center', fontStyle: 'italic', width: '100%', marginBottom: '1em'}}>New to Rust? Check out my <strong>free</strong> <a href="https://egghead.io/courses/write-your-first-program-with-the-rust-language" target="_blank">introduction course</a>!</p>}
+          {category == 'rust' && <p style={{textAlign: 'center', fontStyle: 'italic', width: '100%', marginBottom: '1em'}}>New to Rust? Check out my <a href="https://youtube.com/c/PascalPrecht" target="_blank">YouTube channel</a> or my <strong>free</strong> <a href="https://egghead.io/courses/write-your-first-program-with-the-rust-language" target="_blank">introduction course</a> on Egghead!</p>}
           <div className="thtrm-section__heading u-distance-reset" dangerouslySetInnerHTML={{ __html: post.html }} />
         </section>
         { isRust && (
