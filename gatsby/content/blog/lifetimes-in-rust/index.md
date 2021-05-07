@@ -67,7 +67,7 @@ fn greeting() {
 
 The variable `s` is defined inside of `greeting` and a soon as the function is done doing its work, `s` is no longer needed so Rust will drop its value, freeing up the memory. We could say that `s` "lives" as long as the execution of `greeting`.
 
-This is an important concept, especially when it comes to using [references in Rust](/references-in-rust/). Whenever we use references, Rust tries to assign them a **lifetime** that matches the constraints by how their used. Here's a simple example of that:
+This is an important concept, especially when it comes to using [references in Rust](/references-in-rust/). Whenever we use references, Rust tries to assign them a **lifetime** that matches the constraints by how they're used. Here's a simple example of that:
 
 ```rust
 fn main() {
