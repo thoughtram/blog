@@ -255,55 +255,60 @@ TOKEN_A === TOKEN_B // false
 
 ## InjectionToken since Angular 4.x
 
-Since Angular version 4.x there's a new, even a little bit better, way of achieving this. `InjectionToken` does pretty much the same thing as `OpaqueToken` (in fact, it derives from it). However, it allows to attach type info on the token via TypeScript generics, plus, it adds a little bit of sugar that makes the developer's life a bit more pleasant when creating factory providers that come with their own dependencies.
+Since Angular version 4.x there's a new, even a little bit better, way of achieving this. `InjectionToken` does pretty much the same thing as `OpaqueToken` (in fact, it derives from it). However, it allows to attach type info on the token via TypeScript generics.
 
-Let's take a look at the following provider configuration for `DataService`:
+You can only fill the difference when you use injector directly (that is often under the hood) with complex types. Let's take a look at applicaation config example. First we need to specify a type ( or interface):
 
 {% highlight js %}
 {% raw %}
-const API_URL = new OpaqueToken('apiUrl');
+interface Config {
+  production: boolean;
+  base: string;
+}
+{% endraw %}
+{% endhighlight %}
 
+and now with this type we can create `InjectionToken` and setup provider based on it:
+
+{% highlight js %}
+{% raw %}
+const APP_CONFIG = new InjectionToken<Config>('APP_CONFIG'); // generic defines return value of injector
 
 providers: [
   {
-    provide: DataService,
-    useFactory: (http, apiUrl) => {
-      // create data service
-    },
-    deps: [
-      Http,
-      new Inject(API_URL)
-    ]
+    provide: APP_CONFIG,
+    useValue: {
+      production: true,
+      base: ''
+    }
   }
 ]
 {% endraw %}
 {% endhighlight %}
 
-We're using a factory function that will create a `DataService` instance using `http` and `apiUrl`. To ensure Angular knows what `http` and `apiUrl` are, we add the corresponding DI token to the provider configuration's `deps` property. Notice how we can just add the `Http` token. However, `apiUrl` is providing using an `OpaqueToken`, and since it since a type, we have to use the `Inject()` constructor (equivalent of `@Inject()` inside constructors).
-
-While this works perfectly fine, developers often ran into errors when they forgot to call `new Inject()` on the token. **That's why since Angular 4.x we don't have to do this anymore.** We can replace all `OpaqueToken` instances with `InjectionToken` instances and everything would work exactly the same way, except for the fact that we don't have to call `new Inject()` in factory provider dependencies anymore. Also, notice the generic. It's the type of what the injector is going to return.
-
-In other words, the code above can then be written like this:
+and now if we try to get our injectable by using injector:
 
 {% highlight js %}
 {% raw %}
-const API_URL = new InjectionToken<string>('apiUrl'); // generic defines return value of injector
 
-
-providers: [
-  {
-    provide: DataService,
-    useFactory: (http, apiUrl) => {
-      // create data service
-    },
-    deps: [
-      Http,
-      API_URL // no `new Inject()` needed!
-    ]
-  }
-]
+constructor(injector: Injector) {
+     const config = injector.get(APP_CONFIG);
+}
 {% endraw %}
 {% endhighlight %}
+
+compiler is already informed about `config` type and will thrown an error if we try to access a property that does not exist:
+
+{% highlight js %}
+{% raw %}
+  const config = injector.get(APP_CONFIG);
+  this.apibase = config.apibase; // it will case the error: Property 'apibase' does not exist on type 'Config'
+{% endraw %}
+{% endhighlight %}
+
+
+
+It only works with `InjectionToken`.
 
 Cool right? As of version 4.x `OpaqueToken` is considered deprecated.
 
