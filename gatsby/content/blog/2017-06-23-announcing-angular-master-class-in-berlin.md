@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Announcing Angular Master Class in Berlin
-imageUrl: ../assets/images/banner/announcing_amc_berlin.jpg
 date: 2017-06-23T00:00:00.000Z
 summary: >-
   Did you miss one of our recent trainings? Don't be sad: We are bringing our
