@@ -5,7 +5,7 @@ class Footer extends React.Component {
     return (
       <footer className="thtrm-footer" role="contentinfo">
         <div className="thtrm-copyright">
-          <p>© 2024 The thoughtram Blog Maintainers</p>
+          <p>© {new Date().getFullYear()} The thoughtram Blog Maintainers</p>
         </div>
       </footer>
     )
